@@ -1,0 +1,14 @@
+﻿datatype,fgp_publish
+calendar_date,non
+date,non
+geospatial,oui
+line,oui
+location,oui
+multiline,oui
+multipoint,oui
+multipolygon,oui
+number,non
+point,oui
+polygon,oui
+text,non
+url,non
