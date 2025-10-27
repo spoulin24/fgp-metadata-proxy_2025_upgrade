@@ -1,0 +1,812 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MD_Metadata xmlns="http://www.isotc211.org/2005/gmd" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:geonet="http://www.fao.org/geonetwork" xmlns:gfc="http://www.isotc211.org/2005/gfc" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:gmi="http://www.isotc211.org/2005/gmi" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:gmx="http://www.isotc211.org/2005/gmx" xmlns:gsr="http://www.isotc211.org/2005/gsr" xmlns:gss="http://www.isotc211.org/2005/gss" xmlns:gts="http://www.isotc211.org/2005/gts" xmlns:srv="http://www.isotc211.org/2005/srv" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.isotc211.org/2005/gmd http://nap.geogratis.gc.ca/metadata/tools/schemas/metadata/can-cgsb-171.100-2009-a/gmd/gmd.xsd http://www.isotc211.org/2005/srv http://nap.geogratis.gc.ca/metadata/tools/schemas/metadata/can-cgsb-171.100-2009-a/srv/srv.xsd http://www.geconnections.org/nap/napMetadataTools/napXsd/napm http://nap.geogratis.gc.ca/metadata/tools/schemas/metadata/can-cgsb-171.100-2009-a/napm/napm.xsd">
+	<fileIdentifier>
+		<gco:CharacterString>920820e4-c38a-cdae-44a6-d6d542e9b8c2</gco:CharacterString>
+	</fileIdentifier>
+	<language>
+		<gco:CharacterString>eng; CAN</gco:CharacterString>
+	</language>
+	<characterSet>
+		<MD_CharacterSetCode codeList="http://nap.geogratis.gc.ca/metadata/register/napMetadataRegister.xml#IC_95" codeListValue="RI_458">utf8; utf8</MD_CharacterSetCode>
+	</characterSet>
+	<hierarchyLevel>
+		<MD_ScopeCode codeList="http://nap.geogratis.gc.ca/metadata/register/napMetadataRegister.xml#IC_108" codeListValue="RI_622">dataset; jeuDonnées</MD_ScopeCode>
+	</hierarchyLevel>
+	<contact>
+		<CI_ResponsibleParty>
+			<individualName xsi:type="gmd:PT_FreeText_PropertyType">
+				<gco:CharacterString></gco:CharacterString>
+			</individualName>
+			<organisationName xsi:type="gmd:PT_FreeText_PropertyType">
+				<gco:CharacterString>Government of Manitoba; Government of Manitoba; Manitoba Maps</gco:CharacterString>
+				<PT_FreeText>
+					<textGroup>
+						<LocalisedCharacterString locale="#fra">Gouvernement du Manitoba; Gouvernement du Manitoba; Manitoba Maps</LocalisedCharacterString>
+					</textGroup>
+				</PT_FreeText>
+			</organisationName>
+			<positionName xsi:type="gmd:PT_FreeText_PropertyType">
+				<gco:CharacterString></gco:CharacterString>
+				<PT_FreeText>
+					<textGroup>
+						<LocalisedCharacterString locale=""></LocalisedCharacterString>
+					</textGroup>
+				</PT_FreeText>
+			</positionName>
+			<contactInfo>
+				<CI_Contact>
+					<phone>
+						<CI_Telephone>
+							<voice xmlns:napm="http://www.geoconnections.org/nap/napMetadataTools/napXsd/napm" xsi:type="gmd:PT_FreeText_PropertyType">
+								<gco:CharacterString></gco:CharacterString>
+								<PT_FreeText>
+									<textGroup>
+										<LocalisedCharacterString locale="#fra"></LocalisedCharacterString>
+									</textGroup>
+								</PT_FreeText>
+							</voice>
+							<facsimile>
+								<gco:CharacterString></gco:CharacterString>
+							</facsimile>
+						</CI_Telephone>
+					</phone>
+					<address>
+						<CI_Address>
+							<deliveryPoint xsi:type="gmd:PT_FreeText_PropertyType">
+								<gco:CharacterString></gco:CharacterString>
+								<PT_FreeText>
+									<textGroup>
+										<LocalisedCharacterString locale="#fra"></LocalisedCharacterString>
+									</textGroup>
+								</PT_FreeText>
+							</deliveryPoint>
+							<city>
+								<gco:CharacterString></gco:CharacterString>
+							</city>
+							<administrativeArea xsi:type="gmd:PT_FreeText_PropertyType">
+								<gco:CharacterString></gco:CharacterString>
+								<PT_FreeText>
+									<textGroup>
+										<LocalisedCharacterString locale="#fra"></LocalisedCharacterString>
+									</textGroup>
+								</PT_FreeText>
+							</administrativeArea>
+							<postalCode>
+								<gco:CharacterString></gco:CharacterString>
+							</postalCode>
+							<country xsi:type="gmd:PT_FreeText_PropertyType">
+								<gco:CharacterString></gco:CharacterString>
+								<PT_FreeText>
+									<textGroup>
+										<LocalisedCharacterString locale="#fra"></LocalisedCharacterString>
+									</textGroup>
+								</PT_FreeText>
+							</country>
+							<electronicMailAddress xsi:type="gmd:PT_FreeText_PropertyType">
+								<gco:CharacterString>manitobamaps@gov.mb.ca</gco:CharacterString>
+								<PT_FreeText>
+									<textGroup>
+										<LocalisedCharacterString locale="#fra">manitobamaps@gov.mb.ca</LocalisedCharacterString>
+									</textGroup>
+								</PT_FreeText>
+							</electronicMailAddress>
+						</CI_Address>
+					</address>
+					<onlineResource>
+						<CI_OnlineResource>
+							<linkage>
+								<URL></URL>
+							</linkage>
+							<protocol>
+								<gco:CharacterString></gco:CharacterString>
+							</protocol>
+							<description xsi:type="gmd:PT_FreeText_PropertyType">
+								<gco:CharacterString></gco:CharacterString>
+								<PT_FreeText>
+									<textGroup>
+										<LocalisedCharacterString locale=""></LocalisedCharacterString>
+									</textGroup>
+								</PT_FreeText>
+							</description>
+						</CI_OnlineResource>
+					</onlineResource>
+				</CI_Contact>
+			</contactInfo>
+			<role>
+				<CI_RoleCode codeList="http://nap.geogratis.gc.ca/metadata/register/napMetadataRegister.xml#IC_90" codeListValue="RI_414">pointOfContact; contact</CI_RoleCode>
+			</role>
+		</CI_ResponsibleParty>
+	</contact>
+	<dateStamp>
+		<gco:Date>2025-10-21</gco:Date>
+	</dateStamp>
+	<metadataStandardName xsi:type="gmd:PT_FreeText_PropertyType">
+		<gco:CharacterString>North American Profile of ISO 19115:2003 - Geographic information - Metadata</gco:CharacterString>
+		<PT_FreeText>
+			<textGroup>
+				<LocalisedCharacterString locale="#fra">Profil nord-américain de la norme ISO 19115:2003 - Information géographique - Métadonnées</LocalisedCharacterString>
+			</textGroup>
+		</PT_FreeText>
+	</metadataStandardName>
+	<metadataStandardVersion>
+		<gco:CharacterString>HNAP ISO:19115 - 2003</gco:CharacterString>
+	</metadataStandardVersion>
+	<dataSetURI gco:nilReason="missing">
+		<gco:CharacterString></gco:CharacterString>
+	</dataSetURI>
+	<locale>
+		<PT_Locale id="fra">
+			<languageCode>
+				<LanguageCode codeList="http://nap.geogratis.gc.ca/metadata/register/napMetadataRegister.xml#IC_116" codeListValue="fra">French; Français</LanguageCode>
+			</languageCode>
+			<country>
+				<Country codeList="http://nap.geogratis.gc.ca/metadata/register/napMetadataRegister.xml#IC_117" codeListValue="CAN">Canada; Canada</Country>
+			</country>
+			<characterEncoding>
+				<MD_CharacterSetCode codeList="http://nap.geogratis.gc.ca/metadata/register/napMetadataRegister.xml#IC_95" codeListValue="RI_458">utf8; utf8</MD_CharacterSetCode>
+			</characterEncoding>
+		</PT_Locale>
+	</locale>
+	<referenceSystemInfo>
+		<MD_ReferenceSystem>
+			<referenceSystemIdentifier>
+				<RS_Identifier>
+					<code>
+						<gco:CharacterString>unknown</gco:CharacterString>
+					</code>
+					<codeSpace>
+						<gco:CharacterString>unknown</gco:CharacterString>
+					</codeSpace>
+					<version>
+						<gco:CharacterString>unknown</gco:CharacterString>
+					</version>
+				</RS_Identifier>
+			</referenceSystemIdentifier>
+		</MD_ReferenceSystem>
+	</referenceSystemInfo>
+	<identificationInfo>
+		<MD_DataIdentification>
+			<citation>
+				<CI_Citation>
+					<title xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>Treaty/Settlement Map (Managed Forest Code 40)</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Translation of Treaty/Settlement Map (Managed Forest Code 40)</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</title>
+					<date>
+						<CI_Date>
+							<date>
+								<gco:Date>2018-07-20</gco:Date>
+							</date>
+							<dateType>
+								<CI_DateTypeCode codeList="http://nap.geogratis.gc.ca/metadata/register/napMetadataRegister.xml#IC_87" codeListValue="RI_367">publication; publication</CI_DateTypeCode>
+							</dateType>
+						</CI_Date>
+					</date>
+					<date>
+						<CI_Date>
+							<date>
+								<gco:Date>2018-07-20</gco:Date>
+							</date>
+							<dateType>
+								<CI_DateTypeCode codeList="http://nap.geogratis.gc.ca/metadata/register/napMetadataRegister.xml#IC_87" codeListValue="RI_366">creation; création</CI_DateTypeCode>
+							</dateType>
+						</CI_Date>
+					</date>
+					<identifier>
+						<MD_Identifier>
+							<code></code>
+						</MD_Identifier>
+					</identifier>
+					<citedResponsibleParty>
+						<CI_ResponsibleParty>
+							<individualName xsi:type="gmd:PT_FreeText_PropertyType">
+								<gco:CharacterString></gco:CharacterString>
+							</individualName>
+							<organisationName xsi:type="gmd:PT_FreeText_PropertyType">
+								<gco:CharacterString>Government of Manitoba; Government of Manitoba; Manitoba Maps</gco:CharacterString>
+								<PT_FreeText>
+									<textGroup>
+										<LocalisedCharacterString locale="#fra">Gouvernement du Manitoba; Gouvernement du Manitoba; Manitoba Maps</LocalisedCharacterString>
+									</textGroup>
+								</PT_FreeText>
+							</organisationName>
+							<positionName xsi:type="gmd:PT_FreeText_PropertyType">
+								<gco:CharacterString></gco:CharacterString>
+								<PT_FreeText>
+									<textGroup>
+										<LocalisedCharacterString locale=""></LocalisedCharacterString>
+									</textGroup>
+								</PT_FreeText>
+							</positionName>
+							<contactInfo>
+								<CI_Contact>
+									<phone>
+										<CI_Telephone>
+											<voice xmlns:napm="http://www.geoconnections.org/nap/napMetadataTools/napXsd/napm" xsi:type="gmd:PT_FreeText_PropertyType">
+												<gco:CharacterString></gco:CharacterString>
+												<PT_FreeText>
+													<textGroup>
+														<LocalisedCharacterString locale="#fra"></LocalisedCharacterString>
+													</textGroup>
+												</PT_FreeText>
+											</voice>
+											<facsimile>
+												<gco:CharacterString></gco:CharacterString>
+											</facsimile>
+										</CI_Telephone>
+									</phone>
+									<address>
+										<CI_Address>
+											<deliveryPoint xsi:type="gmd:PT_FreeText_PropertyType">
+												<gco:CharacterString></gco:CharacterString>
+												<PT_FreeText>
+													<textGroup>
+														<LocalisedCharacterString locale="#fra"></LocalisedCharacterString>
+													</textGroup>
+												</PT_FreeText>
+											</deliveryPoint>
+											<city>
+												<gco:CharacterString></gco:CharacterString>
+											</city>
+											<administrativeArea xsi:type="gmd:PT_FreeText_PropertyType">
+												<gco:CharacterString></gco:CharacterString>
+												<PT_FreeText>
+													<textGroup>
+														<LocalisedCharacterString locale="#fra"></LocalisedCharacterString>
+													</textGroup>
+												</PT_FreeText>
+											</administrativeArea>
+											<postalCode>
+												<gco:CharacterString></gco:CharacterString>
+											</postalCode>
+											<country xsi:type="gmd:PT_FreeText_PropertyType">
+												<gco:CharacterString></gco:CharacterString>
+												<PT_FreeText>
+													<textGroup>
+														<LocalisedCharacterString locale="#fra"></LocalisedCharacterString>
+													</textGroup>
+												</PT_FreeText>
+											</country>
+											<electronicMailAddress xsi:type="gmd:PT_FreeText_PropertyType">
+												<gco:CharacterString>manitobamaps@gov.mb.ca</gco:CharacterString>
+												<PT_FreeText>
+													<textGroup>
+														<LocalisedCharacterString locale="#fra">manitobamaps@gov.mb.ca</LocalisedCharacterString>
+													</textGroup>
+												</PT_FreeText>
+											</electronicMailAddress>
+										</CI_Address>
+									</address>
+									<onlineResource>
+										<CI_OnlineResource>
+											<linkage>
+												<URL></URL>
+											</linkage>
+											<protocol>
+												<gco:CharacterString></gco:CharacterString>
+											</protocol>
+											<description xsi:type="gmd:PT_FreeText_PropertyType">
+												<gco:CharacterString></gco:CharacterString>
+												<PT_FreeText>
+													<textGroup>
+														<LocalisedCharacterString locale=""></LocalisedCharacterString>
+													</textGroup>
+												</PT_FreeText>
+											</description>
+										</CI_OnlineResource>
+									</onlineResource>
+								</CI_Contact>
+							</contactInfo>
+							<role>
+								<CI_RoleCode codeList="http://nap.geogratis.gc.ca/metadata/register/napMetadataRegister.xml#IC_90" codeListValue="RI_414">pointOfContact; contact</CI_RoleCode>
+							</role>
+						</CI_ResponsibleParty>
+					</citedResponsibleParty>
+				</CI_Citation>
+			</citation>
+			<abstract xsi:type="gmd:PT_FreeText_PropertyType">
+				<gco:CharacterString>Treaty/Settlement map (managed forest code 40) used in the Story Map of Forest Management in Canada, 2017.
+
+Treaty/Settlement map (managed forest code 40) used in the  Story Map of Forest Management in Canada, 2017. Treat/Settlement lands were identified using the Geobase Aboriginal Lands of Canada geodatabase. These are lands owned by a First Nation, Metis or Inuit authority. Source: This web map shows the Treaty/Settlement areas used in the map of forest management in Canada, 2017 and includes the following tiled layer:Treaty/Settlement (Managed Forest Code 40)Data provided by Alberta Agriculture and Forestry; British Columbia Ministry of Forests; Manitoba Sustainable Development; Natural Resources Canada; New Brunswick Department of Energy and Resource Development; Newfoundland &amp; Labrador Department of Fisheries and Land Resources; Northwest Territories Department of Environment and Natural Resources; Nova Scotia Department of Lands and Forestry; Ontario Ministry of Natural Resources and Forestry; Prince Edward Island Department of Communities, Land &amp; Environment; Québec Ministère des Forêts, de la Faune et des Parcs; Saskatchewan Ministry of Environment; and Yukon Energy, Mines and Resources.
+
+</gco:CharacterString>
+				<PT_FreeText>
+					<textGroup>
+						<LocalisedCharacterString locale="#fra">Translation of Treaty/Settlement map (managed forest code 40) used in the Story Map of Forest Management in Canada, 2017.
+
+Treaty/Settlement map (managed forest code 40) used in the  Story Map of Forest Management in Canada, 2017. Treat/Settlement lands were identified using the Geobase Aboriginal Lands of Canada geodatabase. These are lands owned by a First Nation, Metis or Inuit authority. Source: This web map shows the Treaty/Settlement areas used in the map of forest management in Canada, 2017 and includes the following tiled layer:Treaty/Settlement (Managed Forest Code 40)Data provided by Alberta Agriculture and Forestry; British Columbia Ministry of Forests; Manitoba Sustainable Development; Natural Resources Canada; New Brunswick Department of Energy and Resource Development; Newfoundland &amp; Labrador Department of Fisheries and Land Resources; Northwest Territories Department of Environment and Natural Resources; Nova Scotia Department of Lands and Forestry; Ontario Ministry of Natural Resources and Forestry; Prince Edward Island Department of Communities, Land &amp; Environment; Québec Ministère des Forêts, de la Faune et des Parcs; Saskatchewan Ministry of Environment; and Yukon Energy, Mines and Resources.
+
+</LocalisedCharacterString>
+					</textGroup>
+				</PT_FreeText>
+			</abstract>
+			<status>
+				<MD_ProgressCode codeList="http://nap.geogratis.gc.ca/metadata/register/napMetadataRegister.xml#IC_106" codeListValue="RI_596">onGoing; enContinue</MD_ProgressCode>
+			</status>
+			<resourceMaintenance>
+				<MD_MaintenanceInformation>
+					<maintenanceAndUpdateFrequency>
+						<MD_MaintenanceFrequencyCode codeList="http://nap.geogratis.gc.ca/metadata/register/napMetadataRegister.xml#IC_102" codeListValue="RI_543">unknown; inconnu</MD_MaintenanceFrequencyCode>
+					</maintenanceAndUpdateFrequency>
+				</MD_MaintenanceInformation>
+			</resourceMaintenance>
+			<graphicOverview>
+				<MD_BrowseGraphic>
+					<fileName>
+						<gco:CharacterString>https://raw.githubusercontent.com/federal-geospatial-platform/fgp-metadata-proxy/master/images/resampled/mb/Flag_of_Manitoba_100x100.png</gco:CharacterString>
+					</fileName>
+				</MD_BrowseGraphic>
+			</graphicOverview>
+			<descriptiveKeywords>
+				<MD_Keywords>
+					<keyword xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>First Nation Forests</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Translation of First Nation Forests</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</keyword>
+					<keyword xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>Treaty</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Translation of Treaty</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</keyword>
+					<keyword xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>Settlement</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Translation of Settlement</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</keyword>
+					<keyword xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>2017</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Translation of 2017</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</keyword>
+					<keyword xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>40</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Translation of 40</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</keyword>
+					<keyword xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>CCFM</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Translation of CCFM</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</keyword>
+					<keyword xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>Forest Management</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Translation of Forest Management</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</keyword>
+					<keyword xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>Canada</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Translation of Canada</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</keyword>
+					<keyword xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>Canadian Council of Forest Ministers</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Translation of Canadian Council of Forest Ministers</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</keyword>
+					<keyword xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>Manitoba</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Translation of Manitoba</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</keyword>
+					<keyword xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>Province of Manitoba</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Translation of Province of Manitoba</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</keyword>
+					<keyword xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>Public</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Translation of Public</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</keyword>
+					<keyword xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>Forestry</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Translation of Forestry</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</keyword>
+					<keyword xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>Environment</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Translation of Environment</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</keyword>
+					<keyword xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>Forests</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Translation of Forests</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</keyword>
+					<keyword xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>Resource Management</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Translation of Resource Management</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</keyword>
+					<keyword xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>Natural Resources</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Translation of Natural Resources</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</keyword>
+					<keyword xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>Conservation Areas</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Translation of Conservation Areas</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</keyword>
+					<keyword xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>Geographic Data</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Translation of Geographic Data</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</keyword>
+					<keyword xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>Maps</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Translation of Maps</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</keyword>
+					<type>
+						<MD_KeywordTypeCode codeList="http://nap.geogratis.gc.ca/metadata/register/napMetadataRegister.xml#IC_101" codeListValue="RI_528">theme; thème</MD_KeywordTypeCode>
+					</type>
+				</MD_Keywords>
+			</descriptiveKeywords>
+			<descriptiveKeywords>
+				<MD_Keywords>
+					<keyword xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>Government information</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Information gouvernementale</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</keyword>
+					<type>
+						<MD_KeywordTypeCode codeList="http://nap.geogratis.gc.ca/metadata/register/napMetadataRegister.xml#IC_101" codeListValue="RI_528">theme; thème</MD_KeywordTypeCode>
+					</type>
+					<thesaurusName>
+						<CI_Citation>
+							<title xsi:type="gmd:PT_FreeText_PropertyType">
+								<gco:CharacterString>Government of Canada Core Subject Thesaurus</gco:CharacterString>
+								<PT_FreeText>
+									<textGroup>
+										<LocalisedCharacterString locale="#fra">Thésaurus des sujets de base du gouvernement du Canada</LocalisedCharacterString>
+									</textGroup>
+								</PT_FreeText>
+							</title>
+							<date>
+								<CI_Date>
+									<date>
+										<gco:Date>2004</gco:Date>
+									</date>
+									<dateType>
+										<CI_DateTypeCode codeList="http://nap.geogratis.gc.ca/metadata/register/napMetadataRegister.xml#IC_87" codeListValue="RI_366">creation; création</CI_DateTypeCode>
+									</dateType>
+								</CI_Date>
+							</date>
+							<date>
+								<CI_Date>
+									<date>
+										<gco:Date>2016-04-21</gco:Date>
+									</date>
+									<dateType>
+										<CI_DateTypeCode codeList="http://nap.geogratis.gc.ca/metadata/register/napMetadataRegister.xml#IC_87" codeListValue="RI_367">publication; publication</CI_DateTypeCode>
+									</dateType>
+								</CI_Date>
+							</date>
+							<citedResponsibleParty>
+								<CI_ResponsibleParty>
+									<organisationName xsi:type="gmd:PT_FreeText_PropertyType">
+										<gco:CharacterString>Government of Canada; Library and Archives Canada</gco:CharacterString>
+										<PT_FreeText>
+											<textGroup>
+												<LocalisedCharacterString locale="#fra">Gouvernement du Canada; Bibliothèque et Archives Canada</LocalisedCharacterString>
+											</textGroup>
+										</PT_FreeText>
+									</organisationName>
+									<role>
+										<CI_RoleCode codeList="http://nap.geogratis.gc.ca/metadata/register/napMetadataRegister.xml#IC_90" codeListValue="RI_409">custodian; conservateur</CI_RoleCode>
+									</role>
+								</CI_ResponsibleParty>
+							</citedResponsibleParty>
+						</CI_Citation>
+					</thesaurusName>
+				</MD_Keywords>
+			</descriptiveKeywords>
+			<resourceConstraints>
+				<MD_LegalConstraints>
+					<useLimitation xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>OpenMB Information and Data Use License - Manitoba (https://manitoba.ca/asset_library/en/legal/OpenMB-Information-Data-Use-Licence.pdf)</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Licence d’utilisation de l’information et des données du site Ouverture MB - Manitoba (https://manitoba.ca/asset_library/en/legal/OpenMB-Information-Data-Use-Licence.fr.pdf)</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</useLimitation>
+					<accessConstraints>
+						<MD_RestrictionCode codeList="http://nap.geogratis.gc.ca/metadata/register/napMetadataRegister.xml#IC_107" codeListValue="RI_606">license; licence</MD_RestrictionCode>
+					</accessConstraints>
+					<useConstraints>
+						<MD_RestrictionCode codeList="http://nap.geogratis.gc.ca/metadata/register/napMetadataRegister.xml#IC_107" codeListValue="RI_606">license; licence</MD_RestrictionCode>
+					</useConstraints>
+					<otherConstraints xsi:type="gmd:PT_FreeText_PropertyType" gco:nilReason="missing">
+						<gco:CharacterString></gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra"></LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</otherConstraints>
+				</MD_LegalConstraints>
+			</resourceConstraints>
+			<spatialRepresentationType>
+				<MD_SpatialRepresentationTypeCode codeList="http://nap.geogratis.gc.ca/metadata/register/napMetadataRegister.xml#IC_109" codeListValue="RI_636">grid; grille</MD_SpatialRepresentationTypeCode>
+			</spatialRepresentationType>
+			<language>
+				<gco:CharacterString>eng; CAN</gco:CharacterString>
+			</language>
+			<language>
+				<gco:CharacterString>fra; CAN</gco:CharacterString>
+			</language>
+			<characterSet>
+				<MD_CharacterSetCode codeList="http://nap.geogratis.gc.ca/metadata/register/napMetadataRegister.xml#IC_95" codeListValue=""></MD_CharacterSetCode>
+			</characterSet>
+			<topicCategory>
+				<MD_TopicCategoryCode>environment</MD_TopicCategoryCode>
+			</topicCategory>
+			<topicCategory>
+				<MD_TopicCategoryCode>society</MD_TopicCategoryCode>
+			</topicCategory>
+			<environmentDescription gco:nilReason="missing">
+				<gco:CharacterString></gco:CharacterString>
+			</environmentDescription>
+			<extent>
+				<EX_Extent>
+					<temporalElement>
+						<EX_TemporalExtent>
+							<extent gco:nilReason="missing">
+								<gml:TimePeriod gml:id="timeperiod1">
+									<gml:beginPosition>0001-01-01</gml:beginPosition>
+									<gml:endPosition></gml:endPosition>
+								</gml:TimePeriod>
+							</extent>
+						</EX_TemporalExtent>
+					</temporalElement>
+				</EX_Extent>
+			</extent>
+			<extent>
+				<EX_Extent>
+					<geographicElement>
+						<EX_GeographicBoundingBox>
+							<westBoundLongitude>
+								<gco:Decimal>-141.02</gco:Decimal>
+							</westBoundLongitude>
+							<eastBoundLongitude>
+								<gco:Decimal>-52.62</gco:Decimal>
+							</eastBoundLongitude>
+							<southBoundLatitude>
+								<gco:Decimal>41.68</gco:Decimal>
+							</southBoundLatitude>
+							<northBoundLatitude>
+								<gco:Decimal>83.14</gco:Decimal>
+							</northBoundLatitude>
+						</EX_GeographicBoundingBox>
+					</geographicElement>
+				</EX_Extent>
+			</extent>
+			<supplementalInformation gco:nilReason="missing">
+				<gco:CharacterString></gco:CharacterString>
+			</supplementalInformation>
+		</MD_DataIdentification>
+	</identificationInfo>
+	<distributionInfo>
+		<MD_Distribution>
+			<distributionFormat>
+				<MD_Format>
+					<name>
+						<gco:CharacterString>HTML</gco:CharacterString>
+					</name>
+					<version>
+						<gco:CharacterString>unknown</gco:CharacterString>
+					</version>
+				</MD_Format>
+			</distributionFormat>
+			<distributor>
+				<MD_Distributor>
+					<distributorContact>
+						<CI_ResponsibleParty>
+							<individualName xsi:type="gmd:PT_FreeText_PropertyType">
+								<gco:CharacterString></gco:CharacterString>
+							</individualName>
+							<organisationName xsi:type="gmd:PT_FreeText_PropertyType">
+								<gco:CharacterString>Government of Manitoba; Government of Manitoba; Manitoba Maps</gco:CharacterString>
+								<PT_FreeText>
+									<textGroup>
+										<LocalisedCharacterString locale="#fra">Gouvernement du Manitoba; Gouvernement du Manitoba; Manitoba Maps</LocalisedCharacterString>
+									</textGroup>
+								</PT_FreeText>
+							</organisationName>
+							<positionName xsi:type="gmd:PT_FreeText_PropertyType">
+								<gco:CharacterString></gco:CharacterString>
+								<PT_FreeText>
+									<textGroup>
+										<LocalisedCharacterString locale=""></LocalisedCharacterString>
+									</textGroup>
+								</PT_FreeText>
+							</positionName>
+							<contactInfo>
+								<CI_Contact>
+									<phone>
+										<CI_Telephone>
+											<voice xmlns:napm="http://www.geoconnections.org/nap/napMetadataTools/napXsd/napm" xsi:type="gmd:PT_FreeText_PropertyType">
+												<gco:CharacterString></gco:CharacterString>
+												<PT_FreeText>
+													<textGroup>
+														<LocalisedCharacterString locale="#fra"></LocalisedCharacterString>
+													</textGroup>
+												</PT_FreeText>
+											</voice>
+											<facsimile>
+												<gco:CharacterString></gco:CharacterString>
+											</facsimile>
+										</CI_Telephone>
+									</phone>
+									<address>
+										<CI_Address>
+											<deliveryPoint xsi:type="gmd:PT_FreeText_PropertyType">
+												<gco:CharacterString></gco:CharacterString>
+												<PT_FreeText>
+													<textGroup>
+														<LocalisedCharacterString locale="#fra"></LocalisedCharacterString>
+													</textGroup>
+												</PT_FreeText>
+											</deliveryPoint>
+											<city>
+												<gco:CharacterString></gco:CharacterString>
+											</city>
+											<administrativeArea xsi:type="gmd:PT_FreeText_PropertyType">
+												<gco:CharacterString></gco:CharacterString>
+												<PT_FreeText>
+													<textGroup>
+														<LocalisedCharacterString locale="#fra"></LocalisedCharacterString>
+													</textGroup>
+												</PT_FreeText>
+											</administrativeArea>
+											<postalCode>
+												<gco:CharacterString></gco:CharacterString>
+											</postalCode>
+											<country xsi:type="gmd:PT_FreeText_PropertyType">
+												<gco:CharacterString></gco:CharacterString>
+												<PT_FreeText>
+													<textGroup>
+														<LocalisedCharacterString locale="#fra"></LocalisedCharacterString>
+													</textGroup>
+												</PT_FreeText>
+											</country>
+											<electronicMailAddress xsi:type="gmd:PT_FreeText_PropertyType">
+												<gco:CharacterString>manitobamaps@gov.mb.ca</gco:CharacterString>
+												<PT_FreeText>
+													<textGroup>
+														<LocalisedCharacterString locale="#fra">manitobamaps@gov.mb.ca</LocalisedCharacterString>
+													</textGroup>
+												</PT_FreeText>
+											</electronicMailAddress>
+										</CI_Address>
+									</address>
+									<onlineResource>
+										<CI_OnlineResource>
+											<linkage>
+												<URL></URL>
+											</linkage>
+											<protocol>
+												<gco:CharacterString></gco:CharacterString>
+											</protocol>
+											<description xsi:type="gmd:PT_FreeText_PropertyType">
+												<gco:CharacterString></gco:CharacterString>
+												<PT_FreeText>
+													<textGroup>
+														<LocalisedCharacterString locale=""></LocalisedCharacterString>
+													</textGroup>
+												</PT_FreeText>
+											</description>
+										</CI_OnlineResource>
+									</onlineResource>
+								</CI_Contact>
+							</contactInfo>
+							<role>
+								<CI_RoleCode codeList="http://nap.geogratis.gc.ca/metadata/register/napMetadataRegister.xml#IC_90" codeListValue="RI_414">pointOfContact; contact</CI_RoleCode>
+							</role>
+						</CI_ResponsibleParty>
+					</distributorContact>
+				</MD_Distributor>
+			</distributor>
+			<transferOptions>
+				<MD_DigitalTransferOptions>
+					<onLine xlink:role="">
+						<CI_OnlineResource>
+							<linkage>
+								<URL>https://geoportal.gov.mb.ca/maps/manitoba::treaty-settlement-map-managed-forest-code-40</URL>
+							</linkage>
+							<protocol>
+								<gco:CharacterString>HTTPS</gco:CharacterString>
+							</protocol>
+							<name xsi:type="gmd:PT_FreeText_PropertyType">
+								<gco:CharacterString>original metadata (https://geoportal.gov.mb.ca)</gco:CharacterString>
+								<PT_FreeText>
+									<textGroup>
+										<LocalisedCharacterString locale="#fra">Translation of original metadata (https://geoportal.gov.mb.ca)</LocalisedCharacterString>
+									</textGroup>
+								</PT_FreeText>
+							</name>
+							<description xsi:type="gmd:PT_FreeText_PropertyType">
+								<gco:CharacterString>Dataset;HTML;eng</gco:CharacterString>
+								<PT_FreeText>
+									<textGroup>
+										<LocalisedCharacterString locale="#fra">Données;HTML;eng</LocalisedCharacterString>
+									</textGroup>
+								</PT_FreeText>
+							</description>
+						</CI_OnlineResource>
+					</onLine>
+				</MD_DigitalTransferOptions>
+			</transferOptions>
+		</MD_Distribution>
+	</distributionInfo>
+</MD_Metadata>
