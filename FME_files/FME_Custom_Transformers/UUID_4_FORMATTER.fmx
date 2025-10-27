@@ -1,0 +1,1239 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN UUID_4_FORMATTER,2,"""FGP Tools""",f9c3dd26-5ccf-4c92-9f0f-d6a80afd20df,"Linked by Default",No,NO_PARALLELISM,,No,25606,YES,No,313,No,,neither
+# 
+# TRANSFORMER_END
+#!   A0_PREVIEW_IMAGE="data:image/png;base64,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"
+#!   ARCGIS_COMPATIBILITY="ARCGIS_AUTO"
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="&quot;FGP Tools&quot;"
+#!   DATA_PROCESSING_TYPE="neither"
+#!   DESCRIPTION=""
+#!   DOC_EXTENTS="8024.88 1117.2"
+#!   DOC_TOP_LEFT="-3817.72 -612.506"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="25606"
+#!   FME_DOCUMENT_GUID="f9c3dd26-5ccf-4c92-9f0f-d6a80afd20df"
+#!   FME_DOCUMENT_PRIORGUID=""
+#!   FME_LINKED_TRANSFORMER_VERSION="2"
+#!   FME_NAMES_ENCODING="windows-1252"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY=""
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2025.1.0.0 (20250704 - Build 25606 - WIN64)"
+#!   LAST_SAVE_DATE="2025-10-06T16:36:31"
+#!   MARKDOWN_DESCRIPTION=""
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="313"
+#!   REPLACED_BY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="UUID_4_FORMATTER"
+#!   USAGE=""
+#!   USE_MARKDOWN="NO"
+#!   VIEW_POSITION="340.628 703.132"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="100"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! </GLOBAL_PARAMETERS>
+#! <USER_PARAMETERS
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbXX0="
+#! >
+#! <PARAMETER_INFO>
+#! </PARAMETER_INFO>
+#! </USER_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="22"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Exposes attributes required by this transformer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-2595.834732168124 -142.81737896968818"
+#!   TOP_LEFT="-2595.834732168124 -142.81737896968818"
+#!   BOTTOM_RIGHT="-2141.8756144519466 -143.81737896968818"
+#!   BOUNDING_RECT="-2595.834732168124 -142.81737896968818 453.95911771617716 1"
+#!   ORDER="500000000000269.25"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{b6b7665c-84bc-4440-84f7-921277159c49}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="4"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="23"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Creates string from characters 1-8 in id attribute&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-1776.576919589997 -174.06769147281327"
+#!   TOP_LEFT="-1776.576919589997 -174.06769147281327"
+#!   BOTTOM_RIGHT="-1322.6178018738199 -175.06769147281327"
+#!   BOUNDING_RECT="-1776.576919589997 -174.06769147281327 453.95911771617716 1"
+#!   ORDER="500000000000270.25"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{a4718ef9-3d2f-4327-a10a-94459c5fe7c7}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="5"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="24"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Creates string from characters 9-12 in id attribute&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-1082.7795997417977 -174.06769147281329"
+#!   TOP_LEFT="-1082.7795997417977 -174.06769147281329"
+#!   BOTTOM_RIGHT="-628.82048202562055 -175.06769147281329"
+#!   BOUNDING_RECT="-1082.7795997417977 -174.06769147281329 453.95911771617716 1"
+#!   ORDER="500000000000271.25"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{3d66f7ba-c9d5-47a8-80c5-15933cff840b}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="6"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="25"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Creates string from characters 13-16 in id attribute&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-361.43838820468136 -145.94241022000068"
+#!   TOP_LEFT="-361.43838820468136 -145.94241022000068"
+#!   BOTTOM_RIGHT="92.520729511495801 -146.94241022000068"
+#!   BOUNDING_RECT="-361.43838820468136 -145.94241022000068 453.95911771617716 1"
+#!   ORDER="500000000000272.25"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{6dd7922d-8880-4838-8f22-e97292747528}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="7"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="26"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Creates string from characters 17-20 in id attribute&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="401.56836186281998 -145.94241022000068"
+#!   TOP_LEFT="401.56836186281998 -145.94241022000068"
+#!   BOTTOM_RIGHT="855.52747957899714 -146.94241022000068"
+#!   BOUNDING_RECT="401.56836186281998 -145.94241022000068 453.95911771617716 1"
+#!   ORDER="500000000000273.25"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{34bd71ba-4d0d-4d11-a678-2470e1830ca4}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="8"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="27"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Creates string from characters 21-32 in id attribute&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="1226.5761119403196 -145.94241022000068"
+#!   TOP_LEFT="1226.5761119403196 -145.94241022000068"
+#!   BOTTOM_RIGHT="1680.5352296564968 -146.94241022000068"
+#!   BOUNDING_RECT="1226.5761119403196 -145.94241022000068 453.95911771617716 1"
+#!   ORDER="500000000000274.25"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{33a7f6cb-5f07-4ae8-a9b0-8aaca56115dd}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="9"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="28"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Concatenates five extracted strings with dash delimiter to create UUID 4 format id attribute&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="1957.335799537193 -145.94241022000068"
+#!   TOP_LEFT="1957.335799537193 -145.94241022000068"
+#!   BOTTOM_RIGHT="2612.5176326055234 -438.44503524625094"
+#!   BOUNDING_RECT="1957.335799537193 -145.94241022000068 655.18183306833066 292.50262502625026"
+#!   ORDER="500000000000275.25"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{cc8fcd5e-28a5-4951-8a90-fd5f739f69fe}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="10"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="29"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Removes out of scope attributes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="2906.2790627906284 -237.19272272312571"
+#!   TOP_LEFT="2906.2790627906284 -237.19272272312571"
+#!   BOTTOM_RIGHT="3360.2381805068053 -238.19272272312571"
+#!   BOUNDING_RECT="2906.2790627906284 -237.19272272312571 453.95911771617716 1"
+#!   ORDER="500000000000276.25"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{e36f6647-61de-48b5-af26-bf2fc0eb366c}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="11"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="21"
+#!   NAME="UUID_4_FORMATTER"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="-2882.8379822006232 504.6897461015626"
+#!   ORDER="500000000000259.25"
+#!   PALETTE_COLOR="Color7"
+#!   BOTTOM_RIGHT="3606.2860628606281 -612.50612506125049"
+#!   BOUNDING_RECT="-2882.8379822006232 504.6897461015626 6489.1240450612513 1117.1958711628131"
+#!   STICKY="false"
+#!   COLOUR="0.59215686274509804,0.75294117647058822,0.90980392156862744,1"
+#!   CONTENTS=""
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="4"
+#!   TYPE="AttributeExposer"
+#!   VERSION="2"
+#!   POSITION="-2567.2098259190607 120.31090231312464"
+#!   BOUNDING_RECT="-2567.2098259190607 120.31090231312464 454 71"
+#!   ORDER="500000000000260.25"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="id,"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="5"
+#!   TYPE="SubstringExtractor"
+#!   VERSION="3"
+#!   POSITION="-1776.576919589997 120.31090231312464"
+#!   BOUNDING_RECT="-1776.576919589997 120.31090231312464 454 71"
+#!   ORDER="500000000000261.25"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_substring_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="END" PARM_VALUE="7"/>
+#!     <XFORM_PARM PARM_NAME="OAN_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="RESULT_ATTR" PARM_VALUE="id_substring_1"/>
+#!     <XFORM_PARM PARM_NAME="SRC_STRING" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;id&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="START" PARM_VALUE="0"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="SubstringExtractor"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="6"
+#!   TYPE="SubstringExtractor"
+#!   VERSION="3"
+#!   POSITION="-1082.8204820256205 120.31090231312464"
+#!   BOUNDING_RECT="-1082.8204820256205 120.31090231312464 454 71"
+#!   ORDER="500000000000261.25"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_substring_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_substring_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="END" PARM_VALUE="11"/>
+#!     <XFORM_PARM PARM_NAME="OAN_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="RESULT_ATTR" PARM_VALUE="id_substring_2"/>
+#!     <XFORM_PARM PARM_NAME="SRC_STRING" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;id&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="START" PARM_VALUE="8"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="SubstringExtractor_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="7"
+#!   TYPE="SubstringExtractor"
+#!   VERSION="3"
+#!   POSITION="-323.43838820468136 120.31090231312464"
+#!   BOUNDING_RECT="-323.43838820468136 120.31090231312464 454 71"
+#!   ORDER="500000000000261.25"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_substring_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_substring_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_substring_3" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="END" PARM_VALUE="15"/>
+#!     <XFORM_PARM PARM_NAME="OAN_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="RESULT_ATTR" PARM_VALUE="id_substring_3"/>
+#!     <XFORM_PARM PARM_NAME="SRC_STRING" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;id&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="START" PARM_VALUE="12"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="SubstringExtractor_3"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="8"
+#!   TYPE="SubstringExtractor"
+#!   VERSION="3"
+#!   POSITION="401.56836186281998 120.31090231312464"
+#!   BOUNDING_RECT="401.56836186281998 120.31090231312464 454 71"
+#!   ORDER="500000000000261.25"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_substring_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_substring_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_substring_3" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_substring_4" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="END" PARM_VALUE="19"/>
+#!     <XFORM_PARM PARM_NAME="OAN_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="RESULT_ATTR" PARM_VALUE="id_substring_4"/>
+#!     <XFORM_PARM PARM_NAME="SRC_STRING" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;id&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="START" PARM_VALUE="16"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="SubstringExtractor_4"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="9"
+#!   TYPE="SubstringExtractor"
+#!   VERSION="3"
+#!   POSITION="1226.5761119403196 120.31090231312464"
+#!   BOUNDING_RECT="1226.5761119403196 120.31090231312464 454 71"
+#!   ORDER="500000000000261.25"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_substring_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_substring_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_substring_3" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_substring_4" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_substring_5" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="END" PARM_VALUE="31"/>
+#!     <XFORM_PARM PARM_NAME="OAN_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="RESULT_ATTR" PARM_VALUE="id_substring_5"/>
+#!     <XFORM_PARM PARM_NAME="SRC_STRING" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;id&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="START" PARM_VALUE="20"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="SubstringExtractor_5"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="10"
+#!   TYPE="StringConcatenator"
+#!   VERSION="7"
+#!   POSITION="2073.4615807950058 120.31090231312464"
+#!   BOUNDING_RECT="2073.4615807950058 120.31090231312464 454 71"
+#!   ORDER="500000000000267.25"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_substring_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_substring_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_substring_3" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_substring_4" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_substring_5" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ACTION" PARM_VALUE="Create New Attribute"/>
+#!     <XFORM_PARM PARM_NAME="ATTRLIST" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PARAM_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARM_LINE" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;id_substring_1&lt;closeparen&gt;-&lt;at&gt;Value&lt;openparen&gt;id_substring_2&lt;closeparen&gt;-&lt;at&gt;Value&lt;openparen&gt;id_substring_3&lt;closeparen&gt;-&lt;at&gt;Value&lt;openparen&gt;id_substring_4&lt;closeparen&gt;-&lt;at&gt;Value&lt;openparen&gt;id_substring_5&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="VAL_ATTR" PARM_VALUE="id"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="StringConcatenator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="11"
+#!   TYPE="AttributeRemover"
+#!   VERSION="1"
+#!   POSITION="2906.2790627906284 60.310902313124643"
+#!   BOUNDING_RECT="2906.2790627906284 60.310902313124643 454 71"
+#!   ORDER="500000000000268.25"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE="id_substring_1,id_substring_5,id_substring_2,id_substring_3,id_substring_4"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="INPUT"
+#!   POSITION="-3817.7157692255419 120.31090231312464"
+#!   BOUNDING_RECT="-3817.7157692255419 120.31090231312464 587.00106825772946 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="OUTPUT"
+#!   POSITION="3753.1625316253167 60.310902313124643"
+#!   BOUNDING_RECT="3753.1625316253167 60.310902313124643 454 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="12"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="13"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="14"
+#!   SOURCE_NODE="5"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="15"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="16"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="8"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="17"
+#!   SOURCE_NODE="8"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="18"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="10"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="19"
+#!   SOURCE_NODE="10"
+#!   TARGET_NODE="11"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="20"
+#!   SOURCE_NODE="11"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+# ============================================================================
+DEFAULT_MACRO $(UUID_4_FORMATTER_WORKSPACE_NAME)_FME_DATA_REPOSITORY 
+
+DEFAULT_MACRO $(UUID_4_FORMATTER_WORKSPACE_NAME)_FME_ENGINE 
+
+DEFAULT_MACRO $(UUID_4_FORMATTER_WORKSPACE_NAME)_FME_JOB_ID 
+
+DEFAULT_MACRO $(UUID_4_FORMATTER_WORKSPACE_NAME)_FME_SECURITY_ROLES 
+
+DEFAULT_MACRO $(UUID_4_FORMATTER_WORKSPACE_NAME)_FME_SECURITY_USER 
+
+DEFAULT_MACRO $(UUID_4_FORMATTER_WORKSPACE_NAME)_FME_SERVER_DEST_DIR 
+
+DEFAULT_MACRO $(UUID_4_FORMATTER_WORKSPACE_NAME)_FME_SERVER_HOST 
+
+DEFAULT_MACRO $(UUID_4_FORMATTER_WORKSPACE_NAME)_FME_SERVER_PORT 
+
+DEFAULT_MACRO $(UUID_4_FORMATTER_WORKSPACE_NAME)_FME_SERVER_REQUEST_HEADERS 
+
+DEFAULT_MACRO $(UUID_4_FORMATTER_WORKSPACE_NAME)_FME_SERVER_REQUEST_METHOD 
+
+DEFAULT_MACRO $(UUID_4_FORMATTER_WORKSPACE_NAME)_FME_SERVER_REQUEST_PARAMETERS 
+
+DEFAULT_MACRO $(UUID_4_FORMATTER_WORKSPACE_NAME)_FME_SERVER_REQUEST_URI 
+
+DEFAULT_MACRO $(UUID_4_FORMATTER_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER 
+
+DEFAULT_MACRO $(UUID_4_FORMATTER_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER_ID 
+
+DEFAULT_MACRO $(UUID_4_FORMATTER_WORKSPACE_NAME)_FME_SERVER_WEB_URL 
+
+DEFAULT_MACRO $(UUID_4_FORMATTER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_BACKUP 
+
+DEFAULT_MACRO $(UUID_4_FORMATTER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DASHBOARD 
+
+DEFAULT_MACRO $(UUID_4_FORMATTER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DATA 
+
+DEFAULT_MACRO $(UUID_4_FORMATTER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_ENGINE 
+
+DEFAULT_MACRO $(UUID_4_FORMATTER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_LOG 
+
+DEFAULT_MACRO $(UUID_4_FORMATTER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_SYSTEM 
+
+DEFAULT_MACRO $(UUID_4_FORMATTER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_TEMP 
+
+DEFAULT_MACRO $(UUID_4_FORMATTER_WORKSPACE_NAME)_FME_TOPIC 
+
+DEFAULT_MACRO $(UUID_4_FORMATTER_WORKSPACE_NAME)_FME_TOPIC_MESSAGE 
+
+# ============================================================================
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO UUID_4_FORMATTER_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(UUID_4_FORMATTER_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(UUID_4_FORMATTER_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(UUID_4_FORMATTER_WORKSPACE_NAME)_INPUT1759782991 Input Splitter"   INPUT FEATURE_TYPE "$(UUID_4_FORMATTER_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(UUID_4_FORMATTER_WORKSPACE_NAME)_INPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(UUID_4_FORMATTER_WORKSPACE_NAME)_AttributeExposer }    INPUT  FEATURE_TYPE "$(UUID_4_FORMATTER_WORKSPACE_NAME)_INPUT"    OUTPUT { FEATURE_TYPE "$(UUID_4_FORMATTER_WORKSPACE_NAME)_AttributeExposer_OUTPUT"          }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} StringValueFactory    FACTORY_NAME { $(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor }    INPUT  FEATURE_TYPE "$(UUID_4_FORMATTER_WORKSPACE_NAME)_AttributeExposer_OUTPUT"    FACTORY_MODE ATTRIBUTE_SUBSTRING    SRC_STRING { "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>id<closeparen>,$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor)" }       START { 0 }       END { 7 }       RESULT_ATTR { id_substring_1 }    OUTPUT { OUTPUT FEATURE_TYPE "$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_OUTPUT"          }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} StringValueFactory    FACTORY_NAME { $(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_2 }    INPUT  FEATURE_TYPE "$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_OUTPUT"    FACTORY_MODE ATTRIBUTE_SUBSTRING    SRC_STRING { "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>id<closeparen>,$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_2)" }       START { 8 }       END { 11 }       RESULT_ATTR { id_substring_2 }    OUTPUT { OUTPUT FEATURE_TYPE "$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_2_OUTPUT"          }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} StringValueFactory    FACTORY_NAME { $(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_3 }    INPUT  FEATURE_TYPE "$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_2_OUTPUT"    FACTORY_MODE ATTRIBUTE_SUBSTRING    SRC_STRING { "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>id<closeparen>,$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_3)" }       START { 12 }       END { 15 }       RESULT_ATTR { id_substring_3 }    OUTPUT { OUTPUT FEATURE_TYPE "$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_3_OUTPUT"          }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} StringValueFactory    FACTORY_NAME { $(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_4 }    INPUT  FEATURE_TYPE "$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_3_OUTPUT"    FACTORY_MODE ATTRIBUTE_SUBSTRING    SRC_STRING { "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>id<closeparen>,$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_4)" }       START { 16 }       END { 19 }       RESULT_ATTR { id_substring_4 }    OUTPUT { OUTPUT FEATURE_TYPE "$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_4_OUTPUT"          }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} StringValueFactory    FACTORY_NAME { $(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_5 }    INPUT  FEATURE_TYPE "$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_4_OUTPUT"    FACTORY_MODE ATTRIBUTE_SUBSTRING    SRC_STRING { "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>id<closeparen>,$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_5)" }       START { 20 }       END { 31 }       RESULT_ATTR { id_substring_5 }    OUTPUT { OUTPUT FEATURE_TYPE "$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_5_OUTPUT"          }
+# -------------------------------------------------------------------------
+DEFAULT_MACRO $(UUID_4_FORMATTER_WORKSPACE_NAME)_StringConcatenator_f0b0dc8b_13f8_4a82_8921_87c8ea3484be1_ATTRS_TO_EVALUATE
+INCLUDE [    if {{OUTGOING} == {OUTGOING}} {       if {[string length {id}] == 0} { return; };       set attrs [list {id}];    } else {       set attrs [split {<Unused>} { }];    };    set clauses {};    foreach attr $attrs {       lappend clauses "ATTR";       lappend clauses "{";       lappend clauses $attr;       lappend clauses {"<at>Value<openparen>id_substring_1<closeparen>-<at>Value<openparen>id_substring_2<closeparen>-<at>Value<openparen>id_substring_3<closeparen>-<at>Value<openparen>id_substring_4<closeparen>-<at>Value<openparen>id_substring_5<closeparen>"};       lappend clauses "}";    };    puts "MACRO $(UUID_4_FORMATTER_WORKSPACE_NAME)_StringConcatenator_f0b0dc8b_13f8_4a82_8921_87c8ea3484be1_ATTRS_TO_EVALUATE [join $clauses { }]"; ]
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME { $(UUID_4_FORMATTER_WORKSPACE_NAME)_StringConcatenator }    INPUT  FEATURE_TYPE "$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_5_OUTPUT"    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    $($(UUID_4_FORMATTER_WORKSPACE_NAME)_StringConcatenator_f0b0dc8b_13f8_4a82_8921_87c8ea3484be1_ATTRS_TO_EVALUATE)    OUTPUT { OUTPUT FEATURE_TYPE "$(UUID_4_FORMATTER_WORKSPACE_NAME)_StringConcatenator_OUTPUT"        }
+# -------------------------------------------------------------------------
+# Build the List removal function and regular expression if there was any list attributes to be removed.
+# If not, then we will not have any extra list removal call to @RemoveAttributes, which speeds the
+# normal, non-list removal especially when in Bulk Mode.  Note that this computation of the regular expressions is done
+# once during mapping file parse time.
+INCLUDE [    set listAttributeRemoveRegexps {};    set anyList {no};    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append listAttributeRemoveRegexps ",^$attr$";       set anyList {yes};    };    if { ${anyList} == {no} } {        puts {MACRO $(UUID_4_FORMATTER_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC }    } else {        puts "MACRO $(UUID_4_FORMATTER_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC @RemoveAttributes(fme_pcre_match\"$listAttributeRemoveRegexps\")"    }; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(UUID_4_FORMATTER_WORKSPACE_NAME)_AttributeRemover }    INPUT  FEATURE_TYPE "$(UUID_4_FORMATTER_WORKSPACE_NAME)_StringConcatenator_OUTPUT"    OUTPUT { FEATURE_TYPE "$(UUID_4_FORMATTER_WORKSPACE_NAME)_AttributeRemover_OUTPUT"        @RemoveAttributes(fme_encoded,id_substring_1,id_substring_5,id_substring_2,id_substring_3,id_substring_4)        $($(UUID_4_FORMATTER_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC)         }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(UUID_4_FORMATTER_WORKSPACE_NAME)_OUTPUT1759782991 Output Collector"   INPUT FEATURE_TYPE "$(UUID_4_FORMATTER_WORKSPACE_NAME)_AttributeRemover_OUTPUT"   OUTPUT FEATURE_TYPE "$(UUID_4_FORMATTER_WORKSPACE_NAME)_OUTPUT"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(UUID_4_FORMATTER_WORKSPACE_NAME))}]
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN UUID_4_FORMATTER,1,"FGP Tools",6cf4c48e-43ce-48b1-a6cc-5e9eeea85076,"Linked by Default",No,NO_PARALLELISM,,No,19238,YES,No,,No
+# 
+# TRANSFORMER_END
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="FGP Tools"
+#!   DESCRIPTION=""
+#!   DOC_EXTENTS="8024.88 1117.2"
+#!   DOC_TOP_LEFT="-3817.72 -612.506"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="19238"
+#!   FME_DOCUMENT_GUID="6cf4c48e-43ce-48b1-a6cc-5e9eeea85076"
+#!   FME_DOCUMENT_PRIORGUID="3df9fe76-adba-498a-8888-68a405a77771"
+#!   FME_LINKED_TRANSFORMER_VERSION="1"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY=""
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2019.0.0.0 (20190328 - Build 19238 - WIN32)"
+#!   LAST_SAVE_DATE="2020-07-28T12:21:46"
+#!   MARKDOWN_DESCRIPTION=""
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="UUID_4_FORMATTER"
+#!   USAGE=""
+#!   USE_MARKDOWN="NO"
+#!   VIEW_POSITION="340.628 703.132"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="100"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! </GLOBAL_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="22"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Exposes attributes required by this transformer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-2595.834732168124 -142.81737896968818"
+#!   TOP_LEFT="-2595.834732168124 -142.81737896968818"
+#!   BOTTOM_RIGHT="-2141.834732168124 -143.81737896968818"
+#!   BOUNDING_RECT="-2595.834732168124 -142.81737896968818 454 1"
+#!   ORDER="500000000000269.25"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="4"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="23"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Creates string from characters 1-8 in id attribute&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-1776.576919589997 -174.06769147281327"
+#!   TOP_LEFT="-1776.576919589997 -174.06769147281327"
+#!   BOTTOM_RIGHT="-1322.576919589997 -175.06769147281327"
+#!   BOUNDING_RECT="-1776.576919589997 -174.06769147281327 454 1"
+#!   ORDER="500000000000270.25"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="5"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="24"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Creates string from characters 9-12 in id attribute&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-1082.7795997417977 -174.06769147281329"
+#!   TOP_LEFT="-1082.7795997417977 -174.06769147281329"
+#!   BOTTOM_RIGHT="-628.77959974179771 -175.06769147281329"
+#!   BOUNDING_RECT="-1082.7795997417977 -174.06769147281329 454 1"
+#!   ORDER="500000000000271.25"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="6"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="25"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Creates string from characters 13-16 in id attribute&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-361.43838820468136 -145.94241022000068"
+#!   TOP_LEFT="-361.43838820468136 -145.94241022000068"
+#!   BOTTOM_RIGHT="92.56161179531864 -146.94241022000068"
+#!   BOUNDING_RECT="-361.43838820468136 -145.94241022000068 454 1"
+#!   ORDER="500000000000272.25"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="7"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="26"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Creates string from characters 17-20 in id attribute&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="401.56836186281998 -145.94241022000068"
+#!   TOP_LEFT="401.56836186281998 -145.94241022000068"
+#!   BOTTOM_RIGHT="855.56836186281998 -146.94241022000068"
+#!   BOUNDING_RECT="401.56836186281998 -145.94241022000068 454 1"
+#!   ORDER="500000000000273.25"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="8"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="27"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Creates string from characters 21-32 in id attribute&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="1226.5761119403196 -145.94241022000068"
+#!   TOP_LEFT="1226.5761119403196 -145.94241022000068"
+#!   BOTTOM_RIGHT="1680.5761119403196 -146.94241022000068"
+#!   BOUNDING_RECT="1226.5761119403196 -145.94241022000068 454 1"
+#!   ORDER="500000000000274.25"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="9"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="28"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Concatenates five extracted strings with dash delimiter to create UUID 4 format id attribute&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="1957.335799537193 -145.94241022000068"
+#!   TOP_LEFT="1957.335799537193 -145.94241022000068"
+#!   BOTTOM_RIGHT="2612.5261252612522 -438.44503524625094"
+#!   BOUNDING_RECT="1957.335799537193 -145.94241022000068 655.19032572405922 292.50262502625026"
+#!   ORDER="500000000000275.25"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="10"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="29"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Removes out of scope attributes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="2906.2790627906284 -237.19272272312571"
+#!   TOP_LEFT="2906.2790627906284 -237.19272272312571"
+#!   BOTTOM_RIGHT="3360.2790627906284 -238.19272272312571"
+#!   BOUNDING_RECT="2906.2790627906284 -237.19272272312571 454 1"
+#!   ORDER="500000000000276.25"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="11"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="21"
+#!   NAME="UUID_4_FORMATTER"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="-2882.8379822006232 504.6897461015626"
+#!   ORDER="500000000000259.25"
+#!   PALETTE_COLOR="Color7"
+#!   BOTTOM_RIGHT="3606.2860628606281 -612.50612506125049"
+#!   BOUNDING_RECT="-2882.8379822006232 504.6897461015626 6489.1240450612513 1117.1958711628131"
+#!   STICKY="false"
+#!   COLOUR="0.59215686274509804,0.75294117647058822,0.90980392156862744,1"
+#!   CONTENTS=""
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="4"
+#!   TYPE="AttributeExposer"
+#!   VERSION="1"
+#!   POSITION="-2567.2098259190607 120.31090231312464"
+#!   BOUNDING_RECT="-2567.2098259190607 120.31090231312464 454 71"
+#!   ORDER="500000000000260.25"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="id"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="5"
+#!   TYPE="SubstringExtractor"
+#!   VERSION="2"
+#!   POSITION="-1776.576919589997 120.31090231312464"
+#!   BOUNDING_RECT="-1776.576919589997 120.31090231312464 454 71"
+#!   ORDER="500000000000261.25"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_substring_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="END" PARM_VALUE="7"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="RESULT_ATTR" PARM_VALUE="id_substring_1"/>
+#!     <XFORM_PARM PARM_NAME="SRC_STRING" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;id&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="START" PARM_VALUE="0"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="SubstringExtractor"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="6"
+#!   TYPE="SubstringExtractor"
+#!   VERSION="2"
+#!   POSITION="-1082.8204820256205 120.31090231312464"
+#!   BOUNDING_RECT="-1082.8204820256205 120.31090231312464 454 71"
+#!   ORDER="500000000000261.25"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_substring_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_substring_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="END" PARM_VALUE="11"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="RESULT_ATTR" PARM_VALUE="id_substring_2"/>
+#!     <XFORM_PARM PARM_NAME="SRC_STRING" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;id&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="START" PARM_VALUE="8"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="SubstringExtractor_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="7"
+#!   TYPE="SubstringExtractor"
+#!   VERSION="2"
+#!   POSITION="-323.43838820468136 120.31090231312464"
+#!   BOUNDING_RECT="-323.43838820468136 120.31090231312464 454 71"
+#!   ORDER="500000000000261.25"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_substring_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_substring_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_substring_3" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="END" PARM_VALUE="15"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="RESULT_ATTR" PARM_VALUE="id_substring_3"/>
+#!     <XFORM_PARM PARM_NAME="SRC_STRING" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;id&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="START" PARM_VALUE="12"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="SubstringExtractor_3"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="8"
+#!   TYPE="SubstringExtractor"
+#!   VERSION="2"
+#!   POSITION="401.56836186281998 120.31090231312464"
+#!   BOUNDING_RECT="401.56836186281998 120.31090231312464 454 71"
+#!   ORDER="500000000000261.25"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_substring_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_substring_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_substring_3" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_substring_4" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="END" PARM_VALUE="19"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="RESULT_ATTR" PARM_VALUE="id_substring_4"/>
+#!     <XFORM_PARM PARM_NAME="SRC_STRING" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;id&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="START" PARM_VALUE="16"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="SubstringExtractor_4"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="9"
+#!   TYPE="SubstringExtractor"
+#!   VERSION="2"
+#!   POSITION="1226.5761119403196 120.31090231312464"
+#!   BOUNDING_RECT="1226.5761119403196 120.31090231312464 454 71"
+#!   ORDER="500000000000261.25"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_substring_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_substring_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_substring_3" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_substring_4" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_substring_5" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="END" PARM_VALUE="31"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="RESULT_ATTR" PARM_VALUE="id_substring_5"/>
+#!     <XFORM_PARM PARM_NAME="SRC_STRING" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;id&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="START" PARM_VALUE="20"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="SubstringExtractor_5"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="10"
+#!   TYPE="StringConcatenator"
+#!   VERSION="7"
+#!   POSITION="2073.4615807950058 120.31090231312464"
+#!   BOUNDING_RECT="2073.4615807950058 120.31090231312464 454 71"
+#!   ORDER="500000000000267.25"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_substring_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_substring_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_substring_3" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_substring_4" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_substring_5" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ACTION" PARM_VALUE="Create New Attribute"/>
+#!     <XFORM_PARM PARM_NAME="ATTRLIST" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PARAM_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARM_LINE" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;id_substring_1&lt;closeparen&gt;-&lt;at&gt;Value&lt;openparen&gt;id_substring_2&lt;closeparen&gt;-&lt;at&gt;Value&lt;openparen&gt;id_substring_3&lt;closeparen&gt;-&lt;at&gt;Value&lt;openparen&gt;id_substring_4&lt;closeparen&gt;-&lt;at&gt;Value&lt;openparen&gt;id_substring_5&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="VAL_ATTR" PARM_VALUE="id"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="StringConcatenator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="11"
+#!   TYPE="AttributeRemover"
+#!   VERSION="1"
+#!   POSITION="2906.2790627906284 60.310902313124643"
+#!   BOUNDING_RECT="2906.2790627906284 60.310902313124643 454 71"
+#!   ORDER="500000000000268.25"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE="id_substring_1,id_substring_5,id_substring_2,id_substring_3,id_substring_4"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="INPUT"
+#!   POSITION="-3817.7157692255419 120.31090231312464"
+#!   BOUNDING_RECT="-3817.7157692255419 120.31090231312464 587.00106825772946 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="OUTPUT"
+#!   POSITION="3753.1625316253167 60.310902313124643"
+#!   BOUNDING_RECT="3753.1625316253167 60.310902313124643 454 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="12"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="13"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="14"
+#!   SOURCE_NODE="5"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="15"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="16"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="8"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="17"
+#!   SOURCE_NODE="8"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="18"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="10"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="19"
+#!   SOURCE_NODE="10"
+#!   TARGET_NODE="11"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="20"
+#!   SOURCE_NODE="11"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO UUID_4_FORMATTER_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(UUID_4_FORMATTER_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(UUID_4_FORMATTER_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(UUID_4_FORMATTER_WORKSPACE_NAME)_INPUT1595953306 Input Splitter"   INPUT FEATURE_TYPE "$(UUID_4_FORMATTER_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(UUID_4_FORMATTER_WORKSPACE_NAME)_INPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(UUID_4_FORMATTER_WORKSPACE_NAME)_AttributeExposer    INPUT  FEATURE_TYPE "$(UUID_4_FORMATTER_WORKSPACE_NAME)_INPUT"    OUTPUT FEATURE_TYPE "$(UUID_4_FORMATTER_WORKSPACE_NAME)_AttributeExposer_OUTPUT"
+# -------------------------------------------------------------------------
+# Since the Tcl "END" index specification starts at -1 for the second
+# last character, and we've defined -1 to be the last charater, we've got
+# small bit of fiddling to do
+Tcl2 proc $(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_fixLastIndex {lastValue} {     if {$lastValue < -1} {         incr lastValue;         return "end$lastValue";     }     elseif {$lastValue == -1} {         return "end";     }     else {         return $lastValue;     } }
+Tcl2 proc $(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_extract {startIdx endIdx} {     FME_SetAttribute [FME_DecodeText id_substring_1]         [string range [FME_DecodeTextOrAttr @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>id<closeparen>,$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor)]                       [$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_fixLastIndex $startIdx]                       [$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_fixLastIndex $endIdx]]     }
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor    INPUT  FEATURE_TYPE "$(UUID_4_FORMATTER_WORKSPACE_NAME)_AttributeExposer_OUTPUT"    OUTPUT FEATURE_TYPE "$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_OUTPUT"         @Tcl2("$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_extract 0 7")
+# -------------------------------------------------------------------------
+# Since the Tcl "END" index specification starts at -1 for the second
+# last character, and we've defined -1 to be the last charater, we've got
+# small bit of fiddling to do
+Tcl2 proc $(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_2_fixLastIndex {lastValue} {     if {$lastValue < -1} {         incr lastValue;         return "end$lastValue";     }     elseif {$lastValue == -1} {         return "end";     }     else {         return $lastValue;     } }
+Tcl2 proc $(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_2_extract {startIdx endIdx} {     FME_SetAttribute [FME_DecodeText id_substring_2]         [string range [FME_DecodeTextOrAttr @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>id<closeparen>,$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_2)]                       [$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_2_fixLastIndex $startIdx]                       [$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_2_fixLastIndex $endIdx]]     }
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_2    INPUT  FEATURE_TYPE "$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_OUTPUT"    OUTPUT FEATURE_TYPE "$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_2_OUTPUT"         @Tcl2("$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_2_extract 8 11")
+# -------------------------------------------------------------------------
+# Since the Tcl "END" index specification starts at -1 for the second
+# last character, and we've defined -1 to be the last charater, we've got
+# small bit of fiddling to do
+Tcl2 proc $(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_3_fixLastIndex {lastValue} {     if {$lastValue < -1} {         incr lastValue;         return "end$lastValue";     }     elseif {$lastValue == -1} {         return "end";     }     else {         return $lastValue;     } }
+Tcl2 proc $(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_3_extract {startIdx endIdx} {     FME_SetAttribute [FME_DecodeText id_substring_3]         [string range [FME_DecodeTextOrAttr @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>id<closeparen>,$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_3)]                       [$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_3_fixLastIndex $startIdx]                       [$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_3_fixLastIndex $endIdx]]     }
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_3    INPUT  FEATURE_TYPE "$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_2_OUTPUT"    OUTPUT FEATURE_TYPE "$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_3_OUTPUT"         @Tcl2("$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_3_extract 12 15")
+# -------------------------------------------------------------------------
+# Since the Tcl "END" index specification starts at -1 for the second
+# last character, and we've defined -1 to be the last charater, we've got
+# small bit of fiddling to do
+Tcl2 proc $(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_4_fixLastIndex {lastValue} {     if {$lastValue < -1} {         incr lastValue;         return "end$lastValue";     }     elseif {$lastValue == -1} {         return "end";     }     else {         return $lastValue;     } }
+Tcl2 proc $(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_4_extract {startIdx endIdx} {     FME_SetAttribute [FME_DecodeText id_substring_4]         [string range [FME_DecodeTextOrAttr @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>id<closeparen>,$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_4)]                       [$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_4_fixLastIndex $startIdx]                       [$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_4_fixLastIndex $endIdx]]     }
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_4    INPUT  FEATURE_TYPE "$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_3_OUTPUT"    OUTPUT FEATURE_TYPE "$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_4_OUTPUT"         @Tcl2("$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_4_extract 16 19")
+# -------------------------------------------------------------------------
+# Since the Tcl "END" index specification starts at -1 for the second
+# last character, and we've defined -1 to be the last charater, we've got
+# small bit of fiddling to do
+Tcl2 proc $(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_5_fixLastIndex {lastValue} {     if {$lastValue < -1} {         incr lastValue;         return "end$lastValue";     }     elseif {$lastValue == -1} {         return "end";     }     else {         return $lastValue;     } }
+Tcl2 proc $(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_5_extract {startIdx endIdx} {     FME_SetAttribute [FME_DecodeText id_substring_5]         [string range [FME_DecodeTextOrAttr @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>id<closeparen>,$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_5)]                       [$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_5_fixLastIndex $startIdx]                       [$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_5_fixLastIndex $endIdx]]     }
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_5    INPUT  FEATURE_TYPE "$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_4_OUTPUT"    OUTPUT FEATURE_TYPE "$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_5_OUTPUT"         @Tcl2("$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_5_extract 20 31")
+# -------------------------------------------------------------------------
+Tcl2 proc $(UUID_4_FORMATTER_WORKSPACE_NAME)_StringConcatenator_evaluator {} {    if {{OUTGOING} == {OUTGOING}} {      set attr [FME_DecodeText {id}];      if {[string length $attr] == 0} { return; };      set attrs [list [FME_EncodeText $attr]];    } else {      set attrAll {<Unused>};      if {[string length $attrAll] == 0} { return; };      set attrs [split {<Unused>} { }];    };    set parmList {{EvaluateExpression} {ATTR_CREATE_EXPR_PROPOGATE_MISSING_FDIV}};    foreach attr $attrs {     lappend parmList $attr;     lappend parmList {"<at>Value<openparen>id_substring_1<closeparen>-<at>Value<openparen>id_substring_2<closeparen>-<at>Value<openparen>id_substring_3<closeparen>-<at>Value<openparen>id_substring_4<closeparen>-<at>Value<openparen>id_substring_5<closeparen>"};    };    lappend parmList {$(UUID_4_FORMATTER_WORKSPACE_NAME)_StringConcatenator};    eval FME_Execute $parmList; }
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(UUID_4_FORMATTER_WORKSPACE_NAME)_StringConcatenator    INPUT  FEATURE_TYPE "$(UUID_4_FORMATTER_WORKSPACE_NAME)_SubstringExtractor_5_OUTPUT"    OUTPUT FEATURE_TYPE "$(UUID_4_FORMATTER_WORKSPACE_NAME)_StringConcatenator_OUTPUT"         @Tcl2("$(UUID_4_FORMATTER_WORKSPACE_NAME)_StringConcatenator_evaluator ")
+# -------------------------------------------------------------------------
+INCLUDE [    set macroLine "MACRO $(UUID_4_FORMATTER_WORKSPACE_NAME)_AttributeRemover_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(UUID_4_FORMATTER_WORKSPACE_NAME)_AttributeRemover    INPUT  FEATURE_TYPE "$(UUID_4_FORMATTER_WORKSPACE_NAME)_StringConcatenator_OUTPUT"    OUTPUT { FEATURE_TYPE "$(UUID_4_FORMATTER_WORKSPACE_NAME)_AttributeRemover_OUTPUT"        @RemoveAttributes(fme_encoded,id_substring_1,id_substring_5,id_substring_2,id_substring_3,id_substring_4)        @RemoveAttributes(fme_pcre_match"$($(UUID_4_FORMATTER_WORKSPACE_NAME)_AttributeRemover_LIST_EXP)")         }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(UUID_4_FORMATTER_WORKSPACE_NAME)_OUTPUT1595953306 Output Collector"   INPUT FEATURE_TYPE "$(UUID_4_FORMATTER_WORKSPACE_NAME)_AttributeRemover_OUTPUT"   OUTPUT FEATURE_TYPE "$(UUID_4_FORMATTER_WORKSPACE_NAME)_OUTPUT"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(UUID_4_FORMATTER_WORKSPACE_NAME))}]

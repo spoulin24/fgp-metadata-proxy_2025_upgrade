@@ -1,0 +1,1689 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN EMPTY_FORMAT_MAPPER_NG,2,"""FGP Tools""",6a21dec2-c9b1-4c5a-b680-6eeb4335343b,"Linked by Default",No,NO_PARALLELISM,,No,25606,YES,No,313,No,,both
+# <p><strong>Description: </strong></p>
+# <p>Custom transformer used to fill the resources{}.format when the format is missing or empty. The custom is using the corresponding resources{}.url to extract the format. </p>
+# <p>In a first step, the custom transformer will analyse the URL:</p>
+# <ul>
+# <li>if the url contains the substring "service=wms" the format is WMS</li>
+# <li>if the url contains the substring "mapserver" or "featureserver" the format is ESRI REST</li>
+# <li>if the url ends with a file format extension (ex.: .shp) it takes the extension as the file format; except if the extension is .zip where it tries to find the original file format before being zipped (like CSV for the following url: blablabla.csv.zip)</li>
+# </ul>
+# <p>In a second step, the custom transformer will validate that the format extracted with the preceding rules is a valid format by checking if the format is present in the table Format.csv.</p>
+# <p>In a third step, if the format is still unknown (format="other"), the custom transformer extract the MIME-content of header of the URL.  The MIME-content is than used to extract the format from the CSV file Mime_type.csv</p>
+# <p><strong>Parameters</strong></p>
+# <ul>
+# <li>CSV_FORMAT: Name of the CSV table containing the list of valid fromat for the resources.</li>
+# <li>CSV_MIME_TYPE: Name of the CSV table containing the MIME-type and the corresponding format.</li>
+# <li>IN_CSV_LOOKUP_TABLES_DIR: Name of the directoty containing the lookup tables.</li>
+# <li>P-T_ABBR: Two letter abbreviation of the province (ex: ON for Ontario)</li>
+# <li>URL_VALIDATION: Flag used to extract the header of the URL, can take two values: Yes: Extract the header in order to get the MIME-type; No: Do not extract the header.</li>
+# </ul>
+# <p><strong>Input Ports</strong></p>
+# <ul>
+# <li>DATA_INPUT: The input features to process</li>
+# </ul>
+# <p><strong>OUTPUT Ports</strong></p>
+# <ul>
+# <li>DATA_OUTPUT: The processed output features</li>
+# <li>UNKNOWN_MIME_TYPE: The features with a MIME-TYPE not present in the MIME-type CSV file.</li>
+# </ul>
+# TRANSFORMER_END
+#!   A0_PREVIEW_IMAGE="data:image/png;base64,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"
+#!   ARCGIS_COMPATIBILITY="ARCGIS_AUTO"
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="&quot;FGP Tools&quot;"
+#!   DATA_PROCESSING_TYPE="both"
+#!   DESCRIPTION="&lt;p&gt;&lt;strong&gt;Description: &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;Custom transformer used to fill the resources{}.format when the format is missing or empty. The custom is using the corresponding resources{}.url to extract the format. &lt;/p&gt;&#10;&lt;p&gt;In a first step, the custom transformer will analyse the URL:&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;if the url contains the substring &quot;service=wms&quot; the format is WMS&lt;/li&gt;&#10;&lt;li&gt;if the url contains the substring &quot;mapserver&quot; or &quot;featureserver&quot; the format is ESRI REST&lt;/li&gt;&#10;&lt;li&gt;if the url ends with a file format extension (ex.: .shp) it takes the extension as the file format; except if the extension is .zip where it tries to find the original file format before being zipped (like CSV for the following url: blablabla.csv.zip)&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;In a second step, the custom transformer will validate that the format extracted with the preceding rules is a valid format by checking if the format is present in the table Format.csv.&lt;/p&gt;&#10;&lt;p&gt;In a third step, if the format is still unknown (format=&quot;other&quot;), the custom transformer extract the MIME-content of header of the URL.  The MIME-content is than used to extract the format from the CSV file Mime_type.csv&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Parameters&lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;CSV_FORMAT: Name of the CSV table containing the list of valid fromat for the resources.&lt;/li&gt;&#10;&lt;li&gt;CSV_MIME_TYPE: Name of the CSV table containing the MIME-type and the corresponding format.&lt;/li&gt;&#10;&lt;li&gt;IN_CSV_LOOKUP_TABLES_DIR: Name of the directoty containing the lookup tables.&lt;/li&gt;&#10;&lt;li&gt;P-T_ABBR: Two letter abbreviation of the province (ex: ON for Ontario)&lt;/li&gt;&#10;&lt;li&gt;URL_VALIDATION: Flag used to extract the header of the URL, can take two values: Yes: Extract the header in order to get the MIME-type; No: Do not extract the header.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Input Ports&lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;DATA_INPUT: The input features to process&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;OUTPUT Ports&lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;DATA_OUTPUT: The processed output features&lt;/li&gt;&#10;&lt;li&gt;UNKNOWN_MIME_TYPE: The features with a MIME-TYPE not present in the MIME-type CSV file.&lt;/li&gt;&#10;&lt;/ul&gt;"
+#!   DOC_EXTENTS="6225 1985.31"
+#!   DOC_TOP_LEFT="-10650 -1015.64"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="25606"
+#!   FME_DOCUMENT_GUID="6a21dec2-c9b1-4c5a-b680-6eeb4335343b"
+#!   FME_DOCUMENT_PRIORGUID=""
+#!   FME_LINKED_TRANSFORMER_VERSION="2"
+#!   FME_NAMES_ENCODING="windows-1252"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY="Unknown,Unknown,Original&lt;space&gt;version,13&lt;solidus&gt;06&lt;solidus&gt;2022,Daniel&lt;space&gt;Pilon,Documentation&lt;space&gt;and&lt;space&gt;python&lt;space&gt;restructuring,28&lt;solidus&gt;06&lt;solidus&gt;2022,Daniel&lt;space&gt;Pilon,Extract&lt;space&gt;the&lt;space&gt;MIME-type&lt;space&gt;to&lt;space&gt;get&lt;space&gt;the&lt;space&gt;content"
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2025.1.0.0 (20250704 - Build 25606 - WIN64)"
+#!   LAST_SAVE_DATE="2025-10-06T15:12:16"
+#!   MARKDOWN_DESCRIPTION="**Description: **&#10;&#10;Custom transformer used to fill the resources{}.format when the format is missing or empty. The custom is using the corresponding resources{}.url to extract the format. &#10;&#10;In a first step, the custom transformer will analyse the URL:&#10;&#10;  - if the url contains the substring &quot;service=wms&quot; the format is WMS&#10;  - if the url contains the substring &quot;mapserver&quot; or &quot;featureserver&quot; the format is ESRI REST&#10;  - if the url ends with a file format extension (ex.: .shp) it takes the extension as the file format; except if the extension is .zip where it tries to find the original file format before being zipped (like CSV for the following url: blablabla.csv.zip)&#10;&#10;In a second step, the custom transformer will validate that the format extracted with the preceding rules is a valid format by checking if the format is present in the table Format.csv.&#10;&#10;In a third step, if the format is still unknown (format=&quot;other&quot;), the custom transformer extract the MIME-content of header of the URL.  The MIME-content is than used to extract the format from the CSV file Mime_type.csv&#10;&#10;**Parameters**&#10;&#10;  -  CSV_FORMAT: Name of the CSV table containing the list of valid fromat for the resources.&#10;  - CSV_MIME_TYPE: Name of the CSV table containing the MIME-type and the corresponding format.&#10;  - IN_CSV_LOOKUP_TABLES_DIR: Name of the directoty containing the lookup tables.&#10;  - P-T_ABBR: Two letter abbreviation of the province (ex: ON for Ontario)&#10;  - URL_VALIDATION: Flag used to extract the header of the URL, can take two values: Yes: Extract the header in order to get the MIME-type; No: Do not extract the header.&#10;&#10;**Input Ports**&#10;&#10;  - DATA_INPUT: The input features to process&#10;&#10;**OUTPUT Ports**&#10;&#10;  - DATA_OUTPUT: The processed output features&#10;  - UNKNOWN_MIME_TYPE: The features with a MIME-TYPE not present in the MIME-type CSV file.&#10;"
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="313"
+#!   REPLACED_BY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="EMPTY_FORMAT_MAPPER_NG"
+#!   USAGE=""
+#!   USE_MARKDOWN="YES"
+#!   VIEW_POSITION="-963.918 805.466"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="71"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR CSV_FORMAT CSV_FORMAT:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR CSV_MIME_TYPE CSV_MIME_TYPE:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR IN_CSV_LOOKUP_TABLES_DIR IN_CSV_LOOKUP_TABLES_DIR:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR P-T_ABBR P-T_ABBR:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR URL_VALIDATION URL_VALIDATION:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <USER_PARAMETERS
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbeyJuYW1lIjoiQ1NWX0ZPUk1BVCIsInByb21wdCI6IkNTVl9GT1JNQVQ6IiwidmFsdWVUeXBlIjoic3RyaW5nIiwicmVxdWlyZWQiOmZhbHNlLCJkZWZhdWx0VmFsdWUiOiIiLCJzdXBwb3J0ZWRWYWx1ZVR5cGVzIjpbImV4cHJlc3Npb24iLCJnbG9iYWxQYXJhbWV0ZXIiXSwiZGVwcmVjYXRlZEZsYWdzIjpbIm5vbmUiXSwidHlwZSI6InRleHQiLCJlZGl0b3IiOiJwbGFpbnRleHQifSx7Im5hbWUiOiJDU1ZfTUlNRV9UWVBFIiwicHJvbXB0IjoiQ1NWX01JTUVfVFlQRToiLCJ2YWx1ZVR5cGUiOiJzdHJpbmciLCJyZXF1aXJlZCI6ZmFsc2UsImRlZmF1bHRWYWx1ZSI6IiIsInN1cHBvcnRlZFZhbHVlVHlwZXMiOlsiZXhwcmVzc2lvbiIsImdsb2JhbFBhcmFtZXRlciJdLCJkZXByZWNhdGVkRmxhZ3MiOlsibm9uZSJdLCJ0eXBlIjoidGV4dCIsImVkaXRvciI6InBsYWludGV4dCJ9LHsibmFtZSI6IklOX0NTVl9MT09LVVBfVEFCTEVTX0RJUiIsInByb21wdCI6IklOX0NTVl9MT09LVVBfVEFCTEVTX0RJUjoiLCJ2YWx1ZVR5cGUiOiJzdHJpbmciLCJyZXF1aXJlZCI6ZmFsc2UsImRlZmF1bHRWYWx1ZSI6IiIsInN1cHBvcnRlZFZhbHVlVHlwZXMiOlsiZXhwcmVzc2lvbiIsImdsb2JhbFBhcmFtZXRlciJdLCJkZXByZWNhdGVkRmxhZ3MiOlsibm9uZSJdLCJ0eXBlIjoidGV4dCIsImVkaXRvciI6InBsYWludGV4dCJ9LHsibmFtZSI6IlAtVF9BQkJSIiwicHJvbXB0IjoiUC1UX0FCQlI6IiwidmFsdWVUeXBlIjoic3RyaW5nIiwicmVxdWlyZWQiOmZhbHNlLCJkZWZhdWx0VmFsdWUiOiIiLCJzdXBwb3J0ZWRWYWx1ZVR5cGVzIjpbImV4cHJlc3Npb24iLCJnbG9iYWxQYXJhbWV0ZXIiXSwiZGVwcmVjYXRlZEZsYWdzIjpbIm5vbmUiXSwidHlwZSI6InRleHQiLCJlZGl0b3IiOiJwbGFpbnRleHQifSx7Im5hbWUiOiJVUkxfVkFMSURBVElPTiIsInByb21wdCI6IlVSTF9WQUxJREFUSU9OOiIsInZhbHVlVHlwZSI6InN0cmluZyIsInJlcXVpcmVkIjpmYWxzZSwiZGVmYXVsdFZhbHVlIjoiIiwic3VwcG9ydGVkVmFsdWVUeXBlcyI6WyJleHByZXNzaW9uIiwiZ2xvYmFsUGFyYW1ldGVyIl0sImRlcHJlY2F0ZWRGbGFncyI6WyJub25lIl0sInR5cGUiOiJ0ZXh0IiwiZWRpdG9yIjoicGxhaW50ZXh0In1dfQ=="
+#! >
+#! <PARAMETER_INFO>
+#!     <INFO NAME="CSV_FORMAT" 
+#!   DEFAULT_VALUE=""
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR CSV_FORMAT CSV_FORMAT:"
+#! />
+#!     <INFO NAME="CSV_MIME_TYPE" 
+#!   DEFAULT_VALUE=""
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR CSV_MIME_TYPE CSV_MIME_TYPE:"
+#! />
+#!     <INFO NAME="IN_CSV_LOOKUP_TABLES_DIR" 
+#!   DEFAULT_VALUE=""
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR IN_CSV_LOOKUP_TABLES_DIR IN_CSV_LOOKUP_TABLES_DIR:"
+#! />
+#!     <INFO NAME="P-T_ABBR" 
+#!   DEFAULT_VALUE=""
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR P-T_ABBR P-T_ABBR:"
+#! />
+#!     <INFO NAME="URL_VALIDATION" 
+#!   DEFAULT_VALUE=""
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR URL_VALIDATION URL_VALIDATION:"
+#! />
+#! </PARAMETER_INFO>
+#! </USER_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="27"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Unexpose all attributes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-6067.1160591894877 149.99999999999966"
+#!   TOP_LEFT="-6067.1160591894877 149.99999999999966"
+#!   BOTTOM_RIGHT="-5534.1522451763476 148.99999999999966"
+#!   BOUNDING_RECT="-6067.1160591894877 149.99999999999966 532.96381401314011 1"
+#!   ORDER="500000000001873"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{55ea0ff9-4c27-4488-ad9f-15354f387eda}"
+#!   COLOUR="0.59999999999999998,0.80000000000000004,0.80000000000000004,1"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="5"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="28"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;If the format is missing guess the format using the content of the URL&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-8176.3263785579056 -132.42394482768364"
+#!   TOP_LEFT="-8176.3263785579056 -132.42394482768364"
+#!   BOTTOM_RIGHT="-7722.3672608417282 -133.42394482768364"
+#!   BOUNDING_RECT="-8176.3263785579056 -132.42394482768364 453.95911771617716 1"
+#!   ORDER="500000000001876"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{6f425686-12c7-4565-be0e-a2045261592c}"
+#!   COLOUR="0.59999999999999998,0.80000000000000004,0.80000000000000004,1"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="6"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="29"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Add _order attribute&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-9000 241.35999606183435"
+#!   TOP_LEFT="-9000 241.35999606183435"
+#!   BOTTOM_RIGHT="-8479.4874823748232 130.10918355370927"
+#!   BOUNDING_RECT="-9000 241.35999606183435 520.51251762517632 111.25081250812508"
+#!   ORDER="500000000001880"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{6c8b4937-1024-44ed-9f37-389df308a2e0}"
+#!   COLOUR="0.59999999999999998,0.80000000000000004,0.80000000000000004,1"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="8"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="30"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Add attribute _order and _url_validation&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-8940.2079044319835 -161.32199263169107"
+#!   TOP_LEFT="-8940.2079044319835 -161.32199263169107"
+#!   BOTTOM_RIGHT="-8486.248786715807 -162.32199263169107"
+#!   BOUNDING_RECT="-8940.2079044319835 -161.32199263169107 453.95911771617716 1"
+#!   ORDER="500000000001881"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{0909ded5-7d44-4c96-a5a2-e01c769a2c75}"
+#!   COLOUR="0.59999999999999998,0.80000000000000004,0.80000000000000004,1"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="9"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="31"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Add _order attribute&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-9011.6203558549696 694.3798298287619"
+#!   TOP_LEFT="-9011.6203558549696 694.3798298287619"
+#!   BOTTOM_RIGHT="-8491.1078382297928 583.12901732063688"
+#!   BOUNDING_RECT="-9011.6203558549696 694.3798298287619 520.51251762517632 111.25081250812508"
+#!   ORDER="500000000001880"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{901234a1-fe8e-4ed2-a2d6-55aeeb8f1dc6}"
+#!   COLOUR="0.59999999999999998,0.80000000000000004,0.80000000000000004,1"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="14"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="32"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Read the Format CSV file&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-9829.5336166869292 682.46522266526085"
+#!   TOP_LEFT="-9829.5336166869292 682.46522266526085"
+#!   BOTTOM_RIGHT="-9224.6452553033159 571.21441015713572"
+#!   BOUNDING_RECT="-9829.5336166869292 682.46522266526085 604.88836138361387 111.25081250812508"
+#!   ORDER="500000000001885"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{fcdc757b-2f15-4098-b6ab-ee50212bd340}"
+#!   COLOUR="0.59999999999999998,0.80000000000000004,0.80000000000000004,1"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="13"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="33"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Read the MIME Type CSV file&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-9823.7003557399457 217.87119908236119"
+#!   TOP_LEFT="-9823.7003557399457 217.87119908236119"
+#!   BOTTOM_RIGHT="-9108.8987858492474 106.62038657423611"
+#!   BOUNDING_RECT="-9823.7003557399457 217.87119908236119 714.80156989069894 111.25081250812508"
+#!   ORDER="500000000001886"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{971183ee-d434-4f2f-b74f-6e3deb64ec0a}"
+#!   COLOUR="0.59999999999999998,0.80000000000000004,0.80000000000000004,1"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="7"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="34"
+#!   NAME="Guess fomrat for resources with empty format"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="-9885.2091462091084 969.67881443520309"
+#!   ORDER="500000000001877"
+#!   PALETTE_COLOR="Color1"
+#!   BOTTOM_RIGHT="-5257.4055152316223 -1015.6351563515641"
+#!   BOUNDING_RECT="-9885.2091462091084 969.67881443520309 4627.8036309774861 1985.3139707867672"
+#!   STICKY="true"
+#!   COLOUR="0.59999999999999998,0.80000000000000004,0.80000000000000004,1"
+#!   CONTENTS="11 14 6 9 17 26 16 33 31 29 30 22 13 19 28 27 21 10 12 23 5 8 32 25 7 20 "
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="5"
+#!   TYPE="ATTRIBUTE_UNEXPOSER"
+#!   VERSION="2"
+#!   POSITION="-6071.5020679618556 -150.00000000000003"
+#!   BOUNDING_RECT="-6071.5020679618556 -150.00000000000003 533.00106825772946 71"
+#!   ORDER="500000000001869"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_UNEXPOSER"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="6"
+#!   TYPE="PythonCaller"
+#!   VERSION="6"
+#!   POSITION="-8176.3263785579056 -450"
+#!   BOUNDING_RECT="-8176.3263785579056 -450 454 71"
+#!   ORDER="500000000001874"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_p-t_abbr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_url_validation" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_unknown_mime_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;Rejected&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_p-t_abbr" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_url_validation" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_message" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_PROCESSING_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="HIDE_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="NEW_ATTRIBUTES" PARM_VALUE="_unknown_mime_type buffer id buffer"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSOURCE" PARM_VALUE="from&lt;space&gt;Python.EMPTY_FORMAT_MAPPER_NG&lt;space&gt;import&lt;space&gt;FeatureProcessor"/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSYMBOL" PARM_VALUE="FeatureProcessor"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="PythonCaller_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="7"
+#!   TYPE="LOOKUP_TABLES_READER_NG"
+#!   VERSION="1"
+#!   POSITION="-9817.9132608319578 0"
+#!   BOUNDING_RECT="-9817.9132608319578 0 634.00106825772946 71"
+#!   ORDER="500000000001878"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="CSV_ENCODING" PARM_VALUE="utf-8"/>
+#!     <XFORM_PARM PARM_NAME="CSV_PATH" PARM_VALUE="$(IN_CSV_LOOKUP_TABLES_DIR)"/>
+#!     <XFORM_PARM PARM_NAME="FEATURE_TYPE" PARM_VALUE="$(CSV_MIME_TYPE)"/>
+#!     <XFORM_PARM PARM_NAME="PT" PARM_VALUE="$(P-T_ABBR)"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="LOOKUP_TABLES_READER_NG"/>
+#!     <XFORM_PARM PARM_NAME="__COMPOUND_PARAMETERS" PARM_VALUE=""/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="8"
+#!   TYPE="AttributeCreator"
+#!   VERSION="10"
+#!   POSITION="-8924.7216001571815 41.360707724724278"
+#!   BOUNDING_RECT="-8924.7216001571815 41.360707724724278 454 71"
+#!   ORDER="500000000001879"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_p-t_abbr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; _order SET_TO 2 varchar&lt;openparen&gt;200&lt;closeparen&gt;  _p-t_abbr SET_TO $(P-T_ABBR) varchar&lt;openparen&gt;200&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE" PARM_VALUE="NO_OP"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_MODIFIED_ATTRIBUTE_TYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_IS_LOOKUP="true" PARM_VALUE="No Substitution"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="9"
+#!   TYPE="AttributeCreator"
+#!   VERSION="10"
+#!   POSITION="-8911.3991728152541 -450"
+#!   BOUNDING_RECT="-8911.3991728152541 -450 454 71"
+#!   ORDER="500000000001879"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_url_validation" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_p-t_abbr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; _order SET_TO 3 varchar&lt;openparen&gt;200&lt;closeparen&gt;  _url_validation SET_TO $(URL_VALIDATION) varchar&lt;openparen&gt;200&lt;closeparen&gt;  _p-t_abbr SET_TO $(P-T_ABBR) varchar&lt;openparen&gt;200&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE" PARM_VALUE="NO_OP"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_MODIFIED_ATTRIBUTE_TYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_2"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_IS_LOOKUP="true" PARM_VALUE="No Substitution"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="10"
+#!   TYPE="AttributeRemover"
+#!   VERSION="1"
+#!   POSITION="-6699.4480238920032 -150.00000000000003"
+#!   BOUNDING_RECT="-6699.4480238920032 -150.00000000000003 454 71"
+#!   ORDER="500000000001882"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_unknown_mime_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE="_order,_url_validation,_p-t_abbr"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="11"
+#!   TYPE="TestFilter"
+#!   VERSION="3"
+#!   POSITION="-7500 -450"
+#!   BOUNDING_RECT="-7500 -450 454 71"
+#!   ORDER="500000000001883"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="VALID"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_p-t_abbr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_url_validation" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_unknown_mime_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="INVALID"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_p-t_abbr" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_url_validation" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_unknown_mime_type" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="DEFAULT_VALUE" PARM_VALUE="INVALID"/>
+#!     <XFORM_PARM PARM_NAME="OUTGRPPORT" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_ATTRIBUTE_NAME" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PASSED_TEST_GROUP_OUTPUT" PARM_VALUE="FIRST"/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="PER_OUTPUT_PORT"/>
+#!     <XFORM_PARM PARM_NAME="TESTLISTGRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_LIST" PARM_VALUE="&quot;BOOL_OP,OR,COMPOSITE_TEST,&quot;&quot;&quot;&quot;&quot;&quot;1&quot;&quot;&quot;&quot;&quot;&quot;,TEST_CLAUSE,TEST&lt;space&gt;_unknown_mime_type&lt;space&gt;ATTRIBUTE_IS_MISSING&lt;space&gt;&lt;quote&gt;&lt;quote&gt;&quot;,VALID"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="TestFilter"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="12"
+#!   TYPE="Logger"
+#!   VERSION="4"
+#!   POSITION="-6647.3295451908753 -600"
+#!   BOUNDING_RECT="-6647.3295451908753 -600 454 71"
+#!   ORDER="500000000001884"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="LOGGED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_p-t_abbr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_url_validation" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_unknown_mime_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="FEATURE_TYPE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="LOG_FEATURE" PARM_VALUE="LOG_ONLY"/>
+#!     <XFORM_PARM PARM_NAME="MAXCOORDS" PARM_VALUE="20"/>
+#!     <XFORM_PARM PARM_NAME="MAXFEATS" PARM_VALUE="20"/>
+#!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE="UUID:&lt;space&gt;&lt;at&gt;Value&lt;openparen&gt;id&lt;closeparen&gt;&lt;space&gt;has&lt;space&gt;an&lt;space&gt;unknown&lt;space&gt;MIME&lt;space&gt;Type&lt;space&gt;&lt;openparen&gt;&lt;at&gt;Value&lt;openparen&gt;_unknown_mime_type&lt;closeparen&gt;&lt;closeparen&gt;.&lt;space&gt;Adjust&lt;space&gt;CSV&lt;space&gt;file."/>
+#!     <XFORM_PARM PARM_NAME="MSG_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="SEVERITY" PARM_VALUE="INFO"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Logger"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="13"
+#!   TYPE="LOOKUP_TABLES_READER_NG"
+#!   VERSION="1"
+#!   POSITION="-9829.5336166869274 453.01983376692749"
+#!   BOUNDING_RECT="-9829.5336166869274 453.01983376692749 634.00106825772946 71"
+#!   ORDER="500000000001878"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="CSV_ENCODING" PARM_VALUE="utf-8"/>
+#!     <XFORM_PARM PARM_NAME="CSV_PATH" PARM_VALUE="$(IN_CSV_LOOKUP_TABLES_DIR)"/>
+#!     <XFORM_PARM PARM_NAME="FEATURE_TYPE" PARM_VALUE="$(CSV_FORMAT)"/>
+#!     <XFORM_PARM PARM_NAME="PT" PARM_VALUE="$(P-T_ABBR)"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="LOOKUP_TABLES_READER_NG_2"/>
+#!     <XFORM_PARM PARM_NAME="__COMPOUND_PARAMETERS" PARM_VALUE=""/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="14"
+#!   TYPE="AttributeCreator"
+#!   VERSION="10"
+#!   POSITION="-8936.3419560121511 494.3805414916518"
+#!   BOUNDING_RECT="-8936.3419560121511 494.3805414916518 454 71"
+#!   ORDER="500000000001879"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_p-t_abbr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; _order SET_TO 1 varchar&lt;openparen&gt;200&lt;closeparen&gt;  _p-t_abbr SET_TO $(P-T_ABBR) varchar&lt;openparen&gt;200&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE" PARM_VALUE="NO_OP"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_MODIFIED_ATTRIBUTE_TYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_3"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_IS_LOOKUP="true" PARM_VALUE="No Substitution"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="DATA_INPUT"
+#!   POSITION="-10650 -450"
+#!   BOUNDING_RECT="-10650 -450 566.00106825772946 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="DATA_OUTPUT"
+#!   POSITION="-5100 -150"
+#!   BOUNDING_RECT="-5100 -150 675.00106825772946 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="4"
+#!   NAME="UNKNOWN_MIME_TYPE"
+#!   POSITION="-5100 -600"
+#!   BOUNDING_RECT="-5100 -600 608.00106825772946 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="15"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="16"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="8"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="17"
+#!   SOURCE_NODE="13"
+#!   TARGET_NODE="14"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="18"
+#!   SOURCE_NODE="5"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="19"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="11"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="20"
+#!   SOURCE_NODE="8"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="21"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="22"
+#!   SOURCE_NODE="10"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="23"
+#!   SOURCE_NODE="11"
+#!   TARGET_NODE="10"
+#!   SOURCE_PORT_DESC="fo 0 VALID"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="24"
+#!   SOURCE_NODE="12"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="fo 0 LOGGED"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="25"
+#!   SOURCE_NODE="14"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="26"
+#!   SOURCE_NODE="11"
+#!   TARGET_NODE="12"
+#!   SOURCE_PORT_DESC="fo 1 INVALID"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+FME_PYTHON_VERSION 313
+# ============================================================================
+DEFAULT_MACRO $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_CSV_FORMAT 
+
+DEFAULT_MACRO $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_CSV_MIME_TYPE 
+
+DEFAULT_MACRO $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_IN_CSV_LOOKUP_TABLES_DIR 
+
+DEFAULT_MACRO $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_P-T_ABBR 
+
+DEFAULT_MACRO $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_URL_VALIDATION 
+
+DEFAULT_MACRO $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_FME_DATA_REPOSITORY 
+
+DEFAULT_MACRO $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_FME_ENGINE 
+
+DEFAULT_MACRO $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_FME_JOB_ID 
+
+DEFAULT_MACRO $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_FME_SECURITY_ROLES 
+
+DEFAULT_MACRO $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_FME_SECURITY_USER 
+
+DEFAULT_MACRO $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_FME_SERVER_DEST_DIR 
+
+DEFAULT_MACRO $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_FME_SERVER_HOST 
+
+DEFAULT_MACRO $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_FME_SERVER_PORT 
+
+DEFAULT_MACRO $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_FME_SERVER_REQUEST_HEADERS 
+
+DEFAULT_MACRO $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_FME_SERVER_REQUEST_METHOD 
+
+DEFAULT_MACRO $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_FME_SERVER_REQUEST_PARAMETERS 
+
+DEFAULT_MACRO $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_FME_SERVER_REQUEST_URI 
+
+DEFAULT_MACRO $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER 
+
+DEFAULT_MACRO $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER_ID 
+
+DEFAULT_MACRO $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_FME_SERVER_WEB_URL 
+
+DEFAULT_MACRO $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_BACKUP 
+
+DEFAULT_MACRO $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DASHBOARD 
+
+DEFAULT_MACRO $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DATA 
+
+DEFAULT_MACRO $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_ENGINE 
+
+DEFAULT_MACRO $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_LOG 
+
+DEFAULT_MACRO $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_SYSTEM 
+
+DEFAULT_MACRO $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_TEMP 
+
+DEFAULT_MACRO $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_FME_TOPIC 
+
+DEFAULT_MACRO $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_FME_TOPIC_MESSAGE 
+
+# ============================================================================
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_DATA_INPUT1759777936 Input Splitter"   INPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_DATA_INPUT"   OUTPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_DATA_INPUT"
+# -------------------------------------------------------------------------
+MACRO LOOKUP_TABLES_READER_NG_WORKSPACE_NAME $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_XFORMER_NAME $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)___COMPOUND_PARAMETERS 
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_FEATURE_TYPE $($(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_CSV_MIME_TYPE)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_CSV_PATH $($(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_IN_CSV_LOOKUP_TABLES_DIR$encode)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_PT $($(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_P-T_ABBR$encode)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_CSV_ENCODING utf-8
+INCLUDE_CUSTOM_TRANSFORMER_VER LOOKUP_TABLES_READER_NG:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"   OUTPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"
+FACTORY_DEF * BranchingFactory   FACTORY_NAME "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output Brancher -1 16"   INPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"   TARGET_FACTORY "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   MAXIMUM_COUNT None   OUTPUT PASSED FEATURE_TYPE *
+# -------------------------------------------------------------------------
+MACRO LOOKUP_TABLES_READER_NG_WORKSPACE_NAME $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_2
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_XFORMER_NAME $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_2
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)___COMPOUND_PARAMETERS 
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_FEATURE_TYPE $($(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_CSV_FORMAT)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_CSV_PATH $($(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_IN_CSV_LOOKUP_TABLES_DIR$encode)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_PT $($(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_P-T_ABBR$encode)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_CSV_ENCODING utf-8
+INCLUDE_CUSTOM_TRANSFORMER_VER LOOKUP_TABLES_READER_NG:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_2 Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_2_Output"   OUTPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_2_Output"
+FACTORY_DEF * BranchingFactory   FACTORY_NAME "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_2_Output Brancher -1 17"   INPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_2_Output"   TARGET_FACTORY "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   MAXIMUM_COUNT None   OUTPUT PASSED FEATURE_TYPE *
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   INPUT FEATURE_TYPE *  OUTPUT FEATURE_TYPE *
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME { $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_AttributeCreator_3 }    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_2_Output"    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    NUM_OF_COLUMNS 5    ATTR_ACTION { "" "_order" "SET_TO" "1" "varchar<openparen>200<closeparen>" }      ATTR_ACTION { "" "_p-t_abbr" "SET_TO" "$($(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_P-T_ABBR$encode)" "varchar<openparen>200<closeparen>" }    OUTPUT { OUTPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_AttributeCreator_3_OUTPUT"        }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME { $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_AttributeCreator }    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    NUM_OF_COLUMNS 5    ATTR_ACTION { "" "_order" "SET_TO" "2" "varchar<openparen>200<closeparen>" }      ATTR_ACTION { "" "_p-t_abbr" "SET_TO" "$($(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_P-T_ABBR$encode)" "varchar<openparen>200<closeparen>" }    OUTPUT { OUTPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_AttributeCreator_OUTPUT"        }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME { $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_AttributeCreator_2 }    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_DATA_INPUT"    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    NUM_OF_COLUMNS 5    ATTR_ACTION { "" "_order" "SET_TO" "3" "varchar<openparen>200<closeparen>" }      ATTR_ACTION { "" "_url_validation" "SET_TO" "$($(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_URL_VALIDATION$encode)" "varchar<openparen>200<closeparen>" }      ATTR_ACTION { "" "_p-t_abbr" "SET_TO" "$($(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_P-T_ABBR$encode)" "varchar<openparen>200<closeparen>" }    OUTPUT { OUTPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"        }
+# -------------------------------------------------------------------------
+FME_PYTHON_PATH "$(FME_MF_DIR)"
+FACTORY_DEF {*} PythonFactory    FACTORY_NAME { $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_PythonCaller_2 }    FLUSH_WHEN_GROUPS_CHANGE { <Unused> }    INPUT  FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_AttributeCreator_OUTPUT"    INPUT  FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"    INPUT  FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_AttributeCreator_3_OUTPUT"    SYMBOL_NAME { FeatureProcessor }    SOURCE_CODE { from<space>Python.EMPTY_FORMAT_MAPPER_NG<space>import<space>FeatureProcessor }    PY_OUTPUT_TAGS { PYOUTPUT <Rejected> }    OUTPUT { PYOUTPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_PythonCaller_2_OUTPUT"         }    OUTPUT { <Rejected> FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_PythonCaller_2_<Rejected>"         }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_PythonCaller_2 <Rejected> Transformer Output Nuker"   INPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_PythonCaller_2_<Rejected>"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_TestFilter_INPUT }    INPUT  FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_PythonCaller_2_OUTPUT"    OUTPUT { FEATURE_TYPE $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_TestFilter_INPUTLINE }
+FACTORY_DEF {*} TestFactory FACTORY_NAME { $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_TestFilter } INPUT FEATURE_TYPE $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_TestFilter_INPUTLINE FEATURE_TABLE_SHIM_SUPPORT Yes PASSED_TEST_GROUP_OUTPUT FIRST TEST_GROUP TEST { _unknown_mime_type ATTRIBUTE_IS_MISSING "" ENCODED } BOOLEAN_OPERATOR OR COMPOSITE_TEST_EXPR "1" OUTPUT PASSED_0 FEATURE_TYPE $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_TestFilter_VALID OUTPUT FAILED FEATURE_TYPE $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_TestFilter_INVALID
+# -------------------------------------------------------------------------
+# Build the List removal function and regular expression if there was any list attributes to be removed.
+# If not, then we will not have any extra list removal call to @RemoveAttributes, which speeds the
+# normal, non-list removal especially when in Bulk Mode.  Note that this computation of the regular expressions is done
+# once during mapping file parse time.
+INCLUDE [    set listAttributeRemoveRegexps {};    set anyList {no};    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append listAttributeRemoveRegexps ",^$attr$";       set anyList {yes};    };    if { ${anyList} == {no} } {        puts {MACRO $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC }    } else {        puts "MACRO $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC @RemoveAttributes(fme_pcre_match\"$listAttributeRemoveRegexps\")"    }; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_AttributeRemover }    INPUT  FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_TestFilter_VALID"    OUTPUT { FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_AttributeRemover_OUTPUT"        @RemoveAttributes(fme_encoded,_order,_url_validation,_p-t_abbr)        $($(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC)         }
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Input Input Collector"   INPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_AttributeRemover_OUTPUT"   OUTPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Input"
+MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:2
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
+# -------------------------------------------------------------------------
+# Create a FME_UUID_SAFE from the FME_UUID so we can use it for Tcl identifiers (FMEDESKTOP-11308)
+INCLUDE [ FME_CleanseFMEUUID {$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_Logger_e623536f_b141_4cee_b52f_2d66803f05d31} ]
+# If the Logger was in a custom transformer, the custom transformer's name was not being
+# properly logged -- instead we saw "$(<customXformerName_WORKSPACE_NAME)" being logged as the prefix of the
+# message. By deferencing and expanding out the XFORMER_NAME below, and then "WWJD" encoding it when it is
+# used in the @Log call via the $encode macro name suffix trick, we get the right result, and the right result
+# safely.
+MACRO LOGGABLE_XFORMER_NAME $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_Logger
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_Logger_Logger }    INPUT  FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_TestFilter_INVALID"    OUTPUT { FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_Logger_LOGGED"                  @Log(ENCODED, "$(LOGGABLE_XFORMER_NAME$encode):<space>@EvaluateExpression(FDIV,STRING_ENCODED,UUID:<space><at>Value<openparen>id<closeparen><space>has<space>an<space>unknown<space>MIME<space>Type<space><openparen><at>Value<openparen>_unknown_mime_type<closeparen><closeparen>.<space>Adjust<space>CSV<space>file.,$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_Logger)","20","20","",INFO,LOG_ONLY,$(FME_UUID_SAFE))                   }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_DATA_OUTPUT1759777936 Output Collector"   INPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_DATA_OUTPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_UNKNOWN_MIME_TYPE1759777936 Output Collector"   INPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_Logger_LOGGED"   OUTPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_UNKNOWN_MIME_TYPE"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME))}]
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN EMPTY_FORMAT_MAPPER_NG,1,"FGP Tools",eb197545-32b6-4c27-b9f1-d9a5f3b9f595,"Linked by Default",No,NO_PARALLELISM,,No,20787,YES,No,37,No,
+# <p><strong>Description: </strong></p>
+# <p>Custom transformer used to fill the resources{}.format when the format is missing or empty. The custom is using the corresponding resources{}.url to extract the format. </p>
+# <p>In a first step, the custom transformer will analyse the URL:</p>
+# <ul>
+# <li>if the url contains the substring "service=wms" the format is WMS</li>
+# <li>if the url contains the substring "mapserver" or "featureserver" the format is ESRI REST</li>
+# <li>if the url ends with a file format extension (ex.: .shp) it takes the extension as the file format; except if the extension is .zip where it tries to find the original file format before being zipped (like CSV for the following url: blablabla.csv.zip)</li>
+# </ul>
+# <p>In a second step, the custom transformer will validate that the format extracted with the preceding rules is a valid format by checking if the format is present in the table Format.csv.</p>
+# <p>In a third step, if the format is still unknown (format="other"), the custom transformer extract the MIME-content of header of the URL.  The MIME-content is than used to extract the format from the CSV file Mime_type.csv</p>
+# <p><strong>Parameters</strong></p>
+# <ul>
+# <li>CSV_FORMAT: Name of the CSV table containing the list of valid fromat for the resources.</li>
+# <li>CSV_MIME_TYPE: Name of the CSV table containing the MIME-type and the corresponding format.</li>
+# <li>IN_CSV_LOOKUP_TABLES_DIR: Name of the directoty containing the lookup tables.</li>
+# <li>P-T_ABBR: Two letter abbreviation of the province (ex: ON for Ontario)</li>
+# <li>URL_VALIDATION: Flag used to extract the header of the URL, can take two values: Yes: Extract the header in order to get the MIME-type; No: Do not extract the header.</li>
+# </ul>
+# <p><strong>Input Ports</strong></p>
+# <ul>
+# <li>DATA_INPUT: The input features to process</li>
+# </ul>
+# <p><strong>OUTPUT Ports</strong></p>
+# <ul>
+# <li>DATA_OUTPUT: The processed output features</li>
+# <li>UNKNOWN_MIME_TYPE: The features with a MIME-TYPE not present in the MIME-type CSV file.</li>
+# </ul>
+# TRANSFORMER_END
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="FGP Tools"
+#!   DESCRIPTION="&lt;p&gt;&lt;strong&gt;Description: &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;Custom transformer used to fill the resources{}.format when the format is missing or empty. The custom is using the corresponding resources{}.url to extract the format. &lt;/p&gt;&#10;&lt;p&gt;In a first step, the custom transformer will analyse the URL:&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;if the url contains the substring &quot;service=wms&quot; the format is WMS&lt;/li&gt;&#10;&lt;li&gt;if the url contains the substring &quot;mapserver&quot; or &quot;featureserver&quot; the format is ESRI REST&lt;/li&gt;&#10;&lt;li&gt;if the url ends with a file format extension (ex.: .shp) it takes the extension as the file format; except if the extension is .zip where it tries to find the original file format before being zipped (like CSV for the following url: blablabla.csv.zip)&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;In a second step, the custom transformer will validate that the format extracted with the preceding rules is a valid format by checking if the format is present in the table Format.csv.&lt;/p&gt;&#10;&lt;p&gt;In a third step, if the format is still unknown (format=&quot;other&quot;), the custom transformer extract the MIME-content of header of the URL.  The MIME-content is than used to extract the format from the CSV file Mime_type.csv&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Parameters&lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;CSV_FORMAT: Name of the CSV table containing the list of valid fromat for the resources.&lt;/li&gt;&#10;&lt;li&gt;CSV_MIME_TYPE: Name of the CSV table containing the MIME-type and the corresponding format.&lt;/li&gt;&#10;&lt;li&gt;IN_CSV_LOOKUP_TABLES_DIR: Name of the directoty containing the lookup tables.&lt;/li&gt;&#10;&lt;li&gt;P-T_ABBR: Two letter abbreviation of the province (ex: ON for Ontario)&lt;/li&gt;&#10;&lt;li&gt;URL_VALIDATION: Flag used to extract the header of the URL, can take two values: Yes: Extract the header in order to get the MIME-type; No: Do not extract the header.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Input Ports&lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;DATA_INPUT: The input features to process&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;OUTPUT Ports&lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;DATA_OUTPUT: The processed output features&lt;/li&gt;&#10;&lt;li&gt;UNKNOWN_MIME_TYPE: The features with a MIME-TYPE not present in the MIME-type CSV file.&lt;/li&gt;&#10;&lt;/ul&gt;"
+#!   DOC_EXTENTS="6225 1985.31"
+#!   DOC_TOP_LEFT="-10650 -1015.64"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="20787"
+#!   FME_DOCUMENT_GUID="eb197545-32b6-4c27-b9f1-d9a5f3b9f595"
+#!   FME_DOCUMENT_PRIORGUID="9e0d32dc-2808-4193-9132-002e10013326,78ea27f5-fe01-476f-b84b-6b02420095be,af140687-52b7-4f26-a9c0-e529a7dc71f3,e7c38d78-2ee1-4324-b65d-59c9d8e06539,059eb59c-7327-4cf4-acc9-c88220ef68ba,9bc576eb-1fa0-488b-a49f-129bdcd6ab1f"
+#!   FME_LINKED_TRANSFORMER_VERSION="1"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY="Unknown,Unknown,Original&lt;space&gt;version,13&lt;solidus&gt;06&lt;solidus&gt;2022,Daniel&lt;space&gt;Pilon,Documentation&lt;space&gt;and&lt;space&gt;python&lt;space&gt;restructuring,28&lt;solidus&gt;06&lt;solidus&gt;2022,Daniel&lt;space&gt;Pilon,Extract&lt;space&gt;the&lt;space&gt;MIME-type&lt;space&gt;to&lt;space&gt;get&lt;space&gt;the&lt;space&gt;content"
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2020.2.0.0 (20201027 - Build 20787 - WIN32)"
+#!   LAST_SAVE_DATE="2024-06-27T14:51:59"
+#!   MARKDOWN_DESCRIPTION="**Description: **&#10;&#10;Custom transformer used to fill the resources{}.format when the format is missing or empty. The custom is using the corresponding resources{}.url to extract the format. &#10;&#10;In a first step, the custom transformer will analyse the URL:&#10;&#10;  - if the url contains the substring &quot;service=wms&quot; the format is WMS&#10;  - if the url contains the substring &quot;mapserver&quot; or &quot;featureserver&quot; the format is ESRI REST&#10;  - if the url ends with a file format extension (ex.: .shp) it takes the extension as the file format; except if the extension is .zip where it tries to find the original file format before being zipped (like CSV for the following url: blablabla.csv.zip)&#10;&#10;In a second step, the custom transformer will validate that the format extracted with the preceding rules is a valid format by checking if the format is present in the table Format.csv.&#10;&#10;In a third step, if the format is still unknown (format=&quot;other&quot;), the custom transformer extract the MIME-content of header of the URL.  The MIME-content is than used to extract the format from the CSV file Mime_type.csv&#10;&#10;**Parameters**&#10;&#10;  -  CSV_FORMAT: Name of the CSV table containing the list of valid fromat for the resources.&#10;  - CSV_MIME_TYPE: Name of the CSV table containing the MIME-type and the corresponding format.&#10;  - IN_CSV_LOOKUP_TABLES_DIR: Name of the directoty containing the lookup tables.&#10;  - P-T_ABBR: Two letter abbreviation of the province (ex: ON for Ontario)&#10;  - URL_VALIDATION: Flag used to extract the header of the URL, can take two values: Yes: Extract the header in order to get the MIME-type; No: Do not extract the header.&#10;&#10;**Input Ports**&#10;&#10;  - DATA_INPUT: The input features to process&#10;&#10;**OUTPUT Ports**&#10;&#10;  - DATA_OUTPUT: The processed output features&#10;  - UNKNOWN_MIME_TYPE: The features with a MIME-TYPE not present in the MIME-type CSV file.&#10;"
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="37"
+#!   REPLACED_BY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="EMPTY_FORMAT_MAPPER_NG"
+#!   USAGE=""
+#!   USE_MARKDOWN="YES"
+#!   VIEW_POSITION="-10902.4 1720.97"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="71"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR CSV_FORMAT CSV_FORMAT:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR CSV_MIME_TYPE CSV_MIME_TYPE:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR IN_CSV_LOOKUP_TABLES_DIR IN_CSV_LOOKUP_TABLES_DIR:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR P-T_ABBR P-T_ABBR:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR URL_VALIDATION URL_VALIDATION:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="27"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Unexpose all attributes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-6067.1160591894877 149.99999999999966"
+#!   TOP_LEFT="-6067.1160591894877 149.99999999999966"
+#!   BOTTOM_RIGHT="-5534.1149909317583 148.99999999999966"
+#!   BOUNDING_RECT="-6067.1160591894877 149.99999999999966 533.00106825772946 1"
+#!   ORDER="500000000001873"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.20784313725490197,0.40784313725490196,0.40784313725490196,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="5"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="28"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;If the format is missing guess the format using the content of the URL&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-8176.3263785579056 -132.42394482768364"
+#!   TOP_LEFT="-8176.3263785579056 -132.42394482768364"
+#!   BOTTOM_RIGHT="-7722.3263785579056 -133.42394482768364"
+#!   BOUNDING_RECT="-8176.3263785579056 -132.42394482768364 454 1"
+#!   ORDER="500000000001876"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.20784313725490197,0.40784313725490196,0.40784313725490196,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="6"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="29"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Add _order attribute&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-9000 241.35999606183435"
+#!   TOP_LEFT="-9000 241.35999606183435"
+#!   BOTTOM_RIGHT="-8479.4584098782125 130.10918355370927"
+#!   BOUNDING_RECT="-9000 241.35999606183435 520.54159012178752 111.25081250812508"
+#!   ORDER="500000000001880"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.20784313725490197,0.40784313725490196,0.40784313725490196,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="8"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="30"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Add attribute _order and _url_validation&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-8940.2079044319835 -161.32199263169107"
+#!   TOP_LEFT="-8940.2079044319835 -161.32199263169107"
+#!   BOTTOM_RIGHT="-8486.2079044319835 -162.32199263169107"
+#!   BOUNDING_RECT="-8940.2079044319835 -161.32199263169107 454 1"
+#!   ORDER="500000000001881"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.20784313725490197,0.40784313725490196,0.40784313725490196,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="9"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="31"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Add _order attribute&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-9011.6203558549696 694.3798298287619"
+#!   TOP_LEFT="-9011.6203558549696 694.3798298287619"
+#!   BOTTOM_RIGHT="-8491.0787657331821 583.12901732063688"
+#!   BOUNDING_RECT="-9011.6203558549696 694.3798298287619 520.54159012178752 111.25081250812508"
+#!   ORDER="500000000001880"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.20784313725490197,0.40784313725490196,0.40784313725490196,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="14"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="32"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Read the Format CSV file&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-9829.5336166869292 682.46522266526085"
+#!   TOP_LEFT="-9829.5336166869292 682.46522266526085"
+#!   BOTTOM_RIGHT="-9224.6292833298685 571.21441015713572"
+#!   BOUNDING_RECT="-9829.5336166869292 682.46522266526085 604.90433335706075 111.25081250812508"
+#!   ORDER="500000000001885"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.20784313725490197,0.40784313725490196,0.40784313725490196,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="13"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="33"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Read the MIME Type CSV file&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-9823.7003557399457 217.87119908236119"
+#!   TOP_LEFT="-9823.7003557399457 217.87119908236119"
+#!   BOTTOM_RIGHT="-9108.8873851701483 106.62038657423611"
+#!   BOUNDING_RECT="-9823.7003557399457 217.87119908236119 714.81297056979747 111.25081250812508"
+#!   ORDER="500000000001886"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.20784313725490197,0.40784313725490196,0.40784313725490196,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="7"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="34"
+#!   NAME="Guess fomrat for resources with empty format"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="-9885.2091462091084 969.67881443520309"
+#!   ORDER="500000000001877"
+#!   PALETTE_COLOR="Color1"
+#!   BOTTOM_RIGHT="-5257.4055152316223 -1015.6351563515641"
+#!   BOUNDING_RECT="-9885.2091462091084 969.67881443520309 4627.8036309774861 1985.3139707867672"
+#!   STICKY="true"
+#!   COLOUR="0.20784313725490197,0.40784313725490196,0.40784313725490196,1"
+#!   CONTENTS="25 33 32 22 9 10 12 23 20 13 16 17 26 29 14 21 19 7 28 31 8 11 30 27 6 5 "
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="5"
+#!   TYPE="ATTRIBUTE_UNEXPOSER"
+#!   VERSION="1"
+#!   POSITION="-6071.5020679618556 -150.00000000000003"
+#!   BOUNDING_RECT="-6071.5020679618556 -150.00000000000003 533.00106825772946 71"
+#!   ORDER="500000000001869"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_UNEXPOSER"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="6"
+#!   TYPE="PythonCaller"
+#!   VERSION="4"
+#!   POSITION="-8176.3263785579056 -450"
+#!   BOUNDING_RECT="-8176.3263785579056 -450 454 71"
+#!   ORDER="500000000001874"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_p-t_abbr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_url_validation" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_unknown_mime_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="HIDE_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="NEW_ATTRIBUTES" PARM_VALUE="_unknown_mime_type id"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSOURCE" PARM_VALUE="from&lt;space&gt;Python.EMPTY_FORMAT_MAPPER_NG&lt;space&gt;import&lt;space&gt;FeatureProcessor"/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSYMBOL" PARM_VALUE="FeatureProcessor"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="PythonCaller_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="7"
+#!   TYPE="LOOKUP_TABLES_READER_NG"
+#!   VERSION="1"
+#!   POSITION="-9817.9132608319578 0"
+#!   BOUNDING_RECT="-9817.9132608319578 0 634.00106825772946 71"
+#!   ORDER="500000000001878"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="CSV_ENCODING" PARM_VALUE="utf-8"/>
+#!     <XFORM_PARM PARM_NAME="CSV_PATH" PARM_VALUE="$(IN_CSV_LOOKUP_TABLES_DIR)"/>
+#!     <XFORM_PARM PARM_NAME="FEATURE_TYPE" PARM_VALUE="$(CSV_MIME_TYPE)"/>
+#!     <XFORM_PARM PARM_NAME="PT" PARM_VALUE="$(P-T_ABBR)"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="LOOKUP_TABLES_READER_NG"/>
+#!     <XFORM_PARM PARM_NAME="__COMPOUND_PARAMETERS" PARM_VALUE=""/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="8"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="-8924.7216001571815 41.360707724724278"
+#!   BOUNDING_RECT="-8924.7216001571815 41.360707724724278 454 71"
+#!   ORDER="500000000001879"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_p-t_abbr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; _order SET_TO 2  _p-t_abbr SET_TO $(P-T_ABBR)"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="9"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="-8911.3991728152541 -450"
+#!   BOUNDING_RECT="-8911.3991728152541 -450 454 71"
+#!   ORDER="500000000001879"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_url_validation" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_p-t_abbr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; _order SET_TO 3  _url_validation SET_TO $(URL_VALIDATION)  _p-t_abbr SET_TO $(P-T_ABBR)"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="10"
+#!   TYPE="AttributeRemover"
+#!   VERSION="1"
+#!   POSITION="-6699.4480238920032 -150.00000000000003"
+#!   BOUNDING_RECT="-6699.4480238920032 -150.00000000000003 454 71"
+#!   ORDER="500000000001882"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_unknown_mime_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE="_order,_url_validation,_p-t_abbr"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="11"
+#!   TYPE="TestFilter"
+#!   VERSION="2"
+#!   POSITION="-7500 -450"
+#!   BOUNDING_RECT="-7500 -450 454 71"
+#!   ORDER="500000000001883"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="VALID"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_p-t_abbr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_url_validation" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_unknown_mime_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="INVALID"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_p-t_abbr" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_url_validation" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_unknown_mime_type" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="DEFAULT_VALUE" PARM_VALUE="INVALID"/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="Per Output Port"/>
+#!     <XFORM_PARM PARM_NAME="TESTLISTGRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_LIST" PARM_VALUE="&quot;BOOL_OP,OR,COMPOSITE_TEST,&quot;&quot;&quot;&quot;&quot;&quot;1&quot;&quot;&quot;&quot;&quot;&quot;,TEST_CLAUSE,TEST&lt;space&gt;_unknown_mime_type&lt;space&gt;ATTRIBUTE_IS_MISSING&lt;space&gt;&lt;quote&gt;&lt;quote&gt;&quot;,VALID"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="TestFilter"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="12"
+#!   TYPE="Logger"
+#!   VERSION="4"
+#!   POSITION="-6647.3295451908753 -600"
+#!   BOUNDING_RECT="-6647.3295451908753 -600 454 71"
+#!   ORDER="500000000001884"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="LOGGED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_p-t_abbr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_url_validation" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_unknown_mime_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="FEATURE_TYPE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="LOG_FEATURE" PARM_VALUE="LOG_ONLY"/>
+#!     <XFORM_PARM PARM_NAME="MAXCOORDS" PARM_VALUE="20"/>
+#!     <XFORM_PARM PARM_NAME="MAXFEATS" PARM_VALUE="20"/>
+#!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE="UUID:&lt;space&gt;&lt;at&gt;Value&lt;openparen&gt;id&lt;closeparen&gt;&lt;space&gt;has&lt;space&gt;an&lt;space&gt;unknown&lt;space&gt;MIME&lt;space&gt;Type&lt;space&gt;&lt;openparen&gt;&lt;at&gt;Value&lt;openparen&gt;_unknown_mime_type&lt;closeparen&gt;&lt;closeparen&gt;.&lt;space&gt;Adjust&lt;space&gt;CSV&lt;space&gt;file."/>
+#!     <XFORM_PARM PARM_NAME="MSG_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="SEVERITY" PARM_VALUE="INFO"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Logger"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="13"
+#!   TYPE="LOOKUP_TABLES_READER_NG"
+#!   VERSION="1"
+#!   POSITION="-9829.5336166869274 453.01983376692749"
+#!   BOUNDING_RECT="-9829.5336166869274 453.01983376692749 634.00106825772946 71"
+#!   ORDER="500000000001878"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="CSV_ENCODING" PARM_VALUE="utf-8"/>
+#!     <XFORM_PARM PARM_NAME="CSV_PATH" PARM_VALUE="$(IN_CSV_LOOKUP_TABLES_DIR)"/>
+#!     <XFORM_PARM PARM_NAME="FEATURE_TYPE" PARM_VALUE="$(CSV_FORMAT)"/>
+#!     <XFORM_PARM PARM_NAME="PT" PARM_VALUE="$(P-T_ABBR)"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="LOOKUP_TABLES_READER_NG_2"/>
+#!     <XFORM_PARM PARM_NAME="__COMPOUND_PARAMETERS" PARM_VALUE=""/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="14"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="-8936.3419560121511 494.3805414916518"
+#!   BOUNDING_RECT="-8936.3419560121511 494.3805414916518 454 71"
+#!   ORDER="500000000001879"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_p-t_abbr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; _order SET_TO 1  _p-t_abbr SET_TO $(P-T_ABBR)"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_3"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="DATA_INPUT"
+#!   POSITION="-10650 -450"
+#!   BOUNDING_RECT="-10650 -450 566.00106825772946 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="DATA_OUTPUT"
+#!   POSITION="-5100 -150"
+#!   BOUNDING_RECT="-5100 -150 675.00106825772946 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="4"
+#!   NAME="UNKNOWN_MIME_TYPE"
+#!   POSITION="-5100 -600"
+#!   BOUNDING_RECT="-5100 -600 608.00106825772946 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="15"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="16"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="8"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="17"
+#!   SOURCE_NODE="13"
+#!   TARGET_NODE="14"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="18"
+#!   SOURCE_NODE="5"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="19"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="11"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="20"
+#!   SOURCE_NODE="8"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="21"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="22"
+#!   SOURCE_NODE="10"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="23"
+#!   SOURCE_NODE="11"
+#!   TARGET_NODE="10"
+#!   SOURCE_PORT_DESC="fo 0 VALID"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="24"
+#!   SOURCE_NODE="12"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="fo 0 LOGGED"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="25"
+#!   SOURCE_NODE="14"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="26"
+#!   SOURCE_NODE="11"
+#!   TARGET_NODE="12"
+#!   SOURCE_PORT_DESC="fo 1 INVALID"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+FME_PYTHON_VERSION 37
+DEFAULT_MACRO $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_CSV_FORMAT 
+DEFAULT_MACRO $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_CSV_MIME_TYPE 
+DEFAULT_MACRO $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_IN_CSV_LOOKUP_TABLES_DIR 
+DEFAULT_MACRO $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_P-T_ABBR 
+DEFAULT_MACRO $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_URL_VALIDATION 
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_DATA_INPUT1719514319 Input Splitter"   INPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_DATA_INPUT"   OUTPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_DATA_INPUT"
+# -------------------------------------------------------------------------
+MACRO LOOKUP_TABLES_READER_NG_WORKSPACE_NAME $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_XFORMER_NAME $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)___COMPOUND_PARAMETERS 
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_FEATURE_TYPE $($(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_CSV_MIME_TYPE)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_CSV_PATH $($(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_IN_CSV_LOOKUP_TABLES_DIR$encode)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_PT $($(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_P-T_ABBR$encode)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_CSV_ENCODING utf-8
+INCLUDE_CUSTOM_TRANSFORMER_VER LOOKUP_TABLES_READER_NG:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"   OUTPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"
+FACTORY_DEF * BranchingFactory   FACTORY_NAME "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output Brancher -1 16"   INPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"   TARGET_FACTORY "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   MAXIMUM_COUNT None   OUTPUT PASSED FEATURE_TYPE *
+# -------------------------------------------------------------------------
+MACRO LOOKUP_TABLES_READER_NG_WORKSPACE_NAME $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_2
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_XFORMER_NAME $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_2
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)___COMPOUND_PARAMETERS 
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_FEATURE_TYPE $($(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_CSV_FORMAT)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_CSV_PATH $($(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_IN_CSV_LOOKUP_TABLES_DIR$encode)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_PT $($(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_P-T_ABBR$encode)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_CSV_ENCODING utf-8
+INCLUDE_CUSTOM_TRANSFORMER_VER LOOKUP_TABLES_READER_NG:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_2 Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_2_Output"   OUTPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_2_Output"
+FACTORY_DEF * BranchingFactory   FACTORY_NAME "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_2_Output Brancher -1 17"   INPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_2_Output"   TARGET_FACTORY "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   MAXIMUM_COUNT None   OUTPUT PASSED FEATURE_TYPE *
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   INPUT FEATURE_TYPE *  OUTPUT FEATURE_TYPE *
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_AttributeCreator_3    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_2_Output"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "_order" "SET_TO" "1" }      ATTR_ACTION { "" "_p-t_abbr" "SET_TO" "$($(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_P-T_ABBR$encode)" }    OUTPUT OUTPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_AttributeCreator_3_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_AttributeCreator    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "_order" "SET_TO" "2" }      ATTR_ACTION { "" "_p-t_abbr" "SET_TO" "$($(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_P-T_ABBR$encode)" }    OUTPUT OUTPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_AttributeCreator_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_AttributeCreator_2    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_DATA_INPUT"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "_order" "SET_TO" "3" }      ATTR_ACTION { "" "_url_validation" "SET_TO" "$($(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_URL_VALIDATION$encode)" }      ATTR_ACTION { "" "_p-t_abbr" "SET_TO" "$($(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_P-T_ABBR$encode)" }    OUTPUT OUTPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"
+# -------------------------------------------------------------------------
+FME_PYTHON_PATH "$(FME_MF_DIR)"
+FACTORY_DEF * PythonFactory    FACTORY_NAME $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_PythonCaller_2    INPUT  FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_AttributeCreator_OUTPUT"    INPUT  FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"    INPUT  FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_AttributeCreator_3_OUTPUT"    SYMBOL_NAME FeatureProcessor    PYTHON_NAMESPACE FMEOBJECTS    SOURCE_CODE from<space>Python.EMPTY_FORMAT_MAPPER_NG<space>import<space>FeatureProcessor    OUTPUT PYOUTPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_PythonCaller_2_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_TestFilter    INPUT  FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_PythonCaller_2_OUTPUT"    OUTPUT FEATURE_TYPE $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_TestFilter_TESTFILTERINPUTLINE_0
+FACTORY_DEF * TestFactory FACTORY_NAME $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_TestFilter_Condition_1 INPUT FEATURE_TYPE $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_TestFilter_TESTFILTERINPUTLINE_0 TEST _unknown_mime_type ATTRIBUTE_IS_MISSING "" ENCODED BOOLEAN_OPERATOR OR COMPOSITE_TEST_EXPR "1" FEATURE_TABLE_SHIM_SUPPORT Yes PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT OUTPUT PASSED FEATURE_TYPE $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_TestFilter_VALID OUTPUT FAILED FEATURE_TYPE $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_TestFilter_TESTFILTERINPUTLINE_1
+FACTORY_DEF * TeeFactory FACTORY_NAME $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_TestFilter_INVALID INPUT FEATURE_TYPE $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_TestFilter_TESTFILTERINPUTLINE_1 OUTPUT FEATURE_TYPE $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_TestFilter_INVALID
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_Logger_Logger    INPUT  FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_TestFilter_INVALID"    OUTPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_Logger_LOGGED"                  @Log(ENCODED, "<dollar><openparen>EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME<closeparen>_Logger:<space>@EvaluateExpression(FDIV,STRING_ENCODED,UUID:<space><at>Value<openparen>id<closeparen><space>has<space>an<space>unknown<space>MIME<space>Type<space><openparen><at>Value<openparen>_unknown_mime_type<closeparen><closeparen>.<space>Adjust<space>CSV<space>file.,$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_Logger)","20","20","",INFO,LOG_ONLY,$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_Logger_54f13332_2330_423d_b45a_53a5840e3c2b0)
+# -------------------------------------------------------------------------
+# Build the List removal function and regular expression if there was any list attributes to be removed.
+# If not, then we will not have any extra list removal call to @RemoveAttributes, which speeds the
+# normal, non-list removal especially when in Bulk Mode.  Note that this computation of the regular expressions is done
+# once during mapping file parse time.
+INCLUDE [    set listAttributeRemoveRegexps {};    set anyList {no};    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append listAttributeRemoveRegexps ",^$attr$";       set anyList {yes};    };    if { ${anyList} == {no} } {        puts {MACRO $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC }    } else {        puts "MACRO $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC @RemoveAttributes(fme_pcre_match\"$listAttributeRemoveRegexps\")"    }; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_AttributeRemover    INPUT  FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_TestFilter_VALID"    OUTPUT { FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_AttributeRemover_OUTPUT"        @RemoveAttributes(fme_encoded,_order,_url_validation,_p-t_abbr)        $($(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC)         }
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Input Input Collector"   INPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_AttributeRemover_OUTPUT"   OUTPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Input"
+MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_DATA_OUTPUT1719514319 Output Collector"   INPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_DATA_OUTPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_UNKNOWN_MIME_TYPE1719514319 Output Collector"   INPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_Logger_LOGGED"   OUTPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME)_UNKNOWN_MIME_TYPE"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(EMPTY_FORMAT_MAPPER_NG_WORKSPACE_NAME))}]

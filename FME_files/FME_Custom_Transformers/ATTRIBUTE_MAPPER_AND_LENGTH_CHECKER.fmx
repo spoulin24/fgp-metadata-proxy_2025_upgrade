@@ -1,0 +1,1473 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER,2,"""FGP Tools""",f126d5c1-7953-4e2a-98e9-e757fa005778,"Linked by Default",No,NO_PARALLELISM,,No,25606,YES,No,313,No,,both
+# <p><strong>Description </strong></p>
+# <p>This custom transformer edits (maps) values specified in an input file to a specified attribute. It also checks the number of characters of this attribute to a specified value. It output through the TO_LONG port the features for wich the attribute is to long and and not mapped. The specified attribute can be a list or not. It uses the METADATA_VALUE_MAPPER_NG custom transformer for which the description is below.</p>
+# <p><strong>Input Ports </strong></p>
+# <ul>
+# <li>DATA_INPUT: The input metadata records to process.</li>
+# </ul>
+# <p><strong>Output Ports </strong></p>
+# <ul>
+# <li>
+# <p>CORRECT_LENGTH: The processed output metadata records with value mapped and attribute length verified.</p>
+# </li>
+# <li>
+# <p>TOO_LONG: The processed output metdata records value mapped and for wich the attribute length is to long.</p>
+# </li>
+# </ul>
+# <p><strong>Parameters </strong></p>
+# <ul>
+# <li>
+# <p>IN_ATT_TO_MAP: Name of the attribute on wich the mapping and the length verification needs to be done. It can be a list attribute or not.</p>
+# </li>
+# <li>
+# <p>IN_CHAR_LIMIT: Number of characters over wich the attribute will be compare (smaller or equal to).</p>
+# </li>
+# <li>
+# <p>METADATA_VALUE_MAPPER_NG params: See next section</p>
+# </li>
+# </ul>
+# <hr />
+# <p><p style="text-align: center;">METADATA_VALUE_MAPPER_NG </p></p>
+# <p>This custom transformer edits (maps) values to valid English values (if requested) and valid French values equivalent (if requested) and value code RI_CODES (if requested).  The name of the attribute to map and French, English and RI_CODES action are parametrizable.  </p>
+# <p>Note: If the attribute ou attribute list is not present on the feature an error is created.  If the element to map is not present in the lookup table an error is created.</p>
+# <p><strong>Input Ports </strong></p>
+# <ul>
+# <li>DATA_INPUT: The input metadata records to process.</li>
+# </ul>
+# <p><strong>Output Ports </strong></p>
+# <ul>
+# <li>OUTPUT: The process output metdata records with value mapped.</li>
+# </ul>
+# <p><strong>Parameters </strong></p>
+# <ul>
+# <li>
+# <p>ATT_TO_MAP: Name of the FME attribute or FME list attribute to map in plain text (ex.: 'format' or 'resources{}.format').  Do not use the Open Text Editor &gt; FME Feature Attribute option to select the attribute to map;</p>
+# </li>
+# <li>
+# <p>ERROR_NOT_MAPPED: Flag use to map data values that cannot be found in the loopup tables. Can take 2 values: Yes: map data values not found; No: Do not map data values not found;</p>
+# </li>
+# <li>
+# <p>ENGLISH_REFRESH: Flag use for updating English attribute value. Can take two value: Yes: update English attribute value; No do not update English attribute value;</p>
+# </li>
+# <li>
+# <p>FRENCH_REFRESH: Flag use for creating or updating French attribute value. Can take two value: Yes: update French attribute value; No do not update French atribute value;</p>
+# </li>
+# <li>
+# <p>CODE_REFRESH: Flag use for creating updating the RI_CODES. Can take two value: Yes: update the code; No do not update the code;</p>
+# </li>
+# <li>
+# <p>FEATURE_TYPE: Name of the CSV file to read (without .csv extension);</p>
+# </li>
+# <li>
+# <p>IN_CSV_LOOKUP_TABLES_DIR: Name of the directory path containing the CSV file to read;</p>
+# </li>
+# <li>
+# <p>P-T_ABBR: Two letters abbreviation of the province or the territory.</p>
+# </li>
+# </ul>
+# TRANSFORMER_END
+#!   A0_PREVIEW_IMAGE="data:image/png;base64,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"
+#!   ARCGIS_COMPATIBILITY="ARCGIS_AUTO"
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="&quot;FGP Tools&quot;"
+#!   DATA_PROCESSING_TYPE="both"
+#!   DESCRIPTION="&lt;p&gt;&lt;strong&gt;Description &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;This custom transformer edits (maps) values specified in an input file to a specified attribute. It also checks the number of characters of this attribute to a specified value. It output through the TO_LONG port the features for wich the attribute is to long and and not mapped. The specified attribute can be a list or not. It uses the METADATA_VALUE_MAPPER_NG custom transformer for which the description is below.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Input Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;DATA_INPUT: The input metadata records to process.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Output Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;CORRECT_LENGTH: The processed output metadata records with value mapped and attribute length verified.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;TOO_LONG: The processed output metdata records value mapped and for wich the attribute length is to long.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Parameters &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;IN_ATT_TO_MAP: Name of the attribute on wich the mapping and the length verification needs to be done. It can be a list attribute or not.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;IN_CHAR_LIMIT: Number of characters over wich the attribute will be compare (smaller or equal to).&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;METADATA_VALUE_MAPPER_NG params: See next section&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;hr /&gt;&#10;&lt;p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;METADATA_VALUE_MAPPER_NG &lt;/p&gt;&lt;/p&gt;&#10;&lt;p&gt;This custom transformer edits (maps) values to valid English values (if requested) and valid French values equivalent (if requested) and value code RI_CODES (if requested).  The name of the attribute to map and French, English and RI_CODES action are parametrizable.  &lt;/p&gt;&#10;&lt;p&gt;Note: If the attribute ou attribute list is not present on the feature an error is created.  If the element to map is not present in the lookup table an error is created.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Input Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;DATA_INPUT: The input metadata records to process.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Output Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;OUTPUT: The process output metdata records with value mapped.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Parameters &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;ATT_TO_MAP: Name of the FME attribute or FME list attribute to map in plain text (ex.: &apos;format&apos; or &apos;resources{}.format&apos;).  Do not use the Open Text Editor &amp;gt; FME Feature Attribute option to select the attribute to map;&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;ERROR_NOT_MAPPED: Flag use to map data values that cannot be found in the loopup tables. Can take 2 values: Yes: map data values not found; No: Do not map data values not found;&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;ENGLISH_REFRESH: Flag use for updating English attribute value. Can take two value: Yes: update English attribute value; No do not update English attribute value;&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;FRENCH_REFRESH: Flag use for creating or updating French attribute value. Can take two value: Yes: update French attribute value; No do not update French atribute value;&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;CODE_REFRESH: Flag use for creating updating the RI_CODES. Can take two value: Yes: update the code; No do not update the code;&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;FEATURE_TYPE: Name of the CSV file to read (without .csv extension);&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;IN_CSV_LOOKUP_TABLES_DIR: Name of the directory path containing the CSV file to read;&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;P-T_ABBR: Two letters abbreviation of the province or the territory.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;/ul&gt;"
+#!   DOC_EXTENTS="3908.51 1516.99"
+#!   DOC_TOP_LEFT="233.531 -1723.84"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="25606"
+#!   FME_DOCUMENT_GUID="f126d5c1-7953-4e2a-98e9-e757fa005778"
+#!   FME_DOCUMENT_PRIORGUID=""
+#!   FME_LINKED_TRANSFORMER_VERSION="2"
+#!   FME_NAMES_ENCODING="windows-1252"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY="Unknown,Unknown,Original&lt;space&gt;version,15&lt;solidus&gt;09&lt;solidus&gt;2021,Daniel&lt;space&gt;Pilon,Documentation"
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2025.1.0.0 (20250704 - Build 25606 - WIN64)"
+#!   LAST_SAVE_DATE="2025-10-06T13:29:05"
+#!   MARKDOWN_DESCRIPTION="**Description **&#10;&#10;This custom transformer edits (maps) values specified in an input file to a specified attribute. It also checks the number of characters of this attribute to a specified value. It output through the TO_LONG port the features for wich the attribute is to long and and not mapped. The specified attribute can be a list or not. It uses the METADATA_VALUE_MAPPER_NG custom transformer for which the description is below.&#10;&#10;**Input Ports **&#10;&#10; - DATA_INPUT: The input metadata records to process.&#10;&#10;**Output Ports **&#10;&#10; - CORRECT_LENGTH: The processed output metadata records with value mapped and attribute length verified.&#10;&#10; - TOO_LONG: The processed output metdata records value mapped and for wich the attribute length is to long.&#10;&#10;**Parameters **&#10;&#10;- IN_ATT_TO_MAP: Name of the attribute on wich the mapping and the length verification needs to be done. It can be a list attribute or not.&#10;&#10;- IN_CHAR_LIMIT: Number of characters over wich the attribute will be compare (smaller or equal to).&#10;&#10;- METADATA_VALUE_MAPPER_NG params: See next section&#10;&#10;&#10;---&#10;&lt;p style=&quot;text-align: center;&quot;&gt;METADATA_VALUE_MAPPER_NG &lt;/p&gt;&#10;&#10;This custom transformer edits (maps) values to valid English values (if requested) and valid French values equivalent (if requested) and value code RI_CODES (if requested).  The name of the attribute to map and French, English and RI_CODES action are parametrizable.  &#10;&#10;Note: If the attribute ou attribute list is not present on the feature an error is created.  If the element to map is not present in the lookup table an error is created.&#10;&#10;**Input Ports **&#10;&#10; - DATA_INPUT: The input metadata records to process.&#10;&#10;**Output Ports **&#10;&#10; - OUTPUT: The process output metdata records with value mapped.&#10;&#10;**Parameters **&#10;&#10; - ATT_TO_MAP: Name of the FME attribute or FME list attribute to map in plain text (ex.: &apos;format&apos; or &apos;resources{}.format&apos;).  Do not use the Open Text Editor &gt; FME Feature Attribute option to select the attribute to map;&#10;&#10; - ERROR_NOT_MAPPED: Flag use to map data values that cannot be found in the loopup tables. Can take 2 values: Yes: map data values not found; No: Do not map data values not found;&#10;&#10; - ENGLISH_REFRESH: Flag use for updating English attribute value. Can take two value: Yes: update English attribute value; No do not update English attribute value;&#10;&#10; - FRENCH_REFRESH: Flag use for creating or updating French attribute value. Can take two value: Yes: update French attribute value; No do not update French atribute value;&#10;&#10; - CODE_REFRESH: Flag use for creating updating the RI_CODES. Can take two value: Yes: update the code; No do not update the code;&#10;&#10; - FEATURE_TYPE: Name of the CSV file to read (without .csv extension);&#10;&#10; - IN_CSV_LOOKUP_TABLES_DIR: Name of the directory path containing the CSV file to read;&#10; &#10; - P-T_ABBR: Two letters abbreviation of the province or the territory.&#10;"
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="313"
+#!   REPLACED_BY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER"
+#!   USAGE=""
+#!   USE_MARKDOWN="YES"
+#!   VIEW_POSITION="27.5738 -15.3188"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="102"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR FEATURE_TYPE FEATURE_TYPE:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR IN_CSV_LOOKUP_TABLES_DIR IN_CSV_LOOKUP_TABLES_DIR:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR P-T_ABBR P-T_ABBR:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI LITERAL TEXT IN_ATT_TO_MAP IN_ATT_TO_MAP:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI RANGE_SLIDER_OR_ATTR IN_CHAR_LIMIT RANGE:[,] IN_CHAR_LIMIT:"
+#!   DEFAULT_VALUE="120"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI IGNORE NO_EDIT NAMEDGROUP FME_USER_PARAM_PRIVATE_GRP ERROR_NOT_MAPPED%ENGLISH_REFRESH%FRENCH_REFRESH%CODE_REFRESH Private Parameters"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="false"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI IGNORE OPTIONAL STRING_OR_CHOICE_OR_ATTR ERROR_NOT_MAPPED YES%NO ERROR_NOT_MAPPED:"
+#!   DEFAULT_VALUE="NO"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI IGNORE OPTIONAL STRING_OR_CHOICE_OR_ATTR ENGLISH_REFRESH YES%NO ENGLISH_REFRESH:"
+#!   DEFAULT_VALUE="YES"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI IGNORE OPTIONAL STRING_OR_CHOICE_OR_ATTR FRENCH_REFRESH YES%NO FRENCH_REFRESH:"
+#!   DEFAULT_VALUE="NO"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI IGNORE OPTIONAL STRING_OR_CHOICE_OR_ATTR CODE_REFRESH YES%NO CODE_REFRESH:"
+#!   DEFAULT_VALUE="NO"
+#!   IS_STAND_ALONE="true"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <USER_PARAMETERS
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbeyJuYW1lIjoiRkVBVFVSRV9UWVBFIiwicHJvbXB0IjoiRkVBVFVSRV9UWVBFOiIsInZhbHVlVHlwZSI6InN0cmluZyIsInJlcXVpcmVkIjpmYWxzZSwiZGVmYXVsdFZhbHVlIjoiIiwic3VwcG9ydGVkVmFsdWVUeXBlcyI6WyJleHByZXNzaW9uIiwiZ2xvYmFsUGFyYW1ldGVyIl0sImRlcHJlY2F0ZWRGbGFncyI6WyJub25lIl0sInR5cGUiOiJ0ZXh0IiwiZWRpdG9yIjoicGxhaW50ZXh0In0seyJuYW1lIjoiSU5fQ1NWX0xPT0tVUF9UQUJMRVNfRElSIiwicHJvbXB0IjoiSU5fQ1NWX0xPT0tVUF9UQUJMRVNfRElSOiIsInZhbHVlVHlwZSI6InN0cmluZyIsInJlcXVpcmVkIjpmYWxzZSwiZGVmYXVsdFZhbHVlIjoiIiwic3VwcG9ydGVkVmFsdWVUeXBlcyI6WyJleHByZXNzaW9uIiwiZ2xvYmFsUGFyYW1ldGVyIl0sImRlcHJlY2F0ZWRGbGFncyI6WyJub25lIl0sInR5cGUiOiJ0ZXh0IiwiZWRpdG9yIjoicGxhaW50ZXh0In0seyJuYW1lIjoiUC1UX0FCQlIiLCJwcm9tcHQiOiJQLVRfQUJCUjoiLCJ2YWx1ZVR5cGUiOiJzdHJpbmciLCJyZXF1aXJlZCI6ZmFsc2UsImRlZmF1bHRWYWx1ZSI6IiIsInN1cHBvcnRlZFZhbHVlVHlwZXMiOlsiZXhwcmVzc2lvbiIsImdsb2JhbFBhcmFtZXRlciJdLCJkZXByZWNhdGVkRmxhZ3MiOlsibm9uZSJdLCJ0eXBlIjoidGV4dCIsImVkaXRvciI6InBsYWludGV4dCJ9LHsibmFtZSI6IklOX0FUVF9UT19NQVAiLCJwcm9tcHQiOiJJTl9BVFRfVE9fTUFQOiIsInZhbHVlVHlwZSI6InN0cmluZyIsImRlZmF1bHRWYWx1ZSI6IiIsInN1cHBvcnRlZFZhbHVlVHlwZXMiOlsibm9uZSJdLCJkZXByZWNhdGVkRmxhZ3MiOlsibm9uZSJdLCJ0eXBlIjoidGV4dCIsImVkaXRvciI6InBsYWludGV4dCIsInNob3dFZGl0QnV0dG9uIjpmYWxzZX0seyJuYW1lIjoiSU5fQ0hBUl9MSU1JVCIsInByb21wdCI6IklOX0NIQVJfTElNSVQ6IiwidmFsdWVUeXBlIjoic3RyaW5nIiwiZGVmYXVsdFZhbHVlIjoiMTIwIiwic3VwcG9ydGVkVmFsdWVUeXBlcyI6WyJleHByZXNzaW9uIiwiZ2xvYmFsUGFyYW1ldGVyIl0sImRlcHJlY2F0ZWRGbGFncyI6WyJub25lIl0sInR5cGUiOiJudW1iZXIifSx7Im5hbWUiOiJGTUVfVVNFUl9QQVJBTV9QUklWQVRFX0dSUCIsInByb21wdCI6IlByaXZhdGUgUGFyYW1ldGVycyIsInZhbHVlVHlwZSI6InN0cmluZyIsImRlZmF1bHRWYWx1ZSI6IiIsInZpc2liaWxpdHkiOiJoaWRkZW5FbmFibGVkIiwidHlwZSI6Imdyb3VwIiwicGFyYW1ldGVycyI6W3sibmFtZSI6IkVSUk9SX05PVF9NQVBQRUQiLCJwcm9tcHQiOiJFUlJPUl9OT1RfTUFQUEVEOiIsInZhbHVlVHlwZSI6InN0cmluZyIsInJlcXVpcmVkIjpmYWxzZSwiZGVmYXVsdFZhbHVlIjoiTk8iLCJ2aXNpYmlsaXR5IjoiaGlkZGVuRW5hYmxlZCIsInN1cHBvcnRlZFZhbHVlVHlwZXMiOlsiZXhwcmVzc2lvbiIsImdsb2JhbFBhcmFtZXRlciJdLCJkZXByZWNhdGVkRmxhZ3MiOlsibm9uZSJdLCJjaG9pY2VTZXR0aW5ncyI6eyJzb3J0Ijoibm9Tb3J0IiwiY2hvaWNlcyI6W3sgImRpc3BsYXkiIDogIllFUyIsICJ2YWx1ZSIgOiAiWUVTIiB9LHsgImRpc3BsYXkiIDogIk5PIiwgInZhbHVlIiA6ICJOTyIgfV0sImNob2ljZVNldCI6InVzZXJEZWZpbmVkIn0sInR5cGUiOiJ0ZXh0IiwiZWRpdG9yIjoicGxhaW50ZXh0Iiwic2hvd0VkaXRCdXR0b24iOmZhbHNlfSx7Im5hbWUiOiJFTkdMSVNIX1JFRlJFU0giLCJwcm9tcHQiOiJFTkdMSVNIX1JFRlJFU0g6IiwidmFsdWVUeXBlIjoic3RyaW5nIiwicmVxdWlyZWQiOmZhbHNlLCJkZWZhdWx0VmFsdWUiOiJZRVMiLCJ2aXNpYmlsaXR5IjoiaGlkZGVuRW5hYmxlZCIsInN1cHBvcnRlZFZhbHVlVHlwZXMiOlsiZXhwcmVzc2lvbiIsImdsb2JhbFBhcmFtZXRlciJdLCJkZXByZWNhdGVkRmxhZ3MiOlsibm9uZSJdLCJjaG9pY2VTZXR0aW5ncyI6eyJzb3J0Ijoibm9Tb3J0IiwiY2hvaWNlcyI6W3sgImRpc3BsYXkiIDogIllFUyIsICJ2YWx1ZSIgOiAiWUVTIiB9LHsgImRpc3BsYXkiIDogIk5PIiwgInZhbHVlIiA6ICJOTyIgfV0sImNob2ljZVNldCI6InVzZXJEZWZpbmVkIn0sInR5cGUiOiJ0ZXh0IiwiZWRpdG9yIjoicGxhaW50ZXh0Iiwic2hvd0VkaXRCdXR0b24iOmZhbHNlfSx7Im5hbWUiOiJGUkVOQ0hfUkVGUkVTSCIsInByb21wdCI6IkZSRU5DSF9SRUZSRVNIOiIsInZhbHVlVHlwZSI6InN0cmluZyIsInJlcXVpcmVkIjpmYWxzZSwiZGVmYXVsdFZhbHVlIjoiTk8iLCJ2aXNpYmlsaXR5IjoiaGlkZGVuRW5hYmxlZCIsInN1cHBvcnRlZFZhbHVlVHlwZXMiOlsiZXhwcmVzc2lvbiIsImdsb2JhbFBhcmFtZXRlciJdLCJkZXByZWNhdGVkRmxhZ3MiOlsibm9uZSJdLCJjaG9pY2VTZXR0aW5ncyI6eyJzb3J0Ijoibm9Tb3J0IiwiY2hvaWNlcyI6W3sgImRpc3BsYXkiIDogIllFUyIsICJ2YWx1ZSIgOiAiWUVTIiB9LHsgImRpc3BsYXkiIDogIk5PIiwgInZhbHVlIiA6ICJOTyIgfV0sImNob2ljZVNldCI6InVzZXJEZWZpbmVkIn0sInR5cGUiOiJ0ZXh0IiwiZWRpdG9yIjoicGxhaW50ZXh0Iiwic2hvd0VkaXRCdXR0b24iOmZhbHNlfSx7Im5hbWUiOiJDT0RFX1JFRlJFU0giLCJwcm9tcHQiOiJDT0RFX1JFRlJFU0g6IiwidmFsdWVUeXBlIjoic3RyaW5nIiwicmVxdWlyZWQiOmZhbHNlLCJkZWZhdWx0VmFsdWUiOiJOTyIsInZpc2liaWxpdHkiOiJoaWRkZW5FbmFibGVkIiwic3VwcG9ydGVkVmFsdWVUeXBlcyI6WyJleHByZXNzaW9uIiwiZ2xvYmFsUGFyYW1ldGVyIl0sImRlcHJlY2F0ZWRGbGFncyI6WyJub25lIl0sImNob2ljZVNldHRpbmdzIjp7InNvcnQiOiJub1NvcnQiLCJjaG9pY2VzIjpbeyAiZGlzcGxheSIgOiAiWUVTIiwgInZhbHVlIiA6ICJZRVMiIH0seyAiZGlzcGxheSIgOiAiTk8iLCAidmFsdWUiIDogIk5PIiB9XSwiY2hvaWNlU2V0IjoidXNlckRlZmluZWQifSwidHlwZSI6InRleHQiLCJlZGl0b3IiOiJwbGFpbnRleHQiLCJzaG93RWRpdEJ1dHRvbiI6ZmFsc2V9XX1dfQ=="
+#! >
+#! <PARAMETER_INFO>
+#!     <INFO NAME="FEATURE_TYPE" 
+#!   DEFAULT_VALUE=""
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR FEATURE_TYPE FEATURE_TYPE:"
+#! />
+#!     <INFO NAME="IN_CSV_LOOKUP_TABLES_DIR" 
+#!   DEFAULT_VALUE=""
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR IN_CSV_LOOKUP_TABLES_DIR IN_CSV_LOOKUP_TABLES_DIR:"
+#! />
+#!     <INFO NAME="P-T_ABBR" 
+#!   DEFAULT_VALUE=""
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR P-T_ABBR P-T_ABBR:"
+#! />
+#!     <INFO NAME="IN_ATT_TO_MAP" 
+#!   DEFAULT_VALUE=""
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI LITERAL TEXT IN_ATT_TO_MAP IN_ATT_TO_MAP:"
+#! />
+#!     <INFO NAME="IN_CHAR_LIMIT" 
+#!   DEFAULT_VALUE="120"
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI RANGE_SLIDER_OR_ATTR IN_CHAR_LIMIT RANGE:[,] IN_CHAR_LIMIT:"
+#! />
+#!     <INFO NAME="FME_USER_PARAM_PRIVATE_GRP" 
+#!   DEFAULT_VALUE=""
+#!   SCOPE="DEPENDENT"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI IGNORE NO_EDIT NAMEDGROUP FME_USER_PARAM_PRIVATE_GRP ERROR_NOT_MAPPED%ENGLISH_REFRESH%FRENCH_REFRESH%CODE_REFRESH Private Parameters"
+#! />
+#!     <INFO NAME="ERROR_NOT_MAPPED" 
+#!   DEFAULT_VALUE="NO"
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI IGNORE OPTIONAL STRING_OR_CHOICE_OR_ATTR ERROR_NOT_MAPPED YES%NO ERROR_NOT_MAPPED:"
+#! />
+#!     <INFO NAME="ENGLISH_REFRESH" 
+#!   DEFAULT_VALUE="YES"
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI IGNORE OPTIONAL STRING_OR_CHOICE_OR_ATTR ENGLISH_REFRESH YES%NO ENGLISH_REFRESH:"
+#! />
+#!     <INFO NAME="FRENCH_REFRESH" 
+#!   DEFAULT_VALUE="NO"
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI IGNORE OPTIONAL STRING_OR_CHOICE_OR_ATTR FRENCH_REFRESH YES%NO FRENCH_REFRESH:"
+#! />
+#!     <INFO NAME="CODE_REFRESH" 
+#!   DEFAULT_VALUE="NO"
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI IGNORE OPTIONAL STRING_OR_CHOICE_OR_ATTR CODE_REFRESH YES%NO CODE_REFRESH:"
+#! />
+#! </PARAMETER_INFO>
+#! </USER_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="16"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Create attributes from published parameters&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="2020.6053373687994 -206.84786335679979"
+#!   TOP_LEFT="2020.6053373687994 -206.84786335679979"
+#!   BOTTOM_RIGHT="2572.3681674971008 -374.34923837054993"
+#!   BOUNDING_RECT="2020.6053373687994 -206.84786335679979 551.76283012830129 167.50137501375013"
+#!   ORDER="500000000000091.13"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{250fee16-9535-4951-abfa-45888ab34395}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="7"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="17"
+#!   NAME="Check attribute length"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="1968.0214178901895 -810.70684749031432"
+#!   ORDER="500000000002821"
+#!   PALETTE_COLOR="Color4"
+#!   BOTTOM_RIGHT="2536.0214178901897 -1086.7068474903144"
+#!   BOUNDING_RECT="1968.0214178901895 -810.70684749031432 568 276"
+#!   STICKY="true"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,1"
+#!   CONTENTS="8 "
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="6"
+#!   TYPE="METADATA_VALUE_MAPPER_NG"
+#!   VERSION="1"
+#!   POSITION="1097.8921401369339 -851.51557910704219"
+#!   BOUNDING_RECT="1097.8921401369339 -851.51557910704219 666.10000000000002 71"
+#!   ORDER="500000000001589"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="ATT_TO_MAP" PARM_VALUE="$(IN_ATT_TO_MAP)"/>
+#!     <XFORM_PARM PARM_NAME="CODE_REFRESH" PARM_VALUE="$(CODE_REFRESH)"/>
+#!     <XFORM_PARM PARM_NAME="ENGLISH_REFRESH" PARM_VALUE="$(ENGLISH_REFRESH)"/>
+#!     <XFORM_PARM PARM_NAME="ERROR_NOT_MAPPED" PARM_VALUE="$(ERROR_NOT_MAPPED)"/>
+#!     <XFORM_PARM PARM_NAME="FEATURE_TYPE" PARM_VALUE="$(FEATURE_TYPE)"/>
+#!     <XFORM_PARM PARM_NAME="FRENCH_REFRESH" PARM_VALUE="$(FRENCH_REFRESH)"/>
+#!     <XFORM_PARM PARM_NAME="IN_CSV_LOOKUP_TABLES_DIR" PARM_VALUE="$(IN_CSV_LOOKUP_TABLES_DIR)"/>
+#!     <XFORM_PARM PARM_NAME="P-T_ABBR" PARM_VALUE="$(P-T_ABBR)"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="METADATA_VALUE_MAPPER_NG"/>
+#!     <XFORM_PARM PARM_NAME="__COMPOUND_PARAMETERS" PARM_VALUE=""/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="7"
+#!   TYPE="AttributeCreator"
+#!   VERSION="10"
+#!   POSITION="2082.0214178901892 -470.33469670998267"
+#!   BOUNDING_RECT="2082.0214178901892 -470.33469670998267 431 71"
+#!   ORDER="500000000000005"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="att_2_map" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="char_limit" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; att_2_map SET_TO $(IN_ATT_TO_MAP) varchar&lt;openparen&gt;200&lt;closeparen&gt;  char_limit SET_TO $(IN_CHAR_LIMIT) varchar&lt;openparen&gt;200&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE" PARM_VALUE="NO_OP"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_MODIFIED_ATTRIBUTE_TYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_2"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_IS_LOOKUP="true" PARM_VALUE="No Substitution"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="8"
+#!   TYPE="PythonCaller"
+#!   VERSION="6"
+#!   POSITION="2056.0214178901897 -920.70684749031432"
+#!   BOUNDING_RECT="2056.0214178901897 -920.70684749031432 430 71"
+#!   ORDER="500000000002794"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="att_2_map" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="char_limit" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;Rejected&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="att_2_map" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="char_limit" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_message" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_PROCESSING_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="HIDE_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="NEW_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSOURCE" PARM_VALUE="import&lt;space&gt;fme&lt;lf&gt;import&lt;space&gt;fmeobjects&lt;lf&gt;from&lt;space&gt;Python.FME_utils&lt;space&gt;import&lt;space&gt;FME_utils&lt;lf&gt;&lt;lf&gt;#&lt;space&gt;Template&lt;space&gt;Class&lt;space&gt;Interface:&lt;lf&gt;#&lt;space&gt;When&lt;space&gt;using&lt;space&gt;this&lt;space&gt;class&lt;comma&gt;&lt;space&gt;make&lt;space&gt;sure&lt;space&gt;its&lt;space&gt;name&lt;space&gt;is&lt;space&gt;set&lt;space&gt;as&lt;space&gt;the&lt;space&gt;value&lt;space&gt;of&lt;lf&gt;#&lt;space&gt;the&lt;space&gt;&lt;apos&gt;Class&lt;space&gt;or&lt;space&gt;Function&lt;space&gt;to&lt;space&gt;Process&lt;space&gt;Features&lt;apos&gt;&lt;space&gt;transformer&lt;space&gt;parameter&lt;lf&gt;class&lt;space&gt;FeatureProcessor&lt;openparen&gt;object&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;def&lt;space&gt;__init__&lt;openparen&gt;self&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;pass&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;def&lt;space&gt;input&lt;openparen&gt;self&lt;comma&gt;&lt;space&gt;feature&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;#Char&lt;space&gt;limit&lt;space&gt;to&lt;space&gt;compare&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;CHAR_LIMIT&lt;space&gt;=&lt;space&gt;feature.getAttribute&lt;openparen&gt;&lt;apos&gt;char_limit&lt;apos&gt;&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;attr&lt;space&gt;=&lt;space&gt;feature.getAttribute&lt;openparen&gt;&lt;apos&gt;att_2_map&lt;apos&gt;&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;attr_values&lt;space&gt;=&lt;space&gt;FME_utils.feature_get_attribute&lt;openparen&gt;feature&lt;comma&gt;&lt;space&gt;str&lt;openparen&gt;attr&lt;closeparen&gt;&lt;comma&gt;&lt;space&gt;True&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;attr_vals_long&lt;space&gt;=&lt;space&gt;&lt;openbracket&gt;&lt;closebracket&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;#&lt;space&gt;Validation&lt;space&gt;in&lt;space&gt;order&lt;space&gt;to&lt;space&gt;iterate&lt;space&gt;on&lt;space&gt;a&lt;space&gt;list&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;attr_vals&lt;space&gt;=&lt;space&gt;attr_values&lt;space&gt;if&lt;space&gt;isinstance&lt;openparen&gt;attr_values&lt;comma&gt;&lt;space&gt;list&lt;closeparen&gt;&lt;space&gt;else&lt;space&gt;&lt;openbracket&gt;attr_values&lt;closebracket&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;#Iterate&lt;space&gt;over&lt;space&gt;the&lt;space&gt;list&lt;space&gt;and&lt;space&gt;flag&lt;space&gt;attributes&lt;space&gt;values&lt;space&gt;over&lt;space&gt;the&lt;space&gt;char&lt;space&gt;limit&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;for&lt;space&gt;att&lt;space&gt;in&lt;space&gt;attr_vals:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;if&lt;space&gt;len&lt;openparen&gt;att&lt;closeparen&gt;&lt;space&gt;&lt;gt&gt;=&lt;space&gt;CHAR_LIMIT:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;attr_vals_long.append&lt;openparen&gt;att&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;else:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;pass&lt;lf&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;feature.setAttribute&lt;openparen&gt;&lt;apos&gt;_to_long_value&lt;apos&gt;&lt;comma&gt;&lt;space&gt;attr_vals_long&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;self.pyoutput&lt;openparen&gt;feature&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;def&lt;space&gt;close&lt;openparen&gt;self&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;pass"/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSYMBOL" PARM_VALUE="FeatureProcessor"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="PythonCaller_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="9"
+#!   TYPE="Tester"
+#!   VERSION="4"
+#!   POSITION="2878.9275257856698 -966.04585002824842"
+#!   BOUNDING_RECT="2878.9275257856698 -966.04585002824842 454 71"
+#!   ORDER="500000000002819"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#!   OUTPUT_FT_ORDER="FAILED%PASSED"
+#! >
+#!     <OUTPUT_FEAT NAME="FAILED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="att_2_map" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="char_limit" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_to_long_value{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_to_long_value_concatenated" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="PASSED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="att_2_map" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="char_limit" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_to_long_value{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_to_long_value_concatenated" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_MSG" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="PER_OUTPUT_PORT"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST _to_long_value_concatenated ATTRIBUTE_HAS_A_VALUE &quot;&quot;"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="TEST"/>
+#!     <XFORM_PARM PARM_NAME="TEST_PREVIEW_GROUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="10"
+#!   TYPE="AttributeExposer"
+#!   VERSION="2"
+#!   POSITION="2082.0214178901892 -1307.9114137819251"
+#!   BOUNDING_RECT="2082.0214178901892 -1307.9114137819251 454 71"
+#!   ORDER="500000000002820"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="att_2_map" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="char_limit" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_to_long_value{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="_to_long_value{},,id,"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="11"
+#!   TYPE="ListConcatenator"
+#!   VERSION="4"
+#!   POSITION="2878.9275257856698 -626.58625922560816"
+#!   BOUNDING_RECT="2878.9275257856698 -626.58625922560816 454 71"
+#!   ORDER="500000000002822"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="att_2_map" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="char_limit" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_to_long_value{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_to_long_value_concatenated" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="DROP_EMPTY_PARTS" PARM_VALUE="Yes"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTR" PARM_VALUE="_to_long_value&lt;opencurly&gt;&lt;closecurly&gt;"/>
+#!     <XFORM_PARM PARM_NAME="OAN_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="SEP" PARM_VALUE="&lt;semicolon&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="VAL_ATTR" PARM_VALUE="_to_long_value_concatenated"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ListConcatenator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="25"
+#!   TYPE="ATTRIBUTE_UNEXPOSER"
+#!   VERSION="2"
+#!   POSITION="3608.9374683618021 -596.24391854729947"
+#!   BOUNDING_RECT="3608.9374683618021 -596.24391854729947 533.10000000000002 71"
+#!   ORDER="500000000002823"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_UNEXPOSER"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="28"
+#!   TYPE="AttributeRemover"
+#!   VERSION="1"
+#!   POSITION="3608.9374683618021 -268.12679227799742"
+#!   BOUNDING_RECT="3608.9374683618021 -268.12679227799742 454 71"
+#!   ORDER="500000000002824"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_to_long_value{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE="_to_long_value_concatenated,att_2_map,char_limit"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="19"
+#!   NAME="INPUT_2"
+#!   POSITION="233.53101866360618 -704.45528497468922"
+#!   BOUNDING_RECT="233.53101866360618 -704.45528497468922 637.00106825772946 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="20"
+#!   NAME="CORRECT_LENGTH"
+#!   POSITION="3624.9374683618025 -1045.0457261732181"
+#!   BOUNDING_RECT="3624.9374683618025 -1045.0457261732181 517.09999999999991 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="21"
+#!   NAME="TOO_LONG"
+#!   POSITION="3596.6824438507724 -1652.8407336633595"
+#!   BOUNDING_RECT="3596.6824438507724 -1652.8407336633595 454 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="22"
+#!   SOURCE_NODE="19"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 DATA_INPUT"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="24"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="12"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="8"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="13"
+#!   SOURCE_NODE="8"
+#!   TARGET_NODE="10"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="23"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="21"
+#!   SOURCE_PORT_DESC="fo 1 PASSED"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="14"
+#!   SOURCE_NODE="10"
+#!   TARGET_NODE="11"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="15"
+#!   SOURCE_NODE="11"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="27"
+#!   SOURCE_NODE="25"
+#!   TARGET_NODE="20"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="30"
+#!   SOURCE_NODE="28"
+#!   TARGET_NODE="25"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="29"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="28"
+#!   SOURCE_PORT_DESC="fo 0 FAILED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+FME_PYTHON_VERSION 313
+# ============================================================================
+DEFAULT_MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_FEATURE_TYPE 
+
+DEFAULT_MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_IN_CSV_LOOKUP_TABLES_DIR 
+
+DEFAULT_MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_P-T_ABBR 
+
+DEFAULT_MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_IN_ATT_TO_MAP 
+
+DEFAULT_MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_IN_CHAR_LIMIT 120
+
+DEFAULT_MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_FME_USER_PARAM_PRIVATE_GRP 
+
+DEFAULT_MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_ERROR_NOT_MAPPED NO
+
+DEFAULT_MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_ENGLISH_REFRESH YES
+
+DEFAULT_MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_FRENCH_REFRESH NO
+
+DEFAULT_MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_CODE_REFRESH NO
+
+DEFAULT_MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_FME_DATA_REPOSITORY 
+
+DEFAULT_MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_FME_ENGINE 
+
+DEFAULT_MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_FME_JOB_ID 
+
+DEFAULT_MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_FME_SECURITY_ROLES 
+
+DEFAULT_MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_FME_SECURITY_USER 
+
+DEFAULT_MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_FME_SERVER_DEST_DIR 
+
+DEFAULT_MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_FME_SERVER_HOST 
+
+DEFAULT_MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_FME_SERVER_PORT 
+
+DEFAULT_MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_FME_SERVER_REQUEST_HEADERS 
+
+DEFAULT_MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_FME_SERVER_REQUEST_METHOD 
+
+DEFAULT_MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_FME_SERVER_REQUEST_PARAMETERS 
+
+DEFAULT_MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_FME_SERVER_REQUEST_URI 
+
+DEFAULT_MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER 
+
+DEFAULT_MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER_ID 
+
+DEFAULT_MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_FME_SERVER_WEB_URL 
+
+DEFAULT_MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_BACKUP 
+
+DEFAULT_MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DASHBOARD 
+
+DEFAULT_MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DATA 
+
+DEFAULT_MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_ENGINE 
+
+DEFAULT_MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_LOG 
+
+DEFAULT_MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_SYSTEM 
+
+DEFAULT_MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_TEMP 
+
+DEFAULT_MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_FME_TOPIC 
+
+DEFAULT_MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_FME_TOPIC_MESSAGE 
+
+# ============================================================================
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_INPUT_21759771745 Input Splitter"   INPUT FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_INPUT_2"   OUTPUT FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_INPUT_2"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_METADATA_VALUE_MAPPER_NG DATA_INPUT Input Collector"   INPUT FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_INPUT_2"   OUTPUT FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_METADATA_VALUE_MAPPER_NG_DATA_INPUT"
+MACRO METADATA_VALUE_MAPPER_NG_WORKSPACE_NAME $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_METADATA_VALUE_MAPPER_NG
+MACRO $(METADATA_VALUE_MAPPER_NG_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(METADATA_VALUE_MAPPER_NG_WORKSPACE_NAME)_XFORMER_NAME $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_METADATA_VALUE_MAPPER_NG
+MACRO $(METADATA_VALUE_MAPPER_NG_WORKSPACE_NAME)___COMPOUND_PARAMETERS 
+MACRO $(METADATA_VALUE_MAPPER_NG_WORKSPACE_NAME)_ATT_TO_MAP $($(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_IN_ATT_TO_MAP)
+MACRO $(METADATA_VALUE_MAPPER_NG_WORKSPACE_NAME)_ERROR_NOT_MAPPED $($(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_ERROR_NOT_MAPPED)
+MACRO $(METADATA_VALUE_MAPPER_NG_WORKSPACE_NAME)_ENGLISH_REFRESH $($(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_ENGLISH_REFRESH)
+MACRO $(METADATA_VALUE_MAPPER_NG_WORKSPACE_NAME)_FRENCH_REFRESH $($(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_FRENCH_REFRESH)
+MACRO $(METADATA_VALUE_MAPPER_NG_WORKSPACE_NAME)_CODE_REFRESH $($(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_CODE_REFRESH)
+MACRO $(METADATA_VALUE_MAPPER_NG_WORKSPACE_NAME)_FEATURE_TYPE $($(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_FEATURE_TYPE)
+MACRO $(METADATA_VALUE_MAPPER_NG_WORKSPACE_NAME)_IN_CSV_LOOKUP_TABLES_DIR $($(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_IN_CSV_LOOKUP_TABLES_DIR)
+MACRO $(METADATA_VALUE_MAPPER_NG_WORKSPACE_NAME)_P-T_ABBR $($(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_P-T_ABBR)
+INCLUDE_CUSTOM_TRANSFORMER_VER METADATA_VALUE_MAPPER_NG:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_METADATA_VALUE_MAPPER_NG OUTPUT Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_METADATA_VALUE_MAPPER_NG_OUTPUT"   OUTPUT FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_METADATA_VALUE_MAPPER_NG_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME { $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_AttributeCreator_2 }    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_METADATA_VALUE_MAPPER_NG_OUTPUT"    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    NUM_OF_COLUMNS 5    ATTR_ACTION { "" "att_2_map" "SET_TO" "$($(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_IN_ATT_TO_MAP$encode)" "varchar<openparen>200<closeparen>" }      ATTR_ACTION { "" "char_limit" "SET_TO" "$($(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_IN_CHAR_LIMIT$encode)" "varchar<openparen>200<closeparen>" }    OUTPUT { OUTPUT FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"        }
+# -------------------------------------------------------------------------
+FME_PYTHON_PATH "$(FME_MF_DIR)"
+FACTORY_DEF {*} PythonFactory    FACTORY_NAME { $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_PythonCaller_2 }    FLUSH_WHEN_GROUPS_CHANGE { <Unused> }    INPUT  FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"    SYMBOL_NAME { FeatureProcessor }    SOURCE_CODE { import<space>fme<lf>import<space>fmeobjects<lf>from<space>Python.FME_utils<space>import<space>FME_utils<lf><lf>#<space>Template<space>Class<space>Interface:<lf>#<space>When<space>using<space>this<space>class<comma><space>make<space>sure<space>its<space>name<space>is<space>set<space>as<space>the<space>value<space>of<lf>#<space>the<space><apos>Class<space>or<space>Function<space>to<space>Process<space>Features<apos><space>transformer<space>parameter<lf>class<space>FeatureProcessor<openparen>object<closeparen>:<lf><space><space><space><space>def<space>__init__<openparen>self<closeparen>:<lf><space><space><space><space><space><space><space><space>pass<lf><space><space><space><space><space><space><space><space><lf><space><space><space><space>def<space>input<openparen>self<comma><space>feature<closeparen>:<lf><space><space><space><space><space><space><space><space>#Char<space>limit<space>to<space>compare<lf><space><space><space><space><space><space><space><space>CHAR_LIMIT<space>=<space>feature.getAttribute<openparen><apos>char_limit<apos><closeparen><lf><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space>attr<space>=<space>feature.getAttribute<openparen><apos>att_2_map<apos><closeparen><lf><space><space><space><space><space><space><space><space>attr_values<space>=<space>FME_utils.feature_get_attribute<openparen>feature<comma><space>str<openparen>attr<closeparen><comma><space>True<closeparen><lf><space><space><space><space><space><space><space><space>attr_vals_long<space>=<space><openbracket><closebracket><lf><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space>#<space>Validation<space>in<space>order<space>to<space>iterate<space>on<space>a<space>list<lf><space><space><space><space><space><space><space><space>attr_vals<space>=<space>attr_values<space>if<space>isinstance<openparen>attr_values<comma><space>list<closeparen><space>else<space><openbracket>attr_values<closebracket><lf><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space>#Iterate<space>over<space>the<space>list<space>and<space>flag<space>attributes<space>values<space>over<space>the<space>char<space>limit<lf><space><space><space><space><space><space><space><space>for<space>att<space>in<space>attr_vals:<lf><space><space><space><space><space><space><space><space><space><space><space>if<space>len<openparen>att<closeparen><space><gt>=<space>CHAR_LIMIT:<lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space>attr_vals_long.append<openparen>att<closeparen><lf><space><space><space><space><space><space><space><space><space><space><space>else:<lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>pass<lf><lf><space><space><space><space><space><space><space><space>feature.setAttribute<openparen><apos>_to_long_value<apos><comma><space>attr_vals_long<closeparen><lf><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space>self.pyoutput<openparen>feature<closeparen><lf><space><space><space><space><lf><space><space><space><space>def<space>close<openparen>self<closeparen>:<lf><space><space><space><space><space><space><space><space>pass }    PY_OUTPUT_TAGS { PYOUTPUT <Rejected> }    OUTPUT { PYOUTPUT FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_PythonCaller_2_OUTPUT"         }    OUTPUT { <Rejected> FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_PythonCaller_2_<Rejected>"         }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_PythonCaller_2 <Rejected> Transformer Output Nuker"   INPUT FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_PythonCaller_2_<Rejected>"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_AttributeExposer_2 }    INPUT  FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_PythonCaller_2_OUTPUT"    OUTPUT { FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"          }
+# -------------------------------------------------------------------------
+# Create a FME_UUID_SAFE from the FME_UUID so we can use it for Tcl identifiers (FMEDESKTOP-11308)
+INCLUDE [ FME_CleanseFMEUUID {$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_ListConcatenator_b9fb3570_988b_4776_b9aa_8dff4ad3362c0} ]
+Tcl2 set $(FME_UUID_SAFE)__separator [FME_DecodeText {<semicolon>}];      regsub -all \"{}\" [FME_DecodeText {_to_long_value<opencurly><closecurly>}] [FME_DecodeText {<opencurly><backslash>d+<closecurly>}] $(FME_UUID_SAFE)__listPattern;      set $(FME_UUID_SAFE)__listPattern ^$$(FME_UUID_SAFE)__listPattern$;
+Tcl2 proc $(FME_UUID_SAFE)__Concatenate {} {   upvar \#0 $(FME_UUID_SAFE)__separator separator             $(FME_UUID_SAFE)__listPattern listPattern;   set allAttrs [lsort -dictionary [FME_AttributeNames]];   set keepEmptyParts [string equal {Yes} {No}];   set result {};   foreach attrName $allAttrs {     if {[regexp $listPattern $attrName]} {       set attrValue [FME_GetAttribute $attrName];       if {$keepEmptyParts || $attrValue != {}} {         lappend result $attrValue;       };     };   };   FME_SetAttribute [FME_DecodeText {"_to_long_value_concatenated"}] [join $result $separator]; }
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_ListConcatenator }    INPUT  FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"    OUTPUT { FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_ListConcatenator_OUTPUT"         @Tcl2($(FME_UUID_SAFE)__Concatenate)          }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TestFactory    FACTORY_NAME { $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_Tester_2 }    INPUT  FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_ListConcatenator_OUTPUT"    TEST { _to_long_value_concatenated ATTRIBUTE_HAS_A_VALUE "" ENCODED }    BOOLEAN_OPERATOR { OR }    COMPOSITE_TEST_EXPR { "<Unused>" }    PRESERVE_FEATURE_ORDER { PER_OUTPUT_PORT }    OUTPUT { PASSED FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_Tester_2_PASSED"         }    OUTPUT { FAILED FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_Tester_2_FAILED"         }
+# -------------------------------------------------------------------------
+# Build the List removal function and regular expression if there was any list attributes to be removed.
+# If not, then we will not have any extra list removal call to @RemoveAttributes, which speeds the
+# normal, non-list removal especially when in Bulk Mode.  Note that this computation of the regular expressions is done
+# once during mapping file parse time.
+INCLUDE [    set listAttributeRemoveRegexps {};    set anyList {no};    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append listAttributeRemoveRegexps ",^$attr$";       set anyList {yes};    };    if { ${anyList} == {no} } {        puts {MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC }    } else {        puts "MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC @RemoveAttributes(fme_pcre_match\"$listAttributeRemoveRegexps\")"    }; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_AttributeRemover }    INPUT  FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_Tester_2_FAILED"    OUTPUT { FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_AttributeRemover_OUTPUT"        @RemoveAttributes(fme_encoded,_to_long_value_concatenated,att_2_map,char_limit)        $($(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC)         }
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Input Input Collector"   INPUT FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_AttributeRemover_OUTPUT"   OUTPUT FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Input"
+MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:2
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_CORRECT_LENGTH1759771745 Output Collector"   INPUT FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_CORRECT_LENGTH"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_TOO_LONG1759771745 Output Collector"   INPUT FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_Tester_2_PASSED"   OUTPUT FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_TOO_LONG"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME))}]
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER,1,"FGP Tools",d6730539-7ef7-4241-aede-e1e89e96928f,"Linked by Default",No,NO_PARALLELISM,,No,20787,YES,No,37,No,
+# <p><strong>Description </strong></p>
+# <p>This custom transformer edits (maps) values specified in an input file to a specified attribute. It also checks the number of characters of this attribute to a specified value. It output through the TO_LONG port the features for wich the attribute is to long and and not mapped. The specified attribute can be a list or not. It uses the METADATA_VALUE_MAPPER_NG custom transformer for which the description is below.</p>
+# <p><strong>Input Ports </strong></p>
+# <ul>
+# <li>DATA_INPUT: The input metadata records to process.</li>
+# </ul>
+# <p><strong>Output Ports </strong></p>
+# <ul>
+# <li>
+# <p>CORRECT_LENGTH: The processed output metadata records with value mapped and attribute length verified.</p>
+# </li>
+# <li>
+# <p>TOO_LONG: The processed output metdata records value mapped and for wich the attribute length is to long.</p>
+# </li>
+# </ul>
+# <p><strong>Parameters </strong></p>
+# <ul>
+# <li>
+# <p>IN_ATT_TO_MAP: Name of the attribute on wich the mapping and the length verification needs to be done. It can be a list attribute or not.</p>
+# </li>
+# <li>
+# <p>IN_CHAR_LIMIT: Number of characters over wich the attribute will be compare (smaller or equal to).</p>
+# </li>
+# <li>
+# <p>METADATA_VALUE_MAPPER_NG params: See next section</p>
+# </li>
+# </ul>
+# <hr />
+# <p><p style="text-align: center;">METADATA_VALUE_MAPPER_NG </p></p>
+# <p>This custom transformer edits (maps) values to valid English values (if requested) and valid French values equivalent (if requested) and value code RI_CODES (if requested).  The name of the attribute to map and French, English and RI_CODES action are parametrizable.  </p>
+# <p>Note: If the attribute ou attribute list is not present on the feature an error is created.  If the element to map is not present in the lookup table an error is created.</p>
+# <p><strong>Input Ports </strong></p>
+# <ul>
+# <li>DATA_INPUT: The input metadata records to process.</li>
+# </ul>
+# <p><strong>Output Ports </strong></p>
+# <ul>
+# <li>OUTPUT: The process output metdata records with value mapped.</li>
+# </ul>
+# <p><strong>Parameters </strong></p>
+# <ul>
+# <li>
+# <p>ATT_TO_MAP: Name of the FME attribute or FME list attribute to map in plain text (ex.: 'format' or 'resources{}.format').  Do not use the Open Text Editor &gt; FME Feature Attribute option to select the attribute to map;</p>
+# </li>
+# <li>
+# <p>ERROR_NOT_MAPPED: Flag use to map data values that cannot be found in the loopup tables. Can take 2 values: Yes: map data values not found; No: Do not map data values not found;</p>
+# </li>
+# <li>
+# <p>ENGLISH_REFRESH: Flag use for updating English attribute value. Can take two value: Yes: update English attribute value; No do not update English attribute value;</p>
+# </li>
+# <li>
+# <p>FRENCH_REFRESH: Flag use for creating or updating French attribute value. Can take two value: Yes: update French attribute value; No do not update French atribute value;</p>
+# </li>
+# <li>
+# <p>CODE_REFRESH: Flag use for creating updating the RI_CODES. Can take two value: Yes: update the code; No do not update the code;</p>
+# </li>
+# <li>
+# <p>FEATURE_TYPE: Name of the CSV file to read (without .csv extension);</p>
+# </li>
+# <li>
+# <p>IN_CSV_LOOKUP_TABLES_DIR: Name of the directory path containing the CSV file to read;</p>
+# </li>
+# <li>
+# <p>P-T_ABBR: Two letters abbreviation of the province or the territory.</p>
+# </li>
+# </ul>
+# TRANSFORMER_END
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="FGP Tools"
+#!   DESCRIPTION="&lt;p&gt;&lt;strong&gt;Description &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;This custom transformer edits (maps) values specified in an input file to a specified attribute. It also checks the number of characters of this attribute to a specified value. It output through the TO_LONG port the features for wich the attribute is to long and and not mapped. The specified attribute can be a list or not. It uses the METADATA_VALUE_MAPPER_NG custom transformer for which the description is below.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Input Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;DATA_INPUT: The input metadata records to process.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Output Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;CORRECT_LENGTH: The processed output metadata records with value mapped and attribute length verified.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;TOO_LONG: The processed output metdata records value mapped and for wich the attribute length is to long.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Parameters &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;IN_ATT_TO_MAP: Name of the attribute on wich the mapping and the length verification needs to be done. It can be a list attribute or not.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;IN_CHAR_LIMIT: Number of characters over wich the attribute will be compare (smaller or equal to).&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;METADATA_VALUE_MAPPER_NG params: See next section&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;hr /&gt;&#10;&lt;p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;METADATA_VALUE_MAPPER_NG &lt;/p&gt;&lt;/p&gt;&#10;&lt;p&gt;This custom transformer edits (maps) values to valid English values (if requested) and valid French values equivalent (if requested) and value code RI_CODES (if requested).  The name of the attribute to map and French, English and RI_CODES action are parametrizable.  &lt;/p&gt;&#10;&lt;p&gt;Note: If the attribute ou attribute list is not present on the feature an error is created.  If the element to map is not present in the lookup table an error is created.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Input Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;DATA_INPUT: The input metadata records to process.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Output Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;OUTPUT: The process output metdata records with value mapped.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Parameters &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;ATT_TO_MAP: Name of the FME attribute or FME list attribute to map in plain text (ex.: &apos;format&apos; or &apos;resources{}.format&apos;).  Do not use the Open Text Editor &amp;gt; FME Feature Attribute option to select the attribute to map;&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;ERROR_NOT_MAPPED: Flag use to map data values that cannot be found in the loopup tables. Can take 2 values: Yes: map data values not found; No: Do not map data values not found;&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;ENGLISH_REFRESH: Flag use for updating English attribute value. Can take two value: Yes: update English attribute value; No do not update English attribute value;&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;FRENCH_REFRESH: Flag use for creating or updating French attribute value. Can take two value: Yes: update French attribute value; No do not update French atribute value;&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;CODE_REFRESH: Flag use for creating updating the RI_CODES. Can take two value: Yes: update the code; No do not update the code;&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;FEATURE_TYPE: Name of the CSV file to read (without .csv extension);&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;IN_CSV_LOOKUP_TABLES_DIR: Name of the directory path containing the CSV file to read;&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;P-T_ABBR: Two letters abbreviation of the province or the territory.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;/ul&gt;"
+#!   DOC_EXTENTS="3908.51 1516.99"
+#!   DOC_TOP_LEFT="233.531 -1723.84"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="20787"
+#!   FME_DOCUMENT_GUID="d6730539-7ef7-4241-aede-e1e89e96928f"
+#!   FME_DOCUMENT_PRIORGUID="7992ace3-664b-4338-b4ab-7855c3aabf9a,384215fe-8385-482d-a054-e3ff01b712f0,fe021380-b3f6-42e8-a284-140c883421f6,70a13827-cbfe-4088-b54b-19a9960fabb7,7a8183ec-03db-47af-908c-d8dcd33de312,c502a024-d6a1-4e12-8143-5133d447818f,1aa5dae1-b6de-4325-923b-e7264e159ded,542a26d1-acd2-4361-9486-653c8aa4acbd,99f689bb-d6c8-4383-a51c-f0444aee36a1,f3a59d5c-033e-49d5-aff2-3096ec181cf4,7e4a622f-2b53-4d2f-a45b-64306f1859ca,13034d91-91c8-4ba6-8751-696f1793f34e,8f8b79c9-7585-4746-bf54-1e6a25a62902,faab5f78-8f4b-49e9-8dc1-fd42d88d283b"
+#!   FME_LINKED_TRANSFORMER_VERSION="1"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY="Unknown,Unknown,Original&lt;space&gt;version,15&lt;solidus&gt;09&lt;solidus&gt;2021,Daniel&lt;space&gt;Pilon,Documentation"
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2020.2.0.0 (20201027 - Build 20787 - WIN32)"
+#!   LAST_SAVE_DATE="2024-04-08T09:18:13"
+#!   MARKDOWN_DESCRIPTION="**Description **&#10;&#10;This custom transformer edits (maps) values specified in an input file to a specified attribute. It also checks the number of characters of this attribute to a specified value. It output through the TO_LONG port the features for wich the attribute is to long and and not mapped. The specified attribute can be a list or not. It uses the METADATA_VALUE_MAPPER_NG custom transformer for which the description is below.&#10;&#10;**Input Ports **&#10;&#10; - DATA_INPUT: The input metadata records to process.&#10;&#10;**Output Ports **&#10;&#10; - CORRECT_LENGTH: The processed output metadata records with value mapped and attribute length verified.&#10;&#10; - TOO_LONG: The processed output metdata records value mapped and for wich the attribute length is to long.&#10;&#10;**Parameters **&#10;&#10;- IN_ATT_TO_MAP: Name of the attribute on wich the mapping and the length verification needs to be done. It can be a list attribute or not.&#10;&#10;- IN_CHAR_LIMIT: Number of characters over wich the attribute will be compare (smaller or equal to).&#10;&#10;- METADATA_VALUE_MAPPER_NG params: See next section&#10;&#10;&#10;---&#10;&lt;p style=&quot;text-align: center;&quot;&gt;METADATA_VALUE_MAPPER_NG &lt;/p&gt;&#10;&#10;This custom transformer edits (maps) values to valid English values (if requested) and valid French values equivalent (if requested) and value code RI_CODES (if requested).  The name of the attribute to map and French, English and RI_CODES action are parametrizable.  &#10;&#10;Note: If the attribute ou attribute list is not present on the feature an error is created.  If the element to map is not present in the lookup table an error is created.&#10;&#10;**Input Ports **&#10;&#10; - DATA_INPUT: The input metadata records to process.&#10;&#10;**Output Ports **&#10;&#10; - OUTPUT: The process output metdata records with value mapped.&#10;&#10;**Parameters **&#10;&#10; - ATT_TO_MAP: Name of the FME attribute or FME list attribute to map in plain text (ex.: &apos;format&apos; or &apos;resources{}.format&apos;).  Do not use the Open Text Editor &gt; FME Feature Attribute option to select the attribute to map;&#10;&#10; - ERROR_NOT_MAPPED: Flag use to map data values that cannot be found in the loopup tables. Can take 2 values: Yes: map data values not found; No: Do not map data values not found;&#10;&#10; - ENGLISH_REFRESH: Flag use for updating English attribute value. Can take two value: Yes: update English attribute value; No do not update English attribute value;&#10;&#10; - FRENCH_REFRESH: Flag use for creating or updating French attribute value. Can take two value: Yes: update French attribute value; No do not update French atribute value;&#10;&#10; - CODE_REFRESH: Flag use for creating updating the RI_CODES. Can take two value: Yes: update the code; No do not update the code;&#10;&#10; - FEATURE_TYPE: Name of the CSV file to read (without .csv extension);&#10;&#10; - IN_CSV_LOOKUP_TABLES_DIR: Name of the directory path containing the CSV file to read;&#10; &#10; - P-T_ABBR: Two letters abbreviation of the province or the territory.&#10;"
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="37"
+#!   REPLACED_BY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER"
+#!   USAGE=""
+#!   USE_MARKDOWN="YES"
+#!   VIEW_POSITION="-404.416 242.037"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="102"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR FEATURE_TYPE FEATURE_TYPE:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR IN_CSV_LOOKUP_TABLES_DIR IN_CSV_LOOKUP_TABLES_DIR:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR P-T_ABBR P-T_ABBR:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI LITERAL TEXT IN_ATT_TO_MAP IN_ATT_TO_MAP:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI RANGE_SLIDER_OR_ATTR IN_CHAR_LIMIT RANGE:[,] IN_CHAR_LIMIT:"
+#!   DEFAULT_VALUE="120"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI IGNORE OPTIONAL STRING_OR_CHOICE_OR_ATTR ERROR_NOT_MAPPED YES%NO ERROR_NOT_MAPPED:"
+#!   DEFAULT_VALUE="NO"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI IGNORE OPTIONAL STRING_OR_CHOICE_OR_ATTR ENGLISH_REFRESH YES%NO ENGLISH_REFRESH:"
+#!   DEFAULT_VALUE="YES"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI IGNORE OPTIONAL STRING_OR_CHOICE_OR_ATTR FRENCH_REFRESH YES%NO FRENCH_REFRESH:"
+#!   DEFAULT_VALUE="NO"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI IGNORE OPTIONAL STRING_OR_CHOICE_OR_ATTR CODE_REFRESH YES%NO CODE_REFRESH:"
+#!   DEFAULT_VALUE="NO"
+#!   IS_STAND_ALONE="true"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="16"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Create attributes from published parameters&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="2020.6053373687994 -206.84786335679979"
+#!   TOP_LEFT="2020.6053373687994 -206.84786335679979"
+#!   BOTTOM_RIGHT="2572.4054029482641 -374.34923837054993"
+#!   BOUNDING_RECT="2020.6053373687994 -206.84786335679979 551.8000655794649 167.50137501375013"
+#!   ORDER="500000000000091.13"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.28627450980392155,0.29803921568627451,0.0078431372549019607,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="7"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="17"
+#!   NAME="Check attribute length"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="1968.0214178901895 -810.70684749031432"
+#!   ORDER="500000000002821"
+#!   PALETTE_COLOR="Color4"
+#!   BOTTOM_RIGHT="2536.0214178901897 -1086.7068474903144"
+#!   BOUNDING_RECT="1968.0214178901895 -810.70684749031432 568 276"
+#!   STICKY="true"
+#!   COLOUR="0.45882352941176469,0.53725490196078429,0.21176470588235294,1"
+#!   CONTENTS="8 "
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="6"
+#!   TYPE="METADATA_VALUE_MAPPER_NG"
+#!   VERSION="1"
+#!   POSITION="1097.8921401369339 -851.51557910704219"
+#!   BOUNDING_RECT="1097.8921401369339 -851.51557910704219 666.10000000000002 71"
+#!   ORDER="500000000001589"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="ATT_TO_MAP" PARM_VALUE="$(IN_ATT_TO_MAP)"/>
+#!     <XFORM_PARM PARM_NAME="CODE_REFRESH" PARM_VALUE="$(CODE_REFRESH)"/>
+#!     <XFORM_PARM PARM_NAME="ENGLISH_REFRESH" PARM_VALUE="$(ENGLISH_REFRESH)"/>
+#!     <XFORM_PARM PARM_NAME="ERROR_NOT_MAPPED" PARM_VALUE="$(ERROR_NOT_MAPPED)"/>
+#!     <XFORM_PARM PARM_NAME="FEATURE_TYPE" PARM_VALUE="$(FEATURE_TYPE)"/>
+#!     <XFORM_PARM PARM_NAME="FRENCH_REFRESH" PARM_VALUE="$(FRENCH_REFRESH)"/>
+#!     <XFORM_PARM PARM_NAME="IN_CSV_LOOKUP_TABLES_DIR" PARM_VALUE="$(IN_CSV_LOOKUP_TABLES_DIR)"/>
+#!     <XFORM_PARM PARM_NAME="P-T_ABBR" PARM_VALUE="$(P-T_ABBR)"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="METADATA_VALUE_MAPPER_NG"/>
+#!     <XFORM_PARM PARM_NAME="__COMPOUND_PARAMETERS" PARM_VALUE=""/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="7"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="2082.0214178901892 -470.33469670998267"
+#!   BOUNDING_RECT="2082.0214178901892 -470.33469670998267 431 71"
+#!   ORDER="500000000000005"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="att_2_map" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="char_limit" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; att_2_map SET_TO $(IN_ATT_TO_MAP)  char_limit SET_TO $(IN_CHAR_LIMIT)"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="8"
+#!   TYPE="PythonCaller"
+#!   VERSION="4"
+#!   POSITION="2056.0214178901897 -920.70684749031432"
+#!   BOUNDING_RECT="2056.0214178901897 -920.70684749031432 430 71"
+#!   ORDER="500000000002794"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="att_2_map" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="char_limit" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="HIDE_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="NEW_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSOURCE" PARM_VALUE="import&lt;space&gt;fme&lt;lf&gt;import&lt;space&gt;fmeobjects&lt;lf&gt;from&lt;space&gt;Python.FME_utils&lt;space&gt;import&lt;space&gt;FME_utils&lt;lf&gt;&lt;lf&gt;#&lt;space&gt;Template&lt;space&gt;Class&lt;space&gt;Interface:&lt;lf&gt;#&lt;space&gt;When&lt;space&gt;using&lt;space&gt;this&lt;space&gt;class&lt;comma&gt;&lt;space&gt;make&lt;space&gt;sure&lt;space&gt;its&lt;space&gt;name&lt;space&gt;is&lt;space&gt;set&lt;space&gt;as&lt;space&gt;the&lt;space&gt;value&lt;space&gt;of&lt;lf&gt;#&lt;space&gt;the&lt;space&gt;&lt;apos&gt;Class&lt;space&gt;or&lt;space&gt;Function&lt;space&gt;to&lt;space&gt;Process&lt;space&gt;Features&lt;apos&gt;&lt;space&gt;transformer&lt;space&gt;parameter&lt;lf&gt;class&lt;space&gt;FeatureProcessor&lt;openparen&gt;object&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;def&lt;space&gt;__init__&lt;openparen&gt;self&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;pass&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;def&lt;space&gt;input&lt;openparen&gt;self&lt;comma&gt;&lt;space&gt;feature&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;#Char&lt;space&gt;limit&lt;space&gt;to&lt;space&gt;compare&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;CHAR_LIMIT&lt;space&gt;=&lt;space&gt;feature.getAttribute&lt;openparen&gt;&lt;apos&gt;char_limit&lt;apos&gt;&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;attr&lt;space&gt;=&lt;space&gt;feature.getAttribute&lt;openparen&gt;&lt;apos&gt;att_2_map&lt;apos&gt;&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;attr_values&lt;space&gt;=&lt;space&gt;FME_utils.feature_get_attribute&lt;openparen&gt;feature&lt;comma&gt;&lt;space&gt;str&lt;openparen&gt;attr&lt;closeparen&gt;&lt;comma&gt;&lt;space&gt;True&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;attr_vals_long&lt;space&gt;=&lt;space&gt;&lt;openbracket&gt;&lt;closebracket&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;#&lt;space&gt;Validation&lt;space&gt;in&lt;space&gt;order&lt;space&gt;to&lt;space&gt;iterate&lt;space&gt;on&lt;space&gt;a&lt;space&gt;list&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;attr_vals&lt;space&gt;=&lt;space&gt;attr_values&lt;space&gt;if&lt;space&gt;isinstance&lt;openparen&gt;attr_values&lt;comma&gt;&lt;space&gt;list&lt;closeparen&gt;&lt;space&gt;else&lt;space&gt;&lt;openbracket&gt;attr_values&lt;closebracket&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;#Iterate&lt;space&gt;over&lt;space&gt;the&lt;space&gt;list&lt;space&gt;and&lt;space&gt;flag&lt;space&gt;attributes&lt;space&gt;values&lt;space&gt;over&lt;space&gt;the&lt;space&gt;char&lt;space&gt;limit&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;for&lt;space&gt;att&lt;space&gt;in&lt;space&gt;attr_vals:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;if&lt;space&gt;len&lt;openparen&gt;att&lt;closeparen&gt;&lt;space&gt;&lt;gt&gt;=&lt;space&gt;CHAR_LIMIT:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;attr_vals_long.append&lt;openparen&gt;att&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;else:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;pass&lt;lf&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;feature.setAttribute&lt;openparen&gt;&lt;apos&gt;_to_long_value&lt;apos&gt;&lt;comma&gt;&lt;space&gt;attr_vals_long&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;self.pyoutput&lt;openparen&gt;feature&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;def&lt;space&gt;close&lt;openparen&gt;self&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;pass"/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSYMBOL" PARM_VALUE="FeatureProcessor"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="PythonCaller_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="9"
+#!   TYPE="Tester"
+#!   VERSION="3"
+#!   POSITION="2878.9275257856698 -966.04585002824842"
+#!   BOUNDING_RECT="2878.9275257856698 -966.04585002824842 454 71"
+#!   ORDER="500000000002819"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#!   OUTPUT_FT_ORDER="FAILED%PASSED"
+#! >
+#!     <OUTPUT_FEAT NAME="FAILED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="att_2_map" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="char_limit" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_to_long_value{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_to_long_value_concatenated" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="PASSED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="att_2_map" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="char_limit" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_to_long_value{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_to_long_value_concatenated" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_MSG" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="1"/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="Per Output Port"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST _to_long_value_concatenated ATTRIBUTE_HAS_A_VALUE &quot;&quot;"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="TEST"/>
+#!     <XFORM_PARM PARM_NAME="TEST_PREVIEW_GROUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="10"
+#!   TYPE="AttributeExposer"
+#!   VERSION="1"
+#!   POSITION="2082.0214178901892 -1307.9114137819251"
+#!   BOUNDING_RECT="2082.0214178901892 -1307.9114137819251 454 71"
+#!   ORDER="500000000002820"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="att_2_map" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="char_limit" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_to_long_value{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="_to_long_value{},id"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="11"
+#!   TYPE="ListConcatenator"
+#!   VERSION="3"
+#!   POSITION="2878.9275257856698 -626.58625922560816"
+#!   BOUNDING_RECT="2878.9275257856698 -626.58625922560816 454 71"
+#!   ORDER="500000000002822"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="att_2_map" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="char_limit" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_to_long_value{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_to_long_value_concatenated" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="DROP_EMPTY_PARTS" PARM_VALUE="Yes"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTR" PARM_VALUE="_to_long_value&lt;opencurly&gt;&lt;closecurly&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="SEP" PARM_VALUE="&lt;semicolon&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="VAL_ATTR" PARM_VALUE="_to_long_value_concatenated"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ListConcatenator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="25"
+#!   TYPE="ATTRIBUTE_UNEXPOSER"
+#!   VERSION="1"
+#!   POSITION="3608.9374683618021 -596.24391854729947"
+#!   BOUNDING_RECT="3608.9374683618021 -596.24391854729947 533.10000000000002 71"
+#!   ORDER="500000000002823"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_UNEXPOSER"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="28"
+#!   TYPE="AttributeRemover"
+#!   VERSION="1"
+#!   POSITION="3608.9374683618021 -268.12679227799742"
+#!   BOUNDING_RECT="3608.9374683618021 -268.12679227799742 454 71"
+#!   ORDER="500000000002824"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_to_long_value{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE="_to_long_value_concatenated,att_2_map,char_limit"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="19"
+#!   NAME="INPUT_2"
+#!   POSITION="233.53101866360618 -704.45528497468922"
+#!   BOUNDING_RECT="233.53101866360618 -704.45528497468922 637.00106825772946 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="20"
+#!   NAME="CORRECT_LENGTH"
+#!   POSITION="3624.9374683618025 -1045.0457261732181"
+#!   BOUNDING_RECT="3624.9374683618025 -1045.0457261732181 517.09999999999991 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="21"
+#!   NAME="TOO_LONG"
+#!   POSITION="3596.6824438507724 -1652.8407336633595"
+#!   BOUNDING_RECT="3596.6824438507724 -1652.8407336633595 454 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="22"
+#!   SOURCE_NODE="19"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 DATA_INPUT"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="24"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="12"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="8"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="13"
+#!   SOURCE_NODE="8"
+#!   TARGET_NODE="10"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="23"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="21"
+#!   SOURCE_PORT_DESC="fo 1 PASSED"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="14"
+#!   SOURCE_NODE="10"
+#!   TARGET_NODE="11"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="15"
+#!   SOURCE_NODE="11"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="27"
+#!   SOURCE_NODE="25"
+#!   TARGET_NODE="20"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="30"
+#!   SOURCE_NODE="28"
+#!   TARGET_NODE="25"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="29"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="28"
+#!   SOURCE_PORT_DESC="fo 0 FAILED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+FME_PYTHON_VERSION 37
+DEFAULT_MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_FEATURE_TYPE 
+DEFAULT_MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_IN_CSV_LOOKUP_TABLES_DIR 
+DEFAULT_MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_P-T_ABBR 
+DEFAULT_MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_IN_ATT_TO_MAP 
+DEFAULT_MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_IN_CHAR_LIMIT 120
+DEFAULT_MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_ERROR_NOT_MAPPED NO
+DEFAULT_MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_ENGLISH_REFRESH YES
+DEFAULT_MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_FRENCH_REFRESH NO
+DEFAULT_MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_CODE_REFRESH NO
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_INPUT_21712582294 Input Splitter"   INPUT FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_INPUT_2"   OUTPUT FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_INPUT_2"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_METADATA_VALUE_MAPPER_NG DATA_INPUT Input Collector"   INPUT FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_INPUT_2"   OUTPUT FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_METADATA_VALUE_MAPPER_NG_DATA_INPUT"
+MACRO METADATA_VALUE_MAPPER_NG_WORKSPACE_NAME $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_METADATA_VALUE_MAPPER_NG
+MACRO $(METADATA_VALUE_MAPPER_NG_WORKSPACE_NAME)_XFORMER_NAME $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_METADATA_VALUE_MAPPER_NG
+MACRO $(METADATA_VALUE_MAPPER_NG_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(METADATA_VALUE_MAPPER_NG_WORKSPACE_NAME)___COMPOUND_PARAMETERS 
+MACRO $(METADATA_VALUE_MAPPER_NG_WORKSPACE_NAME)_ATT_TO_MAP $($(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_IN_ATT_TO_MAP)
+MACRO $(METADATA_VALUE_MAPPER_NG_WORKSPACE_NAME)_ERROR_NOT_MAPPED $($(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_ERROR_NOT_MAPPED)
+MACRO $(METADATA_VALUE_MAPPER_NG_WORKSPACE_NAME)_ENGLISH_REFRESH $($(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_ENGLISH_REFRESH)
+MACRO $(METADATA_VALUE_MAPPER_NG_WORKSPACE_NAME)_FRENCH_REFRESH $($(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_FRENCH_REFRESH)
+MACRO $(METADATA_VALUE_MAPPER_NG_WORKSPACE_NAME)_CODE_REFRESH $($(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_CODE_REFRESH)
+MACRO $(METADATA_VALUE_MAPPER_NG_WORKSPACE_NAME)_FEATURE_TYPE $($(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_FEATURE_TYPE)
+MACRO $(METADATA_VALUE_MAPPER_NG_WORKSPACE_NAME)_IN_CSV_LOOKUP_TABLES_DIR $($(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_IN_CSV_LOOKUP_TABLES_DIR)
+MACRO $(METADATA_VALUE_MAPPER_NG_WORKSPACE_NAME)_P-T_ABBR $($(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_P-T_ABBR)
+INCLUDE_CUSTOM_TRANSFORMER_VER METADATA_VALUE_MAPPER_NG:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_METADATA_VALUE_MAPPER_NG OUTPUT Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_METADATA_VALUE_MAPPER_NG_OUTPUT"   OUTPUT FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_METADATA_VALUE_MAPPER_NG_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_AttributeCreator_2    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_METADATA_VALUE_MAPPER_NG_OUTPUT"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "att_2_map" "SET_TO" "$($(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_IN_ATT_TO_MAP$encode)" }      ATTR_ACTION { "" "char_limit" "SET_TO" "$($(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_IN_CHAR_LIMIT$encode)" }    OUTPUT OUTPUT FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"
+# -------------------------------------------------------------------------
+FME_PYTHON_PATH "$(FME_MF_DIR)"
+FACTORY_DEF * PythonFactory    FACTORY_NAME $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_PythonCaller_2    INPUT  FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"    SYMBOL_NAME FeatureProcessor    PYTHON_NAMESPACE FMEOBJECTS    SOURCE_CODE import<space>fme<lf>import<space>fmeobjects<lf>from<space>Python.FME_utils<space>import<space>FME_utils<lf><lf>#<space>Template<space>Class<space>Interface:<lf>#<space>When<space>using<space>this<space>class<comma><space>make<space>sure<space>its<space>name<space>is<space>set<space>as<space>the<space>value<space>of<lf>#<space>the<space><apos>Class<space>or<space>Function<space>to<space>Process<space>Features<apos><space>transformer<space>parameter<lf>class<space>FeatureProcessor<openparen>object<closeparen>:<lf><space><space><space><space>def<space>__init__<openparen>self<closeparen>:<lf><space><space><space><space><space><space><space><space>pass<lf><space><space><space><space><space><space><space><space><lf><space><space><space><space>def<space>input<openparen>self<comma><space>feature<closeparen>:<lf><space><space><space><space><space><space><space><space>#Char<space>limit<space>to<space>compare<lf><space><space><space><space><space><space><space><space>CHAR_LIMIT<space>=<space>feature.getAttribute<openparen><apos>char_limit<apos><closeparen><lf><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space>attr<space>=<space>feature.getAttribute<openparen><apos>att_2_map<apos><closeparen><lf><space><space><space><space><space><space><space><space>attr_values<space>=<space>FME_utils.feature_get_attribute<openparen>feature<comma><space>str<openparen>attr<closeparen><comma><space>True<closeparen><lf><space><space><space><space><space><space><space><space>attr_vals_long<space>=<space><openbracket><closebracket><lf><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space>#<space>Validation<space>in<space>order<space>to<space>iterate<space>on<space>a<space>list<lf><space><space><space><space><space><space><space><space>attr_vals<space>=<space>attr_values<space>if<space>isinstance<openparen>attr_values<comma><space>list<closeparen><space>else<space><openbracket>attr_values<closebracket><lf><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space>#Iterate<space>over<space>the<space>list<space>and<space>flag<space>attributes<space>values<space>over<space>the<space>char<space>limit<lf><space><space><space><space><space><space><space><space>for<space>att<space>in<space>attr_vals:<lf><space><space><space><space><space><space><space><space><space><space><space>if<space>len<openparen>att<closeparen><space><gt>=<space>CHAR_LIMIT:<lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space>attr_vals_long.append<openparen>att<closeparen><lf><space><space><space><space><space><space><space><space><space><space><space>else:<lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>pass<lf><lf><space><space><space><space><space><space><space><space>feature.setAttribute<openparen><apos>_to_long_value<apos><comma><space>attr_vals_long<closeparen><lf><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space>self.pyoutput<openparen>feature<closeparen><lf><space><space><space><space><lf><space><space><space><space>def<space>close<openparen>self<closeparen>:<lf><space><space><space><space><space><space><space><space>pass    OUTPUT PYOUTPUT FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_PythonCaller_2_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_AttributeExposer_2    INPUT  FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_PythonCaller_2_OUTPUT"    OUTPUT FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"
+# -------------------------------------------------------------------------
+Tcl2 set $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_ListConcatenator__separator [FME_DecodeText {<semicolon>}];      regsub -all \"{}\" [FME_DecodeText {_to_long_value<opencurly><closecurly>}] [FME_DecodeText {<opencurly><backslash>d+<closecurly>}] $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_ListConcatenator__listPattern;      set $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_ListConcatenator__listPattern ^$$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_ListConcatenator__listPattern$;
+Tcl2 proc $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_ListConcatenator__Concatenate {} {   upvar \#0 $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_ListConcatenator__separator separator             $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_ListConcatenator__listPattern listPattern;   set allAttrs [lsort -dictionary [FME_AttributeNames]];   set keepEmptyParts [string equal {Yes} {No}];   set result {};   foreach attrName $allAttrs {     if {[regexp $listPattern $attrName]} {       set attrValue [FME_GetAttribute $attrName];       if {$keepEmptyParts || $attrValue != {}} {         lappend result $attrValue;       };     };   };   FME_SetAttribute {"_to_long_value_concatenated"} [join $result $separator]; }
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_ListConcatenator    INPUT  FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"    OUTPUT FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_ListConcatenator_OUTPUT"         @Tcl2($(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_ListConcatenator__Concatenate)
+# -------------------------------------------------------------------------
+FACTORY_DEF * TestFactory    FACTORY_NAME $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_Tester_2    INPUT  FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_ListConcatenator_OUTPUT"    TEST _to_long_value_concatenated ATTRIBUTE_HAS_A_VALUE "" ENCODED    BOOLEAN_OPERATOR OR    COMPOSITE_TEST_EXPR "1"    FEATURE_TABLE_SHIM_SUPPORT Yes    PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT    OUTPUT PASSED FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_Tester_2_PASSED"    OUTPUT FAILED FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_Tester_2_FAILED"
+# -------------------------------------------------------------------------
+# Build the List removal function and regular expression if there was any list attributes to be removed.
+# If not, then we will not have any extra list removal call to @RemoveAttributes, which speeds the
+# normal, non-list removal especially when in Bulk Mode.  Note that this computation of the regular expressions is done
+# once during mapping file parse time.
+INCLUDE [    set listAttributeRemoveRegexps {};    set anyList {no};    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append listAttributeRemoveRegexps ",^$attr$";       set anyList {yes};    };    if { ${anyList} == {no} } {        puts {MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC }    } else {        puts "MACRO $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC @RemoveAttributes(fme_pcre_match\"$listAttributeRemoveRegexps\")"    }; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_AttributeRemover    INPUT  FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_Tester_2_FAILED"    OUTPUT { FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_AttributeRemover_OUTPUT"        @RemoveAttributes(fme_encoded,_to_long_value_concatenated,att_2_map,char_limit)        $($(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC)         }
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Input Input Collector"   INPUT FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_AttributeRemover_OUTPUT"   OUTPUT FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Input"
+MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_CORRECT_LENGTH1712582294 Output Collector"   INPUT FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_CORRECT_LENGTH"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_TOO_LONG1712582294 Output Collector"   INPUT FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_Tester_2_PASSED"   OUTPUT FEATURE_TYPE "$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME)_TOO_LONG"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(ATTRIBUTE_MAPPER_AND_LENGTH_CHECKER_WORKSPACE_NAME))}]

@@ -1,0 +1,1142 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN SOCRATA_READER_NG,2,,f57850d2-afbd-4aa5-ab36-c22ef031820b,"Linked by Default",No,NO_PARALLELISM,,No,25606,YES,No,313,No,,both
+# <p><strong>Description</strong></p>
+# <p>This Custom Transformer read the content of a Socrata server.  All the information is read and all the information is transformed into FME attributes.</p>
+# <p><strong>Input Ports</strong></p>
+# <ul>
+# <li>Input: One feature needed to start the reading of the Socrata server.</li>
+# </ul>
+# <p><strong>Output Ports</strong></p>
+# <ul>
+# <li>Output: One feature for each metadata record read from the Socrata server.</li>
+# </ul>
+# <p><strong>Parameters</strong></p>
+# <ul>
+# <li>Domain: The url of the Socrata server.</li>
+# </ul>
+# TRANSFORMER_END
+#!   A0_PREVIEW_IMAGE="data:image/png;base64,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"
+#!   ARCGIS_COMPATIBILITY="ARCGIS_AUTO"
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY=""
+#!   DATA_PROCESSING_TYPE="both"
+#!   DESCRIPTION="&lt;p&gt;&lt;strong&gt;Description&lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;This Custom Transformer read the content of a Socrata server.  All the information is read and all the information is transformed into FME attributes.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Input Ports&lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;Input: One feature needed to start the reading of the Socrata server.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Output Ports&lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;Output: One feature for each metadata record read from the Socrata server.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Parameters&lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;Domain: The url of the Socrata server.&lt;/li&gt;&#10;&lt;/ul&gt;"
+#!   DOC_EXTENTS="6211.23 1484.39"
+#!   DOC_TOP_LEFT="-2850 -1533.22"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="25606"
+#!   FME_DOCUMENT_GUID="f57850d2-afbd-4aa5-ab36-c22ef031820b"
+#!   FME_DOCUMENT_PRIORGUID=""
+#!   FME_LINKED_TRANSFORMER_VERSION="2"
+#!   FME_NAMES_ENCODING="windows-1252"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY="14&lt;solidus&gt;03&lt;solidus&gt;2022,Daniel&lt;space&gt;Pilon,Original&lt;space&gt;Version"
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2025.1.0.0 (20250704 - Build 25606 - WIN64)"
+#!   LAST_SAVE_DATE="2025-10-06T16:23:36"
+#!   MARKDOWN_DESCRIPTION="**Description**&#10;&#10;This Custom Transformer read the content of a Socrata server.  All the information is read and all the information is transformed into FME attributes.&#10;&#10;**Input Ports**&#10;&#10;  - Input: One feature needed to start the reading of the Socrata server.&#10;&#10;**Output Ports**&#10;&#10;  - Output: One feature for each metadata record read from the Socrata server.&#10;&#10;**Parameters**&#10; &#10;  - Domain: The url of the Socrata server."
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="313"
+#!   REPLACED_BY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="SOCRATA_READER_NG"
+#!   USAGE=""
+#!   USE_MARKDOWN="YES"
+#!   VIEW_POSITION="-654.303 620.123"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="64"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI TEXT_OR_ATTR DOMAIN DOMAIN:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="false"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <USER_PARAMETERS
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbeyJuYW1lIjoiRE9NQUlOIiwicHJvbXB0IjoiRE9NQUlOOiIsInZhbHVlVHlwZSI6InN0cmluZyIsImRlZmF1bHRWYWx1ZSI6IiIsInN1cHBvcnRlZFZhbHVlVHlwZXMiOlsiZXhwcmVzc2lvbiIsImdsb2JhbFBhcmFtZXRlciJdLCJkZXByZWNhdGVkRmxhZ3MiOlsibm9uZSJdLCJ0eXBlIjoidGV4dCIsImVkaXRvciI6InBsYWludGV4dCJ9XX0="
+#! >
+#! <PARAMETER_INFO>
+#!     <INFO NAME="DOMAIN" 
+#!   DEFAULT_VALUE=""
+#!   SCOPE="DEPENDENT"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI TEXT_OR_ATTR DOMAIN DOMAIN:"
+#! />
+#! </PARAMETER_INFO>
+#! </USER_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="18"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Create Socrata url&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-1950 -540.27199021990214"
+#!   TOP_LEFT="-1950 -540.27199021990214"
+#!   BOTTOM_RIGHT="-1496.0408822838228 -541.27199021990214"
+#!   BOUNDING_RECT="-1950 -540.27199021990214 453.95911771617716 1"
+#!   ORDER="500000000001912"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{6c42c0e8-eee6-4f06-82c6-e83fabe42d36}"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,1"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="33"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="19"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Read the Socrata reader and extract the JSON document&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-1253.7114746147463 -402.57530075300758"
+#!   TOP_LEFT="-1253.7114746147463 -402.57530075300758"
+#!   BOTTOM_RIGHT="-722.70080513305152 -626.32723827238283"
+#!   BOUNDING_RECT="-1253.7114746147463 -402.57530075300758 531.01066948169478 223.75193751937519"
+#!   ORDER="500000000001913"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{6b542d91-dc2e-4df9-82c5-97e016d989d7}"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,1"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="35"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="20"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Flatten the JSON document containing the metadata&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="221.87421874218751 -387.92671676716765"
+#!   TOP_LEFT="221.87421874218751 -387.92671676716765"
+#!   BOTTOM_RIGHT="766.60572855728572 -611.67865428654284"
+#!   BOUNDING_RECT="221.87421874218751 -387.92671676716765 544.73150981509821 223.75193751937519"
+#!   ORDER="500000000001914"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{d1673136-cbe6-45d7-bd67-8bd4940b16a0}"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,1"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="39"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="21"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Handle feature that has no license&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="1752.2342773427736 -493.78715037150369"
+#!   TOP_LEFT="1752.2342773427736 -493.78715037150369"
+#!   BOTTOM_RIGHT="2230.2170727957282 -494.78715037150369"
+#!   BOUNDING_RECT="1752.2342773427736 -493.78715037150369 477.98279545295452 1"
+#!   ORDER="500000000001915"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{78955ff2-d163-4e77-8c93-451c1528ca46}"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,1"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="38"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="22"
+#!   NAME="Socrata reader"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="-2000 -48.82861328613285"
+#!   ORDER="500000000001916"
+#!   PALETTE_COLOR="Color4"
+#!   BOTTOM_RIGHT="2382.8363283632825 -1533.2184571845714"
+#!   BOUNDING_RECT="-2000 -48.82861328613285 4382.8363283632825 1484.3898438984386"
+#!   STICKY="true"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,1"
+#!   CONTENTS="40 33 21 42 19 45 37 20 36 38 46 47 39 18 43 35 44 "
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="33"
+#!   TYPE="AttributeCreator"
+#!   VERSION="10"
+#!   POSITION="-1892.7743652436525 -750"
+#!   BOUNDING_RECT="-1892.7743652436525 -750 454 71"
+#!   ORDER="500000000001909"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_url_socrata" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; _url_socrata SET_TO $(DOMAIN) varchar&lt;openparen&gt;200&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE" PARM_VALUE="NO_OP"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_MODIFIED_ATTRIBUTE_TYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_IS_LOOKUP="true" PARM_VALUE="No Substitution"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="35"
+#!   TYPE="PythonCaller"
+#!   VERSION="6"
+#!   POSITION="-1200 -750"
+#!   BOUNDING_RECT="-1200 -750 454 71"
+#!   ORDER="500000000001910"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_url_socrata" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;Rejected&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="_url_socrata" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_message" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_PROCESSING_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="HIDE_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="NEW_ATTRIBUTES" PARM_VALUE="_response_body buffer _status_code buffer id buffer"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSOURCE" PARM_VALUE="import&lt;space&gt;fme&lt;lf&gt;import&lt;space&gt;fmeobjects&lt;lf&gt;&lt;lf&gt;from&lt;space&gt;Python.SOCRATA_READER_NG&lt;space&gt;import&lt;space&gt;ManageHttpCall"/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSYMBOL" PARM_VALUE="ManageHttpCall"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="PythonCaller"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="37"
+#!   TYPE="AttributeExposer"
+#!   VERSION="2"
+#!   POSITION="1050 -750"
+#!   BOUNDING_RECT="1050 -750 454 71"
+#!   ORDER="500000000001890"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="licenseId" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="assetType" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="licenseId,,assetType,"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="38"
+#!   TYPE="NullAttributeMapper"
+#!   VERSION="3"
+#!   POSITION="1800 -750"
+#!   BOUNDING_RECT="1800 -750 454 71"
+#!   ORDER="500000000001892"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="licenseId" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="assetType" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRCHOICE_ACTION" PARM_VALUE="SELECTED"/>
+#!     <XFORM_PARM PARM_NAME="ATTRLIST" PARM_VALUE="licenseId"/>
+#!     <XFORM_PARM PARM_NAME="NEW_VALUE" PARM_VALUE="none"/>
+#!     <XFORM_PARM PARM_NAME="NULL_TREATMENT_LU" PARM_VALUE="SETVALUE"/>
+#!     <XFORM_PARM PARM_NAME="OTHER_VALUE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP2" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REG_EXP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="SOURCE_ATTR_VAL_LU" PARM_VALUE="SETNULL"/>
+#!     <XFORM_PARM PARM_NAME="TEST_STRING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="NullAttributeMapper_2"/>
+#!     <XFORM_PARM PARM_NAME="ATTRCHOICE" PARM_IS_LOOKUP="true" PARM_VALUE="Selected Attributes"/>
+#!     <XFORM_PARM PARM_NAME="NULL_TREATMENT" PARM_IS_LOOKUP="true" PARM_VALUE="New Value"/>
+#!     <XFORM_PARM PARM_NAME="SOURCE_ATTR_VAL" PARM_IS_LOOKUP="true" PARM_VALUE="Null"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="39"
+#!   TYPE="JSONFlattener"
+#!   VERSION="7"
+#!   POSITION="300 -750"
+#!   BOUNDING_RECT="300 -750 454 71"
+#!   ORDER="500000000001879"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_status_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_json_error{}.message" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_json_error{}.line" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_json_error{}.column" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_json_error{}.severity" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ERROR_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ERROR_LIST_ATTR" PARM_VALUE="_json_error"/>
+#!     <XFORM_PARM PARM_NAME="FILEPATH_OR_URL" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="FLATTEN_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="INPUT_SETTINGS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="JSON_DOCUMENT" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;_response_body&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NEW_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PREFIX_STRING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="READ_FROM_FILE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="RECURSIVE" PARM_VALUE="YES"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="JSONFlattener_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="40"
+#!   TYPE="Terminator"
+#!   VERSION="3"
+#!   POSITION="300 -1102.2243380075402"
+#!   BOUNDING_RECT="300 -1102.2243380075402 454 71"
+#!   ORDER="500000000001908"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE="Translation&lt;space&gt;Terminated:&lt;space&gt;Unable&lt;space&gt;to&lt;space&gt;flatten&lt;space&gt;the&lt;space&gt;JSON&lt;space&gt;document"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Terminator_6"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="45"
+#!   TYPE="AttributeKeeper"
+#!   VERSION="3"
+#!   POSITION="-450 -750"
+#!   BOUNDING_RECT="-450 -750 454 71"
+#!   ORDER="500000000001904"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="CREATE_BULK_MODE_FEATURES" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="KEEP_ATTRS" PARM_VALUE="id,_response_body,_status_code"/>
+#!     <XFORM_PARM PARM_NAME="KEEP_LIST" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_ON_ATTRIBUTE_CHANGE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeKeeper_2"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="Input"
+#!   POSITION="-2850 -750"
+#!   BOUNDING_RECT="-2850 -750 454 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="Output"
+#!   POSITION="2907.2256347563471 -750"
+#!   BOUNDING_RECT="2907.2256347563471 -750 454 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="34"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="33"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="36"
+#!   SOURCE_NODE="33"
+#!   TARGET_NODE="35"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="46"
+#!   SOURCE_NODE="35"
+#!   TARGET_NODE="45"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="43"
+#!   SOURCE_NODE="37"
+#!   TARGET_NODE="38"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="48"
+#!   SOURCE_NODE="38"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="42"
+#!   SOURCE_NODE="39"
+#!   TARGET_NODE="37"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="47"
+#!   SOURCE_NODE="45"
+#!   TARGET_NODE="39"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="44"
+#!   SOURCE_NODE="39"
+#!   TARGET_NODE="40"
+#!   SOURCE_PORT_DESC="fo 1 &lt;lt&gt;REJECTED&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+FME_PYTHON_VERSION 313
+# ============================================================================
+DEFAULT_MACRO $(SOCRATA_READER_NG_WORKSPACE_NAME)_DOMAIN 
+
+DEFAULT_MACRO $(SOCRATA_READER_NG_WORKSPACE_NAME)_FME_DATA_REPOSITORY 
+
+DEFAULT_MACRO $(SOCRATA_READER_NG_WORKSPACE_NAME)_FME_ENGINE 
+
+DEFAULT_MACRO $(SOCRATA_READER_NG_WORKSPACE_NAME)_FME_JOB_ID 
+
+DEFAULT_MACRO $(SOCRATA_READER_NG_WORKSPACE_NAME)_FME_SECURITY_ROLES 
+
+DEFAULT_MACRO $(SOCRATA_READER_NG_WORKSPACE_NAME)_FME_SECURITY_USER 
+
+DEFAULT_MACRO $(SOCRATA_READER_NG_WORKSPACE_NAME)_FME_SERVER_DEST_DIR 
+
+DEFAULT_MACRO $(SOCRATA_READER_NG_WORKSPACE_NAME)_FME_SERVER_HOST 
+
+DEFAULT_MACRO $(SOCRATA_READER_NG_WORKSPACE_NAME)_FME_SERVER_PORT 
+
+DEFAULT_MACRO $(SOCRATA_READER_NG_WORKSPACE_NAME)_FME_SERVER_REQUEST_HEADERS 
+
+DEFAULT_MACRO $(SOCRATA_READER_NG_WORKSPACE_NAME)_FME_SERVER_REQUEST_METHOD 
+
+DEFAULT_MACRO $(SOCRATA_READER_NG_WORKSPACE_NAME)_FME_SERVER_REQUEST_PARAMETERS 
+
+DEFAULT_MACRO $(SOCRATA_READER_NG_WORKSPACE_NAME)_FME_SERVER_REQUEST_URI 
+
+DEFAULT_MACRO $(SOCRATA_READER_NG_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER 
+
+DEFAULT_MACRO $(SOCRATA_READER_NG_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER_ID 
+
+DEFAULT_MACRO $(SOCRATA_READER_NG_WORKSPACE_NAME)_FME_SERVER_WEB_URL 
+
+DEFAULT_MACRO $(SOCRATA_READER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_BACKUP 
+
+DEFAULT_MACRO $(SOCRATA_READER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DASHBOARD 
+
+DEFAULT_MACRO $(SOCRATA_READER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DATA 
+
+DEFAULT_MACRO $(SOCRATA_READER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_ENGINE 
+
+DEFAULT_MACRO $(SOCRATA_READER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_LOG 
+
+DEFAULT_MACRO $(SOCRATA_READER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_SYSTEM 
+
+DEFAULT_MACRO $(SOCRATA_READER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_TEMP 
+
+DEFAULT_MACRO $(SOCRATA_READER_NG_WORKSPACE_NAME)_FME_TOPIC 
+
+DEFAULT_MACRO $(SOCRATA_READER_NG_WORKSPACE_NAME)_FME_TOPIC_MESSAGE 
+
+# ============================================================================
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO SOCRATA_READER_NG_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(SOCRATA_READER_NG_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(SOCRATA_READER_NG_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SOCRATA_READER_NG_WORKSPACE_NAME)_Input1759782216 Input Splitter"   INPUT FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_Input"   OUTPUT FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_Input"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME { $(SOCRATA_READER_NG_WORKSPACE_NAME)_AttributeCreator }    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_Input"    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    NUM_OF_COLUMNS 5    ATTR_ACTION { "" "_url_socrata" "SET_TO" "$($(SOCRATA_READER_NG_WORKSPACE_NAME)_DOMAIN$encode)" "varchar<openparen>200<closeparen>" }    OUTPUT { OUTPUT FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_AttributeCreator_OUTPUT"        }
+# -------------------------------------------------------------------------
+FME_PYTHON_PATH "$(FME_MF_DIR)"
+FACTORY_DEF {*} PythonFactory    FACTORY_NAME { $(SOCRATA_READER_NG_WORKSPACE_NAME)_PythonCaller }    FLUSH_WHEN_GROUPS_CHANGE { <Unused> }    INPUT  FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_AttributeCreator_OUTPUT"    SYMBOL_NAME { ManageHttpCall }    SOURCE_CODE { import<space>fme<lf>import<space>fmeobjects<lf><lf>from<space>Python.SOCRATA_READER_NG<space>import<space>ManageHttpCall }    PY_OUTPUT_TAGS { PYOUTPUT <Rejected> }    OUTPUT { PYOUTPUT FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_PythonCaller_OUTPUT"         }    OUTPUT { <Rejected> FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_PythonCaller_<Rejected>"         }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SOCRATA_READER_NG_WORKSPACE_NAME)_PythonCaller <Rejected> Transformer Output Nuker"   INPUT FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_PythonCaller_<Rejected>"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttributeKeeperFactory    FACTORY_NAME { $(SOCRATA_READER_NG_WORKSPACE_NAME)_AttributeKeeper_2 }    INPUT  FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_PythonCaller_OUTPUT"    KEEP_ATTRS { id,_response_body,_status_code }    KEEP_LISTS {  }    KEEP_FME_ATTRIBUTES Yes    BUILD_FEATURE_TABLES { NO }    OUTPUT_ON_ATTRIBUTE_CHANGE { <Unused> }    OUTPUT { OUTPUT FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_AttributeKeeper_2_OUTPUT"        }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} JSONQueryFactory    FACTORY_NAME { $(SOCRATA_READER_NG_WORKSPACE_NAME)_JSONFlattener_2 }    INPUT  FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_AttributeKeeper_2_OUTPUT"    MODE FLATTEN    JSON_DOCUMENT { "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_response_body<closeparen>,$(SOCRATA_READER_NG_WORKSPACE_NAME)_JSONFlattener_2)" }    READ_FROM_FILE { NO }    FILEPATH_OR_URL { "<Unused>" }    EXPLODE_QUERY "json"    RECURSIVE_FLATTEN { YES }    ERROR_LIST_ATTR { "_json_error" }    OUTPUT { EXPLODED FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_JSONFlattener_2_OUTPUT"        }    OUTPUT { REJECTED FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_JSONFlattener_2_<REJECTED>"        }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(SOCRATA_READER_NG_WORKSPACE_NAME)_AttributeExposer_2 }    INPUT  FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_JSONFlattener_2_OUTPUT"    OUTPUT { FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"          }
+# -------------------------------------------------------------------------
+   FACTORY_DEF {*} NullAttributeMapperFactory       FACTORY_NAME { $(SOCRATA_READER_NG_WORKSPACE_NAME)_NullAttributeMapper_2Factory }       INPUT  FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"       ATTRCHOICE { SELECTED }       ATTRLIST { licenseId }       SOURCE_ATTR_VAL { SETNULL }       OTHER_VAL {  }       REG_EXPR {  }       NULL_TREATMENT { SETVALUE }       NEW_VAL { none }       OUTPUT { OUTPUT FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_NullAttributeMapper_2_OUTPUT" }
+# -------------------------------------------------------------------------
+# The default behaviour is to abort on any feature entering the transformer.
+# If Workbench has set the _WB_BYPASS_TERMINATION macro to a value of "Yes",
+# then the features will instead be passed through with a feature type of
+# __WB_BYPASS_TERMINATOR__, which Workbench will send to a visualizer or
+# somesuch.
+DEFAULT_MACRO _WB_BYPASS_TERMINATION No
+FACTORY_DEF {*} TestFactory    FACTORY_NAME { $(SOCRATA_READER_NG_WORKSPACE_NAME)_Terminator_6 }    INPUT  FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_JSONFlattener_2_<REJECTED>"    TEST { "$(_WB_BYPASS_TERMINATION)" == Yes }    OUTPUT { PASSED FEATURE_TYPE __WB_BYPASS_TERMINATOR__       @SupplyAttributes(_wb_termination_feature_type,@FeatureType())       @SupplyAttributes(ENCODED,_wb_termination_message,"Translation<space>Terminated:<space>Unable<space>to<space>flatten<space>the<space>JSON<space>document")       @SupplyAttributes(_wb_termination_xformer,"$(SOCRATA_READER_NG_WORKSPACE_NAME)_Terminator_6")       @SupplyAttributes(_wb_termination_feature,Yes) }    OUTPUT { FAILED FEATURE_TYPE * @Abort(ENCODED,"Translation<space>Terminated:<space>Unable<space>to<space>flatten<space>the<space>JSON<space>document") }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SOCRATA_READER_NG_WORKSPACE_NAME)_Output1759782216 Output Collector"   INPUT FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_NullAttributeMapper_2_OUTPUT"   OUTPUT FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_Output"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(SOCRATA_READER_NG_WORKSPACE_NAME))}]
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN SOCRATA_READER_NG,1,,17b787c8-9927-429e-a248-34c1ec691c32,"Linked by Default",No,NO_PARALLELISM,,No,20200,YES,No,37,No,
+# <p><strong>Description</strong></p>
+# <p>This Custom Transformer read the content of a Socrata server.  All the information is read and all the information is transformed into FME attributes.</p>
+# <p><strong>Input Ports</strong></p>
+# <ul>
+# <li>Input: One feature needed to start the reading of the Socrata server.</li>
+# </ul>
+# <p><strong>Output Ports</strong></p>
+# <ul>
+# <li>Output: One feature for each metadata record read from the Socrata server.</li>
+# </ul>
+# <p><strong>Parameters</strong></p>
+# <ul>
+# <li>Domain: The url of the Socrata server.</li>
+# </ul>
+# TRANSFORMER_END
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY=""
+#!   DESCRIPTION="&lt;p&gt;&lt;strong&gt;Description&lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;This Custom Transformer read the content of a Socrata server.  All the information is read and all the information is transformed into FME attributes.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Input Ports&lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;Input: One feature needed to start the reading of the Socrata server.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Output Ports&lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;Output: One feature for each metadata record read from the Socrata server.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Parameters&lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;Domain: The url of the Socrata server.&lt;/li&gt;&#10;&lt;/ul&gt;"
+#!   DOC_EXTENTS="6211.23 1484.39"
+#!   DOC_TOP_LEFT="-2850 -1533.22"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="20200"
+#!   FME_DOCUMENT_GUID="17b787c8-9927-429e-a248-34c1ec691c32"
+#!   FME_DOCUMENT_PRIORGUID="2723e4aa-c36c-4f7a-a891-ef9dae487226,6357b9d3-73a9-4b85-9093-c4dc4a15fdcf,5ee18223-2c5a-4516-9e9a-2fc77f04464b"
+#!   FME_LINKED_TRANSFORMER_VERSION="1"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY="14&lt;solidus&gt;03&lt;solidus&gt;2022,Daniel&lt;space&gt;Pilon,Original&lt;space&gt;Version"
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2020.0.0.0 (20200309 - Build 20200 - WIN32)"
+#!   LAST_SAVE_DATE="2022-03-17T13:37:08"
+#!   MARKDOWN_DESCRIPTION="**Description**&#10;&#10;This Custom Transformer read the content of a Socrata server.  All the information is read and all the information is transformed into FME attributes.&#10;&#10;**Input Ports**&#10;&#10;  - Input: One feature needed to start the reading of the Socrata server.&#10;&#10;**Output Ports**&#10;&#10;  - Output: One feature for each metadata record read from the Socrata server.&#10;&#10;**Parameters**&#10; &#10;  - Domain: The url of the Socrata server."
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="37"
+#!   REPLACED_BY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="SOCRATA_READER_NG"
+#!   USAGE=""
+#!   USE_MARKDOWN="YES"
+#!   VIEW_POSITION="-3588.9 893.564"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="64"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI TEXT_OR_ATTR DOMAIN DOMAIN:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="false"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="18"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Create Socrata url&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-1950 -540.27199021990214"
+#!   TOP_LEFT="-1950 -540.27199021990214"
+#!   BOTTOM_RIGHT="-1496 -541.27199021990214"
+#!   BOUNDING_RECT="-1950 -540.27199021990214 454 1"
+#!   ORDER="500000000001912"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="33"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="19"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Read the Socrata reader and extract the JSON document&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-1253.7114746147463 -402.57530075300758"
+#!   TOP_LEFT="-1253.7114746147463 -402.57530075300758"
+#!   BOTTOM_RIGHT="-722.66347663476631 -626.32723827238283"
+#!   BOUNDING_RECT="-1253.7114746147463 -402.57530075300758 531.04799797997998 223.75193751937519"
+#!   ORDER="500000000001913"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="35"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="20"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Flatten the JSON document containing the metadata&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="221.87421874218751 -387.92671676716765"
+#!   TOP_LEFT="221.87421874218751 -387.92671676716765"
+#!   BOTTOM_RIGHT="766.60922859228583 -611.67865428654284"
+#!   BOUNDING_RECT="221.87421874218751 -387.92671676716765 544.73500985009832 223.75193751937519"
+#!   ORDER="500000000001914"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="39"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="21"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Handle feature that has no license&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="1752.2342773427736 -493.78715037150369"
+#!   TOP_LEFT="1752.2342773427736 -493.78715037150369"
+#!   BOTTOM_RIGHT="2230.2342773427736 -494.78715037150369"
+#!   BOUNDING_RECT="1752.2342773427736 -493.78715037150369 478 1"
+#!   ORDER="500000000001915"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="38"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="22"
+#!   NAME="Socrata reader"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="-2000 -48.82861328613285"
+#!   ORDER="500000000001916"
+#!   PALETTE_COLOR="Color4"
+#!   BOTTOM_RIGHT="2382.8363283632825 -1533.2184571845714"
+#!   BOUNDING_RECT="-2000 -48.82861328613285 4382.8363283632825 1484.3898438984386"
+#!   STICKY="true"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,1"
+#!   CONTENTS="44 35 19 40 38 18 39 45 43 33 21 20 42 37 36 47 46 "
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="33"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="-1892.7743652436525 -750"
+#!   BOUNDING_RECT="-1892.7743652436525 -750 454 71"
+#!   ORDER="500000000001909"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_url_socrata" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; _url_socrata SET_TO $(DOMAIN)"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="35"
+#!   TYPE="PythonCaller"
+#!   VERSION="4"
+#!   POSITION="-1200 -750"
+#!   BOUNDING_RECT="-1200 -750 454 71"
+#!   ORDER="500000000001910"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_url_socrata" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="HIDE_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="NEW_ATTRIBUTES" PARM_VALUE="_response_body _status_code id"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSOURCE" PARM_VALUE="import&lt;space&gt;fme&lt;lf&gt;import&lt;space&gt;fmeobjects&lt;lf&gt;&lt;lf&gt;from&lt;space&gt;Python.SOCRATA_READER_NG&lt;space&gt;import&lt;space&gt;ManageHttpCall"/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSYMBOL" PARM_VALUE="ManageHttpCall"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="PythonCaller"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="37"
+#!   TYPE="AttributeExposer"
+#!   VERSION="1"
+#!   POSITION="1050 -750"
+#!   BOUNDING_RECT="1050 -750 454 71"
+#!   ORDER="500000000001890"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="licenseId" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="assetType" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="licenseId,assetType"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="38"
+#!   TYPE="NullAttributeMapper"
+#!   VERSION="2"
+#!   POSITION="1800 -750"
+#!   BOUNDING_RECT="1800 -750 454 71"
+#!   ORDER="500000000001892"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="licenseId" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="assetType" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRCHOICE" PARM_VALUE="Selected Attributes"/>
+#!     <XFORM_PARM PARM_NAME="ATTRLIST" PARM_VALUE="licenseId"/>
+#!     <XFORM_PARM PARM_NAME="NEW_VALUE" PARM_VALUE="none"/>
+#!     <XFORM_PARM PARM_NAME="NULL_TREATMENT" PARM_VALUE="New Value"/>
+#!     <XFORM_PARM PARM_NAME="OTHER_VALUE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP2" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REG_EXP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="SOURCE_ATTR_VAL" PARM_VALUE="Null"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="NullAttributeMapper_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="39"
+#!   TYPE="JSONFlattener"
+#!   VERSION="5"
+#!   POSITION="300 -750"
+#!   BOUNDING_RECT="300 -750 454 71"
+#!   ORDER="500000000001879"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_status_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_json_error{}.message" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_json_error{}.line" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_json_error{}.column" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_json_error{}.severity" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ERROR_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ERROR_LIST_ATTR" PARM_VALUE="_json_error"/>
+#!     <XFORM_PARM PARM_NAME="FILEPATH_OR_URL" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="FLATTEN_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="INPUT_SETTINGS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="JSON_DOCUMENT" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;_response_body&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NEW_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PREFIX_STRING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="READ_FROM_FILE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="RECURSIVE" PARM_VALUE="Yes"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="JSONFlattener_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="40"
+#!   TYPE="Terminator"
+#!   VERSION="3"
+#!   POSITION="300 -1102.2243380075402"
+#!   BOUNDING_RECT="300 -1102.2243380075402 454 71"
+#!   ORDER="500000000001908"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE="Translation&lt;space&gt;Terminated:&lt;space&gt;Unable&lt;space&gt;to&lt;space&gt;flatten&lt;space&gt;the&lt;space&gt;JSON&lt;space&gt;document"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Terminator_6"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="45"
+#!   TYPE="AttributeKeeper"
+#!   VERSION="3"
+#!   POSITION="-450 -750"
+#!   BOUNDING_RECT="-450 -750 454 71"
+#!   ORDER="500000000001904"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="KEEP_ATTRS" PARM_VALUE="id,_response_body,_status_code"/>
+#!     <XFORM_PARM PARM_NAME="KEEP_LIST" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeKeeper_2"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="Input"
+#!   POSITION="-2850 -750"
+#!   BOUNDING_RECT="-2850 -750 454 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="Output"
+#!   POSITION="2907.2256347563471 -750"
+#!   BOUNDING_RECT="2907.2256347563471 -750 454 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="34"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="33"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="36"
+#!   SOURCE_NODE="33"
+#!   TARGET_NODE="35"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="46"
+#!   SOURCE_NODE="35"
+#!   TARGET_NODE="45"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="43"
+#!   SOURCE_NODE="37"
+#!   TARGET_NODE="38"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="48"
+#!   SOURCE_NODE="38"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="42"
+#!   SOURCE_NODE="39"
+#!   TARGET_NODE="37"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="47"
+#!   SOURCE_NODE="45"
+#!   TARGET_NODE="39"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="44"
+#!   SOURCE_NODE="39"
+#!   TARGET_NODE="40"
+#!   SOURCE_PORT_DESC="fo 1 &lt;lt&gt;REJECTED&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+FME_PYTHON_VERSION 37
+DEFAULT_MACRO $(SOCRATA_READER_NG_WORKSPACE_NAME)_DOMAIN 
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO SOCRATA_READER_NG_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(SOCRATA_READER_NG_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(SOCRATA_READER_NG_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SOCRATA_READER_NG_WORKSPACE_NAME)_Input1647538628 Input Splitter"   INPUT FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_Input"   OUTPUT FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_Input"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(SOCRATA_READER_NG_WORKSPACE_NAME)_AttributeCreator    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_Input"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "_url_socrata" "SET_TO" "$($(SOCRATA_READER_NG_WORKSPACE_NAME)_DOMAIN$encode)" }    OUTPUT OUTPUT FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_AttributeCreator_OUTPUT"
+# -------------------------------------------------------------------------
+FME_PYTHON_PATH "$(FME_MF_DIR)"
+FACTORY_DEF * PythonFactory    FACTORY_NAME $(SOCRATA_READER_NG_WORKSPACE_NAME)_PythonCaller    INPUT  FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_AttributeCreator_OUTPUT"    SYMBOL_NAME ManageHttpCall    PYTHON_NAMESPACE FMEOBJECTS    SOURCE_CODE import<space>fme<lf>import<space>fmeobjects<lf><lf>from<space>Python.SOCRATA_READER_NG<space>import<space>ManageHttpCall    OUTPUT PYOUTPUT FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_PythonCaller_OUTPUT"
+# -------------------------------------------------------------------------
+INCLUDE [    set macroLine "MACRO $(SOCRATA_READER_NG_WORKSPACE_NAME)_AttributeKeeper_2_77cdaf24_6a1f_4c11_9af3_7482b890016d0_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(SOCRATA_READER_NG_WORKSPACE_NAME)_AttributeKeeper_2    INPUT  FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_PythonCaller_OUTPUT"    OUTPUT { FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_AttributeKeeper_2_OUTPUT"        @KeepAttributes(fme_encoded,id,_response_body,_status_code,fme_pcre_match,"^fme_$($(SOCRATA_READER_NG_WORKSPACE_NAME)_AttributeKeeper_2_77cdaf24_6a1f_4c11_9af3_7482b890016d0_LIST_EXP)")         }
+# -------------------------------------------------------------------------
+FACTORY_DEF * JSONQueryFactory    FACTORY_NAME $(SOCRATA_READER_NG_WORKSPACE_NAME)_JSONFlattener_2    INPUT  FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_AttributeKeeper_2_OUTPUT"    MODE FLATTEN    JSON_DOCUMENT "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_response_body<closeparen>,$(SOCRATA_READER_NG_WORKSPACE_NAME)_JSONFlattener_2)"    READ_FROM_FILE NO    FILEPATH_OR_URL "<Unused>"    EXPLODE_QUERY "json"    RECURSIVE_FLATTEN YES    ERROR_LIST_ATTR "_json_error"    OUTPUT EXPLODED FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_JSONFlattener_2_OUTPUT"    OUTPUT REJECTED FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_JSONFlattener_2_<REJECTED>"
+# -------------------------------------------------------------------------
+# The default behaviour is to abort on any feature entering the transformer.
+# If Workbench has set the _WB_BYPASS_TERMINATION macro to a value of "Yes",
+# then the features will instead be passed through with a feature type of
+# __WB_BYPASS_TERMINATOR__, which Workbench will send to a visualizer or
+# somesuch.
+DEFAULT_MACRO _WB_BYPASS_TERMINATION No
+FACTORY_DEF * TestFactory    FACTORY_NAME $(SOCRATA_READER_NG_WORKSPACE_NAME)_Terminator_6    INPUT  FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_JSONFlattener_2_<REJECTED>"    TEST "$(_WB_BYPASS_TERMINATION)" == Yes    OUTPUT PASSED FEATURE_TYPE __WB_BYPASS_TERMINATOR__       @SupplyAttributes(_wb_termination_feature_type,@FeatureType())       @SupplyAttributes(ENCODED,_wb_termination_message,"Translation<space>Terminated:<space>Unable<space>to<space>flatten<space>the<space>JSON<space>document")       @SupplyAttributes(_wb_termination_xformer,"$(SOCRATA_READER_NG_WORKSPACE_NAME)_Terminator_6")       @SupplyAttributes(_wb_termination_feature,Yes)    OUTPUT FAILED FEATURE_TYPE * @Abort(ENCODED,"Translation<space>Terminated:<space>Unable<space>to<space>flatten<space>the<space>JSON<space>document")
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(SOCRATA_READER_NG_WORKSPACE_NAME)_AttributeExposer_2    INPUT  FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_JSONFlattener_2_OUTPUT"    OUTPUT FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"
+# -------------------------------------------------------------------------
+Tcl2 proc $(SOCRATA_READER_NG_WORKSPACE_NAME)_NullAttributeMapper_2_69a4399b_c1ea_4e7a_ae53_d9ed4888a6ed0_null_replacer { otherValue newValue regExp } {    set attrs [split {licenseId} { }];    set decode true;    if { {SELECTED} == {ALL} } {       set attrs [FME_AttributeNames];       set decode false; 	 };    set decodedVal [FME_DecodeText $otherValue];    set decodedRegExp [FME_DecodeText $regExp];    foreach attr $attrs {      set act {NOOP};      if {$decode} {        set attr [FME_DecodeText $attr];      };      if {[FME_AttributeExists $attr]} {          set attrVal [FME_GetAttribute $attr];          if {[FME_IsAttributeNull $attr] } {             if {[string first {SETNULL} {SETNULL}] != -1} {                 set act {SETVALUE};             };          }          elseif { [string first {EMPTY} {SETNULL}] != -1 && $attrVal == {}} {             set act {SETVALUE};          }          elseif { $otherValue != {} && [string equal $attrVal $decodedVal]} {             set act {SETVALUE};          }          elseif { $decodedRegExp != {} }          {             set results [FME_GetRegex $decodedRegExp $attrVal];             if {[llength [lindex $results 0]] > 0}             {                set act {SETVALUE};             }          };      }      elseif {[string first {MISSINGATTR} {SETNULL}] != -1} {             set act {SETVALUE};      };      if {$act == {DELETEATTR} } {         FME_UnsetAttributes $attr;      } elseif { $act == {SETVALUE} } {         FME_SetAttribute $attr [FME_DecodeText $newValue];      } elseif { $act == {SETNULL} } {         FME_SetAttributeNull $attr;      } elseif { $act == {EMPTY} }      {         FME_SetAttribute $attr {};      };   }; }
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(SOCRATA_READER_NG_WORKSPACE_NAME)_NullAttributeMapper_2    INPUT  FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"    OUTPUT FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_NullAttributeMapper_2_OUTPUT"         @Tcl2("$(SOCRATA_READER_NG_WORKSPACE_NAME)_NullAttributeMapper_2_69a4399b_c1ea_4e7a_ae53_d9ed4888a6ed0_null_replacer {} {none} {}")
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SOCRATA_READER_NG_WORKSPACE_NAME)_Output1647538628 Output Collector"   INPUT FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_NullAttributeMapper_2_OUTPUT"   OUTPUT FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_Output"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(SOCRATA_READER_NG_WORKSPACE_NAME))}]

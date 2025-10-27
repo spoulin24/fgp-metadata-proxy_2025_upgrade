@@ -1,0 +1,686 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN NL_ATTRIBUTE_EXTRACTOR,2,"""FGP Tools""",50afc5a6-4eaf-4714-91a1-74833759a78c,"Linked by Default",No,NO_PARALLELISM,,No,25606,YES,No,313,No,,both
+# <p><strong>Description</strong></p>
+# <p>This custom transformer extracts from the flatten XML (XHTML), the tags of the metadata information and transformed them into FME attributes. The XHTML tags information are renamed with the appropriate name to facilitate the following processes.  The custom transformer deletes the flatten XML attributes.</p>
+# <p>Note: This custom transformer will not produce the same result if the HTML tags are modified by the owner of the web site even for a small change in the layout of the information.  Some XHTML tags are not optional so it's impossible to distinguish a missing tag from a tag that was renamed.</p>
+# <p><strong>Input Ports</strong></p>
+# <ul>
+# <li>The flatten XHTML code.  On feature per dataset.</li>
+# </ul>
+# <p><strong>Output Ports</strong></p>
+# <ul>
+# <li>The fatures with extracted information in FME attributes.</li>
+# </ul>
+# TRANSFORMER_END
+#!   A0_PREVIEW_IMAGE="data:image/png;base64,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"
+#!   ARCGIS_COMPATIBILITY="ARCGIS_AUTO"
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="&quot;FGP Tools&quot;"
+#!   DATA_PROCESSING_TYPE="both"
+#!   DESCRIPTION="&lt;p&gt;&lt;strong&gt;Description&lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;This custom transformer extracts from the flatten XML (XHTML), the tags of the metadata information and transformed them into FME attributes. The XHTML tags information are renamed with the appropriate name to facilitate the following processes.  The custom transformer deletes the flatten XML attributes.&lt;/p&gt;&#10;&lt;p&gt;Note: This custom transformer will not produce the same result if the HTML tags are modified by the owner of the web site even for a small change in the layout of the information.  Some XHTML tags are not optional so it&apos;s impossible to distinguish a missing tag from a tag that was renamed.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Input Ports&lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;The flatten XHTML code.  On feature per dataset.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Output Ports&lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;The fatures with extracted information in FME attributes.&lt;/li&gt;&#10;&lt;/ul&gt;"
+#!   DOC_EXTENTS="4030 864.91"
+#!   DOC_TOP_LEFT="-2550 -454.91"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="25606"
+#!   FME_DOCUMENT_GUID="50afc5a6-4eaf-4714-91a1-74833759a78c"
+#!   FME_DOCUMENT_PRIORGUID=""
+#!   FME_LINKED_TRANSFORMER_VERSION="2"
+#!   FME_NAMES_ENCODING="windows-1252"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY="20&lt;solidus&gt;05&lt;solidus&gt;2022,Daniel&lt;space&gt;Pilon,Original&lt;space&gt;version"
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2025.1.0.0 (20250704 - Build 25606 - WIN64)"
+#!   LAST_SAVE_DATE="2025-10-06T15:44:45"
+#!   MARKDOWN_DESCRIPTION="**Description**&#10;&#10;This custom transformer extracts from the flatten XML (XHTML), the tags of the metadata information and transformed them into FME attributes. The XHTML tags information are renamed with the appropriate name to facilitate the following processes.  The custom transformer deletes the flatten XML attributes.&#10;&#10;Note: This custom transformer will not produce the same result if the HTML tags are modified by the owner of the web site even for a small change in the layout of the information.  Some XHTML tags are not optional so it&apos;s impossible to distinguish a missing tag from a tag that was renamed.&#10;&#10;**Input Ports**&#10;&#10;  - The flatten XHTML code.  On feature per dataset.&#10;&#10;**Output Ports**&#10;&#10;  - The fatures with extracted information in FME attributes.&#10;&#10;&#10;"
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="313"
+#!   REPLACED_BY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="NL_ATTRIBUTE_EXTRACTOR"
+#!   USAGE=""
+#!   USE_MARKDOWN="YES"
+#!   VIEW_POSITION="-632.918 530.069"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="79"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! </GLOBAL_PARAMETERS>
+#! <USER_PARAMETERS
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbXX0="
+#! >
+#! <PARAMETER_INFO>
+#! </PARAMETER_INFO>
+#! </USER_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="11"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Search the XHTML code to extract the information&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-1719.2503125031253 300"
+#!   TOP_LEFT="-1719.2503125031253 300"
+#!   BOTTOM_RIGHT="-1174.128173781738 76.24806248062481"
+#!   BOUNDING_RECT="-1719.2503125031253 300 545.12213872138727 223.75193751937519"
+#!   ORDER="500000000002607"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{2eac6c7f-cc79-4482-bf0d-9067e6110a07}"
+#!   COLOUR="0.59607843137254901,0.91764705882352937,0.72549019607843135,1"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="4"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="12"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Delete unnecessary attributes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-750 300"
+#!   TOP_LEFT="-750 300"
+#!   BOTTOM_RIGHT="-242.86652241522415 132.49862498624987"
+#!   BOUNDING_RECT="-750 300 507.13347758477585 167.50137501375013"
+#!   ORDER="500000000002608"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{b20bbbbe-f134-4cbf-a66d-33f427ca66c8}"
+#!   COLOUR="0.59607843137254901,0.91764705882352937,0.72549019607843135,1"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="5"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="18"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Unexpose all attributes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="49.994499944999347 300"
+#!   TOP_LEFT="49.994499944999347 300"
+#!   BOTTOM_RIGHT="582.95831395813946 299"
+#!   BOUNDING_RECT="49.994499944999347 300 532.96381401314011 1"
+#!   ORDER="500000000002611"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{ad633193-ea05-4944-8bf7-05f16a5ae3d9}"
+#!   COLOUR="0.59607843137254901,0.91764705882352937,0.72549019607843135,1"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="15"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="13"
+#!   NAME="New Bookmark"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="-1769.2503125031253 410"
+#!   ORDER="500000000002612"
+#!   PALETTE_COLOR="Color5"
+#!   BOTTOM_RIGHT="632.95831395813957 -454.90961238726311"
+#!   BOUNDING_RECT="-1769.2503125031253 410 2402.2086264612649 864.90961238726311"
+#!   STICKY="true"
+#!   COLOUR="0.59607843137254901,0.91764705882352937,0.72549019607843135,1"
+#!   CONTENTS="15 18 19 12 16 5 11 4 "
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="4"
+#!   TYPE="PythonCaller"
+#!   VERSION="6"
+#!   POSITION="-1650 0"
+#!   BOUNDING_RECT="-1650 0 454 71"
+#!   ORDER="500000000002594"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <OUTPUT_FEAT NAME="&lt;Rejected&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_message" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_PROCESSING_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="HIDE_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="NEW_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSOURCE" PARM_VALUE="import&lt;space&gt;fme&lt;lf&gt;import&lt;space&gt;fmeobjects&lt;lf&gt;&lt;lf&gt;from&lt;space&gt;Python.NL_ATTRIBUTE_EXTRACTOR&lt;space&gt;import&lt;space&gt;extract_html_tags&lt;lf&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSYMBOL" PARM_VALUE="extract_html_tags"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="PythonCaller_4"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="5"
+#!   TYPE="BulkAttributeRemover"
+#!   VERSION="3"
+#!   POSITION="-750 0"
+#!   BOUNDING_RECT="-750 0 471.00106825772946 71"
+#!   ORDER="500000000002599"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_EXP" PARM_VALUE="_html_*."/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_STRING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="BulkAttributeRemover"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="15"
+#!   TYPE="ATTRIBUTE_UNEXPOSER"
+#!   VERSION="2"
+#!   POSITION="46.869468694686816 0"
+#!   BOUNDING_RECT="46.869468694686816 0 533.00106825772946 71"
+#!   ORDER="500000000002610"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_UNEXPOSER"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="OUTPUT"
+#!   POSITION="1050 0"
+#!   BOUNDING_RECT="1050 0 430 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="INPUT"
+#!   POSITION="-2550 0"
+#!   BOUNDING_RECT="-2550 0 430 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="7"
+#!   SOURCE_NODE="3"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="19"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="16"
+#!   SOURCE_NODE="5"
+#!   TARGET_NODE="15"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="17"
+#!   SOURCE_NODE="15"
+#!   TARGET_NODE="2"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+FME_PYTHON_VERSION 313
+# ============================================================================
+DEFAULT_MACRO $(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_FME_DATA_REPOSITORY 
+
+DEFAULT_MACRO $(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_FME_ENGINE 
+
+DEFAULT_MACRO $(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_FME_JOB_ID 
+
+DEFAULT_MACRO $(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_FME_SECURITY_ROLES 
+
+DEFAULT_MACRO $(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_FME_SECURITY_USER 
+
+DEFAULT_MACRO $(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_FME_SERVER_DEST_DIR 
+
+DEFAULT_MACRO $(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_FME_SERVER_HOST 
+
+DEFAULT_MACRO $(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_FME_SERVER_PORT 
+
+DEFAULT_MACRO $(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_FME_SERVER_REQUEST_HEADERS 
+
+DEFAULT_MACRO $(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_FME_SERVER_REQUEST_METHOD 
+
+DEFAULT_MACRO $(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_FME_SERVER_REQUEST_PARAMETERS 
+
+DEFAULT_MACRO $(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_FME_SERVER_REQUEST_URI 
+
+DEFAULT_MACRO $(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER 
+
+DEFAULT_MACRO $(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER_ID 
+
+DEFAULT_MACRO $(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_FME_SERVER_WEB_URL 
+
+DEFAULT_MACRO $(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_FME_SHAREDRESOURCE_BACKUP 
+
+DEFAULT_MACRO $(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DASHBOARD 
+
+DEFAULT_MACRO $(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DATA 
+
+DEFAULT_MACRO $(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_FME_SHAREDRESOURCE_ENGINE 
+
+DEFAULT_MACRO $(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_FME_SHAREDRESOURCE_LOG 
+
+DEFAULT_MACRO $(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_FME_SHAREDRESOURCE_SYSTEM 
+
+DEFAULT_MACRO $(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_FME_SHAREDRESOURCE_TEMP 
+
+DEFAULT_MACRO $(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_FME_TOPIC 
+
+DEFAULT_MACRO $(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_FME_TOPIC_MESSAGE 
+
+# ============================================================================
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_INPUT1759779885 Input Splitter"   INPUT FEATURE_TYPE "$(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_INPUT"
+# -------------------------------------------------------------------------
+FME_PYTHON_PATH "$(FME_MF_DIR)"
+FACTORY_DEF {*} PythonFactory    FACTORY_NAME { $(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_PythonCaller_4 }    FLUSH_WHEN_GROUPS_CHANGE { <Unused> }    INPUT  FEATURE_TYPE "$(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_INPUT"    SYMBOL_NAME { extract_html_tags }    SOURCE_CODE { import<space>fme<lf>import<space>fmeobjects<lf><lf>from<space>Python.NL_ATTRIBUTE_EXTRACTOR<space>import<space>extract_html_tags<lf> }    PY_OUTPUT_TAGS { PYOUTPUT <Rejected> }    OUTPUT { PYOUTPUT FEATURE_TYPE "$(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_PythonCaller_4_OUTPUT"         }    OUTPUT { <Rejected> FEATURE_TYPE "$(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_PythonCaller_4_<Rejected>"         }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_PythonCaller_4 <Rejected> Transformer Output Nuker"   INPUT FEATURE_TYPE "$(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_PythonCaller_4_<Rejected>"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_BulkAttributeRemover }    INPUT  FEATURE_TYPE "$(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_PythonCaller_4_OUTPUT"    OUTPUT { FEATURE_TYPE "$(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_BulkAttributeRemover_OUTPUT"        @RemoveAttributes(fme_pcre_match,fme_encoded,"_html_*.", NONPROTECTEDFME)         }
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Input Input Collector"   INPUT FEATURE_TYPE "$(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_BulkAttributeRemover_OUTPUT"   OUTPUT FEATURE_TYPE "$(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Input"
+MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:2
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_OUTPUT1759779885 Output Collector"   INPUT FEATURE_TYPE "$(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_OUTPUT"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME))}]
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN NL_ATTRIBUTE_EXTRACTOR,1,"FGP Tools",5641f0b9-9415-485c-871b-77f92339fb83,"Linked by Default",No,NO_PARALLELISM,,No,20200,YES,No,37,No,
+# <p><strong>Description</strong></p>
+# <p>This custom transformer extracts from the flatten XML (XHTML), the tags of the metadata information and transformed them into FME attributes. The XHTML tags information are renamed with the appropriate name to facilitate the following processes.  The custom transformer deletes the flatten XML attributes.</p>
+# <p>Note: This custom transformer will not produce the same result if the HTML tags are modified by the owner of the web site even for a small change in the layout of the information.  Some XHTML tags are not optional so it's impossible to distinguish a missing tag from a tag that was renamed.</p>
+# <p><strong>Input Ports</strong></p>
+# <ul>
+# <li>The flatten XHTML code.  On feature per dataset.</li>
+# </ul>
+# <p><strong>Output Ports</strong></p>
+# <ul>
+# <li>The fatures with extracted information in FME attributes.</li>
+# </ul>
+# TRANSFORMER_END
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="FGP Tools"
+#!   DESCRIPTION="&lt;p&gt;&lt;strong&gt;Description&lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;This custom transformer extracts from the flatten XML (XHTML), the tags of the metadata information and transformed them into FME attributes. The XHTML tags information are renamed with the appropriate name to facilitate the following processes.  The custom transformer deletes the flatten XML attributes.&lt;/p&gt;&#10;&lt;p&gt;Note: This custom transformer will not produce the same result if the HTML tags are modified by the owner of the web site even for a small change in the layout of the information.  Some XHTML tags are not optional so it&apos;s impossible to distinguish a missing tag from a tag that was renamed.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Input Ports&lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;The flatten XHTML code.  On feature per dataset.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Output Ports&lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;The fatures with extracted information in FME attributes.&lt;/li&gt;&#10;&lt;/ul&gt;"
+#!   DOC_EXTENTS="4030 864.91"
+#!   DOC_TOP_LEFT="-2550 -454.91"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="20200"
+#!   FME_DOCUMENT_GUID="5641f0b9-9415-485c-871b-77f92339fb83"
+#!   FME_DOCUMENT_PRIORGUID="916c6767-1687-4671-9c3d-383a10af92ff"
+#!   FME_LINKED_TRANSFORMER_VERSION="1"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY="20&lt;solidus&gt;05&lt;solidus&gt;2022,Daniel&lt;space&gt;Pilon,Original&lt;space&gt;version"
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2020.0.0.0 (20200309 - Build 20200 - WIN32)"
+#!   LAST_SAVE_DATE="2022-05-25T15:11:57"
+#!   MARKDOWN_DESCRIPTION="**Description**&#10;&#10;This custom transformer extracts from the flatten XML (XHTML), the tags of the metadata information and transformed them into FME attributes. The XHTML tags information are renamed with the appropriate name to facilitate the following processes.  The custom transformer deletes the flatten XML attributes.&#10;&#10;Note: This custom transformer will not produce the same result if the HTML tags are modified by the owner of the web site even for a small change in the layout of the information.  Some XHTML tags are not optional so it&apos;s impossible to distinguish a missing tag from a tag that was renamed.&#10;&#10;**Input Ports**&#10;&#10;  - The flatten XHTML code.  On feature per dataset.&#10;&#10;**Output Ports**&#10;&#10;  - The fatures with extracted information in FME attributes.&#10;&#10;&#10;"
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="37"
+#!   REPLACED_BY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="NL_ATTRIBUTE_EXTRACTOR"
+#!   USAGE=""
+#!   USE_MARKDOWN="YES"
+#!   VIEW_POSITION="-3674.88 700.165"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="79"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! </GLOBAL_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="11"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Search the XHTML code to extract the information&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-1719.2503125031253 300"
+#!   TOP_LEFT="-1719.2503125031253 300"
+#!   BOTTOM_RIGHT="-1174.0888837459804 76.24806248062481"
+#!   BOUNDING_RECT="-1719.2503125031253 300 545.1614287571449 223.75193751937519"
+#!   ORDER="500000000002607"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.59607843137254901,0.91764705882352937,0.72549019607843135,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="4"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="12"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Delete unnecessary attributes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-750 300"
+#!   TOP_LEFT="-750 300"
+#!   BOTTOM_RIGHT="-242.83107116785459 132.49862498624987"
+#!   BOUNDING_RECT="-750 300 507.16892883214541 167.50137501375013"
+#!   ORDER="500000000002608"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.59607843137254901,0.91764705882352937,0.72549019607843135,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="5"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="18"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Unexpose all attributes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="49.994499944999347 300"
+#!   TOP_LEFT="49.994499944999347 300"
+#!   BOTTOM_RIGHT="582.9955682027288 299"
+#!   BOUNDING_RECT="49.994499944999347 300 533.00106825772946 1"
+#!   ORDER="500000000002611"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.59607843137254901,0.91764705882352937,0.72549019607843135,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="15"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="13"
+#!   NAME="New Bookmark"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="-1769.2503125031253 410"
+#!   ORDER="500000000002612"
+#!   PALETTE_COLOR="Color5"
+#!   BOTTOM_RIGHT="632.95831395813957 -454.90961238726311"
+#!   BOUNDING_RECT="-1769.2503125031253 410 2402.2086264612649 864.90961238726311"
+#!   STICKY="true"
+#!   COLOUR="0.59607843137254901,0.91764705882352937,0.72549019607843135,1"
+#!   CONTENTS="18 12 19 16 4 11 15 5 "
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="4"
+#!   TYPE="PythonCaller"
+#!   VERSION="4"
+#!   POSITION="-1650 0"
+#!   BOUNDING_RECT="-1650 0 454 71"
+#!   ORDER="500000000002594"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="HIDE_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="NEW_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSOURCE" PARM_VALUE="import&lt;space&gt;fme&lt;lf&gt;import&lt;space&gt;fmeobjects&lt;lf&gt;&lt;lf&gt;from&lt;space&gt;Python.NL_ATTRIBUTE_EXTRACTOR&lt;space&gt;import&lt;space&gt;extract_html_tags&lt;lf&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSYMBOL" PARM_VALUE="extract_html_tags"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="PythonCaller_4"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="5"
+#!   TYPE="BulkAttributeRemover"
+#!   VERSION="2"
+#!   POSITION="-750 0"
+#!   BOUNDING_RECT="-750 0 471.00106825772946 71"
+#!   ORDER="500000000002599"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_EXP" PARM_VALUE="_html_*."/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="BulkAttributeRemover"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="15"
+#!   TYPE="ATTRIBUTE_UNEXPOSER"
+#!   VERSION="1"
+#!   POSITION="46.869468694686816 0"
+#!   BOUNDING_RECT="46.869468694686816 0 533.00106825772946 71"
+#!   ORDER="500000000002610"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_UNEXPOSER"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="OUTPUT"
+#!   POSITION="1050 0"
+#!   BOUNDING_RECT="1050 0 430 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="INPUT"
+#!   POSITION="-2550 0"
+#!   BOUNDING_RECT="-2550 0 430 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="7"
+#!   SOURCE_NODE="3"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="19"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="16"
+#!   SOURCE_NODE="5"
+#!   TARGET_NODE="15"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="17"
+#!   SOURCE_NODE="15"
+#!   TARGET_NODE="2"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+FME_PYTHON_VERSION 37
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_INPUT1653505917 Input Splitter"   INPUT FEATURE_TYPE "$(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_INPUT"
+# -------------------------------------------------------------------------
+FME_PYTHON_PATH "$(FME_MF_DIR)"
+FACTORY_DEF * PythonFactory    FACTORY_NAME $(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_PythonCaller_4    INPUT  FEATURE_TYPE "$(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_INPUT"    SYMBOL_NAME extract_html_tags    PYTHON_NAMESPACE FMEOBJECTS    SOURCE_CODE import<space>fme<lf>import<space>fmeobjects<lf><lf>from<space>Python.NL_ATTRIBUTE_EXTRACTOR<space>import<space>extract_html_tags<lf>    OUTPUT PYOUTPUT FEATURE_TYPE "$(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_PythonCaller_4_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_BulkAttributeRemover    INPUT  FEATURE_TYPE "$(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_PythonCaller_4_OUTPUT"    OUTPUT FEATURE_TYPE "$(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_BulkAttributeRemover_OUTPUT"        @RemoveAttributes(fme_pcre_match,fme_encoded,"_html_*.", NONFME)
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Input Input Collector"   INPUT FEATURE_TYPE "$(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_BulkAttributeRemover_OUTPUT"   OUTPUT FEATURE_TYPE "$(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Input"
+MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_OUTPUT1653505917 Output Collector"   INPUT FEATURE_TYPE "$(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME)_OUTPUT"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(NL_ATTRIBUTE_EXTRACTOR_WORKSPACE_NAME))}]

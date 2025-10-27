@@ -1,0 +1,845 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN QC_MISSING_EMAIL_SETTER,2,"""FGP Tools""",ab7d7da3-6e9f-4525-a9eb-5d6567802c14,"Linked by Default",No,NO_PARALLELISM,,No,25606,YES,No,313,No,,both
+# <p><strong>Description </strong></p>
+# <p>Add the attribute <em>default contact email</em> when the attribute <em>contacts{0}.mail</em> is empty</p>
+# <p><strong>Input Ports </strong></p>
+# <ul>
+# <li>DATA_INPUT: The input metadata records to process.</li>
+# </ul>
+# <p><strong>Output Ports</strong></p>
+# <ul>
+# <li>OUTPUT: The process output metdata records.</li>
+# </ul>
+# <p><strong>Parameters </strong></p>
+# <p>-<em> None</em></p>
+# TRANSFORMER_END
+#!   A0_PREVIEW_IMAGE="data:image/png;base64,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"
+#!   ARCGIS_COMPATIBILITY="ARCGIS_AUTO"
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="&quot;FGP Tools&quot;"
+#!   DATA_PROCESSING_TYPE="both"
+#!   DESCRIPTION="&lt;p&gt;&lt;strong&gt;Description &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;Add the attribute &lt;em&gt;default contact email&lt;/em&gt; when the attribute &lt;em&gt;contacts{0}.mail&lt;/em&gt; is empty&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Input Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;DATA_INPUT: The input metadata records to process.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Output Ports&lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;OUTPUT: The process output metdata records.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Parameters &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;-&lt;em&gt; None&lt;/em&gt;&lt;/p&gt;"
+#!   DOC_EXTENTS="4517.88 1706.83"
+#!   DOC_TOP_LEFT="-958.906 -1662.52"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="25606"
+#!   FME_DOCUMENT_GUID="ab7d7da3-6e9f-4525-a9eb-5d6567802c14"
+#!   FME_DOCUMENT_PRIORGUID=""
+#!   FME_LINKED_TRANSFORMER_VERSION="2"
+#!   FME_NAMES_ENCODING="windows-1252"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY="Unkbown,Unknown,Original&lt;space&gt;value,23&lt;solidus&gt;02&lt;solidus&gt;2022,Daniel&lt;space&gt;Pilon,Change&lt;space&gt;the&lt;space&gt;attribute&lt;space&gt;_dafault_email&lt;space&gt;for&lt;space&gt;default_contact_email."
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2025.1.0.0 (20250704 - Build 25606 - WIN64)"
+#!   LAST_SAVE_DATE="2025-10-06T16:02:34"
+#!   MARKDOWN_DESCRIPTION="**Description **&#10;&#10;Add the attribute _default contact email_ when the attribute _contacts{0}.mail_ is empty&#10;&#10;&#10;**Input Ports **&#10;&#10;- DATA_INPUT: The input metadata records to process.&#10;&#10;**Output Ports**&#10;&#10;- OUTPUT: The process output metdata records.&#10;&#10;&#10;**Parameters **&#10;&#10;-_ None_"
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="313"
+#!   REPLACED_BY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="QC_MISSING_EMAIL_SETTER"
+#!   USAGE=""
+#!   USE_MARKDOWN="YES"
+#!   VIEW_POSITION="-654.303 664.069"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="64"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! </GLOBAL_PARAMETERS>
+#! <USER_PARAMETERS
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbXX0="
+#! >
+#! <PARAMETER_INFO>
+#! </PARAMETER_INFO>
+#! </USER_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="15"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Exposes attributes required by this transformer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-150 -150"
+#!   TOP_LEFT="-150 -150"
+#!   BOTTOM_RIGHT="303.95911771617716 -151"
+#!   BOUNDING_RECT="-150 -150 453.95911771617716 1"
+#!   ORDER="500000000001546"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{10f41900-1328-42ab-8b52-ba8731d85dea}"
+#!   COLOUR="0.62352941176470589,0.5725490196078431,0.8784313725490196,1"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="5"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="16"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Test contacts{0}.email for value&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="450 -226.42984179841812"
+#!   TOP_LEFT="450 -226.42984179841812"
+#!   BOTTOM_RIGHT="1071.5877471274712 -400.18127931279327"
+#!   BOUNDING_RECT="450 -226.42984179841812 621.58774712747129 173.75143751437514"
+#!   ORDER="500000000001547"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{2cf3a48e-0973-454d-860a-215fbaf9f9d6}"
+#!   COLOUR="0.62352941176470589,0.5725490196078431,0.8784313725490196,1"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="4"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="17"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;contacts{0}.email set to _default_value&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="1200 -750"
+#!   TOP_LEFT="1200 -750"
+#!   BOTTOM_RIGHT="1827.1542090420903 -923.75143751437508"
+#!   BOUNDING_RECT="1200 -750 627.15420904209043 173.75143751437514"
+#!   ORDER="500000000001549"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{2fcad067-73aa-4fc8-bd73-8876afd178ff}"
+#!   COLOUR="0.62352941176470589,0.5725490196078431,0.8784313725490196,1"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="6"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="19"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Unexpose all attributes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="2173.2429199291992 -300"
+#!   TOP_LEFT="2173.2429199291992 -300"
+#!   BOTTOM_RIGHT="2583.0121426214259 -467.50137501375013"
+#!   BOUNDING_RECT="2173.2429199291992 -300 409.76922269222689 167.50137501375013"
+#!   ORDER="500000000001551"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{4f9976f6-9528-4101-94f1-ba8bfa548694}"
+#!   COLOUR="0.62352941176470589,0.5725490196078431,0.8784313725490196,1"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="7"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="18"
+#!   NAME="QC Missing Email setter"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="-309.37809378093777 44.311992550467494"
+#!   ORDER="500000000001539"
+#!   PALETTE_COLOR="Color8"
+#!   BOTTOM_RIGHT="2700.2223147231466 -1662.5166251662517"
+#!   BOUNDING_RECT="-309.37809378093777 44.311992550467494 3009.6004085040845 1706.8286177167192"
+#!   STICKY="true"
+#!   COLOUR="0.62352941176470589,0.5725490196078431,0.8784313725490196,1"
+#!   CONTENTS="19 9 4 16 5 7 11 13 6 17 10 15 "
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="4"
+#!   TYPE="Tester"
+#!   VERSION="4"
+#!   POSITION="498.25100307521609 -522.07553325533252"
+#!   BOUNDING_RECT="498.25100307521609 -522.07553325533252 454 71"
+#!   ORDER="500000000001540"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="PASSED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="contacts{0}.email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="default_contact_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="FAILED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="contacts{0}.email" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="default_contact_email" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_MSG" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="ACROSS_OUTPUT_PORTS"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="CASE_INSENSITIVE_TEST contacts&lt;opencurly&gt;0&lt;closecurly&gt;.email ATTRIBUTE_HAS_A_VALUE &quot;&quot;"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="CASE_INSENSITIVE_TEST"/>
+#!     <XFORM_PARM PARM_NAME="TEST_PREVIEW_GROUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester_6"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="5"
+#!   TYPE="AttributeExposer"
+#!   VERSION="2"
+#!   POSITION="-150 -512.30981059810597"
+#!   BOUNDING_RECT="-150 -512.30981059810597 454 71"
+#!   ORDER="500000000001541"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="contacts{0}.email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="default_contact_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="contacts{0}.email,,default_contact_email,"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="6"
+#!   TYPE="AttributeCreator"
+#!   VERSION="10"
+#!   POSITION="1287.8915039150397 -968.36005860058594"
+#!   BOUNDING_RECT="1287.8915039150397 -968.36005860058594 454 71"
+#!   ORDER="500000000001542"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{0}.email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="default_contact_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; contacts&lt;opencurly&gt;0&lt;closecurly&gt;.email SET_TO &lt;at&gt;Value&lt;openparen&gt;default_contact_email&lt;closeparen&gt; varchar&lt;openparen&gt;200&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE" PARM_VALUE="NO_OP"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_MODIFIED_ATTRIBUTE_TYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_IS_LOOKUP="true" PARM_VALUE="No Substitution"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="7"
+#!   TYPE="ATTRIBUTE_UNEXPOSER"
+#!   VERSION="2"
+#!   POSITION="2100 -515.43484184841805"
+#!   BOUNDING_RECT="2100 -515.43484184841805 533.00106825772946 71"
+#!   ORDER="500000000001550"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_UNEXPOSER"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="INPUT"
+#!   POSITION="-958.90570599187436 -511.35762664572439"
+#!   BOUNDING_RECT="-958.90570599187436 -511.35762664572439 454 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="DATA_OUTPUT_PASSED"
+#!   POSITION="2903.1195311953115 -656.68565435654364"
+#!   BOUNDING_RECT="2903.1195311953115 -656.68565435654364 655.85281546296892 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="8"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="9"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="fo 0 PASSED"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="10"
+#!   SOURCE_NODE="5"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="11"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="12"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="13"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 1 FAILED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+FME_PYTHON_VERSION 313
+# ============================================================================
+DEFAULT_MACRO $(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_FME_DATA_REPOSITORY 
+
+DEFAULT_MACRO $(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_FME_ENGINE 
+
+DEFAULT_MACRO $(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_FME_JOB_ID 
+
+DEFAULT_MACRO $(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_FME_SECURITY_ROLES 
+
+DEFAULT_MACRO $(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_FME_SECURITY_USER 
+
+DEFAULT_MACRO $(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_FME_SERVER_DEST_DIR 
+
+DEFAULT_MACRO $(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_FME_SERVER_HOST 
+
+DEFAULT_MACRO $(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_FME_SERVER_PORT 
+
+DEFAULT_MACRO $(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_FME_SERVER_REQUEST_HEADERS 
+
+DEFAULT_MACRO $(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_FME_SERVER_REQUEST_METHOD 
+
+DEFAULT_MACRO $(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_FME_SERVER_REQUEST_PARAMETERS 
+
+DEFAULT_MACRO $(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_FME_SERVER_REQUEST_URI 
+
+DEFAULT_MACRO $(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER 
+
+DEFAULT_MACRO $(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER_ID 
+
+DEFAULT_MACRO $(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_FME_SERVER_WEB_URL 
+
+DEFAULT_MACRO $(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_BACKUP 
+
+DEFAULT_MACRO $(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DASHBOARD 
+
+DEFAULT_MACRO $(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DATA 
+
+DEFAULT_MACRO $(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_ENGINE 
+
+DEFAULT_MACRO $(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_LOG 
+
+DEFAULT_MACRO $(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_SYSTEM 
+
+DEFAULT_MACRO $(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_TEMP 
+
+DEFAULT_MACRO $(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_FME_TOPIC 
+
+DEFAULT_MACRO $(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_FME_TOPIC_MESSAGE 
+
+# ============================================================================
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_INPUT1759780954 Input Splitter"   INPUT FEATURE_TYPE "$(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_INPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_AttributeExposer }    INPUT  FEATURE_TYPE "$(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_INPUT"    OUTPUT { FEATURE_TYPE "$(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_AttributeExposer_OUTPUT"          }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TestFactory    FACTORY_NAME { $(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_Tester_6 }    INPUT  FEATURE_TYPE "$(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_AttributeExposer_OUTPUT"    CASE_INSENSITIVE_TEST { contacts<opencurly>0<closecurly>.email ATTRIBUTE_HAS_A_VALUE "" ENCODED }    BOOLEAN_OPERATOR { OR }    COMPOSITE_TEST_EXPR { "<Unused>" }    PRESERVE_FEATURE_ORDER { ACROSS_OUTPUT_PORTS }    OUTPUT { PASSED FEATURE_TYPE "$(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_Tester_6_PASSED"         }    OUTPUT { FAILED FEATURE_TYPE "$(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_Tester_6_FAILED"         }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME { $(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_AttributeCreator }    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_Tester_6_FAILED"    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    NUM_OF_COLUMNS 5    ATTR_ACTION { "" "contacts<opencurly>0<closecurly>.email" "SET_TO" "<at>Value<openparen>default_contact_email<closeparen>" "varchar<openparen>200<closeparen>" }    OUTPUT { OUTPUT FEATURE_TYPE "$(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_AttributeCreator_OUTPUT"        }
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Input Input Collector"   INPUT FEATURE_TYPE "$(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_Tester_6_PASSED"   INPUT FEATURE_TYPE "$(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_AttributeCreator_OUTPUT"   OUTPUT FEATURE_TYPE "$(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Input"
+MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:2
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_DATA_OUTPUT_PASSED1759780954 Output Collector"   INPUT FEATURE_TYPE "$(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_DATA_OUTPUT_PASSED"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME))}]
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN QC_MISSING_EMAIL_SETTER,1,"FGP Tools",60578f70-5489-4f53-a4d8-73597e7aaabd,"Linked by Default",No,NO_PARALLELISM,,No,20200,YES,No,37,No,
+# <p><strong>Description </strong></p>
+# <p>Add the attribute <em>default contact email</em> when the attribute <em>contacts{0}.mail</em> is empty</p>
+# <p><strong>Input Ports </strong></p>
+# <ul>
+# <li>DATA_INPUT: The input metadata records to process.</li>
+# </ul>
+# <p><strong>Output Ports</strong></p>
+# <ul>
+# <li>OUTPUT: The process output metdata records.</li>
+# </ul>
+# <p><strong>Parameters </strong></p>
+# <p>-<em> None</em></p>
+# TRANSFORMER_END
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="FGP Tools"
+#!   DESCRIPTION="&lt;p&gt;&lt;strong&gt;Description &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;Add the attribute &lt;em&gt;default contact email&lt;/em&gt; when the attribute &lt;em&gt;contacts{0}.mail&lt;/em&gt; is empty&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Input Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;DATA_INPUT: The input metadata records to process.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Output Ports&lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;OUTPUT: The process output metdata records.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Parameters &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;-&lt;em&gt; None&lt;/em&gt;&lt;/p&gt;"
+#!   DOC_EXTENTS="4517.88 1706.83"
+#!   DOC_TOP_LEFT="-958.906 -1662.52"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="20200"
+#!   FME_DOCUMENT_GUID="60578f70-5489-4f53-a4d8-73597e7aaabd"
+#!   FME_DOCUMENT_PRIORGUID="eb4d20e8-4639-451d-96b2-05d3251e2ade"
+#!   FME_LINKED_TRANSFORMER_VERSION="1"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY="Unkbown,Unknown,Original&lt;space&gt;value,23&lt;solidus&gt;02&lt;solidus&gt;2022,Daniel&lt;space&gt;Pilon,Change&lt;space&gt;the&lt;space&gt;attribute&lt;space&gt;_dafault_email&lt;space&gt;for&lt;space&gt;default_contact_email."
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2020.0.0.0 (20200309 - Build 20200 - WIN32)"
+#!   LAST_SAVE_DATE="2022-02-23T13:39:01"
+#!   MARKDOWN_DESCRIPTION="**Description **&#10;&#10;Add the attribute _default contact email_ when the attribute _contacts{0}.mail_ is empty&#10;&#10;&#10;**Input Ports **&#10;&#10;- DATA_INPUT: The input metadata records to process.&#10;&#10;**Output Ports**&#10;&#10;- OUTPUT: The process output metdata records.&#10;&#10;&#10;**Parameters **&#10;&#10;-_ None_"
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="37"
+#!   REPLACED_BY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="QC_MISSING_EMAIL_SETTER"
+#!   USAGE=""
+#!   USE_MARKDOWN="YES"
+#!   VIEW_POSITION="-2793 781.258"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="64"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! </GLOBAL_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="15"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Exposes attributes required by this transformer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-150 -150"
+#!   TOP_LEFT="-150 -150"
+#!   BOTTOM_RIGHT="304 -151"
+#!   BOUNDING_RECT="-150 -150 454 1"
+#!   ORDER="500000000001546"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.62352941176470589,0.5725490196078431,0.8784313725490196,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="5"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="16"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Test contacts{0}.email for value&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="450 -226.42984179841812"
+#!   TOP_LEFT="450 -226.42984179841812"
+#!   BOTTOM_RIGHT="1071.5957528923436 -400.18127931279327"
+#!   BOUNDING_RECT="450 -226.42984179841812 621.59575289234374 173.75143751437514"
+#!   ORDER="500000000001547"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.62352941176470589,0.5725490196078431,0.8784313725490196,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="4"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="17"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;contacts{0}.email set to _default_value&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="1200 -750"
+#!   TOP_LEFT="1200 -750"
+#!   BOTTOM_RIGHT="1827.1667091670909 -923.75143751437508"
+#!   BOUNDING_RECT="1200 -750 627.16670916709086 173.75143751437514"
+#!   ORDER="500000000001549"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.62352941176470589,0.5725490196078431,0.8784313725490196,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="6"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="19"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Unexpose all attributes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="2173.2429199291992 -300"
+#!   TOP_LEFT="2173.2429199291992 -300"
+#!   BOTTOM_RIGHT="2583.0336428364276 -467.50137501375013"
+#!   BOUNDING_RECT="2173.2429199291992 -300 409.79072290722843 167.50137501375013"
+#!   ORDER="500000000001551"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.62352941176470589,0.5725490196078431,0.8784313725490196,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="7"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="18"
+#!   NAME="QC Missing Email setter"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="-309.37809378093777 44.311992550467494"
+#!   ORDER="500000000001539"
+#!   PALETTE_COLOR="Color8"
+#!   BOTTOM_RIGHT="2700.2223147231466 -1662.5166251662517"
+#!   BOUNDING_RECT="-309.37809378093777 44.311992550467494 3009.6004085040845 1706.8286177167192"
+#!   STICKY="true"
+#!   COLOUR="0.62352941176470589,0.5725490196078431,0.8784313725490196,1"
+#!   CONTENTS="5 16 7 9 4 10 19 13 6 15 11 17 "
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="4"
+#!   TYPE="Tester"
+#!   VERSION="2"
+#!   POSITION="498.25100307521609 -522.07553325533252"
+#!   BOUNDING_RECT="498.25100307521609 -522.07553325533252 454 71"
+#!   ORDER="500000000001540"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="PASSED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="contacts{0}.email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="default_contact_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="FAILED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="contacts{0}.email" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="default_contact_email" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_MSG" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="1"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="CASE_INSENSITIVE_TEST contacts&lt;opencurly&gt;0&lt;closecurly&gt;.email ATTRIBUTE_HAS_A_VALUE &quot;&quot;"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="CASE_INSENSITIVE_TEST"/>
+#!     <XFORM_PARM PARM_NAME="TEST_PREVIEW_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester_6"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="5"
+#!   TYPE="AttributeExposer"
+#!   VERSION="1"
+#!   POSITION="-150 -512.30981059810597"
+#!   BOUNDING_RECT="-150 -512.30981059810597 454 71"
+#!   ORDER="500000000001541"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="contacts{0}.email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="default_contact_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="contacts{0}.email,default_contact_email"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="6"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="1287.8915039150397 -968.36005860058594"
+#!   BOUNDING_RECT="1287.8915039150397 -968.36005860058594 454 71"
+#!   ORDER="500000000001542"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{0}.email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="default_contact_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; contacts&lt;opencurly&gt;0&lt;closecurly&gt;.email SET_TO &lt;at&gt;Value&lt;openparen&gt;default_contact_email&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="7"
+#!   TYPE="ATTRIBUTE_UNEXPOSER"
+#!   VERSION="1"
+#!   POSITION="2100 -515.43484184841805"
+#!   BOUNDING_RECT="2100 -515.43484184841805 533.00106825772946 71"
+#!   ORDER="500000000001550"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_UNEXPOSER"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="INPUT"
+#!   POSITION="-958.90570599187436 -511.35762664572439"
+#!   BOUNDING_RECT="-958.90570599187436 -511.35762664572439 454 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="DATA_OUTPUT_PASSED"
+#!   POSITION="2903.1195311953115 -656.68565435654364"
+#!   BOUNDING_RECT="2903.1195311953115 -656.68565435654364 655.85281546296892 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="8"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="9"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="fo 0 PASSED"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="10"
+#!   SOURCE_NODE="5"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="11"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="12"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="13"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 1 FAILED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+FME_PYTHON_VERSION 37
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_INPUT1645641541 Input Splitter"   INPUT FEATURE_TYPE "$(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_INPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_AttributeExposer    INPUT  FEATURE_TYPE "$(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_INPUT"    OUTPUT FEATURE_TYPE "$(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_AttributeExposer_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TestFactory    FACTORY_NAME $(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_Tester_6    INPUT  FEATURE_TYPE "$(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_AttributeExposer_OUTPUT"    CASE_INSENSITIVE_TEST contacts<opencurly>0<closecurly>.email ATTRIBUTE_HAS_A_VALUE "" ENCODED    BOOLEAN_OPERATOR OR    COMPOSITE_TEST_EXPR "1"    OUTPUT PASSED FEATURE_TYPE "$(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_Tester_6_PASSED"    OUTPUT FAILED FEATURE_TYPE "$(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_Tester_6_FAILED"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_AttributeCreator    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_Tester_6_FAILED"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "contacts<opencurly>0<closecurly>.email" "SET_TO" "<at>Value<openparen>default_contact_email<closeparen>" }    OUTPUT OUTPUT FEATURE_TYPE "$(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_AttributeCreator_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Input Input Collector"   INPUT FEATURE_TYPE "$(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_Tester_6_PASSED"   INPUT FEATURE_TYPE "$(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_AttributeCreator_OUTPUT"   OUTPUT FEATURE_TYPE "$(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Input"
+MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_DATA_OUTPUT_PASSED1645641541 Output Collector"   INPUT FEATURE_TYPE "$(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME)_DATA_OUTPUT_PASSED"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(QC_MISSING_EMAIL_SETTER_WORKSPACE_NAME))}]

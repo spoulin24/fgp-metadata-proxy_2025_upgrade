@@ -1,0 +1,250 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN FFS_CaptureHarness,1,"Federal Geo Platform",8649b14a-c9ae-47f8-a8dd-1046384e6f0c,"Linked Always",No,NO_PARALLELISM,,No,20787,YES,No,,No,
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Capture FFS from transformers</p>
+# 
+# TRANSFORMER_END
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="Federal Geo Platform"
+#!   DESCRIPTION="&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Capture FFS from transformers&lt;/p&gt;&#10;"
+#!   DOC_EXTENTS="2266.65 131"
+#!   DOC_TOP_LEFT="554 -212.5"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="20787"
+#!   FME_DOCUMENT_GUID="8649b14a-c9ae-47f8-a8dd-1046384e6f0c"
+#!   FME_DOCUMENT_PRIORGUID="eac95d67-c363-45a6-89ed-1b8f602e8391"
+#!   FME_LINKED_TRANSFORMER_VERSION="1"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked Always"
+#!   HISTORY=""
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2020.2.0.0 (20201027 - Build 20787 - WIN32)"
+#!   LAST_SAVE_DATE="2025-09-24T14:31:41"
+#!   MARKDOWN_DESCRIPTION=""
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY=""
+#!   REPLACED_BY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="FFS_CaptureHarness"
+#!   USAGE=""
+#!   USE_MARKDOWN="NO"
+#!   VIEW_POSITION="-362.504 134.376"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="100"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR _transformer _transformer:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR _port _port:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <COMMENTS>
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="4"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="1184 -81.5"
+#!   BOUNDING_RECT="1184 -81.5 454 71"
+#!   ORDER="500000000000001"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_transformer" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_port" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; _transformer SET_TO &lt;at&gt;Value&lt;openparen&gt;_transformer&lt;closeparen&gt;  _port SET_TO &lt;at&gt;Value&lt;openparen&gt;_port&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="6"
+#!   TYPE="FeatureWriter"
+#!   VERSION="0"
+#!   POSITION="1738 -100"
+#!   BOUNDING_RECT="1738 -100 430 71"
+#!   ORDER="500000000000002"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="SUMMARY"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_feature_type{}.count" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_feature_type{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_dataset" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_total_features_written" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="COORDSYS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="DATASET" PARM_VALUE="C:&lt;backslash&gt;Users&lt;backslash&gt;stpoulin&lt;backslash&gt;Documents&lt;backslash&gt;Dev&lt;backslash&gt;FME_Dev&lt;backslash&gt;DEV&lt;backslash&gt;FME&lt;backslash&gt;$(_transformer)_$(_port).ffs"/>
+#!     <XFORM_PARM PARM_NAME="DATASET_ATTR" PARM_VALUE="_dataset"/>
+#!     <XFORM_PARM PARM_NAME="DYNGROUP_0" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="FEATURE_TYPES_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="FEATURE_TYPE_LIST_ATTR" PARM_VALUE="_feature_type"/>
+#!     <XFORM_PARM PARM_NAME="FFS_ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="FFS_COMPRESSION_LEVEL" PARM_VALUE="0"/>
+#!     <XFORM_PARM PARM_NAME="FFS_COORDINATE_SYSTEM_GRANULARITY" PARM_VALUE="FEATURE"/>
+#!     <XFORM_PARM PARM_NAME="FFS_DESTINATION_DATASETTYPE_VALIDATION" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="FFS_FILE_DEST_DATASET" PARM_VALUE="yes"/>
+#!     <XFORM_PARM PARM_NAME="FFS_INDEXED" PARM_VALUE="no"/>
+#!     <XFORM_PARM PARM_NAME="FFS_MAX_FILE_SIZE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="FFS_PASSPHRASE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="FFS_REQUIRES_FEATURE_TABLES" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="FFS_STORE_SCANNED_METADATA" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="FFS_STORE_SCANNED_SCHEMA" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="FORMAT" PARM_VALUE="FFS"/>
+#!     <XFORM_PARM PARM_NAME="FORMAT_DIRECTIVES" PARM_VALUE="RUNTIME_MACROS,PASSPHRASE&lt;comma&gt;&lt;comma&gt;INDEXED&lt;comma&gt;no&lt;comma&gt;COMPRESSION_LEVEL&lt;comma&gt;0&lt;comma&gt;REQUIRES_FEATURE_TABLES&lt;comma&gt;No&lt;comma&gt;STORE_SCANNED_SCHEMA&lt;comma&gt;No&lt;comma&gt;ATTRIBUTE_TYPE_SCANNING&lt;comma&gt;&lt;lt&gt;Unused&lt;gt&gt;&lt;comma&gt;STORE_SCANNED_METADATA&lt;comma&gt;No&lt;comma&gt;ADVANCED_GROUP&lt;comma&gt;&lt;comma&gt;MAX_FILE_SIZE&lt;comma&gt;&lt;comma&gt;DESTINATION_DATASETTYPE_VALIDATION&lt;comma&gt;No&lt;comma&gt;COORDINATE_SYSTEM_GRANULARITY&lt;comma&gt;FEATURE&lt;comma&gt;FILE_DEST_DATASET&lt;comma&gt;yes,METAFILE,FFS"/>
+#!     <XFORM_PARM PARM_NAME="FORMAT_PARAMS" PARM_VALUE="FFS_COMPRESSION_LEVEL,&quot;OPTIONAL CHOICE 0%1%2%3%4%5%6%7%8%9&quot;,FFS&lt;space&gt;Compression&lt;space&gt;Level:,FFS_STORE_SCANNED_SCHEMA,&quot;OPTIONAL ACTIVECHOICE Yes%No,ATTRIBUTE_TYPE_SCANNING&quot;,FFS&lt;space&gt;Store&lt;space&gt;Scanned&lt;space&gt;Schema,FFS_ADVANCED_GROUP,&quot;OPTIONAL DISCLOSUREGROUP FME_DISCLOSURE_CLOSED%MAX_FILE_SIZE&quot;,FFS&lt;space&gt;Advanced,FFS_DESTINATION_DATASETTYPE_VALIDATION,&quot;OPTIONAL NO_EDIT TEXT&quot;,FFS&lt;space&gt;,FFS_COORDINATE_SYSTEM_GRANULARITY,&quot;OPTIONAL NO_EDIT TEXT&quot;,FFS&lt;space&gt;,FFS_FILE_DEST_DATASET,&quot;OPTIONAL NO_EDIT TEXT&quot;,FFS&lt;space&gt;,FFS_PASSPHRASE,&quot;OPTIONAL PASSWORD_ENCODED&quot;,FFS&lt;space&gt;Password:,FFS_INDEXED,&quot;OPTIONAL ACTIVECHOICE Yes,COMPRESSION_LEVEL%no&quot;,FFS&lt;space&gt;Create&lt;space&gt;Spatial&lt;space&gt;Index:,FFS_STORE_SCANNED_METADATA,&quot;OPTIONAL CHOICE Yes%No&quot;,FFS&lt;space&gt;Store&lt;space&gt;Scanned&lt;space&gt;Metadata,FFS_REQUIRES_FEATURE_TABLES,&quot;OPTIONAL CHOICE Yes%No&quot;,FFS&lt;space&gt;Enforce&lt;space&gt;Strict&lt;space&gt;Schema,FFS_MAX_FILE_SIZE,&quot;OPTIONAL INTEGER&quot;,FFS&lt;space&gt;Maximum&lt;space&gt;FFS&lt;space&gt;File&lt;space&gt;Size&lt;comma&gt;&lt;space&gt;in&lt;space&gt;Bytes"/>
+#!     <XFORM_PARM PARM_NAME="MORE_SUMMARY_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="NO_OUTPUT_PORTS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="OUTPUTPORTS_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_PORTS" PARM_VALUE="&quot;&quot;"/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_PORTS_MODE" PARM_VALUE="NO_OUTPUT_PORTS"/>
+#!     <XFORM_PARM PARM_NAME="PER_EACH_INPUT" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="SELECTED_PORTS" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="SUMMARY_ATTRS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TOTAL_FEATURES_WRITTEN_ATTR" PARM_VALUE="_total_features_written"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="WRITER_DIRECTIVES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="WRITER_FEATURE_TYPE_PARAMS" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;fme_feature_type&lt;closeparen&gt;:Output,ftp_feature_type_name_exp,&lt;at&gt;Value&lt;openparen&gt;fme_feature_type&lt;closeparen&gt;,ftp_writer,FFS,ftp_dynamic_schema,no,ftp_dynamic_feature_type_name_type,DYN_SCHEMA_PROP_AUTO,ftp_dynamic_geometry_type,DYN_SCHEMA_PROP_AUTO,ftp_dynamic_schema_def_name_type,DYN_SCHEMA_PROP_AUTO,ftp_dynamic_schema_sources,&lt;lt&gt;lt&lt;gt&gt;Unused&lt;lt&gt;gt&lt;gt&gt;,ftp_attribute_source,0,ftp_user_attributes,_transformer&lt;comma&gt;varchar&lt;lt&gt;openparen&lt;gt&gt;200&lt;lt&gt;closeparen&lt;gt&gt;&lt;comma&gt;_port&lt;comma&gt;varchar&lt;lt&gt;openparen&lt;gt&gt;200&lt;lt&gt;closeparen&lt;gt&gt;,ftp_user_attribute_values,&lt;comma&gt;"/>
+#!     <XFORM_PARM PARM_NAME="WRITER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="WRITER_METAFILE" PARM_VALUE="ATTRIBUTE_CASE,ANY,ATTRIBUTE_INVALID_CHARS,,ATTRIBUTE_LENGTH,4000,ATTR_TYPE_MAP,char&lt;openparen&gt;width&lt;closeparen&gt;&lt;comma&gt;fme_char&lt;openparen&gt;width&lt;closeparen&gt;&lt;comma&gt;varchar&lt;openparen&gt;width&lt;closeparen&gt;&lt;comma&gt;fme_varchar&lt;openparen&gt;width&lt;closeparen&gt;&lt;comma&gt;buffer&lt;comma&gt;fme_buffer&lt;comma&gt;xml&lt;comma&gt;fme_xml&lt;comma&gt;json&lt;comma&gt;fme_json&lt;comma&gt;binary&lt;openparen&gt;width&lt;closeparen&gt;&lt;comma&gt;fme_binary&lt;openparen&gt;width&lt;closeparen&gt;&lt;comma&gt;varbinary&lt;openparen&gt;width&lt;closeparen&gt;&lt;comma&gt;fme_varbinary&lt;openparen&gt;width&lt;closeparen&gt;&lt;comma&gt;binarybuffer&lt;comma&gt;fme_binarybuffer&lt;comma&gt;datetime&lt;comma&gt;fme_datetime&lt;comma&gt;time&lt;comma&gt;fme_time&lt;comma&gt;date&lt;comma&gt;fme_date&lt;comma&gt;real64&lt;comma&gt;fme_real64&lt;comma&gt;real32&lt;comma&gt;fme_real32&lt;comma&gt;int32&lt;comma&gt;fme_int32&lt;comma&gt;uint32&lt;comma&gt;fme_uint32&lt;comma&gt;int64&lt;comma&gt;fme_int64&lt;comma&gt;uint64&lt;comma&gt;fme_uint64&lt;comma&gt;logical&lt;comma&gt;fme_boolean&lt;comma&gt;int16&lt;comma&gt;fme_int16&lt;comma&gt;uint16&lt;comma&gt;fme_uint16&lt;comma&gt;int8&lt;comma&gt;fme_int8&lt;comma&gt;uint8&lt;comma&gt;fme_uint8&lt;comma&gt;&lt;quote&gt;number&lt;openparen&gt;width&lt;comma&gt;decimal&lt;closeparen&gt;&lt;quote&gt;&lt;comma&gt;&lt;quote&gt;fme_decimal&lt;openparen&gt;width&lt;comma&gt;decimal&lt;closeparen&gt;&lt;quote&gt;,DEST_ILLEGAL_ATTR_LIST,,FEATURE_TYPE_CASE,ANY,FEATURE_TYPE_INVALID_CHARS,,FEATURE_TYPE_LENGTH,0,FEATURE_TYPE_LENGTH_INCLUDES_PREFIX,false,FEATURE_TYPE_RESERVED_WORDS,,FORMAT_METAFILE,$(FME_HOME_ENCODED)metafile&lt;backslash&gt;FFS.fmf,FORMAT_NAME,FFS,GEOM_MAP,fme_point&lt;comma&gt;fme_point&lt;comma&gt;fme_line&lt;comma&gt;fme_line&lt;comma&gt;fme_area&lt;comma&gt;fme_polygon&lt;comma&gt;fme_text&lt;comma&gt;fme_text&lt;comma&gt;fme_ellipse&lt;comma&gt;fme_ellipse&lt;comma&gt;fme_arc&lt;comma&gt;fme_arc&lt;comma&gt;fme_rectangle&lt;comma&gt;fme_rectangle&lt;comma&gt;fme_rounded_rectangle&lt;comma&gt;fme_rounded_rectangle&lt;comma&gt;fme_raster&lt;comma&gt;fme_raster&lt;comma&gt;fme_collection&lt;comma&gt;fme_collection&lt;comma&gt;fme_surface&lt;comma&gt;fme_surface&lt;comma&gt;fme_solid&lt;comma&gt;fme_solid&lt;comma&gt;fme_point_cloud&lt;comma&gt;fme_point_cloud&lt;comma&gt;fme_feature_table&lt;comma&gt;fme_feature_table&lt;comma&gt;fme_no_geom&lt;comma&gt;fme_no_geom&lt;comma&gt;&lt;comma&gt;fme_no_geom&lt;comma&gt;fme_no_map&lt;comma&gt;fme_no_geom,READER_ATTR_INDEX_TYPES,,READER_USES_DEF,yes,SOURCE,no,SUPPORTS_FEAT_TYPE_FANOUT,yes,SUPPORTS_MULTI_GEOM,yes,WORKBENCH_CANNED_SCHEMA,,WRITER,FFS,WRITER_ATTR_INDEX_TYPES,,WRITER_DEFLINE_PARMS,,WRITER_DEF_LINE_TEMPLATE,&lt;opencurly&gt;FME_GEN_GROUP_NAME&lt;closecurly&gt;,WRITER_FORMAT_PARAMETER,DATASET_NAME&lt;comma&gt;&lt;quote&gt;ffs&lt;space&gt;file&lt;quote&gt;&lt;comma&gt;READER_DATASET_HINT&lt;comma&gt;&lt;quote&gt;Select&lt;space&gt;the&lt;space&gt;FFS&lt;space&gt;file&lt;openparen&gt;s&lt;closeparen&gt;&lt;quote&gt;&lt;comma&gt;WRITER_DATASET_HINT&lt;comma&gt;&lt;quote&gt;Specify&lt;space&gt;a&lt;space&gt;name&lt;space&gt;for&lt;space&gt;the&lt;space&gt;FFS&lt;space&gt;file&lt;quote&gt;,WRITER_HAS_DEFLINE_ATTRS,yes,WRITER_USES_DEF,yes"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="FeatureWriter"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="Input"
+#!   POSITION="554 -100"
+#!   BOUNDING_RECT="554 -100 454 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="8"
+#!   NAME="Output"
+#!   POSITION="2390.6489064890648 -141.5"
+#!   BOUNDING_RECT="2390.6489064890648 -141.5 430 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="5"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="7"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 Output"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="9"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="8"
+#!   SOURCE_PORT_DESC="fo 0 SUMMARY"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+DEFAULT_MACRO $(FFS_CaptureHarness_WORKSPACE_NAME)__transformer 
+DEFAULT_MACRO $(FFS_CaptureHarness_WORKSPACE_NAME)__port 
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO FFS_CaptureHarness_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(FFS_CaptureHarness_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(FFS_CaptureHarness_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FFS_CaptureHarness_WORKSPACE_NAME)_Input1758738701 Input Splitter"   INPUT FEATURE_TYPE "$(FFS_CaptureHarness_WORKSPACE_NAME)_Input"   OUTPUT FEATURE_TYPE "$(FFS_CaptureHarness_WORKSPACE_NAME)_Input"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(FFS_CaptureHarness_WORKSPACE_NAME)_AttributeCreator    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(FFS_CaptureHarness_WORKSPACE_NAME)_Input"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "_transformer" "SET_TO" "<at>Value<openparen>_transformer<closeparen>" }      ATTR_ACTION { "" "_port" "SET_TO" "<at>Value<openparen>_port<closeparen>" }    OUTPUT OUTPUT FEATURE_TYPE "$(FFS_CaptureHarness_WORKSPACE_NAME)_AttributeCreator_OUTPUT"
+# -------------------------------------------------------------------------
+INCLUDE [    puts {DEFAULT_MACRO FeatureWriterDataset_$(FFS_CaptureHarness_WORKSPACE_NAME)_FeatureWriter @EvaluateExpression(FDIV,STRING_ENCODED,C:<backslash>Users<backslash>stpoulin<backslash>Documents<backslash>Dev<backslash>FME_Dev<backslash>DEV<backslash>FME<backslash>$($(FFS_CaptureHarness_WORKSPACE_NAME)__transformer$encode)_$($(FFS_CaptureHarness_WORKSPACE_NAME)__port$encode).ffs,$(FFS_CaptureHarness_WORKSPACE_NAME)_FeatureWriter)}; ]
+FACTORY_DEF {*} WriterFactory    FACTORY_NAME $(FFS_CaptureHarness_WORKSPACE_NAME)_FeatureWriter    WRITER_TYPE FFS    WRITER_DATASET "$(FeatureWriterDataset_$(FFS_CaptureHarness_WORKSPACE_NAME)_FeatureWriter)"    WRITER_SETTINGS "RUNTIME_MACROS,PASSPHRASE<comma><comma>INDEXED<comma>no<comma>COMPRESSION_LEVEL<comma>0<comma>REQUIRES_FEATURE_TABLES<comma>No<comma>STORE_SCANNED_SCHEMA<comma>No<comma>ATTRIBUTE_TYPE_SCANNING<comma><lt>Unused<gt><comma>STORE_SCANNED_METADATA<comma>No<comma>ADVANCED_GROUP<comma><comma>MAX_FILE_SIZE<comma><comma>DESTINATION_DATASETTYPE_VALIDATION<comma>No<comma>COORDINATE_SYSTEM_GRANULARITY<comma>FEATURE<comma>FILE_DEST_DATASET<comma>yes,METAFILE,FFS"    WRITER_METAFILE "ATTRIBUTE_CASE,ANY,ATTRIBUTE_INVALID_CHARS,,ATTRIBUTE_LENGTH,4000,ATTR_TYPE_MAP,char<openparen>width<closeparen><comma>fme_char<openparen>width<closeparen><comma>varchar<openparen>width<closeparen><comma>fme_varchar<openparen>width<closeparen><comma>buffer<comma>fme_buffer<comma>xml<comma>fme_xml<comma>json<comma>fme_json<comma>binary<openparen>width<closeparen><comma>fme_binary<openparen>width<closeparen><comma>varbinary<openparen>width<closeparen><comma>fme_varbinary<openparen>width<closeparen><comma>binarybuffer<comma>fme_binarybuffer<comma>datetime<comma>fme_datetime<comma>time<comma>fme_time<comma>date<comma>fme_date<comma>real64<comma>fme_real64<comma>real32<comma>fme_real32<comma>int32<comma>fme_int32<comma>uint32<comma>fme_uint32<comma>int64<comma>fme_int64<comma>uint64<comma>fme_uint64<comma>logical<comma>fme_boolean<comma>int16<comma>fme_int16<comma>uint16<comma>fme_uint16<comma>int8<comma>fme_int8<comma>uint8<comma>fme_uint8<comma><quote>number<openparen>width<comma>decimal<closeparen><quote><comma><quote>fme_decimal<openparen>width<comma>decimal<closeparen><quote>,DEST_ILLEGAL_ATTR_LIST,,FEATURE_TYPE_CASE,ANY,FEATURE_TYPE_INVALID_CHARS,,FEATURE_TYPE_LENGTH,0,FEATURE_TYPE_LENGTH_INCLUDES_PREFIX,false,FEATURE_TYPE_RESERVED_WORDS,,FORMAT_METAFILE,$(FME_HOME_ENCODED)metafile<backslash>FFS.fmf,FORMAT_NAME,FFS,GEOM_MAP,fme_point<comma>fme_point<comma>fme_line<comma>fme_line<comma>fme_area<comma>fme_polygon<comma>fme_text<comma>fme_text<comma>fme_ellipse<comma>fme_ellipse<comma>fme_arc<comma>fme_arc<comma>fme_rectangle<comma>fme_rectangle<comma>fme_rounded_rectangle<comma>fme_rounded_rectangle<comma>fme_raster<comma>fme_raster<comma>fme_collection<comma>fme_collection<comma>fme_surface<comma>fme_surface<comma>fme_solid<comma>fme_solid<comma>fme_point_cloud<comma>fme_point_cloud<comma>fme_feature_table<comma>fme_feature_table<comma>fme_no_geom<comma>fme_no_geom<comma><comma>fme_no_geom<comma>fme_no_map<comma>fme_no_geom,READER_ATTR_INDEX_TYPES,,READER_USES_DEF,yes,SOURCE,no,SUPPORTS_FEAT_TYPE_FANOUT,yes,SUPPORTS_MULTI_GEOM,yes,WORKBENCH_CANNED_SCHEMA,,WRITER,FFS,WRITER_ATTR_INDEX_TYPES,,WRITER_DEFLINE_PARMS,,WRITER_DEF_LINE_TEMPLATE,<opencurly>FME_GEN_GROUP_NAME<closecurly>,WRITER_FORMAT_PARAMETER,DATASET_NAME<comma><quote>ffs<space>file<quote><comma>READER_DATASET_HINT<comma><quote>Select<space>the<space>FFS<space>file<openparen>s<closeparen><quote><comma>WRITER_DATASET_HINT<comma><quote>Specify<space>a<space>name<space>for<space>the<space>FFS<space>file<quote>,WRITER_HAS_DEFLINE_ATTRS,yes,WRITER_USES_DEF,yes"    WRITER_FEATURE_TYPES "<at>Value<openparen>fme_feature_type<closeparen>:Output,ftp_feature_type_name_exp,<at>Value<openparen>fme_feature_type<closeparen>,ftp_writer,FFS,ftp_dynamic_schema,no,ftp_dynamic_feature_type_name_type,DYN_SCHEMA_PROP_AUTO,ftp_dynamic_geometry_type,DYN_SCHEMA_PROP_AUTO,ftp_dynamic_schema_def_name_type,DYN_SCHEMA_PROP_AUTO,ftp_dynamic_schema_sources,<lt>lt<gt>Unused<lt>gt<gt>,ftp_attribute_source,0,ftp_user_attributes,_transformer<comma>varchar<lt>openparen<gt>200<lt>closeparen<gt><comma>_port<comma>varchar<lt>openparen<gt>200<lt>closeparen<gt>,ftp_user_attribute_values,<comma>"    WRITER_PARAMS "COMPRESSION_LEVEL,0,STORE_SCANNED_SCHEMA,No,DESTINATION_DATASETTYPE_VALIDATION,No,COORDINATE_SYSTEM_GRANULARITY,FEATURE,FILE_DEST_DATASET,yes,INDEXED,no,STORE_SCANNED_METADATA,No,REQUIRES_FEATURE_TABLES,No"    DATASET_ATTR "_dataset"    FEATURE_TYPE_LIST_ATTR "_feature_type"    TOTAL_FEATURES_WRITTEN_ATTR "_total_features_written"    OUTPUT_PORTS ""    INPUT Output FEATURE_TYPE "$(FFS_CaptureHarness_WORKSPACE_NAME)_AttributeCreator_OUTPUT"  @FeatureType(ENCODED,@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>fme_feature_type<closeparen>,$(FFS_CaptureHarness_WORKSPACE_NAME)_FeatureWriter))    @SupplyAttributes(ENCODED,fme_template_feature_type,Output)    OUTPUT SUMMARY FEATURE_TYPE "$(FFS_CaptureHarness_WORKSPACE_NAME)_FeatureWriter_SUMMARY"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FFS_CaptureHarness_WORKSPACE_NAME)_Output1758738701 Output Collector"   INPUT FEATURE_TYPE "$(FFS_CaptureHarness_WORKSPACE_NAME)_FeatureWriter_SUMMARY"   OUTPUT FEATURE_TYPE "$(FFS_CaptureHarness_WORKSPACE_NAME)_Output"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(FFS_CaptureHarness_WORKSPACE_NAME))}]

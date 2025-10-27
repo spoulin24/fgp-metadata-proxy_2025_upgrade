@@ -1,0 +1,1582 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN SECTOR_MAPPER_NG,2,"""FGP Tools""",2b5cc0e3-e82d-4801-9665-d463c83aa568,"Linked by Default",No,NO_PARALLELISM,,No,25606,YES,No,313,No,,both
+# <p><strong>Description </strong></p>
+# <p>This custom transformer sorts the record (feature) to be published based on the sector name.  The valid sector name is contained in a CSV file.</p>
+# <p><strong>Input Ports </strong></p>
+# <ul>
+# <li>INPUT: The input metadata records (features) to process.</li>
+# </ul>
+# <p><strong>Output Ports </strong></p>
+# <ul>
+# <li>
+# <p>PUBLISHED_OUTPUT: The records (features) to be publihed in the FGP based on the sector name.</p>
+# </li>
+# <li>
+# <p>UNPUBLISHED_OUTPUT: The records (features) not to be publihed in the FGP based on the sector name.</p>
+# </li>
+# <li>
+# <p>UNMAPPED_OUTPUT: The records (features) for which the sector is not present (unmapped)  in the CSV file.</p>
+# </li>
+# </ul>
+# <p><strong>Parameters </strong></p>
+# <ul>
+# <li>
+# <p>FEATURE_TYPE: Name of the CSV file to read (without .csv extension);</p>
+# </li>
+# <li>
+# <p>IN_CSV_LOOKUP_TABLES_DIR: Name of the directory path containing the CSV file to read;</p>
+# </li>
+# <li>
+# <p>P-T_ABBR: Two letters abbreviation of the province or the territory.</p>
+# </li>
+# </ul>
+# TRANSFORMER_END
+#!   A0_PREVIEW_IMAGE="data:image/png;base64,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"
+#!   ARCGIS_COMPATIBILITY="ARCGIS_AUTO"
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="&quot;FGP Tools&quot;"
+#!   DATA_PROCESSING_TYPE="both"
+#!   DESCRIPTION="&lt;p&gt;&lt;strong&gt;Description &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;This custom transformer sorts the record (feature) to be published based on the sector name.  The valid sector name is contained in a CSV file.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Input Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;INPUT: The input metadata records (features) to process.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Output Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;PUBLISHED_OUTPUT: The records (features) to be publihed in the FGP based on the sector name.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;UNPUBLISHED_OUTPUT: The records (features) not to be publihed in the FGP based on the sector name.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;UNMAPPED_OUTPUT: The records (features) for which the sector is not present (unmapped)  in the CSV file.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Parameters &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;FEATURE_TYPE: Name of the CSV file to read (without .csv extension);&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;IN_CSV_LOOKUP_TABLES_DIR: Name of the directory path containing the CSV file to read;&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;P-T_ABBR: Two letters abbreviation of the province or the territory.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;/ul&gt;"
+#!   DOC_EXTENTS="6828.87 1222.85"
+#!   DOC_TOP_LEFT="-2550 -432.22"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="25606"
+#!   FME_DOCUMENT_GUID="2b5cc0e3-e82d-4801-9665-d463c83aa568"
+#!   FME_DOCUMENT_PRIORGUID=""
+#!   FME_LINKED_TRANSFORMER_VERSION="2"
+#!   FME_NAMES_ENCODING="windows-1252"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY="27&lt;solidus&gt;03&lt;solidus&gt;2022,Daniel&lt;space&gt;Pilon,Adapted&lt;space&gt;version&lt;space&gt;from&lt;space&gt;SECTOR_MAPPER"
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2025.1.0.0 (20250704 - Build 25606 - WIN64)"
+#!   LAST_SAVE_DATE="2025-10-06T16:14:33"
+#!   MARKDOWN_DESCRIPTION="**Description **&#10;&#10;This custom transformer sorts the record (feature) to be published based on the sector name.  The valid sector name is contained in a CSV file.&#10;&#10;**Input Ports **&#10;&#10; - INPUT: The input metadata records (features) to process.&#10;&#10;**Output Ports **&#10;&#10; - PUBLISHED_OUTPUT: The records (features) to be publihed in the FGP based on the sector name.&#10;&#10; - UNPUBLISHED_OUTPUT: The records (features) not to be publihed in the FGP based on the sector name.&#10;&#10; - UNMAPPED_OUTPUT: The records (features) for which the sector is not present (unmapped)  in the CSV file.&#10;&#10;**Parameters **&#10;&#10; - FEATURE_TYPE: Name of the CSV file to read (without .csv extension);&#10;&#10; - IN_CSV_LOOKUP_TABLES_DIR: Name of the directory path containing the CSV file to read;&#10; &#10; - P-T_ABBR: Two letters abbreviation of the province or the territory.&#10;"
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="313"
+#!   REPLACED_BY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="SECTOR_MAPPER_NG"
+#!   USAGE=""
+#!   USE_MARKDOWN="YES"
+#!   VIEW_POSITION="-387.504 658.34"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="75"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR FEATURE_TYPE FEATURE_TYPE:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR IN_CSV_LOOKUP_TABLES_DIR IN_CSV_LOOKUP_TABLES_DIR:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR P-T_ABBR P-T_ABBR:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <USER_PARAMETERS
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbeyJuYW1lIjoiRkVBVFVSRV9UWVBFIiwicHJvbXB0IjoiRkVBVFVSRV9UWVBFOiIsInZhbHVlVHlwZSI6InN0cmluZyIsInJlcXVpcmVkIjpmYWxzZSwiZGVmYXVsdFZhbHVlIjoiIiwic3VwcG9ydGVkVmFsdWVUeXBlcyI6WyJleHByZXNzaW9uIiwiZ2xvYmFsUGFyYW1ldGVyIl0sImRlcHJlY2F0ZWRGbGFncyI6WyJub25lIl0sInR5cGUiOiJ0ZXh0IiwiZWRpdG9yIjoicGxhaW50ZXh0In0seyJuYW1lIjoiSU5fQ1NWX0xPT0tVUF9UQUJMRVNfRElSIiwicHJvbXB0IjoiSU5fQ1NWX0xPT0tVUF9UQUJMRVNfRElSOiIsInZhbHVlVHlwZSI6InN0cmluZyIsInJlcXVpcmVkIjpmYWxzZSwiZGVmYXVsdFZhbHVlIjoiIiwic3VwcG9ydGVkVmFsdWVUeXBlcyI6WyJleHByZXNzaW9uIiwiZ2xvYmFsUGFyYW1ldGVyIl0sImRlcHJlY2F0ZWRGbGFncyI6WyJub25lIl0sInR5cGUiOiJ0ZXh0IiwiZWRpdG9yIjoicGxhaW50ZXh0In0seyJuYW1lIjoiUC1UX0FCQlIiLCJwcm9tcHQiOiJQLVRfQUJCUjoiLCJ2YWx1ZVR5cGUiOiJzdHJpbmciLCJyZXF1aXJlZCI6ZmFsc2UsImRlZmF1bHRWYWx1ZSI6IiIsInN1cHBvcnRlZFZhbHVlVHlwZXMiOlsiZXhwcmVzc2lvbiIsImdsb2JhbFBhcmFtZXRlciJdLCJkZXByZWNhdGVkRmxhZ3MiOlsibm9uZSJdLCJ0eXBlIjoidGV4dCIsImVkaXRvciI6InBsYWludGV4dCJ9XX0="
+#! >
+#! <PARAMETER_INFO>
+#!     <INFO NAME="FEATURE_TYPE" 
+#!   DEFAULT_VALUE=""
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR FEATURE_TYPE FEATURE_TYPE:"
+#! />
+#!     <INFO NAME="IN_CSV_LOOKUP_TABLES_DIR" 
+#!   DEFAULT_VALUE=""
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR IN_CSV_LOOKUP_TABLES_DIR IN_CSV_LOOKUP_TABLES_DIR:"
+#! />
+#!     <INFO NAME="P-T_ABBR" 
+#!   DEFAULT_VALUE=""
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR P-T_ABBR P-T_ABBR:"
+#! />
+#! </PARAMETER_INFO>
+#! </USER_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="32"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Read the CSV sectors&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-1500 659.22764038961122"
+#!   TOP_LEFT="-1500 659.22764038961122"
+#!   BOTTOM_RIGHT="-866.00978509785102 658.22764038961122"
+#!   BOUNDING_RECT="-1500 659.22764038961122 633.99021490214898 1"
+#!   ORDER="500000000001561"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{2160a495-88a8-4436-9141-7228f9ecd478}"
+#!   COLOUR="1,0.85490196078431369,0.59999999999999998,1"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="24"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="33"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Expose needed attributes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-578.57773077016407 652.50137501375013"
+#!   TOP_LEFT="-578.57773077016407 652.50137501375013"
+#!   BOTTOM_RIGHT="-124.61861305398691 651.50137501375013"
+#!   BOUNDING_RECT="-578.57773077016407 652.50137501375013 453.95911771617716 1"
+#!   ORDER="500000000001562"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{48a303ae-c730-4c36-bb32-5e044942f0c9}"
+#!   COLOUR="1,0.85490196078431369,0.59999999999999998,1"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="8"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="34"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Expose needed attributes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-1200 253.41053151832574"
+#!   TOP_LEFT="-1200 253.41053151832574"
+#!   BOTTOM_RIGHT="-746.04088228382284 252.41053151832574"
+#!   BOUNDING_RECT="-1200 253.41053151832574 453.95911771617716 1"
+#!   ORDER="500000000001563"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{435b80d2-35fb-4169-9671-36b1a08f4b88}"
+#!   COLOUR="1,0.85490196078431369,0.59999999999999998,1"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="7"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="35"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Test if published in the FGP&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="841.48363965486089 600"
+#!   TOP_LEFT="841.48363965486089 600"
+#!   BOTTOM_RIGHT="1295.4427573710382 599"
+#!   BOUNDING_RECT="841.48363965486089 600 453.95911771617716 1"
+#!   ORDER="500000000001564"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{e95123c0-80d9-4c2c-8908-8ba9eceb1164}"
+#!   COLOUR="1,0.85490196078431369,0.59999999999999998,1"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="9"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="38"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Unexpose all attributes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="2850 597.50012500125001"
+#!   TOP_LEFT="2850 597.50012500125001"
+#!   BOTTOM_RIGHT="3416.655557180572 486.24931249312493"
+#!   BOUNDING_RECT="2850 597.50012500125001 566.6555571805718 111.25081250812508"
+#!   ORDER="500000000001566"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{2a821263-bde4-49c9-96c8-7588f3410d74}"
+#!   COLOUR="1,0.85490196078431369,0.59999999999999998,1"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="23"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="27"
+#!   NAME="Sector Mapper"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="-1550.7230544003551 790.6329063290633"
+#!   ORDER="500000000001542"
+#!   PALETTE_COLOR="Color3"
+#!   BOTTOM_RIGHT="3455.2232314775965 -432.22011740721189"
+#!   BOUNDING_RECT="-1550.7230544003551 790.6329063290633 5005.9462858779516 1222.8530237362752"
+#!   STICKY="true"
+#!   COLOUR="1,0.85490196078431369,0.59999999999999998,1"
+#!   CONTENTS="25 31 7 11 26 6 18 38 23 33 34 28 8 9 35 19 32 24 20 14 13 17 "
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="6"
+#!   TYPE="FeatureMerger"
+#!   VERSION="21"
+#!   POSITION="45.981514633610828 145.4515835955132"
+#!   BOUNDING_RECT="45.981514633610828 145.4515835955132 483 71"
+#!   ORDER="500000000001543"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#!   INPUT_FT_ORDER="SUPPLIER%REQUESTOR"
+#! >
+#!     <OUTPUT_FEAT NAME="MERGED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="sector" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="original_sector_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="hnap_sector_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="graphic_link" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fgp_publish" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="UNMERGED_REQUESTOR"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="sector" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <OUTPUT_FEAT NAME="USED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <XFORM_ATTR ATTR_NAME="original_sector_value" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="hnap_sector_value" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="graphic_link" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="fgp_publish" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="numReferences" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <OUTPUT_FEAT NAME="UNUSED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="3"/>
+#!     <XFORM_ATTR ATTR_NAME="original_sector_value" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="hnap_sector_value" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="graphic_link" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="fgp_publish" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="4"/>
+#!     <XFORM_ATTR ATTR_NAME="sector" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="original_sector_value" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="hnap_sector_value" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="graphic_link" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="fgp_publish" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE" PARM_VALUE="Merge Supplier"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES_LOOKUP" PARM_VALUE="REQUESTOR_IF_CONFLICT"/>
+#!     <XFORM_PARM PARM_NAME="CLEANING_TOLERANCE_LOOKUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CONNECT_Z_MODE_LOOKUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GENERATE_LIST_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="GEOM_TYPE_VAL" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_PROCESSING_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="IGNORE_NULLS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="JOIN_ATTRIBUTES_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="JOIN_KEYS" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;sector&lt;closeparen&gt; &lt;at&gt;Value&lt;openparen&gt;original_sector_value&lt;closeparen&gt; AUTO"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE_MODE_LU" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_NAME" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_COUNT_ATTR" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_TYPE_VAL" PARM_VALUE="ATTRIBUTES"/>
+#!     <XFORM_PARM PARM_NAME="MODE_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="ACROSS_OUTPUT_PORTS"/>
+#!     <XFORM_PARM PARM_NAME="PROCESS_DUPS" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="REJECT_NULL_MISSING_KEYS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIERS_FIRST" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIER_PREFIX" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="FeatureMerger"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES" PARM_IS_LOOKUP="true" PARM_VALUE="Use Requestor"/>
+#!     <XFORM_PARM PARM_NAME="CLEANING_TOLERANCE" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CONNECT_Z_MODE" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GEOM_TYPE" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE_MODE" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_TYPE" PARM_IS_LOOKUP="true" PARM_VALUE="Attributes Only"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="7"
+#!   TYPE="AttributeExposer"
+#!   VERSION="2"
+#!   POSITION="-1184.3868438684387 30.075614835825576"
+#!   BOUNDING_RECT="-1184.3868438684387 30.075614835825576 454 71"
+#!   ORDER="500000000001547"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="sector" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="sector,,id,"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="9"
+#!   TYPE="Tester"
+#!   VERSION="4"
+#!   POSITION="866.98351465361088 361.32892736895087"
+#!   BOUNDING_RECT="866.98351465361088 361.32892736895087 454 71"
+#!   ORDER="500000000001549"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="PASSED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="sector" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="original_sector_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="hnap_sector_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="graphic_link" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fgp_publish" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="FAILED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="sector" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="original_sector_value" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="hnap_sector_value" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="graphic_link" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fgp_publish" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_MSG" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="ACROSS_OUTPUT_PORTS"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST &lt;at&gt;LowerCase&lt;openparen&gt;&lt;at&gt;Value&lt;openparen&gt;fgp_publish&lt;closeparen&gt;&lt;closeparen&gt; = &lt;at&gt;LowerCase&lt;openparen&gt;oui&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="TEST"/>
+#!     <XFORM_PARM PARM_NAME="TEST_PREVIEW_GROUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="11"
+#!   TYPE="AttributeKeeper"
+#!   VERSION="3"
+#!   POSITION="1509.3900939009388 -100.00100000999998"
+#!   BOUNDING_RECT="1509.3900939009388 -100.00100000999998 454 71"
+#!   ORDER="500000000001551"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="sector" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="CREATE_BULK_MODE_FEATURES" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="KEEP_ATTRS" PARM_VALUE="sector,id"/>
+#!     <XFORM_PARM PARM_NAME="KEEP_LIST" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_ON_ATTRIBUTE_CHANGE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeKeeper"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="13"
+#!   TYPE="AttributeRemover"
+#!   VERSION="1"
+#!   POSITION="2181.2718127181265 361.32892736895087"
+#!   BOUNDING_RECT="2181.2718127181265 361.32892736895087 454 71"
+#!   ORDER="500000000001553"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="sector" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="graphic_link" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE="original_sector_value,fgp_publish,hnap_sector_value"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="14"
+#!   TYPE="AttributeRenamer"
+#!   VERSION="5"
+#!   POSITION="1509.3900939009388 361.32892736895087"
+#!   BOUNDING_RECT="1509.3900939009388 361.32892736895087 454 71"
+#!   ORDER="500000000001558"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="sector" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="original_sector_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="graphic_link" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fgp_publish" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="hnap_sector_value sector RENAME_SET_DEFAULT "/>
+#!     <XFORM_PARM PARM_NAME="KEEP_RENAMED_ONLY" PARM_VALUE="no"/>
+#!     <XFORM_PARM PARM_NAME="MISSING_INPUT_ATTRS" PARM_VALUE="PRESERVE"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRenamer"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="23"
+#!   TYPE="ATTRIBUTE_UNEXPOSER"
+#!   VERSION="2"
+#!   POSITION="2850 450"
+#!   BOUNDING_RECT="2850 450 533.00106825772946 71"
+#!   ORDER="500000000001559"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_UNEXPOSER"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="8"
+#!   TYPE="AttributeExposer"
+#!   VERSION="2"
+#!   POSITION="-540.57773077016407 450"
+#!   BOUNDING_RECT="-540.57773077016407 450 454 71"
+#!   ORDER="500000000001548"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="original_sector_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="hnap_sector_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="graphic_link" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fgp_publish" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="original_sector_value,,hnap_sector_value,,graphic_link,,fgp_publish,"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="24"
+#!   TYPE="LOOKUP_TABLES_READER_NG"
+#!   VERSION="2"
+#!   POSITION="-1500 512.9768278814862"
+#!   BOUNDING_RECT="-1500 512.9768278814862 634.00106825772946 71"
+#!   ORDER="500000000001560"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="CSV_ENCODING" PARM_VALUE="utf-8"/>
+#!     <XFORM_PARM PARM_NAME="CSV_PATH" PARM_VALUE="$(IN_CSV_LOOKUP_TABLES_DIR)"/>
+#!     <XFORM_PARM PARM_NAME="FEATURE_TYPE" PARM_VALUE="$(FEATURE_TYPE)"/>
+#!     <XFORM_PARM PARM_NAME="PT" PARM_VALUE="$(P-T_ABBR)"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="LOOKUP_TABLES_READER_NG"/>
+#!     <XFORM_PARM PARM_NAME="__COMPOUND_PARAMETERS" PARM_VALUE=""/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="INPUT"
+#!   POSITION="-2550 43.866863196933878"
+#!   BOUNDING_RECT="-2550 43.866863196933878 637.00106825772946 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="PUBLISHED_OUTPUT"
+#!   POSITION="3668.8731132594339 349.831170881952"
+#!   BOUNDING_RECT="3668.8731132594339 349.831170881952 557.00106825772946 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="5"
+#!   NAME="UNMAPPED_OUTPUT"
+#!   POSITION="3668.8731132594339 -150"
+#!   BOUNDING_RECT="3668.8731132594339 -150 553.00106825772946 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="36"
+#!   NAME="UNPUBLISHED_OUTPUT"
+#!   POSITION="3668.8731132594339 104.16770834375009"
+#!   BOUNDING_RECT="3668.8731132594339 104.16770834375009 610.00106825772946 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="15"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="31"
+#!   SOURCE_NODE="24"
+#!   TARGET_NODE="8"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="17"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 0 MERGED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="18"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 1 REQUESTOR"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="19"
+#!   SOURCE_NODE="8"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 SUPPLIER"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="20"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="14"
+#!   SOURCE_PORT_DESC="fo 0 PASSED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="29"
+#!   SOURCE_NODE="11"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="28"
+#!   SOURCE_NODE="13"
+#!   TARGET_NODE="23"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="25"
+#!   SOURCE_NODE="14"
+#!   TARGET_NODE="13"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="30"
+#!   SOURCE_NODE="23"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="26"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="11"
+#!   SOURCE_PORT_DESC="fo 1 UNMERGED_REQUESTOR"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="37"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="36"
+#!   SOURCE_PORT_DESC="fo 1 FAILED"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS="1620 70"
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+FME_PYTHON_VERSION 313
+# ============================================================================
+DEFAULT_MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FEATURE_TYPE 
+
+DEFAULT_MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_IN_CSV_LOOKUP_TABLES_DIR 
+
+DEFAULT_MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_P-T_ABBR 
+
+DEFAULT_MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FME_DATA_REPOSITORY 
+
+DEFAULT_MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FME_ENGINE 
+
+DEFAULT_MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FME_JOB_ID 
+
+DEFAULT_MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FME_SECURITY_ROLES 
+
+DEFAULT_MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FME_SECURITY_USER 
+
+DEFAULT_MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FME_SERVER_DEST_DIR 
+
+DEFAULT_MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FME_SERVER_HOST 
+
+DEFAULT_MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FME_SERVER_PORT 
+
+DEFAULT_MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FME_SERVER_REQUEST_HEADERS 
+
+DEFAULT_MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FME_SERVER_REQUEST_METHOD 
+
+DEFAULT_MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FME_SERVER_REQUEST_PARAMETERS 
+
+DEFAULT_MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FME_SERVER_REQUEST_URI 
+
+DEFAULT_MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER 
+
+DEFAULT_MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER_ID 
+
+DEFAULT_MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FME_SERVER_WEB_URL 
+
+DEFAULT_MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_BACKUP 
+
+DEFAULT_MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DASHBOARD 
+
+DEFAULT_MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DATA 
+
+DEFAULT_MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_ENGINE 
+
+DEFAULT_MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_LOG 
+
+DEFAULT_MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_SYSTEM 
+
+DEFAULT_MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_TEMP 
+
+DEFAULT_MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FME_TOPIC 
+
+DEFAULT_MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FME_TOPIC_MESSAGE 
+
+# ============================================================================
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO SECTOR_MAPPER_NG_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(SECTOR_MAPPER_NG_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(SECTOR_MAPPER_NG_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_INPUT1759781673 Input Splitter"   INPUT FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_INPUT"
+# -------------------------------------------------------------------------
+MACRO LOOKUP_TABLES_READER_NG_WORKSPACE_NAME $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_XFORMER_NAME $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)___COMPOUND_PARAMETERS 
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_FEATURE_TYPE $($(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FEATURE_TYPE)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_CSV_PATH $($(SECTOR_MAPPER_NG_WORKSPACE_NAME)_IN_CSV_LOOKUP_TABLES_DIR$encode)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_PT $($(SECTOR_MAPPER_NG_WORKSPACE_NAME)_P-T_ABBR$encode)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_CSV_ENCODING utf-8
+INCLUDE_CUSTOM_TRANSFORMER_VER LOOKUP_TABLES_READER_NG:2
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"   OUTPUT FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"
+FACTORY_DEF * BranchingFactory   FACTORY_NAME "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output Brancher -1 31"   INPUT FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"   TARGET_FACTORY "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   MAXIMUM_COUNT None   OUTPUT PASSED FEATURE_TYPE *
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   INPUT FEATURE_TYPE *  OUTPUT FEATURE_TYPE *
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_AttributeExposer_2 }    INPUT  FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"    OUTPUT { FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"          }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_AttributeExposer }    INPUT  FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_INPUT"    OUTPUT { FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_AttributeExposer_OUTPUT"          }
+# -------------------------------------------------------------------------
+INCLUDE [if { {ATTRIBUTES} == {ATTRIBUTES} } {                puts "MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO ATTRIBUTES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {POLYGONS}} {                puts "MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {AGGREGATES}} {                puts "MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {POLYGONS}} {                puts "MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {AGGREGATES}} {                puts "MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} } {                puts "MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} } {                puts "MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          else {}; ]
+FACTORY_DEF {*} ReferenceFactory    FACTORY_NAME { $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FeatureMerger }    FLUSH_WHEN_GROUPS_CHANGE { <Unused> }    INPUT REFERENCER FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_AttributeExposer_OUTPUT"    INPUT REFERENCEE FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"    REFERENCE_INFO { $($(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO) }    REFERENCE_TABLE { @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>sector<closeparen>,$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FeatureMerger) @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>original_sector_value<closeparen>,$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FeatureMerger) AUTO }    ATTR_ACCUM_MODE { "HANDLE_CONFLICT" }    ATTR_CONFLICT_RES { "REQUESTOR_IF_CONFLICT" }    IGNORE_NULLS { "No" }    HANDLE_NULL_MISSING_KEYS_LIKE_FME2013 { No }    LIST_ATTRS_TO_INCLUDE { <Unused> }    LIST_ATTRS_TO_INCLUDE_MODE { <Unused> }    MERGE_ATTRIBUTES Yes    MANAGE_FME_TYPE Yes    MODE COMPLETE    PROCESS_DUPLICATE_REFERENCEES { NO }    REFERENCEES_FIRST { No }    REJECT_INVALID_GEOM YES    CLEANING_TOLERANCE { <Unused> }    PRESERVE_FEATURE_ORDER { ACROSS_OUTPUT_PORTS }    COMPARE_WHITESPACE Yes    OUTPUT { COMPLETE FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FeatureMerger_MERGED"         }    OUTPUT { INCOMPLETE FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FeatureMerger_UNMERGED_REQUESTOR"         }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TestFactory    FACTORY_NAME { $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_Tester }    INPUT  FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FeatureMerger_MERGED"    TEST { "@EvaluateExpression(FDIV,STRING_ENCODED,<at>LowerCase<openparen><at>Value<openparen>fgp_publish<closeparen><closeparen>,$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_Tester)" = "@EvaluateExpression(FDIV,STRING_ENCODED,<at>LowerCase<openparen>oui<closeparen>,$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_Tester)" ENCODED }    BOOLEAN_OPERATOR { OR }    COMPOSITE_TEST_EXPR { "<Unused>" }    PRESERVE_FEATURE_ORDER { ACROSS_OUTPUT_PORTS }    OUTPUT { PASSED FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_Tester_PASSED"         }    OUTPUT { FAILED FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_Tester_FAILED"         }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY_NAME { $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_AttributeRenamer }    INPUT  FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_Tester_PASSED" 	ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    MISSING_INPUT_ATTR_HANDLING { RENAME_SET_DEFAULT PRESERVE }    KEEP_OUTPUT_ATTRS_ONLY { no } 	ATTR_ACTION { "hnap_sector_value" "sector" "RENAME_SET_DEFAULT" "" }    OUTPUT { OUTPUT FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_AttributeRenamer_OUTPUT"        }
+# -------------------------------------------------------------------------
+# Build the List removal function and regular expression if there was any list attributes to be removed.
+# If not, then we will not have any extra list removal call to @RemoveAttributes, which speeds the
+# normal, non-list removal especially when in Bulk Mode.  Note that this computation of the regular expressions is done
+# once during mapping file parse time.
+INCLUDE [    set listAttributeRemoveRegexps {};    set anyList {no};    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append listAttributeRemoveRegexps ",^$attr$";       set anyList {yes};    };    if { ${anyList} == {no} } {        puts {MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_AttributeRemover_2_LIST_FUNC }    } else {        puts "MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_AttributeRemover_2_LIST_FUNC @RemoveAttributes(fme_pcre_match\"$listAttributeRemoveRegexps\")"    }; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_AttributeRemover_2 }    INPUT  FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_AttributeRenamer_OUTPUT"    OUTPUT { FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_AttributeRemover_2_OUTPUT"        @RemoveAttributes(fme_encoded,original_sector_value,fgp_publish,hnap_sector_value)        $($(SECTOR_MAPPER_NG_WORKSPACE_NAME)_AttributeRemover_2_LIST_FUNC)         }
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Input Input Collector"   INPUT FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_AttributeRemover_2_OUTPUT"   OUTPUT FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Input"
+MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:2
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttributeKeeperFactory    FACTORY_NAME { $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_AttributeKeeper }    INPUT  FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FeatureMerger_UNMERGED_REQUESTOR"    KEEP_ATTRS { sector,id }    KEEP_LISTS {  }    KEEP_FME_ATTRIBUTES Yes    BUILD_FEATURE_TABLES { NO }    OUTPUT_ON_ATTRIBUTE_CHANGE { <Unused> }    OUTPUT { OUTPUT FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"        }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_PUBLISHED_OUTPUT1759781673 Output Collector"   INPUT FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_PUBLISHED_OUTPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_UNMAPPED_OUTPUT1759781673 Output Collector"   INPUT FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"   OUTPUT FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_UNMAPPED_OUTPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_UNPUBLISHED_OUTPUT1759781673 Output Collector"   INPUT FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_Tester_FAILED"   OUTPUT FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_UNPUBLISHED_OUTPUT"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(SECTOR_MAPPER_NG_WORKSPACE_NAME))}]
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN SECTOR_MAPPER_NG,1,"FGP Tools",32f48b77-426f-48f0-9df5-62dc45e9a13c,"Linked by Default",No,NO_PARALLELISM,,No,20200,YES,No,37,No,
+# <p><strong>Description </strong></p>
+# <p>This custom transformer sorts the record (feature) to be published based on the sector name.  The valid sector name is contained in a CSV file.</p>
+# <p><strong>Input Ports </strong></p>
+# <ul>
+# <li>INPUT: The input metadata records (features) to process.</li>
+# </ul>
+# <p><strong>Output Ports </strong></p>
+# <ul>
+# <li>
+# <p>PUBLISHED_OUTPUT: The records (features) to be publihed in the FGP based on the sector name.</p>
+# </li>
+# <li>
+# <p>UNPUBLISHED_OUTPUT: The records (features) not to be publihed in the FGP based on the sector name.</p>
+# </li>
+# <li>
+# <p>UNMAPPED_OUTPUT: The records (features) for which the sector is not present (unmapped)  in the CSV file.</p>
+# </li>
+# </ul>
+# <p><strong>Parameters </strong></p>
+# <ul>
+# <li>
+# <p>FEATURE_TYPE: Name of the CSV file to read (without .csv extension);</p>
+# </li>
+# <li>
+# <p>IN_CSV_LOOKUP_TABLES_DIR: Name of the directory path containing the CSV file to read;</p>
+# </li>
+# <li>
+# <p>P-T_ABBR: Two letters abbreviation of the province or the territory.</p>
+# </li>
+# </ul>
+# TRANSFORMER_END
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="FGP Tools"
+#!   DESCRIPTION="&lt;p&gt;&lt;strong&gt;Description &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;This custom transformer sorts the record (feature) to be published based on the sector name.  The valid sector name is contained in a CSV file.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Input Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;INPUT: The input metadata records (features) to process.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Output Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;PUBLISHED_OUTPUT: The records (features) to be publihed in the FGP based on the sector name.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;UNPUBLISHED_OUTPUT: The records (features) not to be publihed in the FGP based on the sector name.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;UNMAPPED_OUTPUT: The records (features) for which the sector is not present (unmapped)  in the CSV file.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Parameters &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;FEATURE_TYPE: Name of the CSV file to read (without .csv extension);&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;IN_CSV_LOOKUP_TABLES_DIR: Name of the directory path containing the CSV file to read;&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;P-T_ABBR: Two letters abbreviation of the province or the territory.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;/ul&gt;"
+#!   DOC_EXTENTS="6828.87 1222.85"
+#!   DOC_TOP_LEFT="-2550 -432.22"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="20200"
+#!   FME_DOCUMENT_GUID="32f48b77-426f-48f0-9df5-62dc45e9a13c"
+#!   FME_DOCUMENT_PRIORGUID="b8c9cfdb-93ef-48e2-a532-ccebc461c9d7,d43a6ad1-9651-4d14-aa07-29d2cf6d9bde,7be7294b-cc73-42db-8df9-4cbbdeba4cf6,1d44ef53-5f46-46a6-8a54-f0bc1496bce3,446bc2fd-59ab-4f2e-9cd5-a0f1ed2be85f"
+#!   FME_LINKED_TRANSFORMER_VERSION="1"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY="27&lt;solidus&gt;03&lt;solidus&gt;2022,Daniel&lt;space&gt;Pilon,Adapted&lt;space&gt;version&lt;space&gt;from&lt;space&gt;SECTOR_MAPPER"
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2020.0.0.0 (20200309 - Build 20200 - WIN32)"
+#!   LAST_SAVE_DATE="2022-03-29T11:43:11"
+#!   MARKDOWN_DESCRIPTION="**Description **&#10;&#10;This custom transformer sorts the record (feature) to be published based on the sector name.  The valid sector name is contained in a CSV file.&#10;&#10;**Input Ports **&#10;&#10; - INPUT: The input metadata records (features) to process.&#10;&#10;**Output Ports **&#10;&#10; - PUBLISHED_OUTPUT: The records (features) to be publihed in the FGP based on the sector name.&#10;&#10; - UNPUBLISHED_OUTPUT: The records (features) not to be publihed in the FGP based on the sector name.&#10;&#10; - UNMAPPED_OUTPUT: The records (features) for which the sector is not present (unmapped)  in the CSV file.&#10;&#10;**Parameters **&#10;&#10; - FEATURE_TYPE: Name of the CSV file to read (without .csv extension);&#10;&#10; - IN_CSV_LOOKUP_TABLES_DIR: Name of the directory path containing the CSV file to read;&#10; &#10; - P-T_ABBR: Two letters abbreviation of the province or the territory.&#10;"
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="37"
+#!   REPLACED_BY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="SECTOR_MAPPER_NG"
+#!   USAGE=""
+#!   USE_MARKDOWN="YES"
+#!   VIEW_POSITION="-3004.2 987.51"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="75"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR FEATURE_TYPE FEATURE_TYPE:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR IN_CSV_LOOKUP_TABLES_DIR IN_CSV_LOOKUP_TABLES_DIR:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR P-T_ABBR P-T_ABBR:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="32"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Read the CSV sectors&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-1500 659.22764038961122"
+#!   TOP_LEFT="-1500 659.22764038961122"
+#!   BOTTOM_RIGHT="-865.99893174227054 658.22764038961122"
+#!   BOUNDING_RECT="-1500 659.22764038961122 634.00106825772946 1"
+#!   ORDER="500000000001561"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,0.85490196078431369,0.59999999999999998,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="24"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="33"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Expose needed attributes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-578.57773077016407 652.50137501375013"
+#!   TOP_LEFT="-578.57773077016407 652.50137501375013"
+#!   BOTTOM_RIGHT="-124.57773077016407 651.50137501375013"
+#!   BOUNDING_RECT="-578.57773077016407 652.50137501375013 454 1"
+#!   ORDER="500000000001562"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,0.85490196078431369,0.59999999999999998,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="8"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="34"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Expose needed attributes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-1200 253.41053151832574"
+#!   TOP_LEFT="-1200 253.41053151832574"
+#!   BOTTOM_RIGHT="-746 252.41053151832574"
+#!   BOUNDING_RECT="-1200 253.41053151832574 454 1"
+#!   ORDER="500000000001563"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,0.85490196078431369,0.59999999999999998,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="7"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="35"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Test if published in the FGP&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="841.48363965486089 600"
+#!   TOP_LEFT="841.48363965486089 600"
+#!   BOTTOM_RIGHT="1295.4836396548608 599"
+#!   BOUNDING_RECT="841.48363965486089 600 454 1"
+#!   ORDER="500000000001564"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,0.85490196078431369,0.59999999999999998,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="9"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="38"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Unexpose all attributes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="2850 597.50012500125001"
+#!   TOP_LEFT="2850 597.50012500125001"
+#!   BOTTOM_RIGHT="3416.7008336750027 486.24931249312493"
+#!   BOUNDING_RECT="2850 597.50012500125001 566.70083367500274 111.25081250812508"
+#!   ORDER="500000000001566"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,0.85490196078431369,0.59999999999999998,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="23"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="27"
+#!   NAME="Sector Mapper"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="-1550.7230544003551 790.6329063290633"
+#!   ORDER="500000000001542"
+#!   PALETTE_COLOR="Color3"
+#!   BOTTOM_RIGHT="3455.2232314775965 -432.22011740721189"
+#!   BOUNDING_RECT="-1550.7230544003551 790.6329063290633 5005.9462858779516 1222.8530237362752"
+#!   STICKY="true"
+#!   COLOUR="1,0.85490196078431369,0.59999999999999998,1"
+#!   CONTENTS="33 17 14 7 26 25 18 23 28 8 32 38 20 34 24 13 6 31 11 9 19 35 "
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="6"
+#!   TYPE="FeatureMerger"
+#!   VERSION="18"
+#!   POSITION="45.981514633610828 145.4515835955132"
+#!   BOUNDING_RECT="45.981514633610828 145.4515835955132 483 71"
+#!   ORDER="500000000001543"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#!   INPUT_FT_ORDER="SUPPLIER%REQUESTOR"
+#! >
+#!     <OUTPUT_FEAT NAME="MERGED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="sector" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="original_sector_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="hnap_sector_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="graphic_link" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fgp_publish" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="UNMERGED_REQUESTOR"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="sector" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <OUTPUT_FEAT NAME="USED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <XFORM_ATTR ATTR_NAME="original_sector_value" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="hnap_sector_value" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="graphic_link" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="fgp_publish" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="numReferences" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <OUTPUT_FEAT NAME="UNUSED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="3"/>
+#!     <XFORM_ATTR ATTR_NAME="original_sector_value" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="hnap_sector_value" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="graphic_link" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="fgp_publish" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="4"/>
+#!     <XFORM_ATTR ATTR_NAME="sector" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="original_sector_value" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="hnap_sector_value" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="graphic_link" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="fgp_publish" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE" PARM_VALUE="Merge Supplier"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES" PARM_VALUE="Use Requestor"/>
+#!     <XFORM_PARM PARM_NAME="CLEANING_TOLERANCE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CONNECT_Z_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GENERATE_LIST_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="GEOM_TYPE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="IGNORE_NULLS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="JOIN_ATTRIBUTES_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="JOIN_KEYS" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;sector&lt;closeparen&gt; &lt;at&gt;Value&lt;openparen&gt;original_sector_value&lt;closeparen&gt; AUTO"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_NAME" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_COUNT_ATTR" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_TYPE" PARM_VALUE="Attributes Only"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PROCESS_DUPS" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="REJECT_NULL_MISSING_KEYS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIERS_FIRST" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIER_PREFIX" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="FeatureMerger"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="7"
+#!   TYPE="AttributeExposer"
+#!   VERSION="1"
+#!   POSITION="-1184.3868438684387 30.075614835825576"
+#!   BOUNDING_RECT="-1184.3868438684387 30.075614835825576 454 71"
+#!   ORDER="500000000001547"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="sector" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="sector,id"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="9"
+#!   TYPE="Tester"
+#!   VERSION="2"
+#!   POSITION="866.98351465361088 361.32892736895087"
+#!   BOUNDING_RECT="866.98351465361088 361.32892736895087 454 71"
+#!   ORDER="500000000001549"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="PASSED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="sector" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="original_sector_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="hnap_sector_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="graphic_link" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fgp_publish" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="FAILED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="sector" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="original_sector_value" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="hnap_sector_value" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="graphic_link" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fgp_publish" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_MSG" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="1"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST &lt;at&gt;LowerCase&lt;openparen&gt;&lt;at&gt;Value&lt;openparen&gt;fgp_publish&lt;closeparen&gt;&lt;closeparen&gt; = &lt;at&gt;LowerCase&lt;openparen&gt;oui&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="TEST"/>
+#!     <XFORM_PARM PARM_NAME="TEST_PREVIEW_GROUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="11"
+#!   TYPE="AttributeKeeper"
+#!   VERSION="3"
+#!   POSITION="1509.3900939009388 -100.00100000999998"
+#!   BOUNDING_RECT="1509.3900939009388 -100.00100000999998 454 71"
+#!   ORDER="500000000001551"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="sector" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="KEEP_ATTRS" PARM_VALUE="sector,id"/>
+#!     <XFORM_PARM PARM_NAME="KEEP_LIST" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeKeeper"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="13"
+#!   TYPE="AttributeRemover"
+#!   VERSION="1"
+#!   POSITION="2181.2718127181265 361.32892736895087"
+#!   BOUNDING_RECT="2181.2718127181265 361.32892736895087 454 71"
+#!   ORDER="500000000001553"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="sector" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="graphic_link" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE="original_sector_value,fgp_publish,hnap_sector_value"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="14"
+#!   TYPE="AttributeRenamer"
+#!   VERSION="4"
+#!   POSITION="1509.3900939009388 361.32892736895087"
+#!   BOUNDING_RECT="1509.3900939009388 361.32892736895087 454 71"
+#!   ORDER="500000000001558"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="sector" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="original_sector_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="graphic_link" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fgp_publish" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="hnap_sector_value sector RENAME_SET_DEFAULT "/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRenamer"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="23"
+#!   TYPE="ATTRIBUTE_UNEXPOSER"
+#!   VERSION="1"
+#!   POSITION="2850 450"
+#!   BOUNDING_RECT="2850 450 533.00106825772946 71"
+#!   ORDER="500000000001559"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_UNEXPOSER"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="8"
+#!   TYPE="AttributeExposer"
+#!   VERSION="1"
+#!   POSITION="-540.57773077016407 450"
+#!   BOUNDING_RECT="-540.57773077016407 450 454 71"
+#!   ORDER="500000000001548"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="original_sector_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="hnap_sector_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="graphic_link" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fgp_publish" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="original_sector_value,hnap_sector_value,graphic_link,fgp_publish"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="24"
+#!   TYPE="LOOKUP_TABLES_READER_NG"
+#!   VERSION="1"
+#!   POSITION="-1500 512.9768278814862"
+#!   BOUNDING_RECT="-1500 512.9768278814862 634.00106825772946 71"
+#!   ORDER="500000000001560"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="CSV_ENCODING" PARM_VALUE="utf-8"/>
+#!     <XFORM_PARM PARM_NAME="CSV_PATH" PARM_VALUE="$(IN_CSV_LOOKUP_TABLES_DIR)"/>
+#!     <XFORM_PARM PARM_NAME="FEATURE_TYPE" PARM_VALUE="$(FEATURE_TYPE)"/>
+#!     <XFORM_PARM PARM_NAME="PT" PARM_VALUE="$(P-T_ABBR)"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="LOOKUP_TABLES_READER_NG"/>
+#!     <XFORM_PARM PARM_NAME="__COMPOUND_PARAMETERS" PARM_VALUE=""/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="INPUT"
+#!   POSITION="-2550 43.866863196933878"
+#!   BOUNDING_RECT="-2550 43.866863196933878 637.00106825772946 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="PUBLISHED_OUTPUT"
+#!   POSITION="3668.8731132594339 349.831170881952"
+#!   BOUNDING_RECT="3668.8731132594339 349.831170881952 557.00106825772946 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="5"
+#!   NAME="UNMAPPED_OUTPUT"
+#!   POSITION="3668.8731132594339 -150"
+#!   BOUNDING_RECT="3668.8731132594339 -150 553.00106825772946 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="36"
+#!   NAME="UNPUBLISHED_OUTPUT"
+#!   POSITION="3668.8731132594339 104.16770834375009"
+#!   BOUNDING_RECT="3668.8731132594339 104.16770834375009 610.00106825772946 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="15"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="31"
+#!   SOURCE_NODE="24"
+#!   TARGET_NODE="8"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="17"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 0 MERGED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="18"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 1 REQUESTOR"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="19"
+#!   SOURCE_NODE="8"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 SUPPLIER"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="20"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="14"
+#!   SOURCE_PORT_DESC="fo 0 PASSED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="29"
+#!   SOURCE_NODE="11"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="28"
+#!   SOURCE_NODE="13"
+#!   TARGET_NODE="23"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="25"
+#!   SOURCE_NODE="14"
+#!   TARGET_NODE="13"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="30"
+#!   SOURCE_NODE="23"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="26"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="11"
+#!   SOURCE_PORT_DESC="fo 1 UNMERGED_REQUESTOR"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="37"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="36"
+#!   SOURCE_PORT_DESC="fo 1 FAILED"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS="1620 70"
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+FME_PYTHON_VERSION 37
+DEFAULT_MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FEATURE_TYPE 
+DEFAULT_MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_IN_CSV_LOOKUP_TABLES_DIR 
+DEFAULT_MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_P-T_ABBR 
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO SECTOR_MAPPER_NG_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(SECTOR_MAPPER_NG_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(SECTOR_MAPPER_NG_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_INPUT1648568591 Input Splitter"   INPUT FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_INPUT"
+# -------------------------------------------------------------------------
+MACRO LOOKUP_TABLES_READER_NG_WORKSPACE_NAME $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_XFORMER_NAME $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)___COMPOUND_PARAMETERS 
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_FEATURE_TYPE $($(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FEATURE_TYPE)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_CSV_PATH $($(SECTOR_MAPPER_NG_WORKSPACE_NAME)_IN_CSV_LOOKUP_TABLES_DIR$encode)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_PT $($(SECTOR_MAPPER_NG_WORKSPACE_NAME)_P-T_ABBR$encode)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_CSV_ENCODING utf-8
+INCLUDE_CUSTOM_TRANSFORMER_VER LOOKUP_TABLES_READER_NG:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"   OUTPUT FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"
+FACTORY_DEF * BranchingFactory   FACTORY_NAME "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output Brancher -1 31"   INPUT FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"   TARGET_FACTORY "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   MAXIMUM_COUNT None   OUTPUT PASSED FEATURE_TYPE *
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   INPUT FEATURE_TYPE *  OUTPUT FEATURE_TYPE *
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_AttributeExposer_2    INPUT  FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"    OUTPUT FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_AttributeExposer    INPUT  FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_INPUT"    OUTPUT FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_AttributeExposer_OUTPUT"
+# -------------------------------------------------------------------------
+INCLUDE [if { {ATTRIBUTES} == {ATTRIBUTES} } {                puts "MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO ATTRIBUTES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {POLYGONS}} {                puts "MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {AGGREGATES}} {                puts "MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {POLYGONS}} {                puts "MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {AGGREGATES}} {                puts "MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} } {                puts "MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} } {                puts "MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          else {}; ]
+FACTORY_DEF {*} ReferenceFactory    FACTORY_NAME $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FeatureMerger    FLUSH_WHEN_GROUPS_CHANGE No    INPUT REFERENCER FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_AttributeExposer_OUTPUT"    INPUT REFERENCEE FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"    REFERENCE_INFO $($(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO)    REFERENCE_TABLE @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>sector<closeparen>,$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FeatureMerger) @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>original_sector_value<closeparen>,$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FeatureMerger) AUTO    ATTR_ACCUM_MODE "HANDLE_CONFLICT"    ATTR_CONFLICT_RES "REQUESTOR_IF_CONFLICT"    IGNORE_NULLS "No"    HANDLE_NULL_MISSING_KEYS_LIKE_FME2013 No    LIST_ATTRS_TO_INCLUDE { <Unused> }    LIST_ATTRS_TO_INCLUDE_MODE <Unused>    MERGE_ATTRIBUTES Yes    MANAGE_FME_TYPE Yes    MODE COMPLETE    PROCESS_DUPLICATE_REFERENCEES NO    REFERENCEES_FIRST No    REJECT_INVALID_GEOM YES    CLEANING_TOLERANCE <Unused>    OUTPUT COMPLETE FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FeatureMerger_MERGED"    OUTPUT INCOMPLETE FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FeatureMerger_UNMERGED_REQUESTOR"
+# -------------------------------------------------------------------------
+INCLUDE [    set macroLine "MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_AttributeKeeper_48f6cba2_b6d7_4813_9118_595337d2b3c30_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_AttributeKeeper    INPUT  FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FeatureMerger_UNMERGED_REQUESTOR"    OUTPUT { FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"        @KeepAttributes(fme_encoded,sector,id,fme_pcre_match,"^fme_$($(SECTOR_MAPPER_NG_WORKSPACE_NAME)_AttributeKeeper_48f6cba2_b6d7_4813_9118_595337d2b3c30_LIST_EXP)")         }
+# -------------------------------------------------------------------------
+FACTORY_DEF * TestFactory    FACTORY_NAME $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_Tester    INPUT  FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_FeatureMerger_MERGED"    TEST "@EvaluateExpression(FDIV,STRING_ENCODED,<at>LowerCase<openparen><at>Value<openparen>fgp_publish<closeparen><closeparen>,$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_Tester)" = "@EvaluateExpression(FDIV,STRING_ENCODED,<at>LowerCase<openparen>oui<closeparen>,$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_Tester)" ENCODED    BOOLEAN_OPERATOR OR    COMPOSITE_TEST_EXPR "1"    OUTPUT PASSED FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_Tester_PASSED"    OUTPUT FAILED FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_Tester_FAILED"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY_NAME $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_AttributeRenamer    INPUT  FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_Tester_PASSED" 	 ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV 	 ATTR_ACTION { "hnap_sector_value" "sector" "RENAME_SET_DEFAULT" "" }    OUTPUT OUTPUT FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_AttributeRenamer_OUTPUT"
+# -------------------------------------------------------------------------
+INCLUDE [    set macroLine "MACRO $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_AttributeRemover_2_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_AttributeRemover_2    INPUT  FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_AttributeRenamer_OUTPUT"    OUTPUT { FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_AttributeRemover_2_OUTPUT"        @RemoveAttributes(fme_encoded,original_sector_value,fgp_publish,hnap_sector_value)        @RemoveAttributes(fme_pcre_match"$($(SECTOR_MAPPER_NG_WORKSPACE_NAME)_AttributeRemover_2_LIST_EXP)")         }
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Input Input Collector"   INPUT FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_AttributeRemover_2_OUTPUT"   OUTPUT FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Input"
+MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(SECTOR_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_PUBLISHED_OUTPUT1648568591 Output Collector"   INPUT FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_PUBLISHED_OUTPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_UNMAPPED_OUTPUT1648568591 Output Collector"   INPUT FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"   OUTPUT FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_UNMAPPED_OUTPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_UNPUBLISHED_OUTPUT1648568591 Output Collector"   INPUT FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_Tester_FAILED"   OUTPUT FEATURE_TYPE "$(SECTOR_MAPPER_NG_WORKSPACE_NAME)_UNPUBLISHED_OUTPUT"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(SECTOR_MAPPER_NG_WORKSPACE_NAME))}]

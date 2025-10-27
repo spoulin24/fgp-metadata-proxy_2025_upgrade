@@ -1,0 +1,634 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN BC_WMS_FORMATTER,2,"""Federal Geo Platform""",e6f9a5df-acad-430b-92f7-b4a98ed82885,"Linked by Default",No,NO_PARALLELISM,,No,25606,YES,No,313,No,,both
+# 
+# TRANSFORMER_END
+#!   A0_PREVIEW_IMAGE="data:image/png;base64,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"
+#!   ARCGIS_COMPATIBILITY="ARCGIS_AUTO"
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="&quot;Federal Geo Platform&quot;"
+#!   DATA_PROCESSING_TYPE="both"
+#!   DESCRIPTION=""
+#!   DOC_EXTENTS="4045.36 1522.16"
+#!   DOC_TOP_LEFT="-1945.85 -1064.39"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="25606"
+#!   FME_DOCUMENT_GUID="e6f9a5df-acad-430b-92f7-b4a98ed82885"
+#!   FME_DOCUMENT_PRIORGUID=""
+#!   FME_LINKED_TRANSFORMER_VERSION="2"
+#!   FME_NAMES_ENCODING="windows-1252"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY=""
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2025.1.0.0 (20250704 - Build 25606 - WIN64)"
+#!   LAST_SAVE_DATE="2025-10-06T14:59:14"
+#!   MARKDOWN_DESCRIPTION=""
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="313"
+#!   REPLACED_BY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="BC_WMS_FORMATTER"
+#!   USAGE=""
+#!   USE_MARKDOWN="NO"
+#!   VIEW_POSITION="-296.878 496.099"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="80"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! </GLOBAL_PARAMETERS>
+#! <USER_PARAMETERS
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbXX0="
+#! >
+#! <PARAMETER_INFO>
+#! </PARAMETER_INFO>
+#! </USER_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="9"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;This transformer concatenates the url for all wms format url&apos;s to a valid url string for the map viewer.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-1793.7679376793767 -775.00775007750076"
+#!   TOP_LEFT="-1793.7679376793767 -775.00775007750076"
+#!   BOTTOM_RIGHT="-678.13228132281324 -1064.3853438534384"
+#!   BOUNDING_RECT="-1793.7679376793767 -775.00775007750076 1115.6356563565635 289.37759377593773"
+#!   ORDER="500000000000970"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{a79b2a85-b33d-4ef9-b185-056551a704bb}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="0"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="10"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Exposes required attribute for this transformer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-975.61394280609488 457.77403254921637"
+#!   TOP_LEFT="-975.61394280609488 457.77403254921637"
+#!   BOTTOM_RIGHT="-455.63853992706618 458.77403254921637"
+#!   BOUNDING_RECT="-975.61394280609488 457.77403254921637 519.97540287902871 -1"
+#!   ORDER="500000000000971"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{748c4957-73ed-4dc8-9f55-584f9358ed49}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="5"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="11"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Python script overwrites WMS url with concactenated values.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="89.021963552968828 429.64875129640382"
+#!   TOP_LEFT="89.021963552968828 429.64875129640382"
+#!   BOTTOM_RIGHT="860.90418237515701 255.89731378202868"
+#!   BOUNDING_RECT="89.021963552968828 429.64875129640382 771.88221882218818 173.75143751437514"
+#!   ORDER="500000000000972"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{9fe6c3b4-159f-4c3b-b426-56fce6c3e64a}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="4"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="4"
+#!   TYPE="PythonCaller"
+#!   VERSION="6"
+#!   POSITION="272.39855731890657 -54.105436245471537"
+#!   BOUNDING_RECT="272.39855731890657 -54.105436245471537 431 71"
+#!   ORDER="500000000000968"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="object_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.format" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;Rejected&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="object_name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.format" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_message" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_PROCESSING_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="HIDE_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="NEW_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSOURCE" PARM_VALUE="import&lt;space&gt;fme&lt;lf&gt;import&lt;space&gt;fmeobjects&lt;lf&gt;#&lt;space&gt;Template&lt;space&gt;Function&lt;space&gt;interface:&lt;lf&gt;#&lt;space&gt;When&lt;space&gt;using&lt;space&gt;this&lt;space&gt;function&lt;comma&gt;&lt;space&gt;make&lt;space&gt;sure&lt;space&gt;its&lt;space&gt;name&lt;space&gt;is&lt;space&gt;set&lt;space&gt;as&lt;space&gt;the&lt;space&gt;value&lt;space&gt;of&lt;lf&gt;#&lt;space&gt;the&lt;space&gt;&lt;apos&gt;Class&lt;space&gt;or&lt;space&gt;Function&lt;space&gt;to&lt;space&gt;Process&lt;space&gt;Features&lt;apos&gt;&lt;space&gt;transformer&lt;space&gt;parameter&lt;lf&gt;def&lt;space&gt;processFeature&lt;openparen&gt;feature&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;index=0&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;for&lt;space&gt;url&lt;space&gt;in&lt;space&gt;feature.getAttribute&lt;openparen&gt;&lt;apos&gt;resources&lt;opencurly&gt;&lt;closecurly&gt;.url&lt;apos&gt;&lt;closeparen&gt;:&lt;lf&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;if&lt;space&gt;r&lt;apos&gt;service=WMS&lt;amp&gt;request=GetCapabilities&lt;apos&gt;&lt;space&gt;in&lt;space&gt;url:&lt;lf&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;feature.setAttribute&lt;openparen&gt;&lt;apos&gt;resources&lt;opencurly&gt;%s&lt;closecurly&gt;.url&lt;apos&gt;%&lt;openparen&gt;str&lt;openparen&gt;index&lt;closeparen&gt;&lt;closeparen&gt;&lt;comma&gt;r&lt;apos&gt;%s&lt;amp&gt;layers=pub:%s&lt;amp&gt;legend_format=image&lt;solidus&gt;png&lt;amp&gt;feature_info_type=text&lt;solidus&gt;plain&lt;apos&gt;%&lt;openparen&gt;url&lt;comma&gt;feature.getAttribute&lt;openparen&gt;&lt;apos&gt;object_name&lt;apos&gt;&lt;closeparen&gt;&lt;closeparen&gt;&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;index=index+1&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;lf&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSYMBOL" PARM_VALUE="processFeature"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="PythonCaller"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="5"
+#!   TYPE="AttributeExposer"
+#!   VERSION="2"
+#!   POSITION="-926.61369280359486 -85.355748748596568"
+#!   BOUNDING_RECT="-926.61369280359486 -85.355748748596568 431 71"
+#!   ORDER="500000000000969"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="object_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.format" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="object_name,,resources{}.format,"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="12"
+#!   TYPE="AttributeRemover"
+#!   VERSION="1"
+#!   POSITION="960.94710947109502 -54.105436245471537"
+#!   BOUNDING_RECT="960.94710947109502 -54.105436245471537 431 71"
+#!   ORDER="500000000000973"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="resources{}.format" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE="object_name"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="INPUT"
+#!   POSITION="-1945.8527918612517 -54.105436245471537"
+#!   BOUNDING_RECT="-1945.8527918612517 -54.105436245471537 431 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="OUTPUT"
+#!   POSITION="1668.5062683960168 -54.105436245471537"
+#!   BOUNDING_RECT="1668.5062683960168 -54.105436245471537 431 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="6"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="13"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="12"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="8"
+#!   SOURCE_NODE="5"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="14"
+#!   SOURCE_NODE="12"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+FME_PYTHON_VERSION 313
+# ============================================================================
+DEFAULT_MACRO $(BC_WMS_FORMATTER_WORKSPACE_NAME)_FME_DATA_REPOSITORY 
+
+DEFAULT_MACRO $(BC_WMS_FORMATTER_WORKSPACE_NAME)_FME_ENGINE 
+
+DEFAULT_MACRO $(BC_WMS_FORMATTER_WORKSPACE_NAME)_FME_JOB_ID 
+
+DEFAULT_MACRO $(BC_WMS_FORMATTER_WORKSPACE_NAME)_FME_SECURITY_ROLES 
+
+DEFAULT_MACRO $(BC_WMS_FORMATTER_WORKSPACE_NAME)_FME_SECURITY_USER 
+
+DEFAULT_MACRO $(BC_WMS_FORMATTER_WORKSPACE_NAME)_FME_SERVER_DEST_DIR 
+
+DEFAULT_MACRO $(BC_WMS_FORMATTER_WORKSPACE_NAME)_FME_SERVER_HOST 
+
+DEFAULT_MACRO $(BC_WMS_FORMATTER_WORKSPACE_NAME)_FME_SERVER_PORT 
+
+DEFAULT_MACRO $(BC_WMS_FORMATTER_WORKSPACE_NAME)_FME_SERVER_REQUEST_HEADERS 
+
+DEFAULT_MACRO $(BC_WMS_FORMATTER_WORKSPACE_NAME)_FME_SERVER_REQUEST_METHOD 
+
+DEFAULT_MACRO $(BC_WMS_FORMATTER_WORKSPACE_NAME)_FME_SERVER_REQUEST_PARAMETERS 
+
+DEFAULT_MACRO $(BC_WMS_FORMATTER_WORKSPACE_NAME)_FME_SERVER_REQUEST_URI 
+
+DEFAULT_MACRO $(BC_WMS_FORMATTER_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER 
+
+DEFAULT_MACRO $(BC_WMS_FORMATTER_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER_ID 
+
+DEFAULT_MACRO $(BC_WMS_FORMATTER_WORKSPACE_NAME)_FME_SERVER_WEB_URL 
+
+DEFAULT_MACRO $(BC_WMS_FORMATTER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_BACKUP 
+
+DEFAULT_MACRO $(BC_WMS_FORMATTER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DASHBOARD 
+
+DEFAULT_MACRO $(BC_WMS_FORMATTER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DATA 
+
+DEFAULT_MACRO $(BC_WMS_FORMATTER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_ENGINE 
+
+DEFAULT_MACRO $(BC_WMS_FORMATTER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_LOG 
+
+DEFAULT_MACRO $(BC_WMS_FORMATTER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_SYSTEM 
+
+DEFAULT_MACRO $(BC_WMS_FORMATTER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_TEMP 
+
+DEFAULT_MACRO $(BC_WMS_FORMATTER_WORKSPACE_NAME)_FME_TOPIC 
+
+DEFAULT_MACRO $(BC_WMS_FORMATTER_WORKSPACE_NAME)_FME_TOPIC_MESSAGE 
+
+# ============================================================================
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO BC_WMS_FORMATTER_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(BC_WMS_FORMATTER_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(BC_WMS_FORMATTER_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(BC_WMS_FORMATTER_WORKSPACE_NAME)_INPUT1759777154 Input Splitter"   INPUT FEATURE_TYPE "$(BC_WMS_FORMATTER_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(BC_WMS_FORMATTER_WORKSPACE_NAME)_INPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(BC_WMS_FORMATTER_WORKSPACE_NAME)_AttributeExposer_2 }    INPUT  FEATURE_TYPE "$(BC_WMS_FORMATTER_WORKSPACE_NAME)_INPUT"    OUTPUT { FEATURE_TYPE "$(BC_WMS_FORMATTER_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"          }
+# -------------------------------------------------------------------------
+FME_PYTHON_PATH "$(FME_MF_DIR)"
+FACTORY_DEF {*} PythonFactory    FACTORY_NAME { $(BC_WMS_FORMATTER_WORKSPACE_NAME)_PythonCaller }    FLUSH_WHEN_GROUPS_CHANGE { <Unused> }    INPUT  FEATURE_TYPE "$(BC_WMS_FORMATTER_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"    SYMBOL_NAME { processFeature }    SOURCE_CODE { import<space>fme<lf>import<space>fmeobjects<lf>#<space>Template<space>Function<space>interface:<lf>#<space>When<space>using<space>this<space>function<comma><space>make<space>sure<space>its<space>name<space>is<space>set<space>as<space>the<space>value<space>of<lf>#<space>the<space><apos>Class<space>or<space>Function<space>to<space>Process<space>Features<apos><space>transformer<space>parameter<lf>def<space>processFeature<openparen>feature<closeparen>:<lf><space><space><space><space>index=0<lf><space><space><space><space>for<space>url<space>in<space>feature.getAttribute<openparen><apos>resources<opencurly><closecurly>.url<apos><closeparen>:<lf><lf><space><space><space><space><space><space><space><space>if<space>r<apos>service=WMS<amp>request=GetCapabilities<apos><space>in<space>url:<lf><lf><space><space><space><space><space><space><space><space><space><space><space><space>feature.setAttribute<openparen><apos>resources<opencurly>%s<closecurly>.url<apos>%<openparen>str<openparen>index<closeparen><closeparen><comma>r<apos>%s<amp>layers=pub:%s<amp>legend_format=image<solidus>png<amp>feature_info_type=text<solidus>plain<apos>%<openparen>url<comma>feature.getAttribute<openparen><apos>object_name<apos><closeparen><closeparen><closeparen><lf><space><space><space><space><space><space><space><space>index=index+1<lf><space><space><space><space><lf><space><space><space><space><lf><space><space><space><space><lf><lf> }    PY_OUTPUT_TAGS { PYOUTPUT <Rejected> }    OUTPUT { PYOUTPUT FEATURE_TYPE "$(BC_WMS_FORMATTER_WORKSPACE_NAME)_PythonCaller_OUTPUT"         }    OUTPUT { <Rejected> FEATURE_TYPE "$(BC_WMS_FORMATTER_WORKSPACE_NAME)_PythonCaller_<Rejected>"         }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(BC_WMS_FORMATTER_WORKSPACE_NAME)_PythonCaller <Rejected> Transformer Output Nuker"   INPUT FEATURE_TYPE "$(BC_WMS_FORMATTER_WORKSPACE_NAME)_PythonCaller_<Rejected>"
+# -------------------------------------------------------------------------
+# Build the List removal function and regular expression if there was any list attributes to be removed.
+# If not, then we will not have any extra list removal call to @RemoveAttributes, which speeds the
+# normal, non-list removal especially when in Bulk Mode.  Note that this computation of the regular expressions is done
+# once during mapping file parse time.
+INCLUDE [    set listAttributeRemoveRegexps {};    set anyList {no};    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append listAttributeRemoveRegexps ",^$attr$";       set anyList {yes};    };    if { ${anyList} == {no} } {        puts {MACRO $(BC_WMS_FORMATTER_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC }    } else {        puts "MACRO $(BC_WMS_FORMATTER_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC @RemoveAttributes(fme_pcre_match\"$listAttributeRemoveRegexps\")"    }; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(BC_WMS_FORMATTER_WORKSPACE_NAME)_AttributeRemover }    INPUT  FEATURE_TYPE "$(BC_WMS_FORMATTER_WORKSPACE_NAME)_PythonCaller_OUTPUT"    OUTPUT { FEATURE_TYPE "$(BC_WMS_FORMATTER_WORKSPACE_NAME)_AttributeRemover_OUTPUT"        @RemoveAttributes(fme_encoded,object_name)        $($(BC_WMS_FORMATTER_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC)         }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(BC_WMS_FORMATTER_WORKSPACE_NAME)_OUTPUT1759777154 Output Collector"   INPUT FEATURE_TYPE "$(BC_WMS_FORMATTER_WORKSPACE_NAME)_AttributeRemover_OUTPUT"   OUTPUT FEATURE_TYPE "$(BC_WMS_FORMATTER_WORKSPACE_NAME)_OUTPUT"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(BC_WMS_FORMATTER_WORKSPACE_NAME))}]
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN BC_WMS_FORMATTER,1,"Federal Geo Platform",574db994-afef-425d-a61b-2fb13e1c96bc,"Linked by Default",No,NO_PARALLELISM,,No,19238,YES,No,37,No
+# 
+# TRANSFORMER_END
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="Federal Geo Platform"
+#!   DESCRIPTION=""
+#!   DOC_EXTENTS="4045.36 1522.16"
+#!   DOC_TOP_LEFT="-1945.85 -1064.39"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="19238"
+#!   FME_DOCUMENT_GUID="574db994-afef-425d-a61b-2fb13e1c96bc"
+#!   FME_DOCUMENT_PRIORGUID="fd0c81bf-204c-482b-bbd4-d0c1005f4ef3,41776fc7-4523-43f2-8eb6-60a33cb11745,8e9ca011-106e-4f26-ba86-91d58e6603e7,ccd0c171-30dd-467e-b086-784f77782da9"
+#!   FME_LINKED_TRANSFORMER_VERSION="1"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY=""
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2019.0.0.0 (20190328 - Build 19238 - WIN32)"
+#!   LAST_SAVE_DATE="2020-02-21T11:24:28"
+#!   MARKDOWN_DESCRIPTION=""
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="37"
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="BC_WMS_FORMATTER"
+#!   USAGE=""
+#!   USE_MARKDOWN="NO"
+#!   VIEW_POSITION="-1398.45 1003.92"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="80"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! </GLOBAL_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="9"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;This transformer concatenates the url for all wms format url&apos;s to a valid url string for the map viewer.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-1793.7679376793767 -775.00775007750076"
+#!   TOP_LEFT="-1793.7679376793767 -775.00775007750076"
+#!   BOTTOM_RIGHT="-678.13178131781319 -1064.3853438534384"
+#!   BOUNDING_RECT="-1793.7679376793767 -775.00775007750076 1115.6361563615635 289.37759377593773"
+#!   ORDER="500000000000970"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="0"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="10"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Exposes required attribute for this transformer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-975.61394280609488 457.77403254921637"
+#!   TOP_LEFT="-975.61394280609488 457.77403254921637"
+#!   BOTTOM_RIGHT="-455.61394280609488 458.77403254921637"
+#!   BOUNDING_RECT="-975.61394280609488 457.77403254921637 520 -1"
+#!   ORDER="500000000000971"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="5"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="11"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Python script overwrites WMS url with concactenated values.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="89.021963552968828 429.64875129640382"
+#!   TOP_LEFT="89.021963552968828 429.64875129640382"
+#!   BOTTOM_RIGHT="860.94610946109458 255.89731378202868"
+#!   BOUNDING_RECT="89.021963552968828 429.64875129640382 771.92414590812575 173.75143751437514"
+#!   ORDER="500000000000972"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="4"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="4"
+#!   TYPE="PythonCaller"
+#!   VERSION="4"
+#!   POSITION="272.39855731890657 -54.105436245471537"
+#!   BOUNDING_RECT="272.39855731890657 -54.105436245471537 431 71"
+#!   ORDER="500000000000968"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="object_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.format" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="HIDE_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="NEW_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSOURCE" PARM_VALUE="import&lt;space&gt;fme&lt;lf&gt;import&lt;space&gt;fmeobjects&lt;lf&gt;#&lt;space&gt;Template&lt;space&gt;Function&lt;space&gt;interface:&lt;lf&gt;#&lt;space&gt;When&lt;space&gt;using&lt;space&gt;this&lt;space&gt;function&lt;comma&gt;&lt;space&gt;make&lt;space&gt;sure&lt;space&gt;its&lt;space&gt;name&lt;space&gt;is&lt;space&gt;set&lt;space&gt;as&lt;space&gt;the&lt;space&gt;value&lt;space&gt;of&lt;lf&gt;#&lt;space&gt;the&lt;space&gt;&lt;apos&gt;Class&lt;space&gt;or&lt;space&gt;Function&lt;space&gt;to&lt;space&gt;Process&lt;space&gt;Features&lt;apos&gt;&lt;space&gt;transformer&lt;space&gt;parameter&lt;lf&gt;def&lt;space&gt;processFeature&lt;openparen&gt;feature&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;index=0&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;for&lt;space&gt;url&lt;space&gt;in&lt;space&gt;feature.getAttribute&lt;openparen&gt;&lt;apos&gt;resources&lt;opencurly&gt;&lt;closecurly&gt;.url&lt;apos&gt;&lt;closeparen&gt;:&lt;lf&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;if&lt;space&gt;r&lt;apos&gt;service=WMS&lt;amp&gt;request=GetCapabilities&lt;apos&gt;&lt;space&gt;in&lt;space&gt;url:&lt;lf&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;feature.setAttribute&lt;openparen&gt;&lt;apos&gt;resources&lt;opencurly&gt;%s&lt;closecurly&gt;.url&lt;apos&gt;%&lt;openparen&gt;str&lt;openparen&gt;index&lt;closeparen&gt;&lt;closeparen&gt;&lt;comma&gt;r&lt;apos&gt;%s&lt;amp&gt;layers=pub:%s&lt;amp&gt;legend_format=image&lt;solidus&gt;png&lt;amp&gt;feature_info_type=text&lt;solidus&gt;plain&lt;apos&gt;%&lt;openparen&gt;url&lt;comma&gt;feature.getAttribute&lt;openparen&gt;&lt;apos&gt;object_name&lt;apos&gt;&lt;closeparen&gt;&lt;closeparen&gt;&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;index=index+1&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;lf&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSYMBOL" PARM_VALUE="processFeature"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="PythonCaller"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="5"
+#!   TYPE="AttributeExposer"
+#!   VERSION="1"
+#!   POSITION="-926.61369280359486 -85.355748748596568"
+#!   BOUNDING_RECT="-926.61369280359486 -85.355748748596568 431 71"
+#!   ORDER="500000000000969"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="object_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.format" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="object_name,resources{}.format"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="12"
+#!   TYPE="AttributeRemover"
+#!   VERSION="1"
+#!   POSITION="960.94710947109502 -54.105436245471537"
+#!   BOUNDING_RECT="960.94710947109502 -54.105436245471537 431 71"
+#!   ORDER="500000000000973"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="resources{}.format" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE="object_name"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="INPUT"
+#!   POSITION="-1945.8527918612517 -54.105436245471537"
+#!   BOUNDING_RECT="-1945.8527918612517 -54.105436245471537 431 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="OUTPUT"
+#!   POSITION="1668.5062683960168 -54.105436245471537"
+#!   BOUNDING_RECT="1668.5062683960168 -54.105436245471537 431 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="6"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="13"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="12"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="8"
+#!   SOURCE_NODE="5"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="14"
+#!   SOURCE_NODE="12"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+FME_PYTHON_VERSION 37
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO BC_WMS_FORMATTER_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(BC_WMS_FORMATTER_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(BC_WMS_FORMATTER_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(BC_WMS_FORMATTER_WORKSPACE_NAME)_INPUT1582302268 Input Splitter"   INPUT FEATURE_TYPE "$(BC_WMS_FORMATTER_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(BC_WMS_FORMATTER_WORKSPACE_NAME)_INPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(BC_WMS_FORMATTER_WORKSPACE_NAME)_AttributeExposer_2    INPUT  FEATURE_TYPE "$(BC_WMS_FORMATTER_WORKSPACE_NAME)_INPUT"    OUTPUT FEATURE_TYPE "$(BC_WMS_FORMATTER_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"
+# -------------------------------------------------------------------------
+FME_PYTHON_PATH "$(FME_MF_DIR)"
+FACTORY_DEF * PythonFactory    FACTORY_NAME $(BC_WMS_FORMATTER_WORKSPACE_NAME)_PythonCaller    INPUT  FEATURE_TYPE "$(BC_WMS_FORMATTER_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"    SYMBOL_NAME processFeature    PYTHON_NAMESPACE FMEOBJECTS    SOURCE_CODE import<space>fme<lf>import<space>fmeobjects<lf>#<space>Template<space>Function<space>interface:<lf>#<space>When<space>using<space>this<space>function<comma><space>make<space>sure<space>its<space>name<space>is<space>set<space>as<space>the<space>value<space>of<lf>#<space>the<space><apos>Class<space>or<space>Function<space>to<space>Process<space>Features<apos><space>transformer<space>parameter<lf>def<space>processFeature<openparen>feature<closeparen>:<lf><space><space><space><space>index=0<lf><space><space><space><space>for<space>url<space>in<space>feature.getAttribute<openparen><apos>resources<opencurly><closecurly>.url<apos><closeparen>:<lf><lf><space><space><space><space><space><space><space><space>if<space>r<apos>service=WMS<amp>request=GetCapabilities<apos><space>in<space>url:<lf><lf><space><space><space><space><space><space><space><space><space><space><space><space>feature.setAttribute<openparen><apos>resources<opencurly>%s<closecurly>.url<apos>%<openparen>str<openparen>index<closeparen><closeparen><comma>r<apos>%s<amp>layers=pub:%s<amp>legend_format=image<solidus>png<amp>feature_info_type=text<solidus>plain<apos>%<openparen>url<comma>feature.getAttribute<openparen><apos>object_name<apos><closeparen><closeparen><closeparen><lf><space><space><space><space><space><space><space><space>index=index+1<lf><space><space><space><space><lf><space><space><space><space><lf><space><space><space><space><lf><lf>    OUTPUT PYOUTPUT FEATURE_TYPE "$(BC_WMS_FORMATTER_WORKSPACE_NAME)_PythonCaller_OUTPUT"
+# -------------------------------------------------------------------------
+INCLUDE [    set macroLine "MACRO $(BC_WMS_FORMATTER_WORKSPACE_NAME)_AttributeRemover_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(BC_WMS_FORMATTER_WORKSPACE_NAME)_AttributeRemover    INPUT  FEATURE_TYPE "$(BC_WMS_FORMATTER_WORKSPACE_NAME)_PythonCaller_OUTPUT"    OUTPUT { FEATURE_TYPE "$(BC_WMS_FORMATTER_WORKSPACE_NAME)_AttributeRemover_OUTPUT"        @RemoveAttributes(fme_encoded,object_name)        @RemoveAttributes(fme_pcre_match"$($(BC_WMS_FORMATTER_WORKSPACE_NAME)_AttributeRemover_LIST_EXP)")         }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(BC_WMS_FORMATTER_WORKSPACE_NAME)_OUTPUT1582302268 Output Collector"   INPUT FEATURE_TYPE "$(BC_WMS_FORMATTER_WORKSPACE_NAME)_AttributeRemover_OUTPUT"   OUTPUT FEATURE_TYPE "$(BC_WMS_FORMATTER_WORKSPACE_NAME)_OUTPUT"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(BC_WMS_FORMATTER_WORKSPACE_NAME))}]

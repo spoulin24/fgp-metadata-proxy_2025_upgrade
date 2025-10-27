@@ -1,0 +1,1743 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN MANUAL_GEOSPATIAL_SETTER_NG,2,"""FGP Tools""",d32a6acb-16e4-4efc-8040-5371bd51926f,"Linked by Default",No,NO_PARALLELISM,,No,25606,YES,No,313,No,,both
+# <p><strong>Description </strong></p>
+# <p>This custom transformer sets manually the spatial representation type.  The supplied lookup table contains the ID and the spatial representation type for a subset of the metadata records.</p>
+# <p><strong>Input Ports </strong></p>
+# <p>LOOKUP_TABLE_INPUT: Input information from the lookup table</p>
+# <p>DATA_INPUT: The input metadata records to process.</p>
+# <p><strong>Output Ports </strong></p>
+# <p>GEOSPATIAL: Output port for the geospatial metadata records</p>
+# <p>NON-GEOSPATIAL: Output port for the non geospatial metadata records</p>
+# <p>UNMAPPED_DATA: Output port for the metadata records for which the spatial representation type cannot be determine.</p>
+# <p><strong>Parameters </strong></p>
+# <ul>
+# <li>
+# <p>FEATURE_TYPE: Name of the CSV file to read (without .csv extension);</p>
+# </li>
+# <li>
+# <p>IN_CSV_LOOKUP_TABLES_DIR: Name of the directory path containing the CSV file to read;</p>
+# </li>
+# <li>
+# <p>P-T_ABBR: Two letters abbreviation of the province or the territory.</p>
+# </li>
+# </ul>
+# TRANSFORMER_END
+#!   A0_PREVIEW_IMAGE="data:image/png;base64,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"
+#!   ARCGIS_COMPATIBILITY="ARCGIS_AUTO"
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="&quot;FGP Tools&quot;"
+#!   DATA_PROCESSING_TYPE="both"
+#!   DESCRIPTION="&lt;p&gt;&lt;strong&gt;Description &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;This custom transformer sets manually the spatial representation type.  The supplied lookup table contains the ID and the spatial representation type for a subset of the metadata records.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Input Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;LOOKUP_TABLE_INPUT: Input information from the lookup table&lt;/p&gt;&#10;&lt;p&gt;DATA_INPUT: The input metadata records to process.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Output Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;GEOSPATIAL: Output port for the geospatial metadata records&lt;/p&gt;&#10;&lt;p&gt;NON-GEOSPATIAL: Output port for the non geospatial metadata records&lt;/p&gt;&#10;&lt;p&gt;UNMAPPED_DATA: Output port for the metadata records for which the spatial representation type cannot be determine.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Parameters &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;FEATURE_TYPE: Name of the CSV file to read (without .csv extension);&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;IN_CSV_LOOKUP_TABLES_DIR: Name of the directory path containing the CSV file to read;&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;P-T_ABBR: Two letters abbreviation of the province or the territory.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;/ul&gt;"
+#!   DOC_EXTENTS="6093.11 2037.52"
+#!   DOC_TOP_LEFT="-3600 -959.385"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="25606"
+#!   FME_DOCUMENT_GUID="d32a6acb-16e4-4efc-8040-5371bd51926f"
+#!   FME_DOCUMENT_PRIORGUID=""
+#!   FME_LINKED_TRANSFORMER_VERSION="2"
+#!   FME_NAMES_ENCODING="windows-1252"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY="Unknown,Unknown,Original&lt;space&gt;version,14&lt;solidus&gt;09&lt;solidus&gt;2021,Daniel&lt;space&gt;Pilon,Documentation,27&lt;solidus&gt;03&lt;solidus&gt;2022,Daniel&lt;space&gt;Pilon,Added&lt;space&gt;LOOKUP_TABLES_READER_NG"
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2025.1.0.0 (20250704 - Build 25606 - WIN64)"
+#!   LAST_SAVE_DATE="2025-10-06T15:27:50"
+#!   MARKDOWN_DESCRIPTION="**Description **&#10;&#10;This custom transformer sets manually the spatial representation type.  The supplied lookup table contains the ID and the spatial representation type for a subset of the metadata records.&#10;&#10;&#10;**Input Ports **&#10;&#10;LOOKUP_TABLE_INPUT: Input information from the lookup table&#10;&#10;DATA_INPUT: The input metadata records to process.&#10;&#10;&#10;**Output Ports **&#10;&#10;GEOSPATIAL: Output port for the geospatial metadata records&#10;&#10;NON-GEOSPATIAL: Output port for the non geospatial metadata records&#10;&#10;UNMAPPED_DATA: Output port for the metadata records for which the spatial representation type cannot be determine.&#10;&#10;&#10;**Parameters **&#10;&#10; - FEATURE_TYPE: Name of the CSV file to read (without .csv extension);&#10;&#10; - IN_CSV_LOOKUP_TABLES_DIR: Name of the directory path containing the CSV file to read;&#10; &#10; - P-T_ABBR: Two letters abbreviation of the province or the territory.&#10;"
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="313"
+#!   REPLACED_BY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="MANUAL_GEOSPATIAL_SETTER_NG"
+#!   USAGE=""
+#!   USE_MARKDOWN="YES"
+#!   VIEW_POSITION="-455.734 768.237"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="72"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR FEATURE_TYPE FEATURE_TYPE:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR IN_CSV_LOOKUP_TABLES_DIR IN_CSV_LOOKUP_TABLES_DIR:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR P-T_ABBR P-T_ABBR:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <USER_PARAMETERS
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbeyJuYW1lIjoiRkVBVFVSRV9UWVBFIiwicHJvbXB0IjoiRkVBVFVSRV9UWVBFOiIsInZhbHVlVHlwZSI6InN0cmluZyIsInJlcXVpcmVkIjpmYWxzZSwiZGVmYXVsdFZhbHVlIjoiIiwic3VwcG9ydGVkVmFsdWVUeXBlcyI6WyJleHByZXNzaW9uIiwiZ2xvYmFsUGFyYW1ldGVyIl0sImRlcHJlY2F0ZWRGbGFncyI6WyJub25lIl0sInR5cGUiOiJ0ZXh0IiwiZWRpdG9yIjoicGxhaW50ZXh0In0seyJuYW1lIjoiSU5fQ1NWX0xPT0tVUF9UQUJMRVNfRElSIiwicHJvbXB0IjoiSU5fQ1NWX0xPT0tVUF9UQUJMRVNfRElSOiIsInZhbHVlVHlwZSI6InN0cmluZyIsInJlcXVpcmVkIjpmYWxzZSwiZGVmYXVsdFZhbHVlIjoiIiwic3VwcG9ydGVkVmFsdWVUeXBlcyI6WyJleHByZXNzaW9uIiwiZ2xvYmFsUGFyYW1ldGVyIl0sImRlcHJlY2F0ZWRGbGFncyI6WyJub25lIl0sInR5cGUiOiJ0ZXh0IiwiZWRpdG9yIjoicGxhaW50ZXh0In0seyJuYW1lIjoiUC1UX0FCQlIiLCJwcm9tcHQiOiJQLVRfQUJCUjoiLCJ2YWx1ZVR5cGUiOiJzdHJpbmciLCJyZXF1aXJlZCI6ZmFsc2UsImRlZmF1bHRWYWx1ZSI6IiIsInN1cHBvcnRlZFZhbHVlVHlwZXMiOlsiZXhwcmVzc2lvbiIsImdsb2JhbFBhcmFtZXRlciJdLCJkZXByZWNhdGVkRmxhZ3MiOlsibm9uZSJdLCJ0eXBlIjoidGV4dCIsImVkaXRvciI6InBsYWludGV4dCJ9XX0="
+#! >
+#! <PARAMETER_INFO>
+#!     <INFO NAME="FEATURE_TYPE" 
+#!   DEFAULT_VALUE=""
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR FEATURE_TYPE FEATURE_TYPE:"
+#! />
+#!     <INFO NAME="IN_CSV_LOOKUP_TABLES_DIR" 
+#!   DEFAULT_VALUE=""
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR IN_CSV_LOOKUP_TABLES_DIR IN_CSV_LOOKUP_TABLES_DIR:"
+#! />
+#!     <INFO NAME="P-T_ABBR" 
+#!   DEFAULT_VALUE=""
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR P-T_ABBR P-T_ABBR:"
+#! />
+#! </PARAMETER_INFO>
+#! </USER_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="29"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Exposes data attributes required by this transformer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-2332.1201634238569 900"
+#!   TOP_LEFT="-2332.1201634238569 900"
+#!   BOTTOM_RIGHT="-1722.2512834850575 666.87296872968727"
+#!   BOUNDING_RECT="-2332.1201634238569 900 609.86887993879941 233.1270312703127"
+#!   ORDER="500000000001840"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{b824c90d-b6ef-4398-8848-2f935ae2cfc3}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="11"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="30"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Exposes incoming attributes from lookup table.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-1848.9768231015642 256.59678819010412"
+#!   TOP_LEFT="-1848.9768231015642 256.59678819010412"
+#!   BOTTOM_RIGHT="-1236.4711980453135 23.469756919791422"
+#!   BOUNDING_RECT="-1848.9768231015642 256.59678819010412 612.50562505625055 233.1270312703127"
+#!   ORDER="500000000001841"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{97f837c7-3381-47f2-b3a6-c6e36ddf78eb}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="12"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="32"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Merges lookup table with data by id&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-889.06720660468363 901.07333435577982"
+#!   TOP_LEFT="-889.06720660468363 901.07333435577982"
+#!   BOTTOM_RIGHT="-406.10389259654357 900.07333435577982"
+#!   BOUNDING_RECT="-889.06720660468363 901.07333435577982 482.96331400814006 1"
+#!   ORDER="500000000001843"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{413b7bdd-d911-43ac-b78b-b9ac95b9ef46}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="7"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="33"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Identifies and logs any new features that require mapping&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="793.05298608541648 -107.63996528854176"
+#!   TOP_LEFT="793.05298608541648 -107.63996528854176"
+#!   BOTTOM_RIGHT="1449.6508489390449 -340.76699655885443"
+#!   BOUNDING_RECT="793.05298608541648 -107.63996528854176 656.5978628536285 233.1270312703127"
+#!   ORDER="500000000001844"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{6196c0f4-69e5-416e-8928-379430b0b144}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="10"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="34"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Tests if spatial_representation_type has value and outputs to GEOSPATIAL if found.  Non-geo data is output through NON-GEOSPATIAL &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-217.68511278374518 850.16991918786573"
+#!   TOP_LEFT="-217.68511278374518 850.16991918786573"
+#!   BOTTOM_RIGHT="715.28270126939537 557.66729416161547"
+#!   BOUNDING_RECT="-217.68511278374518 850.16991918786573 932.9678140531405 292.50262502625026"
+#!   ORDER="500000000001845"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{48c5a9e0-e9ed-49b4-995c-c22ee705d994}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="8"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="38"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Lookup table has identified data not identified through filters by manual analysis.  All unfiltered features pass through, datasets that are geo are idenitifed by populating spatial representation type attribute&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-2550 -450"
+#!   TOP_LEFT="-2550 -450"
+#!   BOTTOM_RIGHT="-1596.8659686596866 -861.25381253812543"
+#!   BOUNDING_RECT="-2550 -450 953.13403134031341 411.25381253812537"
+#!   ORDER="500000000001849"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{014e7b02-9075-435f-81d1-9b382559cad6}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="0"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="45"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Unexpose all attributes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="900 747.50012500125001"
+#!   TOP_LEFT="900 747.50012500125001"
+#!   BOTTOM_RIGHT="1484.3803438034379 636.24931249312499"
+#!   BOUNDING_RECT="900 747.50012500125001 584.380343803438 111.25081250812508"
+#!   ORDER="500000000001851"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{b65d069a-5e62-44b6-b155-27a9fb27cdca}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="39"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="46"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:13pt;&quot;&gt;Unexpose all attributes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="900 305.62590625906262"
+#!   TOP_LEFT="900 305.62590625906262"
+#!   BOTTOM_RIGHT="1536.4316455664557 194.37509375093754"
+#!   BOUNDING_RECT="900 305.62590625906262 636.4316455664557 111.25081250812508"
+#!   ORDER="500000000001852"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{b65dd3b8-af14-4f43-a008-0f9e8bb3ad65}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="42"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="35"
+#!   NAME="MANUAL_GEOSPATIAL_SETTER"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="-2671.9017190171903 1078.1357813578138"
+#!   ORDER="500000000001826"
+#!   PALETTE_COLOR="Color1"
+#!   BOTTOM_RIGHT="1623.2801216901057 -959.38459384593853"
+#!   BOUNDING_RECT="-2671.9017190171903 1078.1357813578138 4295.181840707296 2037.5203752037523"
+#!   STICKY="false"
+#!   COLOUR="0.59999999999999998,0.80000000000000004,0.80000000000000004,1"
+#!   CONTENTS=""
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="7"
+#!   TYPE="FeatureMerger"
+#!   VERSION="21"
+#!   POSITION="-889.06720660468363 526.69524057484205"
+#!   BOUNDING_RECT="-889.06720660468363 526.69524057484205 483 71"
+#!   ORDER="500000000001827"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="MERGED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="spatial_representation_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="UNMERGED_REQUESTOR"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <OUTPUT_FEAT NAME="USED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="spatial_representation_type" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="numReferences" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <OUTPUT_FEAT NAME="UNUSED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="3"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="spatial_representation_type" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="4"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="spatial_representation_type" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE" PARM_VALUE="Merge Supplier"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES_LOOKUP" PARM_VALUE="REQUESTOR_IF_CONFLICT"/>
+#!     <XFORM_PARM PARM_NAME="CLEANING_TOLERANCE_LOOKUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CONNECT_Z_MODE_LOOKUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GENERATE_LIST_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="GEOM_TYPE_VAL" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_PROCESSING_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="IGNORE_NULLS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="JOIN_ATTRIBUTES_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="JOIN_KEYS" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;id&lt;closeparen&gt; &lt;at&gt;Value&lt;openparen&gt;id&lt;closeparen&gt; AUTO"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE_MODE_LU" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_NAME" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_COUNT_ATTR" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_TYPE_VAL" PARM_VALUE="ATTRIBUTES"/>
+#!     <XFORM_PARM PARM_NAME="MODE_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="ACROSS_OUTPUT_PORTS"/>
+#!     <XFORM_PARM PARM_NAME="PROCESS_DUPS" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="REJECT_NULL_MISSING_KEYS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIERS_FIRST" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIER_PREFIX" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="FeatureMerger"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES" PARM_IS_LOOKUP="true" PARM_VALUE="Use Requestor"/>
+#!     <XFORM_PARM PARM_NAME="CLEANING_TOLERANCE" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CONNECT_Z_MODE" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GEOM_TYPE" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE_MODE" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_TYPE" PARM_IS_LOOKUP="true" PARM_VALUE="Attributes Only"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="8"
+#!   TYPE="Tester"
+#!   VERSION="4"
+#!   POSITION="57.470036545525772 450"
+#!   BOUNDING_RECT="57.470036545525772 450 454 71"
+#!   ORDER="500000000001830"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="PASSED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="spatial_representation_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="FAILED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="spatial_representation_type" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_MSG" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="ACROSS_OUTPUT_PORTS"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST &lt;at&gt;Value&lt;openparen&gt;spatial_representation_type&lt;closeparen&gt; NOT_= &quot;&quot;"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="TEST"/>
+#!     <XFORM_PARM PARM_NAME="TEST_PREVIEW_GROUP" PARM_VALUE="FME_DISCLOSURE_CLOSED"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester_4"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="9"
+#!   TYPE="AttributeKeeper"
+#!   VERSION="3"
+#!   POSITION="-37.732387631493026 79.686990492341153"
+#!   BOUNDING_RECT="-37.732387631493026 79.686990492341153 454 71"
+#!   ORDER="500000000001833"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="CREATE_BULK_MODE_FEATURES" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="KEEP_ATTRS" PARM_VALUE="url,title,id,notes"/>
+#!     <XFORM_PARM PARM_NAME="KEEP_LIST" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_ON_ATTRIBUTE_CHANGE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeKeeper"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="10"
+#!   TYPE="Logger"
+#!   VERSION="4"
+#!   POSITION="900 -450"
+#!   BOUNDING_RECT="900 -450 454 71"
+#!   ORDER="500000000001834"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="LOGGED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="FEATURE_TYPE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="LOG_FEATURE" PARM_VALUE="LOG_RECORD"/>
+#!     <XFORM_PARM PARM_NAME="MAXCOORDS" PARM_VALUE="20"/>
+#!     <XFORM_PARM PARM_NAME="MAXFEATS" PARM_VALUE="20"/>
+#!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE="Data&lt;space&gt;record&lt;space&gt;with&lt;space&gt;id&lt;space&gt;&lt;at&gt;Value&lt;openparen&gt;id&lt;closeparen&gt;&lt;space&gt;missing&lt;space&gt;from&lt;space&gt;UnmappedGeoData&lt;space&gt;lookup&lt;space&gt;table&lt;space&gt;in&lt;space&gt;MANUAL_GEOSPATIAL_SETTER&lt;space&gt;transformer.&lt;space&gt;&lt;space&gt;See&lt;space&gt;PROCESS_REPORT_MANUAL_TASKS.xls&lt;space&gt;file&lt;space&gt;in&lt;space&gt;XLS&lt;space&gt;directory&lt;space&gt;for&lt;space&gt;details."/>
+#!     <XFORM_PARM PARM_NAME="MSG_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="SEVERITY" PARM_VALUE="WARN"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Logger"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="11"
+#!   TYPE="AttributeExposer"
+#!   VERSION="2"
+#!   POSITION="-2202.7998057758359 499.16737251838356"
+#!   BOUNDING_RECT="-2202.7998057758359 499.16737251838356 454 71"
+#!   ORDER="500000000001837"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="id,,notes,,title,,url,"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="12"
+#!   TYPE="AttributeExposer"
+#!   VERSION="2"
+#!   POSITION="-1749.999499995 -85.850936553596"
+#!   BOUNDING_RECT="-1749.999499995 -85.850936553596 454 71"
+#!   ORDER="500000000001838"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="spatial_representation_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="id,,spatial_representation_type,"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="14"
+#!   TYPE="Cloner"
+#!   VERSION="0"
+#!   POSITION="-807.64696535854262 -65.278430562083429"
+#!   BOUNDING_RECT="-807.64696535854262 -65.278430562083429 454 71"
+#!   ORDER="500000000001847"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="COPY"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="spatial_representation_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_copynum" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="COPIES" PARM_VALUE="1"/>
+#!     <XFORM_PARM PARM_NAME="COPYATT" PARM_VALUE="_copynum"/>
+#!     <XFORM_PARM PARM_NAME="OAN_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Cloner"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="36"
+#!   TYPE="LOOKUP_TABLES_READER_NG"
+#!   VERSION="2"
+#!   POSITION="-2606.9705141495865 -59.549206603177062"
+#!   BOUNDING_RECT="-2606.9705141495865 -59.549206603177062 634.00106825772946 71"
+#!   ORDER="500000000001848"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="CSV_ENCODING" PARM_VALUE="utf-8"/>
+#!     <XFORM_PARM PARM_NAME="CSV_PATH" PARM_VALUE="$(IN_CSV_LOOKUP_TABLES_DIR)"/>
+#!     <XFORM_PARM PARM_NAME="FEATURE_TYPE" PARM_VALUE="$(FEATURE_TYPE)"/>
+#!     <XFORM_PARM PARM_NAME="PT" PARM_VALUE="$(P-T_ABBR)"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="LOOKUP_TABLES_READER_NG"/>
+#!     <XFORM_PARM PARM_NAME="__COMPOUND_PARAMETERS" PARM_VALUE=""/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="39"
+#!   TYPE="ATTRIBUTE_UNEXPOSER"
+#!   VERSION="2"
+#!   POSITION="900 600"
+#!   BOUNDING_RECT="900 600 533.00106825772946 71"
+#!   ORDER="500000000001850"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_UNEXPOSER"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="42"
+#!   TYPE="ATTRIBUTE_UNEXPOSER"
+#!   VERSION="2"
+#!   POSITION="900 150"
+#!   BOUNDING_RECT="900 150 533.00106825772946 71"
+#!   ORDER="500000000001850"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_UNEXPOSER_2"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="GEOSPATIAL"
+#!   POSITION="1905.0357725799483 450"
+#!   BOUNDING_RECT="1905.0357725799483 450 476.00106825772946 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="NON-GEOSPATIAL"
+#!   POSITION="1905.0357725799483 41.491970475260331"
+#!   BOUNDING_RECT="1905.0357725799483 41.491970475260331 588.07095664218264 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="4"
+#!   NAME="DATA_INPUT"
+#!   POSITION="-3600 506.11188640796684"
+#!   BOUNDING_RECT="-3600 506.11188640796684 637.00106825772946 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="6"
+#!   NAME="UNMAPPED_DATA"
+#!   POSITION="1905.0357725799483 -502.08385417187503"
+#!   BOUNDING_RECT="1905.0357725799483 -502.08385417187503 569.32076914030768 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="16"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="11"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="31"
+#!   SOURCE_NODE="36"
+#!   TARGET_NODE="12"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="18"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="8"
+#!   SOURCE_PORT_DESC="fo 0 MERGED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="40"
+#!   SOURCE_NODE="8"
+#!   TARGET_NODE="39"
+#!   SOURCE_PORT_DESC="fo 0 PASSED"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="20"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="10"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="21"
+#!   SOURCE_NODE="10"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 LOGGED"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="22"
+#!   SOURCE_NODE="11"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 REQUESTOR"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="37"
+#!   SOURCE_NODE="12"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 1 SUPPLIER"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="41"
+#!   SOURCE_NODE="39"
+#!   TARGET_NODE="2"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="44"
+#!   SOURCE_NODE="42"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="25"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 1 UNMERGED_REQUESTOR"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="43"
+#!   SOURCE_NODE="8"
+#!   TARGET_NODE="42"
+#!   SOURCE_PORT_DESC="fo 1 FAILED"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="28"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="14"
+#!   SOURCE_PORT_DESC="fo 4 &lt;lt&gt;REJECTED&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+FME_PYTHON_VERSION 313
+# ============================================================================
+DEFAULT_MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FEATURE_TYPE 
+
+DEFAULT_MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_IN_CSV_LOOKUP_TABLES_DIR 
+
+DEFAULT_MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_P-T_ABBR 
+
+DEFAULT_MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FME_DATA_REPOSITORY 
+
+DEFAULT_MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FME_ENGINE 
+
+DEFAULT_MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FME_JOB_ID 
+
+DEFAULT_MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FME_SECURITY_ROLES 
+
+DEFAULT_MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FME_SECURITY_USER 
+
+DEFAULT_MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FME_SERVER_DEST_DIR 
+
+DEFAULT_MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FME_SERVER_HOST 
+
+DEFAULT_MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FME_SERVER_PORT 
+
+DEFAULT_MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FME_SERVER_REQUEST_HEADERS 
+
+DEFAULT_MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FME_SERVER_REQUEST_METHOD 
+
+DEFAULT_MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FME_SERVER_REQUEST_PARAMETERS 
+
+DEFAULT_MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FME_SERVER_REQUEST_URI 
+
+DEFAULT_MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER 
+
+DEFAULT_MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER_ID 
+
+DEFAULT_MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FME_SERVER_WEB_URL 
+
+DEFAULT_MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_BACKUP 
+
+DEFAULT_MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DASHBOARD 
+
+DEFAULT_MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DATA 
+
+DEFAULT_MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_ENGINE 
+
+DEFAULT_MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_LOG 
+
+DEFAULT_MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_SYSTEM 
+
+DEFAULT_MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_TEMP 
+
+DEFAULT_MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FME_TOPIC 
+
+DEFAULT_MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FME_TOPIC_MESSAGE 
+
+# ============================================================================
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_DATA_INPUT1759778870 Input Splitter"   INPUT FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_DATA_INPUT"   OUTPUT FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_DATA_INPUT"
+# -------------------------------------------------------------------------
+MACRO LOOKUP_TABLES_READER_NG_WORKSPACE_NAME $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_XFORMER_NAME $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)___COMPOUND_PARAMETERS 
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_FEATURE_TYPE $($(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FEATURE_TYPE)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_CSV_PATH $($(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_IN_CSV_LOOKUP_TABLES_DIR$encode)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_PT $($(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_P-T_ABBR$encode)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_CSV_ENCODING utf-8
+INCLUDE_CUSTOM_TRANSFORMER_VER LOOKUP_TABLES_READER_NG:2
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"   OUTPUT FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"
+FACTORY_DEF * BranchingFactory   FACTORY_NAME "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output Brancher -1 31"   INPUT FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"   TARGET_FACTORY "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   MAXIMUM_COUNT None   OUTPUT PASSED FEATURE_TYPE *
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   INPUT FEATURE_TYPE *  OUTPUT FEATURE_TYPE *
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_AttributeExposer_2 }    INPUT  FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"    OUTPUT { FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"          }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_AttributeExposer }    INPUT  FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_DATA_INPUT"    OUTPUT { FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_AttributeExposer_OUTPUT"          }
+# -------------------------------------------------------------------------
+INCLUDE [if { {ATTRIBUTES} == {ATTRIBUTES} } {                puts "MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO ATTRIBUTES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {POLYGONS}} {                puts "MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {AGGREGATES}} {                puts "MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {POLYGONS}} {                puts "MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {AGGREGATES}} {                puts "MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} } {                puts "MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} } {                puts "MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          else {}; ]
+FACTORY_DEF {*} ReferenceFactory    FACTORY_NAME { $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FeatureMerger }    FLUSH_WHEN_GROUPS_CHANGE { <Unused> }    INPUT REFERENCER FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_AttributeExposer_OUTPUT"    INPUT REFERENCEE FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"    REFERENCE_INFO { $($(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO) }    REFERENCE_TABLE { @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>id<closeparen>,$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FeatureMerger) @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>id<closeparen>,$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FeatureMerger) AUTO }    ATTR_ACCUM_MODE { "HANDLE_CONFLICT" }    ATTR_CONFLICT_RES { "REQUESTOR_IF_CONFLICT" }    IGNORE_NULLS { "No" }    HANDLE_NULL_MISSING_KEYS_LIKE_FME2013 { No }    LIST_ATTRS_TO_INCLUDE { <Unused> }    LIST_ATTRS_TO_INCLUDE_MODE { <Unused> }    MERGE_ATTRIBUTES Yes    MANAGE_FME_TYPE Yes    MODE COMPLETE    PROCESS_DUPLICATE_REFERENCEES { NO }    REFERENCEES_FIRST { No }    REJECT_INVALID_GEOM YES    CLEANING_TOLERANCE { <Unused> }    PRESERVE_FEATURE_ORDER { ACROSS_OUTPUT_PORTS }    COMPARE_WHITESPACE Yes    OUTPUT { COMPLETE FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FeatureMerger_MERGED"         }    OUTPUT { INCOMPLETE FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FeatureMerger_UNMERGED_REQUESTOR"         }    OUTPUT { REJECTED FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FeatureMerger_<REJECTED>"         }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TestFactory    FACTORY_NAME { $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_Tester_4 }    INPUT  FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FeatureMerger_MERGED"    TEST { "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>spatial_representation_type<closeparen>,$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_Tester_4)" NOT_= "" ENCODED }    BOOLEAN_OPERATOR { OR }    COMPOSITE_TEST_EXPR { "<Unused>" }    PRESERVE_FEATURE_ORDER { ACROSS_OUTPUT_PORTS }    OUTPUT { PASSED FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_Tester_4_PASSED"         }    OUTPUT { FAILED FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_Tester_4_FAILED"         }
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Input Input Collector"   INPUT FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_Tester_4_PASSED"   OUTPUT FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Input"
+MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:2
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2 Input Input Collector"   INPUT FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_Tester_4_FAILED"   OUTPUT FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2_Input"
+MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2
+INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:2
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2 Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2_Output"   OUTPUT FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2_Output"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttributeKeeperFactory    FACTORY_NAME { $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_AttributeKeeper }    INPUT  FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FeatureMerger_UNMERGED_REQUESTOR"    KEEP_ATTRS { url,title,id,notes }    KEEP_LISTS {  }    KEEP_FME_ATTRIBUTES Yes    BUILD_FEATURE_TABLES { NO }    OUTPUT_ON_ATTRIBUTE_CHANGE { <Unused> }    OUTPUT { OUTPUT FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"        }
+# -------------------------------------------------------------------------
+# Create a FME_UUID_SAFE from the FME_UUID so we can use it for Tcl identifiers (FMEDESKTOP-11308)
+INCLUDE [ FME_CleanseFMEUUID {$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_Logger_46212c07_1adb_49ee_accf_d15a54512c591} ]
+# If the Logger was in a custom transformer, the custom transformer's name was not being
+# properly logged -- instead we saw "$(<customXformerName_WORKSPACE_NAME)" being logged as the prefix of the
+# message. By deferencing and expanding out the XFORMER_NAME below, and then "WWJD" encoding it when it is
+# used in the @Log call via the $encode macro name suffix trick, we get the right result, and the right result
+# safely.
+MACRO LOGGABLE_XFORMER_NAME $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_Logger
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_Logger_Logger }    INPUT  FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"    OUTPUT { FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_Logger_LOGGED"                  @Log(ENCODED, "$(LOGGABLE_XFORMER_NAME$encode):<space>@EvaluateExpression(FDIV,STRING_ENCODED,Data<space>record<space>with<space>id<space><at>Value<openparen>id<closeparen><space>missing<space>from<space>UnmappedGeoData<space>lookup<space>table<space>in<space>MANUAL_GEOSPATIAL_SETTER<space>transformer.<space><space>See<space>PROCESS_REPORT_MANUAL_TASKS.xls<space>file<space>in<space>XLS<space>directory<space>for<space>details.,$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_Logger)","20","20","",WARN,LOG_RECORD,$(FME_UUID_SAFE))                   }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_Cloner_Cloner }    INPUT  FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FeatureMerger_<REJECTED>"    NUMBER_OF_COPIES { "1" }    COPY_NUMBER_ATTRIBUTE { _copynum }    REJECT_INVALID YES
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_GEOSPATIAL1759778870 Output Collector"   INPUT FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_GEOSPATIAL"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_NON-GEOSPATIAL1759778870 Output Collector"   INPUT FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2_Output"   OUTPUT FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_NON-GEOSPATIAL"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_UNMAPPED_DATA1759778870 Output Collector"   INPUT FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_Logger_LOGGED"   OUTPUT FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_UNMAPPED_DATA"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME))}]
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN MANUAL_GEOSPATIAL_SETTER_NG,1,"FGP Tools",ff691767-bfed-48e3-b183-d0e285e6de10,"Linked by Default",No,NO_PARALLELISM,,No,20200,YES,No,37,No,
+# <p><strong>Description </strong></p>
+# <p>This custom transformer sets manually the spatial representation type.  The supplied lookup table contains the ID and the spatial representation type for a subset of the metadata records.</p>
+# <p><strong>Input Ports </strong></p>
+# <p>LOOKUP_TABLE_INPUT: Input information from the lookup table</p>
+# <p>DATA_INPUT: The input metadata records to process.</p>
+# <p><strong>Output Ports </strong></p>
+# <p>GEOSPATIAL: Output port for the geospatial metadata records</p>
+# <p>NON-GEOSPATIAL: Output port for the non geospatial metadata records</p>
+# <p>UNMAPPED_DATA: Output port for the metadata records for which the spatial representation type cannot be determine.</p>
+# <p><strong>Parameters </strong></p>
+# <ul>
+# <li>
+# <p>FEATURE_TYPE: Name of the CSV file to read (without .csv extension);</p>
+# </li>
+# <li>
+# <p>IN_CSV_LOOKUP_TABLES_DIR: Name of the directory path containing the CSV file to read;</p>
+# </li>
+# <li>
+# <p>P-T_ABBR: Two letters abbreviation of the province or the territory.</p>
+# </li>
+# </ul>
+# TRANSFORMER_END
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="FGP Tools"
+#!   DESCRIPTION="&lt;p&gt;&lt;strong&gt;Description &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;This custom transformer sets manually the spatial representation type.  The supplied lookup table contains the ID and the spatial representation type for a subset of the metadata records.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Input Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;LOOKUP_TABLE_INPUT: Input information from the lookup table&lt;/p&gt;&#10;&lt;p&gt;DATA_INPUT: The input metadata records to process.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Output Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;GEOSPATIAL: Output port for the geospatial metadata records&lt;/p&gt;&#10;&lt;p&gt;NON-GEOSPATIAL: Output port for the non geospatial metadata records&lt;/p&gt;&#10;&lt;p&gt;UNMAPPED_DATA: Output port for the metadata records for which the spatial representation type cannot be determine.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Parameters &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;FEATURE_TYPE: Name of the CSV file to read (without .csv extension);&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;IN_CSV_LOOKUP_TABLES_DIR: Name of the directory path containing the CSV file to read;&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;P-T_ABBR: Two letters abbreviation of the province or the territory.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;/ul&gt;"
+#!   DOC_EXTENTS="6093.11 2037.52"
+#!   DOC_TOP_LEFT="-3600 -959.385"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="20200"
+#!   FME_DOCUMENT_GUID="ff691767-bfed-48e3-b183-d0e285e6de10"
+#!   FME_DOCUMENT_PRIORGUID="5e015f2c-3ebb-4ea7-9485-ac1fa6d4e446,cb21b8ea-1f2c-44b5-86ca-767def1f8d24"
+#!   FME_LINKED_TRANSFORMER_VERSION="1"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY="Unknown,Unknown,Original&lt;space&gt;version,14&lt;solidus&gt;09&lt;solidus&gt;2021,Daniel&lt;space&gt;Pilon,Documentation,27&lt;solidus&gt;03&lt;solidus&gt;2022,Daniel&lt;space&gt;Pilon,Added&lt;space&gt;LOOKUP_TABLES_READER_NG"
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2020.0.0.0 (20200309 - Build 20200 - WIN32)"
+#!   LAST_SAVE_DATE="2022-03-29T11:45:11"
+#!   MARKDOWN_DESCRIPTION="**Description **&#10;&#10;This custom transformer sets manually the spatial representation type.  The supplied lookup table contains the ID and the spatial representation type for a subset of the metadata records.&#10;&#10;&#10;**Input Ports **&#10;&#10;LOOKUP_TABLE_INPUT: Input information from the lookup table&#10;&#10;DATA_INPUT: The input metadata records to process.&#10;&#10;&#10;**Output Ports **&#10;&#10;GEOSPATIAL: Output port for the geospatial metadata records&#10;&#10;NON-GEOSPATIAL: Output port for the non geospatial metadata records&#10;&#10;UNMAPPED_DATA: Output port for the metadata records for which the spatial representation type cannot be determine.&#10;&#10;&#10;**Parameters **&#10;&#10; - FEATURE_TYPE: Name of the CSV file to read (without .csv extension);&#10;&#10; - IN_CSV_LOOKUP_TABLES_DIR: Name of the directory path containing the CSV file to read;&#10; &#10; - P-T_ABBR: Two letters abbreviation of the province or the territory.&#10;"
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="37"
+#!   REPLACED_BY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="MANUAL_GEOSPATIAL_SETTER_NG"
+#!   USAGE=""
+#!   USE_MARKDOWN="YES"
+#!   VIEW_POSITION="-3272.6 1271.71"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="72"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR FEATURE_TYPE FEATURE_TYPE:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR IN_CSV_LOOKUP_TABLES_DIR IN_CSV_LOOKUP_TABLES_DIR:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR P-T_ABBR P-T_ABBR:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="29"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Exposes data attributes required by this transformer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-2332.1201634238569 900"
+#!   TOP_LEFT="-2332.1201634238569 900"
+#!   BOTTOM_RIGHT="-1722.2394446166686 666.87296872968727"
+#!   BOUNDING_RECT="-2332.1201634238569 900 609.88071880718826 233.1270312703127"
+#!   ORDER="500000000001840"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="11"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="30"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Exposes incoming attributes from lookup table.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-1848.9768231015642 256.59678819010412"
+#!   TOP_LEFT="-1848.9768231015642 256.59678819010412"
+#!   BOTTOM_RIGHT="-1236.4277948335039 23.469756919791422"
+#!   BOUNDING_RECT="-1848.9768231015642 256.59678819010412 612.5490282680604 233.1270312703127"
+#!   ORDER="500000000001841"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="12"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="32"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Merges lookup table with data by id&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-889.06720660468363 901.07333435577982"
+#!   TOP_LEFT="-889.06720660468363 901.07333435577982"
+#!   BOTTOM_RIGHT="-406.06720660468363 900.07333435577982"
+#!   BOUNDING_RECT="-889.06720660468363 901.07333435577982 483 1"
+#!   ORDER="500000000001843"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="7"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="33"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Identifies and logs any new features that require mapping&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="793.05298608541648 -107.63996528854176"
+#!   TOP_LEFT="793.05298608541648 -107.63996528854176"
+#!   BOTTOM_RIGHT="1449.6672744505222 -340.76699655885443"
+#!   BOUNDING_RECT="793.05298608541648 -107.63996528854176 656.61428836510572 233.1270312703127"
+#!   ORDER="500000000001844"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="10"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="34"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Tests if spatial_representation_type has value and outputs to GEOSPATIAL if found.  Non-geo data is output through NON-GEOSPATIAL &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-217.68511278374518 850.16991918786573"
+#!   TOP_LEFT="-217.68511278374518 850.16991918786573"
+#!   BOTTOM_RIGHT="715.2849306270839 557.66729416161547"
+#!   BOUNDING_RECT="-217.68511278374518 850.16991918786573 932.97004341082913 292.50262502625026"
+#!   ORDER="500000000001845"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="8"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="38"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Lookup table has identified data not identified through filters by manual analysis.  All unfiltered features pass through, datasets that are geo are idenitifed by populating spatial representation type attribute&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-2550 -450"
+#!   TOP_LEFT="-2550 -450"
+#!   BOTTOM_RIGHT="-1596.8654686546865 -861.25381253812543"
+#!   BOUNDING_RECT="-2550 -450 953.13453134531346 411.25381253812537"
+#!   ORDER="500000000001849"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="0"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="45"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Unexpose all attributes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="900 747.50012500125001"
+#!   TOP_LEFT="900 747.50012500125001"
+#!   BOTTOM_RIGHT="1484.3898438984388 636.24931249312499"
+#!   BOUNDING_RECT="900 747.50012500125001 584.38984389843881 111.25081250812508"
+#!   ORDER="500000000001851"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="39"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="46"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:13pt;&quot;&gt;Unexpose all attributes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="900 305.62590625906262"
+#!   TOP_LEFT="900 305.62590625906262"
+#!   BOTTOM_RIGHT="1536.473698070314 194.37509375093754"
+#!   BOUNDING_RECT="900 305.62590625906262 636.47369807031396 111.25081250812508"
+#!   ORDER="500000000001852"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="42"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="35"
+#!   NAME="MANUAL_GEOSPATIAL_SETTER"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="-2671.9017190171903 1078.1357813578138"
+#!   ORDER="500000000001826"
+#!   PALETTE_COLOR="Color1"
+#!   BOTTOM_RIGHT="1623.2801216901057 -959.38459384593853"
+#!   BOUNDING_RECT="-2671.9017190171903 1078.1357813578138 4295.181840707296 2037.5203752037523"
+#!   STICKY="false"
+#!   COLOUR="0.59999999999999998,0.80000000000000004,0.80000000000000004,1"
+#!   CONTENTS=""
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="7"
+#!   TYPE="FeatureMerger"
+#!   VERSION="18"
+#!   POSITION="-889.06720660468363 526.69524057484205"
+#!   BOUNDING_RECT="-889.06720660468363 526.69524057484205 483 71"
+#!   ORDER="500000000001827"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="MERGED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="spatial_representation_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="UNMERGED_REQUESTOR"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <OUTPUT_FEAT NAME="USED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="spatial_representation_type" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="numReferences" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <OUTPUT_FEAT NAME="UNUSED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="3"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="spatial_representation_type" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="4"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="spatial_representation_type" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE" PARM_VALUE="Merge Supplier"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES" PARM_VALUE="Use Requestor"/>
+#!     <XFORM_PARM PARM_NAME="CLEANING_TOLERANCE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CONNECT_Z_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GENERATE_LIST_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="GEOM_TYPE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="IGNORE_NULLS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="JOIN_ATTRIBUTES_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="JOIN_KEYS" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;id&lt;closeparen&gt; &lt;at&gt;Value&lt;openparen&gt;id&lt;closeparen&gt; AUTO"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_NAME" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_COUNT_ATTR" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_TYPE" PARM_VALUE="Attributes Only"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PROCESS_DUPS" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="REJECT_NULL_MISSING_KEYS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIERS_FIRST" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIER_PREFIX" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="FeatureMerger"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="8"
+#!   TYPE="Tester"
+#!   VERSION="2"
+#!   POSITION="57.470036545525772 450"
+#!   BOUNDING_RECT="57.470036545525772 450 454 71"
+#!   ORDER="500000000001830"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="PASSED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="spatial_representation_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="FAILED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="spatial_representation_type" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_MSG" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="1"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST &lt;at&gt;Value&lt;openparen&gt;spatial_representation_type&lt;closeparen&gt; NOT_= &quot;&quot;"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="TEST"/>
+#!     <XFORM_PARM PARM_NAME="TEST_PREVIEW_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester_4"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="9"
+#!   TYPE="AttributeKeeper"
+#!   VERSION="3"
+#!   POSITION="-37.732387631493026 79.686990492341153"
+#!   BOUNDING_RECT="-37.732387631493026 79.686990492341153 454 71"
+#!   ORDER="500000000001833"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="KEEP_ATTRS" PARM_VALUE="url,title,id,notes"/>
+#!     <XFORM_PARM PARM_NAME="KEEP_LIST" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeKeeper"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="10"
+#!   TYPE="Logger"
+#!   VERSION="4"
+#!   POSITION="900 -450"
+#!   BOUNDING_RECT="900 -450 454 71"
+#!   ORDER="500000000001834"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="LOGGED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="FEATURE_TYPE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="LOG_FEATURE" PARM_VALUE="LOG_RECORD"/>
+#!     <XFORM_PARM PARM_NAME="MAXCOORDS" PARM_VALUE="20"/>
+#!     <XFORM_PARM PARM_NAME="MAXFEATS" PARM_VALUE="20"/>
+#!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE="Data&lt;space&gt;record&lt;space&gt;with&lt;space&gt;id&lt;space&gt;&lt;at&gt;Value&lt;openparen&gt;id&lt;closeparen&gt;&lt;space&gt;missing&lt;space&gt;from&lt;space&gt;UnmappedGeoData&lt;space&gt;lookup&lt;space&gt;table&lt;space&gt;in&lt;space&gt;MANUAL_GEOSPATIAL_SETTER&lt;space&gt;transformer.&lt;space&gt;&lt;space&gt;See&lt;space&gt;PROCESS_REPORT_MANUAL_TASKS.xls&lt;space&gt;file&lt;space&gt;in&lt;space&gt;XLS&lt;space&gt;directory&lt;space&gt;for&lt;space&gt;details."/>
+#!     <XFORM_PARM PARM_NAME="MSG_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="SEVERITY" PARM_VALUE="WARN"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Logger"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="11"
+#!   TYPE="AttributeExposer"
+#!   VERSION="1"
+#!   POSITION="-2202.7998057758359 499.16737251838356"
+#!   BOUNDING_RECT="-2202.7998057758359 499.16737251838356 454 71"
+#!   ORDER="500000000001837"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="id,notes,title,url"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="12"
+#!   TYPE="AttributeExposer"
+#!   VERSION="1"
+#!   POSITION="-1749.999499995 -85.850936553596"
+#!   BOUNDING_RECT="-1749.999499995 -85.850936553596 454 71"
+#!   ORDER="500000000001838"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="spatial_representation_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="id,spatial_representation_type"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="14"
+#!   TYPE="Cloner"
+#!   VERSION="0"
+#!   POSITION="-807.64696535854262 -65.278430562083429"
+#!   BOUNDING_RECT="-807.64696535854262 -65.278430562083429 454 71"
+#!   ORDER="500000000001847"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="COPY"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="spatial_representation_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_copynum" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="COPIES" PARM_VALUE="1"/>
+#!     <XFORM_PARM PARM_NAME="COPYATT" PARM_VALUE="_copynum"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Cloner"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="36"
+#!   TYPE="LOOKUP_TABLES_READER_NG"
+#!   VERSION="1"
+#!   POSITION="-2606.9705141495865 -59.549206603177062"
+#!   BOUNDING_RECT="-2606.9705141495865 -59.549206603177062 634.00106825772946 71"
+#!   ORDER="500000000001848"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="CSV_ENCODING" PARM_VALUE="utf-8"/>
+#!     <XFORM_PARM PARM_NAME="CSV_PATH" PARM_VALUE="$(IN_CSV_LOOKUP_TABLES_DIR)"/>
+#!     <XFORM_PARM PARM_NAME="FEATURE_TYPE" PARM_VALUE="$(FEATURE_TYPE)"/>
+#!     <XFORM_PARM PARM_NAME="PT" PARM_VALUE="$(P-T_ABBR)"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="LOOKUP_TABLES_READER_NG"/>
+#!     <XFORM_PARM PARM_NAME="__COMPOUND_PARAMETERS" PARM_VALUE=""/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="39"
+#!   TYPE="ATTRIBUTE_UNEXPOSER"
+#!   VERSION="1"
+#!   POSITION="900 600"
+#!   BOUNDING_RECT="900 600 533.00106825772946 71"
+#!   ORDER="500000000001850"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_UNEXPOSER"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="42"
+#!   TYPE="ATTRIBUTE_UNEXPOSER"
+#!   VERSION="1"
+#!   POSITION="900 150"
+#!   BOUNDING_RECT="900 150 533.00106825772946 71"
+#!   ORDER="500000000001850"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_UNEXPOSER_2"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="GEOSPATIAL"
+#!   POSITION="1905.0357725799483 450"
+#!   BOUNDING_RECT="1905.0357725799483 450 476.00106825772946 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="NON-GEOSPATIAL"
+#!   POSITION="1905.0357725799483 41.491970475260331"
+#!   BOUNDING_RECT="1905.0357725799483 41.491970475260331 588.07095664218264 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="4"
+#!   NAME="DATA_INPUT"
+#!   POSITION="-3600 506.11188640796684"
+#!   BOUNDING_RECT="-3600 506.11188640796684 637.00106825772946 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="6"
+#!   NAME="UNMAPPED_DATA"
+#!   POSITION="1905.0357725799483 -502.08385417187503"
+#!   BOUNDING_RECT="1905.0357725799483 -502.08385417187503 569.32076914030768 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="16"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="11"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="31"
+#!   SOURCE_NODE="36"
+#!   TARGET_NODE="12"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="18"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="8"
+#!   SOURCE_PORT_DESC="fo 0 MERGED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="40"
+#!   SOURCE_NODE="8"
+#!   TARGET_NODE="39"
+#!   SOURCE_PORT_DESC="fo 0 PASSED"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="20"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="10"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="21"
+#!   SOURCE_NODE="10"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 LOGGED"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="22"
+#!   SOURCE_NODE="11"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 REQUESTOR"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="37"
+#!   SOURCE_NODE="12"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 1 SUPPLIER"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="41"
+#!   SOURCE_NODE="39"
+#!   TARGET_NODE="2"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="44"
+#!   SOURCE_NODE="42"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="25"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 1 UNMERGED_REQUESTOR"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="43"
+#!   SOURCE_NODE="8"
+#!   TARGET_NODE="42"
+#!   SOURCE_PORT_DESC="fo 1 FAILED"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="28"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="14"
+#!   SOURCE_PORT_DESC="fo 4 &lt;lt&gt;REJECTED&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+FME_PYTHON_VERSION 37
+DEFAULT_MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FEATURE_TYPE 
+DEFAULT_MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_IN_CSV_LOOKUP_TABLES_DIR 
+DEFAULT_MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_P-T_ABBR 
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_DATA_INPUT1648568711 Input Splitter"   INPUT FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_DATA_INPUT"   OUTPUT FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_DATA_INPUT"
+# -------------------------------------------------------------------------
+MACRO LOOKUP_TABLES_READER_NG_WORKSPACE_NAME $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_XFORMER_NAME $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)___COMPOUND_PARAMETERS 
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_FEATURE_TYPE $($(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FEATURE_TYPE)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_CSV_PATH $($(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_IN_CSV_LOOKUP_TABLES_DIR$encode)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_PT $($(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_P-T_ABBR$encode)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_CSV_ENCODING utf-8
+INCLUDE_CUSTOM_TRANSFORMER_VER LOOKUP_TABLES_READER_NG:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"   OUTPUT FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"
+FACTORY_DEF * BranchingFactory   FACTORY_NAME "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output Brancher -1 31"   INPUT FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"   TARGET_FACTORY "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   MAXIMUM_COUNT None   OUTPUT PASSED FEATURE_TYPE *
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   INPUT FEATURE_TYPE *  OUTPUT FEATURE_TYPE *
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_AttributeExposer_2    INPUT  FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"    OUTPUT FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_AttributeExposer    INPUT  FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_DATA_INPUT"    OUTPUT FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_AttributeExposer_OUTPUT"
+# -------------------------------------------------------------------------
+INCLUDE [if { {ATTRIBUTES} == {ATTRIBUTES} } {                puts "MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO ATTRIBUTES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {POLYGONS}} {                puts "MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {AGGREGATES}} {                puts "MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {POLYGONS}} {                puts "MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {AGGREGATES}} {                puts "MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} } {                puts "MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} } {                puts "MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          else {}; ]
+FACTORY_DEF {*} ReferenceFactory    FACTORY_NAME $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FeatureMerger    FLUSH_WHEN_GROUPS_CHANGE No    INPUT REFERENCER FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_AttributeExposer_OUTPUT"    INPUT REFERENCEE FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"    REFERENCE_INFO $($(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO)    REFERENCE_TABLE @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>id<closeparen>,$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FeatureMerger) @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>id<closeparen>,$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FeatureMerger) AUTO    ATTR_ACCUM_MODE "HANDLE_CONFLICT"    ATTR_CONFLICT_RES "REQUESTOR_IF_CONFLICT"    IGNORE_NULLS "No"    HANDLE_NULL_MISSING_KEYS_LIKE_FME2013 No    LIST_ATTRS_TO_INCLUDE { <Unused> }    LIST_ATTRS_TO_INCLUDE_MODE <Unused>    MERGE_ATTRIBUTES Yes    MANAGE_FME_TYPE Yes    MODE COMPLETE    PROCESS_DUPLICATE_REFERENCEES NO    REFERENCEES_FIRST No    REJECT_INVALID_GEOM YES    CLEANING_TOLERANCE <Unused>    OUTPUT COMPLETE FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FeatureMerger_MERGED"    OUTPUT INCOMPLETE FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FeatureMerger_UNMERGED_REQUESTOR"    OUTPUT REJECTED FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FeatureMerger_<REJECTED>"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_Cloner_Cloner    INPUT  FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FeatureMerger_<REJECTED>"    NUMBER_OF_COPIES "1"    COPY_NUMBER_ATTRIBUTE _copynum    REJECT_INVALID YES
+# -------------------------------------------------------------------------
+INCLUDE [    set macroLine "MACRO $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_AttributeKeeper_0b3d4f30_fcac_4caa_b0a6_71cd1e1c82420_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_AttributeKeeper    INPUT  FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FeatureMerger_UNMERGED_REQUESTOR"    OUTPUT { FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"        @KeepAttributes(fme_encoded,url,title,id,notes,fme_pcre_match,"^fme_$($(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_AttributeKeeper_0b3d4f30_fcac_4caa_b0a6_71cd1e1c82420_LIST_EXP)")         }
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_Logger_Logger    INPUT  FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"    OUTPUT FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_Logger_LOGGED"                  @Log(ENCODED, "<dollar><openparen>MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME<closeparen>_Logger:<space>@EvaluateExpression(FDIV,STRING_ENCODED,Data<space>record<space>with<space>id<space><at>Value<openparen>id<closeparen><space>missing<space>from<space>UnmappedGeoData<space>lookup<space>table<space>in<space>MANUAL_GEOSPATIAL_SETTER<space>transformer.<space><space>See<space>PROCESS_REPORT_MANUAL_TASKS.xls<space>file<space>in<space>XLS<space>directory<space>for<space>details.,$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_Logger)","20","20","",WARN,LOG_RECORD,$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_Logger_ff633be8_9360_4f7c_a0ec_53df4f9fdfd30)
+# -------------------------------------------------------------------------
+FACTORY_DEF * TestFactory    FACTORY_NAME $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_Tester_4    INPUT  FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_FeatureMerger_MERGED"    TEST "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>spatial_representation_type<closeparen>,$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_Tester_4)" NOT_= "" ENCODED    BOOLEAN_OPERATOR OR    COMPOSITE_TEST_EXPR "1"    OUTPUT PASSED FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_Tester_4_PASSED"    OUTPUT FAILED FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_Tester_4_FAILED"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2 Input Input Collector"   INPUT FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_Tester_4_FAILED"   OUTPUT FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2_Input"
+MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2 Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2_Output"   OUTPUT FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2_Output"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Input Input Collector"   INPUT FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_Tester_4_PASSED"   OUTPUT FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Input"
+MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_GEOSPATIAL1648568711 Output Collector"   INPUT FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_GEOSPATIAL"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_NON-GEOSPATIAL1648568711 Output Collector"   INPUT FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2_Output"   OUTPUT FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_NON-GEOSPATIAL"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_UNMAPPED_DATA1648568711 Output Collector"   INPUT FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_Logger_LOGGED"   OUTPUT FEATURE_TYPE "$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME)_UNMAPPED_DATA"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(MANUAL_GEOSPATIAL_SETTER_NG_WORKSPACE_NAME))}]

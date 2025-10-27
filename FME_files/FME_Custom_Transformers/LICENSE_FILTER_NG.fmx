@@ -1,0 +1,1661 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN LICENSE_FILTER_NG,2,"""FGP Tools""",43049453-cd88-484c-96a4-0be477c9280a,"Linked by Default",No,NO_PARALLELISM,,No,25606,YES,No,313,No,,both
+# <p><strong>Description</strong> </p>
+# <p>This custom transformer allows to sort the metadata records based on the type of license.  If the licence allows to publish the metadata records in the FGP, the metadata records  are sent to the LICENSE_FILTER_PASSED port.</p>
+# <p><strong>Input Ports</strong> </p>
+# <ul>
+# <li>DATA_INPUT: The input metadata records to process.</li>
+# </ul>
+# <p><strong>Output Ports</strong> </p>
+# <ul>
+# <li>
+# <p>LICENSE_FILTER_PASSED: The metadata records that have a license allowing to be publish in the FGP;</p>
+# </li>
+# <li>
+# <p>LICENSE_FILTER_UNPASSED: The metadata records that <strong>do not</strong> have a license allowing to be publish in the FGP;</p>
+# </li>
+# <li>
+# <p>UNKNOWN_LICENCE: The metadata records with a license not found in the lookup table.</p>
+# </li>
+# </ul>
+# <p><strong>Parameters</strong> </p>
+# <ul>
+# <li>
+# <p>LICENCE_ATT: Name of the attribute of the metadata record containing the licence type used to determine if the metadata records can be published in the FGP;</p>
+# </li>
+# <li>
+# <p>FEATURE_TYPE: The name of the CSV file containing the information on the licensing;</p>
+# </li>
+# <li>
+# <p>IN_CSV_LOOKUP_TABLES_DIR: The path to the directory containing the CSV file;</p>
+# </li>
+# <li>
+# <p>P-T_ABBR: Two letters abbreviation of the province or territory</p>
+# </li>
+# </ul>
+# TRANSFORMER_END
+#!   A0_PREVIEW_IMAGE="data:image/png;base64,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"
+#!   ARCGIS_COMPATIBILITY="ARCGIS_AUTO"
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="&quot;FGP Tools&quot;"
+#!   DATA_PROCESSING_TYPE="both"
+#!   DESCRIPTION="&lt;p&gt;&lt;strong&gt;Description&lt;/strong&gt; &lt;/p&gt;&#10;&lt;p&gt;This custom transformer allows to sort the metadata records based on the type of license.  If the licence allows to publish the metadata records in the FGP, the metadata records  are sent to the LICENSE_FILTER_PASSED port.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Input Ports&lt;/strong&gt; &lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;DATA_INPUT: The input metadata records to process.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Output Ports&lt;/strong&gt; &lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;LICENSE_FILTER_PASSED: The metadata records that have a license allowing to be publish in the FGP;&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;LICENSE_FILTER_UNPASSED: The metadata records that &lt;strong&gt;do not&lt;/strong&gt; have a license allowing to be publish in the FGP;&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;UNKNOWN_LICENCE: The metadata records with a license not found in the lookup table.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Parameters&lt;/strong&gt; &lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;LICENCE_ATT: Name of the attribute of the metadata record containing the licence type used to determine if the metadata records can be published in the FGP;&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;FEATURE_TYPE: The name of the CSV file containing the information on the licensing;&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;IN_CSV_LOOKUP_TABLES_DIR: The path to the directory containing the CSV file;&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;P-T_ABBR: Two letters abbreviation of the province or territory&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;/ul&gt;"
+#!   DOC_EXTENTS="6820.83 1854.86"
+#!   DOC_TOP_LEFT="-503.022 -700.612"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="25606"
+#!   FME_DOCUMENT_GUID="43049453-cd88-484c-96a4-0be477c9280a"
+#!   FME_DOCUMENT_PRIORGUID=""
+#!   FME_LINKED_TRANSFORMER_VERSION="2"
+#!   FME_NAMES_ENCODING="windows-1252"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY="Unknown,Unknown,Original&lt;space&gt;version,15&lt;solidus&gt;09&lt;solidus&gt;2021,Daniel&lt;space&gt;Pilon,Documentation"
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2025.1.0.0 (20250704 - Build 25606 - WIN64)"
+#!   LAST_SAVE_DATE="2025-10-06T15:23:51"
+#!   MARKDOWN_DESCRIPTION="**Description** &#10;&#10;This custom transformer allows to sort the metadata records based on the type of license.  If the licence allows to publish the metadata records in the FGP, the metadata records  are sent to the LICENSE_FILTER_PASSED port.&#10;&#10;&#10;**Input Ports** &#10;&#10;- DATA_INPUT: The input metadata records to process.&#10;&#10;&#10;**Output Ports** &#10;&#10;- LICENSE_FILTER_PASSED: The metadata records that have a license allowing to be publish in the FGP;&#10;&#10;- LICENSE_FILTER_UNPASSED: The metadata records that **do not** have a license allowing to be publish in the FGP;&#10;&#10;- UNKNOWN_LICENCE: The metadata records with a license not found in the lookup table.&#10;&#10;&#10;**Parameters** &#10;&#10;- LICENCE_ATT: Name of the attribute of the metadata record containing the licence type used to determine if the metadata records can be published in the FGP;&#10;&#10;- FEATURE_TYPE: The name of the CSV file containing the information on the licensing;&#10;&#10;- IN_CSV_LOOKUP_TABLES_DIR: The path to the directory containing the CSV file;&#10;&#10;- P-T_ABBR: Two letters abbreviation of the province or territory&#10;"
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="313"
+#!   REPLACED_BY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="LICENSE_FILTER_NG"
+#!   USAGE=""
+#!   USE_MARKDOWN="YES"
+#!   VIEW_POSITION="-1037.75 1538.93"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="53"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR LICENSE_ATT LICENSE_ATT:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR FEATURE_TYPE FEATURE_TYPE:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR IN_CSV_LOOKUP_TABLES_DIR IN_CSV_LOOKUP_TABLES_DIR:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR P-T_ABBR P-T_ABBR:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <USER_PARAMETERS
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbeyJuYW1lIjoiTElDRU5TRV9BVFQiLCJwcm9tcHQiOiJMSUNFTlNFX0FUVDoiLCJ2YWx1ZVR5cGUiOiJzdHJpbmciLCJyZXF1aXJlZCI6ZmFsc2UsImRlZmF1bHRWYWx1ZSI6IiIsInN1cHBvcnRlZFZhbHVlVHlwZXMiOlsiZXhwcmVzc2lvbiIsImdsb2JhbFBhcmFtZXRlciJdLCJkZXByZWNhdGVkRmxhZ3MiOlsibm9uZSJdLCJ0eXBlIjoidGV4dCIsImVkaXRvciI6InBsYWludGV4dCJ9LHsibmFtZSI6IkZFQVRVUkVfVFlQRSIsInByb21wdCI6IkZFQVRVUkVfVFlQRToiLCJ2YWx1ZVR5cGUiOiJzdHJpbmciLCJyZXF1aXJlZCI6ZmFsc2UsImRlZmF1bHRWYWx1ZSI6IiIsInN1cHBvcnRlZFZhbHVlVHlwZXMiOlsiZXhwcmVzc2lvbiIsImdsb2JhbFBhcmFtZXRlciJdLCJkZXByZWNhdGVkRmxhZ3MiOlsibm9uZSJdLCJ0eXBlIjoidGV4dCIsImVkaXRvciI6InBsYWludGV4dCJ9LHsibmFtZSI6IklOX0NTVl9MT09LVVBfVEFCTEVTX0RJUiIsInByb21wdCI6IklOX0NTVl9MT09LVVBfVEFCTEVTX0RJUjoiLCJ2YWx1ZVR5cGUiOiJzdHJpbmciLCJyZXF1aXJlZCI6ZmFsc2UsImRlZmF1bHRWYWx1ZSI6IiIsInN1cHBvcnRlZFZhbHVlVHlwZXMiOlsiZXhwcmVzc2lvbiIsImdsb2JhbFBhcmFtZXRlciJdLCJkZXByZWNhdGVkRmxhZ3MiOlsibm9uZSJdLCJ0eXBlIjoidGV4dCIsImVkaXRvciI6InBsYWludGV4dCJ9LHsibmFtZSI6IlAtVF9BQkJSIiwicHJvbXB0IjoiUC1UX0FCQlI6IiwidmFsdWVUeXBlIjoic3RyaW5nIiwicmVxdWlyZWQiOmZhbHNlLCJkZWZhdWx0VmFsdWUiOiIiLCJzdXBwb3J0ZWRWYWx1ZVR5cGVzIjpbImV4cHJlc3Npb24iLCJnbG9iYWxQYXJhbWV0ZXIiXSwiZGVwcmVjYXRlZEZsYWdzIjpbIm5vbmUiXSwidHlwZSI6InRleHQiLCJlZGl0b3IiOiJwbGFpbnRleHQifV19"
+#! >
+#! <PARAMETER_INFO>
+#!     <INFO NAME="LICENSE_ATT" 
+#!   DEFAULT_VALUE=""
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR LICENSE_ATT LICENSE_ATT:"
+#! />
+#!     <INFO NAME="FEATURE_TYPE" 
+#!   DEFAULT_VALUE=""
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR FEATURE_TYPE FEATURE_TYPE:"
+#! />
+#!     <INFO NAME="IN_CSV_LOOKUP_TABLES_DIR" 
+#!   DEFAULT_VALUE=""
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR IN_CSV_LOOKUP_TABLES_DIR IN_CSV_LOOKUP_TABLES_DIR:"
+#! />
+#!     <INFO NAME="P-T_ABBR" 
+#!   DEFAULT_VALUE=""
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR P-T_ABBR P-T_ABBR:"
+#! />
+#! </PARAMETER_INFO>
+#! </USER_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="35"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Exposes  attributes from incoming data&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="468.75468754687563 138.2248553385364"
+#!   TOP_LEFT="468.75468754687563 138.2248553385364"
+#!   BOTTOM_RIGHT="993.22232284822871 -35.52658217583874"
+#!   BOUNDING_RECT="468.75468754687563 138.2248553385364 524.46763530135308 173.75143751437514"
+#!   ORDER="500000000001565"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{8a4b653a-ded4-4b7e-8e5d-4d987db024bd}"
+#!   COLOUR="1,0.85490196078431369,0.59999999999999998,1"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="7"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="38"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Merges values from lookup table with with data on values &apos;license_id_value&apos; and &apos;license_id&apos;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="2015.5248487968752 600"
+#!   TOP_LEFT="2015.5248487968752 600"
+#!   BOTTOM_RIGHT="2731.8401056994444 307.49737497374974"
+#!   BOUNDING_RECT="2015.5248487968752 600 716.31525690256899 292.50262502625026"
+#!   ORDER="500000000001569"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{535f1917-cd3f-490e-abd7-8167ab02614b}"
+#!   COLOUR="1,0.85490196078431369,0.59999999999999998,1"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="6"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="39"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Filters license_id for &apos;fgp_publish = Oui&apos; from incoming joined lookup table values  &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="2850 900"
+#!   TOP_LEFT="2850 900"
+#!   BOTTOM_RIGHT="3380.034097215972 548.12178121781221"
+#!   BOUNDING_RECT="2850 900 530.03409721597222 351.87821878218779"
+#!   ORDER="500000000001570"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{f6257338-bb92-403a-84c3-2d9ea0c37130}"
+#!   COLOUR="1,0.85490196078431369,0.59999999999999998,1"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="9"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="40"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Attribute cleanup&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="4045.3255409747071 755.500909044178"
+#!   TOP_LEFT="4045.3255409747071 755.500909044178"
+#!   BOTTOM_RIGHT="4499.2846586908845 754.500909044178"
+#!   BOUNDING_RECT="4045.3255409747071 755.500909044178 453.95911771617716 1"
+#!   ORDER="500000000001571"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{a19121a0-3a2b-4927-be44-ccfee3cdf41f}"
+#!   COLOUR="1,0.85490196078431369,0.59999999999999998,1"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="10"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="41"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Expose attributes from CSV file&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="1286.7981350781251 600"
+#!   TOP_LEFT="1286.7981350781251 600"
+#!   BOTTOM_RIGHT="1740.7572527943023 599"
+#!   BOUNDING_RECT="1286.7981350781251 600 453.95911771617716 1"
+#!   ORDER="500000000001587"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{08601052-ba8d-4cc2-977f-916030d11a36}"
+#!   COLOUR="1,0.85490196078431369,0.59999999999999998,1"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="33"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="42"
+#!   NAME="QC License Filter"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="282.26088712500029 1154.2454134218763"
+#!   ORDER="500000000001542"
+#!   PALETTE_COLOR="Color3"
+#!   BOTTOM_RIGHT="5238.6887505238683 -700.61184482812519"
+#!   BOUNDING_RECT="282.26088712500029 1154.2454134218763 4956.4278633988679 1854.8572582500015"
+#!   STICKY="true"
+#!   COLOUR="1,0.85490196078431369,0.59999999999999998,1"
+#!   CONTENTS="15 6 25 37 36 40 33 21 22 32 24 41 31 28 18 9 16 7 39 10 17 38 34 35 "
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="6"
+#!   TYPE="FeatureMerger"
+#!   VERSION="21"
+#!   POSITION="2104.4816317985246 140.33457336108336"
+#!   BOUNDING_RECT="2104.4816317985246 140.33457336108336 483 71"
+#!   ORDER="500000000001543"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#!   INPUT_FT_ORDER="SUPPLIER%REQUESTOR"
+#! >
+#!     <OUTPUT_FEAT NAME="MERGED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="license_id_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fgp_publish" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="UNMERGED_REQUESTOR"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <OUTPUT_FEAT NAME="USED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <XFORM_ATTR ATTR_NAME="license_id_value" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="fgp_publish" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="numReferences" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <OUTPUT_FEAT NAME="UNUSED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="3"/>
+#!     <XFORM_ATTR ATTR_NAME="license_id_value" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="fgp_publish" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="4"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="license_id_value" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="fgp_publish" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE" PARM_VALUE="Merge Supplier"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES_LOOKUP" PARM_VALUE="REQUESTOR_IF_CONFLICT"/>
+#!     <XFORM_PARM PARM_NAME="CLEANING_TOLERANCE_LOOKUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CONNECT_Z_MODE_LOOKUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GENERATE_LIST_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="GEOM_TYPE_VAL" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_PROCESSING_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="IGNORE_NULLS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="JOIN_ATTRIBUTES_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="JOIN_KEYS" PARM_VALUE="$(LICENSE_ATT) &lt;at&gt;Value&lt;openparen&gt;license_id_value&lt;closeparen&gt; AUTO"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE_MODE_LU" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_NAME" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_COUNT_ATTR" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_TYPE_VAL" PARM_VALUE="ATTRIBUTES"/>
+#!     <XFORM_PARM PARM_NAME="MODE_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="ACROSS_OUTPUT_PORTS"/>
+#!     <XFORM_PARM PARM_NAME="PROCESS_DUPS" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="REJECT_NULL_MISSING_KEYS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIERS_FIRST" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIER_PREFIX" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="FeatureMerger"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES" PARM_IS_LOOKUP="true" PARM_VALUE="Use Requestor"/>
+#!     <XFORM_PARM PARM_NAME="CLEANING_TOLERANCE" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CONNECT_Z_MODE" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GEOM_TYPE" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE_MODE" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_TYPE" PARM_IS_LOOKUP="true" PARM_VALUE="Attributes Only"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="7"
+#!   TYPE="AttributeExposer"
+#!   VERSION="2"
+#!   POSITION="529.43477821875013 -150"
+#!   BOUNDING_RECT="529.43477821875013 -150 454 71"
+#!   ORDER="500000000001547"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="id,"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="9"
+#!   TYPE="Tester"
+#!   VERSION="4"
+#!   POSITION="2921.775567950488 353.61991694551318"
+#!   BOUNDING_RECT="2921.775567950488 353.61991694551318 454 71"
+#!   ORDER="500000000001549"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="PASSED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="license_id_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fgp_publish" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="FAILED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="license_id_value" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fgp_publish" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_MSG" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="ACROSS_OUTPUT_PORTS"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST &lt;at&gt;LowerCase&lt;openparen&gt;&lt;at&gt;Value&lt;openparen&gt;fgp_publish&lt;closeparen&gt;&lt;closeparen&gt; = oui"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="TEST"/>
+#!     <XFORM_PARM PARM_NAME="TEST_PREVIEW_GROUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="10"
+#!   TYPE="AttributeRemover"
+#!   VERSION="1"
+#!   POSITION="4045.3255409747071 353.61991694551324"
+#!   BOUNDING_RECT="4045.3255409747071 353.61991694551324 454 71"
+#!   ORDER="500000000001553"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE="fgp_publish,license_id_value"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="15"
+#!   TYPE="Terminator"
+#!   VERSION="3"
+#!   POSITION="3158.6730982161134 -476.74461585186157"
+#!   BOUNDING_RECT="3158.6730982161134 -476.74461585186157 454 71"
+#!   ORDER="500000000001579"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE="Process&lt;space&gt;failed&lt;space&gt;at&lt;space&gt;Feature&lt;space&gt;Merger&lt;comma&gt;&lt;space&gt;QC_LICENSE_FILTER&lt;space&gt;transformer.&lt;space&gt;&lt;space&gt;Translation&lt;space&gt;terminated."/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Terminator_3"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="16"
+#!   TYPE="Logger"
+#!   VERSION="4"
+#!   POSITION="2847.8107361718776 -131.70218583906262"
+#!   BOUNDING_RECT="2847.8107361718776 -131.70218583906262 454 71"
+#!   ORDER="500000000001580"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="LOGGED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="FEATURE_TYPE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="LOG_FEATURE" PARM_VALUE="LOG_RECORD"/>
+#!     <XFORM_PARM PARM_NAME="MAXCOORDS" PARM_VALUE="20"/>
+#!     <XFORM_PARM PARM_NAME="MAXFEATS" PARM_VALUE="20"/>
+#!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE="Attribute&lt;space&gt;value&lt;space&gt;$(LICENSE_ATT)&lt;space&gt;missing&lt;space&gt;from&lt;space&gt;LicenseValidation&lt;space&gt;lookup&lt;space&gt;table&lt;space&gt;in&lt;space&gt;LICENSE_FILTER&lt;space&gt;transformer.&lt;space&gt;&lt;space&gt;See&lt;space&gt;PROCESS_REPORT_MANUAL_TASKS.xls&lt;space&gt;file&lt;space&gt;in&lt;space&gt;XLS&lt;space&gt;directory&lt;space&gt;for&lt;space&gt;details."/>
+#!     <XFORM_PARM PARM_NAME="MSG_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="SEVERITY" PARM_VALUE="WARN"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Logger"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="17"
+#!   TYPE="AttributeCreator"
+#!   VERSION="10"
+#!   POSITION="3548.5357774007857 -150"
+#!   BOUNDING_RECT="3548.5357774007857 -150 454 71"
+#!   ORDER="500000000001582"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="license_id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; license_id SET_TO $(LICENSE_ATT) varchar&lt;openparen&gt;200&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE" PARM_VALUE="NO_OP"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_MODIFIED_ATTRIBUTE_TYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_IS_LOOKUP="true" PARM_VALUE="No Substitution"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="18"
+#!   TYPE="ATTRIBUTE_UNEXPOSER"
+#!   VERSION="2"
+#!   POSITION="4616.9816536875041 312.50312503125042"
+#!   BOUNDING_RECT="4616.9816536875041 312.50312503125042 533.00106825772946 71"
+#!   ORDER="500000000001583"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_UNEXPOSER"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="33"
+#!   TYPE="AttributeExposer"
+#!   VERSION="2"
+#!   POSITION="1299.5962701562501 345.36335685937507"
+#!   BOUNDING_RECT="1299.5962701562501 345.36335685937507 454 71"
+#!   ORDER="500000000001586"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="license_id_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fgp_publish" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="license_id_value,,fgp_publish,"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="32"
+#!   TYPE="LOOKUP_TABLES_READER_NG"
+#!   VERSION="1"
+#!   POSITION="450 450"
+#!   BOUNDING_RECT="450 450 634.00106825772946 71"
+#!   ORDER="500000000001588"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="CSV_ENCODING" PARM_VALUE="utf-8"/>
+#!     <XFORM_PARM PARM_NAME="CSV_PATH" PARM_VALUE="$(IN_CSV_LOOKUP_TABLES_DIR)"/>
+#!     <XFORM_PARM PARM_NAME="FEATURE_TYPE" PARM_VALUE="$(FEATURE_TYPE)"/>
+#!     <XFORM_PARM PARM_NAME="PT" PARM_VALUE="$(P-T_ABBR)"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="LOOKUP_TABLES_READER_NG"/>
+#!     <XFORM_PARM PARM_NAME="__COMPOUND_PARAMETERS" PARM_VALUE=""/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="INPUT"
+#!   POSITION="-503.02172376562476 -150"
+#!   BOUNDING_RECT="-503.02172376562476 -150 637.00106825772946 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="LICENSE_FILTER_PASSED"
+#!   POSITION="5478.235435253624 300"
+#!   BOUNDING_RECT="5478.235435253624 300 784.08897162680842 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="5"
+#!   NAME="UNKNOWN_LICENSE"
+#!   POSITION="5459.7961668766266 -215.52484879687512"
+#!   BOUNDING_RECT="5459.7961668766266 -215.52484879687512 858.00900009000088 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="46"
+#!   NAME="LICENSE_FILTER_UNPASSED"
+#!   POSITION="5474.9448600622218 0"
+#!   BOUNDING_RECT="5474.9448600622218 0 694.00106825772946 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="19"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="36"
+#!   SOURCE_NODE="32"
+#!   TARGET_NODE="33"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="21"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 0 MERGED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="22"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 1 REQUESTOR"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="24"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="10"
+#!   SOURCE_PORT_DESC="fo 0 PASSED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="25"
+#!   SOURCE_NODE="10"
+#!   TARGET_NODE="18"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="28"
+#!   SOURCE_NODE="16"
+#!   TARGET_NODE="17"
+#!   SOURCE_PORT_DESC="fo 0 LOGGED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="29"
+#!   SOURCE_NODE="17"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="30"
+#!   SOURCE_NODE="18"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="37"
+#!   SOURCE_NODE="33"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 SUPPLIER"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="31"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="16"
+#!   SOURCE_PORT_DESC="fo 1 UNMERGED_REQUESTOR"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="47"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="46"
+#!   SOURCE_PORT_DESC="fo 1 FAILED"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="34"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="15"
+#!   SOURCE_PORT_DESC="fo 4 &lt;lt&gt;REJECTED&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+FME_PYTHON_VERSION 313
+# ============================================================================
+DEFAULT_MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_LICENSE_ATT 
+
+DEFAULT_MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FEATURE_TYPE 
+
+DEFAULT_MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_IN_CSV_LOOKUP_TABLES_DIR 
+
+DEFAULT_MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_P-T_ABBR 
+
+DEFAULT_MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FME_DATA_REPOSITORY 
+
+DEFAULT_MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FME_ENGINE 
+
+DEFAULT_MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FME_JOB_ID 
+
+DEFAULT_MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FME_SECURITY_ROLES 
+
+DEFAULT_MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FME_SECURITY_USER 
+
+DEFAULT_MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FME_SERVER_DEST_DIR 
+
+DEFAULT_MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FME_SERVER_HOST 
+
+DEFAULT_MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FME_SERVER_PORT 
+
+DEFAULT_MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FME_SERVER_REQUEST_HEADERS 
+
+DEFAULT_MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FME_SERVER_REQUEST_METHOD 
+
+DEFAULT_MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FME_SERVER_REQUEST_PARAMETERS 
+
+DEFAULT_MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FME_SERVER_REQUEST_URI 
+
+DEFAULT_MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER 
+
+DEFAULT_MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER_ID 
+
+DEFAULT_MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FME_SERVER_WEB_URL 
+
+DEFAULT_MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_BACKUP 
+
+DEFAULT_MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DASHBOARD 
+
+DEFAULT_MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DATA 
+
+DEFAULT_MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_ENGINE 
+
+DEFAULT_MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_LOG 
+
+DEFAULT_MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_SYSTEM 
+
+DEFAULT_MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_TEMP 
+
+DEFAULT_MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FME_TOPIC 
+
+DEFAULT_MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FME_TOPIC_MESSAGE 
+
+# ============================================================================
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO LICENSE_FILTER_NG_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(LICENSE_FILTER_NG_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(LICENSE_FILTER_NG_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_INPUT1759778631 Input Splitter"   INPUT FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_INPUT"
+# -------------------------------------------------------------------------
+MACRO LOOKUP_TABLES_READER_NG_WORKSPACE_NAME $(LICENSE_FILTER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_XFORMER_NAME $(LICENSE_FILTER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)___COMPOUND_PARAMETERS 
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_FEATURE_TYPE $($(LICENSE_FILTER_NG_WORKSPACE_NAME)_FEATURE_TYPE)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_CSV_PATH $($(LICENSE_FILTER_NG_WORKSPACE_NAME)_IN_CSV_LOOKUP_TABLES_DIR$encode)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_PT $($(LICENSE_FILTER_NG_WORKSPACE_NAME)_P-T_ABBR$encode)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_CSV_ENCODING utf-8
+INCLUDE_CUSTOM_TRANSFORMER_VER LOOKUP_TABLES_READER_NG:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"   OUTPUT FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"
+FACTORY_DEF * BranchingFactory   FACTORY_NAME "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output Brancher -1 36"   INPUT FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"   TARGET_FACTORY "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   MAXIMUM_COUNT None   OUTPUT PASSED FEATURE_TYPE *
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   INPUT FEATURE_TYPE *  OUTPUT FEATURE_TYPE *
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(LICENSE_FILTER_NG_WORKSPACE_NAME)_AttributeExposer_2 }    INPUT  FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"    OUTPUT { FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"          }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(LICENSE_FILTER_NG_WORKSPACE_NAME)_AttributeExposer }    INPUT  FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_INPUT"    OUTPUT { FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_AttributeExposer_OUTPUT"          }
+# -------------------------------------------------------------------------
+INCLUDE [if { {ATTRIBUTES} == {ATTRIBUTES} } {                puts "MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO ATTRIBUTES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {POLYGONS}} {                puts "MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {AGGREGATES}} {                puts "MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {POLYGONS}} {                puts "MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {AGGREGATES}} {                puts "MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} } {                puts "MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} } {                puts "MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          else {}; ]
+FACTORY_DEF {*} ReferenceFactory    FACTORY_NAME { $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FeatureMerger }    FLUSH_WHEN_GROUPS_CHANGE { <Unused> }    INPUT REFERENCER FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_AttributeExposer_OUTPUT"    INPUT REFERENCEE FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"    REFERENCE_INFO { $($(LICENSE_FILTER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO) }    REFERENCE_TABLE { @EvaluateExpression(FDIV,STRING_ENCODED,$($(LICENSE_FILTER_NG_WORKSPACE_NAME)_LICENSE_ATT$encode),$(LICENSE_FILTER_NG_WORKSPACE_NAME)_FeatureMerger) @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>license_id_value<closeparen>,$(LICENSE_FILTER_NG_WORKSPACE_NAME)_FeatureMerger) AUTO }    ATTR_ACCUM_MODE { "HANDLE_CONFLICT" }    ATTR_CONFLICT_RES { "REQUESTOR_IF_CONFLICT" }    IGNORE_NULLS { "No" }    HANDLE_NULL_MISSING_KEYS_LIKE_FME2013 { No }    LIST_ATTRS_TO_INCLUDE { <Unused> }    LIST_ATTRS_TO_INCLUDE_MODE { <Unused> }    MERGE_ATTRIBUTES Yes    MANAGE_FME_TYPE Yes    MODE COMPLETE    PROCESS_DUPLICATE_REFERENCEES { NO }    REFERENCEES_FIRST { No }    REJECT_INVALID_GEOM YES    CLEANING_TOLERANCE { <Unused> }    PRESERVE_FEATURE_ORDER { ACROSS_OUTPUT_PORTS }    COMPARE_WHITESPACE Yes    OUTPUT { COMPLETE FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_FeatureMerger_MERGED"         }    OUTPUT { INCOMPLETE FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_FeatureMerger_UNMERGED_REQUESTOR"         }    OUTPUT { REJECTED FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_FeatureMerger_<REJECTED>"         }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TestFactory    FACTORY_NAME { $(LICENSE_FILTER_NG_WORKSPACE_NAME)_Tester }    INPUT  FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_FeatureMerger_MERGED"    TEST { "@EvaluateExpression(FDIV,STRING_ENCODED,<at>LowerCase<openparen><at>Value<openparen>fgp_publish<closeparen><closeparen>,$(LICENSE_FILTER_NG_WORKSPACE_NAME)_Tester)" = oui ENCODED }    BOOLEAN_OPERATOR { OR }    COMPOSITE_TEST_EXPR { "<Unused>" }    PRESERVE_FEATURE_ORDER { ACROSS_OUTPUT_PORTS }    OUTPUT { PASSED FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_Tester_PASSED"         }    OUTPUT { FAILED FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_Tester_FAILED"         }
+# -------------------------------------------------------------------------
+# Build the List removal function and regular expression if there was any list attributes to be removed.
+# If not, then we will not have any extra list removal call to @RemoveAttributes, which speeds the
+# normal, non-list removal especially when in Bulk Mode.  Note that this computation of the regular expressions is done
+# once during mapping file parse time.
+INCLUDE [    set listAttributeRemoveRegexps {};    set anyList {no};    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append listAttributeRemoveRegexps ",^$attr$";       set anyList {yes};    };    if { ${anyList} == {no} } {        puts {MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_AttributeRemover_2_LIST_FUNC }    } else {        puts "MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_AttributeRemover_2_LIST_FUNC @RemoveAttributes(fme_pcre_match\"$listAttributeRemoveRegexps\")"    }; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(LICENSE_FILTER_NG_WORKSPACE_NAME)_AttributeRemover_2 }    INPUT  FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_Tester_PASSED"    OUTPUT { FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_AttributeRemover_2_OUTPUT"        @RemoveAttributes(fme_encoded,fgp_publish,license_id_value)        $($(LICENSE_FILTER_NG_WORKSPACE_NAME)_AttributeRemover_2_LIST_FUNC)         }
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Input Input Collector"   INPUT FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_AttributeRemover_2_OUTPUT"   OUTPUT FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Input"
+MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(LICENSE_FILTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(LICENSE_FILTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:2
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
+# -------------------------------------------------------------------------
+# Create a FME_UUID_SAFE from the FME_UUID so we can use it for Tcl identifiers (FMEDESKTOP-11308)
+INCLUDE [ FME_CleanseFMEUUID {$(LICENSE_FILTER_NG_WORKSPACE_NAME)_Logger_f358ccea_27de_4b4a_9a3c_a9ea070848d11} ]
+# If the Logger was in a custom transformer, the custom transformer's name was not being
+# properly logged -- instead we saw "$(<customXformerName_WORKSPACE_NAME)" being logged as the prefix of the
+# message. By deferencing and expanding out the XFORMER_NAME below, and then "WWJD" encoding it when it is
+# used in the @Log call via the $encode macro name suffix trick, we get the right result, and the right result
+# safely.
+MACRO LOGGABLE_XFORMER_NAME $(LICENSE_FILTER_NG_WORKSPACE_NAME)_Logger
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(LICENSE_FILTER_NG_WORKSPACE_NAME)_Logger_Logger }    INPUT  FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_FeatureMerger_UNMERGED_REQUESTOR"    OUTPUT { FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_Logger_LOGGED"                  @Log(ENCODED, "$(LOGGABLE_XFORMER_NAME$encode):<space>@EvaluateExpression(FDIV,STRING_ENCODED,Attribute<space>value<space>$($(LICENSE_FILTER_NG_WORKSPACE_NAME)_LICENSE_ATT$encode)<space>missing<space>from<space>LicenseValidation<space>lookup<space>table<space>in<space>LICENSE_FILTER<space>transformer.<space><space>See<space>PROCESS_REPORT_MANUAL_TASKS.xls<space>file<space>in<space>XLS<space>directory<space>for<space>details.,$(LICENSE_FILTER_NG_WORKSPACE_NAME)_Logger)","20","20","",WARN,LOG_RECORD,$(FME_UUID_SAFE))                   }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME { $(LICENSE_FILTER_NG_WORKSPACE_NAME)_AttributeCreator }    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_Logger_LOGGED"    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    NUM_OF_COLUMNS 5    ATTR_ACTION { "" "license_id" "SET_TO" "$($(LICENSE_FILTER_NG_WORKSPACE_NAME)_LICENSE_ATT$encode)" "varchar<openparen>200<closeparen>" }    OUTPUT { OUTPUT FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_AttributeCreator_OUTPUT"        }
+# -------------------------------------------------------------------------
+# The default behaviour is to abort on any feature entering the transformer.
+# If Workbench has set the _WB_BYPASS_TERMINATION macro to a value of "Yes",
+# then the features will instead be passed through with a feature type of
+# __WB_BYPASS_TERMINATOR__, which Workbench will send to a visualizer or
+# somesuch.
+DEFAULT_MACRO _WB_BYPASS_TERMINATION No
+FACTORY_DEF {*} TestFactory    FACTORY_NAME { $(LICENSE_FILTER_NG_WORKSPACE_NAME)_Terminator_3 }    INPUT  FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_FeatureMerger_<REJECTED>"    TEST { "$(_WB_BYPASS_TERMINATION)" == Yes }    OUTPUT { PASSED FEATURE_TYPE __WB_BYPASS_TERMINATOR__       @SupplyAttributes(_wb_termination_feature_type,@FeatureType())       @SupplyAttributes(ENCODED,_wb_termination_message,"Process<space>failed<space>at<space>Feature<space>Merger<comma><space>QC_LICENSE_FILTER<space>transformer.<space><space>Translation<space>terminated.")       @SupplyAttributes(_wb_termination_xformer,"$(LICENSE_FILTER_NG_WORKSPACE_NAME)_Terminator_3")       @SupplyAttributes(_wb_termination_feature,Yes) }    OUTPUT { FAILED FEATURE_TYPE * @Abort(ENCODED,"Process<space>failed<space>at<space>Feature<space>Merger<comma><space>QC_LICENSE_FILTER<space>transformer.<space><space>Translation<space>terminated.") }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_LICENSE_FILTER_PASSED1759778631 Output Collector"   INPUT FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_LICENSE_FILTER_PASSED"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_UNKNOWN_LICENSE1759778631 Output Collector"   INPUT FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_AttributeCreator_OUTPUT"   OUTPUT FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_UNKNOWN_LICENSE"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_LICENSE_FILTER_UNPASSED1759778631 Output Collector"   INPUT FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_Tester_FAILED"   OUTPUT FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_LICENSE_FILTER_UNPASSED"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(LICENSE_FILTER_NG_WORKSPACE_NAME))}]
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN LICENSE_FILTER_NG,1,"FGP Tools",384215fe-8385-482d-a054-e3ff01b712f0,"Linked by Default",No,NO_PARALLELISM,,No,20200,YES,No,37,No,
+# <p><strong>Description</strong> </p>
+# <p>This custom transformer allows to sort the metadata records based on the type of license.  If the licence allows to publish the metadata records in the FGP, the metadata records  are sent to the LICENSE_FILTER_PASSED port.</p>
+# <p><strong>Input Ports</strong> </p>
+# <ul>
+# <li>DATA_INPUT: The input metadata records to process.</li>
+# </ul>
+# <p><strong>Output Ports</strong> </p>
+# <ul>
+# <li>
+# <p>LICENSE_FILTER_PASSED: The metadata records that have a license allowing to be publish in the FGP;</p>
+# </li>
+# <li>
+# <p>LICENSE_FILTER_UNPASSED: The metadata records that <strong>do not</strong> have a license allowing to be publish in the FGP;</p>
+# </li>
+# <li>
+# <p>UNKNOWN_LICENCE: The metadata records with a license not found in the lookup table.</p>
+# </li>
+# </ul>
+# <p><strong>Parameters</strong> </p>
+# <ul>
+# <li>
+# <p>LICENCE_ATT: Name of the attribute of the metadata record containing the licence type used to determine if the metadata records can be published in the FGP;</p>
+# </li>
+# <li>
+# <p>FEATURE_TYPE: The name of the CSV file containing the information on the licensing;</p>
+# </li>
+# <li>
+# <p>IN_CSV_LOOKUP_TABLES_DIR: The path to the directory containing the CSV file;</p>
+# </li>
+# <li>
+# <p>P-T_ABBR: Two letters abbreviation of the province or territory</p>
+# </li>
+# </ul>
+# TRANSFORMER_END
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="FGP Tools"
+#!   DESCRIPTION="&lt;p&gt;&lt;strong&gt;Description&lt;/strong&gt; &lt;/p&gt;&#10;&lt;p&gt;This custom transformer allows to sort the metadata records based on the type of license.  If the licence allows to publish the metadata records in the FGP, the metadata records  are sent to the LICENSE_FILTER_PASSED port.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Input Ports&lt;/strong&gt; &lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;DATA_INPUT: The input metadata records to process.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Output Ports&lt;/strong&gt; &lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;LICENSE_FILTER_PASSED: The metadata records that have a license allowing to be publish in the FGP;&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;LICENSE_FILTER_UNPASSED: The metadata records that &lt;strong&gt;do not&lt;/strong&gt; have a license allowing to be publish in the FGP;&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;UNKNOWN_LICENCE: The metadata records with a license not found in the lookup table.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Parameters&lt;/strong&gt; &lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;LICENCE_ATT: Name of the attribute of the metadata record containing the licence type used to determine if the metadata records can be published in the FGP;&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;FEATURE_TYPE: The name of the CSV file containing the information on the licensing;&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;IN_CSV_LOOKUP_TABLES_DIR: The path to the directory containing the CSV file;&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;P-T_ABBR: Two letters abbreviation of the province or territory&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;/ul&gt;"
+#!   DOC_EXTENTS="6820.83 1854.86"
+#!   DOC_TOP_LEFT="-503.022 -700.612"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="20200"
+#!   FME_DOCUMENT_GUID="384215fe-8385-482d-a054-e3ff01b712f0"
+#!   FME_DOCUMENT_PRIORGUID="7992ace3-664b-4338-b4ab-7855c3aabf9a"
+#!   FME_LINKED_TRANSFORMER_VERSION="1"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY="Unknown,Unknown,Original&lt;space&gt;version,15&lt;solidus&gt;09&lt;solidus&gt;2021,Daniel&lt;space&gt;Pilon,Documentation"
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2020.0.0.0 (20200309 - Build 20200 - WIN32)"
+#!   LAST_SAVE_DATE="2022-01-25T15:32:56"
+#!   MARKDOWN_DESCRIPTION="**Description** &#10;&#10;This custom transformer allows to sort the metadata records based on the type of license.  If the licence allows to publish the metadata records in the FGP, the metadata records  are sent to the LICENSE_FILTER_PASSED port.&#10;&#10;&#10;**Input Ports** &#10;&#10;- DATA_INPUT: The input metadata records to process.&#10;&#10;&#10;**Output Ports** &#10;&#10;- LICENSE_FILTER_PASSED: The metadata records that have a license allowing to be publish in the FGP;&#10;&#10;- LICENSE_FILTER_UNPASSED: The metadata records that **do not** have a license allowing to be publish in the FGP;&#10;&#10;- UNKNOWN_LICENCE: The metadata records with a license not found in the lookup table.&#10;&#10;&#10;**Parameters** &#10;&#10;- LICENCE_ATT: Name of the attribute of the metadata record containing the licence type used to determine if the metadata records can be published in the FGP;&#10;&#10;- FEATURE_TYPE: The name of the CSV file containing the information on the licensing;&#10;&#10;- IN_CSV_LOOKUP_TABLES_DIR: The path to the directory containing the CSV file;&#10;&#10;- P-T_ABBR: Two letters abbreviation of the province or territory&#10;"
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="37"
+#!   REPLACED_BY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="LICENSE_FILTER_NG"
+#!   USAGE=""
+#!   USE_MARKDOWN="YES"
+#!   VIEW_POSITION="-1356.15 1827.85"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="53"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR LICENSE_ATT LICENSE_ATT:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR FEATURE_TYPE FEATURE_TYPE:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR IN_CSV_LOOKUP_TABLES_DIR IN_CSV_LOOKUP_TABLES_DIR:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR P-T_ABBR P-T_ABBR:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="35"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Exposes  attributes from incoming data&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="468.75468754687563 138.2248553385364"
+#!   TOP_LEFT="468.75468754687563 138.2248553385364"
+#!   BOTTOM_RIGHT="993.233348664132 -35.52658217583874"
+#!   BOUNDING_RECT="468.75468754687563 138.2248553385364 524.47866111725637 173.75143751437514"
+#!   ORDER="500000000001565"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,0.85490196078431369,0.59999999999999998,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="7"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="38"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Merges values from lookup table with with data on values &apos;license_id_value&apos; and &apos;license_id&apos;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="2015.5248487968752 600"
+#!   TOP_LEFT="2015.5248487968752 600"
+#!   BOTTOM_RIGHT="2731.8821575312527 307.49737497374974"
+#!   BOUNDING_RECT="2015.5248487968752 600 716.35730873437751 292.50262502625026"
+#!   ORDER="500000000001569"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,0.85490196078431369,0.59999999999999998,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="6"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="39"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Filters license_id for &apos;fgp_publish = Oui&apos; from incoming joined lookup table values  &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="2850 900"
+#!   TOP_LEFT="2850 900"
+#!   BOTTOM_RIGHT="3380.0649363401526 548.12178121781221"
+#!   BOUNDING_RECT="2850 900 530.06493634015283 351.87821878218779"
+#!   ORDER="500000000001570"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,0.85490196078431369,0.59999999999999998,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="9"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="40"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Attribute cleanup&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="4045.3255409747071 755.500909044178"
+#!   TOP_LEFT="4045.3255409747071 755.500909044178"
+#!   BOTTOM_RIGHT="4499.3255409747071 754.500909044178"
+#!   BOUNDING_RECT="4045.3255409747071 755.500909044178 454 1"
+#!   ORDER="500000000001571"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,0.85490196078431369,0.59999999999999998,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="10"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="41"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Expose attributes from CSV file&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="1286.7981350781251 600"
+#!   TOP_LEFT="1286.7981350781251 600"
+#!   BOTTOM_RIGHT="1740.7981350781251 599"
+#!   BOUNDING_RECT="1286.7981350781251 600 454 1"
+#!   ORDER="500000000001587"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,0.85490196078431369,0.59999999999999998,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="33"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="42"
+#!   NAME="QC License Filter"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="282.26088712500029 1154.2454134218763"
+#!   ORDER="500000000001542"
+#!   PALETTE_COLOR="Color3"
+#!   BOTTOM_RIGHT="5238.6887505238683 -700.61184482812519"
+#!   BOUNDING_RECT="282.26088712500029 1154.2454134218763 4956.4278633988679 1854.8572582500015"
+#!   STICKY="true"
+#!   COLOUR="1,0.85490196078431369,0.59999999999999998,1"
+#!   CONTENTS="6 9 37 41 36 33 34 10 35 22 25 38 31 7 39 40 18 32 21 16 17 28 24 15 "
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="6"
+#!   TYPE="FeatureMerger"
+#!   VERSION="18"
+#!   POSITION="2104.4816317985246 140.33457336108336"
+#!   BOUNDING_RECT="2104.4816317985246 140.33457336108336 483 71"
+#!   ORDER="500000000001543"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#!   INPUT_FT_ORDER="SUPPLIER%REQUESTOR"
+#! >
+#!     <OUTPUT_FEAT NAME="MERGED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="license_id_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fgp_publish" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="UNMERGED_REQUESTOR"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <OUTPUT_FEAT NAME="USED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <XFORM_ATTR ATTR_NAME="license_id_value" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="fgp_publish" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="numReferences" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <OUTPUT_FEAT NAME="UNUSED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="3"/>
+#!     <XFORM_ATTR ATTR_NAME="license_id_value" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="fgp_publish" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="4"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="license_id_value" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="fgp_publish" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE" PARM_VALUE="Merge Supplier"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES" PARM_VALUE="Use Requestor"/>
+#!     <XFORM_PARM PARM_NAME="CLEANING_TOLERANCE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CONNECT_Z_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GENERATE_LIST_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="GEOM_TYPE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="IGNORE_NULLS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="JOIN_ATTRIBUTES_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="JOIN_KEYS" PARM_VALUE="$(LICENSE_ATT) &lt;at&gt;Value&lt;openparen&gt;license_id_value&lt;closeparen&gt; AUTO"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_NAME" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_COUNT_ATTR" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_TYPE" PARM_VALUE="Attributes Only"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PROCESS_DUPS" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="REJECT_NULL_MISSING_KEYS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIERS_FIRST" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIER_PREFIX" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="FeatureMerger"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="7"
+#!   TYPE="AttributeExposer"
+#!   VERSION="1"
+#!   POSITION="529.43477821875013 -150"
+#!   BOUNDING_RECT="529.43477821875013 -150 454 71"
+#!   ORDER="500000000001547"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="id"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="9"
+#!   TYPE="Tester"
+#!   VERSION="2"
+#!   POSITION="2921.775567950488 353.61991694551318"
+#!   BOUNDING_RECT="2921.775567950488 353.61991694551318 454 71"
+#!   ORDER="500000000001549"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="PASSED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="license_id_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fgp_publish" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="FAILED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="license_id_value" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fgp_publish" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_MSG" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="1"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST &lt;at&gt;LowerCase&lt;openparen&gt;&lt;at&gt;Value&lt;openparen&gt;fgp_publish&lt;closeparen&gt;&lt;closeparen&gt; = oui"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="TEST"/>
+#!     <XFORM_PARM PARM_NAME="TEST_PREVIEW_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="10"
+#!   TYPE="AttributeRemover"
+#!   VERSION="1"
+#!   POSITION="4045.3255409747071 353.61991694551324"
+#!   BOUNDING_RECT="4045.3255409747071 353.61991694551324 454 71"
+#!   ORDER="500000000001553"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE="fgp_publish,license_id_value"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="15"
+#!   TYPE="Terminator"
+#!   VERSION="3"
+#!   POSITION="3158.6730982161134 -476.74461585186157"
+#!   BOUNDING_RECT="3158.6730982161134 -476.74461585186157 454 71"
+#!   ORDER="500000000001579"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE="Process&lt;space&gt;failed&lt;space&gt;at&lt;space&gt;Feature&lt;space&gt;Merger&lt;comma&gt;&lt;space&gt;QC_LICENSE_FILTER&lt;space&gt;transformer.&lt;space&gt;&lt;space&gt;Translation&lt;space&gt;terminated."/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Terminator_3"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="16"
+#!   TYPE="Logger"
+#!   VERSION="4"
+#!   POSITION="2847.8107361718776 -131.70218583906262"
+#!   BOUNDING_RECT="2847.8107361718776 -131.70218583906262 454 71"
+#!   ORDER="500000000001580"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="LOGGED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="FEATURE_TYPE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="LOG_FEATURE" PARM_VALUE="LOG_RECORD"/>
+#!     <XFORM_PARM PARM_NAME="MAXCOORDS" PARM_VALUE="20"/>
+#!     <XFORM_PARM PARM_NAME="MAXFEATS" PARM_VALUE="20"/>
+#!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE="Attribute&lt;space&gt;value&lt;space&gt;$(LICENSE_ATT)&lt;space&gt;missing&lt;space&gt;from&lt;space&gt;LicenseValidation&lt;space&gt;lookup&lt;space&gt;table&lt;space&gt;in&lt;space&gt;LICENSE_FILTER&lt;space&gt;transformer.&lt;space&gt;&lt;space&gt;See&lt;space&gt;PROCESS_REPORT_MANUAL_TASKS.xls&lt;space&gt;file&lt;space&gt;in&lt;space&gt;XLS&lt;space&gt;directory&lt;space&gt;for&lt;space&gt;details."/>
+#!     <XFORM_PARM PARM_NAME="MSG_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="SEVERITY" PARM_VALUE="WARN"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Logger"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="17"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="3548.5357774007857 -150"
+#!   BOUNDING_RECT="3548.5357774007857 -150 454 71"
+#!   ORDER="500000000001582"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="license_id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; license_id SET_TO $(LICENSE_ATT)"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="18"
+#!   TYPE="ATTRIBUTE_UNEXPOSER"
+#!   VERSION="1"
+#!   POSITION="4616.9816536875041 312.50312503125042"
+#!   BOUNDING_RECT="4616.9816536875041 312.50312503125042 533.00106825772946 71"
+#!   ORDER="500000000001583"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_UNEXPOSER"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="33"
+#!   TYPE="AttributeExposer"
+#!   VERSION="1"
+#!   POSITION="1299.5962701562501 345.36335685937507"
+#!   BOUNDING_RECT="1299.5962701562501 345.36335685937507 454 71"
+#!   ORDER="500000000001586"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="license_id_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fgp_publish" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="license_id_value,fgp_publish"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="32"
+#!   TYPE="LOOKUP_TABLES_READER_NG"
+#!   VERSION="1"
+#!   POSITION="450 450"
+#!   BOUNDING_RECT="450 450 634.00106825772946 71"
+#!   ORDER="500000000001588"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="CSV_ENCODING" PARM_VALUE="utf-8"/>
+#!     <XFORM_PARM PARM_NAME="CSV_PATH" PARM_VALUE="$(IN_CSV_LOOKUP_TABLES_DIR)"/>
+#!     <XFORM_PARM PARM_NAME="FEATURE_TYPE" PARM_VALUE="$(FEATURE_TYPE)"/>
+#!     <XFORM_PARM PARM_NAME="PT" PARM_VALUE="$(P-T_ABBR)"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="LOOKUP_TABLES_READER_NG"/>
+#!     <XFORM_PARM PARM_NAME="__COMPOUND_PARAMETERS" PARM_VALUE=""/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="INPUT"
+#!   POSITION="-503.02172376562476 -150"
+#!   BOUNDING_RECT="-503.02172376562476 -150 637.00106825772946 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="LICENSE_FILTER_PASSED"
+#!   POSITION="5478.235435253624 300"
+#!   BOUNDING_RECT="5478.235435253624 300 784.08897162680842 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="5"
+#!   NAME="UNKNOWN_LICENSE"
+#!   POSITION="5459.7961668766266 -215.52484879687512"
+#!   BOUNDING_RECT="5459.7961668766266 -215.52484879687512 858.00900009000088 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="46"
+#!   NAME="LICENSE_FILTER_UNPASSED"
+#!   POSITION="5474.9448600622218 0"
+#!   BOUNDING_RECT="5474.9448600622218 0 694.00106825772946 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="19"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="36"
+#!   SOURCE_NODE="32"
+#!   TARGET_NODE="33"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="21"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 0 MERGED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="22"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 1 REQUESTOR"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="24"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="10"
+#!   SOURCE_PORT_DESC="fo 0 PASSED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="25"
+#!   SOURCE_NODE="10"
+#!   TARGET_NODE="18"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="28"
+#!   SOURCE_NODE="16"
+#!   TARGET_NODE="17"
+#!   SOURCE_PORT_DESC="fo 0 LOGGED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="29"
+#!   SOURCE_NODE="17"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="30"
+#!   SOURCE_NODE="18"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="37"
+#!   SOURCE_NODE="33"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 SUPPLIER"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="31"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="16"
+#!   SOURCE_PORT_DESC="fo 1 UNMERGED_REQUESTOR"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="47"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="46"
+#!   SOURCE_PORT_DESC="fo 1 FAILED"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="34"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="15"
+#!   SOURCE_PORT_DESC="fo 4 &lt;lt&gt;REJECTED&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+FME_PYTHON_VERSION 37
+DEFAULT_MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_LICENSE_ATT 
+DEFAULT_MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FEATURE_TYPE 
+DEFAULT_MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_IN_CSV_LOOKUP_TABLES_DIR 
+DEFAULT_MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_P-T_ABBR 
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO LICENSE_FILTER_NG_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(LICENSE_FILTER_NG_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(LICENSE_FILTER_NG_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_INPUT1643142776 Input Splitter"   INPUT FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_INPUT"
+# -------------------------------------------------------------------------
+MACRO LOOKUP_TABLES_READER_NG_WORKSPACE_NAME $(LICENSE_FILTER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_XFORMER_NAME $(LICENSE_FILTER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)___COMPOUND_PARAMETERS 
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_FEATURE_TYPE $($(LICENSE_FILTER_NG_WORKSPACE_NAME)_FEATURE_TYPE)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_CSV_PATH $($(LICENSE_FILTER_NG_WORKSPACE_NAME)_IN_CSV_LOOKUP_TABLES_DIR$encode)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_PT $($(LICENSE_FILTER_NG_WORKSPACE_NAME)_P-T_ABBR$encode)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_CSV_ENCODING utf-8
+INCLUDE_CUSTOM_TRANSFORMER_VER LOOKUP_TABLES_READER_NG:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"   OUTPUT FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"
+FACTORY_DEF * BranchingFactory   FACTORY_NAME "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output Brancher -1 36"   INPUT FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"   TARGET_FACTORY "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   MAXIMUM_COUNT None   OUTPUT PASSED FEATURE_TYPE *
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   INPUT FEATURE_TYPE *  OUTPUT FEATURE_TYPE *
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(LICENSE_FILTER_NG_WORKSPACE_NAME)_AttributeExposer_2    INPUT  FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"    OUTPUT FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(LICENSE_FILTER_NG_WORKSPACE_NAME)_AttributeExposer    INPUT  FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_INPUT"    OUTPUT FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_AttributeExposer_OUTPUT"
+# -------------------------------------------------------------------------
+INCLUDE [if { {ATTRIBUTES} == {ATTRIBUTES} } {                puts "MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO ATTRIBUTES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {POLYGONS}} {                puts "MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {AGGREGATES}} {                puts "MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {POLYGONS}} {                puts "MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {AGGREGATES}} {                puts "MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} } {                puts "MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} } {                puts "MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          else {}; ]
+FACTORY_DEF {*} ReferenceFactory    FACTORY_NAME $(LICENSE_FILTER_NG_WORKSPACE_NAME)_FeatureMerger    FLUSH_WHEN_GROUPS_CHANGE No    INPUT REFERENCER FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_AttributeExposer_OUTPUT"    INPUT REFERENCEE FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"    REFERENCE_INFO $($(LICENSE_FILTER_NG_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO)    REFERENCE_TABLE @EvaluateExpression(FDIV,STRING_ENCODED,$($(LICENSE_FILTER_NG_WORKSPACE_NAME)_LICENSE_ATT$encode),$(LICENSE_FILTER_NG_WORKSPACE_NAME)_FeatureMerger) @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>license_id_value<closeparen>,$(LICENSE_FILTER_NG_WORKSPACE_NAME)_FeatureMerger) AUTO    ATTR_ACCUM_MODE "HANDLE_CONFLICT"    ATTR_CONFLICT_RES "REQUESTOR_IF_CONFLICT"    IGNORE_NULLS "No"    HANDLE_NULL_MISSING_KEYS_LIKE_FME2013 No    LIST_ATTRS_TO_INCLUDE { <Unused> }    LIST_ATTRS_TO_INCLUDE_MODE <Unused>    MERGE_ATTRIBUTES Yes    MANAGE_FME_TYPE Yes    MODE COMPLETE    PROCESS_DUPLICATE_REFERENCEES NO    REFERENCEES_FIRST No    REJECT_INVALID_GEOM YES    CLEANING_TOLERANCE <Unused>    OUTPUT COMPLETE FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_FeatureMerger_MERGED"    OUTPUT INCOMPLETE FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_FeatureMerger_UNMERGED_REQUESTOR"    OUTPUT REJECTED FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_FeatureMerger_<REJECTED>"
+# -------------------------------------------------------------------------
+# The default behaviour is to abort on any feature entering the transformer.
+# If Workbench has set the _WB_BYPASS_TERMINATION macro to a value of "Yes",
+# then the features will instead be passed through with a feature type of
+# __WB_BYPASS_TERMINATOR__, which Workbench will send to a visualizer or
+# somesuch.
+DEFAULT_MACRO _WB_BYPASS_TERMINATION No
+FACTORY_DEF * TestFactory    FACTORY_NAME $(LICENSE_FILTER_NG_WORKSPACE_NAME)_Terminator_3    INPUT  FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_FeatureMerger_<REJECTED>"    TEST "$(_WB_BYPASS_TERMINATION)" == Yes    OUTPUT PASSED FEATURE_TYPE __WB_BYPASS_TERMINATOR__       @SupplyAttributes(_wb_termination_feature_type,@FeatureType())       @SupplyAttributes(ENCODED,_wb_termination_message,"Process<space>failed<space>at<space>Feature<space>Merger<comma><space>QC_LICENSE_FILTER<space>transformer.<space><space>Translation<space>terminated.")       @SupplyAttributes(_wb_termination_xformer,"$(LICENSE_FILTER_NG_WORKSPACE_NAME)_Terminator_3")       @SupplyAttributes(_wb_termination_feature,Yes)    OUTPUT FAILED FEATURE_TYPE * @Abort(ENCODED,"Process<space>failed<space>at<space>Feature<space>Merger<comma><space>QC_LICENSE_FILTER<space>transformer.<space><space>Translation<space>terminated.")
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(LICENSE_FILTER_NG_WORKSPACE_NAME)_Logger_Logger    INPUT  FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_FeatureMerger_UNMERGED_REQUESTOR"    OUTPUT FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_Logger_LOGGED"                  @Log(ENCODED, "<dollar><openparen>LICENSE_FILTER_NG_WORKSPACE_NAME<closeparen>_Logger:<space>@EvaluateExpression(FDIV,STRING_ENCODED,Attribute<space>value<space>$($(LICENSE_FILTER_NG_WORKSPACE_NAME)_LICENSE_ATT$encode)<space>missing<space>from<space>LicenseValidation<space>lookup<space>table<space>in<space>LICENSE_FILTER<space>transformer.<space><space>See<space>PROCESS_REPORT_MANUAL_TASKS.xls<space>file<space>in<space>XLS<space>directory<space>for<space>details.,$(LICENSE_FILTER_NG_WORKSPACE_NAME)_Logger)","20","20","",WARN,LOG_RECORD,$(LICENSE_FILTER_NG_WORKSPACE_NAME)_Logger_e8d332f1_af72_4975_8f65_2e303b1f7a6b1)
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(LICENSE_FILTER_NG_WORKSPACE_NAME)_AttributeCreator    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_Logger_LOGGED"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "license_id" "SET_TO" "$($(LICENSE_FILTER_NG_WORKSPACE_NAME)_LICENSE_ATT$encode)" }    OUTPUT OUTPUT FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_AttributeCreator_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TestFactory    FACTORY_NAME $(LICENSE_FILTER_NG_WORKSPACE_NAME)_Tester    INPUT  FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_FeatureMerger_MERGED"    TEST "@EvaluateExpression(FDIV,STRING_ENCODED,<at>LowerCase<openparen><at>Value<openparen>fgp_publish<closeparen><closeparen>,$(LICENSE_FILTER_NG_WORKSPACE_NAME)_Tester)" = oui ENCODED    BOOLEAN_OPERATOR OR    COMPOSITE_TEST_EXPR "1"    OUTPUT PASSED FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_Tester_PASSED"    OUTPUT FAILED FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_Tester_FAILED"
+# -------------------------------------------------------------------------
+INCLUDE [    set macroLine "MACRO $(LICENSE_FILTER_NG_WORKSPACE_NAME)_AttributeRemover_2_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(LICENSE_FILTER_NG_WORKSPACE_NAME)_AttributeRemover_2    INPUT  FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_Tester_PASSED"    OUTPUT { FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_AttributeRemover_2_OUTPUT"        @RemoveAttributes(fme_encoded,fgp_publish,license_id_value)        @RemoveAttributes(fme_pcre_match"$($(LICENSE_FILTER_NG_WORKSPACE_NAME)_AttributeRemover_2_LIST_EXP)")         }
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Input Input Collector"   INPUT FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_AttributeRemover_2_OUTPUT"   OUTPUT FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Input"
+MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(LICENSE_FILTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(LICENSE_FILTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_LICENSE_FILTER_PASSED1643142776 Output Collector"   INPUT FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_LICENSE_FILTER_PASSED"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_UNKNOWN_LICENSE1643142776 Output Collector"   INPUT FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_AttributeCreator_OUTPUT"   OUTPUT FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_UNKNOWN_LICENSE"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_LICENSE_FILTER_UNPASSED1643142776 Output Collector"   INPUT FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_Tester_FAILED"   OUTPUT FEATURE_TYPE "$(LICENSE_FILTER_NG_WORKSPACE_NAME)_LICENSE_FILTER_UNPASSED"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(LICENSE_FILTER_NG_WORKSPACE_NAME))}]

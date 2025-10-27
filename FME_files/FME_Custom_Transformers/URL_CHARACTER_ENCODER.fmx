@@ -1,0 +1,1816 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN URL_CHARACTER_ENCODER,2,"""FGP Tools""",7e4b2661-39bb-4300-a9f5-ecb0c2a9e742,"Linked by Default",No,NO_PARALLELISM,,No,25606,YES,No,313,No,,both
+# <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+# <html><head><meta name="qrichtext" content="1" /><style type="text/css">
+# p, li { white-space: pre-wrap; }
+# </style></head><body style=" font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;">
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt; font-weight:600; text-decoration: underline;">Description </span></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt;">This custom transformer substitutes the character &quot;{&quot; with the chatacters &quot;%7B&quot; and &quot;}&quot; with the chatacters &quot;%7D&quot; for the the resource list &quot;resources{} for all the metadata records.</span></li></ul>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-size:10pt;"><br /></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt; font-weight:600; text-decoration: underline;">Input Ports </span></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:10pt; font-weight:600; text-decoration: underline;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" text-decoration:none;">INPUT:</span><span style=" font-weight:400; text-decoration:none;"> The input metadata records to process.</span></li></ul>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;"><br /></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;"><br /></p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt; font-weight:600; text-decoration: underline;">Output Ports </span></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:10pt; font-weight:600; text-decoration: underline;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" text-decoration:none;">DATA_OUTPUT: </span><span style=" font-weight:400; text-decoration:none;">The output metadata records</span></li></ul>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt; font-weight:600; text-decoration: underline;">Parameters </span></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:10pt; font-weight:600; text-decoration: underline;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-style:italic; text-decoration:none;">None</span></li></ul>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p></body></html>
+# TRANSFORMER_END
+#!   A0_PREVIEW_IMAGE="data:image/png;base64,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"
+#!   ARCGIS_COMPATIBILITY="ARCGIS_AUTO"
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="&quot;FGP Tools&quot;"
+#!   DATA_PROCESSING_TYPE="both"
+#!   DESCRIPTION="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;Description &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;This custom transformer substitutes the character &amp;quot;{&amp;quot; with the chatacters &amp;quot;%7B&amp;quot; and &amp;quot;}&amp;quot; with the chatacters &amp;quot;%7D&amp;quot; for the the resource list &amp;quot;resources{} for all the metadata records.&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;Input Ports &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; text-decoration:none;&quot;&gt;INPUT:&lt;/span&gt;&lt;span style=&quot; font-weight:400; text-decoration:none;&quot;&gt; The input metadata records to process.&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;Output Ports &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; text-decoration:none;&quot;&gt;DATA_OUTPUT: &lt;/span&gt;&lt;span style=&quot; font-weight:400; text-decoration:none;&quot;&gt;The output metadata records&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;Parameters &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-style:italic; text-decoration:none;&quot;&gt;None&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   DOC_EXTENTS="8384.37 2738.07"
+#!   DOC_TOP_LEFT="-980.906 -1256.81"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="25606"
+#!   FME_DOCUMENT_GUID="7e4b2661-39bb-4300-a9f5-ecb0c2a9e742"
+#!   FME_DOCUMENT_PRIORGUID=""
+#!   FME_LINKED_TRANSFORMER_VERSION="2"
+#!   FME_NAMES_ENCODING="windows-1252"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY="Unknown,Unnown,Original&lt;space&gt;versin,27&lt;solidus&gt;09&lt;solidus&gt;2021,Daniel&lt;space&gt;Pilon,Documentation"
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2025.1.0.0 (20250704 - Build 25606 - WIN64)"
+#!   LAST_SAVE_DATE="2025-10-06T16:32:43"
+#!   MARKDOWN_DESCRIPTION=""
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="313"
+#!   REPLACED_BY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="URL_CHARACTER_ENCODER"
+#!   USAGE=""
+#!   USE_MARKDOWN="NO"
+#!   VIEW_POSITION="-1372.3 1976.92"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="46"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! </GLOBAL_PARAMETERS>
+#! <USER_PARAMETERS
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbXX0="
+#! >
+#! <PARAMETER_INFO>
+#! </PARAMETER_INFO>
+#! </USER_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="31"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Remerges process ed data with other datasets joining on unique ID and rebuilds resources list&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="4540.1730363185688 737.90042964405211"
+#!   TOP_LEFT="4540.1730363185688 737.90042964405211"
+#!   BOTTOM_RIGHT="5016.1538586267916 738.90042964405211"
+#!   BOUNDING_RECT="4540.1730363185688 737.90042964405211 475.98082230822308 -1"
+#!   ORDER="500000000000962"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{a422fc9c-4ae1-43e2-ac3d-f3a49bac5d42}"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,1"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="12"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="32"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Exposes attributes required by this transformer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-81.209930224301957 652.67948790599019"
+#!   TOP_LEFT="-81.209930224301957 652.67948790599019"
+#!   BOTTOM_RIGHT="372.7491874918752 651.67948790599019"
+#!   BOUNDING_RECT="-81.209930224301957 652.67948790599019 453.95911771617716 1"
+#!   ORDER="500000000001546"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{53f06e0e-5a62-4c9d-8845-f7b3afb0366f}"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,1"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="5"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="33"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Creates unique ID for rejoining values&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="655.56978628783042 500.76824657135455"
+#!   TOP_LEFT="655.56978628783042 500.76824657135455"
+#!   BOTTOM_RIGHT="1109.5289040040075 499.76824657135455"
+#!   BOUNDING_RECT="655.56978628783042 500.76824657135455 453.95911771617716 1"
+#!   ORDER="500000000001547"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{5cce2b6f-644a-4ce4-bd42-0c412da65383}"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,1"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="4"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="34"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;retains unique ID and resources{} list&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="1445.8477918112512 1014.4886615532823"
+#!   TOP_LEFT="1445.8477918112512 1014.4886615532823"
+#!   BOTTOM_RIGHT="1899.8069095274284 1013.4886615532823"
+#!   BOUNDING_RECT="1445.8477918112512 1014.4886615532823 453.95911771617716 1"
+#!   ORDER="500000000001548"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{f1ed7ab5-efa8-4191-b358-e042e9b1366a}"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,1"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="7"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="35"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Explodes resources{} list&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="2143.8123199982001 1014.4886615532823"
+#!   TOP_LEFT="2143.8123199982001 1014.4886615532823"
+#!   BOTTOM_RIGHT="2597.7714377143775 1013.4886615532823"
+#!   BOUNDING_RECT="2143.8123199982001 1014.4886615532823 453.95911771617716 1"
+#!   ORDER="500000000001549"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{f095b4ee-ff83-498c-8db5-f27a753f61ba}"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,1"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="8"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="36"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Searches url for &apos;{&apos; and replaces it with utf 8 substitute %7B &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="2850 1097.8617973736712"
+#!   TOP_LEFT="2850 1097.8617973736712"
+#!   BOTTOM_RIGHT="3303.9591177161774 1096.8617973736712"
+#!   BOUNDING_RECT="2850 1097.8617973736712 453.95911771617716 1"
+#!   ORDER="500000000001550"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{3bd29a42-bc07-4c64-bff7-8889645f61a8}"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,1"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="9"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="37"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Searches url for &apos;}&apos; and replaces it with utf 8 substitute %7D &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="3662.5770076450763 1133.2398490651576"
+#!   TOP_LEFT="3662.5770076450763 1133.2398490651576"
+#!   BOTTOM_RIGHT="4116.5361253612537 1132.2398490651576"
+#!   BOUNDING_RECT="3662.5770076450763 1133.2398490651576 453.95911771617716 1"
+#!   ORDER="500000000001551"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{930e03ff-7014-4bc3-846c-5652ba012759}"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,1"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="10"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="38"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Removes resources{} list&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="2437.8004749335123 -310.50194342523122"
+#!   TOP_LEFT="2437.8004749335123 -310.50194342523122"
+#!   BOTTOM_RIGHT="2891.7595926496897 -311.50194342523122"
+#!   BOUNDING_RECT="2437.8004749335123 -310.50194342523122 453.95911771617716 1"
+#!   ORDER="500000000001552"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{70e9f744-3842-4922-8862-588837187f9b}"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,1"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="6"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="39"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Attribute cleanup&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="5218.3025630256288 92.500875008750057"
+#!   TOP_LEFT="5218.3025630256288 92.500875008750057"
+#!   BOTTOM_RIGHT="5672.2616807418062 91.500875008750057"
+#!   BOUNDING_RECT="5218.3025630256288 92.500875008750057 453.95911771617716 1"
+#!   ORDER="500000000001553"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{fa30eded-1255-40ae-b6d2-1f080bcba58c}"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,1"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="11"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="40"
+#!   NAME="URL Character Encoder"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="-206.25206252062503 1481.2648126481265"
+#!   ORDER="500000000001525"
+#!   PALETTE_COLOR="Color4"
+#!   BOTTOM_RIGHT="6478.3256528217453 -1256.8060463213326"
+#!   BOUNDING_RECT="-206.25206252062503 1481.2648126481265 6684.5777153423705 2738.0708589694591"
+#!   STICKY="true"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,1"
+#!   CONTENTS="14 29 36 32 15 23 26 30 38 37 12 18 22 6 10 35 39 7 19 5 9 4 21 34 24 11 8 17 20 13 31 28 33 25 "
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="4"
+#!   TYPE="UniqueIdentifierGenerator"
+#!   VERSION="0"
+#!   POSITION="689.22946510684085 56.250562505625055"
+#!   BOUNDING_RECT="689.22946510684085 56.250562505625055 546.484375 65"
+#!   ORDER="500000000001526"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="resources{}.url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid_url_char" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="OUTPUT_ATTRIBUTE_NAME_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TYPE_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="UUID_ATTR" PARM_VALUE="_uuid_url_char"/>
+#!     <XFORM_PARM PARM_NAME="UUID_FORMAT" PARM_VALUE="ULID"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="UniqueIdentifierGenerator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="5"
+#!   TYPE="AttributeExposer"
+#!   VERSION="2"
+#!   POSITION="-81.250812508124795 56.250562505625055"
+#!   BOUNDING_RECT="-81.250812508124795 56.250562505625055 454 71"
+#!   ORDER="500000000001527"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="resources{}.url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="resources{}.url,,id,"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="6"
+#!   TYPE="AttributeRemover"
+#!   VERSION="1"
+#!   POSITION="2437.7595926496897 -16.666833335000007"
+#!   BOUNDING_RECT="2437.7595926496897 -16.666833335000007 454 71"
+#!   ORDER="500000000001528"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid_url_char" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE="resources&lt;opencurly&gt;&lt;closecurly&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="7"
+#!   TYPE="AttributeKeeper"
+#!   VERSION="3"
+#!   POSITION="1445.8477918112512 591.67258339250066"
+#!   BOUNDING_RECT="1445.8477918112512 591.67258339250066 454 71"
+#!   ORDER="500000000001529"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="resources{}.url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid_url_char" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="CREATE_BULK_MODE_FEATURES" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="KEEP_ATTRS" PARM_VALUE="_uuid_url_char"/>
+#!     <XFORM_PARM PARM_NAME="KEEP_LIST" PARM_VALUE="resources&lt;opencurly&gt;&lt;closecurly&gt;"/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_ON_ATTRIBUTE_CHANGE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeKeeper"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="8"
+#!   TYPE="ListExploder"
+#!   VERSION="6"
+#!   POSITION="2143.7714377143775 591.67258339250066"
+#!   BOUNDING_RECT="2143.7714377143775 591.67258339250066 454 71"
+#!   ORDER="500000000001530"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="ELEMENTS"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid_url_char" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid_url_char" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE_LOOKUP" PARM_VALUE="HANDLE_CONFLICT"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES_LOOKUP" PARM_VALUE="INCOMING_IF_CONFLICT"/>
+#!     <XFORM_PARM PARM_NAME="INCOMING_PREFIX" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="INDEX_ATTR" PARM_VALUE="_element_index"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTR" PARM_VALUE="resources{}"/>
+#!     <XFORM_PARM PARM_NAME="OAN_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ListExploder"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE" PARM_IS_LOOKUP="true" PARM_VALUE="Merge List Attributes"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES" PARM_IS_LOOKUP="true" PARM_VALUE="Use List Attribute Values"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="9"
+#!   TYPE="StringReplacer"
+#!   VERSION="5"
+#!   POSITION="2850 600"
+#!   BOUNDING_RECT="2850 600 454 71"
+#!   ORDER="500000000001531"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid_url_char" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="CASE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="FIND_TEXT" PARM_VALUE="&lt;opencurly&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NO_MATCH" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;url&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NO_MATCH_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REGEXP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="REPLACE_TEXT" PARM_VALUE="%7B"/>
+#!     <XFORM_PARM PARM_NAME="SRC_ATTRS" PARM_VALUE="url"/>
+#!     <XFORM_PARM PARM_NAME="TEST_STRING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="StringReplacer"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="10"
+#!   TYPE="StringReplacer"
+#!   VERSION="5"
+#!   POSITION="3662.5361253612537 591.67258339250066"
+#!   BOUNDING_RECT="3662.5361253612537 591.67258339250066 454 71"
+#!   ORDER="500000000001531"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid_url_char" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="CASE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="FIND_TEXT" PARM_VALUE="&lt;closecurly&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NO_MATCH" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;url&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NO_MATCH_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REGEXP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="REPLACE_TEXT" PARM_VALUE="%7D"/>
+#!     <XFORM_PARM PARM_NAME="SRC_ATTRS" PARM_VALUE="url"/>
+#!     <XFORM_PARM PARM_NAME="TEST_STRING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="StringReplacer_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="11"
+#!   TYPE="AttributeRemover"
+#!   VERSION="1"
+#!   POSITION="5256.3025630256288 -56.874968749687525"
+#!   BOUNDING_RECT="5256.3025630256288 -56.874968749687525 454 71"
+#!   ORDER="500000000001533"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE="resources&lt;opencurly&gt;&lt;closecurly&gt;._element_index resources&lt;opencurly&gt;&lt;closecurly&gt;._uuid_url_char"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE="_element_index,_uuid_url_char"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="12"
+#!   TYPE="FeatureMerger"
+#!   VERSION="21"
+#!   POSITION="4540.1730363185688 43.27825848272613"
+#!   BOUNDING_RECT="4540.1730363185688 43.27825848272613 431 71"
+#!   ORDER="500000000000946"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#!   INPUT_FT_ORDER="SUPPLIER%REQUESTOR"
+#! >
+#!     <OUTPUT_FEAT NAME="MERGED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid_url_char" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}._uuid_url_char" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}._element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="UNMERGED_REQUESTOR"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid_url_char" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <OUTPUT_FEAT NAME="USED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid_url_char" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="numReferences" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <OUTPUT_FEAT NAME="UNUSED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="3"/>
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid_url_char" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="4"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid_url_char" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE" PARM_VALUE="Merge Supplier"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES_LOOKUP" PARM_VALUE="REQUESTOR_IF_CONFLICT"/>
+#!     <XFORM_PARM PARM_NAME="CLEANING_TOLERANCE_LOOKUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CONNECT_Z_MODE_LOOKUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GENERATE_LIST_GROUP" PARM_VALUE="YES"/>
+#!     <XFORM_PARM PARM_NAME="GEOM_TYPE_VAL" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_PROCESSING_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="IGNORE_NULLS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="JOIN_ATTRIBUTES_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="JOIN_KEYS" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;_uuid_url_char&lt;closeparen&gt; &lt;at&gt;Value&lt;openparen&gt;_uuid_url_char&lt;closeparen&gt; AUTO"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE_MODE_LU" PARM_VALUE="ALL"/>
+#!     <XFORM_PARM PARM_NAME="LIST_NAME" PARM_VALUE="resources"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_COUNT_ATTR" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_TYPE_VAL" PARM_VALUE="ATTRIBUTES"/>
+#!     <XFORM_PARM PARM_NAME="MODE_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="ACROSS_OUTPUT_PORTS"/>
+#!     <XFORM_PARM PARM_NAME="PROCESS_DUPS" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="REJECT_NULL_MISSING_KEYS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIERS_FIRST" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIER_PREFIX" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="FeatureMerger_2"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES" PARM_IS_LOOKUP="true" PARM_VALUE="Use Requestor"/>
+#!     <XFORM_PARM PARM_NAME="CLEANING_TOLERANCE" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CONNECT_Z_MODE" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GEOM_TYPE" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE_MODE" PARM_IS_LOOKUP="true" PARM_VALUE="All Attributes"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_TYPE" PARM_IS_LOOKUP="true" PARM_VALUE="Attributes Only"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="13"
+#!   TYPE="Terminator"
+#!   VERSION="3"
+#!   POSITION="2698.2796709687523 255.37889787500021"
+#!   BOUNDING_RECT="2698.2796709687523 255.37889787500021 454 71"
+#!   ORDER="500000000001555"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE="Translation&lt;space&gt;Terminated"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Terminator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="14"
+#!   TYPE="Terminator"
+#!   VERSION="3"
+#!   POSITION="5256.3025630256288 -557.80127693750057"
+#!   BOUNDING_RECT="5256.3025630256288 -557.80127693750057 454 71"
+#!   ORDER="500000000001556"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE="Translation&lt;space&gt;Terminated"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Terminator_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="15"
+#!   TYPE="ATTRIBUTE_UNEXPOSER"
+#!   VERSION="2"
+#!   POSITION="5826.6711699375064 -312.50312503125036"
+#!   BOUNDING_RECT="5826.6711699375064 -312.50312503125036 533.00106825772946 71"
+#!   ORDER="500000000001557"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_UNEXPOSER"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="INPUT"
+#!   POSITION="-980.90588449370216 59.37559375593753"
+#!   BOUNDING_RECT="-980.90588449370216 59.37559375593753 566.00106825772946 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="DATA_OUTPUT"
+#!   POSITION="6811.462907537878 -450"
+#!   BOUNDING_RECT="6811.462907537878 -450 592.00106825772946 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="16"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="17"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="18"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="1"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="19"
+#!   SOURCE_NODE="5"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="20"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="12"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 1 REQUESTOR"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="21"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="8"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="22"
+#!   SOURCE_NODE="8"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 0 ELEMENTS"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="23"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="10"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="24"
+#!   SOURCE_NODE="10"
+#!   TARGET_NODE="12"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 SUPPLIER"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="25"
+#!   SOURCE_NODE="11"
+#!   TARGET_NODE="15"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="26"
+#!   SOURCE_NODE="12"
+#!   TARGET_NODE="11"
+#!   SOURCE_PORT_DESC="fo 0 MERGED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="27"
+#!   SOURCE_NODE="15"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="28"
+#!   SOURCE_NODE="8"
+#!   TARGET_NODE="13"
+#!   SOURCE_PORT_DESC="fo 1 &lt;lt&gt;REJECTED&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="29"
+#!   SOURCE_NODE="12"
+#!   TARGET_NODE="14"
+#!   SOURCE_PORT_DESC="fo 1 UNMERGED_REQUESTOR"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="30"
+#!   SOURCE_NODE="12"
+#!   TARGET_NODE="14"
+#!   SOURCE_PORT_DESC="fo 4 &lt;lt&gt;REJECTED&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+FME_PYTHON_VERSION 313
+# ============================================================================
+DEFAULT_MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FME_DATA_REPOSITORY 
+
+DEFAULT_MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FME_ENGINE 
+
+DEFAULT_MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FME_JOB_ID 
+
+DEFAULT_MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FME_SECURITY_ROLES 
+
+DEFAULT_MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FME_SECURITY_USER 
+
+DEFAULT_MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FME_SERVER_DEST_DIR 
+
+DEFAULT_MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FME_SERVER_HOST 
+
+DEFAULT_MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FME_SERVER_PORT 
+
+DEFAULT_MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FME_SERVER_REQUEST_HEADERS 
+
+DEFAULT_MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FME_SERVER_REQUEST_METHOD 
+
+DEFAULT_MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FME_SERVER_REQUEST_PARAMETERS 
+
+DEFAULT_MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FME_SERVER_REQUEST_URI 
+
+DEFAULT_MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER 
+
+DEFAULT_MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER_ID 
+
+DEFAULT_MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FME_SERVER_WEB_URL 
+
+DEFAULT_MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_BACKUP 
+
+DEFAULT_MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DASHBOARD 
+
+DEFAULT_MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DATA 
+
+DEFAULT_MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_ENGINE 
+
+DEFAULT_MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_LOG 
+
+DEFAULT_MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_SYSTEM 
+
+DEFAULT_MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_TEMP 
+
+DEFAULT_MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FME_TOPIC 
+
+DEFAULT_MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FME_TOPIC_MESSAGE 
+
+# ============================================================================
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO URL_CHARACTER_ENCODER_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(URL_CHARACTER_ENCODER_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_INPUT1759782763 Input Splitter"   INPUT FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_INPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_AttributeExposer }    INPUT  FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_INPUT"    OUTPUT { FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_AttributeExposer_OUTPUT"          }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_UniqueIdentifierGenerator }    INPUT  FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_AttributeExposer_OUTPUT"    OUTPUT { FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_UniqueIdentifierGenerator_OUTPUT"             "_uuid_url_char" @UUID(SIMPLE, UUID_FORMAT, ULID)              }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_UniqueIdentifierGenerator OUTPUT Splitter"   INPUT FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_UniqueIdentifierGenerator_OUTPUT"   OUTPUT FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_UniqueIdentifierGenerator_OUTPUT_0_D/Vtg2jLQ9M="   OUTPUT FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_UniqueIdentifierGenerator_OUTPUT_1_42keLXyFeTU="
+# -------------------------------------------------------------------------
+# Build the List removal function and regular expression if there was any list attributes to be removed.
+# If not, then we will not have any extra list removal call to @RemoveAttributes, which speeds the
+# normal, non-list removal especially when in Bulk Mode.  Note that this computation of the regular expressions is done
+# once during mapping file parse time.
+INCLUDE [    set listAttributeRemoveRegexps {};    set anyList {no};    foreach attr [split "resources<opencurly><closecurly>"] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append listAttributeRemoveRegexps ",^$attr$";       set anyList {yes};    };    if { ${anyList} == {no} } {        puts {MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC }    } else {        puts "MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC @RemoveAttributes(fme_pcre_match\"$listAttributeRemoveRegexps\")"    }; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_AttributeRemover }    INPUT  FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_UniqueIdentifierGenerator_OUTPUT_0_D/Vtg2jLQ9M="    OUTPUT { FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_AttributeRemover_OUTPUT"        @RemoveAttributes(fme_encoded,)        $($(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC)         }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttributeKeeperFactory    FACTORY_NAME { $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_AttributeKeeper }    INPUT  FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_UniqueIdentifierGenerator_OUTPUT_1_42keLXyFeTU="    KEEP_ATTRS { _uuid_url_char }    KEEP_LISTS { resources<opencurly><closecurly> }    KEEP_FME_ATTRIBUTES Yes    BUILD_FEATURE_TABLES { NO }    OUTPUT_ON_ATTRIBUTE_CHANGE { <Unused> }    OUTPUT { OUTPUT FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"        }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} ElementFactory    FACTORY_NAME { $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_ListExploder }    INPUT  FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"    LIST_NAME { "resources{}" }    ELEMENT_NUMBER_FIELD { "_element_index" }    CLONE_GEOMETRY    ATTR_ACCUM_MODE { "HANDLE_CONFLICT" }    ATTR_CONFLICT_RES { "INCOMING_IF_CONFLICT" }    INCOMING_PREFIX { "<Unused>" }    OUTPUT { ELEMENT FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_ListExploder_ELEMENTS"         @RemoveAttributes(ElementFactory.baseCloned)          }    OUTPUT { NOLIST FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_ListExploder_<REJECTED>"         @RemoveAttributes(ElementFactory.baseCloned)         fme_rejection_code MISSING_PARAMETER_LIST          }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} StringReplacerFactory    FACTORY_NAME { $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_StringReplacer }    INPUT  FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_ListExploder_ELEMENTS"    USE_REGEX { NO }    CASE_SENSITIVE { NO }    SOURCE_ATTRIBUTES { url }    FIND_TEXT { "<opencurly>" }    REPLACE_TEXT { "%7B" }    REPLACE_NO_MATCH { "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>url<closeparen>,$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_StringReplacer)" }    OUTPUT { OUTPUT FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_StringReplacer_OUTPUT"          }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} StringReplacerFactory    FACTORY_NAME { $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_StringReplacer_2 }    INPUT  FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_StringReplacer_OUTPUT"    USE_REGEX { NO }    CASE_SENSITIVE { NO }    SOURCE_ATTRIBUTES { url }    FIND_TEXT { "<closecurly>" }    REPLACE_TEXT { "%7D" }    REPLACE_NO_MATCH { "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>url<closeparen>,$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_StringReplacer_2)" }    OUTPUT { OUTPUT FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_StringReplacer_2_OUTPUT"          }
+# -------------------------------------------------------------------------
+INCLUDE [if { {ATTRIBUTES} == {ATTRIBUTES} } {                puts "MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO ATTRIBUTES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {POLYGONS}} {                puts "MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {AGGREGATES}} {                puts "MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {POLYGONS}} {                puts "MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_AND_ATTR_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {AGGREGATES}} {                puts "MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_AND_ATTR_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} } {                puts "MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} } {                puts "MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          else {}; ]
+FACTORY_DEF {*} ReferenceFactory    FACTORY_NAME { $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FeatureMerger_2 }    FLUSH_WHEN_GROUPS_CHANGE { <Unused> }    INPUT REFERENCER FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_AttributeRemover_OUTPUT"    INPUT REFERENCEE FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_StringReplacer_2_OUTPUT"    REFERENCE_INFO { $($(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO) }    REFERENCE_TABLE { @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_uuid_url_char<closeparen>,$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FeatureMerger_2) @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_uuid_url_char<closeparen>,$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FeatureMerger_2) AUTO }    ATTR_ACCUM_MODE { "HANDLE_CONFLICT" }    ATTR_CONFLICT_RES { "REQUESTOR_IF_CONFLICT" }    IGNORE_NULLS { "No" }    HANDLE_NULL_MISSING_KEYS_LIKE_FME2013 { No }    LIST_NAME { "resources" }    LIST_ATTRS_TO_INCLUDE { <Unused> }    LIST_ATTRS_TO_INCLUDE_MODE { ALL }    MERGE_ATTRIBUTES Yes    MANAGE_FME_TYPE Yes    MODE COMPLETE    PROCESS_DUPLICATE_REFERENCEES { NO }    REFERENCEES_FIRST { No }    REJECT_INVALID_GEOM YES    CLEANING_TOLERANCE { <Unused> }    PRESERVE_FEATURE_ORDER { ACROSS_OUTPUT_PORTS }    COMPARE_WHITESPACE Yes    OUTPUT { COMPLETE FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FeatureMerger_2_MERGED"         }    OUTPUT { INCOMPLETE FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FeatureMerger_2_UNMERGED_REQUESTOR"         }    OUTPUT { REJECTED FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FeatureMerger_2_<REJECTED>"         }
+# -------------------------------------------------------------------------
+# Build the List removal function and regular expression if there was any list attributes to be removed.
+# If not, then we will not have any extra list removal call to @RemoveAttributes, which speeds the
+# normal, non-list removal especially when in Bulk Mode.  Note that this computation of the regular expressions is done
+# once during mapping file parse time.
+INCLUDE [    set listAttributeRemoveRegexps {};    set anyList {no};    foreach attr [split "resources<opencurly><closecurly>._element_index resources<opencurly><closecurly>._uuid_url_char"] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append listAttributeRemoveRegexps ",^$attr$";       set anyList {yes};    };    if { ${anyList} == {no} } {        puts {MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_AttributeRemover_2_LIST_FUNC }    } else {        puts "MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_AttributeRemover_2_LIST_FUNC @RemoveAttributes(fme_pcre_match\"$listAttributeRemoveRegexps\")"    }; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_AttributeRemover_2 }    INPUT  FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FeatureMerger_2_MERGED"    OUTPUT { FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_AttributeRemover_2_OUTPUT"        @RemoveAttributes(fme_encoded,_element_index,_uuid_url_char)        $($(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_AttributeRemover_2_LIST_FUNC)         }
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Input Input Collector"   INPUT FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_AttributeRemover_2_OUTPUT"   OUTPUT FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Input"
+MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:2
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
+# -------------------------------------------------------------------------
+# The default behaviour is to abort on any feature entering the transformer.
+# If Workbench has set the _WB_BYPASS_TERMINATION macro to a value of "Yes",
+# then the features will instead be passed through with a feature type of
+# __WB_BYPASS_TERMINATOR__, which Workbench will send to a visualizer or
+# somesuch.
+DEFAULT_MACRO _WB_BYPASS_TERMINATION No
+FACTORY_DEF {*} TestFactory    FACTORY_NAME { $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_Terminator_2 }    INPUT  FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FeatureMerger_2_UNMERGED_REQUESTOR"    INPUT  FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FeatureMerger_2_<REJECTED>"    TEST { "$(_WB_BYPASS_TERMINATION)" == Yes }    OUTPUT { PASSED FEATURE_TYPE __WB_BYPASS_TERMINATOR__       @SupplyAttributes(_wb_termination_feature_type,@FeatureType())       @SupplyAttributes(ENCODED,_wb_termination_message,"Translation<space>Terminated")       @SupplyAttributes(_wb_termination_xformer,"$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_Terminator_2")       @SupplyAttributes(_wb_termination_feature,Yes) }    OUTPUT { FAILED FEATURE_TYPE * @Abort(ENCODED,"Translation<space>Terminated") }
+# -------------------------------------------------------------------------
+# The default behaviour is to abort on any feature entering the transformer.
+# If Workbench has set the _WB_BYPASS_TERMINATION macro to a value of "Yes",
+# then the features will instead be passed through with a feature type of
+# __WB_BYPASS_TERMINATOR__, which Workbench will send to a visualizer or
+# somesuch.
+DEFAULT_MACRO _WB_BYPASS_TERMINATION No
+FACTORY_DEF {*} TestFactory    FACTORY_NAME { $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_Terminator }    INPUT  FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_ListExploder_<REJECTED>"    TEST { "$(_WB_BYPASS_TERMINATION)" == Yes }    OUTPUT { PASSED FEATURE_TYPE __WB_BYPASS_TERMINATOR__       @SupplyAttributes(_wb_termination_feature_type,@FeatureType())       @SupplyAttributes(ENCODED,_wb_termination_message,"Translation<space>Terminated")       @SupplyAttributes(_wb_termination_xformer,"$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_Terminator")       @SupplyAttributes(_wb_termination_feature,Yes) }    OUTPUT { FAILED FEATURE_TYPE * @Abort(ENCODED,"Translation<space>Terminated") }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_DATA_OUTPUT1759782763 Output Collector"   INPUT FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_DATA_OUTPUT"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(URL_CHARACTER_ENCODER_WORKSPACE_NAME))}]
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN URL_CHARACTER_ENCODER,1,"FGP Tools",f8eec4bb-8b82-4344-ade7-1ff3494ab45e,"Linked by Default",No,NO_PARALLELISM,,No,20200,YES,No,37,No,
+# <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+# <html><head><meta name="qrichtext" content="1" /><style type="text/css">
+# p, li { white-space: pre-wrap; }
+# </style></head><body style=" font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;">
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt; font-weight:600; text-decoration: underline;">Description </span></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt;">This custom transformer substitutes the character &quot;{&quot; with the chatacters &quot;%7B&quot; and &quot;}&quot; with the chatacters &quot;%7D&quot; for the the resource list &quot;resources{} for all the metadata records.</span></li></ul>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-size:10pt;"><br /></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt; font-weight:600; text-decoration: underline;">Input Ports </span></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:10pt; font-weight:600; text-decoration: underline;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" text-decoration:none;">INPUT:</span><span style=" font-weight:400; text-decoration:none;"> The input metadata records to process.</span></li></ul>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;"><br /></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;"><br /></p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt; font-weight:600; text-decoration: underline;">Output Ports </span></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:10pt; font-weight:600; text-decoration: underline;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" text-decoration:none;">DATA_OUTPUT: </span><span style=" font-weight:400; text-decoration:none;">The output metadata records</span></li></ul>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt; font-weight:600; text-decoration: underline;">Parameters </span></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:10pt; font-weight:600; text-decoration: underline;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-style:italic; text-decoration:none;">None</span></li></ul>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p></body></html>
+# TRANSFORMER_END
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="FGP Tools"
+#!   DESCRIPTION="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;Description &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;This custom transformer substitutes the character &amp;quot;{&amp;quot; with the chatacters &amp;quot;%7B&amp;quot; and &amp;quot;}&amp;quot; with the chatacters &amp;quot;%7D&amp;quot; for the the resource list &amp;quot;resources{} for all the metadata records.&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;Input Ports &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; text-decoration:none;&quot;&gt;INPUT:&lt;/span&gt;&lt;span style=&quot; font-weight:400; text-decoration:none;&quot;&gt; The input metadata records to process.&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;Output Ports &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; text-decoration:none;&quot;&gt;DATA_OUTPUT: &lt;/span&gt;&lt;span style=&quot; font-weight:400; text-decoration:none;&quot;&gt;The output metadata records&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;Parameters &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-style:italic; text-decoration:none;&quot;&gt;None&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   DOC_EXTENTS="8384.37 2738.07"
+#!   DOC_TOP_LEFT="-980.906 -1256.81"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="20200"
+#!   FME_DOCUMENT_GUID="f8eec4bb-8b82-4344-ade7-1ff3494ab45e"
+#!   FME_DOCUMENT_PRIORGUID="0bc01e40-3d92-4ec2-9327-8d07e4bee7b6"
+#!   FME_LINKED_TRANSFORMER_VERSION="1"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY="Unknown,Unnown,Original&lt;space&gt;versin,27&lt;solidus&gt;09&lt;solidus&gt;2021,Daniel&lt;space&gt;Pilon,Documentation"
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2020.0.0.0 (20200309 - Build 20200 - WIN32)"
+#!   LAST_SAVE_DATE="2021-09-27T14:20:26"
+#!   MARKDOWN_DESCRIPTION=""
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="37"
+#!   REPLACED_BY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="URL_CHARACTER_ENCODER"
+#!   USAGE=""
+#!   USE_MARKDOWN="NO"
+#!   VIEW_POSITION="-853.269 1668.49"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="46"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! </GLOBAL_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="31"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Remerges process ed data with other datasets joining on unique ID and rebuilds resources list&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="4540.1730363185688 737.90042964405211"
+#!   TOP_LEFT="4540.1730363185688 737.90042964405211"
+#!   BOTTOM_RIGHT="5016.1730363185688 738.90042964405211"
+#!   BOUNDING_RECT="4540.1730363185688 737.90042964405211 476 -1"
+#!   ORDER="500000000000962"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="12"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="32"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Exposes attributes required by this transformer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-81.209930224301957 652.67948790599019"
+#!   TOP_LEFT="-81.209930224301957 652.67948790599019"
+#!   BOTTOM_RIGHT="372.79006977569804 651.67948790599019"
+#!   BOUNDING_RECT="-81.209930224301957 652.67948790599019 454 1"
+#!   ORDER="500000000001546"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="5"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="33"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Creates unique ID for rejoining values&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="655.56978628783042 500.76824657135455"
+#!   TOP_LEFT="655.56978628783042 500.76824657135455"
+#!   BOTTOM_RIGHT="1109.5697862878305 499.76824657135455"
+#!   BOUNDING_RECT="655.56978628783042 500.76824657135455 454 1"
+#!   ORDER="500000000001547"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="4"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="34"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;retains unique ID and resources{} list&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="1445.8477918112512 1014.4886615532823"
+#!   TOP_LEFT="1445.8477918112512 1014.4886615532823"
+#!   BOTTOM_RIGHT="1899.8477918112512 1013.4886615532823"
+#!   BOUNDING_RECT="1445.8477918112512 1014.4886615532823 454 1"
+#!   ORDER="500000000001548"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="7"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="35"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Explodes resources{} list&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="2143.8123199982001 1014.4886615532823"
+#!   TOP_LEFT="2143.8123199982001 1014.4886615532823"
+#!   BOTTOM_RIGHT="2597.8123199982001 1013.4886615532823"
+#!   BOUNDING_RECT="2143.8123199982001 1014.4886615532823 454 1"
+#!   ORDER="500000000001549"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="8"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="36"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Searches url for &apos;{&apos; and replaces it with utf 8 substitute %7B &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="2850 1097.8617973736712"
+#!   TOP_LEFT="2850 1097.8617973736712"
+#!   BOTTOM_RIGHT="3304 1096.8617973736712"
+#!   BOUNDING_RECT="2850 1097.8617973736712 454 1"
+#!   ORDER="500000000001550"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="9"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="37"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Searches url for &apos;}&apos; and replaces it with utf 8 substitute %7D &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="3662.5770076450763 1133.2398490651576"
+#!   TOP_LEFT="3662.5770076450763 1133.2398490651576"
+#!   BOTTOM_RIGHT="4116.5770076450763 1132.2398490651576"
+#!   BOUNDING_RECT="3662.5770076450763 1133.2398490651576 454 1"
+#!   ORDER="500000000001551"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="10"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="38"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Removes resources{} list&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="2437.8004749335123 -310.50194342523122"
+#!   TOP_LEFT="2437.8004749335123 -310.50194342523122"
+#!   BOTTOM_RIGHT="2891.8004749335123 -311.50194342523122"
+#!   BOUNDING_RECT="2437.8004749335123 -310.50194342523122 454 1"
+#!   ORDER="500000000001552"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="6"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="39"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Attribute cleanup&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="5218.3025630256288 92.500875008750057"
+#!   TOP_LEFT="5218.3025630256288 92.500875008750057"
+#!   BOTTOM_RIGHT="5672.3025630256288 91.500875008750057"
+#!   BOUNDING_RECT="5218.3025630256288 92.500875008750057 454 1"
+#!   ORDER="500000000001553"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="11"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="40"
+#!   NAME="URL Character Encoder"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="-206.25206252062503 1481.2648126481265"
+#!   ORDER="500000000001525"
+#!   PALETTE_COLOR="Color4"
+#!   BOTTOM_RIGHT="6478.3256528217453 -1256.8060463213326"
+#!   BOUNDING_RECT="-206.25206252062503 1481.2648126481265 6684.5777153423705 2738.0708589694591"
+#!   STICKY="true"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,1"
+#!   CONTENTS="21 23 7 29 26 11 39 37 36 6 15 4 19 13 9 35 24 18 17 14 30 12 8 5 33 22 20 10 31 34 32 28 38 25 "
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="4"
+#!   TYPE="UUIDGenerator"
+#!   VERSION="0"
+#!   POSITION="689.22946510684085 56.250562505625055"
+#!   BOUNDING_RECT="689.22946510684085 56.250562505625055 454 71"
+#!   ORDER="500000000001526"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="resources{}.url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid_url_char" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="UUID_ATTR" PARM_VALUE="_uuid_url_char"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="UUIDGenerator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="5"
+#!   TYPE="AttributeExposer"
+#!   VERSION="1"
+#!   POSITION="-81.250812508124795 56.250562505625055"
+#!   BOUNDING_RECT="-81.250812508124795 56.250562505625055 454 71"
+#!   ORDER="500000000001527"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="resources{}.url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="resources{}.url,id"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="6"
+#!   TYPE="AttributeRemover"
+#!   VERSION="1"
+#!   POSITION="2437.7595926496897 -16.666833335000007"
+#!   BOUNDING_RECT="2437.7595926496897 -16.666833335000007 454 71"
+#!   ORDER="500000000001528"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid_url_char" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE="resources&lt;opencurly&gt;&lt;closecurly&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="7"
+#!   TYPE="AttributeKeeper"
+#!   VERSION="3"
+#!   POSITION="1445.8477918112512 591.67258339250066"
+#!   BOUNDING_RECT="1445.8477918112512 591.67258339250066 454 71"
+#!   ORDER="500000000001529"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="resources{}.url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid_url_char" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="KEEP_ATTRS" PARM_VALUE="_uuid_url_char"/>
+#!     <XFORM_PARM PARM_NAME="KEEP_LIST" PARM_VALUE="resources&lt;opencurly&gt;&lt;closecurly&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeKeeper"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="8"
+#!   TYPE="ListExploder"
+#!   VERSION="6"
+#!   POSITION="2143.7714377143775 591.67258339250066"
+#!   BOUNDING_RECT="2143.7714377143775 591.67258339250066 454 71"
+#!   ORDER="500000000001530"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="ELEMENTS"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid_url_char" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid_url_char" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE" PARM_VALUE="Merge List Attributes"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES" PARM_VALUE="Use List Attribute Values"/>
+#!     <XFORM_PARM PARM_NAME="INCOMING_PREFIX" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="INDEX_ATTR" PARM_VALUE="_element_index"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTR" PARM_VALUE="resources{}"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ListExploder"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="9"
+#!   TYPE="StringReplacer"
+#!   VERSION="5"
+#!   POSITION="2850 600"
+#!   BOUNDING_RECT="2850 600 454 71"
+#!   ORDER="500000000001531"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid_url_char" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="CASE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="FIND_TEXT" PARM_VALUE="&lt;opencurly&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NO_MATCH" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;url&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NO_MATCH_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REGEXP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="REPLACE_TEXT" PARM_VALUE="%7B"/>
+#!     <XFORM_PARM PARM_NAME="SRC_ATTRS" PARM_VALUE="url"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="StringReplacer"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="10"
+#!   TYPE="StringReplacer"
+#!   VERSION="5"
+#!   POSITION="3662.5361253612537 591.67258339250066"
+#!   BOUNDING_RECT="3662.5361253612537 591.67258339250066 454 71"
+#!   ORDER="500000000001531"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid_url_char" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="CASE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="FIND_TEXT" PARM_VALUE="&lt;closecurly&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NO_MATCH" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;url&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NO_MATCH_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REGEXP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="REPLACE_TEXT" PARM_VALUE="%7D"/>
+#!     <XFORM_PARM PARM_NAME="SRC_ATTRS" PARM_VALUE="url"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="StringReplacer_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="11"
+#!   TYPE="AttributeRemover"
+#!   VERSION="1"
+#!   POSITION="5256.3025630256288 -56.874968749687525"
+#!   BOUNDING_RECT="5256.3025630256288 -56.874968749687525 454 71"
+#!   ORDER="500000000001533"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE="resources&lt;opencurly&gt;&lt;closecurly&gt;._element_index resources&lt;opencurly&gt;&lt;closecurly&gt;._uuid_url_char"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE="_element_index,_uuid_url_char"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="12"
+#!   TYPE="FeatureMerger"
+#!   VERSION="17"
+#!   POSITION="4540.1730363185688 43.27825848272613"
+#!   BOUNDING_RECT="4540.1730363185688 43.27825848272613 431 71"
+#!   ORDER="500000000000946"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#!   INPUT_FT_ORDER="SUPPLIER%REQUESTOR"
+#! >
+#!     <OUTPUT_FEAT NAME="MERGED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid_url_char" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}._uuid_url_char" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}._element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="UNMERGED_REQUESTOR"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid_url_char" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <OUTPUT_FEAT NAME="USED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid_url_char" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="numReferences" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <OUTPUT_FEAT NAME="UNUSED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="3"/>
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid_url_char" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="4"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid_url_char" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE" PARM_VALUE="Merge Supplier"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES" PARM_VALUE="Use Requestor"/>
+#!     <XFORM_PARM PARM_NAME="CLEANING_TOLERANCE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CONNECT_Z_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GENERATE_LIST_GROUP" PARM_VALUE="YES"/>
+#!     <XFORM_PARM PARM_NAME="GEOM_TYPE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="IGNORE_NULLS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="JOIN_ATTRIBUTES_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="JOIN_KEYS" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;_uuid_url_char&lt;closeparen&gt; &lt;at&gt;Value&lt;openparen&gt;_uuid_url_char&lt;closeparen&gt; AUTO"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE_MODE" PARM_VALUE="All Attributes"/>
+#!     <XFORM_PARM PARM_NAME="LIST_NAME" PARM_VALUE="resources"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_COUNT_ATTR" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_TYPE" PARM_VALUE="Attributes Only"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PROCESS_DUPS" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="REJECT_NULL_MISSING_KEYS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIERS_FIRST" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIER_PREFIX" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="FeatureMerger_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="13"
+#!   TYPE="Terminator"
+#!   VERSION="3"
+#!   POSITION="2698.2796709687523 255.37889787500021"
+#!   BOUNDING_RECT="2698.2796709687523 255.37889787500021 454 71"
+#!   ORDER="500000000001555"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE="Translation&lt;space&gt;Terminated"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Terminator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="14"
+#!   TYPE="Terminator"
+#!   VERSION="3"
+#!   POSITION="5256.3025630256288 -557.80127693750057"
+#!   BOUNDING_RECT="5256.3025630256288 -557.80127693750057 454 71"
+#!   ORDER="500000000001556"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE="Translation&lt;space&gt;Terminated"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Terminator_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="15"
+#!   TYPE="ATTRIBUTE_UNEXPOSER"
+#!   VERSION="1"
+#!   POSITION="5826.6711699375064 -312.50312503125036"
+#!   BOUNDING_RECT="5826.6711699375064 -312.50312503125036 533.00106825772946 71"
+#!   ORDER="500000000001557"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_UNEXPOSER"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="INPUT"
+#!   POSITION="-980.90588449370216 59.37559375593753"
+#!   BOUNDING_RECT="-980.90588449370216 59.37559375593753 566.00106825772946 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="DATA_OUTPUT"
+#!   POSITION="6811.462907537878 -450"
+#!   BOUNDING_RECT="6811.462907537878 -450 592.00106825772946 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="16"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="17"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="18"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="1"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="19"
+#!   SOURCE_NODE="5"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="20"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="12"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 1 REQUESTOR"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="21"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="8"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="22"
+#!   SOURCE_NODE="8"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 0 ELEMENTS"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="23"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="10"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="24"
+#!   SOURCE_NODE="10"
+#!   TARGET_NODE="12"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 SUPPLIER"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="25"
+#!   SOURCE_NODE="11"
+#!   TARGET_NODE="15"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="26"
+#!   SOURCE_NODE="12"
+#!   TARGET_NODE="11"
+#!   SOURCE_PORT_DESC="fo 0 MERGED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="27"
+#!   SOURCE_NODE="15"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="28"
+#!   SOURCE_NODE="8"
+#!   TARGET_NODE="13"
+#!   SOURCE_PORT_DESC="fo 1 &lt;lt&gt;REJECTED&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="29"
+#!   SOURCE_NODE="12"
+#!   TARGET_NODE="14"
+#!   SOURCE_PORT_DESC="fo 1 UNMERGED_REQUESTOR"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="30"
+#!   SOURCE_NODE="12"
+#!   TARGET_NODE="14"
+#!   SOURCE_PORT_DESC="fo 4 &lt;lt&gt;REJECTED&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+FME_PYTHON_VERSION 37
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO URL_CHARACTER_ENCODER_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(URL_CHARACTER_ENCODER_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_INPUT1632766826 Input Splitter"   INPUT FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_INPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_AttributeExposer    INPUT  FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_INPUT"    OUTPUT FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_AttributeExposer_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_UUIDGenerator    INPUT  FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_AttributeExposer_OUTPUT"    OUTPUT FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_UUIDGenerator_OUTPUT"         "_uuid_url_char" @UUID()
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_UUIDGenerator OUTPUT Splitter"   INPUT FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_UUIDGenerator_OUTPUT"   OUTPUT FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_UUIDGenerator_OUTPUT_0_JZL1/Y2RUSc="   OUTPUT FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_UUIDGenerator_OUTPUT_1_9ktvtD2Ek0Q="
+# -------------------------------------------------------------------------
+INCLUDE [    set macroLine "MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_AttributeKeeper_b0711b75_a615_4ddf_88bb_40e1ee17117f1_LIST_EXP ";    foreach attr [split "resources<opencurly><closecurly>"] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_AttributeKeeper    INPUT  FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_UUIDGenerator_OUTPUT_1_9ktvtD2Ek0Q="    OUTPUT { FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"        @KeepAttributes(fme_encoded,_uuid_url_char,fme_pcre_match,"^fme_$($(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_AttributeKeeper_b0711b75_a615_4ddf_88bb_40e1ee17117f1_LIST_EXP)")         }
+# -------------------------------------------------------------------------
+FACTORY_DEF * ElementFactory    FACTORY_NAME $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_ListExploder    INPUT  FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"    LIST_NAME "resources{}"    ELEMENT_NUMBER_FIELD "_element_index"    CLONE_GEOMETRY    ATTR_ACCUM_MODE "HANDLE_CONFLICT"    ATTR_CONFLICT_RES "INCOMING_IF_CONFLICT"    INCOMING_PREFIX "<Unused>"    OUTPUT ELEMENT FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_ListExploder_ELEMENTS"         @RemoveAttributes(ElementFactory.baseCloned)    OUTPUT NOLIST FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_ListExploder_<REJECTED>"         @RemoveAttributes(ElementFactory.baseCloned)         fme_rejection_code MISSING_PARAMETER_LIST
+# -------------------------------------------------------------------------
+# The default behaviour is to abort on any feature entering the transformer.
+# If Workbench has set the _WB_BYPASS_TERMINATION macro to a value of "Yes",
+# then the features will instead be passed through with a feature type of
+# __WB_BYPASS_TERMINATOR__, which Workbench will send to a visualizer or
+# somesuch.
+DEFAULT_MACRO _WB_BYPASS_TERMINATION No
+FACTORY_DEF * TestFactory    FACTORY_NAME $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_Terminator    INPUT  FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_ListExploder_<REJECTED>"    TEST "$(_WB_BYPASS_TERMINATION)" == Yes    OUTPUT PASSED FEATURE_TYPE __WB_BYPASS_TERMINATOR__       @SupplyAttributes(_wb_termination_feature_type,@FeatureType())       @SupplyAttributes(ENCODED,_wb_termination_message,"Translation<space>Terminated")       @SupplyAttributes(_wb_termination_xformer,"$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_Terminator")       @SupplyAttributes(_wb_termination_feature,Yes)    OUTPUT FAILED FEATURE_TYPE * @Abort(ENCODED,"Translation<space>Terminated")
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} StringReplacerFactory    FACTORY_NAME $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_StringReplacer    INPUT  FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_ListExploder_ELEMENTS"    USE_REGEX NO    CASE_SENSITIVE NO    SOURCE_ATTRIBUTES { url }    FIND_TEXT { "<opencurly>" }    REPLACE_TEXT { "%7B" }    REPLACE_NO_MATCH { "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>url<closeparen>,$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_StringReplacer)" }    OUTPUT OUTPUT FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_StringReplacer_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} StringReplacerFactory    FACTORY_NAME $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_StringReplacer_2    INPUT  FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_StringReplacer_OUTPUT"    USE_REGEX NO    CASE_SENSITIVE NO    SOURCE_ATTRIBUTES { url }    FIND_TEXT { "<closecurly>" }    REPLACE_TEXT { "%7D" }    REPLACE_NO_MATCH { "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>url<closeparen>,$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_StringReplacer_2)" }    OUTPUT OUTPUT FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_StringReplacer_2_OUTPUT"
+# -------------------------------------------------------------------------
+INCLUDE [    set macroLine "MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_AttributeRemover_LIST_EXP ";    foreach attr [split "resources<opencurly><closecurly>"] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_AttributeRemover    INPUT  FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_UUIDGenerator_OUTPUT_0_JZL1/Y2RUSc="    OUTPUT { FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_AttributeRemover_OUTPUT"        @RemoveAttributes(fme_encoded,)        @RemoveAttributes(fme_pcre_match"$($(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_AttributeRemover_LIST_EXP)")         }
+# -------------------------------------------------------------------------
+INCLUDE [if { {ATTRIBUTES} == {ATTRIBUTES} } {                puts "MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO ATTRIBUTES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {POLYGONS}} {                puts "MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {AGGREGATES}} {                puts "MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {POLYGONS}} {                puts "MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_AND_ATTR_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {AGGREGATES}} {                puts "MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_AND_ATTR_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} } {                puts "MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} } {                puts "MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          else {}; ]
+FACTORY_DEF {*} ReferenceFactory    FACTORY_NAME $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FeatureMerger_2    INPUT REFERENCER FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_AttributeRemover_OUTPUT"    INPUT REFERENCEE FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_StringReplacer_2_OUTPUT"    REFERENCE_INFO $($(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO)    REFERENCE_TABLE @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_uuid_url_char<closeparen>,$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FeatureMerger_2) @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_uuid_url_char<closeparen>,$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FeatureMerger_2) AUTO    ATTR_ACCUM_MODE "HANDLE_CONFLICT"    ATTR_CONFLICT_RES "REQUESTOR_IF_CONFLICT"    IGNORE_NULLS "No"    HANDLE_NULL_MISSING_KEYS_LIKE_FME2013 No    LIST_NAME "resources"    LIST_ATTRS_TO_INCLUDE { <Unused> }    LIST_ATTRS_TO_INCLUDE_MODE ALL    MERGE_ATTRIBUTES Yes    MANAGE_FME_TYPE Yes    MODE COMPLETE    PROCESS_DUPLICATE_REFERENCEES NO    REFERENCEES_FIRST No    REJECT_INVALID_GEOM YES    CLEANING_TOLERANCE <Unused>    OUTPUT COMPLETE FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FeatureMerger_2_MERGED"    OUTPUT INCOMPLETE FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FeatureMerger_2_UNMERGED_REQUESTOR"    OUTPUT REJECTED FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FeatureMerger_2_<REJECTED>"
+# -------------------------------------------------------------------------
+# The default behaviour is to abort on any feature entering the transformer.
+# If Workbench has set the _WB_BYPASS_TERMINATION macro to a value of "Yes",
+# then the features will instead be passed through with a feature type of
+# __WB_BYPASS_TERMINATOR__, which Workbench will send to a visualizer or
+# somesuch.
+DEFAULT_MACRO _WB_BYPASS_TERMINATION No
+FACTORY_DEF * TestFactory    FACTORY_NAME $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_Terminator_2    INPUT  FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FeatureMerger_2_UNMERGED_REQUESTOR"    INPUT  FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FeatureMerger_2_<REJECTED>"    TEST "$(_WB_BYPASS_TERMINATION)" == Yes    OUTPUT PASSED FEATURE_TYPE __WB_BYPASS_TERMINATOR__       @SupplyAttributes(_wb_termination_feature_type,@FeatureType())       @SupplyAttributes(ENCODED,_wb_termination_message,"Translation<space>Terminated")       @SupplyAttributes(_wb_termination_xformer,"$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_Terminator_2")       @SupplyAttributes(_wb_termination_feature,Yes)    OUTPUT FAILED FEATURE_TYPE * @Abort(ENCODED,"Translation<space>Terminated")
+# -------------------------------------------------------------------------
+INCLUDE [    set macroLine "MACRO $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_AttributeRemover_2_LIST_EXP ";    foreach attr [split "resources<opencurly><closecurly>._element_index resources<opencurly><closecurly>._uuid_url_char"] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_AttributeRemover_2    INPUT  FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_FeatureMerger_2_MERGED"    OUTPUT { FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_AttributeRemover_2_OUTPUT"        @RemoveAttributes(fme_encoded,_element_index,_uuid_url_char)        @RemoveAttributes(fme_pcre_match"$($(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_AttributeRemover_2_LIST_EXP)")         }
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Input Input Collector"   INPUT FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_AttributeRemover_2_OUTPUT"   OUTPUT FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Input"
+MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_DATA_OUTPUT1632766826 Output Collector"   INPUT FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(URL_CHARACTER_ENCODER_WORKSPACE_NAME)_DATA_OUTPUT"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(URL_CHARACTER_ENCODER_WORKSPACE_NAME))}]

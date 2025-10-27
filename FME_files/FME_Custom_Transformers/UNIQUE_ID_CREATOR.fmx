@@ -1,0 +1,1153 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN UNIQUE_ID_CREATOR,2,"""FGP Tools""",8efa93b3-44aa-4a3a-96a3-3dbf4ff501b8,"Linked by Default",No,NO_PARALLELISM,,No,25606,YES,No,313,No,,both
+# 
+# TRANSFORMER_END
+#!   A0_PREVIEW_IMAGE="data:image/png;base64,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"
+#!   ARCGIS_COMPATIBILITY="ARCGIS_AUTO"
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="&quot;FGP Tools&quot;"
+#!   DATA_PROCESSING_TYPE="both"
+#!   DESCRIPTION=""
+#!   DOC_EXTENTS="4196.15 976.572"
+#!   DOC_TOP_LEFT="-2031.27 -488.284"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="25606"
+#!   FME_DOCUMENT_GUID="8efa93b3-44aa-4a3a-96a3-3dbf4ff501b8"
+#!   FME_DOCUMENT_PRIORGUID=""
+#!   FME_LINKED_TRANSFORMER_VERSION="2"
+#!   FME_NAMES_ENCODING="windows-1252"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY=""
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2025.1.0.0 (20250704 - Build 25606 - WIN64)"
+#!   LAST_SAVE_DATE="2025-10-06T16:31:32"
+#!   MARKDOWN_DESCRIPTION=""
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="313"
+#!   REPLACED_BY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="UNIQUE_ID_CREATOR"
+#!   USAGE=""
+#!   USE_MARKDOWN="NO"
+#!   VIEW_POSITION="-2437.52 1200.01"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="100"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR UNIQUE_ATT UNIQUE_ATT:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <USER_PARAMETERS
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbeyJuYW1lIjoiVU5JUVVFX0FUVCIsInByb21wdCI6IlVOSVFVRV9BVFQ6IiwidmFsdWVUeXBlIjoic3RyaW5nIiwicmVxdWlyZWQiOmZhbHNlLCJkZWZhdWx0VmFsdWUiOiIiLCJzdXBwb3J0ZWRWYWx1ZVR5cGVzIjpbImV4cHJlc3Npb24iLCJnbG9iYWxQYXJhbWV0ZXIiXSwiZGVwcmVjYXRlZEZsYWdzIjpbIm5vbmUiXSwidHlwZSI6InRleHQiLCJlZGl0b3IiOiJwbGFpbnRleHQifV19"
+#! >
+#! <PARAMETER_INFO>
+#!     <INFO NAME="UNIQUE_ATT" 
+#!   DEFAULT_VALUE=""
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR UNIQUE_ATT UNIQUE_ATT:"
+#! />
+#! </PARAMETER_INFO>
+#! </USER_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="7"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Creates hash key from UNIQUE_ATT attribute to create unique ID&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-1181.4711392891893 309.53485497494665"
+#!   TOP_LEFT="-1181.4711392891893 309.53485497494665"
+#!   BOTTOM_RIGHT="-380.48706694846589 308.53485497494665"
+#!   BOUNDING_RECT="-1181.4711392891893 309.53485497494665 800.9840723407234 1"
+#!   ORDER="500000000001421"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{18969ad0-6706-42fa-8245-aee20f33d258}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="2"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="8"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Renames &apos;_hash_key&apos; attribute to &apos;id&apos;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-128.83398595833432 250.15926121900907"
+#!   TOP_LEFT="-128.83398595833432 250.15926121900907"
+#!   BOTTOM_RIGHT="414.13969377846297 249.15926121900907"
+#!   BOUNDING_RECT="-128.83398595833432 250.15926121900907 542.97367973679729 1"
+#!   ORDER="500000000001422"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{4533e2c6-40a4-4b6c-98b3-fd96a2dff16d}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="3"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="9"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Converts &apos;id&apos; attribute to UUID4 format&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="593.75055291868648 220.54150948593622"
+#!   TOP_LEFT="593.75055291868648 220.54150948593622"
+#!   BOTTOM_RIGHT="1172.7109206473638 219.54150948593622"
+#!   BOUNDING_RECT="593.75055291868648 220.54150948593622 578.96036772867728 1"
+#!   ORDER="500000000001423"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{70bfde7f-d322-4b8c-8df1-1f5b50918732}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="4"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="10"
+#!   NAME="UNIQUE_ID_CREATOR"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="-1269.5447441458327 488.28792588151032"
+#!   ORDER="500000000001424"
+#!   PALETTE_COLOR="Color4"
+#!   BOTTOM_RIGHT="1269.5431467330754 -488.28433984114668"
+#!   BOUNDING_RECT="-1269.5447441458327 488.28792588151032 2539.0878908789082 976.57226572265699"
+#!   STICKY="false"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,1"
+#!   CONTENTS=""
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="2"
+#!   TYPE="SubDocumentTransformer"
+#!   VERSION="1"
+#!   POSITION="-1108.9542376449976 -194.35842284672026"
+#!   BOUNDING_RECT="-1108.9542376449976 -194.35842284672026 646.00106825772946 71"
+#!   ORDER="500000000001418"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="AttributeKeeper_Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="UNIQUE_ATT" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_hash_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="SUB_DOC_NAME" PARM_VALUE="CreatingHashKeyFromAttributes"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="UNIQUE_ATT" PARM_VALUE="$(UNIQUE_ATT)"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="CreatingHashKeyFromUniqueAtt"/>
+#!     <XFORM_PARM PARM_NAME="__COMPOUND_PARAMETERS" PARM_VALUE=""/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="3"
+#!   TYPE="AttributeRenamer"
+#!   VERSION="5"
+#!   POSITION="-128.83398595833432 -223.97617457979311"
+#!   BOUNDING_RECT="-128.83398595833432 -223.97617457979311 454 71"
+#!   ORDER="500000000001420"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="UNIQUE_ATT" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="_hash_name id RENAME_SET_DEFAULT "/>
+#!     <XFORM_PARM PARM_NAME="KEEP_RENAMED_ONLY" PARM_VALUE="no"/>
+#!     <XFORM_PARM PARM_NAME="MISSING_INPUT_ATTRS" PARM_VALUE="PRESERVE"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRenamer_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="4"
+#!   TYPE="UUID_4_FORMATTER"
+#!   VERSION="1"
+#!   POSITION="593.75055291868648 -194.35842284672026"
+#!   BOUNDING_RECT="593.75055291868648 -194.35842284672026 471.00106825772946 71"
+#!   ORDER="500000000001419"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="UNIQUE_ATT" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="UUID_4_FORMATTER"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="11"
+#!   NAME="INPUT"
+#!   POSITION="-2031.2703127031268 -223.97617457979311"
+#!   BOUNDING_RECT="-2031.2703127031268 -223.97617457979311 553.06376253500412 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="13"
+#!   NAME="OUTPUT"
+#!   POSITION="1430.8789024492287 -283.97617457979311"
+#!   BOUNDING_RECT="1430.8789024492287 -283.97617457979311 734.00106825772946 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="12"
+#!   SOURCE_NODE="11"
+#!   TARGET_NODE="2"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 Cloner_Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="5"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 AttributeKeeper_Output"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="6"
+#!   SOURCE_NODE="3"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 INPUT"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="14"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="13"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! <SUBDOCUMENT
+#!   NAME="CreatingHashKeyFromAttributes"
+#!   ARCGIS_COMPATIBILITY=""
+#!   CATEGORY=""
+#!   DESCRIPTION=""
+#!   DOC_DYNAMIC_INPUT_ATTRS="0"
+#!   DOC_EXTENTS="5432.62 1447.78"
+#!   DOC_TOP_LEFT="-8665.6 -723.89"
+#!   FME_DOCUMENT_GUID=""
+#!   FME_DOCUMENT_PRIORGUID=""
+#!   FME_NAMES_ENCODING="UTF-8"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   HISTORY=""
+#!   IS_VISIBLE="true"
+#!   LAST_SAVE_BUILD=""
+#!   LAST_SAVE_DATE=""
+#!   MARKDOWN_DESCRIPTION=""
+#!   MARKDOWN_USAGE=""
+#!   PYTHON_COMPATIBILITY=""
+#!   REPLACED_BY=""
+#!   SUPPRESS_UPGRADE="false"
+#!   TITLE="CreatingHashKeyFromAttributes"
+#!   USAGE=""
+#!   USE_MARKDOWN="NO"
+#!   VIEW_POSITION="-9307.53 1026.19"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="74"
+#! >
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI TEXT_OR_ATTR UNIQUE_ATT UNIQUE_ATT:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <USER_PARAMETERS
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbeyJuYW1lIjoiVU5JUVVFX0FUVCIsInByb21wdCI6IlVOSVFVRV9BVFQ6IiwidmFsdWVUeXBlIjoic3RyaW5nIiwiZGVmYXVsdFZhbHVlIjoiIiwic3VwcG9ydGVkVmFsdWVUeXBlcyI6WyJleHByZXNzaW9uIiwiZ2xvYmFsUGFyYW1ldGVyIl0sImRlcHJlY2F0ZWRGbGFncyI6WyJub25lIl0sInR5cGUiOiJ0ZXh0IiwiZWRpdG9yIjoicGxhaW50ZXh0In1dfQ=="
+#! >
+#! <PARAMETER_INFO>
+#!     <INFO NAME="UNIQUE_ATT" 
+#!   DEFAULT_VALUE=""
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI TEXT_OR_ATTR UNIQUE_ATT UNIQUE_ATT:"
+#! />
+#! </PARAMETER_INFO>
+#! </USER_PARAMETERS>
+#! <COMMENTS>
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="11"
+#!   NAME="Creating hasing key to evaluate value"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="-7105.1846882105165 723.88618633577971"
+#!   ORDER="500000000001379"
+#!   PALETTE_COLOR="Color8"
+#!   BOTTOM_RIGHT="-4218.7921879218793 -723.89001911506148"
+#!   BOUNDING_RECT="-7105.1846882105165 723.88618633577971 2886.3925002886372 1447.7762054508412"
+#!   STICKY="true"
+#!   COLOUR="0.62352941176470589,0.5725490196078431,0.8784313725490196,1"
+#!   CONTENTS="4 6 5 9 8 "
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="4"
+#!   TYPE="PythonCaller"
+#!   VERSION="4"
+#!   POSITION="-6026.6021363132404 -26.661105771896928"
+#!   BOUNDING_RECT="-6026.6021363132404 -26.661105771896928 430 71"
+#!   ORDER="500000000001408"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="UNIQUE_ATT" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_hash_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_PROCESSING_GROUP" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="HIDE_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="NEW_ATTRIBUTES" PARM_VALUE="_hash_name"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSOURCE" PARM_VALUE="import&lt;space&gt;fme&lt;lf&gt;import&lt;space&gt;fmeobjects&lt;lf&gt;import&lt;space&gt;hashlib&lt;lf&gt;#&lt;space&gt;Template&lt;space&gt;Function&lt;space&gt;interface:&lt;lf&gt;#&lt;space&gt;When&lt;space&gt;using&lt;space&gt;this&lt;space&gt;function&lt;comma&gt;&lt;space&gt;make&lt;space&gt;sure&lt;space&gt;its&lt;space&gt;name&lt;space&gt;is&lt;space&gt;set&lt;space&gt;as&lt;space&gt;the&lt;space&gt;value&lt;space&gt;of&lt;lf&gt;#&lt;space&gt;the&lt;space&gt;&lt;apos&gt;Class&lt;space&gt;or&lt;space&gt;Function&lt;space&gt;to&lt;space&gt;Process&lt;space&gt;Features&lt;apos&gt;&lt;space&gt;transformer&lt;space&gt;parameter&lt;lf&gt;def&lt;space&gt;processFeature&lt;openparen&gt;feature&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;pass&lt;lf&gt;&lt;lf&gt;#&lt;space&gt;Template&lt;space&gt;Class&lt;space&gt;Interface:&lt;lf&gt;#&lt;space&gt;When&lt;space&gt;using&lt;space&gt;this&lt;space&gt;class&lt;comma&gt;&lt;space&gt;make&lt;space&gt;sure&lt;space&gt;its&lt;space&gt;name&lt;space&gt;is&lt;space&gt;set&lt;space&gt;as&lt;space&gt;the&lt;space&gt;value&lt;space&gt;of&lt;lf&gt;#&lt;space&gt;the&lt;space&gt;&lt;apos&gt;Class&lt;space&gt;or&lt;space&gt;Function&lt;space&gt;to&lt;space&gt;Process&lt;space&gt;Features&lt;apos&gt;&lt;space&gt;transformer&lt;space&gt;parameter&lt;lf&gt;class&lt;space&gt;FeatureProcessor&lt;openparen&gt;object&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;def&lt;space&gt;__init__&lt;openparen&gt;self&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;pass&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;def&lt;space&gt;input&lt;openparen&gt;self&lt;comma&gt;feature&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;#Unique&lt;space&gt;ID&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;name=feature.getAttribute&lt;openparen&gt;&lt;apos&gt;UNIQUE_ATT&lt;apos&gt;&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;#.replace&lt;openparen&gt;&lt;apos&gt;&lt;backslash&gt;n&lt;apos&gt;&lt;comma&gt;&lt;space&gt;&lt;apos&gt;&lt;space&gt;&lt;apos&gt;&lt;closeparen&gt;.replace&lt;openparen&gt;&lt;apos&gt;&lt;backslash&gt;r&lt;apos&gt;&lt;comma&gt;&lt;space&gt;&lt;apos&gt;&lt;apos&gt;&lt;closeparen&gt;.replace&lt;openparen&gt;&lt;apos&gt;&lt;backslash&gt;t&lt;apos&gt;&lt;comma&gt;&lt;apos&gt;&lt;space&gt;&lt;apos&gt;&lt;closeparen&gt;.lstrip&lt;openparen&gt;&lt;apos&gt;&lt;space&gt;&lt;apos&gt;&lt;closeparen&gt;.rstrip&lt;openparen&gt;&lt;apos&gt;&lt;space&gt;&lt;apos&gt;&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;name_hashkey=hashlib.sha256&lt;openparen&gt;name.encode&lt;openparen&gt;&lt;apos&gt;utf-8&lt;apos&gt;&lt;closeparen&gt;&lt;closeparen&gt;.hexdigest&lt;openparen&gt;&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;feature.setAttribute&lt;openparen&gt;&lt;apos&gt;_hash_name&lt;apos&gt;&lt;comma&gt;name_hashkey&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;self.pyoutput&lt;openparen&gt;feature&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;def&lt;space&gt;close&lt;openparen&gt;self&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;pass"/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSYMBOL" PARM_VALUE="FeatureProcessor"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="PythonCaller_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="5"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="-6941.3359171256716 -26.661105771896928"
+#!   BOUNDING_RECT="-6941.3359171256716 -26.661105771896928 454 71"
+#!   ORDER="500000000001410"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="UNIQUE_ATT" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; UNIQUE_ATT SET_TO $(UNIQUE_ATT)"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE" PARM_VALUE="NO_OP"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_4"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_IS_LOOKUP="true" PARM_VALUE="No Substitution"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="6"
+#!   TYPE="AttributeRemover"
+#!   VERSION="1"
+#!   POSITION="-5255.7343755255715 -26.661105771896914"
+#!   BOUNDING_RECT="-5255.7343755255715 -26.661105771896914 454 71"
+#!   ORDER="500000000001411"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="UNIQUE_ATT" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_hash_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE="NAME_ATT"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="Cloner_Input"
+#!   POSITION="-8665.5997961320609 23.137289509353167"
+#!   BOUNDING_RECT="-8665.5997961320609 23.137289509353167 454 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="AttributeKeeper_Output"
+#!   POSITION="-3829.9759721520923 -86.661105771896928"
+#!   BOUNDING_RECT="-3829.9759721520923 -86.661105771896928 597.00106825772946 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="7"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="8"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="9"
+#!   SOURCE_NODE="5"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="10"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! </SUBDOCUMENT>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+FME_PYTHON_VERSION 313
+# ============================================================================
+DEFAULT_MACRO $(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_UNIQUE_ATT 
+
+DEFAULT_MACRO $(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_FME_DATA_REPOSITORY 
+
+DEFAULT_MACRO $(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_FME_ENGINE 
+
+DEFAULT_MACRO $(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_FME_JOB_ID 
+
+DEFAULT_MACRO $(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_FME_SECURITY_ROLES 
+
+DEFAULT_MACRO $(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_FME_SECURITY_USER 
+
+DEFAULT_MACRO $(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_FME_SERVER_DEST_DIR 
+
+DEFAULT_MACRO $(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_FME_SERVER_HOST 
+
+DEFAULT_MACRO $(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_FME_SERVER_PORT 
+
+DEFAULT_MACRO $(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_FME_SERVER_REQUEST_HEADERS 
+
+DEFAULT_MACRO $(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_FME_SERVER_REQUEST_METHOD 
+
+DEFAULT_MACRO $(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_FME_SERVER_REQUEST_PARAMETERS 
+
+DEFAULT_MACRO $(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_FME_SERVER_REQUEST_URI 
+
+DEFAULT_MACRO $(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER 
+
+DEFAULT_MACRO $(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER_ID 
+
+DEFAULT_MACRO $(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_FME_SERVER_WEB_URL 
+
+DEFAULT_MACRO $(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_FME_SHAREDRESOURCE_BACKUP 
+
+DEFAULT_MACRO $(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DASHBOARD 
+
+DEFAULT_MACRO $(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DATA 
+
+DEFAULT_MACRO $(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_FME_SHAREDRESOURCE_ENGINE 
+
+DEFAULT_MACRO $(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_FME_SHAREDRESOURCE_LOG 
+
+DEFAULT_MACRO $(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_FME_SHAREDRESOURCE_SYSTEM 
+
+DEFAULT_MACRO $(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_FME_SHAREDRESOURCE_TEMP 
+
+DEFAULT_MACRO $(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_FME_TOPIC 
+
+DEFAULT_MACRO $(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_FME_TOPIC_MESSAGE 
+
+# ============================================================================
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO UNIQUE_ID_CREATOR_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(UNIQUE_ID_CREATOR_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(UNIQUE_ID_CREATOR_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_INPUT1759782692 Input Splitter"   INPUT FEATURE_TYPE "$(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_INPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_CreatingHashKeyFromUniqueAtt Cloner_Input Input Collector"   INPUT FEATURE_TYPE "$(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_CreatingHashKeyFromUniqueAtt_Cloner_Input"
+MACRO CreatingHashKeyFromAttributes_WORKSPACE_NAME $(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_CreatingHashKeyFromUniqueAtt
+MACRO $(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_XFORMER_NAME $(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_CreatingHashKeyFromUniqueAtt
+MACRO $(CreatingHashKeyFromAttributes_WORKSPACE_NAME)___COMPOUND_PARAMETERS 
+MACRO $(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_UNIQUE_ATT $($(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_UNIQUE_ATT)
+MACRO $(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_SUB_DOC_NAME CreatingHashKeyFromAttributes
+MACRO $(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_SUB_DOC_NAME CreatingHashKeyFromAttributes
+DEFAULT_MACRO CreatingHashKeyFromAttributes_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(CreatingHashKeyFromAttributes_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(CreatingHashKeyFromAttributes_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_Cloner_Input1759782692 Input Splitter"   INPUT FEATURE_TYPE "$(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_Cloner_Input"   OUTPUT FEATURE_TYPE "$(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_Cloner_Input"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME { $(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_AttributeCreator_4 }    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_Cloner_Input"    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    ATTR_ACTION { "" "UNIQUE_ATT" "SET_TO" "$($(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_UNIQUE_ATT$encode)" }    OUTPUT { OUTPUT FEATURE_TYPE "$(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_AttributeCreator_4_OUTPUT"        }
+# -------------------------------------------------------------------------
+FME_PYTHON_PATH "$(FME_MF_DIR)"
+FACTORY_DEF {*} PythonFactory    FACTORY_NAME { $(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_PythonCaller_2 }    FLUSH_WHEN_GROUPS_CHANGE { <Unused> }    INPUT  FEATURE_TYPE "$(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_AttributeCreator_4_OUTPUT"    SYMBOL_NAME { FeatureProcessor }    SOURCE_CODE { import<space>fme<lf>import<space>fmeobjects<lf>import<space>hashlib<lf>#<space>Template<space>Function<space>interface:<lf>#<space>When<space>using<space>this<space>function<comma><space>make<space>sure<space>its<space>name<space>is<space>set<space>as<space>the<space>value<space>of<lf>#<space>the<space><apos>Class<space>or<space>Function<space>to<space>Process<space>Features<apos><space>transformer<space>parameter<lf>def<space>processFeature<openparen>feature<closeparen>:<lf><space><space><space><space>pass<lf><lf>#<space>Template<space>Class<space>Interface:<lf>#<space>When<space>using<space>this<space>class<comma><space>make<space>sure<space>its<space>name<space>is<space>set<space>as<space>the<space>value<space>of<lf>#<space>the<space><apos>Class<space>or<space>Function<space>to<space>Process<space>Features<apos><space>transformer<space>parameter<lf>class<space>FeatureProcessor<openparen>object<closeparen>:<lf><space><space><space><space>def<space>__init__<openparen>self<closeparen>:<lf><space><space><space><space><space><space><space><space>pass<lf><space><space><space><space>def<space>input<openparen>self<comma>feature<closeparen>:<lf><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space>#Unique<space>ID<lf><space><space><space><space><space><space><space><space>name=feature.getAttribute<openparen><apos>UNIQUE_ATT<apos><closeparen><lf><space><space><space><space><space><space><space><space>#.replace<openparen><apos><backslash>n<apos><comma><space><apos><space><apos><closeparen>.replace<openparen><apos><backslash>r<apos><comma><space><apos><apos><closeparen>.replace<openparen><apos><backslash>t<apos><comma><apos><space><apos><closeparen>.lstrip<openparen><apos><space><apos><closeparen>.rstrip<openparen><apos><space><apos><closeparen><lf><space><space><space><space><space><space><space><space>name_hashkey=hashlib.sha256<openparen>name.encode<openparen><apos>utf-8<apos><closeparen><closeparen>.hexdigest<openparen><closeparen><lf><space><space><space><space><space><space><space><space>feature.setAttribute<openparen><apos>_hash_name<apos><comma>name_hashkey<closeparen><lf><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space>self.pyoutput<openparen>feature<closeparen><lf><space><space><space><space>def<space>close<openparen>self<closeparen>:<lf><space><space><space><space><space><space><space><space>pass }    OUTPUT { PYOUTPUT FEATURE_TYPE "$(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_PythonCaller_2_OUTPUT"         }
+# -------------------------------------------------------------------------
+# Build the List removal function and regular expression if there was any list attributes to be removed.
+# If not, then we will not have any extra list removal call to @RemoveAttributes, which speeds the
+# normal, non-list removal especially when in Bulk Mode.  Note that this computation of the regular expressions is done
+# once during mapping file parse time.
+INCLUDE [    set listAttributeRemoveRegexps {};    set anyList {no};    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append listAttributeRemoveRegexps ",^$attr$";       set anyList {yes};    };    if { ${anyList} == {no} } {        puts {MACRO $(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC }    } else {        puts "MACRO $(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC @RemoveAttributes(fme_pcre_match\"$listAttributeRemoveRegexps\")"    }; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_AttributeRemover }    INPUT  FEATURE_TYPE "$(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_PythonCaller_2_OUTPUT"    OUTPUT { FEATURE_TYPE "$(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_AttributeRemover_OUTPUT"        @RemoveAttributes(fme_encoded,NAME_ATT)        $($(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC)         }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_AttributeKeeper_Output1759782692 Output Collector"   INPUT FEATURE_TYPE "$(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_AttributeRemover_OUTPUT"   OUTPUT FEATURE_TYPE "$(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_AttributeKeeper_Output"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(CreatingHashKeyFromAttributes_WORKSPACE_NAME))}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_CreatingHashKeyFromUniqueAtt AttributeKeeper_Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_CreatingHashKeyFromUniqueAtt_AttributeKeeper_Output"   OUTPUT FEATURE_TYPE "$(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_CreatingHashKeyFromUniqueAtt_AttributeKeeper_Output"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY_NAME { $(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_AttributeRenamer_2 }    INPUT  FEATURE_TYPE "$(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_CreatingHashKeyFromUniqueAtt_AttributeKeeper_Output" 	ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    MISSING_INPUT_ATTR_HANDLING { RENAME_SET_DEFAULT PRESERVE }    KEEP_OUTPUT_ATTRS_ONLY { no } 	ATTR_ACTION { "_hash_name" "id" "RENAME_SET_DEFAULT" "" }    OUTPUT { OUTPUT FEATURE_TYPE "$(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_AttributeRenamer_2_OUTPUT"        }
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_UUID_4_FORMATTER INPUT Input Collector"   INPUT FEATURE_TYPE "$(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_AttributeRenamer_2_OUTPUT"   OUTPUT FEATURE_TYPE "$(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_UUID_4_FORMATTER_INPUT"
+MACRO UUID_4_FORMATTER_WORKSPACE_NAME $(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_UUID_4_FORMATTER
+MACRO $(UUID_4_FORMATTER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(UUID_4_FORMATTER_WORKSPACE_NAME)_XFORMER_NAME $(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_UUID_4_FORMATTER
+INCLUDE_CUSTOM_TRANSFORMER_VER UUID_4_FORMATTER:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_UUID_4_FORMATTER OUTPUT Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_UUID_4_FORMATTER_OUTPUT"   OUTPUT FEATURE_TYPE "$(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_UUID_4_FORMATTER_OUTPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_OUTPUT1759782692 Output Collector"   INPUT FEATURE_TYPE "$(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_UUID_4_FORMATTER_OUTPUT"   OUTPUT FEATURE_TYPE "$(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_OUTPUT"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(UNIQUE_ID_CREATOR_WORKSPACE_NAME))}]
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN UNIQUE_ID_CREATOR,1,"FGP Tools",d2f3aaee-a8dc-4f45-bd2e-e4e1d12c451e,"Linked by Default",No,NO_PARALLELISM,,No,19238,YES,No,37,No
+# 
+# TRANSFORMER_END
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="FGP Tools"
+#!   DESCRIPTION=""
+#!   DOC_EXTENTS="4196.15 976.572"
+#!   DOC_TOP_LEFT="-2031.27 -488.284"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="19238"
+#!   FME_DOCUMENT_GUID="d2f3aaee-a8dc-4f45-bd2e-e4e1d12c451e"
+#!   FME_DOCUMENT_PRIORGUID="3bf1cf8a-492d-4552-812a-ed523b8f7877,f44fddc3-fa15-49cb-8be1-8c674a8f4e54"
+#!   FME_LINKED_TRANSFORMER_VERSION="1"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY=""
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2019.0.0.0 (20190328 - Build 19238 - WIN32)"
+#!   LAST_SAVE_DATE="2021-04-12T10:58:14"
+#!   MARKDOWN_DESCRIPTION=""
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="37"
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="UNIQUE_ID_CREATOR"
+#!   USAGE=""
+#!   USE_MARKDOWN="NO"
+#!   VIEW_POSITION="-2437.52 1200.01"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="100"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR UNIQUE_ATT UNIQUE_ATT:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="7"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Creates hash key from UNIQUE_ATT attribute to create unique ID&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-1181.4711392891893 309.53485497494665"
+#!   TOP_LEFT="-1181.4711392891893 309.53485497494665"
+#!   BOTTOM_RIGHT="-380.4711392891893 308.53485497494665"
+#!   BOUNDING_RECT="-1181.4711392891893 309.53485497494665 801 1"
+#!   ORDER="500000000001421"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="2"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="8"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Renames &apos;_hash_key&apos; attribute to &apos;id&apos;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-128.83398595833432 250.15926121900907"
+#!   TOP_LEFT="-128.83398595833432 250.15926121900907"
+#!   BOTTOM_RIGHT="414.16601404166568 249.15926121900907"
+#!   BOUNDING_RECT="-128.83398595833432 250.15926121900907 543 1"
+#!   ORDER="500000000001422"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="3"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="9"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Converts &apos;id&apos; attribute to UUID4 format&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="593.75055291868648 220.54150948593622"
+#!   TOP_LEFT="593.75055291868648 220.54150948593622"
+#!   BOTTOM_RIGHT="1172.7505529186865 219.54150948593622"
+#!   BOUNDING_RECT="593.75055291868648 220.54150948593622 579 1"
+#!   ORDER="500000000001423"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="4"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="10"
+#!   NAME="UNIQUE_ID_CREATOR"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="-1269.5447441458327 488.28792588151032"
+#!   ORDER="500000000001424"
+#!   PALETTE_COLOR="Color4"
+#!   BOTTOM_RIGHT="1269.5431467330754 -488.28433984114668"
+#!   BOUNDING_RECT="-1269.5447441458327 488.28792588151032 2539.0878908789082 976.57226572265699"
+#!   STICKY="false"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,1"
+#!   CONTENTS=""
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="2"
+#!   TYPE="SubDocumentTransformer"
+#!   VERSION="1"
+#!   POSITION="-1108.9542376449976 -194.35842284672026"
+#!   BOUNDING_RECT="-1108.9542376449976 -194.35842284672026 646.00106825772946 71"
+#!   ORDER="500000000001418"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="AttributeKeeper_Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="UNIQUE_ATT" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_hash_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="SUB_DOC_NAME" PARM_VALUE="CreatingHashKeyFromAttributes"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="UNIQUE_ATT" PARM_VALUE="$(UNIQUE_ATT)"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="CreatingHashKeyFromUniqueAtt"/>
+#!     <XFORM_PARM PARM_NAME="__COMPOUND_PARAMETERS" PARM_VALUE=""/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="3"
+#!   TYPE="AttributeRenamer"
+#!   VERSION="4"
+#!   POSITION="-128.83398595833432 -223.97617457979311"
+#!   BOUNDING_RECT="-128.83398595833432 -223.97617457979311 454 71"
+#!   ORDER="500000000001420"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="UNIQUE_ATT" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="_hash_name id RENAME_SET_DEFAULT "/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRenamer_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="4"
+#!   TYPE="UUID_4_FORMATTER"
+#!   VERSION="1"
+#!   POSITION="593.75055291868648 -194.35842284672026"
+#!   BOUNDING_RECT="593.75055291868648 -194.35842284672026 471.00106825772946 71"
+#!   ORDER="500000000001419"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="UNIQUE_ATT" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="UUID_4_FORMATTER"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="11"
+#!   NAME="INPUT"
+#!   POSITION="-2031.2703127031268 -223.97617457979311"
+#!   BOUNDING_RECT="-2031.2703127031268 -223.97617457979311 553.06376253500412 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="13"
+#!   NAME="OUTPUT"
+#!   POSITION="1430.8789024492287 -283.97617457979311"
+#!   BOUNDING_RECT="1430.8789024492287 -283.97617457979311 734.00106825772946 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="12"
+#!   SOURCE_NODE="11"
+#!   TARGET_NODE="2"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 Cloner_Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="5"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 AttributeKeeper_Output"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="6"
+#!   SOURCE_NODE="3"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 INPUT"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="14"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="13"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! <SUBDOCUMENT
+#!   NAME="CreatingHashKeyFromAttributes"
+#!   CATEGORY=""
+#!   DESCRIPTION=""
+#!   DOC_DYNAMIC_INPUT_ATTRS="0"
+#!   DOC_EXTENTS="5432.62 1447.78"
+#!   DOC_TOP_LEFT="-8665.6 -723.89"
+#!   FME_DOCUMENT_GUID=""
+#!   FME_DOCUMENT_PRIORGUID=""
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   HISTORY=""
+#!   IS_VISIBLE="true"
+#!   LAST_SAVE_BUILD=""
+#!   LAST_SAVE_DATE=""
+#!   MARKDOWN_DESCRIPTION=""
+#!   MARKDOWN_USAGE=""
+#!   PYTHON_COMPATIBILITY=""
+#!   SUPPRESS_UPGRADE="false"
+#!   TITLE="CreatingHashKeyFromAttributes"
+#!   USAGE=""
+#!   USE_MARKDOWN="NO"
+#!   VIEW_POSITION="-9307.53 1026.19"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="74"
+#! >
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI TEXT_OR_ATTR UNIQUE_ATT UNIQUE_ATT:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <COMMENTS>
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="11"
+#!   NAME="Creating hasing key to evaluate value"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="-7105.1846882105165 723.88618633577971"
+#!   ORDER="500000000001379"
+#!   PALETTE_COLOR="Color8"
+#!   BOTTOM_RIGHT="-4218.7921879218793 -723.89001911506148"
+#!   BOUNDING_RECT="-7105.1846882105165 723.88618633577971 2886.3925002886372 1447.7762054508412"
+#!   STICKY="true"
+#!   COLOUR="0.62352941176470589,0.5725490196078431,0.8784313725490196,1"
+#!   CONTENTS="5 8 4 9 6 "
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="4"
+#!   TYPE="PythonCaller"
+#!   VERSION="4"
+#!   POSITION="-6026.6021363132404 -26.661105771896928"
+#!   BOUNDING_RECT="-6026.6021363132404 -26.661105771896928 430 71"
+#!   ORDER="500000000001408"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="UNIQUE_ATT" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_hash_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="HIDE_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="NEW_ATTRIBUTES" PARM_VALUE="_hash_name"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSOURCE" PARM_VALUE="import&lt;space&gt;fme&lt;lf&gt;import&lt;space&gt;fmeobjects&lt;lf&gt;import&lt;space&gt;hashlib&lt;lf&gt;#&lt;space&gt;Template&lt;space&gt;Function&lt;space&gt;interface:&lt;lf&gt;#&lt;space&gt;When&lt;space&gt;using&lt;space&gt;this&lt;space&gt;function&lt;comma&gt;&lt;space&gt;make&lt;space&gt;sure&lt;space&gt;its&lt;space&gt;name&lt;space&gt;is&lt;space&gt;set&lt;space&gt;as&lt;space&gt;the&lt;space&gt;value&lt;space&gt;of&lt;lf&gt;#&lt;space&gt;the&lt;space&gt;&lt;apos&gt;Class&lt;space&gt;or&lt;space&gt;Function&lt;space&gt;to&lt;space&gt;Process&lt;space&gt;Features&lt;apos&gt;&lt;space&gt;transformer&lt;space&gt;parameter&lt;lf&gt;def&lt;space&gt;processFeature&lt;openparen&gt;feature&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;pass&lt;lf&gt;&lt;lf&gt;#&lt;space&gt;Template&lt;space&gt;Class&lt;space&gt;Interface:&lt;lf&gt;#&lt;space&gt;When&lt;space&gt;using&lt;space&gt;this&lt;space&gt;class&lt;comma&gt;&lt;space&gt;make&lt;space&gt;sure&lt;space&gt;its&lt;space&gt;name&lt;space&gt;is&lt;space&gt;set&lt;space&gt;as&lt;space&gt;the&lt;space&gt;value&lt;space&gt;of&lt;lf&gt;#&lt;space&gt;the&lt;space&gt;&lt;apos&gt;Class&lt;space&gt;or&lt;space&gt;Function&lt;space&gt;to&lt;space&gt;Process&lt;space&gt;Features&lt;apos&gt;&lt;space&gt;transformer&lt;space&gt;parameter&lt;lf&gt;class&lt;space&gt;FeatureProcessor&lt;openparen&gt;object&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;def&lt;space&gt;__init__&lt;openparen&gt;self&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;pass&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;def&lt;space&gt;input&lt;openparen&gt;self&lt;comma&gt;feature&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;#Unique&lt;space&gt;ID&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;name=feature.getAttribute&lt;openparen&gt;&lt;apos&gt;UNIQUE_ATT&lt;apos&gt;&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;#.replace&lt;openparen&gt;&lt;apos&gt;&lt;backslash&gt;n&lt;apos&gt;&lt;comma&gt;&lt;space&gt;&lt;apos&gt;&lt;space&gt;&lt;apos&gt;&lt;closeparen&gt;.replace&lt;openparen&gt;&lt;apos&gt;&lt;backslash&gt;r&lt;apos&gt;&lt;comma&gt;&lt;space&gt;&lt;apos&gt;&lt;apos&gt;&lt;closeparen&gt;.replace&lt;openparen&gt;&lt;apos&gt;&lt;backslash&gt;t&lt;apos&gt;&lt;comma&gt;&lt;apos&gt;&lt;space&gt;&lt;apos&gt;&lt;closeparen&gt;.lstrip&lt;openparen&gt;&lt;apos&gt;&lt;space&gt;&lt;apos&gt;&lt;closeparen&gt;.rstrip&lt;openparen&gt;&lt;apos&gt;&lt;space&gt;&lt;apos&gt;&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;name_hashkey=hashlib.sha256&lt;openparen&gt;name.encode&lt;openparen&gt;&lt;apos&gt;utf-8&lt;apos&gt;&lt;closeparen&gt;&lt;closeparen&gt;.hexdigest&lt;openparen&gt;&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;feature.setAttribute&lt;openparen&gt;&lt;apos&gt;_hash_name&lt;apos&gt;&lt;comma&gt;name_hashkey&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;self.pyoutput&lt;openparen&gt;feature&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;def&lt;space&gt;close&lt;openparen&gt;self&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;pass"/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSYMBOL" PARM_VALUE="FeatureProcessor"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="PythonCaller_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="5"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="-6941.3359171256716 -26.661105771896928"
+#!   BOUNDING_RECT="-6941.3359171256716 -26.661105771896928 454 71"
+#!   ORDER="500000000001410"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="UNIQUE_ATT" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; UNIQUE_ATT SET_TO $(UNIQUE_ATT)"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_4"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="6"
+#!   TYPE="AttributeRemover"
+#!   VERSION="1"
+#!   POSITION="-5255.7343755255715 -26.661105771896914"
+#!   BOUNDING_RECT="-5255.7343755255715 -26.661105771896914 454 71"
+#!   ORDER="500000000001411"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="UNIQUE_ATT" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_hash_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE="NAME_ATT"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="Cloner_Input"
+#!   POSITION="-8665.5997961320609 23.137289509353167"
+#!   BOUNDING_RECT="-8665.5997961320609 23.137289509353167 454 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="AttributeKeeper_Output"
+#!   POSITION="-3829.9759721520923 -86.661105771896928"
+#!   BOUNDING_RECT="-3829.9759721520923 -86.661105771896928 597.00106825772946 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="7"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="8"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="9"
+#!   SOURCE_NODE="5"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="10"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! </SUBDOCUMENT>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+FME_PYTHON_VERSION 37
+DEFAULT_MACRO $(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_UNIQUE_ATT 
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO UNIQUE_ID_CREATOR_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(UNIQUE_ID_CREATOR_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(UNIQUE_ID_CREATOR_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_INPUT1618239494 Input Splitter"   INPUT FEATURE_TYPE "$(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_INPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_CreatingHashKeyFromUniqueAtt Cloner_Input Input Collector"   INPUT FEATURE_TYPE "$(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_CreatingHashKeyFromUniqueAtt_Cloner_Input"
+MACRO CreatingHashKeyFromAttributes_WORKSPACE_NAME $(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_CreatingHashKeyFromUniqueAtt
+MACRO $(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_XFORMER_NAME $(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_CreatingHashKeyFromUniqueAtt
+MACRO $(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(CreatingHashKeyFromAttributes_WORKSPACE_NAME)___COMPOUND_PARAMETERS 
+MACRO $(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_SUB_DOC_NAME CreatingHashKeyFromAttributes
+MACRO $(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_UNIQUE_ATT $($(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_UNIQUE_ATT)
+DEFAULT_MACRO CreatingHashKeyFromAttributes_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(CreatingHashKeyFromAttributes_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(CreatingHashKeyFromAttributes_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_Cloner_Input1618239494 Input Splitter"   INPUT FEATURE_TYPE "$(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_Cloner_Input"   OUTPUT FEATURE_TYPE "$(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_Cloner_Input"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_AttributeCreator_4    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_Cloner_Input"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "UNIQUE_ATT" "SET_TO" "$($(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_UNIQUE_ATT$encode)" }    OUTPUT OUTPUT FEATURE_TYPE "$(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_AttributeCreator_4_OUTPUT"
+# -------------------------------------------------------------------------
+FME_PYTHON_PATH "$(FME_MF_DIR)"
+FACTORY_DEF * PythonFactory    FACTORY_NAME $(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_PythonCaller_2    INPUT  FEATURE_TYPE "$(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_AttributeCreator_4_OUTPUT"    SYMBOL_NAME FeatureProcessor    PYTHON_NAMESPACE FMEOBJECTS    SOURCE_CODE import<space>fme<lf>import<space>fmeobjects<lf>import<space>hashlib<lf>#<space>Template<space>Function<space>interface:<lf>#<space>When<space>using<space>this<space>function<comma><space>make<space>sure<space>its<space>name<space>is<space>set<space>as<space>the<space>value<space>of<lf>#<space>the<space><apos>Class<space>or<space>Function<space>to<space>Process<space>Features<apos><space>transformer<space>parameter<lf>def<space>processFeature<openparen>feature<closeparen>:<lf><space><space><space><space>pass<lf><lf>#<space>Template<space>Class<space>Interface:<lf>#<space>When<space>using<space>this<space>class<comma><space>make<space>sure<space>its<space>name<space>is<space>set<space>as<space>the<space>value<space>of<lf>#<space>the<space><apos>Class<space>or<space>Function<space>to<space>Process<space>Features<apos><space>transformer<space>parameter<lf>class<space>FeatureProcessor<openparen>object<closeparen>:<lf><space><space><space><space>def<space>__init__<openparen>self<closeparen>:<lf><space><space><space><space><space><space><space><space>pass<lf><space><space><space><space>def<space>input<openparen>self<comma>feature<closeparen>:<lf><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space>#Unique<space>ID<lf><space><space><space><space><space><space><space><space>name=feature.getAttribute<openparen><apos>UNIQUE_ATT<apos><closeparen><lf><space><space><space><space><space><space><space><space>#.replace<openparen><apos><backslash>n<apos><comma><space><apos><space><apos><closeparen>.replace<openparen><apos><backslash>r<apos><comma><space><apos><apos><closeparen>.replace<openparen><apos><backslash>t<apos><comma><apos><space><apos><closeparen>.lstrip<openparen><apos><space><apos><closeparen>.rstrip<openparen><apos><space><apos><closeparen><lf><space><space><space><space><space><space><space><space>name_hashkey=hashlib.sha256<openparen>name.encode<openparen><apos>utf-8<apos><closeparen><closeparen>.hexdigest<openparen><closeparen><lf><space><space><space><space><space><space><space><space>feature.setAttribute<openparen><apos>_hash_name<apos><comma>name_hashkey<closeparen><lf><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space>self.pyoutput<openparen>feature<closeparen><lf><space><space><space><space>def<space>close<openparen>self<closeparen>:<lf><space><space><space><space><space><space><space><space>pass    OUTPUT PYOUTPUT FEATURE_TYPE "$(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_PythonCaller_2_OUTPUT"
+# -------------------------------------------------------------------------
+INCLUDE [    set macroLine "MACRO $(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_AttributeRemover_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_AttributeRemover    INPUT  FEATURE_TYPE "$(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_PythonCaller_2_OUTPUT"    OUTPUT { FEATURE_TYPE "$(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_AttributeRemover_OUTPUT"        @RemoveAttributes(fme_encoded,NAME_ATT)        @RemoveAttributes(fme_pcre_match"$($(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_AttributeRemover_LIST_EXP)")         }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_AttributeKeeper_Output1618239494 Output Collector"   INPUT FEATURE_TYPE "$(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_AttributeRemover_OUTPUT"   OUTPUT FEATURE_TYPE "$(CreatingHashKeyFromAttributes_WORKSPACE_NAME)_AttributeKeeper_Output"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(CreatingHashKeyFromAttributes_WORKSPACE_NAME))}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_CreatingHashKeyFromUniqueAtt AttributeKeeper_Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_CreatingHashKeyFromUniqueAtt_AttributeKeeper_Output"   OUTPUT FEATURE_TYPE "$(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_CreatingHashKeyFromUniqueAtt_AttributeKeeper_Output"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY_NAME $(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_AttributeRenamer_2    INPUT  FEATURE_TYPE "$(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_CreatingHashKeyFromUniqueAtt_AttributeKeeper_Output" 	 ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV 	 ATTR_ACTION { "_hash_name" "id" "RENAME_SET_DEFAULT" "" }    OUTPUT OUTPUT FEATURE_TYPE "$(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_AttributeRenamer_2_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_UUID_4_FORMATTER INPUT Input Collector"   INPUT FEATURE_TYPE "$(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_AttributeRenamer_2_OUTPUT"   OUTPUT FEATURE_TYPE "$(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_UUID_4_FORMATTER_INPUT"
+MACRO UUID_4_FORMATTER_WORKSPACE_NAME $(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_UUID_4_FORMATTER
+MACRO $(UUID_4_FORMATTER_WORKSPACE_NAME)_XFORMER_NAME $(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_UUID_4_FORMATTER
+MACRO $(UUID_4_FORMATTER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+INCLUDE_CUSTOM_TRANSFORMER_VER UUID_4_FORMATTER:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_UUID_4_FORMATTER OUTPUT Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_UUID_4_FORMATTER_OUTPUT"   OUTPUT FEATURE_TYPE "$(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_UUID_4_FORMATTER_OUTPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_OUTPUT1618239494 Output Collector"   INPUT FEATURE_TYPE "$(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_UUID_4_FORMATTER_OUTPUT"   OUTPUT FEATURE_TYPE "$(UNIQUE_ID_CREATOR_WORKSPACE_NAME)_OUTPUT"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(UNIQUE_ID_CREATOR_WORKSPACE_NAME))}]

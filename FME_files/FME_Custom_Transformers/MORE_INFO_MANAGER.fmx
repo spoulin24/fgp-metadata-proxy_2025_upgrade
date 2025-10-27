@@ -1,0 +1,1777 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN MORE_INFO_MANAGER,2,"""FGP Tools""",e1d9a328-0a0b-47cc-a4bb-42b2d7a025e8,"Linked by Default",No,NO_PARALLELISM,,No,25606,YES,No,313,No,,both
+# <p><strong>Description</strong> </p>
+# <p>This transformer tests the more_info{}.link list for non empty value values and filters them out where missing.</p>
+# <p><strong>Input Ports </strong></p>
+# <p>INPUT: Input metadata records to process.</p>
+# <p><strong>Output Ports</strong> </p>
+# <p>OUTPUT: The process output metdata records.</p>
+# <p><strong>Parameters </strong></p>
+# <p>NONE</p>
+# TRANSFORMER_END
+#!   A0_PREVIEW_IMAGE="data:image/png;base64,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"
+#!   ARCGIS_COMPATIBILITY="ARCGIS_AUTO"
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="&quot;FGP Tools&quot;"
+#!   DATA_PROCESSING_TYPE="both"
+#!   DESCRIPTION="&lt;p&gt;&lt;strong&gt;Description&lt;/strong&gt; &lt;/p&gt;&#10;&lt;p&gt;This transformer tests the more_info{}.link list for non empty value values and filters them out where missing.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Input Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;INPUT: Input metadata records to process.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Output Ports&lt;/strong&gt; &lt;/p&gt;&#10;&lt;p&gt;OUTPUT: The process output metdata records.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Parameters &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;NONE&lt;/p&gt;"
+#!   DOC_EXTENTS="8257.85 2052.49"
+#!   DOC_TOP_LEFT="-966.891 -1728.41"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="25606"
+#!   FME_DOCUMENT_GUID="e1d9a328-0a0b-47cc-a4bb-42b2d7a025e8"
+#!   FME_DOCUMENT_PRIORGUID=""
+#!   FME_LINKED_TRANSFORMER_VERSION="2"
+#!   FME_NAMES_ENCODING="windows-1252"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY="Unknown,Unknown,Original&lt;space&gt;versin,27&lt;solidus&gt;09&lt;solidus&gt;2021,Daniel&lt;space&gt;Pilon,Documentation"
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2025.1.0.0 (20250704 - Build 25606 - WIN64)"
+#!   LAST_SAVE_DATE="2025-10-06T15:43:26"
+#!   MARKDOWN_DESCRIPTION="**Description** &#10;&#10;This transformer tests the more_info{}.link list for non empty value values and filters them out where missing.&#10;&#10;&#10;**Input Ports **&#10;&#10;INPUT: Input metadata records to process.&#10;&#10;&#10;**Output Ports** &#10;&#10;OUTPUT: The process output metdata records.&#10;&#10;**Parameters **&#10;&#10;NONE"
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="313"
+#!   REPLACED_BY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="MORE_INFO_MANAGER"
+#!   USAGE=""
+#!   USE_MARKDOWN="YES"
+#!   VIEW_POSITION="-882.684 992.334"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="57"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! </GLOBAL_PARAMETERS>
+#! <USER_PARAMETERS
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbXX0="
+#! >
+#! <PARAMETER_INFO>
+#! </PARAMETER_INFO>
+#! </USER_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="30"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;This transformer tests the more_info{}.link list for valid attribute values and filters them out where missing&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-150 190.83199279036307"
+#!   TOP_LEFT="-150 190.83199279036307"
+#!   BOTTOM_RIGHT="1204.1634322593225 -98.545600985574652"
+#!   BOUNDING_RECT="-150 190.83199279036307 1354.1634322593225 289.37759377593773"
+#!   ORDER="500000000000913"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{9e92fdeb-e7bf-414b-8863-e2ad10bf4f7e}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="0"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="31"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Generates UUID for use within this transformer only&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="693.56821700526973 -450"
+#!   TOP_LEFT="693.56821700526973 -450"
+#!   BOTTOM_RIGHT="1131.5603781768814 -449"
+#!   BOUNDING_RECT="693.56821700526973 -450 437.99216117161171 -1"
+#!   ORDER="500000000000915"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{1f112895-d290-49a8-a3dd-f20e2db058fa}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="4"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="32"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Removes all attributes except UUID and more_info{}.link&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="1284.3373390015674 158.32458887406582"
+#!   TOP_LEFT="1284.3373390015674 158.32458887406582"
+#!   BOTTOM_RIGHT="1783.3164381675592 159.32458887406582"
+#!   BOUNDING_RECT="1284.3373390015674 158.32458887406582 498.97909916599167 -1"
+#!   ORDER="500000000000917"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{70109bd7-e03e-4f5a-a740-c2336cd3ca7f}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="12"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="33"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Explodes more_info{}.link list into non-list link attribute&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="1889.9693030917228 158.32458887406582"
+#!   TOP_LEFT="1889.9693030917228 158.32458887406582"
+#!   BOTTOM_RIGHT="2434.4078412271042 -15.426848640309316"
+#!   BOUNDING_RECT="1889.9693030917228 158.32458887406582 544.43853813538135 173.75143751437514"
+#!   ORDER="500000000000918"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{89e857ae-6d33-41fb-adfd-4a90e45d072a}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="5"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="34"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Removes link attributes with no value&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="2707.8044019365384 158.32458887406582"
+#!   TOP_LEFT="2707.8044019365384 158.32458887406582"
+#!   BOTTOM_RIGHT="3137.7886705292244 159.32458887406582"
+#!   BOUNDING_RECT="2707.8044019365384 158.32458887406582 429.98426859268591 -1"
+#!   ORDER="500000000000919"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{f5200935-a030-43ab-b435-ec34b9f2906c}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="7"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="35"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Creates protocol attribute with hard coded https value&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="3440.5658143886253 158.32458887406582"
+#!   TOP_LEFT="3440.5658143886253 158.32458887406582"
+#!   BOTTOM_RIGHT="3894.5249321048022 159.32458887406582"
+#!   BOUNDING_RECT="3440.5658143886253 158.32458887406582 453.95911771617716 -1"
+#!   ORDER="500000000000920"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{f85b4934-44a4-45aa-bbed-85f2e29ce519}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="8"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="36"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Merges filtered link attributes and protocol attributes back to dataset using _uuid attribute.  Attributes are added to recreated more_info{} list&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="4509.9488758141006 -295.32495401206728"
+#!   TOP_LEFT="4509.9488758141006 -295.32495401206728"
+#!   BOTTOM_RIGHT="5185.1992689430317 -587.82757903831748"
+#!   BOUNDING_RECT="4509.9488758141006 -295.32495401206728 675.25039312893125 292.50262502625026"
+#!   ORDER="500000000000921"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{a81c657c-ffa8-4c6d-9c5a-4454295a9f29}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="9"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="37"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Removes out of scope attributes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="5162.279824552631 -780.70206140657911"
+#!   TOP_LEFT="5162.279824552631 -780.70206140657911"
+#!   BOTTOM_RIGHT="5918.0974296036811 -954.45349892095419"
+#!   BOUNDING_RECT="5162.279824552631 -780.70206140657911 755.81760505105046 173.75143751437514"
+#!   ORDER="500000000000923"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{682d9944-8561-4b35-94f9-cdbcad00a89b}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="13"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="38"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Removes more_info{} list for later recreation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="2301.6495682358527 -600"
+#!   TOP_LEFT="2301.6495682358527 -600"
+#!   BOTTOM_RIGHT="2907.9051307914783 -770.00140001400018"
+#!   BOUNDING_RECT="2301.6495682358527 -600 606.2555625556256 170.00140001400013"
+#!   ORDER="500000000000924"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{8f09947c-3603-4e02-8c8b-6957925fe0f3}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="10"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="39"
+#!   NAME="New Bookmark"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="-162.03865742361126 324.07731484722251"
+#!   ORDER="500000000000914"
+#!   PALETTE_COLOR=""
+#!   BOTTOM_RIGHT="6636.0312725934282 -1728.4123458518534"
+#!   BOUNDING_RECT="-162.03865742361126 324.07731484722251 6798.069930017039 2052.489660699076"
+#!   STICKY="false"
+#!   COLOUR="0.27058823529411763,0.039215686274509803,0.41960784313725491,0.39215686274509803"
+#!   CONTENTS=""
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="4"
+#!   TYPE="UniqueIdentifierGenerator"
+#!   VERSION="0"
+#!   POSITION="719.10441326635521 -831.96379651308064"
+#!   BOUNDING_RECT="719.10441326635521 -831.96379651308064 546.484375 65"
+#!   ORDER="500000000000903"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="more_info{}.link" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="OUTPUT_ATTRIBUTE_NAME_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TYPE_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="UUID_ATTR" PARM_VALUE="_uuid"/>
+#!     <XFORM_PARM PARM_NAME="UUID_FORMAT" PARM_VALUE="ULID"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="UniqueIdentifierGenerator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="5"
+#!   TYPE="ListExploder"
+#!   VERSION="6"
+#!   POSITION="1952.5499358116299 -288.7779975838975"
+#!   BOUNDING_RECT="1952.5499358116299 -288.7779975838975 431 71"
+#!   ORDER="500000000000904"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="ELEMENTS"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="link" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="link" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE_LOOKUP" PARM_VALUE="HANDLE_CONFLICT"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES_LOOKUP" PARM_VALUE="INCOMING_IF_CONFLICT"/>
+#!     <XFORM_PARM PARM_NAME="INCOMING_PREFIX" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="INDEX_ATTR" PARM_VALUE="_element_index"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTR" PARM_VALUE="more_info{}"/>
+#!     <XFORM_PARM PARM_NAME="OAN_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ListExploder"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE" PARM_IS_LOOKUP="true" PARM_VALUE="Merge List Attributes"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES" PARM_IS_LOOKUP="true" PARM_VALUE="Use List Attribute Values"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="6"
+#!   TYPE="AttributeExposer"
+#!   VERSION="2"
+#!   POSITION="62.500625006250061 -831.96379651308064"
+#!   BOUNDING_RECT="62.500625006250061 -831.96379651308064 431 71"
+#!   ORDER="500000000000905"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="more_info{}.link" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="more_info{}.link,,id,"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="7"
+#!   TYPE="Tester"
+#!   VERSION="4"
+#!   POSITION="2707.8044019365384 -288.7779975838975"
+#!   BOUNDING_RECT="2707.8044019365384 -288.7779975838975 431 71"
+#!   ORDER="500000000000906"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="PASSED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="link" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="FAILED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="link" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_MSG" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="ACROSS_OUTPUT_PORTS"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST link ATTRIBUTE_HAS_A_VALUE &quot;&quot;"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="TEST"/>
+#!     <XFORM_PARM PARM_NAME="TEST_PREVIEW_GROUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="8"
+#!   TYPE="AttributeCreator"
+#!   VERSION="10"
+#!   POSITION="3464.5249321048027 -288.7779975838975"
+#!   BOUNDING_RECT="3464.5249321048027 -288.7779975838975 431 71"
+#!   ORDER="500000000000907"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="protocol" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="link" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; protocol SET_TO HTTPS varchar&lt;openparen&gt;200&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE" PARM_VALUE="NO_OP"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_MODIFIED_ATTRIBUTE_TYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_IS_LOOKUP="true" PARM_VALUE="No Substitution"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="9"
+#!   TYPE="FeatureMerger"
+#!   VERSION="21"
+#!   POSITION="4617.9746474298418 -884.32710761384999"
+#!   BOUNDING_RECT="4617.9746474298418 -884.32710761384999 431 71"
+#!   ORDER="500000000000909"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="MERGED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="protocol" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="link" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="more_info{}.protocol" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="more_info{}.link" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="more_info{}.id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="more_info{}._uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="more_info{}._element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="UNMERGED_REQUESTOR"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <OUTPUT_FEAT NAME="USED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <XFORM_ATTR ATTR_NAME="protocol" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="link" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="numReferences" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <OUTPUT_FEAT NAME="UNUSED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="3"/>
+#!     <XFORM_ATTR ATTR_NAME="protocol" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="link" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="4"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="protocol" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="link" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE" PARM_VALUE="Merge Supplier"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES_LOOKUP" PARM_VALUE="REQUESTOR_IF_CONFLICT"/>
+#!     <XFORM_PARM PARM_NAME="CLEANING_TOLERANCE_LOOKUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CONNECT_Z_MODE_LOOKUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GENERATE_LIST_GROUP" PARM_VALUE="YES"/>
+#!     <XFORM_PARM PARM_NAME="GEOM_TYPE_VAL" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_PROCESSING_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="IGNORE_NULLS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="JOIN_ATTRIBUTES_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="JOIN_KEYS" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;_uuid&lt;closeparen&gt; &lt;at&gt;Value&lt;openparen&gt;_uuid&lt;closeparen&gt; AUTO"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE_MODE_LU" PARM_VALUE="ALL"/>
+#!     <XFORM_PARM PARM_NAME="LIST_NAME" PARM_VALUE="more_info"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_COUNT_ATTR" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_TYPE_VAL" PARM_VALUE="ATTRIBUTES"/>
+#!     <XFORM_PARM PARM_NAME="MODE_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="ACROSS_OUTPUT_PORTS"/>
+#!     <XFORM_PARM PARM_NAME="PROCESS_DUPS" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="REJECT_NULL_MISSING_KEYS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIERS_FIRST" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIER_PREFIX" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="FeatureMerger"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES" PARM_IS_LOOKUP="true" PARM_VALUE="Use Requestor"/>
+#!     <XFORM_PARM PARM_NAME="CLEANING_TOLERANCE" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CONNECT_Z_MODE" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GEOM_TYPE" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE_MODE" PARM_IS_LOOKUP="true" PARM_VALUE="All Attributes"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_TYPE" PARM_IS_LOOKUP="true" PARM_VALUE="Attributes Only"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="10"
+#!   TYPE="AttributeRemover"
+#!   VERSION="1"
+#!   POSITION="2341.0727934439828 -887.27739129243128"
+#!   BOUNDING_RECT="2341.0727934439828 -887.27739129243128 431 71"
+#!   ORDER="500000000000911"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE="more_info&lt;opencurly&gt;&lt;closecurly&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="11"
+#!   TYPE="Terminator"
+#!   VERSION="3"
+#!   POSITION="5316.1842439048942 -1429.7528596200996"
+#!   BOUNDING_RECT="5316.1842439048942 -1429.7528596200996 431 71"
+#!   ORDER="500000000000912"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE="Feature&lt;space&gt;Merger&lt;space&gt;Error:&lt;space&gt;Translation&lt;space&gt;Terminated"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Terminator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="12"
+#!   TYPE="AttributeKeeper"
+#!   VERSION="3"
+#!   POSITION="1316.053465545549 -288.7779975838975"
+#!   BOUNDING_RECT="1316.053465545549 -288.7779975838975 431 71"
+#!   ORDER="500000000000916"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="more_info{}.link" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="CREATE_BULK_MODE_FEATURES" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="KEEP_ATTRS" PARM_VALUE="_uuid,id"/>
+#!     <XFORM_PARM PARM_NAME="KEEP_LIST" PARM_VALUE="more_info&lt;opencurly&gt;&lt;closecurly&gt;"/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_ON_ATTRIBUTE_CHANGE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeKeeper_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="13"
+#!   TYPE="AttributeRemover"
+#!   VERSION="1"
+#!   POSITION="5356.007101331571 -1127.7219277562958"
+#!   BOUNDING_RECT="5356.007101331571 -1127.7219277562958 431 71"
+#!   ORDER="500000000000922"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="more_info{}.protocol" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="more_info{}.link" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="more_info{}.id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="more_info{}._element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE="more_info&lt;opencurly&gt;&lt;closecurly&gt;._uuid"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE="_element_index,_uuid,protocol,link"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="40"
+#!   TYPE="ATTRIBUTE_UNEXPOSER"
+#!   VERSION="2"
+#!   POSITION="5926.3135526092092 -1111.2751906260032"
+#!   BOUNDING_RECT="5926.3135526092092 -1111.2751906260032 533.00106825772946 71"
+#!   ORDER="500000000000926"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_UNEXPOSER"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="INPUT"
+#!   POSITION="-966.89109542872961 -831.96379651308064"
+#!   BOUNDING_RECT="-966.89109542872961 -831.96379651308064 431 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="OUTPUT"
+#!   POSITION="6859.9548176806529 -1252.6321052684211"
+#!   BOUNDING_RECT="6859.9548176806529 -1252.6321052684211 431 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="15"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="16"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="12"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="17"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="10"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="1"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="18"
+#!   SOURCE_NODE="5"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="fo 0 ELEMENTS"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="19"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="20"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="8"
+#!   SOURCE_PORT_DESC="fo 0 PASSED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="21"
+#!   SOURCE_NODE="8"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 1 SUPPLIER"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="22"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="13"
+#!   SOURCE_PORT_DESC="fo 0 MERGED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="23"
+#!   SOURCE_NODE="10"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 REQUESTOR"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="24"
+#!   SOURCE_NODE="12"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="41"
+#!   SOURCE_NODE="13"
+#!   TARGET_NODE="40"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="42"
+#!   SOURCE_NODE="40"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="27"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="13"
+#!   SOURCE_PORT_DESC="fo 1 UNMERGED_REQUESTOR"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="28"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="11"
+#!   SOURCE_PORT_DESC="fo 3 UNUSED_SUPPLIER"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="29"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="11"
+#!   SOURCE_PORT_DESC="fo 4 &lt;lt&gt;REJECTED&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+FME_PYTHON_VERSION 313
+# ============================================================================
+DEFAULT_MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_FME_DATA_REPOSITORY 
+
+DEFAULT_MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_FME_ENGINE 
+
+DEFAULT_MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_FME_JOB_ID 
+
+DEFAULT_MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_FME_SECURITY_ROLES 
+
+DEFAULT_MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_FME_SECURITY_USER 
+
+DEFAULT_MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_FME_SERVER_DEST_DIR 
+
+DEFAULT_MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_FME_SERVER_HOST 
+
+DEFAULT_MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_FME_SERVER_PORT 
+
+DEFAULT_MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_FME_SERVER_REQUEST_HEADERS 
+
+DEFAULT_MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_FME_SERVER_REQUEST_METHOD 
+
+DEFAULT_MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_FME_SERVER_REQUEST_PARAMETERS 
+
+DEFAULT_MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_FME_SERVER_REQUEST_URI 
+
+DEFAULT_MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER 
+
+DEFAULT_MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER_ID 
+
+DEFAULT_MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_FME_SERVER_WEB_URL 
+
+DEFAULT_MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_BACKUP 
+
+DEFAULT_MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DASHBOARD 
+
+DEFAULT_MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DATA 
+
+DEFAULT_MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_ENGINE 
+
+DEFAULT_MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_LOG 
+
+DEFAULT_MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_SYSTEM 
+
+DEFAULT_MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_TEMP 
+
+DEFAULT_MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_FME_TOPIC 
+
+DEFAULT_MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_FME_TOPIC_MESSAGE 
+
+# ============================================================================
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO MORE_INFO_MANAGER_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(MORE_INFO_MANAGER_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(MORE_INFO_MANAGER_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_INPUT1759779806 Input Splitter"   INPUT FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_INPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(MORE_INFO_MANAGER_WORKSPACE_NAME)_AttributeExposer }    INPUT  FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_INPUT"    OUTPUT { FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_AttributeExposer_OUTPUT"          }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(MORE_INFO_MANAGER_WORKSPACE_NAME)_UniqueIdentifierGenerator }    INPUT  FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_AttributeExposer_OUTPUT"    OUTPUT { FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_UniqueIdentifierGenerator_OUTPUT"             "_uuid" @UUID(SIMPLE, UUID_FORMAT, ULID)              }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_UniqueIdentifierGenerator OUTPUT Splitter"   INPUT FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_UniqueIdentifierGenerator_OUTPUT"   OUTPUT FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_UniqueIdentifierGenerator_OUTPUT_0_bSn99b4ffuY="   OUTPUT FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_UniqueIdentifierGenerator_OUTPUT_1_F8XK7hc9vo0="
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttributeKeeperFactory    FACTORY_NAME { $(MORE_INFO_MANAGER_WORKSPACE_NAME)_AttributeKeeper_2 }    INPUT  FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_UniqueIdentifierGenerator_OUTPUT_0_bSn99b4ffuY="    KEEP_ATTRS { _uuid,id }    KEEP_LISTS { more_info<opencurly><closecurly> }    KEEP_FME_ATTRIBUTES Yes    BUILD_FEATURE_TABLES { NO }    OUTPUT_ON_ATTRIBUTE_CHANGE { <Unused> }    OUTPUT { OUTPUT FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_AttributeKeeper_2_OUTPUT"        }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} ElementFactory    FACTORY_NAME { $(MORE_INFO_MANAGER_WORKSPACE_NAME)_ListExploder }    INPUT  FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_AttributeKeeper_2_OUTPUT"    LIST_NAME { "more_info{}" }    ELEMENT_NUMBER_FIELD { "_element_index" }    CLONE_GEOMETRY    ATTR_ACCUM_MODE { "HANDLE_CONFLICT" }    ATTR_CONFLICT_RES { "INCOMING_IF_CONFLICT" }    INCOMING_PREFIX { "<Unused>" }    OUTPUT { ELEMENT FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_ListExploder_ELEMENTS"         @RemoveAttributes(ElementFactory.baseCloned)          }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TestFactory    FACTORY_NAME { $(MORE_INFO_MANAGER_WORKSPACE_NAME)_Tester }    INPUT  FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_ListExploder_ELEMENTS"    TEST { link ATTRIBUTE_HAS_A_VALUE "" ENCODED }    BOOLEAN_OPERATOR { OR }    COMPOSITE_TEST_EXPR { "<Unused>" }    PRESERVE_FEATURE_ORDER { ACROSS_OUTPUT_PORTS }    OUTPUT { PASSED FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_Tester_PASSED"         }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME { $(MORE_INFO_MANAGER_WORKSPACE_NAME)_AttributeCreator }    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_Tester_PASSED"    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    NUM_OF_COLUMNS 5    ATTR_ACTION { "" "protocol" "SET_TO" "HTTPS" "varchar<openparen>200<closeparen>" }    OUTPUT { OUTPUT FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_AttributeCreator_OUTPUT"        }
+# -------------------------------------------------------------------------
+# Build the List removal function and regular expression if there was any list attributes to be removed.
+# If not, then we will not have any extra list removal call to @RemoveAttributes, which speeds the
+# normal, non-list removal especially when in Bulk Mode.  Note that this computation of the regular expressions is done
+# once during mapping file parse time.
+INCLUDE [    set listAttributeRemoveRegexps {};    set anyList {no};    foreach attr [split "more_info<opencurly><closecurly>"] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append listAttributeRemoveRegexps ",^$attr$";       set anyList {yes};    };    if { ${anyList} == {no} } {        puts {MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC }    } else {        puts "MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC @RemoveAttributes(fme_pcre_match\"$listAttributeRemoveRegexps\")"    }; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(MORE_INFO_MANAGER_WORKSPACE_NAME)_AttributeRemover }    INPUT  FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_UniqueIdentifierGenerator_OUTPUT_1_F8XK7hc9vo0="    OUTPUT { FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_AttributeRemover_OUTPUT"        @RemoveAttributes(fme_encoded,)        $($(MORE_INFO_MANAGER_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC)         }
+# -------------------------------------------------------------------------
+INCLUDE [if { {ATTRIBUTES} == {ATTRIBUTES} } {                puts "MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO ATTRIBUTES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {POLYGONS}} {                puts "MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {AGGREGATES}} {                puts "MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {POLYGONS}} {                puts "MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {AGGREGATES}} {                puts "MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} } {                puts "MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} } {                puts "MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          else {}; ]
+FACTORY_DEF {*} ReferenceFactory    FACTORY_NAME { $(MORE_INFO_MANAGER_WORKSPACE_NAME)_FeatureMerger }    FLUSH_WHEN_GROUPS_CHANGE { <Unused> }    INPUT REFERENCER FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_AttributeRemover_OUTPUT"    INPUT REFERENCEE FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_AttributeCreator_OUTPUT"    REFERENCE_INFO { $($(MORE_INFO_MANAGER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO) }    REFERENCE_TABLE { @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_uuid<closeparen>,$(MORE_INFO_MANAGER_WORKSPACE_NAME)_FeatureMerger) @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_uuid<closeparen>,$(MORE_INFO_MANAGER_WORKSPACE_NAME)_FeatureMerger) AUTO }    ATTR_ACCUM_MODE { "HANDLE_CONFLICT" }    ATTR_CONFLICT_RES { "REQUESTOR_IF_CONFLICT" }    IGNORE_NULLS { "No" }    HANDLE_NULL_MISSING_KEYS_LIKE_FME2013 { No }    LIST_NAME { "more_info" }    LIST_ATTRS_TO_INCLUDE { <Unused> }    LIST_ATTRS_TO_INCLUDE_MODE { ALL }    MERGE_ATTRIBUTES Yes    MANAGE_FME_TYPE Yes    MODE COMPLETE    PROCESS_DUPLICATE_REFERENCEES { NO }    REFERENCEES_FIRST { No }    REJECT_INVALID_GEOM YES    CLEANING_TOLERANCE { <Unused> }    PRESERVE_FEATURE_ORDER { ACROSS_OUTPUT_PORTS }    COMPARE_WHITESPACE Yes    OUTPUT { COMPLETE FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_FeatureMerger_MERGED"         }    OUTPUT { INCOMPLETE FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_FeatureMerger_UNMERGED_REQUESTOR"         }    OUTPUT { UNREFERENCED FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_FeatureMerger_UNUSED_SUPPLIER"         }    OUTPUT { REJECTED FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_FeatureMerger_<REJECTED>"         }
+# -------------------------------------------------------------------------
+# Build the List removal function and regular expression if there was any list attributes to be removed.
+# If not, then we will not have any extra list removal call to @RemoveAttributes, which speeds the
+# normal, non-list removal especially when in Bulk Mode.  Note that this computation of the regular expressions is done
+# once during mapping file parse time.
+INCLUDE [    set listAttributeRemoveRegexps {};    set anyList {no};    foreach attr [split "more_info<opencurly><closecurly>._uuid"] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append listAttributeRemoveRegexps ",^$attr$";       set anyList {yes};    };    if { ${anyList} == {no} } {        puts {MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_AttributeRemover_2_LIST_FUNC }    } else {        puts "MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_AttributeRemover_2_LIST_FUNC @RemoveAttributes(fme_pcre_match\"$listAttributeRemoveRegexps\")"    }; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(MORE_INFO_MANAGER_WORKSPACE_NAME)_AttributeRemover_2 }    INPUT  FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_FeatureMerger_MERGED"    INPUT  FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_FeatureMerger_UNMERGED_REQUESTOR"    OUTPUT { FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_AttributeRemover_2_OUTPUT"        @RemoveAttributes(fme_encoded,_element_index,_uuid,protocol,link)        $($(MORE_INFO_MANAGER_WORKSPACE_NAME)_AttributeRemover_2_LIST_FUNC)         }
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Input Input Collector"   INPUT FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_AttributeRemover_2_OUTPUT"   OUTPUT FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Input"
+MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(MORE_INFO_MANAGER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(MORE_INFO_MANAGER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:2
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
+# -------------------------------------------------------------------------
+# The default behaviour is to abort on any feature entering the transformer.
+# If Workbench has set the _WB_BYPASS_TERMINATION macro to a value of "Yes",
+# then the features will instead be passed through with a feature type of
+# __WB_BYPASS_TERMINATOR__, which Workbench will send to a visualizer or
+# somesuch.
+DEFAULT_MACRO _WB_BYPASS_TERMINATION No
+FACTORY_DEF {*} TestFactory    FACTORY_NAME { $(MORE_INFO_MANAGER_WORKSPACE_NAME)_Terminator }    INPUT  FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_FeatureMerger_UNUSED_SUPPLIER"    INPUT  FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_FeatureMerger_<REJECTED>"    TEST { "$(_WB_BYPASS_TERMINATION)" == Yes }    OUTPUT { PASSED FEATURE_TYPE __WB_BYPASS_TERMINATOR__       @SupplyAttributes(_wb_termination_feature_type,@FeatureType())       @SupplyAttributes(ENCODED,_wb_termination_message,"Feature<space>Merger<space>Error:<space>Translation<space>Terminated")       @SupplyAttributes(_wb_termination_xformer,"$(MORE_INFO_MANAGER_WORKSPACE_NAME)_Terminator")       @SupplyAttributes(_wb_termination_feature,Yes) }    OUTPUT { FAILED FEATURE_TYPE * @Abort(ENCODED,"Feature<space>Merger<space>Error:<space>Translation<space>Terminated") }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_OUTPUT1759779806 Output Collector"   INPUT FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_OUTPUT"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(MORE_INFO_MANAGER_WORKSPACE_NAME))}]
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN MORE_INFO_MANAGER,1,"FGP Tools",019b8082-cfdd-493e-85ca-ad5bc4483192,"Linked by Default",No,NO_PARALLELISM,,No,20200,YES,No,37,No,
+# <p><strong>Description</strong> </p>
+# <p>This transformer tests the more_info{}.link list for non empty value values and filters them out where missing.</p>
+# <p><strong>Input Ports </strong></p>
+# <p>INPUT: Input metadata records to process.</p>
+# <p><strong>Output Ports</strong> </p>
+# <p>OUTPUT: The process output metdata records.</p>
+# <p><strong>Parameters </strong></p>
+# <p>NONE</p>
+# TRANSFORMER_END
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="FGP Tools"
+#!   DESCRIPTION="&lt;p&gt;&lt;strong&gt;Description&lt;/strong&gt; &lt;/p&gt;&#10;&lt;p&gt;This transformer tests the more_info{}.link list for non empty value values and filters them out where missing.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Input Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;INPUT: Input metadata records to process.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Output Ports&lt;/strong&gt; &lt;/p&gt;&#10;&lt;p&gt;OUTPUT: The process output metdata records.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Parameters &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;NONE&lt;/p&gt;"
+#!   DOC_EXTENTS="8257.85 2052.49"
+#!   DOC_TOP_LEFT="-966.891 -1728.41"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="20200"
+#!   FME_DOCUMENT_GUID="019b8082-cfdd-493e-85ca-ad5bc4483192"
+#!   FME_DOCUMENT_PRIORGUID="5f090a37-8d29-4dec-a2d7-bc86ec4f9627,b1fb17c7-5dfa-4326-9c38-feb2b8a99a45"
+#!   FME_LINKED_TRANSFORMER_VERSION="1"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY="Unknown,Unknown,Original&lt;space&gt;versin,27&lt;solidus&gt;09&lt;solidus&gt;2021,Daniel&lt;space&gt;Pilon,Documentation"
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2020.0.0.0 (20200309 - Build 20200 - WIN32)"
+#!   LAST_SAVE_DATE="2021-12-20T13:26:13"
+#!   MARKDOWN_DESCRIPTION="**Description** &#10;&#10;This transformer tests the more_info{}.link list for non empty value values and filters them out where missing.&#10;&#10;&#10;**Input Ports **&#10;&#10;INPUT: Input metadata records to process.&#10;&#10;&#10;**Output Ports** &#10;&#10;OUTPUT: The process output metdata records.&#10;&#10;**Parameters **&#10;&#10;NONE"
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="37"
+#!   REPLACED_BY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="MORE_INFO_MANAGER"
+#!   USAGE=""
+#!   USE_MARKDOWN="YES"
+#!   VIEW_POSITION="-1600.89 1672.17"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="57"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! </GLOBAL_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="30"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;This transformer tests the more_info{}.link list for valid attribute values and filters them out where missing&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-150 190.83199279036307"
+#!   TOP_LEFT="-150 190.83199279036307"
+#!   BOTTOM_RIGHT="1204.1802084687513 -98.545600985574652"
+#!   BOUNDING_RECT="-150 190.83199279036307 1354.1802084687513 289.37759377593773"
+#!   ORDER="500000000000913"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.28627450980392155,0.29803921568627451,0.0078431372549019607,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="0"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="31"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Generates UUID for use within this transformer only&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="693.56821700526973 -450"
+#!   TOP_LEFT="693.56821700526973 -450"
+#!   BOTTOM_RIGHT="1131.5682170052696 -449"
+#!   BOUNDING_RECT="693.56821700526973 -450 438 -1"
+#!   ORDER="500000000000915"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.28627450980392155,0.29803921568627451,0.0078431372549019607,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="4"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="32"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Removes all attributes except UUID and more_info{}.link&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="1284.3373390015674 158.32458887406582"
+#!   TOP_LEFT="1284.3373390015674 158.32458887406582"
+#!   BOTTOM_RIGHT="1783.3373390015674 159.32458887406582"
+#!   BOUNDING_RECT="1284.3373390015674 158.32458887406582 499 -1"
+#!   ORDER="500000000000917"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.28627450980392155,0.29803921568627451,0.0078431372549019607,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="12"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="33"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Explodes more_info{}.link list into non-list link attribute&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="1889.9693030917228 158.32458887406582"
+#!   TOP_LEFT="1889.9693030917228 158.32458887406582"
+#!   BOTTOM_RIGHT="2434.4379246261601 -15.426848640309316"
+#!   BOUNDING_RECT="1889.9693030917228 158.32458887406582 544.46862153443726 173.75143751437514"
+#!   ORDER="500000000000918"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.28627450980392155,0.29803921568627451,0.0078431372549019607,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="5"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="34"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Removes link attributes with no value&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="2707.8044019365384 158.32458887406582"
+#!   TOP_LEFT="2707.8044019365384 158.32458887406582"
+#!   BOTTOM_RIGHT="3137.8044019365384 159.32458887406582"
+#!   BOUNDING_RECT="2707.8044019365384 158.32458887406582 430 -1"
+#!   ORDER="500000000000919"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.28627450980392155,0.29803921568627451,0.0078431372549019607,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="7"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="35"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Creates protocol attribute with hard coded https value&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="3440.5658143886253 158.32458887406582"
+#!   TOP_LEFT="3440.5658143886253 158.32458887406582"
+#!   BOTTOM_RIGHT="3894.5658143886253 159.32458887406582"
+#!   BOUNDING_RECT="3440.5658143886253 158.32458887406582 454 -1"
+#!   ORDER="500000000000920"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.28627450980392155,0.29803921568627451,0.0078431372549019607,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="8"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="36"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Merges filtered link attributes and protocol attributes back to dataset using _uuid attribute.  Attributes are added to recreated more_info{} list&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="4509.9488758141006 -295.32495401206728"
+#!   TOP_LEFT="4509.9488758141006 -295.32495401206728"
+#!   BOTTOM_RIGHT="5185.2370375555602 -587.82757903831748"
+#!   BOUNDING_RECT="4509.9488758141006 -295.32495401206728 675.28816174145959 292.50262502625026"
+#!   ORDER="500000000000921"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.28627450980392155,0.29803921568627451,0.0078431372549019607,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="9"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="37"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Removes out of scope attributes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="5162.279824552631 -780.70206140657911"
+#!   TOP_LEFT="5162.279824552631 -780.70206140657911"
+#!   BOTTOM_RIGHT="5918.1456553945818 -954.45349892095419"
+#!   BOUNDING_RECT="5162.279824552631 -780.70206140657911 755.8658308419507 173.75143751437514"
+#!   ORDER="500000000000923"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.28627450980392155,0.29803921568627451,0.0078431372549019607,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="13"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="38"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Removes more_info{} list for later recreation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="2301.6495682358527 -600"
+#!   TOP_LEFT="2301.6495682358527 -600"
+#!   BOTTOM_RIGHT="2907.9238160802652 -770.00140001400018"
+#!   BOUNDING_RECT="2301.6495682358527 -600 606.27424784441246 170.00140001400013"
+#!   ORDER="500000000000924"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.28627450980392155,0.29803921568627451,0.0078431372549019607,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="10"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="39"
+#!   NAME="New Bookmark"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="-162.03865742361126 324.07731484722251"
+#!   ORDER="500000000000914"
+#!   PALETTE_COLOR=""
+#!   BOTTOM_RIGHT="6636.0312725934282 -1728.4123458518534"
+#!   BOUNDING_RECT="-162.03865742361126 324.07731484722251 6798.069930017039 2052.489660699076"
+#!   STICKY="false"
+#!   COLOUR="0.27058823529411763,0.039215686274509803,0.41960784313725491,0.39215686274509803"
+#!   CONTENTS=""
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="4"
+#!   TYPE="UUIDGenerator"
+#!   VERSION="0"
+#!   POSITION="719.10441326635521 -831.96379651308064"
+#!   BOUNDING_RECT="719.10441326635521 -831.96379651308064 431 71"
+#!   ORDER="500000000000903"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="more_info{}.link" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="UUID_ATTR" PARM_VALUE="_uuid"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="UUIDGenerator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="5"
+#!   TYPE="ListExploder"
+#!   VERSION="6"
+#!   POSITION="1952.5499358116299 -288.7779975838975"
+#!   BOUNDING_RECT="1952.5499358116299 -288.7779975838975 431 71"
+#!   ORDER="500000000000904"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <OUTPUT_FEAT NAME="ELEMENTS"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="link" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="link" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE" PARM_VALUE="Merge List Attributes"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES" PARM_VALUE="Use List Attribute Values"/>
+#!     <XFORM_PARM PARM_NAME="INCOMING_PREFIX" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="INDEX_ATTR" PARM_VALUE="_element_index"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTR" PARM_VALUE="more_info{}"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ListExploder"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="6"
+#!   TYPE="AttributeExposer"
+#!   VERSION="1"
+#!   POSITION="62.500625006250061 -831.96379651308064"
+#!   BOUNDING_RECT="62.500625006250061 -831.96379651308064 431 71"
+#!   ORDER="500000000000905"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="more_info{}.link" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="more_info{}.link,id"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="7"
+#!   TYPE="Tester"
+#!   VERSION="2"
+#!   POSITION="2707.8044019365384 -288.7779975838975"
+#!   BOUNDING_RECT="2707.8044019365384 -288.7779975838975 431 71"
+#!   ORDER="500000000000906"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <OUTPUT_FEAT NAME="PASSED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="link" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="FAILED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="link" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_MSG" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST link ATTRIBUTE_HAS_A_VALUE &quot;&quot;"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="TEST"/>
+#!     <XFORM_PARM PARM_NAME="TEST_PREVIEW_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="8"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="3464.5249321048027 -288.7779975838975"
+#!   BOUNDING_RECT="3464.5249321048027 -288.7779975838975 431 71"
+#!   ORDER="500000000000907"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="protocol" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="link" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; protocol SET_TO HTTPS"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="9"
+#!   TYPE="FeatureMerger"
+#!   VERSION="17"
+#!   POSITION="4617.9746474298418 -884.32710761384999"
+#!   BOUNDING_RECT="4617.9746474298418 -884.32710761384999 431 71"
+#!   ORDER="500000000000909"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <OUTPUT_FEAT NAME="MERGED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="protocol" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="link" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="more_info{}.protocol" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="more_info{}.link" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="more_info{}.id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="more_info{}._uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="more_info{}._element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="UNMERGED_REQUESTOR"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <OUTPUT_FEAT NAME="USED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <XFORM_ATTR ATTR_NAME="protocol" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="link" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="numReferences" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <OUTPUT_FEAT NAME="UNUSED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="3"/>
+#!     <XFORM_ATTR ATTR_NAME="protocol" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="link" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="4"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="protocol" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="link" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE" PARM_VALUE="Merge Supplier"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES" PARM_VALUE="Use Requestor"/>
+#!     <XFORM_PARM PARM_NAME="CLEANING_TOLERANCE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CONNECT_Z_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GENERATE_LIST_GROUP" PARM_VALUE="YES"/>
+#!     <XFORM_PARM PARM_NAME="GEOM_TYPE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="IGNORE_NULLS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="JOIN_ATTRIBUTES_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="JOIN_KEYS" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;_uuid&lt;closeparen&gt; &lt;at&gt;Value&lt;openparen&gt;_uuid&lt;closeparen&gt; AUTO"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE_MODE" PARM_VALUE="All Attributes"/>
+#!     <XFORM_PARM PARM_NAME="LIST_NAME" PARM_VALUE="more_info"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_COUNT_ATTR" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_TYPE" PARM_VALUE="Attributes Only"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PROCESS_DUPS" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="REJECT_NULL_MISSING_KEYS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIERS_FIRST" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIER_PREFIX" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="FeatureMerger"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="10"
+#!   TYPE="AttributeRemover"
+#!   VERSION="1"
+#!   POSITION="2341.0727934439828 -887.27739129243128"
+#!   BOUNDING_RECT="2341.0727934439828 -887.27739129243128 431 71"
+#!   ORDER="500000000000911"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE="more_info&lt;opencurly&gt;&lt;closecurly&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="11"
+#!   TYPE="Terminator"
+#!   VERSION="3"
+#!   POSITION="5316.1842439048942 -1429.7528596200996"
+#!   BOUNDING_RECT="5316.1842439048942 -1429.7528596200996 431 71"
+#!   ORDER="500000000000912"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE="Feature&lt;space&gt;Merger&lt;space&gt;Error:&lt;space&gt;Translation&lt;space&gt;Terminated"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Terminator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="12"
+#!   TYPE="AttributeKeeper"
+#!   VERSION="3"
+#!   POSITION="1316.053465545549 -288.7779975838975"
+#!   BOUNDING_RECT="1316.053465545549 -288.7779975838975 431 71"
+#!   ORDER="500000000000916"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="more_info{}.link" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="KEEP_ATTRS" PARM_VALUE="_uuid,id"/>
+#!     <XFORM_PARM PARM_NAME="KEEP_LIST" PARM_VALUE="more_info&lt;opencurly&gt;&lt;closecurly&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeKeeper_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="13"
+#!   TYPE="AttributeRemover"
+#!   VERSION="1"
+#!   POSITION="5356.007101331571 -1127.7219277562958"
+#!   BOUNDING_RECT="5356.007101331571 -1127.7219277562958 431 71"
+#!   ORDER="500000000000922"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="more_info{}.protocol" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="more_info{}.link" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="more_info{}.id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="more_info{}._element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE="more_info&lt;opencurly&gt;&lt;closecurly&gt;._uuid"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE="_element_index,_uuid,protocol,link"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="40"
+#!   TYPE="ATTRIBUTE_UNEXPOSER"
+#!   VERSION="1"
+#!   POSITION="5926.3135526092092 -1111.2751906260032"
+#!   BOUNDING_RECT="5926.3135526092092 -1111.2751906260032 533.00106825772946 71"
+#!   ORDER="500000000000926"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_UNEXPOSER"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="INPUT"
+#!   POSITION="-966.89109542872961 -831.96379651308064"
+#!   BOUNDING_RECT="-966.89109542872961 -831.96379651308064 431 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="OUTPUT"
+#!   POSITION="6859.9548176806529 -1252.6321052684211"
+#!   BOUNDING_RECT="6859.9548176806529 -1252.6321052684211 431 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="15"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="16"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="12"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="17"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="10"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="1"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="18"
+#!   SOURCE_NODE="5"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="fo 0 ELEMENTS"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="19"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="20"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="8"
+#!   SOURCE_PORT_DESC="fo 0 PASSED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="21"
+#!   SOURCE_NODE="8"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 1 SUPPLIER"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="22"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="13"
+#!   SOURCE_PORT_DESC="fo 0 MERGED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="23"
+#!   SOURCE_NODE="10"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 REQUESTOR"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="24"
+#!   SOURCE_NODE="12"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="41"
+#!   SOURCE_NODE="13"
+#!   TARGET_NODE="40"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="42"
+#!   SOURCE_NODE="40"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="27"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="13"
+#!   SOURCE_PORT_DESC="fo 1 UNMERGED_REQUESTOR"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="28"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="11"
+#!   SOURCE_PORT_DESC="fo 3 UNUSED_SUPPLIER"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="29"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="11"
+#!   SOURCE_PORT_DESC="fo 4 &lt;lt&gt;REJECTED&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+FME_PYTHON_VERSION 37
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO MORE_INFO_MANAGER_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(MORE_INFO_MANAGER_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(MORE_INFO_MANAGER_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_INPUT1640024773 Input Splitter"   INPUT FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_INPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(MORE_INFO_MANAGER_WORKSPACE_NAME)_AttributeExposer    INPUT  FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_INPUT"    OUTPUT FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_AttributeExposer_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(MORE_INFO_MANAGER_WORKSPACE_NAME)_UUIDGenerator    INPUT  FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_AttributeExposer_OUTPUT"    OUTPUT FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_UUIDGenerator_OUTPUT"         "_uuid" @UUID()
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_UUIDGenerator OUTPUT Splitter"   INPUT FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_UUIDGenerator_OUTPUT"   OUTPUT FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_UUIDGenerator_OUTPUT_0_Qan0KzzwHdU="   OUTPUT FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_UUIDGenerator_OUTPUT_1_XXXhNRytlhw="
+# -------------------------------------------------------------------------
+INCLUDE [    set macroLine "MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_AttributeRemover_LIST_EXP ";    foreach attr [split "more_info<opencurly><closecurly>"] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(MORE_INFO_MANAGER_WORKSPACE_NAME)_AttributeRemover    INPUT  FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_UUIDGenerator_OUTPUT_1_XXXhNRytlhw="    OUTPUT { FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_AttributeRemover_OUTPUT"        @RemoveAttributes(fme_encoded,)        @RemoveAttributes(fme_pcre_match"$($(MORE_INFO_MANAGER_WORKSPACE_NAME)_AttributeRemover_LIST_EXP)")         }
+# -------------------------------------------------------------------------
+INCLUDE [    set macroLine "MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_AttributeKeeper_2_a736cfcc_1ad1_4be2_bc19_5b0831d2af5a0_LIST_EXP ";    foreach attr [split "more_info<opencurly><closecurly>"] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(MORE_INFO_MANAGER_WORKSPACE_NAME)_AttributeKeeper_2    INPUT  FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_UUIDGenerator_OUTPUT_0_Qan0KzzwHdU="    OUTPUT { FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_AttributeKeeper_2_OUTPUT"        @KeepAttributes(fme_encoded,_uuid,id,fme_pcre_match,"^fme_$($(MORE_INFO_MANAGER_WORKSPACE_NAME)_AttributeKeeper_2_a736cfcc_1ad1_4be2_bc19_5b0831d2af5a0_LIST_EXP)")         }
+# -------------------------------------------------------------------------
+FACTORY_DEF * ElementFactory    FACTORY_NAME $(MORE_INFO_MANAGER_WORKSPACE_NAME)_ListExploder    INPUT  FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_AttributeKeeper_2_OUTPUT"    LIST_NAME "more_info{}"    ELEMENT_NUMBER_FIELD "_element_index"    CLONE_GEOMETRY    ATTR_ACCUM_MODE "HANDLE_CONFLICT"    ATTR_CONFLICT_RES "INCOMING_IF_CONFLICT"    INCOMING_PREFIX "<Unused>"    OUTPUT ELEMENT FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_ListExploder_ELEMENTS"         @RemoveAttributes(ElementFactory.baseCloned)
+# -------------------------------------------------------------------------
+FACTORY_DEF * TestFactory    FACTORY_NAME $(MORE_INFO_MANAGER_WORKSPACE_NAME)_Tester    INPUT  FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_ListExploder_ELEMENTS"    TEST link ATTRIBUTE_HAS_A_VALUE "" ENCODED    BOOLEAN_OPERATOR OR    COMPOSITE_TEST_EXPR "<Unused>"    OUTPUT PASSED FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_Tester_PASSED"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(MORE_INFO_MANAGER_WORKSPACE_NAME)_AttributeCreator    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_Tester_PASSED"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "protocol" "SET_TO" "HTTPS" }    OUTPUT OUTPUT FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_AttributeCreator_OUTPUT"
+# -------------------------------------------------------------------------
+INCLUDE [if { {ATTRIBUTES} == {ATTRIBUTES} } {                puts "MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO ATTRIBUTES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {POLYGONS}} {                puts "MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {AGGREGATES}} {                puts "MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {POLYGONS}} {                puts "MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {AGGREGATES}} {                puts "MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} } {                puts "MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} } {                puts "MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          else {}; ]
+FACTORY_DEF {*} ReferenceFactory    FACTORY_NAME $(MORE_INFO_MANAGER_WORKSPACE_NAME)_FeatureMerger    INPUT REFERENCER FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_AttributeRemover_OUTPUT"    INPUT REFERENCEE FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_AttributeCreator_OUTPUT"    REFERENCE_INFO $($(MORE_INFO_MANAGER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO)    REFERENCE_TABLE @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_uuid<closeparen>,$(MORE_INFO_MANAGER_WORKSPACE_NAME)_FeatureMerger) @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_uuid<closeparen>,$(MORE_INFO_MANAGER_WORKSPACE_NAME)_FeatureMerger) AUTO    ATTR_ACCUM_MODE "HANDLE_CONFLICT"    ATTR_CONFLICT_RES "REQUESTOR_IF_CONFLICT"    IGNORE_NULLS "No"    HANDLE_NULL_MISSING_KEYS_LIKE_FME2013 No    LIST_NAME "more_info"    LIST_ATTRS_TO_INCLUDE { <Unused> }    LIST_ATTRS_TO_INCLUDE_MODE ALL    MERGE_ATTRIBUTES Yes    MANAGE_FME_TYPE Yes    MODE COMPLETE    PROCESS_DUPLICATE_REFERENCEES NO    REFERENCEES_FIRST No    REJECT_INVALID_GEOM YES    CLEANING_TOLERANCE <Unused>    OUTPUT COMPLETE FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_FeatureMerger_MERGED"    OUTPUT INCOMPLETE FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_FeatureMerger_UNMERGED_REQUESTOR"    OUTPUT UNREFERENCED FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_FeatureMerger_UNUSED_SUPPLIER"    OUTPUT REJECTED FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_FeatureMerger_<REJECTED>"
+# -------------------------------------------------------------------------
+# The default behaviour is to abort on any feature entering the transformer.
+# If Workbench has set the _WB_BYPASS_TERMINATION macro to a value of "Yes",
+# then the features will instead be passed through with a feature type of
+# __WB_BYPASS_TERMINATOR__, which Workbench will send to a visualizer or
+# somesuch.
+DEFAULT_MACRO _WB_BYPASS_TERMINATION No
+FACTORY_DEF * TestFactory    FACTORY_NAME $(MORE_INFO_MANAGER_WORKSPACE_NAME)_Terminator    INPUT  FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_FeatureMerger_UNUSED_SUPPLIER"    INPUT  FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_FeatureMerger_<REJECTED>"    TEST "$(_WB_BYPASS_TERMINATION)" == Yes    OUTPUT PASSED FEATURE_TYPE __WB_BYPASS_TERMINATOR__       @SupplyAttributes(_wb_termination_feature_type,@FeatureType())       @SupplyAttributes(ENCODED,_wb_termination_message,"Feature<space>Merger<space>Error:<space>Translation<space>Terminated")       @SupplyAttributes(_wb_termination_xformer,"$(MORE_INFO_MANAGER_WORKSPACE_NAME)_Terminator")       @SupplyAttributes(_wb_termination_feature,Yes)    OUTPUT FAILED FEATURE_TYPE * @Abort(ENCODED,"Feature<space>Merger<space>Error:<space>Translation<space>Terminated")
+# -------------------------------------------------------------------------
+INCLUDE [    set macroLine "MACRO $(MORE_INFO_MANAGER_WORKSPACE_NAME)_AttributeRemover_2_LIST_EXP ";    foreach attr [split "more_info<opencurly><closecurly>._uuid"] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(MORE_INFO_MANAGER_WORKSPACE_NAME)_AttributeRemover_2    INPUT  FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_FeatureMerger_MERGED"    INPUT  FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_FeatureMerger_UNMERGED_REQUESTOR"    OUTPUT { FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_AttributeRemover_2_OUTPUT"        @RemoveAttributes(fme_encoded,_element_index,_uuid,protocol,link)        @RemoveAttributes(fme_pcre_match"$($(MORE_INFO_MANAGER_WORKSPACE_NAME)_AttributeRemover_2_LIST_EXP)")         }
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Input Input Collector"   INPUT FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_AttributeRemover_2_OUTPUT"   OUTPUT FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Input"
+MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(MORE_INFO_MANAGER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(MORE_INFO_MANAGER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_OUTPUT1640024773 Output Collector"   INPUT FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(MORE_INFO_MANAGER_WORKSPACE_NAME)_OUTPUT"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(MORE_INFO_MANAGER_WORKSPACE_NAME))}]

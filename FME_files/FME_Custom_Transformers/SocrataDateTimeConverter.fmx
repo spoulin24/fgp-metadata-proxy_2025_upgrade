@@ -1,0 +1,662 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN SocrataDateTimeConverter,2,"""FGP Tools""",d81aa81d-1aa4-4127-adc3-9ba6f4c2966e,"Linked by Default",No,NO_PARALLELISM,,No,25606,YES,No,37,No,,neither
+# 
+# TRANSFORMER_END
+#!   A0_PREVIEW_IMAGE="data:image/png;base64,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"
+#!   ARCGIS_COMPATIBILITY="ARCGIS_AUTO"
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="&quot;FGP Tools&quot;"
+#!   DATA_PROCESSING_TYPE="neither"
+#!   DESCRIPTION=""
+#!   DOC_EXTENTS="4801.88 1169.16"
+#!   DOC_TOP_LEFT="-1598.3 -899.583"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="25606"
+#!   FME_DOCUMENT_GUID="d81aa81d-1aa4-4127-adc3-9ba6f4c2966e"
+#!   FME_DOCUMENT_PRIORGUID=""
+#!   FME_LINKED_TRANSFORMER_VERSION="2"
+#!   FME_NAMES_ENCODING="windows-1252"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY=""
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2025.1.0.0 (20250704 - Build 25606 - WIN64)"
+#!   LAST_SAVE_DATE="2025-10-06T16:17:25"
+#!   MARKDOWN_DESCRIPTION=""
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="37"
+#!   REPLACED_BY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="SocrataDateTimeConverter"
+#!   USAGE=""
+#!   USE_MARKDOWN="NO"
+#!   VIEW_POSITION="-193.752 796.883"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="100"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! </GLOBAL_PARAMETERS>
+#! <USER_PARAMETERS
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbXX0="
+#! >
+#! <PARAMETER_INFO>
+#! </PARAMETER_INFO>
+#! </USER_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="7"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Formats all date fields to ISO yyyy-mm-dd&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="514.54937315356301 -510.9058056229776"
+#!   TOP_LEFT="514.54937315356301 -510.9058056229776"
+#!   BOTTOM_RIGHT="1269.097434259174 -684.65724313735268"
+#!   BOUNDING_RECT="514.54937315356301 -510.9058056229776 754.54806110561105 173.75143751437514"
+#!   ORDER="500000000000746"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{13b5b192-c719-4025-b106-db79371e7388}"
+#!   COLOUR="0.59215686274509804,0.75294117647058822,0.90980392156862744,1"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="3"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="8"
+#!   NAME="Date Conversion"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="-506.67691801378487 269.5738247009225"
+#!   ORDER="500000000000193"
+#!   PALETTE_COLOR="Color7"
+#!   BOTTOM_RIGHT="2354.7335249452121 -899.58297075120424"
+#!   BOUNDING_RECT="-506.67691801378487 269.5738247009225 2861.410442958997 1169.1567954521267"
+#!   STICKY="true"
+#!   COLOUR="0.59215686274509804,0.75294117647058822,0.90980392156862744,1"
+#!   CONTENTS="5 6 3 2 7 4 "
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="2"
+#!   TYPE="AttributeExposer"
+#!   VERSION="2"
+#!   POSITION="-179.46066142875452 -144.01243280233709"
+#!   BOUNDING_RECT="-179.46066142875452 -144.01243280233709 454 71"
+#!   ORDER="500000000000194"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.updatedAt" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource.publication_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource.createdAt" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="resource.updatedAt,,resource.publication_date,,resource.createdAt,"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer_5"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="3"
+#!   TYPE="DateTimeConverter"
+#!   VERSION="5"
+#!   POSITION="514.54937315356301 -144.01243280233709"
+#!   BOUNDING_RECT="514.54937315356301 -144.01243280233709 767.05407718744027 71"
+#!   ORDER="500000000000745"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.updatedAt" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource.publication_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource.createdAt" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.updatedAt" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="resource.publication_date" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="resource.createdAt" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_message" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="DATETIME_ATTR" PARM_VALUE="resource.createdAt resource.publication_date resource.updatedAt"/>
+#!     <XFORM_PARM PARM_NAME="IN_FORMAT" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="OUT_FORMAT" PARM_VALUE="%Y-%m-%d"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PASSTHROUGH" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="REFERENCE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REFERENCE_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REPAIR_INPUT" PARM_VALUE="YES"/>
+#!     <XFORM_PARM PARM_NAME="TEST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_INPUT" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_INPUT_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_RESULT" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="DateTimeConverter"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="4"
+#!   TYPE="AttributeRenamer"
+#!   VERSION="5"
+#!   POSITION="1477.7147732571652 -144.01243280233709"
+#!   BOUNDING_RECT="1477.7147732571652 -144.01243280233709 454 71"
+#!   ORDER="500000000000747"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="record_last_modified" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="record_publish_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="record_create_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="resource.updatedAt record_last_modified RENAME_SET_DEFAULT  resource.publication_date record_publish_date RENAME_SET_DEFAULT  resource.createdAt record_create_date RENAME_SET_DEFAULT "/>
+#!     <XFORM_PARM PARM_NAME="KEEP_RENAMED_ONLY" PARM_VALUE="no"/>
+#!     <XFORM_PARM PARM_NAME="MISSING_INPUT_ATTRS" PARM_VALUE="PRESERVE"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRenamer_2"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="9"
+#!   NAME="feature_output"
+#!   POSITION="2522.719303302466 -204.01243280233712"
+#!   BOUNDING_RECT="2522.719303302466 -204.01243280233712 680.86044325772946 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="11"
+#!   NAME="feature_input"
+#!   POSITION="-1598.2959447473845 -177.51258280383709"
+#!   BOUNDING_RECT="-1598.2959447473845 -177.51258280383709 633.82919325772946 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="13"
+#!   NAME="error_output"
+#!   POSITION="2522.719303302466 -529.90640562897761"
+#!   BOUNDING_RECT="2522.719303302466 -529.90640562897761 454 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="12"
+#!   SOURCE_NODE="11"
+#!   TARGET_NODE="2"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="5"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="6"
+#!   SOURCE_NODE="3"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="10"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="14"
+#!   SOURCE_NODE="3"
+#!   TARGET_NODE="13"
+#!   SOURCE_PORT_DESC="fo 1 &lt;lt&gt;REJECTED&lt;gt&gt;"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+# ============================================================================
+DEFAULT_MACRO $(SocrataDateTimeConverter_WORKSPACE_NAME)_FME_DATA_REPOSITORY 
+
+DEFAULT_MACRO $(SocrataDateTimeConverter_WORKSPACE_NAME)_FME_ENGINE 
+
+DEFAULT_MACRO $(SocrataDateTimeConverter_WORKSPACE_NAME)_FME_JOB_ID 
+
+DEFAULT_MACRO $(SocrataDateTimeConverter_WORKSPACE_NAME)_FME_SECURITY_ROLES 
+
+DEFAULT_MACRO $(SocrataDateTimeConverter_WORKSPACE_NAME)_FME_SECURITY_USER 
+
+DEFAULT_MACRO $(SocrataDateTimeConverter_WORKSPACE_NAME)_FME_SERVER_DEST_DIR 
+
+DEFAULT_MACRO $(SocrataDateTimeConverter_WORKSPACE_NAME)_FME_SERVER_HOST 
+
+DEFAULT_MACRO $(SocrataDateTimeConverter_WORKSPACE_NAME)_FME_SERVER_PORT 
+
+DEFAULT_MACRO $(SocrataDateTimeConverter_WORKSPACE_NAME)_FME_SERVER_REQUEST_HEADERS 
+
+DEFAULT_MACRO $(SocrataDateTimeConverter_WORKSPACE_NAME)_FME_SERVER_REQUEST_METHOD 
+
+DEFAULT_MACRO $(SocrataDateTimeConverter_WORKSPACE_NAME)_FME_SERVER_REQUEST_PARAMETERS 
+
+DEFAULT_MACRO $(SocrataDateTimeConverter_WORKSPACE_NAME)_FME_SERVER_REQUEST_URI 
+
+DEFAULT_MACRO $(SocrataDateTimeConverter_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER 
+
+DEFAULT_MACRO $(SocrataDateTimeConverter_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER_ID 
+
+DEFAULT_MACRO $(SocrataDateTimeConverter_WORKSPACE_NAME)_FME_SERVER_WEB_URL 
+
+DEFAULT_MACRO $(SocrataDateTimeConverter_WORKSPACE_NAME)_FME_SHAREDRESOURCE_BACKUP 
+
+DEFAULT_MACRO $(SocrataDateTimeConverter_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DASHBOARD 
+
+DEFAULT_MACRO $(SocrataDateTimeConverter_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DATA 
+
+DEFAULT_MACRO $(SocrataDateTimeConverter_WORKSPACE_NAME)_FME_SHAREDRESOURCE_ENGINE 
+
+DEFAULT_MACRO $(SocrataDateTimeConverter_WORKSPACE_NAME)_FME_SHAREDRESOURCE_LOG 
+
+DEFAULT_MACRO $(SocrataDateTimeConverter_WORKSPACE_NAME)_FME_SHAREDRESOURCE_SYSTEM 
+
+DEFAULT_MACRO $(SocrataDateTimeConverter_WORKSPACE_NAME)_FME_SHAREDRESOURCE_TEMP 
+
+DEFAULT_MACRO $(SocrataDateTimeConverter_WORKSPACE_NAME)_FME_TOPIC 
+
+DEFAULT_MACRO $(SocrataDateTimeConverter_WORKSPACE_NAME)_FME_TOPIC_MESSAGE 
+
+# ============================================================================
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO SocrataDateTimeConverter_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(SocrataDateTimeConverter_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(SocrataDateTimeConverter_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SocrataDateTimeConverter_WORKSPACE_NAME)_feature_input1759781845 Input Splitter"   INPUT FEATURE_TYPE "$(SocrataDateTimeConverter_WORKSPACE_NAME)_feature_input"   OUTPUT FEATURE_TYPE "$(SocrataDateTimeConverter_WORKSPACE_NAME)_feature_input"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(SocrataDateTimeConverter_WORKSPACE_NAME)_AttributeExposer_5 }    INPUT  FEATURE_TYPE "$(SocrataDateTimeConverter_WORKSPACE_NAME)_feature_input"    OUTPUT { FEATURE_TYPE "$(SocrataDateTimeConverter_WORKSPACE_NAME)_AttributeExposer_5_OUTPUT"          }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} DateTimeConverterFactory    FACTORY_NAME { $(SocrataDateTimeConverter_WORKSPACE_NAME)_DateTimeConverter }    DATETIME_ATTR { "resource.createdAt resource.publication_date resource.updatedAt" }    IN_FORMAT { "" }    OUT_FORMAT { "%Y-%m-%d" }    REPAIR_INPUT { "YES" }    PASSTHROUGH { "NO" }    INPUT  FEATURE_TYPE "$(SocrataDateTimeConverter_WORKSPACE_NAME)_AttributeExposer_5_OUTPUT"    OUTPUT { OUTPUT FEATURE_TYPE "$(SocrataDateTimeConverter_WORKSPACE_NAME)_DateTimeConverter_OUTPUT"        }    OUTPUT { REJECTED FEATURE_TYPE "$(SocrataDateTimeConverter_WORKSPACE_NAME)_DateTimeConverter_<REJECTED>"        }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY_NAME { $(SocrataDateTimeConverter_WORKSPACE_NAME)_AttributeRenamer_2 }    INPUT  FEATURE_TYPE "$(SocrataDateTimeConverter_WORKSPACE_NAME)_DateTimeConverter_OUTPUT" 	ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    MISSING_INPUT_ATTR_HANDLING { RENAME_SET_DEFAULT PRESERVE }    KEEP_OUTPUT_ATTRS_ONLY { no } 	ATTR_ACTION { "resource.updatedAt" "record_last_modified" "RENAME_SET_DEFAULT" "" }      ATTR_ACTION { "resource.publication_date" "record_publish_date" "RENAME_SET_DEFAULT" "" }      ATTR_ACTION { "resource.createdAt" "record_create_date" "RENAME_SET_DEFAULT" "" }    OUTPUT { OUTPUT FEATURE_TYPE "$(SocrataDateTimeConverter_WORKSPACE_NAME)_AttributeRenamer_2_OUTPUT"        }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SocrataDateTimeConverter_WORKSPACE_NAME)_feature_output1759781845 Output Collector"   INPUT FEATURE_TYPE "$(SocrataDateTimeConverter_WORKSPACE_NAME)_AttributeRenamer_2_OUTPUT"   OUTPUT FEATURE_TYPE "$(SocrataDateTimeConverter_WORKSPACE_NAME)_feature_output"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SocrataDateTimeConverter_WORKSPACE_NAME)_error_output1759781845 Output Collector"   INPUT FEATURE_TYPE "$(SocrataDateTimeConverter_WORKSPACE_NAME)_DateTimeConverter_<REJECTED>"   OUTPUT FEATURE_TYPE "$(SocrataDateTimeConverter_WORKSPACE_NAME)_error_output"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(SocrataDateTimeConverter_WORKSPACE_NAME))}]
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN SocrataDateTimeConverter,1,"FGP Tools",8f28e986-b8ac-4044-9436-b80d69a62346,"Linked by Default",No,NO_PARALLELISM,,No,19238,YES,No,37,No
+# 
+# TRANSFORMER_END
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="FGP Tools"
+#!   DESCRIPTION=""
+#!   DOC_EXTENTS="4801.88 1169.16"
+#!   DOC_TOP_LEFT="-1598.3 -899.583"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="19238"
+#!   FME_DOCUMENT_GUID="8f28e986-b8ac-4044-9436-b80d69a62346"
+#!   FME_DOCUMENT_PRIORGUID="ddd9f876-26ef-4e20-959e-9c0f83ed8e9e"
+#!   FME_LINKED_TRANSFORMER_VERSION="1"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY=""
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2019.0.0.0 (20190328 - Build 19238 - macosx)"
+#!   LAST_SAVE_DATE="2020-12-03T04:41:54"
+#!   MARKDOWN_DESCRIPTION=""
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="37"
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="SocrataDateTimeConverter"
+#!   USAGE=""
+#!   USE_MARKDOWN="NO"
+#!   VIEW_POSITION="-195.002 798.008"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="100"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! </GLOBAL_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="7"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Formats all date fields to ISO yyyy-mm-dd&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="514.54937315356301 -510.9058056229776"
+#!   TOP_LEFT="514.54937315356301 -510.9058056229776"
+#!   BOTTOM_RIGHT="1269.1398249689651 -684.65724313735268"
+#!   BOUNDING_RECT="514.54937315356301 -510.9058056229776 754.59045181540205 173.75143751437514"
+#!   ORDER="500000000000746"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.20000000000000001,0.36078431372549019,0.51764705882352946,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="3"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="8"
+#!   NAME="Date Conversion"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="-506.67691801378487 269.5738247009225"
+#!   ORDER="500000000000193"
+#!   PALETTE_COLOR="Color7"
+#!   BOTTOM_RIGHT="2354.7335249452121 -899.58297075120424"
+#!   BOUNDING_RECT="-506.67691801378487 269.5738247009225 2861.410442958997 1169.1567954521267"
+#!   STICKY="true"
+#!   COLOUR="0.20000000000000001,0.36078431372549019,0.51764705882352946,1"
+#!   CONTENTS="3 7 4 5 6 2 "
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="2"
+#!   TYPE="AttributeExposer"
+#!   VERSION="1"
+#!   POSITION="-179.46066142875452 -144.01243280233709"
+#!   BOUNDING_RECT="-179.46066142875452 -144.01243280233709 454 71"
+#!   ORDER="500000000000194"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.updatedAt" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource.publication_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource.createdAt" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="resource.updatedAt,resource.publication_date,resource.createdAt"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer_5"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="3"
+#!   TYPE="DateTimeConverter"
+#!   VERSION="2"
+#!   POSITION="514.54937315356301 -144.01243280233709"
+#!   BOUNDING_RECT="514.54937315356301 -144.01243280233709 767.05407718744027 71"
+#!   ORDER="500000000000745"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.updatedAt" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource.publication_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource.createdAt" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.updatedAt" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="resource.publication_date" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="resource.createdAt" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="DATETIME_ATTR" PARM_VALUE="resource.createdAt resource.publication_date resource.updatedAt"/>
+#!     <XFORM_PARM PARM_NAME="IN_FORMAT" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="OUT_FORMAT" PARM_VALUE="%Y-%m-%d"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PASSTHROUGH" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="REFERENCE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REFERENCE_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REPAIR_INPUT" PARM_VALUE="YES"/>
+#!     <XFORM_PARM PARM_NAME="TEST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_INPUT" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_INPUT_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_RESULT" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="DateTimeConverter"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="4"
+#!   TYPE="AttributeRenamer"
+#!   VERSION="4"
+#!   POSITION="1477.7147732571652 -144.01243280233709"
+#!   BOUNDING_RECT="1477.7147732571652 -144.01243280233709 454 71"
+#!   ORDER="500000000000747"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="record_last_modified" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="record_publish_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="record_create_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="resource.updatedAt record_last_modified RENAME_SET_DEFAULT  resource.publication_date record_publish_date RENAME_SET_DEFAULT  resource.createdAt record_create_date RENAME_SET_DEFAULT "/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRenamer_2"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="9"
+#!   NAME="feature_output"
+#!   POSITION="2522.719303302466 -204.01243280233712"
+#!   BOUNDING_RECT="2522.719303302466 -204.01243280233712 680.86044325772946 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="11"
+#!   NAME="feature_input"
+#!   POSITION="-1598.2959447473845 -177.51258280383709"
+#!   BOUNDING_RECT="-1598.2959447473845 -177.51258280383709 633.82919325772946 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="13"
+#!   NAME="error_output"
+#!   POSITION="2522.719303302466 -529.90640562897761"
+#!   BOUNDING_RECT="2522.719303302466 -529.90640562897761 454 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="12"
+#!   SOURCE_NODE="11"
+#!   TARGET_NODE="2"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="5"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="6"
+#!   SOURCE_NODE="3"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="10"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="14"
+#!   SOURCE_NODE="3"
+#!   TARGET_NODE="13"
+#!   SOURCE_PORT_DESC="fo 1 &lt;lt&gt;REJECTED&lt;gt&gt;"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO SocrataDateTimeConverter_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(SocrataDateTimeConverter_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(SocrataDateTimeConverter_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SocrataDateTimeConverter_WORKSPACE_NAME)_feature_input1606988514 Input Splitter"   INPUT FEATURE_TYPE "$(SocrataDateTimeConverter_WORKSPACE_NAME)_feature_input"   OUTPUT FEATURE_TYPE "$(SocrataDateTimeConverter_WORKSPACE_NAME)_feature_input"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(SocrataDateTimeConverter_WORKSPACE_NAME)_AttributeExposer_5    INPUT  FEATURE_TYPE "$(SocrataDateTimeConverter_WORKSPACE_NAME)_feature_input"    OUTPUT FEATURE_TYPE "$(SocrataDateTimeConverter_WORKSPACE_NAME)_AttributeExposer_5_OUTPUT"
+# -------------------------------------------------------------------------
+DEFAULT_MACRO $(SocrataDateTimeConverter_WORKSPACE_NAME)_DateTimeConverter_EXPRESSION_LIST
+INCLUDE [    set repairInput {};    if {{YES} eq {YES}} {       set repairInput "<comma>repair";    };    set inFormat {FME|ISO};    if { {} ne {} } {       set inFormat {};       if { [string first "<quote>" $inFormat] != -1 } {          set inFormat [string map {"<quote>" "<backslash><quote>"} $inFormat];       };    };    set outFormat {%Y-%m-%d};    if { [string first "<quote>" $outFormat] != -1 } {       set outFormat [string map {"<quote>" "<backslash><quote>"} $outFormat];    };    set parmList {};    set attrs {resource.createdAt resource.publication_date resource.updatedAt};    foreach attr $attrs {       lappend parmList $attr;       set funcAttr $attr;       if { [string first "<quote>" $attr] != -1 }       {          set funcAttr [string map {"<quote>" "<backslash><quote>"} $attr];          append funcAttr "<quote>";          set funcAttr "<quote>$funcAttr";       };       lappend parmList <at>DateTimeFormat<openparen><at>DateTimeParse<openparen><at>Value<openparen>$funcAttr<closeparen><comma><quote>$inFormat<quote>$repairInput<closeparen><comma><quote>$outFormat<quote><closeparen>;    };    puts "MACRO $(SocrataDateTimeConverter_WORKSPACE_NAME)_DateTimeConverter_EXPRESSION_LIST [join $parmList { }]"; ]
+Tcl2 proc $(SocrataDateTimeConverter_WORKSPACE_NAME)_DateTimeConverter_b08092f9_34eb_445d_83c1_c5c60c606af70_DateTimeConverter {} {    set attrs {resource.createdAt resource.publication_date resource.updatedAt};    set decodedAttrs {};    set attrVals {};    set attrNulls {};    set attrMissings {};    foreach attr $attrs {       set decodedAttr [FME_DecodeText $attr];       lappend decodedAttrs $decodedAttr;       lappend attrVals [FME_GetAttribute $decodedAttr];       lappend attrNulls [FME_IsAttributeNull $decodedAttr];       lappend attrExists [FME_AttributeExists $decodedAttr];    };    FME_Execute EvaluateExpression ATTR_CREATE_EXPR_PROPAGATE_MISSING_FDIV $($(SocrataDateTimeConverter_WORKSPACE_NAME)_DateTimeConverter_EXPRESSION_LIST) $(SocrataDateTimeConverter_WORKSPACE_NAME)_DateTimeConverter;    foreach attr $decodedAttrs oldAttrVal $attrVals oldAttrExists $attrExists oldAttrNull $attrNulls {       set newAttrVal [FME_GetAttribute $attr];       if {[string length $newAttrVal] == 0} {          if {{NO} eq {NO} || [string length $oldAttrVal] > 0} {             FME_SetAttribute fme_rejection_code "INVALID_INPUT";             break;          } elseif {!$oldAttrExists} {             FME_UnsetAttributes $attr;          } elseif {!$oldAttrNull} {             FME_SetAttribute $attr {};          };       }    }; }
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(SocrataDateTimeConverter_WORKSPACE_NAME)_DateTimeConverter_1    INPUT  FEATURE_TYPE "$(SocrataDateTimeConverter_WORKSPACE_NAME)_AttributeExposer_5_OUTPUT"    OUTPUT FEATURE_TYPE ___TOREJECTOR___       @RenameAttributes(FME_STRICT, ___fme_rejection_code___,fme_rejection_code)       @Tcl2($(SocrataDateTimeConverter_WORKSPACE_NAME)_DateTimeConverter_b08092f9_34eb_445d_83c1_c5c60c606af70_DateTimeConverter)
+FACTORY_DEF * TestFactory    FACTORY_NAME $(SocrataDateTimeConverter_WORKSPACE_NAME)_DateTimeConverter_Rejector    INPUT FEATURE_TYPE ___TOREJECTOR___    TEST @Value(fme_rejection_code) != ""    OUTPUT PASSED FEATURE_TYPE "$(SocrataDateTimeConverter_WORKSPACE_NAME)_DateTimeConverter_<REJECTED>"       @RemoveAttributes(___fme_rejection_code___)    OUTPUT FAILED FEATURE_TYPE "$(SocrataDateTimeConverter_WORKSPACE_NAME)_DateTimeConverter_OUTPUT"       @RenameAttributes(FME_STRICT, fme_rejection_code,___fme_rejection_code___)
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY_NAME $(SocrataDateTimeConverter_WORKSPACE_NAME)_AttributeRenamer_2    INPUT  FEATURE_TYPE "$(SocrataDateTimeConverter_WORKSPACE_NAME)_DateTimeConverter_OUTPUT" 	 ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV 	 ATTR_ACTION { "resource.updatedAt" "record_last_modified" "RENAME_SET_DEFAULT" "" }      ATTR_ACTION { "resource.publication_date" "record_publish_date" "RENAME_SET_DEFAULT" "" }      ATTR_ACTION { "resource.createdAt" "record_create_date" "RENAME_SET_DEFAULT" "" }    OUTPUT OUTPUT FEATURE_TYPE "$(SocrataDateTimeConverter_WORKSPACE_NAME)_AttributeRenamer_2_OUTPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SocrataDateTimeConverter_WORKSPACE_NAME)_feature_output1606988514 Output Collector"   INPUT FEATURE_TYPE "$(SocrataDateTimeConverter_WORKSPACE_NAME)_AttributeRenamer_2_OUTPUT"   OUTPUT FEATURE_TYPE "$(SocrataDateTimeConverter_WORKSPACE_NAME)_feature_output"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SocrataDateTimeConverter_WORKSPACE_NAME)_error_output1606988514 Output Collector"   INPUT FEATURE_TYPE "$(SocrataDateTimeConverter_WORKSPACE_NAME)_DateTimeConverter_<REJECTED>"   OUTPUT FEATURE_TYPE "$(SocrataDateTimeConverter_WORKSPACE_NAME)_error_output"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(SocrataDateTimeConverter_WORKSPACE_NAME))}]

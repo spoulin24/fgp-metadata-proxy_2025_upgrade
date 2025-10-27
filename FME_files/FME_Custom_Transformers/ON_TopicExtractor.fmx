@@ -1,0 +1,1161 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN ON_TopicExtractor,2,"""FGP Tools""",cedbad31-bb20-4ae3-8232-7c53a04eaefb,"Linked by Default",No,NO_PARALLELISM,,No,25606,YES,No,313,No,,both
+# 
+# TRANSFORMER_END
+#!   A0_PREVIEW_IMAGE="data:image/png;base64,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"
+#!   ARCGIS_COMPATIBILITY="ARCGIS_AUTO"
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="&quot;FGP Tools&quot;"
+#!   DATA_PROCESSING_TYPE="both"
+#!   DESCRIPTION=""
+#!   DOC_EXTENTS="5707.51 1011.64"
+#!   DOC_TOP_LEFT="-453.505 -1211.64"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="25606"
+#!   FME_DOCUMENT_GUID="cedbad31-bb20-4ae3-8232-7c53a04eaefb"
+#!   FME_DOCUMENT_PRIORGUID=""
+#!   FME_LINKED_TRANSFORMER_VERSION="2"
+#!   FME_NAMES_ENCODING="windows-1252"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY=""
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2025.1.0.0 (20250704 - Build 25606 - WIN64)"
+#!   LAST_SAVE_DATE="2025-10-06T16:01:02"
+#!   MARKDOWN_DESCRIPTION=""
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="313"
+#!   REPLACED_BY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="ON_TopicExtractor"
+#!   USAGE=""
+#!   USE_MARKDOWN="NO"
+#!   VIEW_POSITION="-1115.64 590.631"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="100"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI TEXT_OR_ATTR DEFAULT_TOPIC DEFAULT_TOPIC:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI TEXT_EDIT_OR_NUM_MULTI_FEATURE_OR_ATTR IN_CSV_LOOKUP_TABLES_DIR MAX%MAX IN_CSV_LOOKUP_TABLES_DIR:"
+#!   DEFAULT_VALUE="C:&lt;backslash&gt;DATA&lt;backslash&gt;FGP_GITHUB&lt;backslash&gt;fgp-metadata-proxy&lt;backslash&gt;FME_files&lt;backslash&gt;LOOKUP_TABLES"
+#!   IS_STAND_ALONE="false"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI TEXT_EDIT_OR_NUM_MULTI_FEATURE_OR_ATTR P-T_ABBR MAX%MAX P-T_ABBR:"
+#!   DEFAULT_VALUE="ON"
+#!   IS_STAND_ALONE="false"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI TEXT_OR_ATTR FEATURE_TYPE FEATURE_TYPE:"
+#!   DEFAULT_VALUE="Topic_Topic_ON"
+#!   IS_STAND_ALONE="false"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <USER_PARAMETERS
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbeyJuYW1lIjoiREVGQVVMVF9UT1BJQyIsInByb21wdCI6IkRFRkFVTFRfVE9QSUM6IiwidmFsdWVUeXBlIjoic3RyaW5nIiwiZGVmYXVsdFZhbHVlIjoiIiwic3VwcG9ydGVkVmFsdWVUeXBlcyI6WyJleHByZXNzaW9uIiwiZ2xvYmFsUGFyYW1ldGVyIl0sImRlcHJlY2F0ZWRGbGFncyI6WyJub25lIl0sInR5cGUiOiJ0ZXh0IiwiZWRpdG9yIjoicGxhaW50ZXh0In0seyJuYW1lIjoiSU5fQ1NWX0xPT0tVUF9UQUJMRVNfRElSIiwicHJvbXB0IjoiSU5fQ1NWX0xPT0tVUF9UQUJMRVNfRElSOiIsInZhbHVlVHlwZSI6InN0cmluZ0VuY29kZWQiLCJkZWZhdWx0VmFsdWUiOiJDOjxiYWNrc2xhc2g+REFUQTxiYWNrc2xhc2g+RkdQX0dJVEhVQjxiYWNrc2xhc2g+ZmdwLW1ldGFkYXRhLXByb3h5PGJhY2tzbGFzaD5GTUVfZmlsZXM8YmFja3NsYXNoPkxPT0tVUF9UQUJMRVMiLCJzdXBwb3J0ZWRWYWx1ZVR5cGVzIjpbImV4cHJlc3Npb24iLCJnbG9iYWxQYXJhbWV0ZXIiXSwiZGVwcmVjYXRlZEZsYWdzIjpbIm5vbmUiXSwiZXhwcmVzc2lvblNldHRpbmdzIjp7InN1YnNlcXVlbnRGZWF0dXJlcyI6LTEsInByaW9yRmVhdHVyZXMiOi0xfSwidHlwZSI6InRleHQiLCJlZGl0b3IiOiJwbGFpbnRleHQiLCJzaG93QXJpdGhtZXRpY0VkaXRvciI6dHJ1ZX0seyJuYW1lIjoiUC1UX0FCQlIiLCJwcm9tcHQiOiJQLVRfQUJCUjoiLCJ2YWx1ZVR5cGUiOiJzdHJpbmdFbmNvZGVkIiwiZGVmYXVsdFZhbHVlIjoiT04iLCJzdXBwb3J0ZWRWYWx1ZVR5cGVzIjpbImV4cHJlc3Npb24iLCJnbG9iYWxQYXJhbWV0ZXIiXSwiZGVwcmVjYXRlZEZsYWdzIjpbIm5vbmUiXSwiZXhwcmVzc2lvblNldHRpbmdzIjp7InN1YnNlcXVlbnRGZWF0dXJlcyI6LTEsInByaW9yRmVhdHVyZXMiOi0xfSwidHlwZSI6InRleHQiLCJlZGl0b3IiOiJwbGFpbnRleHQiLCJzaG93QXJpdGhtZXRpY0VkaXRvciI6dHJ1ZX0seyJuYW1lIjoiRkVBVFVSRV9UWVBFIiwicHJvbXB0IjoiRkVBVFVSRV9UWVBFOiIsInZhbHVlVHlwZSI6InN0cmluZyIsImRlZmF1bHRWYWx1ZSI6IlRvcGljX1RvcGljX09OIiwic3VwcG9ydGVkVmFsdWVUeXBlcyI6WyJleHByZXNzaW9uIiwiZ2xvYmFsUGFyYW1ldGVyIl0sImRlcHJlY2F0ZWRGbGFncyI6WyJub25lIl0sInR5cGUiOiJ0ZXh0IiwiZWRpdG9yIjoicGxhaW50ZXh0In1dfQ=="
+#! >
+#! <PARAMETER_INFO>
+#!     <INFO NAME="DEFAULT_TOPIC" 
+#!   DEFAULT_VALUE=""
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI TEXT_OR_ATTR DEFAULT_TOPIC DEFAULT_TOPIC:"
+#! />
+#!     <INFO NAME="IN_CSV_LOOKUP_TABLES_DIR" 
+#!   DEFAULT_VALUE="C:&lt;backslash&gt;DATA&lt;backslash&gt;FGP_GITHUB&lt;backslash&gt;fgp-metadata-proxy&lt;backslash&gt;FME_files&lt;backslash&gt;LOOKUP_TABLES"
+#!   SCOPE="DEPENDENT"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI TEXT_EDIT_OR_NUM_MULTI_FEATURE_OR_ATTR IN_CSV_LOOKUP_TABLES_DIR MAX%MAX IN_CSV_LOOKUP_TABLES_DIR:"
+#! />
+#!     <INFO NAME="P-T_ABBR" 
+#!   DEFAULT_VALUE="ON"
+#!   SCOPE="DEPENDENT"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI TEXT_EDIT_OR_NUM_MULTI_FEATURE_OR_ATTR P-T_ABBR MAX%MAX P-T_ABBR:"
+#! />
+#!     <INFO NAME="FEATURE_TYPE" 
+#!   DEFAULT_VALUE="Topic_Topic_ON"
+#!   SCOPE="DEPENDENT"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI TEXT_OR_ATTR FEATURE_TYPE FEATURE_TYPE:"
+#! />
+#! </PARAMETER_INFO>
+#! </USER_PARAMETERS>
+#! <COMMENTS>
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="5"
+#!   TYPE="AttributeCreator"
+#!   VERSION="10"
+#!   POSITION="1353.1385313853136 -765.63265632656328"
+#!   BOUNDING_RECT="1353.1385313853136 -765.63265632656328 454 71"
+#!   ORDER="500000000000002"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_odre" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="topic" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="original_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; _odre SET_TO 1 varchar&lt;openparen&gt;200&lt;closeparen&gt;  topic SET_TO &lt;at&gt;Value&lt;openparen&gt;original_value&lt;closeparen&gt; varchar&lt;openparen&gt;200&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE" PARM_VALUE="NO_OP"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_MODIFIED_ATTRIBUTE_TYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_IS_LOOKUP="true" PARM_VALUE="No Substitution"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="6"
+#!   TYPE="AttributeCreator"
+#!   VERSION="10"
+#!   POSITION="1394.8948342828148 -200.00100001000007"
+#!   BOUNDING_RECT="1394.8948342828148 -200.00100001000007 454 71"
+#!   ORDER="500000000000002"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_odre" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="DEFAULT_TOPIC" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="keywords.en{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; _odre SET_TO 2 varchar&lt;openparen&gt;200&lt;closeparen&gt;  DEFAULT_TOPIC SET_TO $(DEFAULT_TOPIC) varchar&lt;openparen&gt;200&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE" PARM_VALUE="NO_OP"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_MODIFIED_ATTRIBUTE_TYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_2"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_IS_LOOKUP="true" PARM_VALUE="No Substitution"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="7"
+#!   TYPE="Sorter"
+#!   VERSION="4"
+#!   POSITION="2168.7716877168768 -637.5063750637504"
+#!   BOUNDING_RECT="2168.7716877168768 -637.5063750637504 454 71"
+#!   ORDER="500000000000003"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="SORTED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_odre" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="topic" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="original_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="DEFAULT_TOPIC" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="keywords.en{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_PROCESSING_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="SORT_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="SORT_PARM" PARM_VALUE="_odre NUMERIC ASCENDING NON_VALUES_BEFORE_VALUES"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Sorter"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="8"
+#!   TYPE="AttributeExposer"
+#!   VERSION="2"
+#!   POSITION="756.25756257562591 -200.0010000100001"
+#!   BOUNDING_RECT="756.25756257562591 -200.0010000100001 454 71"
+#!   ORDER="500000000000004"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="keywords.en{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="keywords.en{},"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="9"
+#!   TYPE="PythonCaller"
+#!   VERSION="6"
+#!   POSITION="2843.7784377843773 -637.5063750637504"
+#!   BOUNDING_RECT="2843.7784377843773 -637.5063750637504 454 71"
+#!   ORDER="500000000000010"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_odre" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="topic" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="original_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="DEFAULT_TOPIC" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="keywords.en{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;Rejected&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="_odre" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="topic" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="original_value" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="DEFAULT_TOPIC" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="keywords.en{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_message" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_PROCESSING_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="HIDE_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="NEW_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSOURCE" PARM_VALUE="import&lt;space&gt;fme&lt;lf&gt;import&lt;space&gt;fmeobjects&lt;lf&gt;#&lt;space&gt;Template&lt;space&gt;Function&lt;space&gt;interface:&lt;lf&gt;#&lt;space&gt;When&lt;space&gt;using&lt;space&gt;this&lt;space&gt;function&lt;comma&gt;&lt;space&gt;make&lt;space&gt;sure&lt;space&gt;its&lt;space&gt;name&lt;space&gt;is&lt;space&gt;set&lt;space&gt;as&lt;space&gt;the&lt;space&gt;value&lt;space&gt;of&lt;lf&gt;#&lt;space&gt;the&lt;space&gt;&lt;apos&gt;Class&lt;space&gt;or&lt;space&gt;Function&lt;space&gt;to&lt;space&gt;Process&lt;space&gt;Features&lt;apos&gt;&lt;space&gt;transformer&lt;space&gt;parameter&lt;lf&gt;&lt;lf&gt;&lt;lf&gt;#&lt;space&gt;Template&lt;space&gt;Class&lt;space&gt;Interface:&lt;lf&gt;#&lt;space&gt;When&lt;space&gt;using&lt;space&gt;this&lt;space&gt;class&lt;comma&gt;&lt;space&gt;make&lt;space&gt;sure&lt;space&gt;its&lt;space&gt;name&lt;space&gt;is&lt;space&gt;set&lt;space&gt;as&lt;space&gt;the&lt;space&gt;value&lt;space&gt;of&lt;lf&gt;#&lt;space&gt;the&lt;space&gt;&lt;apos&gt;Class&lt;space&gt;or&lt;space&gt;Function&lt;space&gt;to&lt;space&gt;Process&lt;space&gt;Features&lt;apos&gt;&lt;space&gt;transformer&lt;space&gt;parameter&lt;lf&gt;class&lt;space&gt;FeatureProcessor&lt;openparen&gt;object&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;def&lt;space&gt;__init__&lt;openparen&gt;self&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;self.topic=&lt;openbracket&gt;&lt;closebracket&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;def&lt;space&gt;input&lt;openparen&gt;self&lt;comma&gt;feature&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;if&lt;space&gt;int&lt;openparen&gt;feature.getAttribute&lt;openparen&gt;&lt;apos&gt;_odre&lt;apos&gt;&lt;closeparen&gt;&lt;closeparen&gt;==1:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;#Ajouter&lt;space&gt;le&lt;space&gt;topic&lt;space&gt;&lt;u00e0&gt;&lt;space&gt;la&lt;space&gt;liste&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;self.topic.append&lt;openparen&gt;feature.getAttribute&lt;openparen&gt;&lt;apos&gt;topic&lt;apos&gt;&lt;closeparen&gt;&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;else:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;#Extraire&lt;space&gt;le&lt;space&gt;topic&lt;space&gt;des&lt;space&gt;keywords&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;extracted_topic=&lt;openbracket&gt;feature.getAttribute&lt;openparen&gt;&lt;apos&gt;DEFAULT_TOPIC&lt;apos&gt;&lt;closeparen&gt;&lt;closebracket&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;feature_keywords=feature.getAttribute&lt;openparen&gt;&lt;apos&gt;keywords.en&lt;opencurly&gt;&lt;closecurly&gt;&lt;apos&gt;&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;real_topic=False&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;for&lt;space&gt;topics&lt;space&gt;in&lt;space&gt;self.topic:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;if&lt;space&gt;topics&lt;space&gt;in&lt;space&gt;feature_keywords:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;if&lt;space&gt;not&lt;space&gt;real_topic:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;#Reset&lt;space&gt;de&lt;space&gt;la&lt;space&gt;liste&lt;space&gt;pour&lt;space&gt;vraie&lt;space&gt;valeur&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;extracted_topic=&lt;openbracket&gt;&lt;closebracket&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;real_topic=True&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;extracted_topic.append&lt;openparen&gt;topics&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;feature.setAttribute&lt;openparen&gt;&lt;apos&gt;extracted_topic&lt;opencurly&gt;&lt;closecurly&gt;.value&lt;apos&gt;&lt;comma&gt;extracted_topic&lt;closeparen&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;self.pyoutput&lt;openparen&gt;feature&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;def&lt;space&gt;close&lt;openparen&gt;self&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;pass"/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSYMBOL" PARM_VALUE="FeatureProcessor"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="PythonCaller"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="10"
+#!   TYPE="AttributeRemover"
+#!   VERSION="1"
+#!   POSITION="3416.7839713431308 -605.63165631656307"
+#!   BOUNDING_RECT="3416.7839713431308 -605.63165631656307 454 71"
+#!   ORDER="500000000000007"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="topic" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="original_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="keywords.en{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE="_odre,DEFAULT_TOPIC"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="11"
+#!   TYPE="AttributeExposer"
+#!   VERSION="2"
+#!   POSITION="453.12953129531229 -765.63265632656328"
+#!   BOUNDING_RECT="453.12953129531229 -765.63265632656328 454 71"
+#!   ORDER="500000000000011"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="original_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="original_value,"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="12"
+#!   TYPE="ATTRIBUTE_UNEXPOSER"
+#!   VERSION="2"
+#!   POSITION="3991.7897214006312 -600"
+#!   BOUNDING_RECT="3991.7897214006312 -600 533.00106825772946 71"
+#!   ORDER="500000000000012"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_UNEXPOSER"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="26"
+#!   TYPE="LOOKUP_TABLES_READER_NG"
+#!   VERSION="2"
+#!   POSITION="-453.50512738011616 -1140.6364063640635"
+#!   BOUNDING_RECT="-453.50512738011616 -1140.6364063640635 634.00106825772946 71"
+#!   ORDER="500000000002021"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="CSV_ENCODING" PARM_VALUE="utf-8"/>
+#!     <XFORM_PARM PARM_NAME="CSV_PATH" PARM_VALUE="$(IN_CSV_LOOKUP_TABLES_DIR)"/>
+#!     <XFORM_PARM PARM_NAME="FEATURE_TYPE" PARM_VALUE="$(FEATURE_TYPE)"/>
+#!     <XFORM_PARM PARM_NAME="PT" PARM_VALUE="$(P-T_ABBR)"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="LOOKUP_TABLES_READER_NG"/>
+#!     <XFORM_PARM PARM_NAME="__COMPOUND_PARAMETERS" PARM_VALUE=""/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="Input"
+#!   POSITION="91.495374953749547 -200.00100001000007"
+#!   BOUNDING_RECT="91.495374953749547 -200.00100001000007 454 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="Output"
+#!   POSITION="4800 -650.00650006500064"
+#!   BOUNDING_RECT="4800 -650.00650006500064 454 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="13"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="8"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="27"
+#!   SOURCE_NODE="26"
+#!   TARGET_NODE="11"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="15"
+#!   SOURCE_NODE="5"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="16"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="17"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 0 SORTED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="18"
+#!   SOURCE_NODE="8"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="20"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="10"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="19"
+#!   SOURCE_NODE="10"
+#!   TARGET_NODE="12"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="21"
+#!   SOURCE_NODE="11"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="22"
+#!   SOURCE_NODE="12"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+FME_PYTHON_VERSION 313
+# ============================================================================
+DEFAULT_MACRO $(ON_TopicExtractor_WORKSPACE_NAME)_DEFAULT_TOPIC 
+
+DEFAULT_MACRO $(ON_TopicExtractor_WORKSPACE_NAME)_IN_CSV_LOOKUP_TABLES_DIR C:<backslash>DATA<backslash>FGP_GITHUB<backslash>fgp-metadata-proxy<backslash>FME_files<backslash>LOOKUP_TABLES
+
+DEFAULT_MACRO $(ON_TopicExtractor_WORKSPACE_NAME)_P-T_ABBR ON
+
+DEFAULT_MACRO $(ON_TopicExtractor_WORKSPACE_NAME)_FEATURE_TYPE Topic_Topic_ON
+
+DEFAULT_MACRO $(ON_TopicExtractor_WORKSPACE_NAME)_FME_DATA_REPOSITORY 
+
+DEFAULT_MACRO $(ON_TopicExtractor_WORKSPACE_NAME)_FME_ENGINE 
+
+DEFAULT_MACRO $(ON_TopicExtractor_WORKSPACE_NAME)_FME_JOB_ID 
+
+DEFAULT_MACRO $(ON_TopicExtractor_WORKSPACE_NAME)_FME_SECURITY_ROLES 
+
+DEFAULT_MACRO $(ON_TopicExtractor_WORKSPACE_NAME)_FME_SECURITY_USER 
+
+DEFAULT_MACRO $(ON_TopicExtractor_WORKSPACE_NAME)_FME_SERVER_DEST_DIR 
+
+DEFAULT_MACRO $(ON_TopicExtractor_WORKSPACE_NAME)_FME_SERVER_HOST 
+
+DEFAULT_MACRO $(ON_TopicExtractor_WORKSPACE_NAME)_FME_SERVER_PORT 
+
+DEFAULT_MACRO $(ON_TopicExtractor_WORKSPACE_NAME)_FME_SERVER_REQUEST_HEADERS 
+
+DEFAULT_MACRO $(ON_TopicExtractor_WORKSPACE_NAME)_FME_SERVER_REQUEST_METHOD 
+
+DEFAULT_MACRO $(ON_TopicExtractor_WORKSPACE_NAME)_FME_SERVER_REQUEST_PARAMETERS 
+
+DEFAULT_MACRO $(ON_TopicExtractor_WORKSPACE_NAME)_FME_SERVER_REQUEST_URI 
+
+DEFAULT_MACRO $(ON_TopicExtractor_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER 
+
+DEFAULT_MACRO $(ON_TopicExtractor_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER_ID 
+
+DEFAULT_MACRO $(ON_TopicExtractor_WORKSPACE_NAME)_FME_SERVER_WEB_URL 
+
+DEFAULT_MACRO $(ON_TopicExtractor_WORKSPACE_NAME)_FME_SHAREDRESOURCE_BACKUP 
+
+DEFAULT_MACRO $(ON_TopicExtractor_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DASHBOARD 
+
+DEFAULT_MACRO $(ON_TopicExtractor_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DATA 
+
+DEFAULT_MACRO $(ON_TopicExtractor_WORKSPACE_NAME)_FME_SHAREDRESOURCE_ENGINE 
+
+DEFAULT_MACRO $(ON_TopicExtractor_WORKSPACE_NAME)_FME_SHAREDRESOURCE_LOG 
+
+DEFAULT_MACRO $(ON_TopicExtractor_WORKSPACE_NAME)_FME_SHAREDRESOURCE_SYSTEM 
+
+DEFAULT_MACRO $(ON_TopicExtractor_WORKSPACE_NAME)_FME_SHAREDRESOURCE_TEMP 
+
+DEFAULT_MACRO $(ON_TopicExtractor_WORKSPACE_NAME)_FME_TOPIC 
+
+DEFAULT_MACRO $(ON_TopicExtractor_WORKSPACE_NAME)_FME_TOPIC_MESSAGE 
+
+# ============================================================================
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO ON_TopicExtractor_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(ON_TopicExtractor_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(ON_TopicExtractor_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ON_TopicExtractor_WORKSPACE_NAME)_Input1759780862 Input Splitter"   INPUT FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_Input"   OUTPUT FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_Input"
+# -------------------------------------------------------------------------
+MACRO LOOKUP_TABLES_READER_NG_WORKSPACE_NAME $(ON_TopicExtractor_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_XFORMER_NAME $(ON_TopicExtractor_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)___COMPOUND_PARAMETERS 
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_FEATURE_TYPE $($(ON_TopicExtractor_WORKSPACE_NAME)_FEATURE_TYPE)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_CSV_PATH $($(ON_TopicExtractor_WORKSPACE_NAME)_IN_CSV_LOOKUP_TABLES_DIR)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_PT $($(ON_TopicExtractor_WORKSPACE_NAME)_P-T_ABBR)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_CSV_ENCODING utf-8
+INCLUDE_CUSTOM_TRANSFORMER_VER LOOKUP_TABLES_READER_NG:2
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ON_TopicExtractor_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"   OUTPUT FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"
+FACTORY_DEF * BranchingFactory   FACTORY_NAME "$(ON_TopicExtractor_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output Brancher -1 27"   INPUT FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"   TARGET_FACTORY "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   MAXIMUM_COUNT None   OUTPUT PASSED FEATURE_TYPE *
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   INPUT FEATURE_TYPE *  OUTPUT FEATURE_TYPE *
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(ON_TopicExtractor_WORKSPACE_NAME)_AttributeExposer_2 }    INPUT  FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"    OUTPUT { FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"          }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME { $(ON_TopicExtractor_WORKSPACE_NAME)_AttributeCreator }    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    NUM_OF_COLUMNS 5    ATTR_ACTION { "" "_odre" "SET_TO" "1" "varchar<openparen>200<closeparen>" }      ATTR_ACTION { "" "topic" "SET_TO" "<at>Value<openparen>original_value<closeparen>" "varchar<openparen>200<closeparen>" }    OUTPUT { OUTPUT FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_AttributeCreator_OUTPUT"        }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(ON_TopicExtractor_WORKSPACE_NAME)_AttributeExposer }    INPUT  FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_Input"    OUTPUT { FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_AttributeExposer_OUTPUT"          }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME { $(ON_TopicExtractor_WORKSPACE_NAME)_AttributeCreator_2 }    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_AttributeExposer_OUTPUT"    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    NUM_OF_COLUMNS 5    ATTR_ACTION { "" "_odre" "SET_TO" "2" "varchar<openparen>200<closeparen>" }      ATTR_ACTION { "" "DEFAULT_TOPIC" "SET_TO" "$($(ON_TopicExtractor_WORKSPACE_NAME)_DEFAULT_TOPIC$encode)" "varchar<openparen>200<closeparen>" }    OUTPUT { OUTPUT FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"        }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} SortFactory    FACTORY_NAME { $(ON_TopicExtractor_WORKSPACE_NAME)_Sorter }    INPUT  FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_AttributeCreator_OUTPUT"    INPUT  FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"    SORT_ALPHA_AS_UTF8 { YES }    FLUSH_WHEN_GROUPS_CHANGE { <Unused> }    SORT_BY { _odre NUMERIC ASCENDING NON_VALUES_BEFORE_VALUES }    OUTPUT { SORTED FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_Sorter_SORTED"          }
+# -------------------------------------------------------------------------
+FME_PYTHON_PATH "$(FME_MF_DIR)"
+FACTORY_DEF {*} PythonFactory    FACTORY_NAME { $(ON_TopicExtractor_WORKSPACE_NAME)_PythonCaller }    FLUSH_WHEN_GROUPS_CHANGE { <Unused> }    INPUT  FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_Sorter_SORTED"    SYMBOL_NAME { FeatureProcessor }    SOURCE_CODE { import<space>fme<lf>import<space>fmeobjects<lf>#<space>Template<space>Function<space>interface:<lf>#<space>When<space>using<space>this<space>function<comma><space>make<space>sure<space>its<space>name<space>is<space>set<space>as<space>the<space>value<space>of<lf>#<space>the<space><apos>Class<space>or<space>Function<space>to<space>Process<space>Features<apos><space>transformer<space>parameter<lf><lf><lf>#<space>Template<space>Class<space>Interface:<lf>#<space>When<space>using<space>this<space>class<comma><space>make<space>sure<space>its<space>name<space>is<space>set<space>as<space>the<space>value<space>of<lf>#<space>the<space><apos>Class<space>or<space>Function<space>to<space>Process<space>Features<apos><space>transformer<space>parameter<lf>class<space>FeatureProcessor<openparen>object<closeparen>:<lf><space><space><space><space>def<space>__init__<openparen>self<closeparen>:<lf><space><space><space><space><space><space><space><space>self.topic=<openbracket><closebracket><lf><space><space><space><space><space><space><space><space><lf><space><space><space><space>def<space>input<openparen>self<comma>feature<closeparen>:<lf><space><space><space><space><space><space><space><space>if<space>int<openparen>feature.getAttribute<openparen><apos>_odre<apos><closeparen><closeparen>==1:<lf><space><space><space><space><space><space><space><space><space><space><space><space>#Ajouter<space>le<space>topic<space><u00e0><space>la<space>liste<lf><space><space><space><space><space><space><space><space><space><space><space><space>self.topic.append<openparen>feature.getAttribute<openparen><apos>topic<apos><closeparen><closeparen><lf><space><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space>else:<lf><space><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><space><space><space>#Extraire<space>le<space>topic<space>des<space>keywords<lf><space><space><space><space><space><space><space><space><space><space><space>extracted_topic=<openbracket>feature.getAttribute<openparen><apos>DEFAULT_TOPIC<apos><closeparen><closebracket><lf><space><space><space><space><space><space><space><space><space><space><space>feature_keywords=feature.getAttribute<openparen><apos>keywords.en<opencurly><closecurly><apos><closeparen><lf><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><space><space><space>real_topic=False<lf><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><space><space><space>for<space>topics<space>in<space>self.topic:<lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>if<space>topics<space>in<space>feature_keywords:<lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>if<space>not<space>real_topic:<lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>#Reset<space>de<space>la<space>liste<space>pour<space>vraie<space>valeur<lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>extracted_topic=<openbracket><closebracket><lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>real_topic=True<lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>extracted_topic.append<openparen>topics<closeparen><lf><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><space><space><space>feature.setAttribute<openparen><apos>extracted_topic<opencurly><closecurly>.value<apos><comma>extracted_topic<closeparen><space><space><space><space><lf><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><space><space><space>self.pyoutput<openparen>feature<closeparen><lf><space><space><space><space>def<space>close<openparen>self<closeparen>:<lf><space><space><space><space><space><space><space><space>pass }    PY_OUTPUT_TAGS { PYOUTPUT <Rejected> }    OUTPUT { PYOUTPUT FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_PythonCaller_OUTPUT"         }    OUTPUT { <Rejected> FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_PythonCaller_<Rejected>"         }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ON_TopicExtractor_WORKSPACE_NAME)_PythonCaller <Rejected> Transformer Output Nuker"   INPUT FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_PythonCaller_<Rejected>"
+# -------------------------------------------------------------------------
+# Build the List removal function and regular expression if there was any list attributes to be removed.
+# If not, then we will not have any extra list removal call to @RemoveAttributes, which speeds the
+# normal, non-list removal especially when in Bulk Mode.  Note that this computation of the regular expressions is done
+# once during mapping file parse time.
+INCLUDE [    set listAttributeRemoveRegexps {};    set anyList {no};    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append listAttributeRemoveRegexps ",^$attr$";       set anyList {yes};    };    if { ${anyList} == {no} } {        puts {MACRO $(ON_TopicExtractor_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC }    } else {        puts "MACRO $(ON_TopicExtractor_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC @RemoveAttributes(fme_pcre_match\"$listAttributeRemoveRegexps\")"    }; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(ON_TopicExtractor_WORKSPACE_NAME)_AttributeRemover }    INPUT  FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_PythonCaller_OUTPUT"    OUTPUT { FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_AttributeRemover_OUTPUT"        @RemoveAttributes(fme_encoded,_odre,DEFAULT_TOPIC)        $($(ON_TopicExtractor_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC)         }
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ON_TopicExtractor_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Input Input Collector"   INPUT FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_AttributeRemover_OUTPUT"   OUTPUT FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Input"
+MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(ON_TopicExtractor_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(ON_TopicExtractor_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:2
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ON_TopicExtractor_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ON_TopicExtractor_WORKSPACE_NAME)_Output1759780862 Output Collector"   INPUT FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_Output"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(ON_TopicExtractor_WORKSPACE_NAME))}]
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN ON_TopicExtractor,1,"FGP Tools",0d94f533-9045-4728-b896-7f0795b1119a,"Linked by Default",No,NO_PARALLELISM,,No,20787,YES,No,37,No,
+# 
+# TRANSFORMER_END
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="FGP Tools"
+#!   DESCRIPTION=""
+#!   DOC_EXTENTS="5707.51 1011.64"
+#!   DOC_TOP_LEFT="-453.505 -1211.64"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="20787"
+#!   FME_DOCUMENT_GUID="0d94f533-9045-4728-b896-7f0795b1119a"
+#!   FME_DOCUMENT_PRIORGUID="49566916-d276-45b9-b0d5-52d50fea2f60,09adf0cc-8cb7-4213-ab5f-415c16817998"
+#!   FME_LINKED_TRANSFORMER_VERSION="1"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY=""
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2020.2.0.0 (20201027 - Build 20787 - WIN32)"
+#!   LAST_SAVE_DATE="2024-05-06T15:44:41"
+#!   MARKDOWN_DESCRIPTION=""
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="37"
+#!   REPLACED_BY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="ON_TopicExtractor"
+#!   USAGE=""
+#!   USE_MARKDOWN="NO"
+#!   VIEW_POSITION="-1115.64 590.631"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="100"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI TEXT_OR_ATTR DEFAULT_TOPIC DEFAULT_TOPIC:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI TEXT_EDIT_OR_NUM_MULTI_FEATURE_OR_ATTR IN_CSV_LOOKUP_TABLES_DIR MAX%MAX IN_CSV_LOOKUP_TABLES_DIR:"
+#!   DEFAULT_VALUE="C:&lt;backslash&gt;DATA&lt;backslash&gt;FGP_GITHUB&lt;backslash&gt;fgp-metadata-proxy&lt;backslash&gt;FME_files&lt;backslash&gt;LOOKUP_TABLES"
+#!   IS_STAND_ALONE="false"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI TEXT_EDIT_OR_NUM_MULTI_FEATURE_OR_ATTR P-T_ABBR MAX%MAX P-T_ABBR:"
+#!   DEFAULT_VALUE="ON"
+#!   IS_STAND_ALONE="false"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI TEXT_OR_ATTR FEATURE_TYPE FEATURE_TYPE:"
+#!   DEFAULT_VALUE="Topic_Topic_ON"
+#!   IS_STAND_ALONE="false"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <COMMENTS>
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="5"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="1353.1385313853136 -765.63265632656328"
+#!   BOUNDING_RECT="1353.1385313853136 -765.63265632656328 454 71"
+#!   ORDER="500000000000002"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_odre" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="topic" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="original_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; _odre SET_TO 1  topic SET_TO &lt;at&gt;Value&lt;openparen&gt;original_value&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="6"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="1394.8948342828148 -200.00100001000007"
+#!   BOUNDING_RECT="1394.8948342828148 -200.00100001000007 454 71"
+#!   ORDER="500000000000002"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_odre" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="DEFAULT_TOPIC" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="keywords.en{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; _odre SET_TO 2  DEFAULT_TOPIC SET_TO $(DEFAULT_TOPIC)"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="7"
+#!   TYPE="Sorter"
+#!   VERSION="2"
+#!   POSITION="2168.7716877168768 -637.5063750637504"
+#!   BOUNDING_RECT="2168.7716877168768 -637.5063750637504 454 71"
+#!   ORDER="500000000000003"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="SORTED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_odre" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="topic" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="original_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="DEFAULT_TOPIC" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="keywords.en{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SORT_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="SORT_PARM" PARM_VALUE="_odre NUMERIC ASCENDING"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Sorter"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="8"
+#!   TYPE="AttributeExposer"
+#!   VERSION="1"
+#!   POSITION="756.25756257562591 -200.0010000100001"
+#!   BOUNDING_RECT="756.25756257562591 -200.0010000100001 454 71"
+#!   ORDER="500000000000004"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="keywords.en{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="keywords.en{}"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="9"
+#!   TYPE="PythonCaller"
+#!   VERSION="4"
+#!   POSITION="2843.7784377843773 -637.5063750637504"
+#!   BOUNDING_RECT="2843.7784377843773 -637.5063750637504 454 71"
+#!   ORDER="500000000000010"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_odre" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="topic" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="original_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="DEFAULT_TOPIC" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="keywords.en{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="HIDE_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="NEW_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSOURCE" PARM_VALUE="import&lt;space&gt;fme&lt;lf&gt;import&lt;space&gt;fmeobjects&lt;lf&gt;#&lt;space&gt;Template&lt;space&gt;Function&lt;space&gt;interface:&lt;lf&gt;#&lt;space&gt;When&lt;space&gt;using&lt;space&gt;this&lt;space&gt;function&lt;comma&gt;&lt;space&gt;make&lt;space&gt;sure&lt;space&gt;its&lt;space&gt;name&lt;space&gt;is&lt;space&gt;set&lt;space&gt;as&lt;space&gt;the&lt;space&gt;value&lt;space&gt;of&lt;lf&gt;#&lt;space&gt;the&lt;space&gt;&lt;apos&gt;Class&lt;space&gt;or&lt;space&gt;Function&lt;space&gt;to&lt;space&gt;Process&lt;space&gt;Features&lt;apos&gt;&lt;space&gt;transformer&lt;space&gt;parameter&lt;lf&gt;&lt;lf&gt;&lt;lf&gt;#&lt;space&gt;Template&lt;space&gt;Class&lt;space&gt;Interface:&lt;lf&gt;#&lt;space&gt;When&lt;space&gt;using&lt;space&gt;this&lt;space&gt;class&lt;comma&gt;&lt;space&gt;make&lt;space&gt;sure&lt;space&gt;its&lt;space&gt;name&lt;space&gt;is&lt;space&gt;set&lt;space&gt;as&lt;space&gt;the&lt;space&gt;value&lt;space&gt;of&lt;lf&gt;#&lt;space&gt;the&lt;space&gt;&lt;apos&gt;Class&lt;space&gt;or&lt;space&gt;Function&lt;space&gt;to&lt;space&gt;Process&lt;space&gt;Features&lt;apos&gt;&lt;space&gt;transformer&lt;space&gt;parameter&lt;lf&gt;class&lt;space&gt;FeatureProcessor&lt;openparen&gt;object&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;def&lt;space&gt;__init__&lt;openparen&gt;self&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;self.topic=&lt;openbracket&gt;&lt;closebracket&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;def&lt;space&gt;input&lt;openparen&gt;self&lt;comma&gt;feature&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;if&lt;space&gt;int&lt;openparen&gt;feature.getAttribute&lt;openparen&gt;&lt;apos&gt;_odre&lt;apos&gt;&lt;closeparen&gt;&lt;closeparen&gt;==1:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;#Ajouter&lt;space&gt;le&lt;space&gt;topic&lt;space&gt;&lt;u00e0&gt;&lt;space&gt;la&lt;space&gt;liste&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;self.topic.append&lt;openparen&gt;feature.getAttribute&lt;openparen&gt;&lt;apos&gt;topic&lt;apos&gt;&lt;closeparen&gt;&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;else:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;#Extraire&lt;space&gt;le&lt;space&gt;topic&lt;space&gt;des&lt;space&gt;keywords&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;extracted_topic=&lt;openbracket&gt;feature.getAttribute&lt;openparen&gt;&lt;apos&gt;DEFAULT_TOPIC&lt;apos&gt;&lt;closeparen&gt;&lt;closebracket&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;feature_keywords=feature.getAttribute&lt;openparen&gt;&lt;apos&gt;keywords.en&lt;opencurly&gt;&lt;closecurly&gt;&lt;apos&gt;&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;real_topic=False&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;for&lt;space&gt;topics&lt;space&gt;in&lt;space&gt;self.topic:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;if&lt;space&gt;topics&lt;space&gt;in&lt;space&gt;feature_keywords:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;if&lt;space&gt;not&lt;space&gt;real_topic:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;#Reset&lt;space&gt;de&lt;space&gt;la&lt;space&gt;liste&lt;space&gt;pour&lt;space&gt;vraie&lt;space&gt;valeur&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;extracted_topic=&lt;openbracket&gt;&lt;closebracket&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;real_topic=True&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;extracted_topic.append&lt;openparen&gt;topics&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;feature.setAttribute&lt;openparen&gt;&lt;apos&gt;extracted_topic&lt;opencurly&gt;&lt;closecurly&gt;.value&lt;apos&gt;&lt;comma&gt;extracted_topic&lt;closeparen&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;self.pyoutput&lt;openparen&gt;feature&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;def&lt;space&gt;close&lt;openparen&gt;self&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;pass"/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSYMBOL" PARM_VALUE="FeatureProcessor"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="PythonCaller"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="10"
+#!   TYPE="AttributeRemover"
+#!   VERSION="1"
+#!   POSITION="3416.7839713431308 -605.63165631656307"
+#!   BOUNDING_RECT="3416.7839713431308 -605.63165631656307 454 71"
+#!   ORDER="500000000000007"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="topic" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="original_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="keywords.en{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE="_odre,DEFAULT_TOPIC"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="11"
+#!   TYPE="AttributeExposer"
+#!   VERSION="1"
+#!   POSITION="453.12953129531229 -765.63265632656328"
+#!   BOUNDING_RECT="453.12953129531229 -765.63265632656328 454 71"
+#!   ORDER="500000000000011"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="original_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="original_value"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="12"
+#!   TYPE="ATTRIBUTE_UNEXPOSER"
+#!   VERSION="1"
+#!   POSITION="3991.7897214006312 -600"
+#!   BOUNDING_RECT="3991.7897214006312 -600 533.00106825772946 71"
+#!   ORDER="500000000000012"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_UNEXPOSER"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="26"
+#!   TYPE="LOOKUP_TABLES_READER_NG"
+#!   VERSION="1"
+#!   POSITION="-453.50512738011616 -1140.6364063640635"
+#!   BOUNDING_RECT="-453.50512738011616 -1140.6364063640635 634.00106825772946 71"
+#!   ORDER="500000000002021"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="CSV_ENCODING" PARM_VALUE="utf-8"/>
+#!     <XFORM_PARM PARM_NAME="CSV_PATH" PARM_VALUE="$(IN_CSV_LOOKUP_TABLES_DIR)"/>
+#!     <XFORM_PARM PARM_NAME="FEATURE_TYPE" PARM_VALUE="$(FEATURE_TYPE)"/>
+#!     <XFORM_PARM PARM_NAME="PT" PARM_VALUE="$(P-T_ABBR)"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="LOOKUP_TABLES_READER_NG"/>
+#!     <XFORM_PARM PARM_NAME="__COMPOUND_PARAMETERS" PARM_VALUE=""/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="Input"
+#!   POSITION="91.495374953749547 -200.00100001000007"
+#!   BOUNDING_RECT="91.495374953749547 -200.00100001000007 454 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="Output"
+#!   POSITION="4800 -650.00650006500064"
+#!   BOUNDING_RECT="4800 -650.00650006500064 454 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="13"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="8"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="27"
+#!   SOURCE_NODE="26"
+#!   TARGET_NODE="11"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="15"
+#!   SOURCE_NODE="5"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="16"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="17"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 0 SORTED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="18"
+#!   SOURCE_NODE="8"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="20"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="10"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="19"
+#!   SOURCE_NODE="10"
+#!   TARGET_NODE="12"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="21"
+#!   SOURCE_NODE="11"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="22"
+#!   SOURCE_NODE="12"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+FME_PYTHON_VERSION 37
+DEFAULT_MACRO $(ON_TopicExtractor_WORKSPACE_NAME)_DEFAULT_TOPIC 
+DEFAULT_MACRO $(ON_TopicExtractor_WORKSPACE_NAME)_IN_CSV_LOOKUP_TABLES_DIR C:<backslash>DATA<backslash>FGP_GITHUB<backslash>fgp-metadata-proxy<backslash>FME_files<backslash>LOOKUP_TABLES
+DEFAULT_MACRO $(ON_TopicExtractor_WORKSPACE_NAME)_P-T_ABBR ON
+DEFAULT_MACRO $(ON_TopicExtractor_WORKSPACE_NAME)_FEATURE_TYPE Topic_Topic_ON
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO ON_TopicExtractor_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(ON_TopicExtractor_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(ON_TopicExtractor_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ON_TopicExtractor_WORKSPACE_NAME)_Input1715024681 Input Splitter"   INPUT FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_Input"   OUTPUT FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_Input"
+# -------------------------------------------------------------------------
+MACRO LOOKUP_TABLES_READER_NG_WORKSPACE_NAME $(ON_TopicExtractor_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_XFORMER_NAME $(ON_TopicExtractor_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)___COMPOUND_PARAMETERS 
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_FEATURE_TYPE $($(ON_TopicExtractor_WORKSPACE_NAME)_FEATURE_TYPE)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_CSV_PATH $($(ON_TopicExtractor_WORKSPACE_NAME)_IN_CSV_LOOKUP_TABLES_DIR)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_PT $($(ON_TopicExtractor_WORKSPACE_NAME)_P-T_ABBR)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_CSV_ENCODING utf-8
+INCLUDE_CUSTOM_TRANSFORMER_VER LOOKUP_TABLES_READER_NG:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ON_TopicExtractor_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"   OUTPUT FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"
+FACTORY_DEF * BranchingFactory   FACTORY_NAME "$(ON_TopicExtractor_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output Brancher -1 27"   INPUT FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"   TARGET_FACTORY "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   MAXIMUM_COUNT None   OUTPUT PASSED FEATURE_TYPE *
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   INPUT FEATURE_TYPE *  OUTPUT FEATURE_TYPE *
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(ON_TopicExtractor_WORKSPACE_NAME)_AttributeExposer_2    INPUT  FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"    OUTPUT FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(ON_TopicExtractor_WORKSPACE_NAME)_AttributeCreator    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "_odre" "SET_TO" "1" }      ATTR_ACTION { "" "topic" "SET_TO" "<at>Value<openparen>original_value<closeparen>" }    OUTPUT OUTPUT FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_AttributeCreator_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(ON_TopicExtractor_WORKSPACE_NAME)_AttributeExposer    INPUT  FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_Input"    OUTPUT FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_AttributeExposer_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(ON_TopicExtractor_WORKSPACE_NAME)_AttributeCreator_2    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_AttributeExposer_OUTPUT"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "_odre" "SET_TO" "2" }      ATTR_ACTION { "" "DEFAULT_TOPIC" "SET_TO" "$($(ON_TopicExtractor_WORKSPACE_NAME)_DEFAULT_TOPIC$encode)" }    OUTPUT OUTPUT FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} SortFactory    FACTORY_NAME $(ON_TopicExtractor_WORKSPACE_NAME)_Sorter    INPUT  FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_AttributeCreator_OUTPUT"    INPUT  FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"    FLUSH_WHEN_GROUPS_CHANGE No    SORT_BY { _odre NUMERIC ASCENDING }    OUTPUT SORTED FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_Sorter_SORTED"
+# -------------------------------------------------------------------------
+FME_PYTHON_PATH "$(FME_MF_DIR)"
+FACTORY_DEF * PythonFactory    FACTORY_NAME $(ON_TopicExtractor_WORKSPACE_NAME)_PythonCaller    INPUT  FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_Sorter_SORTED"    SYMBOL_NAME FeatureProcessor    PYTHON_NAMESPACE FMEOBJECTS    SOURCE_CODE import<space>fme<lf>import<space>fmeobjects<lf>#<space>Template<space>Function<space>interface:<lf>#<space>When<space>using<space>this<space>function<comma><space>make<space>sure<space>its<space>name<space>is<space>set<space>as<space>the<space>value<space>of<lf>#<space>the<space><apos>Class<space>or<space>Function<space>to<space>Process<space>Features<apos><space>transformer<space>parameter<lf><lf><lf>#<space>Template<space>Class<space>Interface:<lf>#<space>When<space>using<space>this<space>class<comma><space>make<space>sure<space>its<space>name<space>is<space>set<space>as<space>the<space>value<space>of<lf>#<space>the<space><apos>Class<space>or<space>Function<space>to<space>Process<space>Features<apos><space>transformer<space>parameter<lf>class<space>FeatureProcessor<openparen>object<closeparen>:<lf><space><space><space><space>def<space>__init__<openparen>self<closeparen>:<lf><space><space><space><space><space><space><space><space>self.topic=<openbracket><closebracket><lf><space><space><space><space><space><space><space><space><lf><space><space><space><space>def<space>input<openparen>self<comma>feature<closeparen>:<lf><space><space><space><space><space><space><space><space>if<space>int<openparen>feature.getAttribute<openparen><apos>_odre<apos><closeparen><closeparen>==1:<lf><space><space><space><space><space><space><space><space><space><space><space><space>#Ajouter<space>le<space>topic<space><u00e0><space>la<space>liste<lf><space><space><space><space><space><space><space><space><space><space><space><space>self.topic.append<openparen>feature.getAttribute<openparen><apos>topic<apos><closeparen><closeparen><lf><space><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space>else:<lf><space><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><space><space><space>#Extraire<space>le<space>topic<space>des<space>keywords<lf><space><space><space><space><space><space><space><space><space><space><space>extracted_topic=<openbracket>feature.getAttribute<openparen><apos>DEFAULT_TOPIC<apos><closeparen><closebracket><lf><space><space><space><space><space><space><space><space><space><space><space>feature_keywords=feature.getAttribute<openparen><apos>keywords.en<opencurly><closecurly><apos><closeparen><lf><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><space><space><space>real_topic=False<lf><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><space><space><space>for<space>topics<space>in<space>self.topic:<lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>if<space>topics<space>in<space>feature_keywords:<lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>if<space>not<space>real_topic:<lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>#Reset<space>de<space>la<space>liste<space>pour<space>vraie<space>valeur<lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>extracted_topic=<openbracket><closebracket><lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>real_topic=True<lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>extracted_topic.append<openparen>topics<closeparen><lf><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><space><space><space>feature.setAttribute<openparen><apos>extracted_topic<opencurly><closecurly>.value<apos><comma>extracted_topic<closeparen><space><space><space><space><lf><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><space><space><space>self.pyoutput<openparen>feature<closeparen><lf><space><space><space><space>def<space>close<openparen>self<closeparen>:<lf><space><space><space><space><space><space><space><space>pass    OUTPUT PYOUTPUT FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_PythonCaller_OUTPUT"
+# -------------------------------------------------------------------------
+# Build the List removal function and regular expression if there was any list attributes to be removed.
+# If not, then we will not have any extra list removal call to @RemoveAttributes, which speeds the
+# normal, non-list removal especially when in Bulk Mode.  Note that this computation of the regular expressions is done
+# once during mapping file parse time.
+INCLUDE [    set listAttributeRemoveRegexps {};    set anyList {no};    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append listAttributeRemoveRegexps ",^$attr$";       set anyList {yes};    };    if { ${anyList} == {no} } {        puts {MACRO $(ON_TopicExtractor_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC }    } else {        puts "MACRO $(ON_TopicExtractor_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC @RemoveAttributes(fme_pcre_match\"$listAttributeRemoveRegexps\")"    }; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(ON_TopicExtractor_WORKSPACE_NAME)_AttributeRemover    INPUT  FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_PythonCaller_OUTPUT"    OUTPUT { FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_AttributeRemover_OUTPUT"        @RemoveAttributes(fme_encoded,_odre,DEFAULT_TOPIC)        $($(ON_TopicExtractor_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC)         }
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ON_TopicExtractor_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Input Input Collector"   INPUT FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_AttributeRemover_OUTPUT"   OUTPUT FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Input"
+MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(ON_TopicExtractor_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(ON_TopicExtractor_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ON_TopicExtractor_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ON_TopicExtractor_WORKSPACE_NAME)_Output1715024681 Output Collector"   INPUT FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(ON_TopicExtractor_WORKSPACE_NAME)_Output"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(ON_TopicExtractor_WORKSPACE_NAME))}]

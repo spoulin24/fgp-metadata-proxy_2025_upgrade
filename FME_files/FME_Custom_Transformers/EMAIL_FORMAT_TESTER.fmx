@@ -1,0 +1,2762 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN EMAIL_FORMAT_TESTER,2,"""FGP Tools""",ac3c553a-3e0e-4a18-a99c-da8f0c9209ce,"Linked by Default",No,NO_PARALLELISM,,No,25606,YES,No,313,No,,both
+# <p><strong>Description </strong></p>
+# <p>This custom transformer corrects wrongly formed email addresses.  It manages two cases: firstly when the email address do not contain the character"@", the email address is replaced by the default email adress; secondly when addresses are separated by coma, the email addresses are separated and placed into independant list of contacts{}.</p>
+# <p><strong>Input Ports </strong></p>
+# <ul>
+# <li>INPUT: The input metadata records to process.</li>
+# </ul>
+# <p><strong>Output Ports </strong></p>
+# <ul>
+# <li>OUTPUT: The process output metadata records with email addresses corrected.</li>
+# </ul>
+# <p><strong>Parameters </strong></p>
+# <ul>
+# <li>DEFAULT_CONTACT_EMAIL: Name of the attribute containing the default email address or string character representing the default email address</li>
+# </ul>
+# TRANSFORMER_END
+#!   A0_PREVIEW_IMAGE="data:image/png;base64,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"
+#!   ARCGIS_COMPATIBILITY="ARCGIS_AUTO"
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="&quot;FGP Tools&quot;"
+#!   DATA_PROCESSING_TYPE="both"
+#!   DESCRIPTION="&lt;p&gt;&lt;strong&gt;Description &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;This custom transformer corrects wrongly formed email addresses.  It manages two cases: firstly when the email address do not contain the character&quot;@&quot;, the email address is replaced by the default email adress; secondly when addresses are separated by coma, the email addresses are separated and placed into independant list of contacts{}.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Input Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;INPUT: The input metadata records to process.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Output Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;OUTPUT: The process output metadata records with email addresses corrected.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Parameters &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;DEFAULT_CONTACT_EMAIL: Name of the attribute containing the default email address or string character representing the default email address&lt;/li&gt;&#10;&lt;/ul&gt;"
+#!   DOC_EXTENTS="12215.4 1821.89"
+#!   DOC_TOP_LEFT="-4884.42 -778.133"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="25606"
+#!   FME_DOCUMENT_GUID="ac3c553a-3e0e-4a18-a99c-da8f0c9209ce"
+#!   FME_DOCUMENT_PRIORGUID=""
+#!   FME_LINKED_TRANSFORMER_VERSION="2"
+#!   FME_NAMES_ENCODING="windows-1252"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY="Unknow,Unknow,Original&lt;space&gt;value,15&lt;solidus&gt;09&lt;solidus&gt;2021,Daniel&lt;space&gt;Pilon,Documentation&lt;space&gt;added"
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2025.1.0.0 (20250704 - Build 25606 - WIN64)"
+#!   LAST_SAVE_DATE="2025-10-06T15:11:23"
+#!   MARKDOWN_DESCRIPTION="**Description **&#10;&#10;This custom transformer corrects wrongly formed email addresses.  It manages two cases: firstly when the email address do not contain the character&quot;@&quot;, the email address is replaced by the default email adress; secondly when addresses are separated by coma, the email addresses are separated and placed into independant list of contacts{}.&#10;&#10;&#10;**Input Ports **&#10;&#10;- INPUT: The input metadata records to process.&#10;&#10;&#10;**Output Ports **&#10;&#10;- OUTPUT: The process output metadata records with email addresses corrected.&#10;&#10;&#10;**Parameters **&#10;&#10;- DEFAULT_CONTACT_EMAIL: Name of the attribute containing the default email address or string character representing the default email address&#10;&#10;"
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="313"
+#!   REPLACED_BY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="EMAIL_FORMAT_TESTER"
+#!   USAGE=""
+#!   USE_MARKDOWN="YES"
+#!   VIEW_POSITION="-954.555 1414.79"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="55"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI TEXT_OR_ATTR DEFAULT_CONTACT_EMAIL DEFAULT_CONTACT_EMAIL:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <USER_PARAMETERS
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbeyJuYW1lIjoiREVGQVVMVF9DT05UQUNUX0VNQUlMIiwicHJvbXB0IjoiREVGQVVMVF9DT05UQUNUX0VNQUlMOiIsInZhbHVlVHlwZSI6InN0cmluZyIsImRlZmF1bHRWYWx1ZSI6IiIsInN1cHBvcnRlZFZhbHVlVHlwZXMiOlsiZXhwcmVzc2lvbiIsImdsb2JhbFBhcmFtZXRlciJdLCJkZXByZWNhdGVkRmxhZ3MiOlsibm9uZSJdLCJ0eXBlIjoidGV4dCIsImVkaXRvciI6InBsYWludGV4dCJ9XX0="
+#! >
+#! <PARAMETER_INFO>
+#!     <INFO NAME="DEFAULT_CONTACT_EMAIL" 
+#!   DEFAULT_VALUE=""
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI TEXT_OR_ATTR DEFAULT_CONTACT_EMAIL DEFAULT_CONTACT_EMAIL:"
+#! />
+#! </PARAMETER_INFO>
+#! </USER_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="47"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Generate Unique ID for remerging datasets&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-2371.2094296736423 592.09433752499967"
+#!   TOP_LEFT="-2371.2094296736423 592.09433752499967"
+#!   BOTTOM_RIGHT="-1933.2172685020305 593.09433752499967"
+#!   BOUNDING_RECT="-2371.2094296736423 592.09433752499967 437.99216117161171 -1"
+#!   ORDER="500000000000022"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{ddf0891a-db7f-47b2-abff-bd4d14a1c6b1}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="4"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="48"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Removes contacts{} list&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-1349.0138464678103 143.13151456343672"
+#!   TOP_LEFT="-1349.0138464678103 143.13151456343672"
+#!   BOTTOM_RIGHT="-862.04658617020732 144.13151456343672"
+#!   BOUNDING_RECT="-1349.0138464678103 143.13151456343672 486.96726029760299 -1"
+#!   ORDER="500000000000023"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{6bb436a2-7823-43b5-935b-c187b5cf198e}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="5"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="49"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Retains only contacts{} list and unique ID&#9;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-1686.5172215015605 783.13851463343724"
+#!   TOP_LEFT="-1686.5172215015605 783.13851463343724"
+#!   BOTTOM_RIGHT="-1241.5425686300318 784.13851463343724"
+#!   BOUNDING_RECT="-1686.5172215015605 783.13851463343724 444.97465287152869 -1"
+#!   ORDER="500000000000024"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{c4331a67-f316-4116-b0a3-d1338bd6397b}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="6"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="50"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Explodes contacts{} list into individual attributes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-1070.886065189997 773.76342088249976"
+#!   TOP_LEFT="-1070.886065189997 773.76342088249976"
+#!   BOTTOM_RIGHT="-515.65640351838033 540.63638961218703"
+#!   BOUNDING_RECT="-1070.886065189997 773.76342088249976 555.22966167161667 233.1270312703127"
+#!   ORDER="500000000000025"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{685e916c-8265-4ca9-9fb5-0e75196d0325}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="7"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="51"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Test &apos;email&apos; attribute for &apos;@&apos;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-443.75503387968479 783.13851463343724"
+#!   TOP_LEFT="-443.75503387968479 783.13851463343724"
+#!   BOTTOM_RIGHT="-13.770765286998881 784.13851463343724"
+#!   BOUNDING_RECT="-443.75503387968479 783.13851463343724 429.98426859268591 -1"
+#!   ORDER="500000000000026"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{5e578389-9f1a-48be-bac3-bf93056de058}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="8"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="52"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Sets &apos;email&apos; attribute to default if no &apos;@&apos; is found in the data field&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="89.54200729507329 786.26354588374977"
+#!   TOP_LEFT="89.54200729507329 786.26354588374977"
+#!   BOTTOM_RIGHT="749.99733059830635 553.13651461343704"
+#!   BOUNDING_RECT="89.54200729507329 786.26354588374977 660.45532330323306 233.1270312703127"
+#!   ORDER="500000000000027"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{304a0768-a6e2-4dba-8434-c8c6fc70a196}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="11"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="53"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Rebuilds contacts{} list and uses unique ID to remerge data&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="4270.229747786314 386.03167083772621"
+#!   TOP_LEFT="4270.229747786314 386.03167083772621"
+#!   BOTTOM_RIGHT="4700.214016379 387.03167083772621"
+#!   BOUNDING_RECT="4270.229747786314 386.03167083772621 429.98426859268591 -1"
+#!   ORDER="500000000000029"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{fe533817-b96b-4c4e-a6bd-df8e3133c36f}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="9"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="54"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Attribute cleanup&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="5466.6793104637591 73.812639556504877"
+#!   TOP_LEFT="5466.6793104637591 73.812639556504877"
+#!   BOTTOM_RIGHT="5919.1735697813519 74.812639556504877"
+#!   BOUNDING_RECT="5466.6793104637591 73.812639556504877 452.49425931759316 -1"
+#!   ORDER="500000000000030"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{15cf194e-a84a-4248-85ae-687f860ea7ad}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="10"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="55"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Exposes attributes used by this transformer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-3843.8221314256612 -298.53956881406378"
+#!   TOP_LEFT="-3843.8221314256612 -298.53956881406378"
+#!   BOTTOM_RIGHT="-3377.8511748410951 -297.53956881406378"
+#!   BOUNDING_RECT="-3843.8221314256612 -298.53956881406378 465.97095658456584 -1"
+#!   ORDER="500000000000031"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{bcb75451-55af-4d4b-8e10-6bac2e96aa6c}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="14"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="56"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Tests email attributes for mulitple comma separated values&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="1543.2658126581268 128.13201456843663"
+#!   TOP_LEFT="1543.2658126581268 128.13201456843663"
+#!   BOTTOM_RIGHT="2375.0119113691139 -45.61942294593851"
+#!   BOUNDING_RECT="1543.2658126581268 128.13201456843663 831.7460987109871 173.75143751437514"
+#!   ORDER="500000000000040"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{c873a8e8-987f-44c1-bbad-bfa9a419af76}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="15"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="57"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Splits email attribute on comma delimiter creating email{} list&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="2443.7744377443778 901.8897021453123"
+#!   TOP_LEFT="2443.7744377443778 901.8897021453123"
+#!   BOTTOM_RIGHT="2897.7335554605552 900.8897021453123"
+#!   BOUNDING_RECT="2443.7744377443778 901.8897021453123 453.95911771617716 1"
+#!   ORDER="500000000000041"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{323899a8-5656-4307-8e86-2354059bffc9}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="16"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="58"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Remove email attribute&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="3056.2805628056271 851.88920214031214"
+#!   TOP_LEFT="3056.2805628056271 851.88920214031214"
+#!   BOTTOM_RIGHT="3510.2396805218041 850.88920214031214"
+#!   BOUNDING_RECT="3056.2805628056271 851.88920214031214 453.95911771617716 1"
+#!   ORDER="500000000000042"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{8bbf399d-7846-47b1-96ec-bbbe84ed9072}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="18"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="59"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Explodes email{} list to individual email attributes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="3750 953.01484378480097"
+#!   TOP_LEFT="3750 953.01484378480097"
+#!   BOTTOM_RIGHT="4203.9591177161774 952.01484378480097"
+#!   BOUNDING_RECT="3750 953.01484378480097 453.95911771617716 1"
+#!   ORDER="500000000000043"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{b75e6ef3-9348-41a7-9fbb-5ab81e8cec59}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="17"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="63"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Remove contact list where email address are duplicated&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="4800 150"
+#!   TOP_LEFT="4800 150"
+#!   BOTTOM_RIGHT="5359.1359507345078 -65.001850018500164"
+#!   BOUNDING_RECT="4800 150 559.13595073450733 215.00185001850016"
+#!   ORDER="500000000000048"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{5dbd5b7d-9311-41a9-9aca-ab8df48c998e}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="20"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="60"
+#!   NAME="EMAIL_FORMAT_TESTER"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="-4075.0407504075038 1043.760437604376"
+#!   ORDER="500000000000010"
+#!   PALETTE_COLOR=""
+#!   BOTTOM_RIGHT="6077.3335006077332 -778.13278132781329"
+#!   BOUNDING_RECT="-4075.0407504075038 1043.760437604376 10152.374251015237 1821.8932189321893"
+#!   STICKY="false"
+#!   COLOUR="0.2196078431372549,0.2196078431372549,0.67450980392156867,0.39215686274509803"
+#!   CONTENTS=""
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="4"
+#!   TYPE="UniqueIdentifierGenerator"
+#!   VERSION="0"
+#!   POSITION="-2363.2172685020305 -7.2860062784384354"
+#!   BOUNDING_RECT="-2363.2172685020305 -7.2860062784384354 546.484375 65"
+#!   ORDER="500000000000002"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="default_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="OUTPUT_ATTRIBUTE_NAME_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TYPE_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="UUID_ATTR" PARM_VALUE="_uuidContacts"/>
+#!     <XFORM_PARM PARM_NAME="UUID_FORMAT" PARM_VALUE="ULID"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="UniqueIdentifierGenerator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="5"
+#!   TYPE="AttributeRemover"
+#!   VERSION="1"
+#!   POSITION="-1325.0138464678103 -65.619922950938417"
+#!   BOUNDING_RECT="-1325.0138464678103 -65.619922950938417 431 71"
+#!   ORDER="500000000000003"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="default_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE="contacts&lt;opencurly&gt;&lt;closecurly&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="6"
+#!   TYPE="AttributeKeeper"
+#!   VERSION="3"
+#!   POSITION="-1662.5172215015605 515.01148336312463"
+#!   BOUNDING_RECT="-1662.5172215015605 515.01148336312463 431 71"
+#!   ORDER="500000000000004"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="default_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="CREATE_BULK_MODE_FEATURES" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="KEEP_ATTRS" PARM_VALUE="default_email,_uuidContacts"/>
+#!     <XFORM_PARM PARM_NAME="KEEP_LIST" PARM_VALUE="contacts&lt;opencurly&gt;&lt;closecurly&gt;"/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_ON_ATTRIBUTE_CHANGE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeKeeper"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="7"
+#!   TYPE="ListExploder"
+#!   VERSION="6"
+#!   POSITION="-993.76053393468453 386.88520210031197"
+#!   BOUNDING_RECT="-993.76053393468453 386.88520210031197 431 71"
+#!   ORDER="500000000000005"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="ELEMENTS"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="default_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="default_email" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="email" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE_LOOKUP" PARM_VALUE="HANDLE_CONFLICT"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES_LOOKUP" PARM_VALUE="INCOMING_IF_CONFLICT"/>
+#!     <XFORM_PARM PARM_NAME="INCOMING_PREFIX" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="INDEX_ATTR" PARM_VALUE="_element_index"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTR" PARM_VALUE="contacts{}"/>
+#!     <XFORM_PARM PARM_NAME="OAN_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ListExploder"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE" PARM_IS_LOOKUP="true" PARM_VALUE="Merge List Attributes"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES" PARM_IS_LOOKUP="true" PARM_VALUE="Use List Attribute Values"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="8"
+#!   TYPE="Tester"
+#!   VERSION="4"
+#!   POSITION="-443.75503387968479 515.01148336312463"
+#!   BOUNDING_RECT="-443.75503387968479 515.01148336312463 431 71"
+#!   ORDER="500000000000006"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="PASSED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="default_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="FAILED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="default_email" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="email" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_MSG" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="ACROSS_OUTPUT_PORTS"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="CASE_INSENSITIVE_TEST &lt;at&gt;Value&lt;openparen&gt;email&lt;closeparen&gt; CONTAINS &lt;at&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="CASE_INSENSITIVE_TEST"/>
+#!     <XFORM_PARM PARM_NAME="TEST_PREVIEW_GROUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="9"
+#!   TYPE="FeatureMerger"
+#!   VERSION="21"
+#!   POSITION="4194.6608102787577 -59.36986045031361"
+#!   BOUNDING_RECT="4194.6608102787577 -59.36986045031361 431 71"
+#!   ORDER="500000000000007"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#!   INPUT_FT_ORDER="SUPPLIER%REQUESTOR"
+#! >
+#!     <OUTPUT_FEAT NAME="MERGED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="default_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.default_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}._uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}._element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="UNMERGED_REQUESTOR"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="default_email" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <OUTPUT_FEAT NAME="USED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <XFORM_ATTR ATTR_NAME="default_email" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="email" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="numReferences" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <OUTPUT_FEAT NAME="UNUSED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="3"/>
+#!     <XFORM_ATTR ATTR_NAME="default_email" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="_uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="email" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="4"/>
+#!     <XFORM_ATTR ATTR_NAME="default_email" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="_uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="email" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE" PARM_VALUE="Merge Supplier"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES_LOOKUP" PARM_VALUE="REQUESTOR_IF_CONFLICT"/>
+#!     <XFORM_PARM PARM_NAME="CLEANING_TOLERANCE_LOOKUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CONNECT_Z_MODE_LOOKUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GENERATE_LIST_GROUP" PARM_VALUE="YES"/>
+#!     <XFORM_PARM PARM_NAME="GEOM_TYPE_VAL" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_PROCESSING_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="IGNORE_NULLS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="JOIN_ATTRIBUTES_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="JOIN_KEYS" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;_uuidContacts&lt;closeparen&gt; &lt;at&gt;Value&lt;openparen&gt;_uuidContacts&lt;closeparen&gt; AUTO"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE_MODE_LU" PARM_VALUE="ALL"/>
+#!     <XFORM_PARM PARM_NAME="LIST_NAME" PARM_VALUE="contacts"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_COUNT_ATTR" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_TYPE_VAL" PARM_VALUE="ATTRIBUTES"/>
+#!     <XFORM_PARM PARM_NAME="MODE_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="ACROSS_OUTPUT_PORTS"/>
+#!     <XFORM_PARM PARM_NAME="PROCESS_DUPS" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="REJECT_NULL_MISSING_KEYS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIERS_FIRST" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIER_PREFIX" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="FeatureMerger"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES" PARM_IS_LOOKUP="true" PARM_VALUE="Use Requestor"/>
+#!     <XFORM_PARM PARM_NAME="CLEANING_TOLERANCE" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CONNECT_Z_MODE" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GEOM_TYPE" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE_MODE" PARM_IS_LOOKUP="true" PARM_VALUE="All Attributes"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_TYPE" PARM_IS_LOOKUP="true" PARM_VALUE="Attributes Only"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="10"
+#!   TYPE="AttributeRemover"
+#!   VERSION="1"
+#!   POSITION="5478.1791854625098 -209.37136046531353"
+#!   BOUNDING_RECT="5478.1791854625098 -209.37136046531353 478.13037763312059 71"
+#!   ORDER="500000000000008"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE="contacts&lt;opencurly&gt;&lt;closecurly&gt;._element_index contacts&lt;opencurly&gt;&lt;closecurly&gt;._uuidContacts contacts&lt;opencurly&gt;&lt;closecurly&gt;.default_email contacts&lt;opencurly&gt;&lt;closecurly&gt;.fme_rejection_code"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE="_element_index,email,default_email,fme_rejection_code,_uuidContacts"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="11"
+#!   TYPE="AttributeCreator"
+#!   VERSION="10"
+#!   POSITION="225.00225002250056 128.13201456843663"
+#!   BOUNDING_RECT="225.00225002250056 128.13201456843663 431 71"
+#!   ORDER="500000000000016"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="default_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; email SET_TO &lt;at&gt;Value&lt;openparen&gt;default_email&lt;closeparen&gt; varchar&lt;openparen&gt;200&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE" PARM_VALUE="NO_OP"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_MODIFIED_ATTRIBUTE_TYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_IS_LOOKUP="true" PARM_VALUE="No Substitution"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="12"
+#!   TYPE="Junction"
+#!   VERSION="0"
+#!   POSITION="1459.0904999959089 409.090499995909"
+#!   BOUNDING_RECT="1459.0904999959089 409.090499995909 132 58"
+#!   ORDER="500000000000017"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="default_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Junction"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="13"
+#!   TYPE="Terminator"
+#!   VERSION="3"
+#!   POSITION="4990.538185416146 -383.91436044076818"
+#!   BOUNDING_RECT="4990.538185416146 -383.91436044076818 454 71"
+#!   ORDER="500000000000032"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE="Feature&lt;space&gt;Merger&lt;space&gt;error:&lt;space&gt;Translation&lt;space&gt;Terminated"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Terminator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="14"
+#!   TYPE="AttributeExposer"
+#!   VERSION="2"
+#!   POSITION="-3870.3517998473449 -7.2860062784384354"
+#!   BOUNDING_RECT="-3870.3517998473449 -7.2860062784384354 431 71"
+#!   ORDER="500000000000001"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="contacts{}.email,,id,"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="15"
+#!   TYPE="Tester"
+#!   VERSION="4"
+#!   POSITION="1715.6421564215643 465.63538960218705"
+#!   BOUNDING_RECT="1715.6421564215643 465.63538960218705 454 71"
+#!   ORDER="500000000000033"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="PASSED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="default_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="FAILED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="default_email" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="email" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_MSG" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="ACROSS_OUTPUT_PORTS"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="CASE_INSENSITIVE_TEST &lt;at&gt;Value&lt;openparen&gt;email&lt;closeparen&gt; CONTAINS &lt;comma&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="CASE_INSENSITIVE_TEST"/>
+#!     <XFORM_PARM PARM_NAME="TEST_PREVIEW_GROUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="16"
+#!   TYPE="AttributeSplitter"
+#!   VERSION="5"
+#!   POSITION="2443.7744377443778 465.63538960218705"
+#!   BOUNDING_RECT="2443.7744377443778 465.63538960218705 454 71"
+#!   ORDER="500000000000034"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="default_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="email{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_NAME" PARM_VALUE="email"/>
+#!     <XFORM_PARM PARM_NAME="DELIMITER" PARM_VALUE="&lt;comma&gt;"/>
+#!     <XFORM_PARM PARM_NAME="DROP_EMPTY_PARTS" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="FIELD_QUALIFIER" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="LIST_NAME" PARM_VALUE="email"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRIM_TYPE" PARM_VALUE="BOTH"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeSplitter"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="17"
+#!   TYPE="ListExploder"
+#!   VERSION="6"
+#!   POSITION="3750 600"
+#!   BOUNDING_RECT="3750 600 454 71"
+#!   ORDER="500000000000037"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="ELEMENTS"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="default_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="default_email" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="email" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE_LOOKUP" PARM_VALUE="HANDLE_CONFLICT"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES_LOOKUP" PARM_VALUE="INCOMING_IF_CONFLICT"/>
+#!     <XFORM_PARM PARM_NAME="INCOMING_PREFIX" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="INDEX_ATTR" PARM_VALUE="_element_index"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTR" PARM_VALUE="email{}"/>
+#!     <XFORM_PARM PARM_NAME="OAN_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ListExploder_2"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE" PARM_IS_LOOKUP="true" PARM_VALUE="Merge List Attributes"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES" PARM_IS_LOOKUP="true" PARM_VALUE="Use List Attribute Values"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="18"
+#!   TYPE="AttributeRemover"
+#!   VERSION="1"
+#!   POSITION="3056.2805628056271 559.38059380593791"
+#!   BOUNDING_RECT="3056.2805628056271 559.38059380593791 454 71"
+#!   ORDER="500000000000038"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="default_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="email{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE="email"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover_3"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="19"
+#!   TYPE="AttributeCreator"
+#!   VERSION="10"
+#!   POSITION="-3160.7253935832823 -7.2860062784384354"
+#!   BOUNDING_RECT="-3160.7253935832823 -7.2860062784384354 454 71"
+#!   ORDER="500000000000044"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="default_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; default_email SET_TO $(DEFAULT_CONTACT_EMAIL) varchar&lt;openparen&gt;200&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE" PARM_VALUE="NO_OP"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_MODIFIED_ATTRIBUTE_TYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_2"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_IS_LOOKUP="true" PARM_VALUE="No Substitution"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="20"
+#!   TYPE="ListDuplicateRemover"
+#!   VERSION="1"
+#!   POSITION="4874.4199978706338 -134.37061045781357"
+#!   BOUNDING_RECT="4874.4199978706338 -134.37061045781357 467.00106825772946 71"
+#!   ORDER="500000000000046"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="default_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.default_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}._uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}._element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="SRC_LIST" PARM_VALUE="contacts{}.email"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ListDuplicateRemover"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="21"
+#!   TYPE="ATTRIBUTE_UNEXPOSER"
+#!   VERSION="2"
+#!   POSITION="6150 -200.00050000500005"
+#!   BOUNDING_RECT="6150 -200.00050000500005 533.00106825772946 71"
+#!   ORDER="500000000000047"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_UNEXPOSER"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="61"
+#!   TYPE="Terminator"
+#!   VERSION="3"
+#!   POSITION="4854.5475000204542 490.90950000409089"
+#!   BOUNDING_RECT="4854.5475000204542 490.90950000409089 454 71"
+#!   ORDER="500000000000032"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE="List&lt;space&gt;exploder&lt;space&gt;problem&lt;space&gt;whn&lt;space&gt;exploding&lt;space&gt;email&lt;opencurly&gt;&lt;closecurly&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Terminator_2"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="INPUT"
+#!   POSITION="-4884.4238442384412 -7.2860062784384354"
+#!   BOUNDING_RECT="-4884.4238442384412 -7.2860062784384354 431 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="OUTPUT"
+#!   POSITION="6900 -300"
+#!   BOUNDING_RECT="6900 -300 431 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="22"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="14"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="23"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="24"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="1"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="25"
+#!   SOURCE_NODE="5"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 1 REQUESTOR"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="26"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="27"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="8"
+#!   SOURCE_PORT_DESC="fo 0 ELEMENTS"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="28"
+#!   SOURCE_NODE="8"
+#!   TARGET_NODE="12"
+#!   SOURCE_PORT_DESC="fo 0 PASSED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="29"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="20"
+#!   SOURCE_PORT_DESC="fo 0 MERGED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="30"
+#!   SOURCE_NODE="10"
+#!   TARGET_NODE="21"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="31"
+#!   SOURCE_NODE="11"
+#!   TARGET_NODE="12"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="32"
+#!   SOURCE_NODE="12"
+#!   TARGET_NODE="15"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="33"
+#!   SOURCE_NODE="14"
+#!   TARGET_NODE="19"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="34"
+#!   SOURCE_NODE="15"
+#!   TARGET_NODE="16"
+#!   SOURCE_PORT_DESC="fo 0 PASSED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="35"
+#!   SOURCE_NODE="16"
+#!   TARGET_NODE="18"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="36"
+#!   SOURCE_NODE="17"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 0 ELEMENTS"
+#!   TARGET_PORT_DESC="fi 0 SUPPLIER"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="37"
+#!   SOURCE_NODE="18"
+#!   TARGET_NODE="17"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="38"
+#!   SOURCE_NODE="19"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="39"
+#!   SOURCE_NODE="20"
+#!   TARGET_NODE="10"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="40"
+#!   SOURCE_NODE="21"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="41"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="11"
+#!   SOURCE_PORT_DESC="fo 1 &lt;lt&gt;REJECTED&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="42"
+#!   SOURCE_NODE="8"
+#!   TARGET_NODE="11"
+#!   SOURCE_PORT_DESC="fo 1 FAILED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="43"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="13"
+#!   SOURCE_PORT_DESC="fo 1 UNMERGED_REQUESTOR"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="44"
+#!   SOURCE_NODE="15"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 1 FAILED"
+#!   TARGET_PORT_DESC="fi 0 SUPPLIER"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="62"
+#!   SOURCE_NODE="17"
+#!   TARGET_NODE="61"
+#!   SOURCE_PORT_DESC="fo 1 &lt;lt&gt;REJECTED&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="46"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="13"
+#!   SOURCE_PORT_DESC="fo 4 &lt;lt&gt;REJECTED&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+FME_PYTHON_VERSION 313
+# ============================================================================
+DEFAULT_MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_DEFAULT_CONTACT_EMAIL 
+
+DEFAULT_MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FME_DATA_REPOSITORY 
+
+DEFAULT_MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FME_ENGINE 
+
+DEFAULT_MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FME_JOB_ID 
+
+DEFAULT_MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FME_SECURITY_ROLES 
+
+DEFAULT_MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FME_SECURITY_USER 
+
+DEFAULT_MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FME_SERVER_DEST_DIR 
+
+DEFAULT_MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FME_SERVER_HOST 
+
+DEFAULT_MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FME_SERVER_PORT 
+
+DEFAULT_MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FME_SERVER_REQUEST_HEADERS 
+
+DEFAULT_MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FME_SERVER_REQUEST_METHOD 
+
+DEFAULT_MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FME_SERVER_REQUEST_PARAMETERS 
+
+DEFAULT_MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FME_SERVER_REQUEST_URI 
+
+DEFAULT_MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER 
+
+DEFAULT_MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER_ID 
+
+DEFAULT_MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FME_SERVER_WEB_URL 
+
+DEFAULT_MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_BACKUP 
+
+DEFAULT_MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DASHBOARD 
+
+DEFAULT_MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DATA 
+
+DEFAULT_MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_ENGINE 
+
+DEFAULT_MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_LOG 
+
+DEFAULT_MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_SYSTEM 
+
+DEFAULT_MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_TEMP 
+
+DEFAULT_MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FME_TOPIC 
+
+DEFAULT_MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FME_TOPIC_MESSAGE 
+
+# ============================================================================
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO EMAIL_FORMAT_TESTER_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_INPUT1759777883 Input Splitter"   INPUT FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_INPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeExposer_2 }    INPUT  FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_INPUT"    OUTPUT { FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"          }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME { $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeCreator_2 }    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    NUM_OF_COLUMNS 5    ATTR_ACTION { "" "default_email" "SET_TO" "$($(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_DEFAULT_CONTACT_EMAIL$encode)" "varchar<openparen>200<closeparen>" }    OUTPUT { OUTPUT FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"        }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_UniqueIdentifierGenerator }    INPUT  FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"    OUTPUT { FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_UniqueIdentifierGenerator_OUTPUT"             "_uuidContacts" @UUID(SIMPLE, UUID_FORMAT, ULID)              }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_UniqueIdentifierGenerator OUTPUT Splitter"   INPUT FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_UniqueIdentifierGenerator_OUTPUT"   OUTPUT FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_UniqueIdentifierGenerator_OUTPUT_0_nJjbF1M7A3k="   OUTPUT FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_UniqueIdentifierGenerator_OUTPUT_1_uNOjUaL6ZWU="
+# -------------------------------------------------------------------------
+# Build the List removal function and regular expression if there was any list attributes to be removed.
+# If not, then we will not have any extra list removal call to @RemoveAttributes, which speeds the
+# normal, non-list removal especially when in Bulk Mode.  Note that this computation of the regular expressions is done
+# once during mapping file parse time.
+INCLUDE [    set listAttributeRemoveRegexps {};    set anyList {no};    foreach attr [split "contacts<opencurly><closecurly>"] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append listAttributeRemoveRegexps ",^$attr$";       set anyList {yes};    };    if { ${anyList} == {no} } {        puts {MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC }    } else {        puts "MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC @RemoveAttributes(fme_pcre_match\"$listAttributeRemoveRegexps\")"    }; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeRemover }    INPUT  FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_UniqueIdentifierGenerator_OUTPUT_0_nJjbF1M7A3k="    OUTPUT { FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeRemover_OUTPUT"        @RemoveAttributes(fme_encoded,)        $($(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC)         }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttributeKeeperFactory    FACTORY_NAME { $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeKeeper }    INPUT  FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_UniqueIdentifierGenerator_OUTPUT_1_uNOjUaL6ZWU="    KEEP_ATTRS { default_email,_uuidContacts }    KEEP_LISTS { contacts<opencurly><closecurly> }    KEEP_FME_ATTRIBUTES Yes    BUILD_FEATURE_TABLES { NO }    OUTPUT_ON_ATTRIBUTE_CHANGE { <Unused> }    OUTPUT { OUTPUT FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"        }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} ElementFactory    FACTORY_NAME { $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ListExploder }    INPUT  FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"    LIST_NAME { "contacts{}" }    ELEMENT_NUMBER_FIELD { "_element_index" }    CLONE_GEOMETRY    ATTR_ACCUM_MODE { "HANDLE_CONFLICT" }    ATTR_CONFLICT_RES { "INCOMING_IF_CONFLICT" }    INCOMING_PREFIX { "<Unused>" }    OUTPUT { ELEMENT FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ListExploder_ELEMENTS"         @RemoveAttributes(ElementFactory.baseCloned)          }    OUTPUT { NOLIST FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ListExploder_<REJECTED>"         @RemoveAttributes(ElementFactory.baseCloned)         fme_rejection_code MISSING_PARAMETER_LIST          }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TestFactory    FACTORY_NAME { $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_Tester }    INPUT  FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ListExploder_ELEMENTS"    CASE_INSENSITIVE_TEST { "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>email<closeparen>,$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_Tester)" CONTAINS "@EvaluateExpression(FDIV,STRING_ENCODED,<at>,$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_Tester)" ENCODED }    BOOLEAN_OPERATOR { OR }    COMPOSITE_TEST_EXPR { "<Unused>" }    PRESERVE_FEATURE_ORDER { ACROSS_OUTPUT_PORTS }    OUTPUT { PASSED FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_Tester_PASSED"         }    OUTPUT { FAILED FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_Tester_FAILED"         }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME { $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeCreator }    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ListExploder_<REJECTED>"    INPUT  FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_Tester_FAILED"    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    NUM_OF_COLUMNS 5    ATTR_ACTION { "" "email" "SET_TO" "<at>Value<openparen>default_email<closeparen>" "varchar<openparen>200<closeparen>" }    OUTPUT { OUTPUT FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeCreator_OUTPUT"        }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_Junction }    INPUT  FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_Tester_PASSED"    INPUT  FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeCreator_OUTPUT"    OUTPUT { FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_Junction_Output"         }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TestFactory    FACTORY_NAME { $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_Tester_2 }    INPUT  FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_Junction_Output"    CASE_INSENSITIVE_TEST { "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>email<closeparen>,$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_Tester_2)" CONTAINS <comma> ENCODED }    BOOLEAN_OPERATOR { OR }    COMPOSITE_TEST_EXPR { "<Unused>" }    PRESERVE_FEATURE_ORDER { ACROSS_OUTPUT_PORTS }    OUTPUT { PASSED FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_Tester_2_PASSED"         }    OUTPUT { FAILED FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_Tester_2_FAILED"         }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} StringValueFactory    FACTORY_NAME { $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeSplitter }    INPUT  FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_Tester_2_PASSED"    FACTORY_MODE ATTRIBUTE_SPLITTER    ATTR_NAME { email }       DELIMITER { <comma> }       FIELD_QUALIFIER { "" }       TRIM_TYPE { BOTH }       LIST_NAME { email }       DROP_EMPTY_PARTS { NO }    OUTPUT { OUTPUT FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeSplitter_OUTPUT"          }
+# -------------------------------------------------------------------------
+# Build the List removal function and regular expression if there was any list attributes to be removed.
+# If not, then we will not have any extra list removal call to @RemoveAttributes, which speeds the
+# normal, non-list removal especially when in Bulk Mode.  Note that this computation of the regular expressions is done
+# once during mapping file parse time.
+INCLUDE [    set listAttributeRemoveRegexps {};    set anyList {no};    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append listAttributeRemoveRegexps ",^$attr$";       set anyList {yes};    };    if { ${anyList} == {no} } {        puts {MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeRemover_3_LIST_FUNC }    } else {        puts "MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeRemover_3_LIST_FUNC @RemoveAttributes(fme_pcre_match\"$listAttributeRemoveRegexps\")"    }; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeRemover_3 }    INPUT  FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeSplitter_OUTPUT"    OUTPUT { FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeRemover_3_OUTPUT"        @RemoveAttributes(fme_encoded,email)        $($(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeRemover_3_LIST_FUNC)         }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} ElementFactory    FACTORY_NAME { $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ListExploder_2 }    INPUT  FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeRemover_3_OUTPUT"    LIST_NAME { "email{}" }    ELEMENT_NUMBER_FIELD { "_element_index" }    CLONE_GEOMETRY    ATTR_ACCUM_MODE { "HANDLE_CONFLICT" }    ATTR_CONFLICT_RES { "INCOMING_IF_CONFLICT" }    INCOMING_PREFIX { "<Unused>" }    OUTPUT { ELEMENT FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ListExploder_2_ELEMENTS"         @RemoveAttributes(ElementFactory.baseCloned)          }    OUTPUT { NOLIST FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ListExploder_2_<REJECTED>"         @RemoveAttributes(ElementFactory.baseCloned)         fme_rejection_code MISSING_PARAMETER_LIST          }
+# -------------------------------------------------------------------------
+# The default behaviour is to abort on any feature entering the transformer.
+# If Workbench has set the _WB_BYPASS_TERMINATION macro to a value of "Yes",
+# then the features will instead be passed through with a feature type of
+# __WB_BYPASS_TERMINATOR__, which Workbench will send to a visualizer or
+# somesuch.
+DEFAULT_MACRO _WB_BYPASS_TERMINATION No
+FACTORY_DEF {*} TestFactory    FACTORY_NAME { $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_Terminator_2 }    INPUT  FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ListExploder_2_<REJECTED>"    TEST { "$(_WB_BYPASS_TERMINATION)" == Yes }    OUTPUT { PASSED FEATURE_TYPE __WB_BYPASS_TERMINATOR__       @SupplyAttributes(_wb_termination_feature_type,@FeatureType())       @SupplyAttributes(ENCODED,_wb_termination_message,"List<space>exploder<space>problem<space>whn<space>exploding<space>email<opencurly><closecurly>")       @SupplyAttributes(_wb_termination_xformer,"$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_Terminator_2")       @SupplyAttributes(_wb_termination_feature,Yes) }    OUTPUT { FAILED FEATURE_TYPE * @Abort(ENCODED,"List<space>exploder<space>problem<space>whn<space>exploding<space>email<opencurly><closecurly>") }
+# -------------------------------------------------------------------------
+INCLUDE [if { {ATTRIBUTES} == {ATTRIBUTES} } {                puts "MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO ATTRIBUTES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {POLYGONS}} {                puts "MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {AGGREGATES}} {                puts "MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {POLYGONS}} {                puts "MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {AGGREGATES}} {                puts "MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} } {                puts "MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} } {                puts "MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          else {}; ]
+FACTORY_DEF {*} ReferenceFactory    FACTORY_NAME { $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FeatureMerger }    FLUSH_WHEN_GROUPS_CHANGE { <Unused> }    INPUT REFERENCER FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeRemover_OUTPUT"    INPUT REFERENCEE FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ListExploder_2_ELEMENTS"    INPUT REFERENCEE FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_Tester_2_FAILED"    REFERENCE_INFO { $($(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO) }    REFERENCE_TABLE { @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_uuidContacts<closeparen>,$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FeatureMerger) @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_uuidContacts<closeparen>,$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FeatureMerger) AUTO }    ATTR_ACCUM_MODE { "HANDLE_CONFLICT" }    ATTR_CONFLICT_RES { "REQUESTOR_IF_CONFLICT" }    IGNORE_NULLS { "No" }    HANDLE_NULL_MISSING_KEYS_LIKE_FME2013 { No }    LIST_NAME { "contacts" }    LIST_ATTRS_TO_INCLUDE { <Unused> }    LIST_ATTRS_TO_INCLUDE_MODE { ALL }    MERGE_ATTRIBUTES Yes    MANAGE_FME_TYPE Yes    MODE COMPLETE    PROCESS_DUPLICATE_REFERENCEES { NO }    REFERENCEES_FIRST { No }    REJECT_INVALID_GEOM YES    CLEANING_TOLERANCE { <Unused> }    PRESERVE_FEATURE_ORDER { ACROSS_OUTPUT_PORTS }    COMPARE_WHITESPACE Yes    OUTPUT { COMPLETE FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FeatureMerger_MERGED"         }    OUTPUT { INCOMPLETE FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FeatureMerger_UNMERGED_REQUESTOR"         }    OUTPUT { REJECTED FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FeatureMerger_<REJECTED>"         }
+# -------------------------------------------------------------------------
+Tcl2 proc $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ListDuplicateRemover_removeDups {} {    set srcIndex 0;    regsub \"{}\" {contacts{}.email} \"{$srcIndex}\"    listKeyAttrName;    regsub \"{}.*$\" {contacts{}.email} \"\{\"          listBase;    regsub \"{}.*$\" {contacts{}.email} \"\{*\"         listBasePattern;    regsub \"{(}.*)$\" {contacts{}.email} {\1}          listSuffix;    regsub \"{}\" {contacts{}.email} \"\\{\[0-9\]*\\}\" listPatternRegExp;    set listPatternRegExp \"^$listPatternRegExp\$\";    set listIndexRegExp   \"^$listBase\(\[0-9\]+\)\}.*\";    set attributeNames [FME_AttributeNames];    set COMMENT {      = Iterate over all attributes. For any that look like src_list{n}.something,      = keep a list in the associative array "listAttributesByIndex(n)". If they      = actually match the key on which we're comparing, store a "true" in the      = associative array "listKeyAttrNameExists()"    };    foreach attrname $attributeNames {       if [regsub $listIndexRegExp $attrname {\1} listIndex] {         lappend listAttributesByIndex($listIndex) $attrname;         if {$attrname ==  \"$listBase$listIndex$listSuffix\"} {           set listKeyAttrNameExists($attrname) true;         };       };    };    set destIndex 0;    set listElementsPattern {};    set haveMissingLast true;    if [catch { set haveNextKey $listKeyAttrNameExists($listKeyAttrName); }] { set haveNextKey false; };    while {[array size listKeyAttrNameExists] > 0 || $haveMissingLast } {        set keyVal [FME_GetAttribute $listKeyAttrName];        if {![info exists dups($keyVal)] && [info exists listAttributesByIndex($srcIndex)]} {            set listElementsPattern \"$listBase$srcIndex\}*\"; 				   set foundSibling 0;            set COMMENT {              = We already have the list of attributes associated with this index. Deal              = with each one of these.            };            foreach listAttrName $listAttributesByIndex($srcIndex)            {               set destAttrName [string replace $listAttrName 0                                 [expr [string length $listElementsPattern] - 3]                                 \"$listBase$destIndex\""];               set destAttrVal [FME_GetAttribute $listAttrName];               if {$destAttrVal == {} && [FME_IsAttributeNull $listAttrName]} {               	   set destAttrVal {FME_NULL_VALUE};               };               set holder($destAttrName) $destAttrVal;               if {$foundSibling == 0  } {                   set dups($keyVal) {};                   set foundSibling 1;               };            };            if {$foundSibling && $keyVal == {} && ![FME_AttributeExists $listKeyAttrName]}            {               set dups($keyVal) {};               set missingAttrName [string replace $listKeyAttrName 0                                 [expr [string length $listElementsPattern] - 3]                                 \"$listBase$destIndex\""];               set holder($missingAttrName) {FME_MISSING_VAL};            };            if {$foundSibling} {                incr destIndex;            };        };        if $haveNextKey {          unset listKeyAttrNameExists($listKeyAttrName);        };        incr srcIndex;        regsub \"{}\" {contacts{}.email} \"{$srcIndex}\" listKeyAttrName;        if [catch { set haveNextKey $listKeyAttrNameExists($listKeyAttrName); }] { set haveNextKey false; };        if {[array size listKeyAttrNameExists] == 0} {            set COMMENT {              = Once we've exhausted all of the actual sort keys, keep looking for structured              = elements within the list that don't have an accompanying sort key.            };            set haveMissingLast [info exists listAttributesByIndex($srcIndex)];        };    };    foreach attrname $attributeNames { 		 if {[string match $listBasePattern $attrname]} { 		   FME_UnsetAttributes $attrname; 		 };    };    foreach newListAttrName [array names holder] {        if {$holder($newListAttrName) == {FME_NULL_VALUE}} {           FME_SetAttributeNull $newListAttrName        } elseif { $holder($newListAttrName) != {FME_MISSING_VAL} } {           FME_SetAttribute $newListAttrName $holder($newListAttrName);        };    }; };
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ListDuplicateRemover }    INPUT  FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FeatureMerger_MERGED"    OUTPUT { FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ListDuplicateRemover_OUTPUT"         @Tcl2("$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ListDuplicateRemover_removeDups")          }
+# -------------------------------------------------------------------------
+# Build the List removal function and regular expression if there was any list attributes to be removed.
+# If not, then we will not have any extra list removal call to @RemoveAttributes, which speeds the
+# normal, non-list removal especially when in Bulk Mode.  Note that this computation of the regular expressions is done
+# once during mapping file parse time.
+INCLUDE [    set listAttributeRemoveRegexps {};    set anyList {no};    foreach attr [split "contacts<opencurly><closecurly>._element_index contacts<opencurly><closecurly>._uuidContacts contacts<opencurly><closecurly>.default_email contacts<opencurly><closecurly>.fme_rejection_code"] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append listAttributeRemoveRegexps ",^$attr$";       set anyList {yes};    };    if { ${anyList} == {no} } {        puts {MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeRemover_2_LIST_FUNC }    } else {        puts "MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeRemover_2_LIST_FUNC @RemoveAttributes(fme_pcre_match\"$listAttributeRemoveRegexps\")"    }; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeRemover_2 }    INPUT  FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ListDuplicateRemover_OUTPUT"    OUTPUT { FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeRemover_2_OUTPUT"        @RemoveAttributes(fme_encoded,_element_index,email,default_email,fme_rejection_code,_uuidContacts)        $($(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeRemover_2_LIST_FUNC)         }
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Input Input Collector"   INPUT FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeRemover_2_OUTPUT"   OUTPUT FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Input"
+MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:2
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
+# -------------------------------------------------------------------------
+# The default behaviour is to abort on any feature entering the transformer.
+# If Workbench has set the _WB_BYPASS_TERMINATION macro to a value of "Yes",
+# then the features will instead be passed through with a feature type of
+# __WB_BYPASS_TERMINATOR__, which Workbench will send to a visualizer or
+# somesuch.
+DEFAULT_MACRO _WB_BYPASS_TERMINATION No
+FACTORY_DEF {*} TestFactory    FACTORY_NAME { $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_Terminator }    INPUT  FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FeatureMerger_UNMERGED_REQUESTOR"    INPUT  FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FeatureMerger_<REJECTED>"    TEST { "$(_WB_BYPASS_TERMINATION)" == Yes }    OUTPUT { PASSED FEATURE_TYPE __WB_BYPASS_TERMINATOR__       @SupplyAttributes(_wb_termination_feature_type,@FeatureType())       @SupplyAttributes(ENCODED,_wb_termination_message,"Feature<space>Merger<space>error:<space>Translation<space>Terminated")       @SupplyAttributes(_wb_termination_xformer,"$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_Terminator")       @SupplyAttributes(_wb_termination_feature,Yes) }    OUTPUT { FAILED FEATURE_TYPE * @Abort(ENCODED,"Feature<space>Merger<space>error:<space>Translation<space>Terminated") }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_OUTPUT1759777883 Output Collector"   INPUT FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_OUTPUT"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME))}]
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN EMAIL_FORMAT_TESTER,1,"FGP Tools",fede3cfc-5cd8-4fd2-9391-4ba654b13c66,"Linked by Default",No,NO_PARALLELISM,,No,20200,YES,No,37,No,
+# <p><strong>Description </strong></p>
+# <p>This custom transformer corrects wrongly formed email addresses.  It manages two cases: firstly when the email address do not contain the character"@", the email address is replaced by the default email adress; secondly when addresses are separated by coma, the email addresses are separated and placed into independant list of contacts{}.</p>
+# <p><strong>Input Ports </strong></p>
+# <ul>
+# <li>INPUT: The input metadata records to process.</li>
+# </ul>
+# <p><strong>Output Ports </strong></p>
+# <ul>
+# <li>OUTPUT: The process output metadata records with email addresses corrected.</li>
+# </ul>
+# <p><strong>Parameters </strong></p>
+# <ul>
+# <li>DEFAULT_CONTACT_EMAIL: Name of the attribute containing the default email address or string character representing the default email address</li>
+# </ul>
+# TRANSFORMER_END
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="FGP Tools"
+#!   DESCRIPTION="&lt;p&gt;&lt;strong&gt;Description &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;This custom transformer corrects wrongly formed email addresses.  It manages two cases: firstly when the email address do not contain the character&quot;@&quot;, the email address is replaced by the default email adress; secondly when addresses are separated by coma, the email addresses are separated and placed into independant list of contacts{}.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Input Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;INPUT: The input metadata records to process.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Output Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;OUTPUT: The process output metadata records with email addresses corrected.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Parameters &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;DEFAULT_CONTACT_EMAIL: Name of the attribute containing the default email address or string character representing the default email address&lt;/li&gt;&#10;&lt;/ul&gt;"
+#!   DOC_EXTENTS="12215.4 1821.89"
+#!   DOC_TOP_LEFT="-4884.42 -778.133"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="20200"
+#!   FME_DOCUMENT_GUID="fede3cfc-5cd8-4fd2-9391-4ba654b13c66"
+#!   FME_DOCUMENT_PRIORGUID="27b8f837-3532-48a5-8c5f-33dd0307c9b1,ecff3433-635b-4827-8f22-665159e29ae0,37f576b5-363c-488d-8ef0-8a80bec4ba84"
+#!   FME_LINKED_TRANSFORMER_VERSION="1"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY="Unknow,Unknow,Original&lt;space&gt;value,15&lt;solidus&gt;09&lt;solidus&gt;2021,Daniel&lt;space&gt;Pilon,Documentation&lt;space&gt;added"
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2020.0.0.0 (20200309 - Build 20200 - WIN32)"
+#!   LAST_SAVE_DATE="2021-12-17T14:43:30"
+#!   MARKDOWN_DESCRIPTION="**Description **&#10;&#10;This custom transformer corrects wrongly formed email addresses.  It manages two cases: firstly when the email address do not contain the character&quot;@&quot;, the email address is replaced by the default email adress; secondly when addresses are separated by coma, the email addresses are separated and placed into independant list of contacts{}.&#10;&#10;&#10;**Input Ports **&#10;&#10;- INPUT: The input metadata records to process.&#10;&#10;&#10;**Output Ports **&#10;&#10;- OUTPUT: The process output metadata records with email addresses corrected.&#10;&#10;&#10;**Parameters **&#10;&#10;- DEFAULT_CONTACT_EMAIL: Name of the attribute containing the default email address or string character representing the default email address&#10;&#10;"
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="37"
+#!   REPLACED_BY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="EMAIL_FORMAT_TESTER"
+#!   USAGE=""
+#!   USE_MARKDOWN="YES"
+#!   VIEW_POSITION="-2460.25 2295.48"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="55"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI TEXT_OR_ATTR DEFAULT_CONTACT_EMAIL DEFAULT_CONTACT_EMAIL:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="47"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Generate Unique ID for remerging datasets&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-2371.2094296736423 592.09433752499967"
+#!   TOP_LEFT="-2371.2094296736423 592.09433752499967"
+#!   BOTTOM_RIGHT="-1933.2094296736423 593.09433752499967"
+#!   BOUNDING_RECT="-2371.2094296736423 592.09433752499967 438 -1"
+#!   ORDER="500000000000022"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.28627450980392155,0.29803921568627451,0.0078431372549019607,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="4"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="48"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Removes contacts{} list&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-1349.0138464678103 143.13151456343672"
+#!   TOP_LEFT="-1349.0138464678103 143.13151456343672"
+#!   BOTTOM_RIGHT="-862.01384646781025 144.13151456343672"
+#!   BOUNDING_RECT="-1349.0138464678103 143.13151456343672 487 -1"
+#!   ORDER="500000000000023"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.28627450980392155,0.29803921568627451,0.0078431372549019607,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="5"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="49"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Retains only contacts{} list and unique ID&#9;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-1686.5172215015605 783.13851463343724"
+#!   TOP_LEFT="-1686.5172215015605 783.13851463343724"
+#!   BOTTOM_RIGHT="-1241.5172215015605 784.13851463343724"
+#!   BOUNDING_RECT="-1686.5172215015605 783.13851463343724 445 -1"
+#!   ORDER="500000000000024"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.28627450980392155,0.29803921568627451,0.0078431372549019607,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="6"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="50"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Explodes contacts{} list into individual attributes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-1070.886065189997 773.76342088249976"
+#!   TOP_LEFT="-1070.886065189997 773.76342088249976"
+#!   BOTTOM_RIGHT="-515.63015630156292 540.63638961218703"
+#!   BOUNDING_RECT="-1070.886065189997 773.76342088249976 555.25590888843408 233.1270312703127"
+#!   ORDER="500000000000025"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.28627450980392155,0.29803921568627451,0.0078431372549019607,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="7"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="51"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Test &apos;email&apos; attribute for &apos;@&apos;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-443.75503387968479 783.13851463343724"
+#!   TOP_LEFT="-443.75503387968479 783.13851463343724"
+#!   BOTTOM_RIGHT="-13.755033879684788 784.13851463343724"
+#!   BOUNDING_RECT="-443.75503387968479 783.13851463343724 430 -1"
+#!   ORDER="500000000000026"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.28627450980392155,0.29803921568627451,0.0078431372549019607,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="8"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="52"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Sets &apos;email&apos; attribute to default if no &apos;@&apos; is found in the data field&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="89.54200729507329 786.26354588374977"
+#!   TOP_LEFT="89.54200729507329 786.26354588374977"
+#!   BOTTOM_RIGHT="750.00750007500073 553.13651461343704"
+#!   BOUNDING_RECT="89.54200729507329 786.26354588374977 660.46549277992744 233.1270312703127"
+#!   ORDER="500000000000027"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.28627450980392155,0.29803921568627451,0.0078431372549019607,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="11"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="53"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Rebuilds contacts{} list and uses unique ID to remerge data&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="4270.229747786314 386.03167083772621"
+#!   TOP_LEFT="4270.229747786314 386.03167083772621"
+#!   BOTTOM_RIGHT="4700.229747786314 387.03167083772621"
+#!   BOUNDING_RECT="4270.229747786314 386.03167083772621 430 -1"
+#!   ORDER="500000000000029"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.28627450980392155,0.29803921568627451,0.0078431372549019607,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="9"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="54"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Attribute cleanup&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="5466.6793104637591 73.812639556504877"
+#!   TOP_LEFT="5466.6793104637591 73.812639556504877"
+#!   BOTTOM_RIGHT="5919.1833355040089 74.812639556504877"
+#!   BOUNDING_RECT="5466.6793104637591 73.812639556504877 452.50402504025033 -1"
+#!   ORDER="500000000000030"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.28627450980392155,0.29803921568627451,0.0078431372549019607,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="10"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="55"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Exposes attributes used by this transformer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-3843.8221314256612 -298.53956881406378"
+#!   TOP_LEFT="-3843.8221314256612 -298.53956881406378"
+#!   BOTTOM_RIGHT="-3377.8221314256612 -297.53956881406378"
+#!   BOUNDING_RECT="-3843.8221314256612 -298.53956881406378 466 -1"
+#!   ORDER="500000000000031"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.28627450980392155,0.29803921568627451,0.0078431372549019607,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="14"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="56"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Tests email attributes for mulitple comma separated values&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="1543.2658126581268 128.13201456843663"
+#!   TOP_LEFT="1543.2658126581268 128.13201456843663"
+#!   BOTTOM_RIGHT="2375.0237502375021 -45.61942294593851"
+#!   BOUNDING_RECT="1543.2658126581268 128.13201456843663 831.75793757937527 173.75143751437514"
+#!   ORDER="500000000000040"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.28627450980392155,0.29803921568627451,0.0078431372549019607,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="15"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="57"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Splits email attribute on comma delimiter creating email{} list&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="2443.7744377443778 901.8897021453123"
+#!   TOP_LEFT="2443.7744377443778 901.8897021453123"
+#!   BOTTOM_RIGHT="2897.7744377443778 900.8897021453123"
+#!   BOUNDING_RECT="2443.7744377443778 901.8897021453123 454 1"
+#!   ORDER="500000000000041"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.28627450980392155,0.29803921568627451,0.0078431372549019607,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="16"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="58"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Remove email attribute&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="3056.2805628056271 851.88920214031214"
+#!   TOP_LEFT="3056.2805628056271 851.88920214031214"
+#!   BOTTOM_RIGHT="3510.2805628056271 850.88920214031214"
+#!   BOUNDING_RECT="3056.2805628056271 851.88920214031214 454 1"
+#!   ORDER="500000000000042"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.28627450980392155,0.29803921568627451,0.0078431372549019607,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="18"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="59"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Explodes email{} list to individual email attributes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="3750 953.01484378480097"
+#!   TOP_LEFT="3750 953.01484378480097"
+#!   BOTTOM_RIGHT="4204 952.01484378480097"
+#!   BOUNDING_RECT="3750 953.01484378480097 454 1"
+#!   ORDER="500000000000043"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.28627450980392155,0.29803921568627451,0.0078431372549019607,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="17"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="63"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Remove contact list where email address are duplicated&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="4800 150"
+#!   TOP_LEFT="4800 150"
+#!   BOTTOM_RIGHT="5359.1445005359146 -65.001850018500164"
+#!   BOUNDING_RECT="4800 150 559.14450053591463 215.00185001850016"
+#!   ORDER="500000000000048"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.28627450980392155,0.29803921568627451,0.0078431372549019607,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="20"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="60"
+#!   NAME="EMAIL_FORMAT_TESTER"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="-4075.0407504075038 1043.760437604376"
+#!   ORDER="500000000000010"
+#!   PALETTE_COLOR=""
+#!   BOTTOM_RIGHT="6077.3335006077332 -778.13278132781329"
+#!   BOUNDING_RECT="-4075.0407504075038 1043.760437604376 10152.374251015237 1821.8932189321893"
+#!   STICKY="false"
+#!   COLOUR="0.2196078431372549,0.2196078431372549,0.67450980392156867,0.39215686274509803"
+#!   CONTENTS=""
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="4"
+#!   TYPE="UUIDGenerator"
+#!   VERSION="0"
+#!   POSITION="-2363.2172685020305 -7.2860062784384354"
+#!   BOUNDING_RECT="-2363.2172685020305 -7.2860062784384354 431 71"
+#!   ORDER="500000000000002"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="default_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="UUID_ATTR" PARM_VALUE="_uuidContacts"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="UUIDGenerator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="5"
+#!   TYPE="AttributeRemover"
+#!   VERSION="1"
+#!   POSITION="-1325.0138464678103 -65.619922950938417"
+#!   BOUNDING_RECT="-1325.0138464678103 -65.619922950938417 431 71"
+#!   ORDER="500000000000003"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="default_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE="contacts&lt;opencurly&gt;&lt;closecurly&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="6"
+#!   TYPE="AttributeKeeper"
+#!   VERSION="3"
+#!   POSITION="-1662.5172215015605 515.01148336312463"
+#!   BOUNDING_RECT="-1662.5172215015605 515.01148336312463 431 71"
+#!   ORDER="500000000000004"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="default_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="KEEP_ATTRS" PARM_VALUE="default_email,_uuidContacts"/>
+#!     <XFORM_PARM PARM_NAME="KEEP_LIST" PARM_VALUE="contacts&lt;opencurly&gt;&lt;closecurly&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeKeeper"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="7"
+#!   TYPE="ListExploder"
+#!   VERSION="6"
+#!   POSITION="-993.76053393468453 386.88520210031197"
+#!   BOUNDING_RECT="-993.76053393468453 386.88520210031197 431 71"
+#!   ORDER="500000000000005"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <OUTPUT_FEAT NAME="ELEMENTS"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="default_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="default_email" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="email" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE" PARM_VALUE="Merge List Attributes"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES" PARM_VALUE="Use List Attribute Values"/>
+#!     <XFORM_PARM PARM_NAME="INCOMING_PREFIX" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="INDEX_ATTR" PARM_VALUE="_element_index"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTR" PARM_VALUE="contacts{}"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ListExploder"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="8"
+#!   TYPE="Tester"
+#!   VERSION="2"
+#!   POSITION="-443.75503387968479 515.01148336312463"
+#!   BOUNDING_RECT="-443.75503387968479 515.01148336312463 431 71"
+#!   ORDER="500000000000006"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="PASSED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="default_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="FAILED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="default_email" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="email" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_MSG" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="1"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="CASE_INSENSITIVE_TEST &lt;at&gt;Value&lt;openparen&gt;email&lt;closeparen&gt; CONTAINS &lt;at&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="CASE_INSENSITIVE_TEST"/>
+#!     <XFORM_PARM PARM_NAME="TEST_PREVIEW_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="9"
+#!   TYPE="FeatureMerger"
+#!   VERSION="17"
+#!   POSITION="4194.6608102787577 -59.36986045031361"
+#!   BOUNDING_RECT="4194.6608102787577 -59.36986045031361 431 71"
+#!   ORDER="500000000000007"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#!   INPUT_FT_ORDER="SUPPLIER%REQUESTOR"
+#! >
+#!     <OUTPUT_FEAT NAME="MERGED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="default_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.default_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}._uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}._element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="UNMERGED_REQUESTOR"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="default_email" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <OUTPUT_FEAT NAME="USED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <XFORM_ATTR ATTR_NAME="default_email" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="email" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="numReferences" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <OUTPUT_FEAT NAME="UNUSED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="3"/>
+#!     <XFORM_ATTR ATTR_NAME="default_email" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="email" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="_uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="4"/>
+#!     <XFORM_ATTR ATTR_NAME="default_email" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="_uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="email" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE" PARM_VALUE="Merge Supplier"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES" PARM_VALUE="Use Requestor"/>
+#!     <XFORM_PARM PARM_NAME="CLEANING_TOLERANCE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CONNECT_Z_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GENERATE_LIST_GROUP" PARM_VALUE="YES"/>
+#!     <XFORM_PARM PARM_NAME="GEOM_TYPE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="IGNORE_NULLS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="JOIN_ATTRIBUTES_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="JOIN_KEYS" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;_uuidContacts&lt;closeparen&gt; &lt;at&gt;Value&lt;openparen&gt;_uuidContacts&lt;closeparen&gt; AUTO"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE_MODE" PARM_VALUE="All Attributes"/>
+#!     <XFORM_PARM PARM_NAME="LIST_NAME" PARM_VALUE="contacts"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_COUNT_ATTR" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_TYPE" PARM_VALUE="Attributes Only"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PROCESS_DUPS" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="REJECT_NULL_MISSING_KEYS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIERS_FIRST" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIER_PREFIX" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="FeatureMerger"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="10"
+#!   TYPE="AttributeRemover"
+#!   VERSION="1"
+#!   POSITION="5478.1791854625098 -209.37136046531353"
+#!   BOUNDING_RECT="5478.1791854625098 -209.37136046531353 478.13037763312059 71"
+#!   ORDER="500000000000008"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE="contacts&lt;opencurly&gt;&lt;closecurly&gt;._element_index contacts&lt;opencurly&gt;&lt;closecurly&gt;._uuidContacts contacts&lt;opencurly&gt;&lt;closecurly&gt;.default_email contacts&lt;opencurly&gt;&lt;closecurly&gt;.fme_rejection_code"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE="_element_index,email,default_email,fme_rejection_code,_uuidContacts"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="11"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="225.00225002250056 128.13201456843663"
+#!   BOUNDING_RECT="225.00225002250056 128.13201456843663 431 71"
+#!   ORDER="500000000000016"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="default_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; email SET_TO &lt;at&gt;Value&lt;openparen&gt;default_email&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="12"
+#!   TYPE="Junction"
+#!   VERSION="0"
+#!   POSITION="1459.0904999959089 409.090499995909"
+#!   BOUNDING_RECT="1459.0904999959089 409.090499995909 61 61"
+#!   ORDER="500000000000017"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="default_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Junction"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="13"
+#!   TYPE="Terminator"
+#!   VERSION="3"
+#!   POSITION="4990.538185416146 -383.91436044076818"
+#!   BOUNDING_RECT="4990.538185416146 -383.91436044076818 454 71"
+#!   ORDER="500000000000032"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE="Feature&lt;space&gt;Merger&lt;space&gt;error:&lt;space&gt;Translation&lt;space&gt;Terminated"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Terminator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="14"
+#!   TYPE="AttributeExposer"
+#!   VERSION="1"
+#!   POSITION="-3870.3517998473449 -7.2860062784384354"
+#!   BOUNDING_RECT="-3870.3517998473449 -7.2860062784384354 431 71"
+#!   ORDER="500000000000001"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="contacts{}.email,id"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="15"
+#!   TYPE="Tester"
+#!   VERSION="2"
+#!   POSITION="1715.6421564215643 465.63538960218705"
+#!   BOUNDING_RECT="1715.6421564215643 465.63538960218705 454 71"
+#!   ORDER="500000000000033"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="PASSED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="default_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="FAILED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="default_email" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="email" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_MSG" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="1"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="CASE_INSENSITIVE_TEST &lt;at&gt;Value&lt;openparen&gt;email&lt;closeparen&gt; CONTAINS &lt;comma&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="CASE_INSENSITIVE_TEST"/>
+#!     <XFORM_PARM PARM_NAME="TEST_PREVIEW_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="16"
+#!   TYPE="AttributeSplitter"
+#!   VERSION="3"
+#!   POSITION="2443.7744377443778 465.63538960218705"
+#!   BOUNDING_RECT="2443.7744377443778 465.63538960218705 454 71"
+#!   ORDER="500000000000034"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="default_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="email{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_NAME" PARM_VALUE="email"/>
+#!     <XFORM_PARM PARM_NAME="DELIMITER" PARM_VALUE="&lt;comma&gt;"/>
+#!     <XFORM_PARM PARM_NAME="DROP_EMPTY_PARTS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="LIST_NAME" PARM_VALUE="email"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRIM_OPTION" PARM_VALUE="Both"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeSplitter"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="17"
+#!   TYPE="ListExploder"
+#!   VERSION="6"
+#!   POSITION="3750 600"
+#!   BOUNDING_RECT="3750 600 454 71"
+#!   ORDER="500000000000037"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="ELEMENTS"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="default_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="default_email" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="email" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE" PARM_VALUE="Merge List Attributes"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES" PARM_VALUE="Use List Attribute Values"/>
+#!     <XFORM_PARM PARM_NAME="INCOMING_PREFIX" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="INDEX_ATTR" PARM_VALUE="_element_index"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTR" PARM_VALUE="email{}"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ListExploder_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="18"
+#!   TYPE="AttributeRemover"
+#!   VERSION="1"
+#!   POSITION="3056.2805628056271 559.38059380593791"
+#!   BOUNDING_RECT="3056.2805628056271 559.38059380593791 454 71"
+#!   ORDER="500000000000038"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="default_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="email{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE="email"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover_3"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="19"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="-3160.7253935832823 -7.2860062784384354"
+#!   BOUNDING_RECT="-3160.7253935832823 -7.2860062784384354 454 71"
+#!   ORDER="500000000000044"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="default_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; default_email SET_TO $(DEFAULT_CONTACT_EMAIL)"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="20"
+#!   TYPE="ListDuplicateRemover"
+#!   VERSION="1"
+#!   POSITION="4874.4199978706338 -134.37061045781357"
+#!   BOUNDING_RECT="4874.4199978706338 -134.37061045781357 467.00106825772946 71"
+#!   ORDER="500000000000046"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="default_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.default_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}._uuidContacts" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}._element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="SRC_LIST" PARM_VALUE="contacts{}.email"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ListDuplicateRemover"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="21"
+#!   TYPE="ATTRIBUTE_UNEXPOSER"
+#!   VERSION="1"
+#!   POSITION="6150 -200.00050000500005"
+#!   BOUNDING_RECT="6150 -200.00050000500005 533.00106825772946 71"
+#!   ORDER="500000000000047"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_UNEXPOSER"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="61"
+#!   TYPE="Terminator"
+#!   VERSION="3"
+#!   POSITION="4854.5475000204542 490.90950000409089"
+#!   BOUNDING_RECT="4854.5475000204542 490.90950000409089 454 71"
+#!   ORDER="500000000000032"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE="List&lt;space&gt;exploder&lt;space&gt;problem&lt;space&gt;whn&lt;space&gt;exploding&lt;space&gt;email&lt;opencurly&gt;&lt;closecurly&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Terminator_2"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="INPUT"
+#!   POSITION="-4884.4238442384412 -7.2860062784384354"
+#!   BOUNDING_RECT="-4884.4238442384412 -7.2860062784384354 431 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="OUTPUT"
+#!   POSITION="6900 -300"
+#!   BOUNDING_RECT="6900 -300 431 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="22"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="14"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="23"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="24"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="1"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="25"
+#!   SOURCE_NODE="5"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 1 REQUESTOR"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="26"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="27"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="8"
+#!   SOURCE_PORT_DESC="fo 0 ELEMENTS"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="28"
+#!   SOURCE_NODE="8"
+#!   TARGET_NODE="12"
+#!   SOURCE_PORT_DESC="fo 0 PASSED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="29"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="20"
+#!   SOURCE_PORT_DESC="fo 0 MERGED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="30"
+#!   SOURCE_NODE="10"
+#!   TARGET_NODE="21"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="31"
+#!   SOURCE_NODE="11"
+#!   TARGET_NODE="12"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="32"
+#!   SOURCE_NODE="12"
+#!   TARGET_NODE="15"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="33"
+#!   SOURCE_NODE="14"
+#!   TARGET_NODE="19"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="34"
+#!   SOURCE_NODE="15"
+#!   TARGET_NODE="16"
+#!   SOURCE_PORT_DESC="fo 0 PASSED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="35"
+#!   SOURCE_NODE="16"
+#!   TARGET_NODE="18"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="36"
+#!   SOURCE_NODE="17"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 0 ELEMENTS"
+#!   TARGET_PORT_DESC="fi 0 SUPPLIER"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="37"
+#!   SOURCE_NODE="18"
+#!   TARGET_NODE="17"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="38"
+#!   SOURCE_NODE="19"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="39"
+#!   SOURCE_NODE="20"
+#!   TARGET_NODE="10"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="40"
+#!   SOURCE_NODE="21"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="41"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="11"
+#!   SOURCE_PORT_DESC="fo 1 &lt;lt&gt;REJECTED&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="42"
+#!   SOURCE_NODE="8"
+#!   TARGET_NODE="11"
+#!   SOURCE_PORT_DESC="fo 1 FAILED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="43"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="13"
+#!   SOURCE_PORT_DESC="fo 1 UNMERGED_REQUESTOR"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="44"
+#!   SOURCE_NODE="15"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 1 FAILED"
+#!   TARGET_PORT_DESC="fi 0 SUPPLIER"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="62"
+#!   SOURCE_NODE="17"
+#!   TARGET_NODE="61"
+#!   SOURCE_PORT_DESC="fo 1 &lt;lt&gt;REJECTED&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="46"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="13"
+#!   SOURCE_PORT_DESC="fo 4 &lt;lt&gt;REJECTED&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+FME_PYTHON_VERSION 37
+DEFAULT_MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_DEFAULT_CONTACT_EMAIL 
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO EMAIL_FORMAT_TESTER_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_INPUT1639770210 Input Splitter"   INPUT FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_INPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeExposer_2    INPUT  FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_INPUT"    OUTPUT FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeCreator_2    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "default_email" "SET_TO" "$($(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_DEFAULT_CONTACT_EMAIL$encode)" }    OUTPUT OUTPUT FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_UUIDGenerator    INPUT  FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"    OUTPUT FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_UUIDGenerator_OUTPUT"         "_uuidContacts" @UUID()
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_UUIDGenerator OUTPUT Splitter"   INPUT FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_UUIDGenerator_OUTPUT"   OUTPUT FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_UUIDGenerator_OUTPUT_0_KjC3NBXgHRg="   OUTPUT FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_UUIDGenerator_OUTPUT_1_70ha7f62tP8="
+# -------------------------------------------------------------------------
+INCLUDE [    set macroLine "MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeKeeper_1b81da2d_28a3_457a_bbe2_efff93a9711a0_LIST_EXP ";    foreach attr [split "contacts<opencurly><closecurly>"] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeKeeper    INPUT  FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_UUIDGenerator_OUTPUT_1_70ha7f62tP8="    OUTPUT { FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"        @KeepAttributes(fme_encoded,default_email,_uuidContacts,fme_pcre_match,"^fme_$($(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeKeeper_1b81da2d_28a3_457a_bbe2_efff93a9711a0_LIST_EXP)")         }
+# -------------------------------------------------------------------------
+FACTORY_DEF * ElementFactory    FACTORY_NAME $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ListExploder    INPUT  FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"    LIST_NAME "contacts{}"    ELEMENT_NUMBER_FIELD "_element_index"    CLONE_GEOMETRY    ATTR_ACCUM_MODE "HANDLE_CONFLICT"    ATTR_CONFLICT_RES "INCOMING_IF_CONFLICT"    INCOMING_PREFIX "<Unused>"    OUTPUT ELEMENT FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ListExploder_ELEMENTS"         @RemoveAttributes(ElementFactory.baseCloned)    OUTPUT NOLIST FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ListExploder_<REJECTED>"         @RemoveAttributes(ElementFactory.baseCloned)         fme_rejection_code MISSING_PARAMETER_LIST
+# -------------------------------------------------------------------------
+FACTORY_DEF * TestFactory    FACTORY_NAME $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_Tester    INPUT  FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ListExploder_ELEMENTS"    CASE_INSENSITIVE_TEST "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>email<closeparen>,$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_Tester)" CONTAINS "@EvaluateExpression(FDIV,STRING_ENCODED,<at>,$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_Tester)" ENCODED    BOOLEAN_OPERATOR OR    COMPOSITE_TEST_EXPR "1"    OUTPUT PASSED FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_Tester_PASSED"    OUTPUT FAILED FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_Tester_FAILED"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeCreator    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ListExploder_<REJECTED>"    INPUT  FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_Tester_FAILED"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "email" "SET_TO" "<at>Value<openparen>default_email<closeparen>" }    OUTPUT OUTPUT FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeCreator_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_Junction    INPUT  FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_Tester_PASSED"    INPUT  FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeCreator_OUTPUT"    OUTPUT FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_Junction_Output"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TestFactory    FACTORY_NAME $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_Tester_2    INPUT  FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_Junction_Output"    CASE_INSENSITIVE_TEST "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>email<closeparen>,$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_Tester_2)" CONTAINS <comma> ENCODED    BOOLEAN_OPERATOR OR    COMPOSITE_TEST_EXPR "1"    OUTPUT PASSED FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_Tester_2_PASSED"    OUTPUT FAILED FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_Tester_2_FAILED"
+# -------------------------------------------------------------------------
+Tcl2 set $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeSplitter_05f6ae43_b486_459e_aabb_9b97266e18520_splitDelim [FME_DecodeText {<comma>}];      if { [regexp {^([1-9][0-9]*s)+$} [set $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeSplitter_05f6ae43_b486_459e_aabb_9b97266e18520_splitDelim]] }      {         set $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeSplitter_05f6ae43_b486_459e_aabb_9b97266e18520_splitWidths [split [regsub -all {s$} {<comma>} {}] s];         proc $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeSplitter_doSplit {}         {            global $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeSplitter_05f6ae43_b486_459e_aabb_9b97266e18520_splitWidths;            set source [FME_GetAttribute [FME_DecodeText {email}]];            set attrNum 0;            set listName [FME_DecodeText {email}];            set attrPos 0;            set keepEmptyParts [string equal {No} {No}];            foreach width [set $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeSplitter_05f6ae43_b486_459e_aabb_9b97266e18520_splitWidths]            {               set endPos [expr $attrPos + $width - 1];               set bit [string range $source $attrPos $endPos];               set part [string trim $bit];               if { $keepEmptyParts || $part != \"\" } {                  FME_SetAttribute "$listName{$attrNum}" $part;                  incr attrNum;               };               incr attrPos $width;            };         };      }      else      {         proc $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeSplitter_doSplit {}         {            global $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeSplitter_05f6ae43_b486_459e_aabb_9b97266e18520_splitDelim;            set delim [set $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeSplitter_05f6ae43_b486_459e_aabb_9b97266e18520_splitDelim];            set delimLength [string length $delim];            set source [FME_GetAttribute [FME_DecodeText {email}]];            set keepEmptyParts [string equal {No} {No}];            set bits {};            set startIndex 0;            set nextIndex [string first $delim $source $startIndex];            while {$nextIndex >= 0} {              lappend bits [string range $source $startIndex [expr $nextIndex-1]];              set startIndex [expr $nextIndex + $delimLength];              set nextIndex [string first $delim $source $startIndex];            };            lappend bits [string range $source $startIndex end];            set listName [FME_DecodeText {email}];            set attrNum 0;            foreach bit $bits            {               set trimmedPart [string trim $bit];               if { $keepEmptyParts || $trimmedPart != \"\" } {                  FME_SetAttribute "$listName{$attrNum}" $trimmedPart;                  incr attrNum;               };            }          }       }
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeSplitter    INPUT  FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_Tester_2_PASSED"    OUTPUT FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeSplitter_OUTPUT"         @Tcl2($(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeSplitter_doSplit)
+# -------------------------------------------------------------------------
+INCLUDE [    set macroLine "MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeRemover_3_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeRemover_3    INPUT  FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeSplitter_OUTPUT"    OUTPUT { FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeRemover_3_OUTPUT"        @RemoveAttributes(fme_encoded,email)        @RemoveAttributes(fme_pcre_match"$($(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeRemover_3_LIST_EXP)")         }
+# -------------------------------------------------------------------------
+FACTORY_DEF * ElementFactory    FACTORY_NAME $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ListExploder_2    INPUT  FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeRemover_3_OUTPUT"    LIST_NAME "email{}"    ELEMENT_NUMBER_FIELD "_element_index"    CLONE_GEOMETRY    ATTR_ACCUM_MODE "HANDLE_CONFLICT"    ATTR_CONFLICT_RES "INCOMING_IF_CONFLICT"    INCOMING_PREFIX "<Unused>"    OUTPUT ELEMENT FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ListExploder_2_ELEMENTS"         @RemoveAttributes(ElementFactory.baseCloned)    OUTPUT NOLIST FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ListExploder_2_<REJECTED>"         @RemoveAttributes(ElementFactory.baseCloned)         fme_rejection_code MISSING_PARAMETER_LIST
+# -------------------------------------------------------------------------
+# The default behaviour is to abort on any feature entering the transformer.
+# If Workbench has set the _WB_BYPASS_TERMINATION macro to a value of "Yes",
+# then the features will instead be passed through with a feature type of
+# __WB_BYPASS_TERMINATOR__, which Workbench will send to a visualizer or
+# somesuch.
+DEFAULT_MACRO _WB_BYPASS_TERMINATION No
+FACTORY_DEF * TestFactory    FACTORY_NAME $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_Terminator_2    INPUT  FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ListExploder_2_<REJECTED>"    TEST "$(_WB_BYPASS_TERMINATION)" == Yes    OUTPUT PASSED FEATURE_TYPE __WB_BYPASS_TERMINATOR__       @SupplyAttributes(_wb_termination_feature_type,@FeatureType())       @SupplyAttributes(ENCODED,_wb_termination_message,"List<space>exploder<space>problem<space>whn<space>exploding<space>email<opencurly><closecurly>")       @SupplyAttributes(_wb_termination_xformer,"$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_Terminator_2")       @SupplyAttributes(_wb_termination_feature,Yes)    OUTPUT FAILED FEATURE_TYPE * @Abort(ENCODED,"List<space>exploder<space>problem<space>whn<space>exploding<space>email<opencurly><closecurly>")
+# -------------------------------------------------------------------------
+INCLUDE [    set macroLine "MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeRemover_LIST_EXP ";    foreach attr [split "contacts<opencurly><closecurly>"] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeRemover    INPUT  FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_UUIDGenerator_OUTPUT_0_KjC3NBXgHRg="    OUTPUT { FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeRemover_OUTPUT"        @RemoveAttributes(fme_encoded,)        @RemoveAttributes(fme_pcre_match"$($(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeRemover_LIST_EXP)")         }
+# -------------------------------------------------------------------------
+INCLUDE [if { {ATTRIBUTES} == {ATTRIBUTES} } {                puts "MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO ATTRIBUTES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {POLYGONS}} {                puts "MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {AGGREGATES}} {                puts "MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {POLYGONS}} {                puts "MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {AGGREGATES}} {                puts "MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} } {                puts "MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} } {                puts "MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          else {}; ]
+FACTORY_DEF {*} ReferenceFactory    FACTORY_NAME $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FeatureMerger    INPUT REFERENCER FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeRemover_OUTPUT"    INPUT REFERENCEE FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ListExploder_2_ELEMENTS"    INPUT REFERENCEE FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_Tester_2_FAILED"    REFERENCE_INFO $($(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO)    REFERENCE_TABLE @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_uuidContacts<closeparen>,$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FeatureMerger) @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_uuidContacts<closeparen>,$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FeatureMerger) AUTO    ATTR_ACCUM_MODE "HANDLE_CONFLICT"    ATTR_CONFLICT_RES "REQUESTOR_IF_CONFLICT"    IGNORE_NULLS "No"    HANDLE_NULL_MISSING_KEYS_LIKE_FME2013 No    LIST_NAME "contacts"    LIST_ATTRS_TO_INCLUDE { <Unused> }    LIST_ATTRS_TO_INCLUDE_MODE ALL    MERGE_ATTRIBUTES Yes    MANAGE_FME_TYPE Yes    MODE COMPLETE    PROCESS_DUPLICATE_REFERENCEES NO    REFERENCEES_FIRST No    REJECT_INVALID_GEOM YES    CLEANING_TOLERANCE <Unused>    OUTPUT COMPLETE FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FeatureMerger_MERGED"    OUTPUT INCOMPLETE FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FeatureMerger_UNMERGED_REQUESTOR"    OUTPUT REJECTED FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FeatureMerger_<REJECTED>"
+# -------------------------------------------------------------------------
+# The default behaviour is to abort on any feature entering the transformer.
+# If Workbench has set the _WB_BYPASS_TERMINATION macro to a value of "Yes",
+# then the features will instead be passed through with a feature type of
+# __WB_BYPASS_TERMINATOR__, which Workbench will send to a visualizer or
+# somesuch.
+DEFAULT_MACRO _WB_BYPASS_TERMINATION No
+FACTORY_DEF * TestFactory    FACTORY_NAME $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_Terminator    INPUT  FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FeatureMerger_UNMERGED_REQUESTOR"    INPUT  FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FeatureMerger_<REJECTED>"    TEST "$(_WB_BYPASS_TERMINATION)" == Yes    OUTPUT PASSED FEATURE_TYPE __WB_BYPASS_TERMINATOR__       @SupplyAttributes(_wb_termination_feature_type,@FeatureType())       @SupplyAttributes(ENCODED,_wb_termination_message,"Feature<space>Merger<space>error:<space>Translation<space>Terminated")       @SupplyAttributes(_wb_termination_xformer,"$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_Terminator")       @SupplyAttributes(_wb_termination_feature,Yes)    OUTPUT FAILED FEATURE_TYPE * @Abort(ENCODED,"Feature<space>Merger<space>error:<space>Translation<space>Terminated")
+# -------------------------------------------------------------------------
+Tcl2 proc $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ListDuplicateRemover_removeDups {} {    set srcIndex 0;    regsub \"{}\" {contacts{}.email} \"{$srcIndex}\"    listKeyAttrName;    regsub \"{}.*$\" {contacts{}.email} \"\{\"          listBase;    regsub \"{}.*$\" {contacts{}.email} \"\{*\"         listBasePattern;    regsub \"{(}.*)$\" {contacts{}.email} {\1}          listSuffix;    regsub \"{}\" {contacts{}.email} \"\\{\[0-9\]*\\}\" listPatternRegExp;    set listPatternRegExp \"^$listPatternRegExp\$\";    set listIndexRegExp   \"^$listBase\(\[0-9\]+\)\}.*\";    set attributeNames [FME_AttributeNames];    set COMMENT {      = Iterate over all attributes. For any that look like src_list{n}.something,      = keep a list in the associative array "listAttributesByIndex(n)". If they      = actually match the key on which we're comparing, store a "true" in the      = associative array "listKeyAttrNameExists()"    };    foreach attrname $attributeNames {       if [regsub $listIndexRegExp $attrname {\1} listIndex] {         lappend listAttributesByIndex($listIndex) $attrname;         if {$attrname ==  \"$listBase$listIndex$listSuffix\"} {           set listKeyAttrNameExists($attrname) true;         };       };    };    set destIndex 0;    set listElementsPattern {};    set haveMissingLast true;    if [catch { set haveNextKey $listKeyAttrNameExists($listKeyAttrName); }] { set haveNextKey false; };    while {[array size listKeyAttrNameExists] > 0 || $haveMissingLast } {        set keyVal [FME_GetAttribute $listKeyAttrName];        if {![info exists dups($keyVal)] && [info exists listAttributesByIndex($srcIndex)]} {            set listElementsPattern \"$listBase$srcIndex\}*\"; 				   set foundSibling 0;            set COMMENT {              = We already have the list of attributes associated with this index. Deal              = with each one of these.            };            foreach listAttrName $listAttributesByIndex($srcIndex)            {               set destAttrName [string replace $listAttrName 0                                 [expr [string length $listElementsPattern] - 3]                                 \"$listBase$destIndex\""];               set destAttrVal [FME_GetAttribute $listAttrName];               if {$destAttrVal == {} && [FME_IsAttributeNull $listAttrName]} {               	   set destAttrVal {FME_NULL_VALUE};               };               set holder($destAttrName) $destAttrVal;               if {$foundSibling == 0  } {                   set dups($keyVal) {};                   set foundSibling 1;               };            };            if {$foundSibling && $keyVal == {} && ![FME_AttributeExists $listKeyAttrName]}            {               set dups($keyVal) {};               set missingAttrName [string replace $listKeyAttrName 0                                 [expr [string length $listElementsPattern] - 3]                                 \"$listBase$destIndex\""];               set holder($missingAttrName) {FME_MISSING_VAL};            };            if {$foundSibling} {                incr destIndex;            };        };        if $haveNextKey {          unset listKeyAttrNameExists($listKeyAttrName);        };        incr srcIndex;        regsub \"{}\" {contacts{}.email} \"{$srcIndex}\" listKeyAttrName;        if [catch { set haveNextKey $listKeyAttrNameExists($listKeyAttrName); }] { set haveNextKey false; };        if {[array size listKeyAttrNameExists] == 0} {            set COMMENT {              = Once we've exhausted all of the actual sort keys, keep looking for structured              = elements within the list that don't have an accompanying sort key.            };            set haveMissingLast [info exists listAttributesByIndex($srcIndex)];        };    };    foreach attrname $attributeNames { 		 if {[string match $listBasePattern $attrname]} { 		   FME_UnsetAttributes $attrname; 		 };    };    foreach newListAttrName [array names holder] {        if {$holder($newListAttrName) == {FME_NULL_VALUE}} {           FME_SetAttributeNull $newListAttrName        } elseif { $holder($newListAttrName) != {FME_MISSING_VAL} } {           FME_SetAttribute $newListAttrName $holder($newListAttrName);        };    }; };
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ListDuplicateRemover    INPUT  FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_FeatureMerger_MERGED"    OUTPUT FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ListDuplicateRemover_OUTPUT"         @Tcl2("$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ListDuplicateRemover_removeDups")
+# -------------------------------------------------------------------------
+INCLUDE [    set macroLine "MACRO $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeRemover_2_LIST_EXP ";    foreach attr [split "contacts<opencurly><closecurly>._element_index contacts<opencurly><closecurly>._uuidContacts contacts<opencurly><closecurly>.default_email contacts<opencurly><closecurly>.fme_rejection_code"] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeRemover_2    INPUT  FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ListDuplicateRemover_OUTPUT"    OUTPUT { FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeRemover_2_OUTPUT"        @RemoveAttributes(fme_encoded,_element_index,email,default_email,fme_rejection_code,_uuidContacts)        @RemoveAttributes(fme_pcre_match"$($(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeRemover_2_LIST_EXP)")         }
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Input Input Collector"   INPUT FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_AttributeRemover_2_OUTPUT"   OUTPUT FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Input"
+MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_OUTPUT1639770210 Output Collector"   INPUT FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME)_OUTPUT"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(EMAIL_FORMAT_TESTER_WORKSPACE_NAME))}]

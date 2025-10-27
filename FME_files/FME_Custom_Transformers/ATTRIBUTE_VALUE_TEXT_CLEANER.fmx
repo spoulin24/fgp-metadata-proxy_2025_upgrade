@@ -1,0 +1,426 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN ATTRIBUTE_VALUE_TEXT_CLEANER,2,"""FGP Tools""",ff532d57-14cc-43a6-8acf-1a82476bb317,"Linked by Default",No,NO_PARALLELISM,,No,25606,YES,No,313,No,,both
+# <p><strong>Description </strong></p>
+# <p>This custom transformer cleans all string attributes by performing the followin tasks: </p>
+# <ul>
+# <li>Remove html directive (ex.: <code>&lt;p&gt;bla bla bla &lt;\p&gt;</code>) so that the string contains only plain text    </li>
+# <li>Replace special character (carriage return, line feed, tab) by white spaces</li>
+# <li>Replace curly braces {} by parenthesis</li>
+# <li>Removing front and trailing white spaces</li>
+# <li>Replace multiple white spaces by only one white space</li>
+# </ul>
+# <p><strong>Input Ports </strong></p>
+# <p>INPUT: The input metadata records to clean</p>
+# <p><strong>Output Ports </strong></p>
+# <p>OUTPUT: The cleaned output metdata records</p>
+# <p><strong>Parameters </strong></p>
+# <p>None</p>
+# TRANSFORMER_END
+#!   A0_PREVIEW_IMAGE="data:image/png;base64,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"
+#!   ARCGIS_COMPATIBILITY="ARCGIS_AUTO"
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="&quot;FGP Tools&quot;"
+#!   DATA_PROCESSING_TYPE="both"
+#!   DESCRIPTION="&lt;p&gt;&lt;strong&gt;Description &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;This custom transformer cleans all string attributes by performing the followin tasks: &lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;Remove html directive (ex.: &lt;code&gt;&amp;lt;p&amp;gt;bla bla bla &amp;lt;\p&amp;gt;&lt;/code&gt;) so that the string contains only plain text    &lt;/li&gt;&#10;&lt;li&gt;Replace special character (carriage return, line feed, tab) by white spaces&lt;/li&gt;&#10;&lt;li&gt;Replace curly braces {} by parenthesis&lt;/li&gt;&#10;&lt;li&gt;Removing front and trailing white spaces&lt;/li&gt;&#10;&lt;li&gt;Replace multiple white spaces by only one white space&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Input Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;INPUT: The input metadata records to clean&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Output Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;OUTPUT: The cleaned output metdata records&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Parameters &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;None&lt;/p&gt;"
+#!   DOC_EXTENTS="1964.67 131"
+#!   DOC_TOP_LEFT="-919.001 -95.5004"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="25606"
+#!   FME_DOCUMENT_GUID="ff532d57-14cc-43a6-8acf-1a82476bb317"
+#!   FME_DOCUMENT_PRIORGUID=""
+#!   FME_LINKED_TRANSFORMER_VERSION="2"
+#!   FME_NAMES_ENCODING="windows-1252"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY="Unknown,Unknown,Original&lt;space&gt;version,15&lt;solidus&gt;09&lt;solidus&gt;2021,Daniel&lt;space&gt;Pilon,Documentation"
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2025.1.0.0 (20250704 - Build 25606 - WIN64)"
+#!   LAST_SAVE_DATE="2025-10-06T13:14:33"
+#!   MARKDOWN_DESCRIPTION="**Description **&#10;&#10;This custom transformer cleans all string attributes by performing the followin tasks: &#10;&#10;- Remove html directive (ex.: `&lt;p&gt;bla bla bla &lt;\p&gt;`) so that the string contains only plain text&#9;&#10;- Replace special character (carriage return, line feed, tab) by white spaces&#10;- Replace curly braces {} by parenthesis&#10;- Removing front and trailing white spaces&#10;- Replace multiple white spaces by only one white space&#10;&#10;&#10;**Input Ports **&#10;&#10;INPUT: The input metadata records to clean&#10;&#10;&#10;**Output Ports **&#10;&#10;OUTPUT: The cleaned output metdata records&#10;&#10;&#10;**Parameters **&#10;&#10;None&#10;"
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="313"
+#!   REPLACED_BY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="ATTRIBUTE_VALUE_TEXT_CLEANER"
+#!   USAGE=""
+#!   USE_MARKDOWN="YES"
+#!   VIEW_POSITION="-2918.78 1653.14"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="100"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! </GLOBAL_PARAMETERS>
+#! <USER_PARAMETERS
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbXX0="
+#! >
+#! <PARAMETER_INFO>
+#! </PARAMETER_INFO>
+#! </USER_PARAMETERS>
+#! <COMMENTS>
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="4"
+#!   TYPE="PythonCaller"
+#!   VERSION="6"
+#!   POSITION="-222.83352137387257 35.499615796873741"
+#!   BOUNDING_RECT="-222.83352137387257 35.499615796873741 454 71"
+#!   ORDER="500000000001750"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <OUTPUT_FEAT NAME="&lt;Rejected&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_message" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_PROCESSING_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="HIDE_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="NEW_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSOURCE" PARM_VALUE="from&lt;space&gt;Python.ATTRIBUTE_VALUE_TEXT_CLEANER&lt;space&gt;import&lt;space&gt;*"/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSYMBOL" PARM_VALUE="processFeature"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="PythonCaller"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="Input"
+#!   POSITION="-919.00129796535202 16.999615796873741"
+#!   BOUNDING_RECT="-919.00129796535202 16.999615796873741 516.00106825772946 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="Output"
+#!   POSITION="591.67258339250043 -24.500384203126259"
+#!   BOUNDING_RECT="591.67258339250043 -24.500384203126259 454 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="5"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="6"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+FME_PYTHON_VERSION 313
+# ============================================================================
+DEFAULT_MACRO $(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_FME_DATA_REPOSITORY 
+
+DEFAULT_MACRO $(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_FME_ENGINE 
+
+DEFAULT_MACRO $(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_FME_JOB_ID 
+
+DEFAULT_MACRO $(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_FME_SECURITY_ROLES 
+
+DEFAULT_MACRO $(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_FME_SECURITY_USER 
+
+DEFAULT_MACRO $(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_FME_SERVER_DEST_DIR 
+
+DEFAULT_MACRO $(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_FME_SERVER_HOST 
+
+DEFAULT_MACRO $(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_FME_SERVER_PORT 
+
+DEFAULT_MACRO $(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_FME_SERVER_REQUEST_HEADERS 
+
+DEFAULT_MACRO $(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_FME_SERVER_REQUEST_METHOD 
+
+DEFAULT_MACRO $(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_FME_SERVER_REQUEST_PARAMETERS 
+
+DEFAULT_MACRO $(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_FME_SERVER_REQUEST_URI 
+
+DEFAULT_MACRO $(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER 
+
+DEFAULT_MACRO $(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER_ID 
+
+DEFAULT_MACRO $(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_FME_SERVER_WEB_URL 
+
+DEFAULT_MACRO $(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_BACKUP 
+
+DEFAULT_MACRO $(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DASHBOARD 
+
+DEFAULT_MACRO $(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DATA 
+
+DEFAULT_MACRO $(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_ENGINE 
+
+DEFAULT_MACRO $(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_LOG 
+
+DEFAULT_MACRO $(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_SYSTEM 
+
+DEFAULT_MACRO $(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_TEMP 
+
+DEFAULT_MACRO $(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_FME_TOPIC 
+
+DEFAULT_MACRO $(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_FME_TOPIC_MESSAGE 
+
+# ============================================================================
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_Input1759770873 Input Splitter"   INPUT FEATURE_TYPE "$(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_Input"   OUTPUT FEATURE_TYPE "$(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_Input"
+# -------------------------------------------------------------------------
+FME_PYTHON_PATH "$(FME_MF_DIR)"
+FACTORY_DEF {*} PythonFactory    FACTORY_NAME { $(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_PythonCaller }    FLUSH_WHEN_GROUPS_CHANGE { <Unused> }    INPUT  FEATURE_TYPE "$(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_Input"    SYMBOL_NAME { processFeature }    SOURCE_CODE { from<space>Python.ATTRIBUTE_VALUE_TEXT_CLEANER<space>import<space>* }    PY_OUTPUT_TAGS { PYOUTPUT <Rejected> }    OUTPUT { PYOUTPUT FEATURE_TYPE "$(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_PythonCaller_OUTPUT"         }    OUTPUT { <Rejected> FEATURE_TYPE "$(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_PythonCaller_<Rejected>"         }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_PythonCaller <Rejected> Transformer Output Nuker"   INPUT FEATURE_TYPE "$(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_PythonCaller_<Rejected>"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_Output1759770873 Output Collector"   INPUT FEATURE_TYPE "$(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_PythonCaller_OUTPUT"   OUTPUT FEATURE_TYPE "$(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_Output"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME))}]
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN ATTRIBUTE_VALUE_TEXT_CLEANER,1,"FGP Tools",ad93a3e1-24e0-4c46-805f-6cfda734a86c,"Linked by Default",No,NO_PARALLELISM,,No,20200,YES,No,37,No,
+# <p><strong>Description </strong></p>
+# <p>This custom transformer cleans all string attributes by performing the followin tasks: </p>
+# <ul>
+# <li>Remove html directive (ex.: <code>&lt;p&gt;bla bla bla &lt;\p&gt;</code>) so that the string contains only plain text    </li>
+# <li>Replace special character (carriage return, line feed, tab) by white spaces</li>
+# <li>Replace curly braces {} by parenthesis</li>
+# <li>Removing front and trailing white spaces</li>
+# <li>Replace multiple white spaces by only one white space</li>
+# </ul>
+# <p><strong>Input Ports </strong></p>
+# <p>INPUT: The input metadata records to clean</p>
+# <p><strong>Output Ports </strong></p>
+# <p>OUTPUT: The cleaned output metdata records</p>
+# <p><strong>Parameters </strong></p>
+# <p>None</p>
+# TRANSFORMER_END
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="FGP Tools"
+#!   DESCRIPTION="&lt;p&gt;&lt;strong&gt;Description &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;This custom transformer cleans all string attributes by performing the followin tasks: &lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;Remove html directive (ex.: &lt;code&gt;&amp;lt;p&amp;gt;bla bla bla &amp;lt;\p&amp;gt;&lt;/code&gt;) so that the string contains only plain text    &lt;/li&gt;&#10;&lt;li&gt;Replace special character (carriage return, line feed, tab) by white spaces&lt;/li&gt;&#10;&lt;li&gt;Replace curly braces {} by parenthesis&lt;/li&gt;&#10;&lt;li&gt;Removing front and trailing white spaces&lt;/li&gt;&#10;&lt;li&gt;Replace multiple white spaces by only one white space&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Input Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;INPUT: The input metadata records to clean&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Output Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;OUTPUT: The cleaned output metdata records&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Parameters &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;None&lt;/p&gt;"
+#!   DOC_EXTENTS="1964.67 131"
+#!   DOC_TOP_LEFT="-919.001 -95.5004"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="20200"
+#!   FME_DOCUMENT_GUID="ad93a3e1-24e0-4c46-805f-6cfda734a86c"
+#!   FME_DOCUMENT_PRIORGUID="7fd79d20-fbca-48fb-b608-f695e4d6f2aa,e1f1510e-f3c5-4c68-968c-d22193d552fe,940033f5-44b8-4cd9-b78d-e555a2b5b78e,cd66c0b7-5178-491c-b0e6-e9396c8469c2,7846c99c-a746-4214-a65d-5bb36ce0d455"
+#!   FME_LINKED_TRANSFORMER_VERSION="1"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY="Unknown,Unknown,Original&lt;space&gt;version,15&lt;solidus&gt;09&lt;solidus&gt;2021,Daniel&lt;space&gt;Pilon,Documentation"
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2020.0.0.0 (20200309 - Build 20200 - WIN32)"
+#!   LAST_SAVE_DATE="2022-01-21T13:31:08"
+#!   MARKDOWN_DESCRIPTION="**Description **&#10;&#10;This custom transformer cleans all string attributes by performing the followin tasks: &#10;&#10;- Remove html directive (ex.: `&lt;p&gt;bla bla bla &lt;\p&gt;`) so that the string contains only plain text&#9;&#10;- Replace special character (carriage return, line feed, tab) by white spaces&#10;- Replace curly braces {} by parenthesis&#10;- Removing front and trailing white spaces&#10;- Replace multiple white spaces by only one white space&#10;&#10;&#10;**Input Ports **&#10;&#10;INPUT: The input metadata records to clean&#10;&#10;&#10;**Output Ports **&#10;&#10;OUTPUT: The cleaned output metdata records&#10;&#10;&#10;**Parameters **&#10;&#10;None&#10;"
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="37"
+#!   REPLACED_BY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="ATTRIBUTE_VALUE_TEXT_CLEANER"
+#!   USAGE=""
+#!   USE_MARKDOWN="YES"
+#!   VIEW_POSITION="-2918.78 1653.14"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="100"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! </GLOBAL_PARAMETERS>
+#! <COMMENTS>
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="4"
+#!   TYPE="PythonCaller"
+#!   VERSION="4"
+#!   POSITION="-222.83352137387257 35.499615796873741"
+#!   BOUNDING_RECT="-222.83352137387257 35.499615796873741 454 71"
+#!   ORDER="500000000001750"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="HIDE_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="NEW_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSOURCE" PARM_VALUE="from&lt;space&gt;Python.ATTRIBUTE_VALUE_TEXT_CLEANER&lt;space&gt;import&lt;space&gt;*"/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSYMBOL" PARM_VALUE="processFeature"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="PythonCaller"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="Input"
+#!   POSITION="-919.00129796535202 16.999615796873741"
+#!   BOUNDING_RECT="-919.00129796535202 16.999615796873741 516.00106825772946 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="Output"
+#!   POSITION="591.67258339250043 -24.500384203126259"
+#!   BOUNDING_RECT="591.67258339250043 -24.500384203126259 454 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="5"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="6"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+FME_PYTHON_VERSION 37
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_Input1642789868 Input Splitter"   INPUT FEATURE_TYPE "$(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_Input"   OUTPUT FEATURE_TYPE "$(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_Input"
+# -------------------------------------------------------------------------
+FME_PYTHON_PATH "$(FME_MF_DIR)"
+FACTORY_DEF * PythonFactory    FACTORY_NAME $(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_PythonCaller    INPUT  FEATURE_TYPE "$(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_Input"    SYMBOL_NAME processFeature    PYTHON_NAMESPACE FMEOBJECTS    SOURCE_CODE from<space>Python.ATTRIBUTE_VALUE_TEXT_CLEANER<space>import<space>*    OUTPUT PYOUTPUT FEATURE_TYPE "$(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_PythonCaller_OUTPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_Output1642789868 Output Collector"   INPUT FEATURE_TYPE "$(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_PythonCaller_OUTPUT"   OUTPUT FEATURE_TYPE "$(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_Output"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME))}]

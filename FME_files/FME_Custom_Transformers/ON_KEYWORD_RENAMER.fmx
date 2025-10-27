@@ -1,0 +1,1441 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN ON_KEYWORD_RENAMER,2,"""FGP Tools""",f2402fa1-a44c-42b6-aa74-f86bc5f50b64,"Linked by Default",No,NO_PARALLELISM,,No,25606,YES,No,313,No,,both
+# 
+# TRANSFORMER_END
+#!   A0_PREVIEW_IMAGE="data:image/png;base64,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"
+#!   ARCGIS_COMPATIBILITY="ARCGIS_AUTO"
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="&quot;FGP Tools&quot;"
+#!   DATA_PROCESSING_TYPE="both"
+#!   DESCRIPTION=""
+#!   DOC_EXTENTS="7991.02 2109.65"
+#!   DOC_TOP_LEFT="-4924.23 -1212.65"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="25606"
+#!   FME_DOCUMENT_GUID="f2402fa1-a44c-42b6-aa74-f86bc5f50b64"
+#!   FME_DOCUMENT_PRIORGUID=""
+#!   FME_LINKED_TRANSFORMER_VERSION="2"
+#!   FME_NAMES_ENCODING="windows-1252"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY=""
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2025.1.0.0 (20250704 - Build 25606 - WIN64)"
+#!   LAST_SAVE_DATE="2025-10-06T16:00:22"
+#!   MARKDOWN_DESCRIPTION=""
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="313"
+#!   REPLACED_BY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="ON_KEYWORD_RENAMER"
+#!   USAGE=""
+#!   USE_MARKDOWN="NO"
+#!   VIEW_POSITION="-105.3 180.029"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="92"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! </GLOBAL_PARAMETERS>
+#! <USER_PARAMETERS
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbXX0="
+#! >
+#! <PARAMETER_INFO>
+#! </PARAMETER_INFO>
+#! </USER_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="23"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Exposes attributes required by this transformer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-3938.7905299980107 897.00350119534266"
+#!   TOP_LEFT="-3938.7905299980107 897.00350119534266"
+#!   BOTTOM_RIGHT="-3484.8314122818338 896.00350119534266"
+#!   BOUNDING_RECT="-3938.7905299980107 897.00350119534266 453.95911771617716 1"
+#!   ORDER="500000000001837"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{b8242440-1cbf-4d7d-bea8-2bcbd191b937}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="4"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="24"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Tests if English keywords attribute has value&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-3199.9911180361805 649.31080687709516"
+#!   TOP_LEFT="-3199.9911180361805 649.31080687709516"
+#!   BOTTOM_RIGHT="-2746.0320003200031 648.31080687709516"
+#!   BOUNDING_RECT="-3199.9911180361805 649.31080687709516 453.95911771617716 1"
+#!   ORDER="500000000001838"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{001b8fad-6934-4c90-bf94-6bfbb80e7251}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="6"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="25"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Creates default attribute at index 0&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-2642.145986677257 -664.35511963815293"
+#!   TOP_LEFT="-2642.145986677257 -664.35511963815293"
+#!   BOTTOM_RIGHT="-2188.1868689610801 -665.35511963815293"
+#!   BOUNDING_RECT="-2642.145986677257 -664.35511963815293 453.95911771617716 1"
+#!   ORDER="500000000001839"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{eaad01c9-aff3-4e93-b4cf-1095fc410058}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="7"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="31"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Tests if French keywords attribute has value&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-1770.9421224647035 551.94630279727062"
+#!   TOP_LEFT="-1770.9421224647035 551.94630279727062"
+#!   BOTTOM_RIGHT="-1316.9830047485264 550.94630279727062"
+#!   BOUNDING_RECT="-1770.9421224647035 551.94630279727062 453.95911771617716 1"
+#!   ORDER="500000000001838"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{abdcce3c-1390-483d-8556-b31644e77f21}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="26"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="32"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Creates default French keywords attribute at index 0&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-231.80236092431664 -531.88096880968806"
+#!   TOP_LEFT="-231.80236092431664 -531.88096880968806"
+#!   BOTTOM_RIGHT="222.15675679186052 -532.88096880968806"
+#!   BOUNDING_RECT="-231.80236092431664 -531.88096880968806 453.95911771617716 1"
+#!   ORDER="500000000001839"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{33ddb68b-46ba-4765-bcb7-aac2b10017c6}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="27"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="35"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Counts number of elements in English keywords list&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-337.77870517145436 551.94630279727062"
+#!   TOP_LEFT="-337.77870517145436 551.94630279727062"
+#!   BOTTOM_RIGHT="116.1804125447228 550.94630279727062"
+#!   BOUNDING_RECT="-337.77870517145436 551.94630279727062 453.95911771617716 1"
+#!   ORDER="500000000001840"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{57ae49a5-c10e-4e90-84ae-094513163e81}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="9"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="36"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Counts number of elements in French keywords list&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="364.57758385339207 551.94630279727062"
+#!   TOP_LEFT="364.57758385339207 551.94630279727062"
+#!   BOTTOM_RIGHT="833.57591446169818 550.94630279727062"
+#!   BOUNDING_RECT="364.57758385339207 551.94630279727062 468.99833060830605 1"
+#!   ORDER="500000000001841"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{5c2377ac-c125-4ac7-be20-97c892f86e3c}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="10"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="37"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Python script renames original list attributes with workspace compliant list attributes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="1260.400963783487 551.94630279727062"
+#!   TOP_LEFT="1260.400963783487 551.94630279727062"
+#!   BOTTOM_RIGHT="1714.3600814996641 550.94630279727062"
+#!   BOUNDING_RECT="1260.400963783487 551.94630279727062 453.95911771617716 1"
+#!   ORDER="500000000001842"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{87e44895-fc34-49ec-9a5e-ebf4b9c0677d}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="11"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="22"
+#!   NAME="ON_KEYWORD_RENAMER"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="-4141.0925472891095 848.22276794196512"
+#!   ORDER="500000000001829"
+#!   PALETTE_COLOR="Color4"
+#!   BOTTOM_RIGHT="3066.7907684459087 -1212.6479960451775"
+#!   BOUNDING_RECT="-4141.0925472891095 848.22276794196512 7207.8833157350182 2060.8707639871427"
+#!   STICKY="false"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,1"
+#!   CONTENTS=""
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="4"
+#!   TYPE="AttributeExposer"
+#!   VERSION="2"
+#!   POSITION="-3938.8314122818338 10.935507906714065"
+#!   BOUNDING_RECT="-3938.8314122818338 10.935507906714065 454 71"
+#!   ORDER="500000000001821"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="keywords.en{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="keywords.fr{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_en" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="keywords.en{},,keywords.fr{},,default_keyword_en,,default_keyword_fr,,tags{},"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer_4"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="6"
+#!   TYPE="Tester"
+#!   VERSION="4"
+#!   POSITION="-3200.0320003200031 10.935507906714065"
+#!   BOUNDING_RECT="-3200.0320003200031 10.935507906714065 454 71"
+#!   ORDER="500000000001830"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="PASSED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="keywords.en{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="keywords.fr{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_en" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="FAILED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="keywords.en{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="keywords.fr{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_en" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_fr" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="tags{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_MSG" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="ACROSS_OUTPUT_PORTS"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST keywords.en&lt;opencurly&gt;0&lt;closecurly&gt; ATTRIBUTE_HAS_A_VALUE &quot;&quot;"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="TEST"/>
+#!     <XFORM_PARM PARM_NAME="TEST_PREVIEW_GROUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="7"
+#!   TYPE="AttributeCreator"
+#!   VERSION="10"
+#!   POSITION="-2642.145986677257 -351.76982204604661"
+#!   BOUNDING_RECT="-2642.145986677257 -351.76982204604661 454 71"
+#!   ORDER="500000000001831"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="keywords.en{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="keywords.fr{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_en" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; keywords.en&lt;opencurly&gt;0&lt;closecurly&gt; SET_TO &lt;at&gt;Value&lt;openparen&gt;default_keyword_en&lt;closeparen&gt; varchar&lt;openparen&gt;200&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE" PARM_VALUE="NO_OP"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_MODIFIED_ATTRIBUTE_TYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_IS_LOOKUP="true" PARM_VALUE="No Substitution"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="9"
+#!   TYPE="ListElementCounter"
+#!   VERSION="2"
+#!   POSITION="-306.57225136778584 -42.270945896954402"
+#!   BOUNDING_RECT="-306.57225136778584 -42.270945896954402 454 71"
+#!   ORDER="500000000001835"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="keywords.en{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="keywords.fr{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_en" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="nb_keywords_en" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="CNT_ATTR" PARM_VALUE="nb_keywords_en"/>
+#!     <XFORM_PARM PARM_NAME="LIST_NAME" PARM_VALUE="keywords.en&lt;opencurly&gt;&lt;closecurly&gt;"/>
+#!     <XFORM_PARM PARM_NAME="OAN_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ListElementCounter"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="10"
+#!   TYPE="ListElementCounter"
+#!   VERSION="2"
+#!   POSITION="379.57591446169806 -42.270945896954402"
+#!   BOUNDING_RECT="379.57591446169806 -42.270945896954402 454 71"
+#!   ORDER="500000000001835"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="keywords.en{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="keywords.fr{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_en" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="nb_keywords_en" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="nb_keywords_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="CNT_ATTR" PARM_VALUE="nb_keywords_fr"/>
+#!     <XFORM_PARM PARM_NAME="LIST_NAME" PARM_VALUE="keywords.fr&lt;opencurly&gt;&lt;closecurly&gt;"/>
+#!     <XFORM_PARM PARM_NAME="OAN_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ListElementCounter_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="11"
+#!   TYPE="PythonCaller"
+#!   VERSION="6"
+#!   POSITION="1305.1945099798186 -75.250925042031653"
+#!   BOUNDING_RECT="1305.1945099798186 -75.250925042031653 454 71"
+#!   ORDER="500000000001836"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="keywords.en{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="keywords.fr{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_en" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="nb_keywords_en" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="nb_keywords_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;Rejected&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="keywords.en{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="keywords.fr{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_en" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_fr" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="nb_keywords_en" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="nb_keywords_fr" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_message" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_PROCESSING_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="HIDE_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="NEW_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSOURCE" PARM_VALUE="import&lt;space&gt;fme&lt;lf&gt;import&lt;space&gt;fmeobjects&lt;lf&gt;#&lt;space&gt;Template&lt;space&gt;Function&lt;space&gt;interface:&lt;lf&gt;#&lt;space&gt;When&lt;space&gt;using&lt;space&gt;this&lt;space&gt;function&lt;comma&gt;&lt;space&gt;make&lt;space&gt;sure&lt;space&gt;its&lt;space&gt;name&lt;space&gt;is&lt;space&gt;set&lt;space&gt;as&lt;space&gt;the&lt;space&gt;value&lt;space&gt;of&lt;lf&gt;#&lt;space&gt;the&lt;space&gt;&lt;apos&gt;Class&lt;space&gt;or&lt;space&gt;Function&lt;space&gt;to&lt;space&gt;Process&lt;space&gt;Features&lt;apos&gt;&lt;space&gt;transformer&lt;space&gt;parameter&lt;lf&gt;def&lt;space&gt;processFeature&lt;openparen&gt;feature&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;nb_fr=int&lt;openparen&gt;feature.getAttribute&lt;openparen&gt;&lt;apos&gt;nb_keywords_fr&lt;apos&gt;&lt;closeparen&gt;&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;nb_en=int&lt;openparen&gt;feature.getAttribute&lt;openparen&gt;&lt;apos&gt;nb_keywords_en&lt;apos&gt;&lt;closeparen&gt;&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;if&lt;space&gt;nb_en==nb_fr:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;for&lt;space&gt;i&lt;space&gt;in&lt;space&gt;range&lt;openparen&gt;nb_en&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;feature.setAttribute&lt;openparen&gt;&lt;apos&gt;tags&lt;opencurly&gt;%i&lt;closecurly&gt;.display_name&lt;apos&gt;%&lt;openparen&gt;i&lt;closeparen&gt;&lt;comma&gt;feature.getAttribute&lt;openparen&gt;&lt;apos&gt;keywords.en&lt;opencurly&gt;%i&lt;closecurly&gt;&lt;apos&gt;%&lt;openparen&gt;i&lt;closeparen&gt;&lt;closeparen&gt;&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;feature.setAttribute&lt;openparen&gt;&lt;apos&gt;tags&lt;opencurly&gt;%i&lt;closecurly&gt;.display_name_fr&lt;apos&gt;%&lt;openparen&gt;i&lt;closeparen&gt;&lt;comma&gt;feature.getAttribute&lt;openparen&gt;&lt;apos&gt;keywords.fr&lt;opencurly&gt;%i&lt;closecurly&gt;&lt;apos&gt;%&lt;openparen&gt;i&lt;closeparen&gt;&lt;closeparen&gt;&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;else:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;for&lt;space&gt;i&lt;space&gt;in&lt;space&gt;range&lt;openparen&gt;nb_en&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;feature.setAttribute&lt;openparen&gt;&lt;apos&gt;tags&lt;opencurly&gt;%i&lt;closecurly&gt;.display_name&lt;apos&gt;%&lt;openparen&gt;i&lt;closeparen&gt;&lt;comma&gt;feature.getAttribute&lt;openparen&gt;&lt;apos&gt;keywords.en&lt;opencurly&gt;%i&lt;closecurly&gt;&lt;apos&gt;%&lt;openparen&gt;i&lt;closeparen&gt;&lt;closeparen&gt;&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSYMBOL" PARM_VALUE="processFeature"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="PythonCaller"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="26"
+#!   TYPE="Tester"
+#!   VERSION="4"
+#!   POSITION="-1770.9421224647035 -42.270945896954402"
+#!   BOUNDING_RECT="-1770.9421224647035 -42.270945896954402 454 71"
+#!   ORDER="500000000001830"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="PASSED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="keywords.en{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="keywords.fr{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_en" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="FAILED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="keywords.en{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="keywords.fr{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_en" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_fr" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="tags{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_MSG" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="ACROSS_OUTPUT_PORTS"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST keywords.fr&lt;opencurly&gt;0&lt;closecurly&gt; ATTRIBUTE_HAS_A_VALUE &quot;&quot;"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="TEST"/>
+#!     <XFORM_PARM PARM_NAME="TEST_PREVIEW_GROUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="27"
+#!   TYPE="AttributeCreator"
+#!   VERSION="10"
+#!   POSITION="-1158.7077392513052 -351.76982204604661"
+#!   BOUNDING_RECT="-1158.7077392513052 -351.76982204604661 454 71"
+#!   ORDER="500000000001831"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="keywords.en{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="keywords.fr{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_en" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; keywords.en&lt;opencurly&gt;0&lt;closecurly&gt; SET_TO &lt;at&gt;Value&lt;openparen&gt;default_keyword_fr&lt;closeparen&gt; varchar&lt;openparen&gt;200&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE" PARM_VALUE="NO_OP"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_MODIFIED_ATTRIBUTE_TYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_2"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_IS_LOOKUP="true" PARM_VALUE="No Substitution"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="38"
+#!   TYPE="AttributeRemover"
+#!   VERSION="1"
+#!   POSITION="961.28678678091114 -455.16759515421234"
+#!   BOUNDING_RECT="961.28678678091114 -455.16759515421234 454 71"
+#!   ORDER="500000000001843"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="keywords.en{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="keywords.fr{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_en" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="nb_keywords_en" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="nb_keywords_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE="tags&lt;opencurly&gt;&lt;closecurly&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="DATA_INPUT"
+#!   POSITION="-4924.2310036552281 10.935507906714065"
+#!   BOUNDING_RECT="-4924.2310036552281 10.935507906714065 631.00106825772946 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="DATA_OUTPUT"
+#!   POSITION="2378.9649676742301 -107.59075658102412"
+#!   BOUNDING_RECT="2378.9649676742301 -107.59075658102412 454 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="12"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="13"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="28"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="26"
+#!   SOURCE_PORT_DESC="fo 0 PASSED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="29"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="26"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="18"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="10"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="39"
+#!   SOURCE_NODE="10"
+#!   TARGET_NODE="38"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="20"
+#!   SOURCE_NODE="11"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="33"
+#!   SOURCE_NODE="26"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 0 PASSED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="34"
+#!   SOURCE_NODE="27"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="40"
+#!   SOURCE_NODE="38"
+#!   TARGET_NODE="11"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="21"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="fo 1 FAILED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="30"
+#!   SOURCE_NODE="26"
+#!   TARGET_NODE="27"
+#!   SOURCE_PORT_DESC="fo 1 FAILED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+FME_PYTHON_VERSION 313
+# ============================================================================
+DEFAULT_MACRO $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_FME_DATA_REPOSITORY 
+
+DEFAULT_MACRO $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_FME_ENGINE 
+
+DEFAULT_MACRO $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_FME_JOB_ID 
+
+DEFAULT_MACRO $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_FME_SECURITY_ROLES 
+
+DEFAULT_MACRO $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_FME_SECURITY_USER 
+
+DEFAULT_MACRO $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_FME_SERVER_DEST_DIR 
+
+DEFAULT_MACRO $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_FME_SERVER_HOST 
+
+DEFAULT_MACRO $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_FME_SERVER_PORT 
+
+DEFAULT_MACRO $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_FME_SERVER_REQUEST_HEADERS 
+
+DEFAULT_MACRO $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_FME_SERVER_REQUEST_METHOD 
+
+DEFAULT_MACRO $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_FME_SERVER_REQUEST_PARAMETERS 
+
+DEFAULT_MACRO $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_FME_SERVER_REQUEST_URI 
+
+DEFAULT_MACRO $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER 
+
+DEFAULT_MACRO $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER_ID 
+
+DEFAULT_MACRO $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_FME_SERVER_WEB_URL 
+
+DEFAULT_MACRO $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_BACKUP 
+
+DEFAULT_MACRO $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DASHBOARD 
+
+DEFAULT_MACRO $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DATA 
+
+DEFAULT_MACRO $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_ENGINE 
+
+DEFAULT_MACRO $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_LOG 
+
+DEFAULT_MACRO $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_SYSTEM 
+
+DEFAULT_MACRO $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_TEMP 
+
+DEFAULT_MACRO $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_FME_TOPIC 
+
+DEFAULT_MACRO $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_FME_TOPIC_MESSAGE 
+
+# ============================================================================
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO ON_KEYWORD_RENAMER_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(ON_KEYWORD_RENAMER_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_DATA_INPUT1759780822 Input Splitter"   INPUT FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_DATA_INPUT"   OUTPUT FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_DATA_INPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_AttributeExposer_4 }    INPUT  FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_DATA_INPUT"    OUTPUT { FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_AttributeExposer_4_OUTPUT"          }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TestFactory    FACTORY_NAME { $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_Tester }    INPUT  FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_AttributeExposer_4_OUTPUT"    TEST { keywords.en<opencurly>0<closecurly> ATTRIBUTE_HAS_A_VALUE "" ENCODED }    BOOLEAN_OPERATOR { OR }    COMPOSITE_TEST_EXPR { "<Unused>" }    PRESERVE_FEATURE_ORDER { ACROSS_OUTPUT_PORTS }    OUTPUT { PASSED FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_Tester_PASSED"         }    OUTPUT { FAILED FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_Tester_FAILED"         }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME { $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_AttributeCreator }    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_Tester_FAILED"    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    NUM_OF_COLUMNS 5    ATTR_ACTION { "" "keywords.en<opencurly>0<closecurly>" "SET_TO" "<at>Value<openparen>default_keyword_en<closeparen>" "varchar<openparen>200<closeparen>" }    OUTPUT { OUTPUT FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_AttributeCreator_OUTPUT"        }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TestFactory    FACTORY_NAME { $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_Tester_2 }    INPUT  FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_Tester_PASSED"    INPUT  FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_AttributeCreator_OUTPUT"    TEST { keywords.fr<opencurly>0<closecurly> ATTRIBUTE_HAS_A_VALUE "" ENCODED }    BOOLEAN_OPERATOR { OR }    COMPOSITE_TEST_EXPR { "<Unused>" }    PRESERVE_FEATURE_ORDER { ACROSS_OUTPUT_PORTS }    OUTPUT { PASSED FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_Tester_2_PASSED"         }    OUTPUT { FAILED FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_Tester_2_FAILED"         }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME { $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_AttributeCreator_2 }    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_Tester_2_FAILED"    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    NUM_OF_COLUMNS 5    ATTR_ACTION { "" "keywords.en<opencurly>0<closecurly>" "SET_TO" "<at>Value<openparen>default_keyword_fr<closeparen>" "varchar<openparen>200<closeparen>" }    OUTPUT { OUTPUT FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"        }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_ListElementCounter }    INPUT  FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_Tester_2_PASSED"    INPUT  FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"    OUTPUT { FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_ListElementCounter_OUTPUT"         @SupplyAttributes(ENCODED, nb_keywords_en, @NumElements("keywords.en<opencurly><closecurly>",ENCODED))          }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_ListElementCounter_2 }    INPUT  FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_ListElementCounter_OUTPUT"    OUTPUT { FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_ListElementCounter_2_OUTPUT"         @SupplyAttributes(ENCODED, nb_keywords_fr, @NumElements("keywords.fr<opencurly><closecurly>",ENCODED))          }
+# -------------------------------------------------------------------------
+# Build the List removal function and regular expression if there was any list attributes to be removed.
+# If not, then we will not have any extra list removal call to @RemoveAttributes, which speeds the
+# normal, non-list removal especially when in Bulk Mode.  Note that this computation of the regular expressions is done
+# once during mapping file parse time.
+INCLUDE [    set listAttributeRemoveRegexps {};    set anyList {no};    foreach attr [split "tags<opencurly><closecurly>"] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append listAttributeRemoveRegexps ",^$attr$";       set anyList {yes};    };    if { ${anyList} == {no} } {        puts {MACRO $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC }    } else {        puts "MACRO $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC @RemoveAttributes(fme_pcre_match\"$listAttributeRemoveRegexps\")"    }; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_AttributeRemover }    INPUT  FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_ListElementCounter_2_OUTPUT"    OUTPUT { FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_AttributeRemover_OUTPUT"        @RemoveAttributes(fme_encoded,)        $($(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC)         }
+# -------------------------------------------------------------------------
+FME_PYTHON_PATH "$(FME_MF_DIR)"
+FACTORY_DEF {*} PythonFactory    FACTORY_NAME { $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_PythonCaller }    FLUSH_WHEN_GROUPS_CHANGE { <Unused> }    INPUT  FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_AttributeRemover_OUTPUT"    SYMBOL_NAME { processFeature }    SOURCE_CODE { import<space>fme<lf>import<space>fmeobjects<lf>#<space>Template<space>Function<space>interface:<lf>#<space>When<space>using<space>this<space>function<comma><space>make<space>sure<space>its<space>name<space>is<space>set<space>as<space>the<space>value<space>of<lf>#<space>the<space><apos>Class<space>or<space>Function<space>to<space>Process<space>Features<apos><space>transformer<space>parameter<lf>def<space>processFeature<openparen>feature<closeparen>:<lf><space><space><space><space>nb_fr=int<openparen>feature.getAttribute<openparen><apos>nb_keywords_fr<apos><closeparen><closeparen><lf><space><space><space><space>nb_en=int<openparen>feature.getAttribute<openparen><apos>nb_keywords_en<apos><closeparen><closeparen><lf><space><space><space><space><lf><space><space><space><space><lf><space><space><space><space>if<space>nb_en==nb_fr:<lf><space><space><space><space><space><space><space><space>for<space>i<space>in<space>range<openparen>nb_en<closeparen>:<lf><space><space><space><space><space><space><space><space><space><space><space><space>feature.setAttribute<openparen><apos>tags<opencurly>%i<closecurly>.display_name<apos>%<openparen>i<closeparen><comma>feature.getAttribute<openparen><apos>keywords.en<opencurly>%i<closecurly><apos>%<openparen>i<closeparen><closeparen><closeparen><lf><space><space><space><space><space><space><space><space><space><space><space><space>feature.setAttribute<openparen><apos>tags<opencurly>%i<closecurly>.display_name_fr<apos>%<openparen>i<closeparen><comma>feature.getAttribute<openparen><apos>keywords.fr<opencurly>%i<closecurly><apos>%<openparen>i<closeparen><closeparen><closeparen><lf><space><space><space><space><lf><space><space><space><space><lf><space><space><space><space>else:<lf><space><space><space><space><space><space><space><space>for<space>i<space>in<space>range<openparen>nb_en<closeparen>:<lf><space><space><space><space><space><space><space><space><space><space><space><space>feature.setAttribute<openparen><apos>tags<opencurly>%i<closecurly>.display_name<apos>%<openparen>i<closeparen><comma>feature.getAttribute<openparen><apos>keywords.en<opencurly>%i<closecurly><apos>%<openparen>i<closeparen><closeparen><closeparen><lf><space><space><space><space><lf> }    PY_OUTPUT_TAGS { PYOUTPUT <Rejected> }    OUTPUT { PYOUTPUT FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_PythonCaller_OUTPUT"         }    OUTPUT { <Rejected> FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_PythonCaller_<Rejected>"         }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_PythonCaller <Rejected> Transformer Output Nuker"   INPUT FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_PythonCaller_<Rejected>"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_DATA_OUTPUT1759780822 Output Collector"   INPUT FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_PythonCaller_OUTPUT"   OUTPUT FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_DATA_OUTPUT"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(ON_KEYWORD_RENAMER_WORKSPACE_NAME))}]
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN ON_KEYWORD_RENAMER,1,"FGP Tools",40aa16e1-525a-4b37-8099-81507dc00256,"Linked by Default",No,NO_PARALLELISM,,No,19238,YES,No,37,No
+# 
+# TRANSFORMER_END
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="FGP Tools"
+#!   DESCRIPTION=""
+#!   DOC_EXTENTS="7991.02 2109.65"
+#!   DOC_TOP_LEFT="-4924.23 -1212.65"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="19238"
+#!   FME_DOCUMENT_GUID="40aa16e1-525a-4b37-8099-81507dc00256"
+#!   FME_DOCUMENT_PRIORGUID="dc93ec7f-9814-4b66-8dab-50d0d4b36190,57b21dc6-0fa0-417b-94ed-f57928f69d1b,06c09a1c-b05f-42bc-add3-f5518991fe15"
+#!   FME_LINKED_TRANSFORMER_VERSION="1"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY=""
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2019.0.0.0 (20190328 - Build 19238 - WIN32)"
+#!   LAST_SAVE_DATE="2021-01-22T11:37:15"
+#!   MARKDOWN_DESCRIPTION=""
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="37"
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="ON_KEYWORD_RENAMER"
+#!   USAGE=""
+#!   USE_MARKDOWN="NO"
+#!   VIEW_POSITION="-828.813 1171.89"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="92"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! </GLOBAL_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="23"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Exposes attributes required by this transformer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-3938.7905299980107 897.00350119534266"
+#!   TOP_LEFT="-3938.7905299980107 897.00350119534266"
+#!   BOTTOM_RIGHT="-3484.7905299980107 896.00350119534266"
+#!   BOUNDING_RECT="-3938.7905299980107 897.00350119534266 454 1"
+#!   ORDER="500000000001837"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="4"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="24"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Tests if English keywords attribute has value&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-3199.9911180361805 649.31080687709516"
+#!   TOP_LEFT="-3199.9911180361805 649.31080687709516"
+#!   BOTTOM_RIGHT="-2745.9911180361805 648.31080687709516"
+#!   BOUNDING_RECT="-3199.9911180361805 649.31080687709516 454 1"
+#!   ORDER="500000000001838"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="6"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="25"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Creates default attribute at index 0&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-2642.145986677257 -664.35511963815293"
+#!   TOP_LEFT="-2642.145986677257 -664.35511963815293"
+#!   BOTTOM_RIGHT="-2188.145986677257 -665.35511963815293"
+#!   BOUNDING_RECT="-2642.145986677257 -664.35511963815293 454 1"
+#!   ORDER="500000000001839"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="7"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="31"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Tests if French keywords attribute has value&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-1770.9421224647035 551.94630279727062"
+#!   TOP_LEFT="-1770.9421224647035 551.94630279727062"
+#!   BOTTOM_RIGHT="-1316.9421224647035 550.94630279727062"
+#!   BOUNDING_RECT="-1770.9421224647035 551.94630279727062 454 1"
+#!   ORDER="500000000001838"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="26"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="32"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Creates default French keywords attribute at index 0&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-231.80236092431664 -531.88096880968806"
+#!   TOP_LEFT="-231.80236092431664 -531.88096880968806"
+#!   BOTTOM_RIGHT="222.19763907568336 -532.88096880968806"
+#!   BOUNDING_RECT="-231.80236092431664 -531.88096880968806 454 1"
+#!   ORDER="500000000001839"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="27"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="35"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Counts number of elements in English keywords list&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-337.77870517145436 551.94630279727062"
+#!   TOP_LEFT="-337.77870517145436 551.94630279727062"
+#!   BOTTOM_RIGHT="116.22129482854564 550.94630279727062"
+#!   BOUNDING_RECT="-337.77870517145436 551.94630279727062 454 1"
+#!   ORDER="500000000001840"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="9"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="36"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Counts number of elements in French keywords list&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="364.57758385339207 551.94630279727062"
+#!   TOP_LEFT="364.57758385339207 551.94630279727062"
+#!   BOTTOM_RIGHT="833.57758385339207 550.94630279727062"
+#!   BOUNDING_RECT="364.57758385339207 551.94630279727062 469 1"
+#!   ORDER="500000000001841"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="10"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="37"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Python script renames original list attributes with workspace compliant list attributes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="1260.400963783487 551.94630279727062"
+#!   TOP_LEFT="1260.400963783487 551.94630279727062"
+#!   BOTTOM_RIGHT="1714.400963783487 550.94630279727062"
+#!   BOUNDING_RECT="1260.400963783487 551.94630279727062 454 1"
+#!   ORDER="500000000001842"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="11"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="22"
+#!   NAME="ON_KEYWORD_RENAMER"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="-4141.0925472891095 848.22276794196512"
+#!   ORDER="500000000001829"
+#!   PALETTE_COLOR="Color4"
+#!   BOTTOM_RIGHT="3066.7907684459087 -1212.6479960451775"
+#!   BOUNDING_RECT="-4141.0925472891095 848.22276794196512 7207.8833157350182 2060.8707639871427"
+#!   STICKY="false"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,1"
+#!   CONTENTS=""
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="4"
+#!   TYPE="AttributeExposer"
+#!   VERSION="1"
+#!   POSITION="-3938.8314122818338 10.935507906714065"
+#!   BOUNDING_RECT="-3938.8314122818338 10.935507906714065 454 71"
+#!   ORDER="500000000001821"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="keywords.en{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="keywords.fr{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_en" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="keywords.en{},keywords.fr{},default_keyword_en,default_keyword_fr,tags{}"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer_4"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="6"
+#!   TYPE="Tester"
+#!   VERSION="2"
+#!   POSITION="-3200.0320003200031 10.935507906714065"
+#!   BOUNDING_RECT="-3200.0320003200031 10.935507906714065 454 71"
+#!   ORDER="500000000001830"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="PASSED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="keywords.en{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="keywords.fr{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_en" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="FAILED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="keywords.en{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="keywords.fr{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_en" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_fr" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="tags{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="1"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST keywords.en&lt;opencurly&gt;0&lt;closecurly&gt; ATTRIBUTE_HAS_A_VALUE &quot;&quot;"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="TEST"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="7"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="-2642.145986677257 -351.76982204604661"
+#!   BOUNDING_RECT="-2642.145986677257 -351.76982204604661 454 71"
+#!   ORDER="500000000001831"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="keywords.en{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="keywords.fr{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_en" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; keywords.en&lt;opencurly&gt;0&lt;closecurly&gt; SET_TO &lt;at&gt;Value&lt;openparen&gt;default_keyword_en&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="9"
+#!   TYPE="ListElementCounter"
+#!   VERSION="1"
+#!   POSITION="-306.57225136778584 -42.270945896954402"
+#!   BOUNDING_RECT="-306.57225136778584 -42.270945896954402 454 71"
+#!   ORDER="500000000001835"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="keywords.en{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="keywords.fr{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_en" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="nb_keywords_en" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="CNT_ATTR" PARM_VALUE="nb_keywords_en"/>
+#!     <XFORM_PARM PARM_NAME="LIST_NAME" PARM_VALUE="keywords.en&lt;opencurly&gt;&lt;closecurly&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ListElementCounter"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="10"
+#!   TYPE="ListElementCounter"
+#!   VERSION="1"
+#!   POSITION="379.57591446169806 -42.270945896954402"
+#!   BOUNDING_RECT="379.57591446169806 -42.270945896954402 454 71"
+#!   ORDER="500000000001835"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="keywords.en{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="keywords.fr{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_en" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="nb_keywords_en" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="nb_keywords_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="CNT_ATTR" PARM_VALUE="nb_keywords_fr"/>
+#!     <XFORM_PARM PARM_NAME="LIST_NAME" PARM_VALUE="keywords.fr&lt;opencurly&gt;&lt;closecurly&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ListElementCounter_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="11"
+#!   TYPE="PythonCaller"
+#!   VERSION="4"
+#!   POSITION="1305.1945099798186 -75.250925042031653"
+#!   BOUNDING_RECT="1305.1945099798186 -75.250925042031653 454 71"
+#!   ORDER="500000000001836"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="keywords.en{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="keywords.fr{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_en" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="nb_keywords_en" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="nb_keywords_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="HIDE_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="NEW_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSOURCE" PARM_VALUE="import&lt;space&gt;fme&lt;lf&gt;import&lt;space&gt;fmeobjects&lt;lf&gt;#&lt;space&gt;Template&lt;space&gt;Function&lt;space&gt;interface:&lt;lf&gt;#&lt;space&gt;When&lt;space&gt;using&lt;space&gt;this&lt;space&gt;function&lt;comma&gt;&lt;space&gt;make&lt;space&gt;sure&lt;space&gt;its&lt;space&gt;name&lt;space&gt;is&lt;space&gt;set&lt;space&gt;as&lt;space&gt;the&lt;space&gt;value&lt;space&gt;of&lt;lf&gt;#&lt;space&gt;the&lt;space&gt;&lt;apos&gt;Class&lt;space&gt;or&lt;space&gt;Function&lt;space&gt;to&lt;space&gt;Process&lt;space&gt;Features&lt;apos&gt;&lt;space&gt;transformer&lt;space&gt;parameter&lt;lf&gt;def&lt;space&gt;processFeature&lt;openparen&gt;feature&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;nb_fr=int&lt;openparen&gt;feature.getAttribute&lt;openparen&gt;&lt;apos&gt;nb_keywords_fr&lt;apos&gt;&lt;closeparen&gt;&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;nb_en=int&lt;openparen&gt;feature.getAttribute&lt;openparen&gt;&lt;apos&gt;nb_keywords_en&lt;apos&gt;&lt;closeparen&gt;&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;if&lt;space&gt;nb_en==nb_fr:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;for&lt;space&gt;i&lt;space&gt;in&lt;space&gt;range&lt;openparen&gt;nb_en&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;feature.setAttribute&lt;openparen&gt;&lt;apos&gt;tags&lt;opencurly&gt;%i&lt;closecurly&gt;.display_name&lt;apos&gt;%&lt;openparen&gt;i&lt;closeparen&gt;&lt;comma&gt;feature.getAttribute&lt;openparen&gt;&lt;apos&gt;keywords.en&lt;opencurly&gt;%i&lt;closecurly&gt;&lt;apos&gt;%&lt;openparen&gt;i&lt;closeparen&gt;&lt;closeparen&gt;&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;feature.setAttribute&lt;openparen&gt;&lt;apos&gt;tags&lt;opencurly&gt;%i&lt;closecurly&gt;.display_name_fr&lt;apos&gt;%&lt;openparen&gt;i&lt;closeparen&gt;&lt;comma&gt;feature.getAttribute&lt;openparen&gt;&lt;apos&gt;keywords.fr&lt;opencurly&gt;%i&lt;closecurly&gt;&lt;apos&gt;%&lt;openparen&gt;i&lt;closeparen&gt;&lt;closeparen&gt;&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;else:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;for&lt;space&gt;i&lt;space&gt;in&lt;space&gt;range&lt;openparen&gt;nb_en&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;feature.setAttribute&lt;openparen&gt;&lt;apos&gt;tags&lt;opencurly&gt;%i&lt;closecurly&gt;.display_name&lt;apos&gt;%&lt;openparen&gt;i&lt;closeparen&gt;&lt;comma&gt;feature.getAttribute&lt;openparen&gt;&lt;apos&gt;keywords.en&lt;opencurly&gt;%i&lt;closecurly&gt;&lt;apos&gt;%&lt;openparen&gt;i&lt;closeparen&gt;&lt;closeparen&gt;&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSYMBOL" PARM_VALUE="processFeature"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="PythonCaller"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="26"
+#!   TYPE="Tester"
+#!   VERSION="2"
+#!   POSITION="-1770.9421224647035 -42.270945896954402"
+#!   BOUNDING_RECT="-1770.9421224647035 -42.270945896954402 454 71"
+#!   ORDER="500000000001830"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="PASSED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="keywords.en{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="keywords.fr{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_en" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="FAILED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="keywords.en{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="keywords.fr{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_en" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_fr" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="tags{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="1"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST keywords.fr&lt;opencurly&gt;0&lt;closecurly&gt; ATTRIBUTE_HAS_A_VALUE &quot;&quot;"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="TEST"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="27"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="-1158.7077392513052 -351.76982204604661"
+#!   BOUNDING_RECT="-1158.7077392513052 -351.76982204604661 454 71"
+#!   ORDER="500000000001831"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="keywords.en{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="keywords.fr{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_en" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; keywords.en&lt;opencurly&gt;0&lt;closecurly&gt; SET_TO &lt;at&gt;Value&lt;openparen&gt;default_keyword_fr&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="38"
+#!   TYPE="AttributeRemover"
+#!   VERSION="1"
+#!   POSITION="961.28678678091114 -455.16759515421234"
+#!   BOUNDING_RECT="961.28678678091114 -455.16759515421234 454 71"
+#!   ORDER="500000000001843"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="keywords.en{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="keywords.fr{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_en" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="default_keyword_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="nb_keywords_en" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="nb_keywords_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE="tags&lt;opencurly&gt;&lt;closecurly&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="DATA_INPUT"
+#!   POSITION="-4924.2310036552281 10.935507906714065"
+#!   BOUNDING_RECT="-4924.2310036552281 10.935507906714065 631.00106825772946 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="DATA_OUTPUT"
+#!   POSITION="2378.9649676742301 -107.59075658102412"
+#!   BOUNDING_RECT="2378.9649676742301 -107.59075658102412 454 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="12"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="13"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="28"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="26"
+#!   SOURCE_PORT_DESC="fo 0 PASSED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="29"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="26"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="18"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="10"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="39"
+#!   SOURCE_NODE="10"
+#!   TARGET_NODE="38"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="20"
+#!   SOURCE_NODE="11"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="33"
+#!   SOURCE_NODE="26"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 0 PASSED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="34"
+#!   SOURCE_NODE="27"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="40"
+#!   SOURCE_NODE="38"
+#!   TARGET_NODE="11"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="21"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="fo 1 FAILED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="30"
+#!   SOURCE_NODE="26"
+#!   TARGET_NODE="27"
+#!   SOURCE_PORT_DESC="fo 1 FAILED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+FME_PYTHON_VERSION 37
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO ON_KEYWORD_RENAMER_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(ON_KEYWORD_RENAMER_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_DATA_INPUT1611333435 Input Splitter"   INPUT FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_DATA_INPUT"   OUTPUT FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_DATA_INPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_AttributeExposer_4    INPUT  FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_DATA_INPUT"    OUTPUT FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_AttributeExposer_4_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TestFactory    FACTORY_NAME $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_Tester    INPUT  FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_AttributeExposer_4_OUTPUT"    TEST keywords.en<opencurly>0<closecurly> ATTRIBUTE_HAS_A_VALUE "" ENCODED    BOOLEAN_OPERATOR OR    COMPOSITE_TEST_EXPR "1"    OUTPUT PASSED FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_Tester_PASSED"    OUTPUT FAILED FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_Tester_FAILED"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_AttributeCreator    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_Tester_FAILED"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "keywords.en<opencurly>0<closecurly>" "SET_TO" "<at>Value<openparen>default_keyword_en<closeparen>" }    OUTPUT OUTPUT FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_AttributeCreator_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TestFactory    FACTORY_NAME $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_Tester_2    INPUT  FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_Tester_PASSED"    INPUT  FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_AttributeCreator_OUTPUT"    TEST keywords.fr<opencurly>0<closecurly> ATTRIBUTE_HAS_A_VALUE "" ENCODED    BOOLEAN_OPERATOR OR    COMPOSITE_TEST_EXPR "1"    OUTPUT PASSED FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_Tester_2_PASSED"    OUTPUT FAILED FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_Tester_2_FAILED"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_AttributeCreator_2    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_Tester_2_FAILED"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "keywords.en<opencurly>0<closecurly>" "SET_TO" "<at>Value<openparen>default_keyword_fr<closeparen>" }    OUTPUT OUTPUT FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_ListElementCounter    INPUT  FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_Tester_2_PASSED"    INPUT  FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"    OUTPUT FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_ListElementCounter_OUTPUT"         "nb_keywords_en" @NumElements("keywords.en<opencurly><closecurly>",ENCODED)
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_ListElementCounter_2    INPUT  FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_ListElementCounter_OUTPUT"    OUTPUT FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_ListElementCounter_2_OUTPUT"         "nb_keywords_fr" @NumElements("keywords.fr<opencurly><closecurly>",ENCODED)
+# -------------------------------------------------------------------------
+INCLUDE [    set macroLine "MACRO $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_AttributeRemover_LIST_EXP ";    foreach attr [split "tags<opencurly><closecurly>"] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_AttributeRemover    INPUT  FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_ListElementCounter_2_OUTPUT"    OUTPUT { FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_AttributeRemover_OUTPUT"        @RemoveAttributes(fme_encoded,)        @RemoveAttributes(fme_pcre_match"$($(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_AttributeRemover_LIST_EXP)")         }
+# -------------------------------------------------------------------------
+FME_PYTHON_PATH "$(FME_MF_DIR)"
+FACTORY_DEF * PythonFactory    FACTORY_NAME $(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_PythonCaller    INPUT  FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_AttributeRemover_OUTPUT"    SYMBOL_NAME processFeature    PYTHON_NAMESPACE FMEOBJECTS    SOURCE_CODE import<space>fme<lf>import<space>fmeobjects<lf>#<space>Template<space>Function<space>interface:<lf>#<space>When<space>using<space>this<space>function<comma><space>make<space>sure<space>its<space>name<space>is<space>set<space>as<space>the<space>value<space>of<lf>#<space>the<space><apos>Class<space>or<space>Function<space>to<space>Process<space>Features<apos><space>transformer<space>parameter<lf>def<space>processFeature<openparen>feature<closeparen>:<lf><space><space><space><space>nb_fr=int<openparen>feature.getAttribute<openparen><apos>nb_keywords_fr<apos><closeparen><closeparen><lf><space><space><space><space>nb_en=int<openparen>feature.getAttribute<openparen><apos>nb_keywords_en<apos><closeparen><closeparen><lf><space><space><space><space><lf><space><space><space><space><lf><space><space><space><space>if<space>nb_en==nb_fr:<lf><space><space><space><space><space><space><space><space>for<space>i<space>in<space>range<openparen>nb_en<closeparen>:<lf><space><space><space><space><space><space><space><space><space><space><space><space>feature.setAttribute<openparen><apos>tags<opencurly>%i<closecurly>.display_name<apos>%<openparen>i<closeparen><comma>feature.getAttribute<openparen><apos>keywords.en<opencurly>%i<closecurly><apos>%<openparen>i<closeparen><closeparen><closeparen><lf><space><space><space><space><space><space><space><space><space><space><space><space>feature.setAttribute<openparen><apos>tags<opencurly>%i<closecurly>.display_name_fr<apos>%<openparen>i<closeparen><comma>feature.getAttribute<openparen><apos>keywords.fr<opencurly>%i<closecurly><apos>%<openparen>i<closeparen><closeparen><closeparen><lf><space><space><space><space><lf><space><space><space><space><lf><space><space><space><space>else:<lf><space><space><space><space><space><space><space><space>for<space>i<space>in<space>range<openparen>nb_en<closeparen>:<lf><space><space><space><space><space><space><space><space><space><space><space><space>feature.setAttribute<openparen><apos>tags<opencurly>%i<closecurly>.display_name<apos>%<openparen>i<closeparen><comma>feature.getAttribute<openparen><apos>keywords.en<opencurly>%i<closecurly><apos>%<openparen>i<closeparen><closeparen><closeparen><lf><space><space><space><space><lf>    OUTPUT PYOUTPUT FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_PythonCaller_OUTPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_DATA_OUTPUT1611333435 Output Collector"   INPUT FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_PythonCaller_OUTPUT"   OUTPUT FEATURE_TYPE "$(ON_KEYWORD_RENAMER_WORKSPACE_NAME)_DATA_OUTPUT"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(ON_KEYWORD_RENAMER_WORKSPACE_NAME))}]

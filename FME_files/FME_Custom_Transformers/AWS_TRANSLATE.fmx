@@ -1,0 +1,1052 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN AWS_TRANSLATE,2,"""Federal Geo Platform""",0a27b78b-3907-4845-a1bf-4791036db89d,"Linked by Default",No,NO_PARALLELISM,,No,25606,YES,No,313,No,,both
+# <p><strong>Description</strong></p>
+# <p>This custom transformers translates FME attributes and/or lists in either English or French using AWS translation services.  The attribute names or list to translate are specified using FME Published Parameters</p>
+# <p><strong>Note1</strong>: Before translating an attribute the CT will verify if the destination attribute name exists. When the name exists, if the destination attribute value is different from the source attribute value to translate, the CT considers that the translation is done and the process stops for this attribute.  If destination attribute value is the same, the CT will try to guess (using AWS translation service) the language of the source attribute value to translate and adjust the translation accordignly.</p>
+# <p><strong>Note2:</strong>: When an attribute and or list is translated, the CT always creates 2 new attributes with the suffix <em>fr</em> and <em>en</em>.  It keeps the original attribute name as is.</p>
+# <p><strong>Input Ports</strong></p>
+# <ul>
+# <li>INPUT: The features to translate.</li>
+# </ul>
+# <p><strong>Output Ports</strong></p>
+# <ul>
+# <li>OUTPUT: The features with translated attributes and/or lists</li>
+# <li>TRANSLATION_PROBLEM: The features with a translation problem.</li>
+# </ul>
+# <p><strong>Parameters</strong></p>
+# <ul>
+# <li>ACTIVATE_TRANSLATION: Flag to enable or disable the translation. Ca take 2 values: <em>Yes</em>: Translate the attributes; <em>No</em>: Do not translate the attributes.  If the flag is set to <em>No</em>, the transformer will copy the text to translate in the output attribute and add the prefix: <em>Translation of</em>.</li>
+# <li>MODE: Flag for the direction of the translation. can take 2 values: <em>English--&gt;French</em> for an English to French translation; <em>Franch--&gt;English</em> for a French to English translation;</li>
+# <li>ATTR_2_TRANSLATE: Coma separated list of FME attribute to translate;</li>
+# <li>ATTR_LIST_2_TRANSLATE: Coma separated list of FME lists to translate.</li>
+# </ul>
+# TRANSFORMER_END
+#!   A0_PREVIEW_IMAGE="data:image/png;base64,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"
+#!   ARCGIS_COMPATIBILITY="ARCGIS_AUTO"
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="&quot;Federal Geo Platform&quot;"
+#!   DATA_PROCESSING_TYPE="both"
+#!   DESCRIPTION="&lt;p&gt;&lt;strong&gt;Description&lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;This custom transformers translates FME attributes and/or lists in either English or French using AWS translation services.  The attribute names or list to translate are specified using FME Published Parameters&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Note1&lt;/strong&gt;: Before translating an attribute the CT will verify if the destination attribute name exists. When the name exists, if the destination attribute value is different from the source attribute value to translate, the CT considers that the translation is done and the process stops for this attribute.  If destination attribute value is the same, the CT will try to guess (using AWS translation service) the language of the source attribute value to translate and adjust the translation accordignly.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Note2:&lt;/strong&gt;: When an attribute and or list is translated, the CT always creates 2 new attributes with the suffix &lt;em&gt;fr&lt;/em&gt; and &lt;em&gt;en&lt;/em&gt;.  It keeps the original attribute name as is.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Input Ports&lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;INPUT: The features to translate.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Output Ports&lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;OUTPUT: The features with translated attributes and/or lists&lt;/li&gt;&#10;&lt;li&gt;TRANSLATION_PROBLEM: The features with a translation problem.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Parameters&lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;ACTIVATE_TRANSLATION: Flag to enable or disable the translation. Ca take 2 values: &lt;em&gt;Yes&lt;/em&gt;: Translate the attributes; &lt;em&gt;No&lt;/em&gt;: Do not translate the attributes.  If the flag is set to &lt;em&gt;No&lt;/em&gt;, the transformer will copy the text to translate in the output attribute and add the prefix: &lt;em&gt;Translation of&lt;/em&gt;.&lt;/li&gt;&#10;&lt;li&gt;MODE: Flag for the direction of the translation. can take 2 values: &lt;em&gt;English--&amp;gt;French&lt;/em&gt; for an English to French translation; &lt;em&gt;Franch--&amp;gt;English&lt;/em&gt; for a French to English translation;&lt;/li&gt;&#10;&lt;li&gt;ATTR_2_TRANSLATE: Coma separated list of FME attribute to translate;&lt;/li&gt;&#10;&lt;li&gt;ATTR_LIST_2_TRANSLATE: Coma separated list of FME lists to translate.&lt;/li&gt;&#10;&lt;/ul&gt;"
+#!   DOC_EXTENTS="6157.21 1263.33"
+#!   DOC_TOP_LEFT="-11703.2 11936.7"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="25606"
+#!   FME_DOCUMENT_GUID="0a27b78b-3907-4845-a1bf-4791036db89d"
+#!   FME_DOCUMENT_PRIORGUID=""
+#!   FME_LINKED_TRANSFORMER_VERSION="2"
+#!   FME_NAMES_ENCODING="windows-1252"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY="Unknown,Unkbown,Original&lt;space&gt;Version,25&lt;solidus&gt;04&lt;solidus&gt;2022,Daniel&lt;space&gt;Pilon,Major&lt;space&gt;python&lt;space&gt;refactoring.&lt;space&gt;Including&lt;space&gt;the&lt;space&gt;possibility&lt;space&gt;to&lt;space&gt;guess&lt;space&gt;the&lt;space&gt;original&lt;space&gt;language&lt;space&gt;&lt;openparen&gt;english&lt;space&gt;or&lt;space&gt;French&lt;closeparen&gt;&lt;space&gt;when&lt;space&gt;the&lt;space&gt;French&lt;space&gt;or&lt;space&gt;English&lt;space&gt;translation&lt;space&gt;are&lt;space&gt;the&lt;space&gt;same."
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2025.1.0.0 (20250704 - Build 25606 - WIN64)"
+#!   LAST_SAVE_DATE="2025-10-06T13:16:06"
+#!   MARKDOWN_DESCRIPTION="**Description**&#10;&#10;This custom transformers translates FME attributes and/or lists in either English or French using AWS translation services.  The attribute names or list to translate are specified using FME Published Parameters&#10;&#10;**Note1**: Before translating an attribute the CT will verify if the destination attribute name exists. When the name exists, if the destination attribute value is different from the source attribute value to translate, the CT considers that the translation is done and the process stops for this attribute.  If destination attribute value is the same, the CT will try to guess (using AWS translation service) the language of the source attribute value to translate and adjust the translation accordignly.&#10;&#10;**Note2:**: When an attribute and or list is translated, the CT always creates 2 new attributes with the suffix _fr_ and _en_.  It keeps the original attribute name as is.&#10;&#10;**Input Ports**&#10;&#10;  - INPUT: The features to translate.&#10;&#10;**Output Ports**&#10;&#10;  - OUTPUT: The features with translated attributes and/or lists&#10;  - TRANSLATION_PROBLEM: The features with a translation problem.&#10;&#10;**Parameters**&#10; &#10;  - ACTIVATE_TRANSLATION: Flag to enable or disable the translation. Ca take 2 values: _Yes_: Translate the attributes; _No_: Do not translate the attributes.  If the flag is set to _No_, the transformer will copy the text to translate in the output attribute and add the prefix: _Translation of_.&#10;  - MODE: Flag for the direction of the translation. can take 2 values: _English--&gt;French_ for an English to French translation; _Franch--&gt;English_ for a French to English translation;&#10;  - ATTR_2_TRANSLATE: Coma separated list of FME attribute to translate;&#10;  - ATTR_LIST_2_TRANSLATE: Coma separated list of FME lists to translate."
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="313"
+#!   REPLACED_BY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="AWS_TRANSLATE"
+#!   USAGE=""
+#!   USE_MARKDOWN="YES"
+#!   VIEW_POSITION="-1631.37 1371.84"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="59"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL CHOICE_OR_ATTR ACTIVATE_TRANSLATION yes%no ACTIVATE_TRANSLATION:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI CHOICE_OR_ATTR MODE English--&gt;French%French--&gt;English MODE:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR ATTR_2_TRANSLATE ATTR_2_TRANSLATE:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR ATTR_LIST_2_TRANSLATE ATTR_LIST_2_TRANSLATE:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <USER_PARAMETERS
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbeyJuYW1lIjoiQUNUSVZBVEVfVFJBTlNMQVRJT04iLCJwcm9tcHQiOiJBQ1RJVkFURV9UUkFOU0xBVElPTjoiLCJ2YWx1ZVR5cGUiOiJzdHJpbmciLCJyZXF1aXJlZCI6ZmFsc2UsImRlZmF1bHRWYWx1ZSI6IiIsInN1cHBvcnRlZFZhbHVlVHlwZXMiOlsiZXhwcmVzc2lvbiIsImdsb2JhbFBhcmFtZXRlciJdLCJkZXByZWNhdGVkRmxhZ3MiOlsibm9uZSJdLCJjaG9pY2VTZXR0aW5ncyI6eyJzb3J0Ijoibm9Tb3J0IiwiY2hvaWNlcyI6W3sgImRpc3BsYXkiIDogInllcyIsICJ2YWx1ZSIgOiAieWVzIiB9LHsgImRpc3BsYXkiIDogIm5vIiwgInZhbHVlIiA6ICJubyIgfV0sImNob2ljZVNldCI6InVzZXJEZWZpbmVkIn0sInR5cGUiOiJkcm9wZG93biJ9LHsibmFtZSI6Ik1PREUiLCJwcm9tcHQiOiJNT0RFOiIsInZhbHVlVHlwZSI6InN0cmluZyIsImRlZmF1bHRWYWx1ZSI6IiIsInN1cHBvcnRlZFZhbHVlVHlwZXMiOlsiZXhwcmVzc2lvbiIsImdsb2JhbFBhcmFtZXRlciJdLCJkZXByZWNhdGVkRmxhZ3MiOlsibm9uZSJdLCJjaG9pY2VTZXR0aW5ncyI6eyJzb3J0Ijoibm9Tb3J0IiwiY2hvaWNlcyI6W3sgImRpc3BsYXkiIDogIkVuZ2xpc2gtLT5GcmVuY2giLCAidmFsdWUiIDogIkVuZ2xpc2gtLT5GcmVuY2giIH0seyAiZGlzcGxheSIgOiAiRnJlbmNoLS0+RW5nbGlzaCIsICJ2YWx1ZSIgOiAiRnJlbmNoLS0+RW5nbGlzaCIgfV0sImNob2ljZVNldCI6InVzZXJEZWZpbmVkIn0sInR5cGUiOiJkcm9wZG93biJ9LHsibmFtZSI6IkFUVFJfMl9UUkFOU0xBVEUiLCJwcm9tcHQiOiJBVFRSXzJfVFJBTlNMQVRFOiIsInZhbHVlVHlwZSI6InN0cmluZyIsInJlcXVpcmVkIjpmYWxzZSwiZGVmYXVsdFZhbHVlIjoiIiwic3VwcG9ydGVkVmFsdWVUeXBlcyI6WyJleHByZXNzaW9uIiwiZ2xvYmFsUGFyYW1ldGVyIl0sImRlcHJlY2F0ZWRGbGFncyI6WyJub25lIl0sInR5cGUiOiJ0ZXh0IiwiZWRpdG9yIjoicGxhaW50ZXh0In0seyJuYW1lIjoiQVRUUl9MSVNUXzJfVFJBTlNMQVRFIiwicHJvbXB0IjoiQVRUUl9MSVNUXzJfVFJBTlNMQVRFOiIsInZhbHVlVHlwZSI6InN0cmluZyIsInJlcXVpcmVkIjpmYWxzZSwiZGVmYXVsdFZhbHVlIjoiIiwic3VwcG9ydGVkVmFsdWVUeXBlcyI6WyJleHByZXNzaW9uIiwiZ2xvYmFsUGFyYW1ldGVyIl0sImRlcHJlY2F0ZWRGbGFncyI6WyJub25lIl0sInR5cGUiOiJ0ZXh0IiwiZWRpdG9yIjoicGxhaW50ZXh0In1dfQ=="
+#! >
+#! <PARAMETER_INFO>
+#!     <INFO NAME="ACTIVATE_TRANSLATION" 
+#!   DEFAULT_VALUE=""
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI OPTIONAL CHOICE_OR_ATTR ACTIVATE_TRANSLATION yes%no ACTIVATE_TRANSLATION:"
+#! />
+#!     <INFO NAME="MODE" 
+#!   DEFAULT_VALUE=""
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI CHOICE_OR_ATTR MODE English--&gt;French%French--&gt;English MODE:"
+#! />
+#!     <INFO NAME="ATTR_2_TRANSLATE" 
+#!   DEFAULT_VALUE=""
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR ATTR_2_TRANSLATE ATTR_2_TRANSLATE:"
+#! />
+#!     <INFO NAME="ATTR_LIST_2_TRANSLATE" 
+#!   DEFAULT_VALUE=""
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR ATTR_LIST_2_TRANSLATE ATTR_LIST_2_TRANSLATE:"
+#! />
+#! </PARAMETER_INFO>
+#! </USER_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="14"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Create attributes needed for the translation&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-10569.153017670529 12932.980864896368"
+#!   TOP_LEFT="-10569.153017670529 12932.980864896368"
+#!   BOTTOM_RIGHT="-10115.193899954353 12931.980864896368"
+#!   BOUNDING_RECT="-10569.153017670529 12932.980864896368 453.95911771617716 1"
+#!   ORDER="500000000000999"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{584c7e4f-5d49-4cc3-8131-f9b2893a5948}"
+#!   COLOUR="0.59999999999999998,0.054901960784313725,0.25490196078431371,0.39215686274509803"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="5"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="15"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Translate requested attributes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-9702.1696304682373 12932.980864896368"
+#!   TOP_LEFT="-9702.1696304682373 12932.980864896368"
+#!   BOTTOM_RIGHT="-9248.2105127520608 12931.980864896368"
+#!   BOUNDING_RECT="-9702.1696304682373 12932.980864896368 453.95911771617716 1"
+#!   ORDER="500000000001000"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{2de1bcb6-52f3-43b0-a824-2d5be5331331}"
+#!   COLOUR="0.59999999999999998,0.054901960784313725,0.25490196078431371,0.39215686274509803"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="6"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="16"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Remove unnecessary attribute&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-8022.3042246211953 13009.119548213032"
+#!   TOP_LEFT="-8022.3042246211953 13009.119548213032"
+#!   BOTTOM_RIGHT="-7568.3451069050179 13008.119548213032"
+#!   BOUNDING_RECT="-8022.3042246211953 13009.119548213032 453.95911771617716 1"
+#!   ORDER="500000000001003"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{3c520bc0-f977-4c1a-8bb0-d4e2107a72ea}"
+#!   COLOUR="0.59999999999999998,0.054901960784313725,0.25490196078431371,0.39215686274509803"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="8"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="17"
+#!   NAME="AWS Service Translation"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="-10950 13200"
+#!   ORDER="500000000000101"
+#!   PALETTE_COLOR=""
+#!   BOTTOM_RIGHT="-6235.3832266392865 11936.672830387452"
+#!   BOUNDING_RECT="-10950 13200 4714.6167733607135 1263.3271696125485"
+#!   STICKY="true"
+#!   COLOUR="0.59999999999999998,0.054901960784313725,0.25490196078431371,0.39215686274509803"
+#!   CONTENTS="10 8 13 6 12 9 5 11 14 16 15 7 "
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="5"
+#!   TYPE="AttributeCreator"
+#!   VERSION="10"
+#!   POSITION="-10525.67050670507 12632.980864896368"
+#!   BOUNDING_RECT="-10525.67050670507 12632.980864896368 454 71"
+#!   ORDER="500000000000955"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_aws_activation" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_mode" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_attr2translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_attrlist2translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; _aws_activation SET_TO $(ACTIVATE_TRANSLATION) varchar&lt;openparen&gt;200&lt;closeparen&gt;  _mode SET_TO $(MODE) varchar&lt;openparen&gt;200&lt;closeparen&gt;  _attr2translate SET_TO $(ATTR_2_TRANSLATE) varchar&lt;openparen&gt;200&lt;closeparen&gt;  _attrlist2translate SET_TO $(ATTR_LIST_2_TRANSLATE) varchar&lt;openparen&gt;200&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE" PARM_VALUE="NO_OP"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_MODIFIED_ATTRIBUTE_TYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_IS_LOOKUP="true" PARM_VALUE="No Substitution"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="6"
+#!   TYPE="PythonCaller"
+#!   VERSION="6"
+#!   POSITION="-9680.617163364619 12632.980864896368"
+#!   BOUNDING_RECT="-9680.617163364619 12632.980864896368 454 71"
+#!   ORDER="500000000000003"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_aws_activation" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_mode" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_attr2translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_attrlist2translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_translation_status" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;Rejected&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="_aws_activation" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_mode" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_attr2translate" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_attrlist2translate" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_message" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_PROCESSING_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="HIDE_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="NEW_ATTRIBUTES" PARM_VALUE="_translation_status buffer"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSOURCE" PARM_VALUE="from&lt;space&gt;Python.AWS_TRANSLATE&lt;space&gt;import&lt;space&gt;process_feature"/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSYMBOL" PARM_VALUE="process_feature"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="PythonCaller"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="7"
+#!   TYPE="TestFilter"
+#!   VERSION="3"
+#!   POSITION="-8952.7712066714121 12632.980864896368"
+#!   BOUNDING_RECT="-8952.7712066714121 12632.980864896368 454 71"
+#!   ORDER="500000000001001"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="SUCCESS"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_aws_activation" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_mode" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_attr2translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_attrlist2translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_translation_status" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="FAILURE"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="_aws_activation" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_mode" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_attr2translate" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_attrlist2translate" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_translation_status" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="DEFAULT_VALUE" PARM_VALUE="FAILURE"/>
+#!     <XFORM_PARM PARM_NAME="OUTGRPPORT" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_ATTRIBUTE_NAME" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PASSED_TEST_GROUP_OUTPUT" PARM_VALUE="FIRST"/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="PER_OUTPUT_PORT"/>
+#!     <XFORM_PARM PARM_NAME="TESTLISTGRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_LIST" PARM_VALUE="&quot;BOOL_OP,OR,COMPOSITE_TEST,&quot;&quot;&quot;&quot;&quot;&quot;1&quot;&quot;&quot;&quot;&quot;&quot;,TEST_CLAUSE,TEST&lt;space&gt;&lt;lt&gt;at&lt;gt&gt;Value&lt;lt&gt;openparen&lt;gt&gt;_translation_status&lt;lt&gt;closeparen&lt;gt&gt;&lt;space&gt;=&lt;space&gt;0&quot;,SUCCESS"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="TestFilter"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="8"
+#!   TYPE="AttributeRemover"
+#!   VERSION="1"
+#!   POSITION="-8033.6468233103406 12690.126480212173"
+#!   BOUNDING_RECT="-8033.6468233103406 12690.126480212173 454 71"
+#!   ORDER="500000000001002"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE="_attr2translate,_attrlist2translate,_aws_activation,_mode,_translation_status"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="9"
+#!   TYPE="ATTRIBUTE_UNEXPOSER"
+#!   VERSION="2"
+#!   POSITION="-7225.6705067050698 12712.056524074014"
+#!   BOUNDING_RECT="-7225.6705067050698 12712.056524074014 533.00106825772946 71"
+#!   ORDER="500000000001004"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_UNEXPOSER"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="INPUT"
+#!   POSITION="-11703.211844728921 12743.710712007021"
+#!   BOUNDING_RECT="-11703.211844728921 12743.710712007021 431 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="OUTPUT"
+#!   POSITION="-6000 12698.365635842378"
+#!   BOUNDING_RECT="-6000 12698.365635842378 431 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="4"
+#!   NAME="TRANSLATION_PROBLEM"
+#!   POSITION="-6000 12255.841708946777"
+#!   BOUNDING_RECT="-6000 12255.841708946777 454 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="18"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="10"
+#!   SOURCE_NODE="5"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="11"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="12"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="8"
+#!   SOURCE_PORT_DESC="fo 0 SUCCESS"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="13"
+#!   SOURCE_NODE="8"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="19"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="20"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="fo 1 FAILURE"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+FME_PYTHON_VERSION 313
+# ============================================================================
+DEFAULT_MACRO $(AWS_TRANSLATE_WORKSPACE_NAME)_ACTIVATE_TRANSLATION 
+
+DEFAULT_MACRO $(AWS_TRANSLATE_WORKSPACE_NAME)_MODE 
+
+DEFAULT_MACRO $(AWS_TRANSLATE_WORKSPACE_NAME)_ATTR_2_TRANSLATE 
+
+DEFAULT_MACRO $(AWS_TRANSLATE_WORKSPACE_NAME)_ATTR_LIST_2_TRANSLATE 
+
+DEFAULT_MACRO $(AWS_TRANSLATE_WORKSPACE_NAME)_FME_DATA_REPOSITORY 
+
+DEFAULT_MACRO $(AWS_TRANSLATE_WORKSPACE_NAME)_FME_ENGINE 
+
+DEFAULT_MACRO $(AWS_TRANSLATE_WORKSPACE_NAME)_FME_JOB_ID 
+
+DEFAULT_MACRO $(AWS_TRANSLATE_WORKSPACE_NAME)_FME_SECURITY_ROLES 
+
+DEFAULT_MACRO $(AWS_TRANSLATE_WORKSPACE_NAME)_FME_SECURITY_USER 
+
+DEFAULT_MACRO $(AWS_TRANSLATE_WORKSPACE_NAME)_FME_SERVER_DEST_DIR 
+
+DEFAULT_MACRO $(AWS_TRANSLATE_WORKSPACE_NAME)_FME_SERVER_HOST 
+
+DEFAULT_MACRO $(AWS_TRANSLATE_WORKSPACE_NAME)_FME_SERVER_PORT 
+
+DEFAULT_MACRO $(AWS_TRANSLATE_WORKSPACE_NAME)_FME_SERVER_REQUEST_HEADERS 
+
+DEFAULT_MACRO $(AWS_TRANSLATE_WORKSPACE_NAME)_FME_SERVER_REQUEST_METHOD 
+
+DEFAULT_MACRO $(AWS_TRANSLATE_WORKSPACE_NAME)_FME_SERVER_REQUEST_PARAMETERS 
+
+DEFAULT_MACRO $(AWS_TRANSLATE_WORKSPACE_NAME)_FME_SERVER_REQUEST_URI 
+
+DEFAULT_MACRO $(AWS_TRANSLATE_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER 
+
+DEFAULT_MACRO $(AWS_TRANSLATE_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER_ID 
+
+DEFAULT_MACRO $(AWS_TRANSLATE_WORKSPACE_NAME)_FME_SERVER_WEB_URL 
+
+DEFAULT_MACRO $(AWS_TRANSLATE_WORKSPACE_NAME)_FME_SHAREDRESOURCE_BACKUP 
+
+DEFAULT_MACRO $(AWS_TRANSLATE_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DASHBOARD 
+
+DEFAULT_MACRO $(AWS_TRANSLATE_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DATA 
+
+DEFAULT_MACRO $(AWS_TRANSLATE_WORKSPACE_NAME)_FME_SHAREDRESOURCE_ENGINE 
+
+DEFAULT_MACRO $(AWS_TRANSLATE_WORKSPACE_NAME)_FME_SHAREDRESOURCE_LOG 
+
+DEFAULT_MACRO $(AWS_TRANSLATE_WORKSPACE_NAME)_FME_SHAREDRESOURCE_SYSTEM 
+
+DEFAULT_MACRO $(AWS_TRANSLATE_WORKSPACE_NAME)_FME_SHAREDRESOURCE_TEMP 
+
+DEFAULT_MACRO $(AWS_TRANSLATE_WORKSPACE_NAME)_FME_TOPIC 
+
+DEFAULT_MACRO $(AWS_TRANSLATE_WORKSPACE_NAME)_FME_TOPIC_MESSAGE 
+
+# ============================================================================
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO AWS_TRANSLATE_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(AWS_TRANSLATE_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(AWS_TRANSLATE_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(AWS_TRANSLATE_WORKSPACE_NAME)_INPUT1759770966 Input Splitter"   INPUT FEATURE_TYPE "$(AWS_TRANSLATE_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(AWS_TRANSLATE_WORKSPACE_NAME)_INPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME { $(AWS_TRANSLATE_WORKSPACE_NAME)_AttributeCreator }    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(AWS_TRANSLATE_WORKSPACE_NAME)_INPUT"    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    NUM_OF_COLUMNS 5    ATTR_ACTION { "" "_aws_activation" "SET_TO" "$($(AWS_TRANSLATE_WORKSPACE_NAME)_ACTIVATE_TRANSLATION$encode)" "varchar<openparen>200<closeparen>" }      ATTR_ACTION { "" "_mode" "SET_TO" "$($(AWS_TRANSLATE_WORKSPACE_NAME)_MODE$encode)" "varchar<openparen>200<closeparen>" }      ATTR_ACTION { "" "_attr2translate" "SET_TO" "$($(AWS_TRANSLATE_WORKSPACE_NAME)_ATTR_2_TRANSLATE$encode)" "varchar<openparen>200<closeparen>" }      ATTR_ACTION { "" "_attrlist2translate" "SET_TO" "$($(AWS_TRANSLATE_WORKSPACE_NAME)_ATTR_LIST_2_TRANSLATE$encode)" "varchar<openparen>200<closeparen>" }    OUTPUT { OUTPUT FEATURE_TYPE "$(AWS_TRANSLATE_WORKSPACE_NAME)_AttributeCreator_OUTPUT"        }
+# -------------------------------------------------------------------------
+FME_PYTHON_PATH "$(FME_MF_DIR)"
+FACTORY_DEF {*} PythonFactory    FACTORY_NAME { $(AWS_TRANSLATE_WORKSPACE_NAME)_PythonCaller }    FLUSH_WHEN_GROUPS_CHANGE { <Unused> }    INPUT  FEATURE_TYPE "$(AWS_TRANSLATE_WORKSPACE_NAME)_AttributeCreator_OUTPUT"    SYMBOL_NAME { process_feature }    SOURCE_CODE { from<space>Python.AWS_TRANSLATE<space>import<space>process_feature }    PY_OUTPUT_TAGS { PYOUTPUT <Rejected> }    OUTPUT { PYOUTPUT FEATURE_TYPE "$(AWS_TRANSLATE_WORKSPACE_NAME)_PythonCaller_OUTPUT"         }    OUTPUT { <Rejected> FEATURE_TYPE "$(AWS_TRANSLATE_WORKSPACE_NAME)_PythonCaller_<Rejected>"         }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(AWS_TRANSLATE_WORKSPACE_NAME)_PythonCaller <Rejected> Transformer Output Nuker"   INPUT FEATURE_TYPE "$(AWS_TRANSLATE_WORKSPACE_NAME)_PythonCaller_<Rejected>"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(AWS_TRANSLATE_WORKSPACE_NAME)_TestFilter_INPUT }    INPUT  FEATURE_TYPE "$(AWS_TRANSLATE_WORKSPACE_NAME)_PythonCaller_OUTPUT"    OUTPUT { FEATURE_TYPE $(AWS_TRANSLATE_WORKSPACE_NAME)_TestFilter_INPUTLINE }
+FACTORY_DEF {*} TestFactory FACTORY_NAME { $(AWS_TRANSLATE_WORKSPACE_NAME)_TestFilter } INPUT FEATURE_TYPE $(AWS_TRANSLATE_WORKSPACE_NAME)_TestFilter_INPUTLINE FEATURE_TABLE_SHIM_SUPPORT Yes PASSED_TEST_GROUP_OUTPUT FIRST TEST_GROUP TEST { @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_translation_status<closeparen>,$(AWS_TRANSLATE_WORKSPACE_NAME)_TestFilter) = 0 ENCODED } BOOLEAN_OPERATOR OR COMPOSITE_TEST_EXPR "1" OUTPUT PASSED_0 FEATURE_TYPE $(AWS_TRANSLATE_WORKSPACE_NAME)_TestFilter_SUCCESS OUTPUT FAILED FEATURE_TYPE $(AWS_TRANSLATE_WORKSPACE_NAME)_TestFilter_FAILURE
+# -------------------------------------------------------------------------
+# Build the List removal function and regular expression if there was any list attributes to be removed.
+# If not, then we will not have any extra list removal call to @RemoveAttributes, which speeds the
+# normal, non-list removal especially when in Bulk Mode.  Note that this computation of the regular expressions is done
+# once during mapping file parse time.
+INCLUDE [    set listAttributeRemoveRegexps {};    set anyList {no};    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append listAttributeRemoveRegexps ",^$attr$";       set anyList {yes};    };    if { ${anyList} == {no} } {        puts {MACRO $(AWS_TRANSLATE_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC }    } else {        puts "MACRO $(AWS_TRANSLATE_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC @RemoveAttributes(fme_pcre_match\"$listAttributeRemoveRegexps\")"    }; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(AWS_TRANSLATE_WORKSPACE_NAME)_AttributeRemover }    INPUT  FEATURE_TYPE "$(AWS_TRANSLATE_WORKSPACE_NAME)_TestFilter_SUCCESS"    OUTPUT { FEATURE_TYPE "$(AWS_TRANSLATE_WORKSPACE_NAME)_AttributeRemover_OUTPUT"        @RemoveAttributes(fme_encoded,_attr2translate,_attrlist2translate,_aws_activation,_mode,_translation_status)        $($(AWS_TRANSLATE_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC)         }
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(AWS_TRANSLATE_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Input Input Collector"   INPUT FEATURE_TYPE "$(AWS_TRANSLATE_WORKSPACE_NAME)_AttributeRemover_OUTPUT"   OUTPUT FEATURE_TYPE "$(AWS_TRANSLATE_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Input"
+MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(AWS_TRANSLATE_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(AWS_TRANSLATE_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:2
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(AWS_TRANSLATE_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(AWS_TRANSLATE_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(AWS_TRANSLATE_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(AWS_TRANSLATE_WORKSPACE_NAME)_OUTPUT1759770966 Output Collector"   INPUT FEATURE_TYPE "$(AWS_TRANSLATE_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(AWS_TRANSLATE_WORKSPACE_NAME)_OUTPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(AWS_TRANSLATE_WORKSPACE_NAME)_TRANSLATION_PROBLEM1759770966 Output Collector"   INPUT FEATURE_TYPE "$(AWS_TRANSLATE_WORKSPACE_NAME)_TestFilter_FAILURE"   OUTPUT FEATURE_TYPE "$(AWS_TRANSLATE_WORKSPACE_NAME)_TRANSLATION_PROBLEM"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(AWS_TRANSLATE_WORKSPACE_NAME))}]
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN AWS_TRANSLATE,1,"Federal Geo Platform",83c2aa7e-16bd-410b-8038-0697be0d6678,"Linked by Default",No,NO_PARALLELISM,,No,20200,YES,No,37,No,
+# <p><strong>Description</strong></p>
+# <p>This custom transformers translates FME attributes and/or lists in either English or French using AWS translation services.  The attribute names or list to translate are specified using FME Published Parameters</p>
+# <p><strong>Note1</strong>: Before translating an attribute the CT will verify if the destination attribute name exists. When the name exists, if the destination attribute value is different from the source attribute value to translate, the CT considers that the translation is done and the process stops for this attribute.  If destination attribute value is the same, the CT will try to guess (using AWS translation service) the language of the source attribute value to translate and adjust the translation accordignly.</p>
+# <p><strong>Note2:</strong>: When an attribute and or list is translated, the CT always creates 2 new attributes with the suffix <em>fr</em> and <em>en</em>.  It keeps the original attribute name as is.</p>
+# <p><strong>Input Ports</strong></p>
+# <ul>
+# <li>INPUT: The features to translate.</li>
+# </ul>
+# <p><strong>Output Ports</strong></p>
+# <ul>
+# <li>OUTPUT: The features with translated attributes and/or lists</li>
+# <li>TRANSLATION_PROBLEM: The features with a translation problem.</li>
+# </ul>
+# <p><strong>Parameters</strong></p>
+# <ul>
+# <li>ACTIVATE_TRANSLATION: Flag to enable or disable the translation. Ca take 2 values: <em>Yes</em>: Translate the attributes; <em>No</em>: Do not translate the attributes.  If the flag is set to <em>No</em>, the transformer will copy the text to translate in the output attribute and add the prefix: <em>Translation of</em>.</li>
+# <li>MODE: Flag for the direction of the translation. can take 2 values: <em>English--&gt;French</em> for an English to French translation; <em>Franch--&gt;English</em> for a French to English translation;</li>
+# <li>ATTR_2_TRANSLATE: Coma separated list of FME attribute to translate;</li>
+# <li>ATTR_LIST_2_TRANSLATE: Coma separated list of FME lists to translate.</li>
+# </ul>
+# TRANSFORMER_END
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="Federal Geo Platform"
+#!   DESCRIPTION="&lt;p&gt;&lt;strong&gt;Description&lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;This custom transformers translates FME attributes and/or lists in either English or French using AWS translation services.  The attribute names or list to translate are specified using FME Published Parameters&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Note1&lt;/strong&gt;: Before translating an attribute the CT will verify if the destination attribute name exists. When the name exists, if the destination attribute value is different from the source attribute value to translate, the CT considers that the translation is done and the process stops for this attribute.  If destination attribute value is the same, the CT will try to guess (using AWS translation service) the language of the source attribute value to translate and adjust the translation accordignly.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Note2:&lt;/strong&gt;: When an attribute and or list is translated, the CT always creates 2 new attributes with the suffix &lt;em&gt;fr&lt;/em&gt; and &lt;em&gt;en&lt;/em&gt;.  It keeps the original attribute name as is.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Input Ports&lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;INPUT: The features to translate.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Output Ports&lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;OUTPUT: The features with translated attributes and/or lists&lt;/li&gt;&#10;&lt;li&gt;TRANSLATION_PROBLEM: The features with a translation problem.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Parameters&lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;ACTIVATE_TRANSLATION: Flag to enable or disable the translation. Ca take 2 values: &lt;em&gt;Yes&lt;/em&gt;: Translate the attributes; &lt;em&gt;No&lt;/em&gt;: Do not translate the attributes.  If the flag is set to &lt;em&gt;No&lt;/em&gt;, the transformer will copy the text to translate in the output attribute and add the prefix: &lt;em&gt;Translation of&lt;/em&gt;.&lt;/li&gt;&#10;&lt;li&gt;MODE: Flag for the direction of the translation. can take 2 values: &lt;em&gt;English--&amp;gt;French&lt;/em&gt; for an English to French translation; &lt;em&gt;Franch--&amp;gt;English&lt;/em&gt; for a French to English translation;&lt;/li&gt;&#10;&lt;li&gt;ATTR_2_TRANSLATE: Coma separated list of FME attribute to translate;&lt;/li&gt;&#10;&lt;li&gt;ATTR_LIST_2_TRANSLATE: Coma separated list of FME lists to translate.&lt;/li&gt;&#10;&lt;/ul&gt;"
+#!   DOC_EXTENTS="6157.21 1263.33"
+#!   DOC_TOP_LEFT="-11703.2 11936.7"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="20200"
+#!   FME_DOCUMENT_GUID="83c2aa7e-16bd-410b-8038-0697be0d6678"
+#!   FME_DOCUMENT_PRIORGUID="752448f3-6df3-4953-8220-571d9022b1fe,fa328732-3b14-4a8a-b6d8-d5d77e2876ec,664c016f-3ada-415a-bdc1-66411837c37c,cf06ea3b-d936-46e2-aa69-c9b461bec151,1af410a8-26d3-42a3-a967-b71f57d306c5,d2a03bfc-7277-4e22-b69d-54107ff18edc,c4720f29-29a4-4bf1-a833-ba014962b436,d0a3f26f-8448-4295-8055-bef9e409fb35,5fa5267f-c423-482c-b984-78f85a62651c,1b315b6e-08e2-4527-b51e-ac71b28e5e5b,453aee58-cae5-4b6b-9e19-71f5acc60e1c,6d51a52c-799a-480b-91cd-1481b44ad6a0,f5a22d25-b253-4228-85d5-bb8d9105a9e0"
+#!   FME_LINKED_TRANSFORMER_VERSION="1"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY="Unknown,Unkbown,Original&lt;space&gt;Version,25&lt;solidus&gt;04&lt;solidus&gt;2022,Daniel&lt;space&gt;Pilon,Major&lt;space&gt;python&lt;space&gt;refactoring.&lt;space&gt;Including&lt;space&gt;the&lt;space&gt;possibility&lt;space&gt;to&lt;space&gt;guess&lt;space&gt;the&lt;space&gt;original&lt;space&gt;language&lt;space&gt;&lt;openparen&gt;english&lt;space&gt;or&lt;space&gt;French&lt;closeparen&gt;&lt;space&gt;when&lt;space&gt;the&lt;space&gt;French&lt;space&gt;or&lt;space&gt;English&lt;space&gt;translation&lt;space&gt;are&lt;space&gt;the&lt;space&gt;same."
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2020.0.0.0 (20200309 - Build 20200 - WIN32)"
+#!   LAST_SAVE_DATE="2022-05-17T14:22:11"
+#!   MARKDOWN_DESCRIPTION="**Description**&#10;&#10;This custom transformers translates FME attributes and/or lists in either English or French using AWS translation services.  The attribute names or list to translate are specified using FME Published Parameters&#10;&#10;**Note1**: Before translating an attribute the CT will verify if the destination attribute name exists. When the name exists, if the destination attribute value is different from the source attribute value to translate, the CT considers that the translation is done and the process stops for this attribute.  If destination attribute value is the same, the CT will try to guess (using AWS translation service) the language of the source attribute value to translate and adjust the translation accordignly.&#10;&#10;**Note2:**: When an attribute and or list is translated, the CT always creates 2 new attributes with the suffix _fr_ and _en_.  It keeps the original attribute name as is.&#10;&#10;**Input Ports**&#10;&#10;  - INPUT: The features to translate.&#10;&#10;**Output Ports**&#10;&#10;  - OUTPUT: The features with translated attributes and/or lists&#10;  - TRANSLATION_PROBLEM: The features with a translation problem.&#10;&#10;**Parameters**&#10; &#10;  - ACTIVATE_TRANSLATION: Flag to enable or disable the translation. Ca take 2 values: _Yes_: Translate the attributes; _No_: Do not translate the attributes.  If the flag is set to _No_, the transformer will copy the text to translate in the output attribute and add the prefix: _Translation of_.&#10;  - MODE: Flag for the direction of the translation. can take 2 values: _English--&gt;French_ for an English to French translation; _Franch--&gt;English_ for a French to English translation;&#10;  - ATTR_2_TRANSLATE: Coma separated list of FME attribute to translate;&#10;  - ATTR_LIST_2_TRANSLATE: Coma separated list of FME lists to translate."
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="37"
+#!   REPLACED_BY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="AWS_TRANSLATE"
+#!   USAGE=""
+#!   USE_MARKDOWN="YES"
+#!   VIEW_POSITION="-5095.39 2330.53"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="59"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL CHOICE_OR_ATTR ACTIVATE_TRANSLATION yes%no ACTIVATE_TRANSLATION:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI CHOICE_OR_ATTR MODE English--&gt;French%French--&gt;English MODE:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR ATTR_2_TRANSLATE ATTR_2_TRANSLATE:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR ATTR_LIST_2_TRANSLATE ATTR_LIST_2_TRANSLATE:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="14"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Create attributes needed for the translation&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-10569.153017670529 12932.980864896368"
+#!   TOP_LEFT="-10569.153017670529 12932.980864896368"
+#!   BOTTOM_RIGHT="-10115.153017670529 12931.980864896368"
+#!   BOUNDING_RECT="-10569.153017670529 12932.980864896368 454 1"
+#!   ORDER="500000000000999"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.59999999999999998,0.054901960784313725,0.25490196078431371,0.39215686274509803"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="5"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="15"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Translate requested attributes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-9702.1696304682373 12932.980864896368"
+#!   TOP_LEFT="-9702.1696304682373 12932.980864896368"
+#!   BOTTOM_RIGHT="-9248.1696304682373 12931.980864896368"
+#!   BOUNDING_RECT="-9702.1696304682373 12932.980864896368 454 1"
+#!   ORDER="500000000001000"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.59999999999999998,0.054901960784313725,0.25490196078431371,0.39215686274509803"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="6"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="16"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Remove unnecessary attribute&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-8022.3042246211953 13009.119548213032"
+#!   TOP_LEFT="-8022.3042246211953 13009.119548213032"
+#!   BOTTOM_RIGHT="-7568.3042246211953 13008.119548213032"
+#!   BOUNDING_RECT="-8022.3042246211953 13009.119548213032 454 1"
+#!   ORDER="500000000001003"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.59999999999999998,0.054901960784313725,0.25490196078431371,0.39215686274509803"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="8"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="17"
+#!   NAME="AWS Service Translation"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="-10950 13200"
+#!   ORDER="500000000000101"
+#!   PALETTE_COLOR=""
+#!   BOTTOM_RIGHT="-6235.3832266392865 11936.672830387452"
+#!   BOUNDING_RECT="-10950 13200 4714.6167733607135 1263.3271696125485"
+#!   STICKY="true"
+#!   COLOUR="0.59999999999999998,0.054901960784313725,0.25490196078431371,0.39215686274509803"
+#!   CONTENTS="10 14 9 11 6 8 5 16 13 7 15 12 "
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="5"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="-10525.67050670507 12632.980864896368"
+#!   BOUNDING_RECT="-10525.67050670507 12632.980864896368 454 71"
+#!   ORDER="500000000000955"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_aws_activation" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_mode" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_attr2translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_attrlist2translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; _aws_activation SET_TO $(ACTIVATE_TRANSLATION)  _mode SET_TO $(MODE)  _attr2translate SET_TO $(ATTR_2_TRANSLATE)  _attrlist2translate SET_TO $(ATTR_LIST_2_TRANSLATE)"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="6"
+#!   TYPE="PythonCaller"
+#!   VERSION="4"
+#!   POSITION="-9680.617163364619 12632.980864896368"
+#!   BOUNDING_RECT="-9680.617163364619 12632.980864896368 454 71"
+#!   ORDER="500000000000003"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_aws_activation" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_mode" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_attr2translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_attrlist2translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_translation_status" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="HIDE_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="NEW_ATTRIBUTES" PARM_VALUE="_translation_status"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSOURCE" PARM_VALUE="from&lt;space&gt;Python.AWS_TRANSLATE&lt;space&gt;import&lt;space&gt;process_feature"/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSYMBOL" PARM_VALUE="process_feature"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="PythonCaller"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="7"
+#!   TYPE="TestFilter"
+#!   VERSION="2"
+#!   POSITION="-8952.7712066714121 12632.980864896368"
+#!   BOUNDING_RECT="-8952.7712066714121 12632.980864896368 454 71"
+#!   ORDER="500000000001001"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="SUCCESS"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_aws_activation" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_mode" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_attr2translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_attrlist2translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_translation_status" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="FAILURE"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="_aws_activation" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_mode" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_attr2translate" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_attrlist2translate" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_translation_status" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="DEFAULT_VALUE" PARM_VALUE="FAILURE"/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="Per Output Port"/>
+#!     <XFORM_PARM PARM_NAME="TESTLISTGRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_LIST" PARM_VALUE="&quot;BOOL_OP,OR,COMPOSITE_TEST,&quot;&quot;&quot;&quot;&quot;&quot;1&quot;&quot;&quot;&quot;&quot;&quot;,TEST_CLAUSE,TEST&lt;space&gt;&lt;lt&gt;at&lt;gt&gt;Value&lt;lt&gt;openparen&lt;gt&gt;_translation_status&lt;lt&gt;closeparen&lt;gt&gt;&lt;space&gt;=&lt;space&gt;0&quot;,SUCCESS"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="TestFilter"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="8"
+#!   TYPE="AttributeRemover"
+#!   VERSION="1"
+#!   POSITION="-8033.6468233103406 12690.126480212173"
+#!   BOUNDING_RECT="-8033.6468233103406 12690.126480212173 454 71"
+#!   ORDER="500000000001002"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE="_attr2translate,_attrlist2translate,_aws_activation,_mode,_translation_status"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="9"
+#!   TYPE="ATTRIBUTE_UNEXPOSER"
+#!   VERSION="1"
+#!   POSITION="-7225.6705067050698 12712.056524074014"
+#!   BOUNDING_RECT="-7225.6705067050698 12712.056524074014 533.00106825772946 71"
+#!   ORDER="500000000001004"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_UNEXPOSER"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="INPUT"
+#!   POSITION="-11703.211844728921 12743.710712007021"
+#!   BOUNDING_RECT="-11703.211844728921 12743.710712007021 431 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="OUTPUT"
+#!   POSITION="-6000 12698.365635842378"
+#!   BOUNDING_RECT="-6000 12698.365635842378 431 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="4"
+#!   NAME="TRANSLATION_PROBLEM"
+#!   POSITION="-6000 12255.841708946777"
+#!   BOUNDING_RECT="-6000 12255.841708946777 454 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="18"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="10"
+#!   SOURCE_NODE="5"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="11"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="12"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="8"
+#!   SOURCE_PORT_DESC="fo 0 SUCCESS"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="13"
+#!   SOURCE_NODE="8"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="19"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="20"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="fo 1 FAILURE"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+FME_PYTHON_VERSION 37
+DEFAULT_MACRO $(AWS_TRANSLATE_WORKSPACE_NAME)_ACTIVATE_TRANSLATION 
+DEFAULT_MACRO $(AWS_TRANSLATE_WORKSPACE_NAME)_MODE 
+DEFAULT_MACRO $(AWS_TRANSLATE_WORKSPACE_NAME)_ATTR_2_TRANSLATE 
+DEFAULT_MACRO $(AWS_TRANSLATE_WORKSPACE_NAME)_ATTR_LIST_2_TRANSLATE 
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO AWS_TRANSLATE_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(AWS_TRANSLATE_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(AWS_TRANSLATE_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(AWS_TRANSLATE_WORKSPACE_NAME)_INPUT1652811731 Input Splitter"   INPUT FEATURE_TYPE "$(AWS_TRANSLATE_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(AWS_TRANSLATE_WORKSPACE_NAME)_INPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(AWS_TRANSLATE_WORKSPACE_NAME)_AttributeCreator    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(AWS_TRANSLATE_WORKSPACE_NAME)_INPUT"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "_aws_activation" "SET_TO" "$($(AWS_TRANSLATE_WORKSPACE_NAME)_ACTIVATE_TRANSLATION$encode)" }      ATTR_ACTION { "" "_mode" "SET_TO" "$($(AWS_TRANSLATE_WORKSPACE_NAME)_MODE$encode)" }      ATTR_ACTION { "" "_attr2translate" "SET_TO" "$($(AWS_TRANSLATE_WORKSPACE_NAME)_ATTR_2_TRANSLATE$encode)" }      ATTR_ACTION { "" "_attrlist2translate" "SET_TO" "$($(AWS_TRANSLATE_WORKSPACE_NAME)_ATTR_LIST_2_TRANSLATE$encode)" }    OUTPUT OUTPUT FEATURE_TYPE "$(AWS_TRANSLATE_WORKSPACE_NAME)_AttributeCreator_OUTPUT"
+# -------------------------------------------------------------------------
+FME_PYTHON_PATH "$(FME_MF_DIR)"
+FACTORY_DEF * PythonFactory    FACTORY_NAME $(AWS_TRANSLATE_WORKSPACE_NAME)_PythonCaller    INPUT  FEATURE_TYPE "$(AWS_TRANSLATE_WORKSPACE_NAME)_AttributeCreator_OUTPUT"    SYMBOL_NAME process_feature    PYTHON_NAMESPACE FMEOBJECTS    SOURCE_CODE from<space>Python.AWS_TRANSLATE<space>import<space>process_feature    OUTPUT PYOUTPUT FEATURE_TYPE "$(AWS_TRANSLATE_WORKSPACE_NAME)_PythonCaller_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(AWS_TRANSLATE_WORKSPACE_NAME)_TestFilter    INPUT  FEATURE_TYPE "$(AWS_TRANSLATE_WORKSPACE_NAME)_PythonCaller_OUTPUT"    OUTPUT FEATURE_TYPE $(AWS_TRANSLATE_WORKSPACE_NAME)_TestFilter_TESTFILTERINPUTLINE_0
+FACTORY_DEF * TestFactory FACTORY_NAME $(AWS_TRANSLATE_WORKSPACE_NAME)_TestFilter_Condition_1 INPUT FEATURE_TYPE $(AWS_TRANSLATE_WORKSPACE_NAME)_TestFilter_TESTFILTERINPUTLINE_0 TEST @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_translation_status<closeparen>,$(AWS_TRANSLATE_WORKSPACE_NAME)_TestFilter) = 0 ENCODED BOOLEAN_OPERATOR OR COMPOSITE_TEST_EXPR "1" FEATURE_TABLE_SHIM_SUPPORT Yes PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT OUTPUT PASSED FEATURE_TYPE $(AWS_TRANSLATE_WORKSPACE_NAME)_TestFilter_SUCCESS OUTPUT FAILED FEATURE_TYPE $(AWS_TRANSLATE_WORKSPACE_NAME)_TestFilter_TESTFILTERINPUTLINE_1
+FACTORY_DEF * TeeFactory FACTORY_NAME $(AWS_TRANSLATE_WORKSPACE_NAME)_TestFilter_FAILURE INPUT FEATURE_TYPE $(AWS_TRANSLATE_WORKSPACE_NAME)_TestFilter_TESTFILTERINPUTLINE_1 OUTPUT FEATURE_TYPE $(AWS_TRANSLATE_WORKSPACE_NAME)_TestFilter_FAILURE
+# -------------------------------------------------------------------------
+INCLUDE [    set macroLine "MACRO $(AWS_TRANSLATE_WORKSPACE_NAME)_AttributeRemover_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(AWS_TRANSLATE_WORKSPACE_NAME)_AttributeRemover    INPUT  FEATURE_TYPE "$(AWS_TRANSLATE_WORKSPACE_NAME)_TestFilter_SUCCESS"    OUTPUT { FEATURE_TYPE "$(AWS_TRANSLATE_WORKSPACE_NAME)_AttributeRemover_OUTPUT"        @RemoveAttributes(fme_encoded,_attr2translate,_attrlist2translate,_aws_activation,_mode,_translation_status)        @RemoveAttributes(fme_pcre_match"$($(AWS_TRANSLATE_WORKSPACE_NAME)_AttributeRemover_LIST_EXP)")         }
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(AWS_TRANSLATE_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Input Input Collector"   INPUT FEATURE_TYPE "$(AWS_TRANSLATE_WORKSPACE_NAME)_AttributeRemover_OUTPUT"   OUTPUT FEATURE_TYPE "$(AWS_TRANSLATE_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Input"
+MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(AWS_TRANSLATE_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(AWS_TRANSLATE_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(AWS_TRANSLATE_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(AWS_TRANSLATE_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(AWS_TRANSLATE_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(AWS_TRANSLATE_WORKSPACE_NAME)_OUTPUT1652811731 Output Collector"   INPUT FEATURE_TYPE "$(AWS_TRANSLATE_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(AWS_TRANSLATE_WORKSPACE_NAME)_OUTPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(AWS_TRANSLATE_WORKSPACE_NAME)_TRANSLATION_PROBLEM1652811731 Output Collector"   INPUT FEATURE_TYPE "$(AWS_TRANSLATE_WORKSPACE_NAME)_TestFilter_FAILURE"   OUTPUT FEATURE_TYPE "$(AWS_TRANSLATE_WORKSPACE_NAME)_TRANSLATION_PROBLEM"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(AWS_TRANSLATE_WORKSPACE_NAME))}]

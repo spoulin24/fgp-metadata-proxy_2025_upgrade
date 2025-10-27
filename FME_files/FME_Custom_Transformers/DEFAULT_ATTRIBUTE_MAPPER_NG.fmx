@@ -1,0 +1,1215 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN DEFAULT_ATTRIBUTE_MAPPER_NG,2,"""FGP Tools""",f48d7dc9-24bf-44c5-b257-265ac473434a,"Linked by Default",No,NO_PARALLELISM,,No,25606,YES,No,313,No,,both
+# <p><strong>Description </strong></p>
+# <p>This custom transformer maps each value pair (key, value) from the lookup table as attribute into each metadata record. If there are 25 value pairs in the lookup table each metadata records will have 25 new attributes. </p>
+# <p><strong>Input Ports </strong></p>
+# <ul>
+# <li>DATA_INPUT: The input metadata records to process.</li>
+# </ul>
+# <p><strong>Output Ports</strong></p>
+# <ul>
+# <li>OUTPUT: The process output metdata records with new attributes (key, value).</li>
+# </ul>
+# <p><strong>Parameters </strong></p>
+# <ul>
+# <li>
+# <p>FEATURE_TYPE: Name of the CSV file to read (without .csv extension);</p>
+# </li>
+# <li>
+# <p>IN_CSV_LOOKUP_TABLES_DIR: Name of the directory path containing the CSV file to read;</p>
+# </li>
+# <li>
+# <p>P-T_ABBR: Two letters abbreviation of the province or the territory.</p>
+# </li>
+# </ul>
+# TRANSFORMER_END
+#!   A0_PREVIEW_IMAGE="data:image/png;base64,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"
+#!   ARCGIS_COMPATIBILITY="ARCGIS_AUTO"
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="&quot;FGP Tools&quot;"
+#!   DATA_PROCESSING_TYPE="both"
+#!   DESCRIPTION="&lt;p&gt;&lt;strong&gt;Description &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;This custom transformer maps each value pair (key, value) from the lookup table as attribute into each metadata record. If there are 25 value pairs in the lookup table each metadata records will have 25 new attributes. &lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Input Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;DATA_INPUT: The input metadata records to process.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Output Ports&lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;OUTPUT: The process output metdata records with new attributes (key, value).&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Parameters &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;FEATURE_TYPE: Name of the CSV file to read (without .csv extension);&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;IN_CSV_LOOKUP_TABLES_DIR: Name of the directory path containing the CSV file to read;&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;P-T_ABBR: Two letters abbreviation of the province or the territory.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;/ul&gt;"
+#!   DOC_EXTENTS="4481 1552.42"
+#!   DOC_TOP_LEFT="-1950 -652.419"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="25606"
+#!   FME_DOCUMENT_GUID="f48d7dc9-24bf-44c5-b257-265ac473434a"
+#!   FME_DOCUMENT_PRIORGUID=""
+#!   FME_LINKED_TRANSFORMER_VERSION="2"
+#!   FME_NAMES_ENCODING="windows-1252"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY="Unknown,Unknown,Original&lt;space&gt;version,14&lt;solidus&gt;09&lt;solidus&gt;2021,Daniel&lt;space&gt;Pilon,Documentation,21&lt;solidus&gt;01&lt;solidus&gt;2022,Daniel&lt;space&gt;Pilon,Include&lt;space&gt;LOOKUP_TABLE_READER_NG&lt;space&gt;in&lt;space&gt;the&lt;space&gt;custom&lt;space&gt;transformer"
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2025.1.0.0 (20250704 - Build 25606 - WIN64)"
+#!   LAST_SAVE_DATE="2025-10-06T15:09:26"
+#!   MARKDOWN_DESCRIPTION="**Description **&#10;&#10;This custom transformer maps each value pair (key, value) from the lookup table as attribute into each metadata record. If there are 25 value pairs in the lookup table each metadata records will have 25 new attributes. &#10;&#10;&#10;**Input Ports **&#10;&#10;- DATA_INPUT: The input metadata records to process.&#10;&#10;**Output Ports**&#10;&#10;- OUTPUT: The process output metdata records with new attributes (key, value).&#10;&#10;&#10;**Parameters **&#10;&#10;- FEATURE_TYPE: Name of the CSV file to read (without .csv extension);&#10;&#10;- IN_CSV_LOOKUP_TABLES_DIR: Name of the directory path containing the CSV file to read;&#10;&#10;- P-T_ABBR: Two letters abbreviation of the province or the territory.&#10;"
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="313"
+#!   REPLACED_BY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="DEFAULT_ATTRIBUTE_MAPPER_NG"
+#!   USAGE=""
+#!   USE_MARKDOWN="YES"
+#!   VIEW_POSITION="-573.7 970.159"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="67"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR FEATURE_TYPE FEATURE_TYPE:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR IN_CSV_LOOKUP_TABLES_DIR IN_CSV_LOOKUP_TABLES_DIR:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR P-T_ABBR P-T_ABBR:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <USER_PARAMETERS
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbeyJuYW1lIjoiRkVBVFVSRV9UWVBFIiwicHJvbXB0IjoiRkVBVFVSRV9UWVBFOiIsInZhbHVlVHlwZSI6InN0cmluZyIsInJlcXVpcmVkIjpmYWxzZSwiZGVmYXVsdFZhbHVlIjoiIiwic3VwcG9ydGVkVmFsdWVUeXBlcyI6WyJleHByZXNzaW9uIiwiZ2xvYmFsUGFyYW1ldGVyIl0sImRlcHJlY2F0ZWRGbGFncyI6WyJub25lIl0sInR5cGUiOiJ0ZXh0IiwiZWRpdG9yIjoicGxhaW50ZXh0In0seyJuYW1lIjoiSU5fQ1NWX0xPT0tVUF9UQUJMRVNfRElSIiwicHJvbXB0IjoiSU5fQ1NWX0xPT0tVUF9UQUJMRVNfRElSOiIsInZhbHVlVHlwZSI6InN0cmluZyIsInJlcXVpcmVkIjpmYWxzZSwiZGVmYXVsdFZhbHVlIjoiIiwic3VwcG9ydGVkVmFsdWVUeXBlcyI6WyJleHByZXNzaW9uIiwiZ2xvYmFsUGFyYW1ldGVyIl0sImRlcHJlY2F0ZWRGbGFncyI6WyJub25lIl0sInR5cGUiOiJ0ZXh0IiwiZWRpdG9yIjoicGxhaW50ZXh0In0seyJuYW1lIjoiUC1UX0FCQlIiLCJwcm9tcHQiOiJQLVRfQUJCUjoiLCJ2YWx1ZVR5cGUiOiJzdHJpbmciLCJyZXF1aXJlZCI6ZmFsc2UsImRlZmF1bHRWYWx1ZSI6IiIsInN1cHBvcnRlZFZhbHVlVHlwZXMiOlsiZXhwcmVzc2lvbiIsImdsb2JhbFBhcmFtZXRlciJdLCJkZXByZWNhdGVkRmxhZ3MiOlsibm9uZSJdLCJ0eXBlIjoidGV4dCIsImVkaXRvciI6InBsYWludGV4dCJ9XX0="
+#! >
+#! <PARAMETER_INFO>
+#!     <INFO NAME="FEATURE_TYPE" 
+#!   DEFAULT_VALUE=""
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR FEATURE_TYPE FEATURE_TYPE:"
+#! />
+#!     <INFO NAME="IN_CSV_LOOKUP_TABLES_DIR" 
+#!   DEFAULT_VALUE=""
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR IN_CSV_LOOKUP_TABLES_DIR IN_CSV_LOOKUP_TABLES_DIR:"
+#! />
+#!     <INFO NAME="P-T_ABBR" 
+#!   DEFAULT_VALUE=""
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR P-T_ABBR P-T_ABBR:"
+#! />
+#! </PARAMETER_INFO>
+#! </USER_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="22"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;This custom transformer merges an Excel file containing default attribute values common to each dataset&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-1200 799.60367063988099"
+#!   TOP_LEFT="-1200 799.60367063988099"
+#!   BOTTOM_RIGHT="-128.11478114781153 528.97626436581822"
+#!   BOUNDING_RECT="-1200 799.60367063988099 1071.8852188521885 270.62740627406276"
+#!   ORDER="500000000000918"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{368dbde5-e554-452a-a0fc-a32b0c8193b2}"
+#!   COLOUR="0.66666666666666663,1,0.49803921568627452,0.39215686274509803"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="0"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="24"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Each key,value pair from the lookup table is transfered as attribute on the metadata records&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-70.176140357894781 699.78422163037908"
+#!   TOP_LEFT="-70.176140357894781 699.78422163037908"
+#!   BOTTOM_RIGHT="707.22371176562638 476.03228411100389"
+#!   BOUNDING_RECT="-70.176140357894781 699.78422163037908 777.39985212352121 223.75193751937519"
+#!   ORDER="500000000000920"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{b92d2bf5-4d1c-4db5-b55c-b3a2834b6747}"
+#!   COLOUR="0.66666666666666663,1,0.49803921568627452,0.39215686274509803"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="6"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="27"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Reads default values&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-900 150"
+#!   TOP_LEFT="-900 150"
+#!   BOTTOM_RIGHT="-266.00978509785102 149"
+#!   BOUNDING_RECT="-900 150 633.99021490214898 1"
+#!   ORDER="500000000000928"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{47235e2a-d7c9-4ba2-b684-b9a22d18ae4c}"
+#!   COLOUR="0.66666666666666663,1,0.49803921568627452,0.39215686274509803"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="26"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="28"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Unexpose all attributes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="1151.3273027467117 600"
+#!   TOP_LEFT="1151.3273027467117 600"
+#!   BOTTOM_RIGHT="1732.7779297529817 488.74918749187492"
+#!   BOUNDING_RECT="1151.3273027467117 600 581.45062700627 111.25081250812508"
+#!   ORDER="500000000000929"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{469fe016-fd1d-45a5-9b49-ce256f170f52}"
+#!   COLOUR="0.66666666666666663,1,0.49803921568627452,0.39215686274509803"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="11"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="25"
+#!   NAME="DEFAULT_ATTRIBUTE_MAPPER_NG"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="-1289.6954366369059 900"
+#!   ORDER="500000000000823"
+#!   PALETTE_COLOR=""
+#!   BOTTOM_RIGHT="1842.1236843947395 -652.41880488980314"
+#!   BOUNDING_RECT="-1289.6954366369059 900 3131.8191210316454 1552.4188048898031"
+#!   STICKY="true"
+#!   COLOUR="0.66666666666666663,1,0.49803921568627452,0.39215686274509803"
+#!   CONTENTS="6 28 24 20 26 18 22 15 9 11 23 27 10 21 "
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="6"
+#!   TYPE="FeatureMerger"
+#!   VERSION="21"
+#!   POSITION="87.502889551358862 360.1652473704612"
+#!   BOUNDING_RECT="87.502889551358862 360.1652473704612 431 71"
+#!   ORDER="500000000000824"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="MERGED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.role" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="iso_topic{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="iso_topic{}.topic_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projectionList{}.codespace" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projectionList{}.projection_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projectionList{}.version" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.data_collection_end_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.data_collection_start_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.format" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.resource_update_cycle" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags{}.display_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="UNMERGED_REQUESTOR"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.email" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.role" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="iso_topic{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="iso_topic{}.topic_value" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="projectionList{}.codespace" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="projectionList{}.projection_name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="projectionList{}.version" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.data_collection_end_date" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.data_collection_start_date" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.format" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.resource_update_cycle" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.url" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="tags{}.display_name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <OUTPUT_FEAT NAME="USED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <XFORM_ATTR ATTR_NAME="numReferences" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <OUTPUT_FEAT NAME="UNUSED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="3"/>
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="4"/>
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.email" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.name" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.role" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="iso_topic{}" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="iso_topic{}.topic_value" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="projectionList{}.codespace" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="projectionList{}.projection_name" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="projectionList{}.version" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.data_collection_end_date" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.data_collection_start_date" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.format" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.name" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.resource_update_cycle" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.url" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="tags{}.display_name" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_GROUP" PARM_VALUE="FME_DISCLOSURE_OPEN"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE" PARM_VALUE="Merge Supplier"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES_LOOKUP" PARM_VALUE="SUPPLIER_IF_CONFLICT"/>
+#!     <XFORM_PARM PARM_NAME="CLEANING_TOLERANCE_LOOKUP" PARM_VALUE="AUTO"/>
+#!     <XFORM_PARM PARM_NAME="CONNECT_Z_MODE_LOOKUP" PARM_VALUE="FIRST_WINS"/>
+#!     <XFORM_PARM PARM_NAME="GENERATE_LIST_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="GEOM_TYPE_VAL" PARM_VALUE="POLYGONS"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_PROCESSING_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="IGNORE_NULLS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="JOIN_ATTRIBUTES_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="JOIN_KEYS" PARM_VALUE="1 1 AUTO"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE_MODE_LU" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_NAME" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_COUNT_ATTR" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="MERGE_TYPE_VAL" PARM_VALUE="ATTRIBUTES"/>
+#!     <XFORM_PARM PARM_NAME="MODE_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="ACROSS_OUTPUT_PORTS"/>
+#!     <XFORM_PARM PARM_NAME="PROCESS_DUPS" PARM_VALUE="YES"/>
+#!     <XFORM_PARM PARM_NAME="REJECT_NULL_MISSING_KEYS" PARM_VALUE="Yes"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIERS_FIRST" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIER_PREFIX" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="FEATURE_MERGER"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES" PARM_IS_LOOKUP="true" PARM_VALUE="Use Supplier"/>
+#!     <XFORM_PARM PARM_NAME="CLEANING_TOLERANCE" PARM_IS_LOOKUP="true" PARM_VALUE="Automatic"/>
+#!     <XFORM_PARM PARM_NAME="CONNECT_Z_MODE" PARM_IS_LOOKUP="true" PARM_VALUE="First Wins"/>
+#!     <XFORM_PARM PARM_NAME="GEOM_TYPE" PARM_IS_LOOKUP="true" PARM_VALUE="Build Polygons"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE_MODE" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_TYPE" PARM_IS_LOOKUP="true" PARM_VALUE="Attributes Only"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="9"
+#!   TYPE="Terminator"
+#!   VERSION="3"
+#!   POSITION="965.85597132779071 -182.81663858874924"
+#!   BOUNDING_RECT="965.85597132779071 -182.81663858874924 431 71"
+#!   ORDER="500000000000917"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE="Feature&lt;space&gt;Merger&lt;space&gt;error:&lt;space&gt;Translation&lt;space&gt;Terminated"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Terminator_3"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="10"
+#!   TYPE="AttributeRemover"
+#!   VERSION="1"
+#!   POSITION="600 300"
+#!   BOUNDING_RECT="600 300 431 71"
+#!   ORDER="500000000000921"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.role" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="iso_topic{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="iso_topic{}.topic_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projectionList{}.codespace" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projectionList{}.projection_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projectionList{}.version" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.data_collection_end_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.data_collection_start_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.format" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.resource_update_cycle" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags{}.display_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE="default_key,default_value"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="11"
+#!   TYPE="ATTRIBUTE_UNEXPOSER"
+#!   VERSION="2"
+#!   POSITION="1200 300"
+#!   BOUNDING_RECT="1200 300 533.00106825772946 71"
+#!   ORDER="500000000000922"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_UNEXPOSER"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="26"
+#!   TYPE="LOOKUP_TABLES_READER_NG"
+#!   VERSION="1"
+#!   POSITION="-900 0"
+#!   BOUNDING_RECT="-900 0 634.00106825772946 71"
+#!   ORDER="500000000000923"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="CSV_ENCODING" PARM_VALUE="utf-8"/>
+#!     <XFORM_PARM PARM_NAME="CSV_PATH" PARM_VALUE="$(IN_CSV_LOOKUP_TABLES_DIR)"/>
+#!     <XFORM_PARM PARM_NAME="FEATURE_TYPE" PARM_VALUE="$(FEATURE_TYPE)"/>
+#!     <XFORM_PARM PARM_NAME="PT" PARM_VALUE="$(P-T_ABBR)"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="LOOKUP_TABLES_READER_NG"/>
+#!     <XFORM_PARM PARM_NAME="__COMPOUND_PARAMETERS" PARM_VALUE=""/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="OUTPUT"
+#!   POSITION="2100 195.83229165624988"
+#!   BOUNDING_RECT="2100 195.83229165624988 431 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="INPUT"
+#!   POSITION="-1950 300"
+#!   BOUNDING_RECT="-1950 300 431 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.email" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.name" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.role" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="iso_topic{}" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="iso_topic{}.topic_value" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="projectionList{}.codespace" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="projectionList{}.projection_name" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="projectionList{}.version" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.data_collection_end_date" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.data_collection_start_date" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.format" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.name" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.resource_update_cycle" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.url" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="tags{}.display_name" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="29"
+#!   SOURCE_NODE="3"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 REQUESTOR"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="23"
+#!   SOURCE_NODE="26"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="fi 1 SUPPLIER"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="15"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="10"
+#!   SOURCE_PORT_DESC="fo 0 MERGED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="18"
+#!   SOURCE_NODE="10"
+#!   TARGET_NODE="11"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="19"
+#!   SOURCE_NODE="11"
+#!   TARGET_NODE="2"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="20"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 1 UNMERGED_REQUESTOR"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="21"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 4 &lt;lt&gt;REJECTED&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+FME_PYTHON_VERSION 313
+# ============================================================================
+DEFAULT_MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FEATURE_TYPE 
+
+DEFAULT_MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_IN_CSV_LOOKUP_TABLES_DIR 
+
+DEFAULT_MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_P-T_ABBR 
+
+DEFAULT_MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FME_DATA_REPOSITORY 
+
+DEFAULT_MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FME_ENGINE 
+
+DEFAULT_MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FME_JOB_ID 
+
+DEFAULT_MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FME_SECURITY_ROLES 
+
+DEFAULT_MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FME_SECURITY_USER 
+
+DEFAULT_MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FME_SERVER_DEST_DIR 
+
+DEFAULT_MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FME_SERVER_HOST 
+
+DEFAULT_MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FME_SERVER_PORT 
+
+DEFAULT_MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FME_SERVER_REQUEST_HEADERS 
+
+DEFAULT_MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FME_SERVER_REQUEST_METHOD 
+
+DEFAULT_MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FME_SERVER_REQUEST_PARAMETERS 
+
+DEFAULT_MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FME_SERVER_REQUEST_URI 
+
+DEFAULT_MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER 
+
+DEFAULT_MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER_ID 
+
+DEFAULT_MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FME_SERVER_WEB_URL 
+
+DEFAULT_MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_BACKUP 
+
+DEFAULT_MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DASHBOARD 
+
+DEFAULT_MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DATA 
+
+DEFAULT_MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_ENGINE 
+
+DEFAULT_MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_LOG 
+
+DEFAULT_MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_SYSTEM 
+
+DEFAULT_MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_TEMP 
+
+DEFAULT_MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FME_TOPIC 
+
+DEFAULT_MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FME_TOPIC_MESSAGE 
+
+# ============================================================================
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_INPUT1759777766 Input Splitter"   INPUT FEATURE_TYPE "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_INPUT"
+# -------------------------------------------------------------------------
+MACRO LOOKUP_TABLES_READER_NG_WORKSPACE_NAME $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_XFORMER_NAME $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)___COMPOUND_PARAMETERS 
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_FEATURE_TYPE $($(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FEATURE_TYPE)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_CSV_PATH $($(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_IN_CSV_LOOKUP_TABLES_DIR$encode)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_PT $($(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_P-T_ABBR$encode)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_CSV_ENCODING utf-8
+INCLUDE_CUSTOM_TRANSFORMER_VER LOOKUP_TABLES_READER_NG:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"   OUTPUT FEATURE_TYPE "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"
+FACTORY_DEF * BranchingFactory   FACTORY_NAME "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output Brancher -1 23"   INPUT FEATURE_TYPE "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"   TARGET_FACTORY "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   MAXIMUM_COUNT None   OUTPUT PASSED FEATURE_TYPE *
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   INPUT FEATURE_TYPE *  OUTPUT FEATURE_TYPE *
+# -------------------------------------------------------------------------
+INCLUDE [if { {ATTRIBUTES} == {ATTRIBUTES} } {                puts "MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FEATURE_MERGER_REFERENCE_INFO ATTRIBUTES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {POLYGONS} == {POLYGONS}} {                puts "MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FEATURE_MERGER_REFERENCE_INFO GEOM_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {POLYGONS} == {AGGREGATES}} {                puts "MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FEATURE_MERGER_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {POLYGONS} == {LINESFROMPOINTS}} {                puts "MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FEATURE_MERGER_REFERENCE_INFO GEOM_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {POLYGONS} == {POLYGONS}} {                puts "MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FEATURE_MERGER_REFERENCE_INFO GEOM_AND_ATTR_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {POLYGONS} == {AGGREGATES}} {                puts "MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FEATURE_MERGER_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {POLYGONS} == {LINESFROMPOINTS}} {                puts "MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FEATURE_MERGER_REFERENCE_INFO GEOM_AND_ATTR_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} } {                puts "MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FEATURE_MERGER_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} } {                puts "MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FEATURE_MERGER_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          else {}; ]
+FACTORY_DEF {*} ReferenceFactory    FACTORY_NAME { $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FEATURE_MERGER }    FLUSH_WHEN_GROUPS_CHANGE { <Unused> }    INPUT REFERENCER FEATURE_TYPE "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_INPUT"    INPUT REFERENCEE FEATURE_TYPE "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"    CONNECT_Z_MODE { FIRST_WINS }    REFERENCE_INFO { $($(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FEATURE_MERGER_REFERENCE_INFO) }    REFERENCE_TABLE { 1 1 AUTO }    ATTR_ACCUM_MODE { "HANDLE_CONFLICT" }    ATTR_CONFLICT_RES { "SUPPLIER_IF_CONFLICT" }    IGNORE_NULLS { "No" }    HANDLE_NULL_MISSING_KEYS_LIKE_FME2013 { Yes }    LIST_ATTRS_TO_INCLUDE { <Unused> }    LIST_ATTRS_TO_INCLUDE_MODE { <Unused> }    MERGE_ATTRIBUTES Yes    MANAGE_FME_TYPE Yes    MODE COMPLETE    PROCESS_DUPLICATE_REFERENCEES { YES }    REFERENCEES_FIRST { No }    REJECT_INVALID_GEOM YES    CLEANING_TOLERANCE { AUTO }    PRESERVE_FEATURE_ORDER { ACROSS_OUTPUT_PORTS }    COMPARE_WHITESPACE Yes    OUTPUT { COMPLETE FEATURE_TYPE "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FEATURE_MERGER_MERGED"         }    OUTPUT { INCOMPLETE FEATURE_TYPE "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FEATURE_MERGER_UNMERGED_REQUESTOR"         }    OUTPUT { REJECTED FEATURE_TYPE "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FEATURE_MERGER_<REJECTED>"         }
+# -------------------------------------------------------------------------
+# Build the List removal function and regular expression if there was any list attributes to be removed.
+# If not, then we will not have any extra list removal call to @RemoveAttributes, which speeds the
+# normal, non-list removal especially when in Bulk Mode.  Note that this computation of the regular expressions is done
+# once during mapping file parse time.
+INCLUDE [    set listAttributeRemoveRegexps {};    set anyList {no};    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append listAttributeRemoveRegexps ",^$attr$";       set anyList {yes};    };    if { ${anyList} == {no} } {        puts {MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC }    } else {        puts "MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC @RemoveAttributes(fme_pcre_match\"$listAttributeRemoveRegexps\")"    }; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_AttributeRemover }    INPUT  FEATURE_TYPE "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FEATURE_MERGER_MERGED"    OUTPUT { FEATURE_TYPE "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_AttributeRemover_OUTPUT"        @RemoveAttributes(fme_encoded,default_key,default_value)        $($(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC)         }
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Input Input Collector"   INPUT FEATURE_TYPE "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_AttributeRemover_OUTPUT"   OUTPUT FEATURE_TYPE "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Input"
+MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:2
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
+# -------------------------------------------------------------------------
+# The default behaviour is to abort on any feature entering the transformer.
+# If Workbench has set the _WB_BYPASS_TERMINATION macro to a value of "Yes",
+# then the features will instead be passed through with a feature type of
+# __WB_BYPASS_TERMINATOR__, which Workbench will send to a visualizer or
+# somesuch.
+DEFAULT_MACRO _WB_BYPASS_TERMINATION No
+FACTORY_DEF {*} TestFactory    FACTORY_NAME { $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_Terminator_3 }    INPUT  FEATURE_TYPE "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FEATURE_MERGER_UNMERGED_REQUESTOR"    INPUT  FEATURE_TYPE "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FEATURE_MERGER_<REJECTED>"    TEST { "$(_WB_BYPASS_TERMINATION)" == Yes }    OUTPUT { PASSED FEATURE_TYPE __WB_BYPASS_TERMINATOR__       @SupplyAttributes(_wb_termination_feature_type,@FeatureType())       @SupplyAttributes(ENCODED,_wb_termination_message,"Feature<space>Merger<space>error:<space>Translation<space>Terminated")       @SupplyAttributes(_wb_termination_xformer,"$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_Terminator_3")       @SupplyAttributes(_wb_termination_feature,Yes) }    OUTPUT { FAILED FEATURE_TYPE * @Abort(ENCODED,"Feature<space>Merger<space>error:<space>Translation<space>Terminated") }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_OUTPUT1759777766 Output Collector"   INPUT FEATURE_TYPE "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_OUTPUT"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME))}]
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN DEFAULT_ATTRIBUTE_MAPPER_NG,1,"FGP Tools",95f30b29-5b31-48cb-be47-dca3a5599afc,"Linked by Default",No,NO_PARALLELISM,,No,20200,YES,No,37,No,
+# <p><strong>Description </strong></p>
+# <p>This custom transformer maps each value pair (key, value) from the lookup table as attribute into each metadata record. If there are 25 value pairs in the lookup table each metadata records will have 25 new attributes. </p>
+# <p><strong>Input Ports </strong></p>
+# <ul>
+# <li>DATA_INPUT: The input metadata records to process.</li>
+# </ul>
+# <p><strong>Output Ports</strong></p>
+# <ul>
+# <li>OUTPUT: The process output metdata records with new attributes (key, value).</li>
+# </ul>
+# <p><strong>Parameters </strong></p>
+# <ul>
+# <li>
+# <p>FEATURE_TYPE: Name of the CSV file to read (without .csv extension);</p>
+# </li>
+# <li>
+# <p>IN_CSV_LOOKUP_TABLES_DIR: Name of the directory path containing the CSV file to read;</p>
+# </li>
+# <li>
+# <p>P-T_ABBR: Two letters abbreviation of the province or the territory.</p>
+# </li>
+# </ul>
+# TRANSFORMER_END
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="FGP Tools"
+#!   DESCRIPTION="&lt;p&gt;&lt;strong&gt;Description &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;This custom transformer maps each value pair (key, value) from the lookup table as attribute into each metadata record. If there are 25 value pairs in the lookup table each metadata records will have 25 new attributes. &lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Input Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;DATA_INPUT: The input metadata records to process.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Output Ports&lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;OUTPUT: The process output metdata records with new attributes (key, value).&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Parameters &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;FEATURE_TYPE: Name of the CSV file to read (without .csv extension);&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;IN_CSV_LOOKUP_TABLES_DIR: Name of the directory path containing the CSV file to read;&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;P-T_ABBR: Two letters abbreviation of the province or the territory.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;/ul&gt;"
+#!   DOC_EXTENTS="4481 1552.42"
+#!   DOC_TOP_LEFT="-1950 -652.419"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="20200"
+#!   FME_DOCUMENT_GUID="95f30b29-5b31-48cb-be47-dca3a5599afc"
+#!   FME_DOCUMENT_PRIORGUID="2d401218-4d91-4b0e-9e10-2171ebd02ae4"
+#!   FME_LINKED_TRANSFORMER_VERSION="1"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY="Unknown,Unknown,Original&lt;space&gt;version,14&lt;solidus&gt;09&lt;solidus&gt;2021,Daniel&lt;space&gt;Pilon,Documentation,21&lt;solidus&gt;01&lt;solidus&gt;2022,Daniel&lt;space&gt;Pilon,Include&lt;space&gt;LOOKUP_TABLE_READER_NG&lt;space&gt;in&lt;space&gt;the&lt;space&gt;custom&lt;space&gt;transformer"
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2020.0.0.0 (20200309 - Build 20200 - WIN32)"
+#!   LAST_SAVE_DATE="2022-01-26T09:45:40"
+#!   MARKDOWN_DESCRIPTION="**Description **&#10;&#10;This custom transformer maps each value pair (key, value) from the lookup table as attribute into each metadata record. If there are 25 value pairs in the lookup table each metadata records will have 25 new attributes. &#10;&#10;&#10;**Input Ports **&#10;&#10;- DATA_INPUT: The input metadata records to process.&#10;&#10;**Output Ports**&#10;&#10;- OUTPUT: The process output metdata records with new attributes (key, value).&#10;&#10;&#10;**Parameters **&#10;&#10;- FEATURE_TYPE: Name of the CSV file to read (without .csv extension);&#10;&#10;- IN_CSV_LOOKUP_TABLES_DIR: Name of the directory path containing the CSV file to read;&#10;&#10;- P-T_ABBR: Two letters abbreviation of the province or the territory.&#10;"
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="37"
+#!   REPLACED_BY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="DEFAULT_ATTRIBUTE_MAPPER_NG"
+#!   USAGE=""
+#!   USE_MARKDOWN="YES"
+#!   VIEW_POSITION="-2658.61 2215.51"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="67"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR FEATURE_TYPE FEATURE_TYPE:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR IN_CSV_LOOKUP_TABLES_DIR IN_CSV_LOOKUP_TABLES_DIR:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR P-T_ABBR P-T_ABBR:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="22"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;This custom transformer merges an Excel file containing default attribute values common to each dataset&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-1200 799.60367063988099"
+#!   TOP_LEFT="-1200 799.60367063988099"
+#!   BOTTOM_RIGHT="-128.11428114281125 528.97626436581822"
+#!   BOUNDING_RECT="-1200 799.60367063988099 1071.8857188571887 270.62740627406276"
+#!   ORDER="500000000000918"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.66666666666666663,1,0.49803921568627452,0.39215686274509803"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="0"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="24"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Each key,value pair from the lookup table is transfered as attribute on the metadata records&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-70.176140357894781 699.78422163037908"
+#!   TOP_LEFT="-70.176140357894781 699.78422163037908"
+#!   BOTTOM_RIGHT="707.24391454440843 476.03228411100389"
+#!   BOUNDING_RECT="-70.176140357894781 699.78422163037908 777.42005490230326 223.75193751937519"
+#!   ORDER="500000000000920"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.66666666666666663,1,0.49803921568627452,0.39215686274509803"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="6"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="27"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Reads default values&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-900 150"
+#!   TOP_LEFT="-900 150"
+#!   BOTTOM_RIGHT="-265.99893174227054 149"
+#!   BOUNDING_RECT="-900 150 634.00106825772946 1"
+#!   ORDER="500000000000928"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.66666666666666663,1,0.49803921568627452,0.39215686274509803"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="26"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="28"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Unexpose all attributes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="1151.3273027467117 600"
+#!   TOP_LEFT="1151.3273027467117 600"
+#!   BOTTOM_RIGHT="1732.7916360303952 488.74918749187492"
+#!   BOUNDING_RECT="1151.3273027467117 600 581.46433328368369 111.25081250812508"
+#!   ORDER="500000000000929"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.66666666666666663,1,0.49803921568627452,0.39215686274509803"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="11"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="25"
+#!   NAME="DEFAULT_ATTRIBUTE_MAPPER_NG"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="-1289.6954366369059 900"
+#!   ORDER="500000000000823"
+#!   PALETTE_COLOR=""
+#!   BOTTOM_RIGHT="1842.1236843947395 -652.41880488980314"
+#!   BOUNDING_RECT="-1289.6954366369059 900 3131.8191210316454 1552.4188048898031"
+#!   STICKY="true"
+#!   COLOUR="0.66666666666666663,1,0.49803921568627452,0.39215686274509803"
+#!   CONTENTS="6 22 21 10 26 20 18 11 15 23 27 28 24 9 "
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="6"
+#!   TYPE="FeatureMerger"
+#!   VERSION="17"
+#!   POSITION="87.502889551358862 360.1652473704612"
+#!   BOUNDING_RECT="87.502889551358862 360.1652473704612 431 71"
+#!   ORDER="500000000000824"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="MERGED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.role" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="iso_topic{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="iso_topic{}.topic_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projectionList{}.codespace" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projectionList{}.projection_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projectionList{}.version" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.data_collection_end_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.data_collection_start_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.format" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.resource_update_cycle" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags{}.display_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="UNMERGED_REQUESTOR"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.email" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.role" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="iso_topic{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="iso_topic{}.topic_value" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="projectionList{}.codespace" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="projectionList{}.projection_name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="projectionList{}.version" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.data_collection_end_date" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.data_collection_start_date" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.format" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.resource_update_cycle" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.url" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="tags{}.display_name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <OUTPUT_FEAT NAME="USED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <XFORM_ATTR ATTR_NAME="numReferences" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <OUTPUT_FEAT NAME="UNUSED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="3"/>
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="4"/>
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.email" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.name" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.role" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="iso_topic{}" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="iso_topic{}.topic_value" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="projectionList{}.codespace" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="projectionList{}.projection_name" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="projectionList{}.version" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.data_collection_end_date" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.data_collection_start_date" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.format" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.name" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.resource_update_cycle" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.url" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="tags{}.display_name" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_GROUP" PARM_VALUE="FME_DISCLOSURE_OPEN"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE" PARM_VALUE="Merge Supplier"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES" PARM_VALUE="Use Supplier"/>
+#!     <XFORM_PARM PARM_NAME="CLEANING_TOLERANCE" PARM_VALUE="Automatic"/>
+#!     <XFORM_PARM PARM_NAME="CONNECT_Z_MODE" PARM_VALUE="First Wins"/>
+#!     <XFORM_PARM PARM_NAME="GENERATE_LIST_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="GEOM_TYPE" PARM_VALUE="Build Polygons"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="IGNORE_NULLS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="JOIN_ATTRIBUTES_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="JOIN_KEYS" PARM_VALUE="1 1 AUTO"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_NAME" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_COUNT_ATTR" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="MERGE_TYPE" PARM_VALUE="Attributes Only"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PROCESS_DUPS" PARM_VALUE="YES"/>
+#!     <XFORM_PARM PARM_NAME="REJECT_NULL_MISSING_KEYS" PARM_VALUE="Yes"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIERS_FIRST" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIER_PREFIX" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="FEATURE_MERGER"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="9"
+#!   TYPE="Terminator"
+#!   VERSION="3"
+#!   POSITION="965.85597132779071 -182.81663858874924"
+#!   BOUNDING_RECT="965.85597132779071 -182.81663858874924 431 71"
+#!   ORDER="500000000000917"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE="Feature&lt;space&gt;Merger&lt;space&gt;error:&lt;space&gt;Translation&lt;space&gt;Terminated"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Terminator_3"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="10"
+#!   TYPE="AttributeRemover"
+#!   VERSION="1"
+#!   POSITION="600 300"
+#!   BOUNDING_RECT="600 300 431 71"
+#!   ORDER="500000000000921"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.role" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="iso_topic{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="iso_topic{}.topic_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projectionList{}.codespace" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projectionList{}.projection_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projectionList{}.version" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.data_collection_end_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.data_collection_start_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.format" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.resource_update_cycle" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags{}.display_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE="default_key,default_value"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="11"
+#!   TYPE="ATTRIBUTE_UNEXPOSER"
+#!   VERSION="1"
+#!   POSITION="1200 300"
+#!   BOUNDING_RECT="1200 300 533.00106825772946 71"
+#!   ORDER="500000000000922"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_UNEXPOSER"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="26"
+#!   TYPE="LOOKUP_TABLES_READER_NG"
+#!   VERSION="1"
+#!   POSITION="-900 0"
+#!   BOUNDING_RECT="-900 0 634.00106825772946 71"
+#!   ORDER="500000000000923"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="CSV_ENCODING" PARM_VALUE="utf-8"/>
+#!     <XFORM_PARM PARM_NAME="CSV_PATH" PARM_VALUE="$(IN_CSV_LOOKUP_TABLES_DIR)"/>
+#!     <XFORM_PARM PARM_NAME="FEATURE_TYPE" PARM_VALUE="$(FEATURE_TYPE)"/>
+#!     <XFORM_PARM PARM_NAME="PT" PARM_VALUE="$(P-T_ABBR)"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="LOOKUP_TABLES_READER_NG"/>
+#!     <XFORM_PARM PARM_NAME="__COMPOUND_PARAMETERS" PARM_VALUE=""/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="OUTPUT"
+#!   POSITION="2100 195.83229165624988"
+#!   BOUNDING_RECT="2100 195.83229165624988 431 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="INPUT"
+#!   POSITION="-1950 300"
+#!   BOUNDING_RECT="-1950 300 431 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.email" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.name" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.role" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="iso_topic{}" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="iso_topic{}.topic_value" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="projectionList{}.codespace" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="projectionList{}.projection_name" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="projectionList{}.version" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.data_collection_end_date" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.data_collection_start_date" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.format" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.name" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.resource_update_cycle" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.url" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="tags{}.display_name" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="29"
+#!   SOURCE_NODE="3"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 REQUESTOR"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="23"
+#!   SOURCE_NODE="26"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="fi 1 SUPPLIER"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="15"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="10"
+#!   SOURCE_PORT_DESC="fo 0 MERGED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="18"
+#!   SOURCE_NODE="10"
+#!   TARGET_NODE="11"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="19"
+#!   SOURCE_NODE="11"
+#!   TARGET_NODE="2"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="20"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 1 UNMERGED_REQUESTOR"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="21"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 4 &lt;lt&gt;REJECTED&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+FME_PYTHON_VERSION 37
+DEFAULT_MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FEATURE_TYPE 
+DEFAULT_MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_IN_CSV_LOOKUP_TABLES_DIR 
+DEFAULT_MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_P-T_ABBR 
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_INPUT1643208340 Input Splitter"   INPUT FEATURE_TYPE "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_INPUT"
+# -------------------------------------------------------------------------
+MACRO LOOKUP_TABLES_READER_NG_WORKSPACE_NAME $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_XFORMER_NAME $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)___COMPOUND_PARAMETERS 
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_FEATURE_TYPE $($(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FEATURE_TYPE)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_CSV_PATH $($(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_IN_CSV_LOOKUP_TABLES_DIR$encode)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_PT $($(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_P-T_ABBR$encode)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_CSV_ENCODING utf-8
+INCLUDE_CUSTOM_TRANSFORMER_VER LOOKUP_TABLES_READER_NG:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"   OUTPUT FEATURE_TYPE "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"
+FACTORY_DEF * BranchingFactory   FACTORY_NAME "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output Brancher -1 23"   INPUT FEATURE_TYPE "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"   TARGET_FACTORY "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   MAXIMUM_COUNT None   OUTPUT PASSED FEATURE_TYPE *
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   INPUT FEATURE_TYPE *  OUTPUT FEATURE_TYPE *
+# -------------------------------------------------------------------------
+INCLUDE [if { {ATTRIBUTES} == {ATTRIBUTES} } {                puts "MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FEATURE_MERGER_REFERENCE_INFO ATTRIBUTES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {POLYGONS} == {POLYGONS}} {                puts "MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FEATURE_MERGER_REFERENCE_INFO GEOM_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {POLYGONS} == {AGGREGATES}} {                puts "MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FEATURE_MERGER_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {POLYGONS} == {LINESFROMPOINTS}} {                puts "MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FEATURE_MERGER_REFERENCE_INFO GEOM_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {POLYGONS} == {POLYGONS}} {                puts "MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FEATURE_MERGER_REFERENCE_INFO GEOM_AND_ATTR_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {POLYGONS} == {AGGREGATES}} {                puts "MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FEATURE_MERGER_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {POLYGONS} == {LINESFROMPOINTS}} {                puts "MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FEATURE_MERGER_REFERENCE_INFO GEOM_AND_ATTR_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} } {                puts "MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FEATURE_MERGER_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} } {                puts "MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FEATURE_MERGER_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          else {}; ]
+FACTORY_DEF {*} ReferenceFactory    FACTORY_NAME $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FEATURE_MERGER    INPUT REFERENCER FEATURE_TYPE "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_INPUT"    INPUT REFERENCEE FEATURE_TYPE "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"    CONNECT_Z_MODE FIRST_WINS    REFERENCE_INFO $($(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FEATURE_MERGER_REFERENCE_INFO)    REFERENCE_TABLE 1 1 AUTO    ATTR_ACCUM_MODE "HANDLE_CONFLICT"    ATTR_CONFLICT_RES "SUPPLIER_IF_CONFLICT"    IGNORE_NULLS "No"    HANDLE_NULL_MISSING_KEYS_LIKE_FME2013 Yes    LIST_ATTRS_TO_INCLUDE { <Unused> }    LIST_ATTRS_TO_INCLUDE_MODE <Unused>    MERGE_ATTRIBUTES Yes    MANAGE_FME_TYPE Yes    MODE COMPLETE    PROCESS_DUPLICATE_REFERENCEES YES    REFERENCEES_FIRST No    REJECT_INVALID_GEOM YES    CLEANING_TOLERANCE AUTO    OUTPUT COMPLETE FEATURE_TYPE "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FEATURE_MERGER_MERGED"    OUTPUT INCOMPLETE FEATURE_TYPE "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FEATURE_MERGER_UNMERGED_REQUESTOR"    OUTPUT REJECTED FEATURE_TYPE "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FEATURE_MERGER_<REJECTED>"
+# -------------------------------------------------------------------------
+# The default behaviour is to abort on any feature entering the transformer.
+# If Workbench has set the _WB_BYPASS_TERMINATION macro to a value of "Yes",
+# then the features will instead be passed through with a feature type of
+# __WB_BYPASS_TERMINATOR__, which Workbench will send to a visualizer or
+# somesuch.
+DEFAULT_MACRO _WB_BYPASS_TERMINATION No
+FACTORY_DEF * TestFactory    FACTORY_NAME $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_Terminator_3    INPUT  FEATURE_TYPE "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FEATURE_MERGER_UNMERGED_REQUESTOR"    INPUT  FEATURE_TYPE "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FEATURE_MERGER_<REJECTED>"    TEST "$(_WB_BYPASS_TERMINATION)" == Yes    OUTPUT PASSED FEATURE_TYPE __WB_BYPASS_TERMINATOR__       @SupplyAttributes(_wb_termination_feature_type,@FeatureType())       @SupplyAttributes(ENCODED,_wb_termination_message,"Feature<space>Merger<space>error:<space>Translation<space>Terminated")       @SupplyAttributes(_wb_termination_xformer,"$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_Terminator_3")       @SupplyAttributes(_wb_termination_feature,Yes)    OUTPUT FAILED FEATURE_TYPE * @Abort(ENCODED,"Feature<space>Merger<space>error:<space>Translation<space>Terminated")
+# -------------------------------------------------------------------------
+INCLUDE [    set macroLine "MACRO $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_AttributeRemover_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_AttributeRemover    INPUT  FEATURE_TYPE "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_FEATURE_MERGER_MERGED"    OUTPUT { FEATURE_TYPE "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_AttributeRemover_OUTPUT"        @RemoveAttributes(fme_encoded,default_key,default_value)        @RemoveAttributes(fme_pcre_match"$($(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_AttributeRemover_LIST_EXP)")         }
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Input Input Collector"   INPUT FEATURE_TYPE "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_AttributeRemover_OUTPUT"   OUTPUT FEATURE_TYPE "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Input"
+MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_OUTPUT1643208340 Output Collector"   INPUT FEATURE_TYPE "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME)_OUTPUT"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(DEFAULT_ATTRIBUTE_MAPPER_NG_WORKSPACE_NAME))}]

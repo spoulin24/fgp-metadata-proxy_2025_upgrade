@@ -1,0 +1,1904 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN ON_CKAN_CONTACT_FORM_EXTRACTOR,2,,179be9e6-1c72-4dde-bc6a-4a6c9d22131b,"Linked by Default",No,NO_PARALLELISM,,No,25606,YES,No,313,No,,both
+# <p><strong>Description:</strong></p>
+# <p>Custom transformer désigné pour l'extraction des formulaires de contact pour pour l'ontario. Pour l'Ontario, chaque organisation a sa propre page de formulaire pour permettre aux usagers de les contater</p>
+# <p><strong>Dépendance: </strong></p>
+# <p>Ce custom se connecte à l'API CKAN pour extraire org_contact.fr et org_contact.en.</p>
+# <p><strong>Input Ports</strong></p>
+# <p>Input: Métadonnées de la province de l'Ontario avec le champ organization.id défini</p>
+# <p><strong>Output Ports</strong></p>
+# <p>Output: Métadonnée sur laquelle on a ajouté org_contact.fr et org_contact.en</p>
+# <p><strong>Paramètre</strong></p>
+# <p>CKAN_ROOT: Root de la province. </p>
+# <p><strong>Erreurs: </strong></p>
+# <ul>
+# <li>ERREUR: Impossible d'effectuer la requête à CKAN pour avoir les organisations --&gt; Vérifier l'URL</li>
+# <li>ERREUR: Impossible d'applatir le JSON pour extraire le contenu --&gt; Ne devrait pas arriver</li>
+# <li>ERREUR: Impossible d'exploser la liste result --&gt; Vérifier le modèle de données</li>
+# </ul>
+# TRANSFORMER_END
+#!   A0_PREVIEW_IMAGE="data:image/png;base64,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"
+#!   ARCGIS_COMPATIBILITY="ARCGIS_AUTO"
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY=""
+#!   DATA_PROCESSING_TYPE="both"
+#!   DESCRIPTION="&lt;p&gt;&lt;strong&gt;Description:&lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;Custom transformer désigné pour l&apos;extraction des formulaires de contact pour pour l&apos;ontario. Pour l&apos;Ontario, chaque organisation a sa propre page de formulaire pour permettre aux usagers de les contater&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Dépendance: &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;Ce custom se connecte à l&apos;API CKAN pour extraire org_contact.fr et org_contact.en.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Input Ports&lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;Input: Métadonnées de la province de l&apos;Ontario avec le champ organization.id défini&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Output Ports&lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;Output: Métadonnée sur laquelle on a ajouté org_contact.fr et org_contact.en&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Paramètre&lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;CKAN_ROOT: Root de la province. &lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Erreurs: &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;ERREUR: Impossible d&apos;effectuer la requête à CKAN pour avoir les organisations --&amp;gt; Vérifier l&apos;URL&lt;/li&gt;&#10;&lt;li&gt;ERREUR: Impossible d&apos;applatir le JSON pour extraire le contenu --&amp;gt; Ne devrait pas arriver&lt;/li&gt;&#10;&lt;li&gt;ERREUR: Impossible d&apos;exploser la liste result --&amp;gt; Vérifier le modèle de données&lt;/li&gt;&#10;&lt;/ul&gt;"
+#!   DOC_EXTENTS="6775.42 1694.14"
+#!   DOC_TOP_LEFT="-2021.03 -1794.14"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="25606"
+#!   FME_DOCUMENT_GUID="179be9e6-1c72-4dde-bc6a-4a6c9d22131b"
+#!   FME_DOCUMENT_PRIORGUID="019117c8-5105-47eb-ba48-fb51a24c9ba7"
+#!   FME_LINKED_TRANSFORMER_VERSION="2"
+#!   FME_NAMES_ENCODING="windows-1252"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY=""
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2025.1.0.0 (20250704 - Build 25606 - WIN64)"
+#!   LAST_SAVE_DATE="2025-10-06T17:15:00"
+#!   MARKDOWN_DESCRIPTION="**Description:**&#10; &#10;Custom transformer désigné pour l&apos;extraction des formulaires de contact pour pour l&apos;ontario. Pour l&apos;Ontario, chaque organisation a sa propre page de formulaire pour permettre aux usagers de les contater&#10;&#10;**Dépendance: **&#10;&#10;Ce custom se connecte à l&apos;API CKAN pour extraire org_contact.fr et org_contact.en.&#10;&#10;**Input Ports**&#10;&#10;Input: Métadonnées de la province de l&apos;Ontario avec le champ organization.id défini&#10;&#10;**Output Ports**&#10;&#10;Output: Métadonnée sur laquelle on a ajouté org_contact.fr et org_contact.en&#10;&#10;**Paramètre**&#10;&#10;CKAN_ROOT: Root de la province. &#10;&#10;**Erreurs: **&#10;&#10;- ERREUR: Impossible d&apos;effectuer la requête à CKAN pour avoir les organisations --&gt; Vérifier l&apos;URL&#10;- ERREUR: Impossible d&apos;applatir le JSON pour extraire le contenu --&gt; Ne devrait pas arriver&#10;- ERREUR: Impossible d&apos;exploser la liste result --&gt; Vérifier le modèle de données&#10;"
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="313"
+#!   REPLACED_BY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="ON_CKAN_CONTACT_FORM_EXTRACTOR"
+#!   USAGE=""
+#!   USE_MARKDOWN="YES"
+#!   VIEW_POSITION="-878.134 700.007"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="100"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI TEXT_OR_ATTR CKAN_ROOT CKAN_ROOT:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="false"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL CHOICE_OR_ATTR URL_VALIDATION Yes%No URL_VALIDATION:"
+#!   DEFAULT_VALUE="Yes"
+#!   IS_STAND_ALONE="true"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <USER_PARAMETERS
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbeyJuYW1lIjoiQ0tBTl9ST09UIiwicHJvbXB0IjoiQ0tBTl9ST09UOiIsInZhbHVlVHlwZSI6InN0cmluZyIsImRlZmF1bHRWYWx1ZSI6IiIsInN1cHBvcnRlZFZhbHVlVHlwZXMiOlsiZXhwcmVzc2lvbiIsImdsb2JhbFBhcmFtZXRlciJdLCJkZXByZWNhdGVkRmxhZ3MiOlsibm9uZSJdLCJ0eXBlIjoidGV4dCIsImVkaXRvciI6InBsYWludGV4dCJ9LHsibmFtZSI6IlVSTF9WQUxJREFUSU9OIiwicHJvbXB0IjoiVVJMX1ZBTElEQVRJT046IiwidmFsdWVUeXBlIjoic3RyaW5nIiwicmVxdWlyZWQiOmZhbHNlLCJkZWZhdWx0VmFsdWUiOiJZZXMiLCJzdXBwb3J0ZWRWYWx1ZVR5cGVzIjpbImV4cHJlc3Npb24iLCJnbG9iYWxQYXJhbWV0ZXIiXSwiZGVwcmVjYXRlZEZsYWdzIjpbIm5vbmUiXSwiY2hvaWNlU2V0dGluZ3MiOnsic29ydCI6Im5vU29ydCIsImNob2ljZXMiOlt7ICJkaXNwbGF5IiA6ICJZZXMiLCAidmFsdWUiIDogIlllcyIgfSx7ICJkaXNwbGF5IiA6ICJObyIsICJ2YWx1ZSIgOiAiTm8iIH1dLCJjaG9pY2VTZXQiOiJ1c2VyRGVmaW5lZCJ9LCJ0eXBlIjoiZHJvcGRvd24ifV19"
+#! >
+#! <PARAMETER_INFO>
+#!     <INFO NAME="CKAN_ROOT" 
+#!   DEFAULT_VALUE=""
+#!   SCOPE="DEPENDENT"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI TEXT_OR_ATTR CKAN_ROOT CKAN_ROOT:"
+#! />
+#!     <INFO NAME="URL_VALIDATION" 
+#!   DEFAULT_VALUE="Yes"
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI OPTIONAL CHOICE_OR_ATTR URL_VALIDATION Yes%No URL_VALIDATION:"
+#! />
+#! </PARAMETER_INFO>
+#! </USER_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="39"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;URL VALIDATION Actif&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Test insensitive à la case&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-1163.0112501125009 -1153.7621876218757"
+#!   TOP_LEFT="-1163.0112501125009 -1153.7621876218757"
+#!   BOTTOM_RIGHT="-709.05213239632371 -1154.7621876218757"
+#!   BOUNDING_RECT="-1163.0112501125009 -1153.7621876218757 453.95911771617716 1"
+#!   ORDER="500000000000021"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{2e9db0ec-2e20-44ea-a861-4fe0a582dfaf}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="35"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="5"
+#!   TYPE="HTTPCaller"
+#!   VERSION="7"
+#!   POSITION="190.62690626906237 -100.00100001000013"
+#!   BOUNDING_RECT="190.62690626906237 -100.00100001000013 454 71"
+#!   ORDER="500000000000002"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="_error" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADDITIONAL_PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ADDITIONAL_URL_PARAMETERS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE="FME_DISCLOSURE_CLOSED"/>
+#!     <XFORM_PARM PARM_NAME="ADVANCED_REQUEST_PARAMETERS" PARM_VALUE="FME_DISCLOSURE_OPEN"/>
+#!     <XFORM_PARM PARM_NAME="AUTH_METHOD_TYPE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="AUTH_NAMED_CONNECTION" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="AUTH_PASSWORD" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="AUTH_USERNAME" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CLIENT_CERTIFICATE_FILE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CLIENT_CERTIFICATE_FROM_OS" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CLIENT_CERTIFICATE_PASSWORD" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CLIENT_CERTIFICATE_PRIVATE_KEY_FILE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CLIENT_CERTIFICATE_TYPE" PARM_VALUE="NONE"/>
+#!     <XFORM_PARM PARM_NAME="CONCURRENCY_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="CONNECTION_TIMEOUT_LENGTH" PARM_VALUE="60"/>
+#!     <XFORM_PARM PARM_NAME="CONTENT_TYPE_LOOKUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CUSTOM_HEADERS" PARM_VALUE="User-Agent;Mozilla&lt;solidus&gt;5.0&lt;space&gt;&lt;openparen&gt;Windows&lt;space&gt;NT&lt;space&gt;10.0&lt;semicolon&gt;&lt;space&gt;Win64&lt;semicolon&gt;&lt;space&gt;x64&lt;closeparen&gt;&lt;space&gt;AppleWebKit&lt;solidus&gt;537.36&lt;space&gt;&lt;openparen&gt;KHTML&lt;comma&gt;&lt;space&gt;like&lt;space&gt;Gecko&lt;closeparen&gt;&lt;space&gt;Chrome&lt;solidus&gt;117.0.0.0&lt;space&gt;Safari&lt;solidus&gt;537.36"/>
+#!     <XFORM_PARM PARM_NAME="CUSTOM_HEADERS_GROUP" PARM_VALUE="FME_DISCLOSURE_OPEN"/>
+#!     <XFORM_PARM PARM_NAME="ERROR_ATTR" PARM_VALUE="_error"/>
+#!     <XFORM_PARM PARM_NAME="FILE_PATH_ATTR" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="FILE_PATH_ATTR2" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="FILE_TYPE_LOOKUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="FOLLOW_REDIRECTS" PARM_VALUE="FOLLOW_WITH_GET"/>
+#!     <XFORM_PARM PARM_NAME="HTTPURL_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="HTTP_AUTH_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="HTTP_METHOD" PARM_VALUE="GET"/>
+#!     <XFORM_PARM PARM_NAME="HTTP_RESPONSE_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="LOOP_MESSAGE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="MAX_HTTP_VERSION" PARM_VALUE="HTTP_2"/>
+#!     <XFORM_PARM PARM_NAME="MAX_TRANSFERS_IN_PROGRESS" PARM_VALUE="25"/>
+#!     <XFORM_PARM PARM_NAME="MINIMUM_ENCRYPTION_LEVEL" PARM_VALUE="OS_DEFAULT"/>
+#!     <XFORM_PARM PARM_NAME="MULTIPARTS" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MULTIPART_CONTENT_TYPE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MULTIPART_GROUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MULTIPART_RESPONSE_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="MULTIPART_RESPONSE_HEADER_LIST_ATTR" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_DIRNAME" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_FILENAME" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="RATE_LIMIT_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="RATE_LIMIT_INTERVAL_IN_SECONDS" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="RATE_LIMIT_MAX_REQUESTS" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="RATE_LIMIT_REQUEST_TIMING" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="REDIRECT_AUTH" PARM_VALUE="ORIGINAL_DOMAIN_ONLY"/>
+#!     <XFORM_PARM PARM_NAME="RESPONSE_ATTRS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="RESPONSE_ATTR_GROUP" PARM_VALUE="FME_DISCLOSURE_OPEN"/>
+#!     <XFORM_PARM PARM_NAME="RESPONSE_DIR_GROUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="RESPONSE_FILE_GROUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="RESPONSE_HEADER_LIST_ATTR" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="RESPONSE_TYPE" PARM_VALUE="Attribute"/>
+#!     <XFORM_PARM PARM_NAME="RETRY_FAILED_TRANSFERS" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="RETRY_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="RETRY_INITIAL_BACKOFF" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="RETRY_MAX_RETRIES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="SPLIT_MULTIPART_DOWNLOADS" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="STATUS_CODE_ATTR" PARM_VALUE="_http_status_code"/>
+#!     <XFORM_PARM PARM_NAME="TARGET_ATTR" PARM_VALUE="_response_body"/>
+#!     <XFORM_PARM PARM_NAME="TARGET_ATTR_ENCODING" PARM_VALUE="auto-detect"/>
+#!     <XFORM_PARM PARM_NAME="TARGET_URL" PARM_VALUE="$(CKAN_ROOT)&lt;solidus&gt;api&lt;solidus&gt;3&lt;solidus&gt;action&lt;solidus&gt;organization_list?include_extras=True&lt;amp&gt;all_fields=True"/>
+#!     <XFORM_PARM PARM_NAME="TEST_DIALOG_ATTRIBUTE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_DIALOG_PARAMETERS_FOR_RESPONSE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_DIALOG_RESPONSE_PREVIEW" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_DIALOG_RESPONSE_STATUS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_DIALOG_USER_PARAMETER" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TLS_CLIENT_CERTIFICATE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TLS_PARAMETERS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFER_TIMEOUT_LENGTH" PARM_VALUE="90"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="UPLOAD_BODY" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="UPLOAD_FILE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="UPLOAD_GROUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="UPLOAD_TYPE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="USE_COOKIES" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="VERIFY_SSL_CERTIFICATES" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="HTTPCaller"/>
+#!     <XFORM_PARM PARM_NAME="AUTH_METHOD" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="FILE_TYPE" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="UPLOAD_CONTENT_TYPE" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="6"
+#!   TYPE="Sampler"
+#!   VERSION="5"
+#!   POSITION="162.50162501625039 -701.88221882218807"
+#!   BOUNDING_RECT="162.50162501625039 -701.88221882218807 454 71"
+#!   ORDER="500000000000003"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="SAMPLED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <OUTPUT_FEAT NAME="NOT_SAMPLED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_PROCESSING_GROUP" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="MODE" PARM_VALUE="ORIGINAL"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="RATE" PARM_VALUE="1"/>
+#!     <XFORM_PARM PARM_NAME="SAMPLE_TYPE_MULTIPLIER" PARM_VALUE="-1"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Sampler"/>
+#!     <XFORM_PARM PARM_NAME="SAMPLE_MODE" PARM_IS_LOOKUP="true" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SAMPLE_TYPE_LONG" PARM_IS_LOOKUP="true" PARM_VALUE="First N Features"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="9"
+#!   TYPE="AttributeKeeper"
+#!   VERSION="3"
+#!   POSITION="162.50162501625039 -503.13003130031308"
+#!   BOUNDING_RECT="162.50162501625039 -503.13003130031308 454 71"
+#!   ORDER="500000000000004"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="CREATE_BULK_MODE_FEATURES" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="KEEP_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="KEEP_LIST" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_ON_ATTRIBUTE_CHANGE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeKeeper"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="12"
+#!   TYPE="Terminator"
+#!   VERSION="3"
+#!   POSITION="778.13278132781238 -503.13003130031308"
+#!   BOUNDING_RECT="778.13278132781238 -503.13003130031308 454 71"
+#!   ORDER="500000000000005"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE="ERREUR:&lt;space&gt;Impossible&lt;space&gt;d&lt;apos&gt;effectuer&lt;space&gt;la&lt;space&gt;requ&lt;u00ea&gt;te&lt;space&gt;&lt;u00e0&gt;&lt;space&gt;CKAN&lt;space&gt;pour&lt;space&gt;avoir&lt;space&gt;les&lt;space&gt;organisations"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Terminator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="14"
+#!   TYPE="JSONFlattener"
+#!   VERSION="7"
+#!   POSITION="818.75818758187688 -131.25131251312513"
+#!   BOUNDING_RECT="818.75818758187688 -131.25131251312513 454 71"
+#!   ORDER="500000000000006"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_json_error{}.message" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_json_error{}.line" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_json_error{}.column" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_json_error{}.severity" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ERROR_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ERROR_LIST_ATTR" PARM_VALUE="_json_error"/>
+#!     <XFORM_PARM PARM_NAME="FILEPATH_OR_URL" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="FLATTEN_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="INPUT_SETTINGS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="JSON_DOCUMENT" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;_response_body&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NEW_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PREFIX_STRING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="READ_FROM_FILE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="RECURSIVE" PARM_VALUE="YES"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="JSONFlattener"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="18"
+#!   TYPE="ListExploder"
+#!   VERSION="6"
+#!   POSITION="2250.0225002250022 -383.13003130031302"
+#!   BOUNDING_RECT="2250.0225002250022 -383.13003130031302 454 71"
+#!   ORDER="500000000000009"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="ELEMENTS"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="org_contact.en" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="org_contact.fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="org_contact.en" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="org_contact.fr" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE_LOOKUP" PARM_VALUE="HANDLE_CONFLICT"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES_LOOKUP" PARM_VALUE="INCOMING_IF_CONFLICT"/>
+#!     <XFORM_PARM PARM_NAME="INCOMING_PREFIX" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="INDEX_ATTR" PARM_VALUE="_element_index"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTR" PARM_VALUE="result{}"/>
+#!     <XFORM_PARM PARM_NAME="OAN_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ListExploder"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE" PARM_IS_LOOKUP="true" PARM_VALUE="Merge List Attributes"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES" PARM_IS_LOOKUP="true" PARM_VALUE="Use List Attribute Values"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="20"
+#!   TYPE="AttributeExposer"
+#!   VERSION="2"
+#!   POSITION="2187.5218752187529 -1116.2605626056256"
+#!   BOUNDING_RECT="2187.5218752187529 -1116.2605626056256 454 71"
+#!   ORDER="500000000000012"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="organization.id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="organization.id,"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="24"
+#!   TYPE="FeatureMerger"
+#!   VERSION="21"
+#!   POSITION="2857.6476564765644 -940.63340633406324"
+#!   BOUNDING_RECT="2857.6476564765644 -940.63340633406324 483 71"
+#!   ORDER="500000000000013"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="MERGED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="organization.id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="org_contact.en" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="org_contact.fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="UNMERGED_REQUESTOR"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="organization.id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <OUTPUT_FEAT NAME="USED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="org_contact.en" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="org_contact.fr" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="numReferences" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <OUTPUT_FEAT NAME="UNUSED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="3"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="org_contact.en" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="org_contact.fr" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="4"/>
+#!     <XFORM_ATTR ATTR_NAME="organization.id" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="org_contact.en" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="org_contact.fr" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE" PARM_VALUE="Merge Supplier"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES_LOOKUP" PARM_VALUE="REQUESTOR_IF_CONFLICT"/>
+#!     <XFORM_PARM PARM_NAME="CLEANING_TOLERANCE_LOOKUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CONNECT_Z_MODE_LOOKUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GENERATE_LIST_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="GEOM_TYPE_VAL" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_PROCESSING_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="IGNORE_NULLS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="JOIN_ATTRIBUTES_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="JOIN_KEYS" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;organization.id&lt;closeparen&gt; &lt;at&gt;Value&lt;openparen&gt;id&lt;closeparen&gt; AUTO"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE_MODE_LU" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_NAME" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_COUNT_ATTR" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_TYPE_VAL" PARM_VALUE="ATTRIBUTES"/>
+#!     <XFORM_PARM PARM_NAME="MODE_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="ACROSS_OUTPUT_PORTS"/>
+#!     <XFORM_PARM PARM_NAME="PROCESS_DUPS" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="REJECT_NULL_MISSING_KEYS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIERS_FIRST" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIER_PREFIX" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="FeatureMerger"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES" PARM_IS_LOOKUP="true" PARM_VALUE="Use Requestor"/>
+#!     <XFORM_PARM PARM_NAME="CLEANING_TOLERANCE" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CONNECT_Z_MODE" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GEOM_TYPE" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE_MODE" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_TYPE" PARM_IS_LOOKUP="true" PARM_VALUE="Attributes Only"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="16"
+#!   TYPE="AttributeExposer"
+#!   VERSION="2"
+#!   POSITION="1750.0175001750017 -191.25131251312513"
+#!   BOUNDING_RECT="1750.0175001750017 -191.25131251312513 454 71"
+#!   ORDER="500000000000008"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="result{}.id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="result{}.org_contact.en" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="result{}.org_contact.fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="result{}.id,,result{}.org_contact.en,,result{}.org_contact.fr,"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="26"
+#!   TYPE="AttributeKeeper"
+#!   VERSION="3"
+#!   POSITION="2250.0225002250022 -659.38059380593802"
+#!   BOUNDING_RECT="2250.0225002250022 -659.38059380593802 454 71"
+#!   ORDER="500000000000017"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="org_contact.en" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="org_contact.fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="CREATE_BULK_MODE_FEATURES" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="KEEP_ATTRS" PARM_VALUE="id,org_contact.en,org_contact.fr"/>
+#!     <XFORM_PARM PARM_NAME="KEEP_LIST" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_ON_ATTRIBUTE_CHANGE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeKeeper_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="32"
+#!   TYPE="Terminator"
+#!   VERSION="3"
+#!   POSITION="2886.6476564765644 -475.00475004750047"
+#!   BOUNDING_RECT="2886.6476564765644 -475.00475004750047 454 71"
+#!   ORDER="500000000000018"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE="ERREUR:&lt;space&gt;Impossible&lt;space&gt;d&lt;apos&gt;exploser&lt;space&gt;la&lt;space&gt;liste&lt;space&gt;result&lt;lf&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Terminator_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="31"
+#!   TYPE="Terminator"
+#!   VERSION="3"
+#!   POSITION="1406.2640626406264 -503.13003130031308"
+#!   BOUNDING_RECT="1406.2640626406264 -503.13003130031308 454 71"
+#!   ORDER="500000000000019"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE="ERREUR:&lt;space&gt;Impossible&lt;space&gt;d&lt;apos&gt;applatir&lt;space&gt;le&lt;space&gt;JSON&lt;space&gt;pour&lt;space&gt;extraire&lt;space&gt;le&lt;space&gt;contenu"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Terminator_3"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="35"
+#!   TYPE="Tester"
+#!   VERSION="4"
+#!   POSITION="-1125.0112501125009 -1462.5146251462509"
+#!   BOUNDING_RECT="-1125.0112501125009 -1462.5146251462509 454 71"
+#!   ORDER="500000000000020"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="PASSED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <OUTPUT_FEAT NAME="FAILED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_MSG" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="PER_OUTPUT_PORT"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="CASE_INSENSITIVE_TEST $(URL_VALIDATION) = yes"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="CASE_INSENSITIVE_TEST"/>
+#!     <XFORM_PARM PARM_NAME="TEST_PREVIEW_GROUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="41"
+#!   TYPE="ATTRIBUTE_UNEXPOSER"
+#!   VERSION="2"
+#!   POSITION="3590.6609066090646 -1603.1410314103143"
+#!   BOUNDING_RECT="3590.6609066090646 -1603.1410314103143 533.00106825772946 71"
+#!   ORDER="500000000000022"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_UNEXPOSER"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="Input"
+#!   POSITION="-2021.0257502575023 -1068.7606876068758"
+#!   BOUNDING_RECT="-2021.0257502575023 -1068.7606876068758 454 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="Output"
+#!   POSITION="4300.3923439234395 -1723.1410314103143"
+#!   BOUNDING_RECT="4300.3923439234395 -1723.1410314103143 454 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="36"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="35"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="15"
+#!   SOURCE_NODE="5"
+#!   TARGET_NODE="14"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="10"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 0 SAMPLED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="11"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="17"
+#!   SOURCE_NODE="14"
+#!   TARGET_NODE="16"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="19"
+#!   SOURCE_NODE="16"
+#!   TARGET_NODE="18"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="27"
+#!   SOURCE_NODE="18"
+#!   TARGET_NODE="26"
+#!   SOURCE_PORT_DESC="fo 0 ELEMENTS"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="25"
+#!   SOURCE_NODE="20"
+#!   TARGET_NODE="24"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 REQUESTOR"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="40"
+#!   SOURCE_NODE="24"
+#!   TARGET_NODE="41"
+#!   SOURCE_PORT_DESC="fo 0 MERGED"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="29"
+#!   SOURCE_NODE="26"
+#!   TARGET_NODE="24"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 1 SUPPLIER"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="38"
+#!   SOURCE_NODE="35"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 PASSED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="37"
+#!   SOURCE_NODE="35"
+#!   TARGET_NODE="20"
+#!   SOURCE_PORT_DESC="fo 0 PASSED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="1"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="43"
+#!   SOURCE_NODE="41"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="13"
+#!   SOURCE_NODE="5"
+#!   TARGET_NODE="12"
+#!   SOURCE_PORT_DESC="fo 1 &lt;lt&gt;REJECTED&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="34"
+#!   SOURCE_NODE="14"
+#!   TARGET_NODE="31"
+#!   SOURCE_PORT_DESC="fo 1 &lt;lt&gt;REJECTED&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="33"
+#!   SOURCE_NODE="18"
+#!   TARGET_NODE="32"
+#!   SOURCE_PORT_DESC="fo 1 &lt;lt&gt;REJECTED&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="44"
+#!   SOURCE_NODE="24"
+#!   TARGET_NODE="41"
+#!   SOURCE_PORT_DESC="fo 1 UNMERGED_REQUESTOR"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="42"
+#!   SOURCE_NODE="35"
+#!   TARGET_NODE="41"
+#!   SOURCE_PORT_DESC="fo 1 FAILED"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+FME_PYTHON_VERSION 313
+# ============================================================================
+DEFAULT_MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_CKAN_ROOT 
+
+DEFAULT_MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_URL_VALIDATION Yes
+
+DEFAULT_MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FME_DATA_REPOSITORY 
+
+DEFAULT_MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FME_ENGINE 
+
+DEFAULT_MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FME_JOB_ID 
+
+DEFAULT_MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FME_SECURITY_ROLES 
+
+DEFAULT_MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FME_SECURITY_USER 
+
+DEFAULT_MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FME_SERVER_DEST_DIR 
+
+DEFAULT_MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FME_SERVER_HOST 
+
+DEFAULT_MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FME_SERVER_PORT 
+
+DEFAULT_MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FME_SERVER_REQUEST_HEADERS 
+
+DEFAULT_MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FME_SERVER_REQUEST_METHOD 
+
+DEFAULT_MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FME_SERVER_REQUEST_PARAMETERS 
+
+DEFAULT_MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FME_SERVER_REQUEST_URI 
+
+DEFAULT_MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER 
+
+DEFAULT_MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER_ID 
+
+DEFAULT_MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FME_SERVER_WEB_URL 
+
+DEFAULT_MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FME_SHAREDRESOURCE_BACKUP 
+
+DEFAULT_MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DASHBOARD 
+
+DEFAULT_MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DATA 
+
+DEFAULT_MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FME_SHAREDRESOURCE_ENGINE 
+
+DEFAULT_MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FME_SHAREDRESOURCE_LOG 
+
+DEFAULT_MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FME_SHAREDRESOURCE_SYSTEM 
+
+DEFAULT_MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FME_SHAREDRESOURCE_TEMP 
+
+DEFAULT_MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FME_TOPIC 
+
+DEFAULT_MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FME_TOPIC_MESSAGE 
+
+# ============================================================================
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Input1759785300 Input Splitter"   INPUT FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Input"   OUTPUT FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Input"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TestFactory    FACTORY_NAME { $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Tester }    INPUT  FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Input"    CASE_INSENSITIVE_TEST { "@EvaluateExpression(FDIV,STRING_ENCODED,$($(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_URL_VALIDATION$encode),$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Tester)" = yes ENCODED }    BOOLEAN_OPERATOR { OR }    COMPOSITE_TEST_EXPR { "<Unused>" }    PRESERVE_FEATURE_ORDER { PER_OUTPUT_PORT }    OUTPUT { PASSED FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Tester_PASSED"         }    OUTPUT { FAILED FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Tester_FAILED"         }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Tester PASSED Splitter"   INPUT FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Tester_PASSED"   OUTPUT FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Tester_PASSED_0_EdB7TinNPI8="   OUTPUT FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Tester_PASSED_1_sJnAeJE4PXI="
+# -------------------------------------------------------------------------
+# If we're doing LAST N features, then the multiplier comes in as 0.
+# If we're doing First N, multiplier is -1.
+# For RANDOM, we need to treat LAST N as if it was first N (i.e. have a -1)
+# That is what the ? : does in the rate multiplier.
+INCLUDE [ if { {-1} == {0} && {ORIGINAL} == {ORIGINAL} } {              puts "MACRO REAL_MODE LAST"; 	         puts "MACRO REAL_RATE 1"; 	      } else {              puts "MACRO REAL_MODE ORIGINAL";              puts "MACRO REAL_RATE [expr 1 * ( -1 ? -1 : -1 ) ]"; 	      } ]
+FACTORY_DEF {*} SamplingFactory    FACTORY_NAME { $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Sampler }    COMMAND_PARM_EVALUATION SINGLE_PASS    SAMPLE_RATE { $(REAL_RATE) }    SAMPLE_ORDER { $(REAL_MODE) }    FLUSH_WHEN_GROUPS_CHANGE { <Unused> }    INPUT  FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Tester_PASSED_0_EdB7TinNPI8="    OUTPUT { SAMPLED FEATURE_TYPE ___SAMPLED___ }
+# This TeeFactory is needed because Sampler will still output features if it has no OUTPUT clauses specified.
+# This way we behave nicely even if there are no output connections on the transformer. See PR#28886.
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Sampler_Sampled }    INPUT FEATURE_TYPE ___SAMPLED___    OUTPUT { FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Sampler_SAMPLED"          }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttributeKeeperFactory    FACTORY_NAME { $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_AttributeKeeper }    INPUT  FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Sampler_SAMPLED"    KEEP_ATTRS {  }    KEEP_LISTS {  }    KEEP_FME_ATTRIBUTES Yes    BUILD_FEATURE_TABLES { NO }    OUTPUT_ON_ATTRIBUTE_CHANGE { <Unused> }    OUTPUT { OUTPUT FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"        }
+# -------------------------------------------------------------------------
+# Combine the two "file path attribute" parameters into one value.
+DEFAULT_MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_HTTPCaller_FILE_PATH_ATTR
+INCLUDE [ 	if { {<Unused>} == {<Unused>} } { 		puts {MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_HTTPCaller_FILE_PATH_ATTR "<Unused>"}; 	} else { 		puts {MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_HTTPCaller_FILE_PATH_ATTR "<Unused>"}; 	} ]
+FACTORY_DEF {*} HTTPFactory    FACTORY_NAME { $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_HTTPCaller }       INPUT  FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"    TARGET_URL { "@EvaluateExpression(FDIV,STRING_ENCODED,$($(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_CKAN_ROOT$encode)<solidus>api<solidus>3<solidus>action<solidus>organization_list?include_extras=True<amp>all_fields=True,$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_HTTPCaller)" }    HTTP_METHOD { GET }    SAVE_FILE { NO }    OUTPUT_FILENAME { "<Unused>" }    OUTPUT_DIRECTORY { "<Unused>" }    FILE_EXTENSION { "<Unused>" }    TARGET_ATTR { "_response_body" }    FILE_PATH_ATTR { $($(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_HTTPCaller_FILE_PATH_ATTR) }    UPLOAD_FILE { "<Unused>" }    UPLOAD_BODY { "<Unused>" }    UPLOAD_TYPE { <Unused> }    UPLOAD_CONTENT_TYPE { "<Unused>" }    COMBINED_MULTIPART_TABLE {  }    MULTIPART_CONTENT_TYPE { <Unused> }    REQUEST_HEADER_TABLE { User-Agent;Mozilla<solidus>5.0<space><openparen>Windows<space>NT<space>10.0<semicolon><space>Win64<semicolon><space>x64<closeparen><space>AppleWebKit<solidus>537.36<space><openparen>KHTML<comma><space>like<space>Gecko<closeparen><space>Chrome<solidus>117.0.0.0<space>Safari<solidus>537.36 }    ADDITIONAL_URL_PARAMETERS {  }    AUTH_USERNAME { "<Unused>" }    AUTH_PASSWORD { "<Unused>" }    AUTH_METHOD { "<Unused>" }    TARGET_ATTRIBUTE_ENCODING { auto-detect }    RESPONSE_HEADER_LIST_ATTR { "" }    STATUS_CODE_ATTR { "_http_status_code" }    ERROR_ATTR { "_error" }    CONNECTION_TIMEOUT_LENGTH { 60 }    TRANSFER_TIMEOUT_LENGTH { 90 }    FOLLOW_REDIRECTS { FOLLOW_WITH_GET }    REDIRECT_AUTH { ORIGINAL_DOMAIN_ONLY }    VERIFY_SSL_CERTIFICATES { No }    NAMED_CONNECTION { "<Unused>" }    USE_COOKIES { No }    MAX_TRANSFERS_IN_PROGRESS { 25 }    MAX_HTTP_VERSION { HTTP_2 }    RATE_LIMIT_MAX_REQUESTS { <Unused> }    RATE_LIMIT_INTERVAL_IN_SECONDS { <Unused> }    RATE_LIMIT_REQUEST_TIMING { <Unused> }    RETRY_FAILED_TRANSFERS { <Unused> }    RETRY_MAX_RETRIES { <Unused> }    RETRY_INITIAL_BACKOFF { <Unused> }    SPLIT_MULTIPART_RESPONSE { NO }    MULTIPART_RESPONSE_HEADER_LIST_ATTR { "<Unused>" }    MINIMUM_ENCRYPTION_LEVEL { "OS_DEFAULT" }    CLIENT_CERTIFICATE_TYPE { "NONE" }    CLIENT_CERTIFICATE_FROM_OS { "<Unused>" }    CLIENT_CERTIFICATE_FILE { "<Unused>" }    CLIENT_CERTIFICATE_PRIVATE_KEY_FILE { "<Unused>" }    CLIENT_CERTIFICATE_PASSWORD { "<Unused>" }    OUTPUT { OUTPUT FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_HTTPCaller_Output"          }    OUTPUT { REJECTED FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_HTTPCaller_<REJECTED>"          }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} JSONQueryFactory    FACTORY_NAME { $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_JSONFlattener }    INPUT  FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_HTTPCaller_Output"    MODE FLATTEN    JSON_DOCUMENT { "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_response_body<closeparen>,$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_JSONFlattener)" }    READ_FROM_FILE { NO }    FILEPATH_OR_URL { "<Unused>" }    EXPLODE_QUERY "json"    RECURSIVE_FLATTEN { YES }    ERROR_LIST_ATTR { "_json_error" }    OUTPUT { EXPLODED FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_JSONFlattener_OUTPUT"        }    OUTPUT { REJECTED FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_JSONFlattener_<REJECTED>"        }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_AttributeExposer }    INPUT  FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_JSONFlattener_OUTPUT"    OUTPUT { FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_AttributeExposer_OUTPUT"          }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} ElementFactory    FACTORY_NAME { $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_ListExploder }    INPUT  FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_AttributeExposer_OUTPUT"    LIST_NAME { "result{}" }    ELEMENT_NUMBER_FIELD { "_element_index" }    CLONE_GEOMETRY    ATTR_ACCUM_MODE { "HANDLE_CONFLICT" }    ATTR_CONFLICT_RES { "INCOMING_IF_CONFLICT" }    INCOMING_PREFIX { "<Unused>" }    OUTPUT { ELEMENT FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_ListExploder_ELEMENTS"         @RemoveAttributes(ElementFactory.baseCloned)          }    OUTPUT { NOLIST FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_ListExploder_<REJECTED>"         @RemoveAttributes(ElementFactory.baseCloned)         fme_rejection_code MISSING_PARAMETER_LIST          }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttributeKeeperFactory    FACTORY_NAME { $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_AttributeKeeper_2 }    INPUT  FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_ListExploder_ELEMENTS"    KEEP_ATTRS { id,org_contact.en,org_contact.fr }    KEEP_LISTS {  }    KEEP_FME_ATTRIBUTES Yes    BUILD_FEATURE_TABLES { NO }    OUTPUT_ON_ATTRIBUTE_CHANGE { <Unused> }    OUTPUT { OUTPUT FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_AttributeKeeper_2_OUTPUT"        }
+# -------------------------------------------------------------------------
+# The default behaviour is to abort on any feature entering the transformer.
+# If Workbench has set the _WB_BYPASS_TERMINATION macro to a value of "Yes",
+# then the features will instead be passed through with a feature type of
+# __WB_BYPASS_TERMINATOR__, which Workbench will send to a visualizer or
+# somesuch.
+DEFAULT_MACRO _WB_BYPASS_TERMINATION No
+FACTORY_DEF {*} TestFactory    FACTORY_NAME { $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Terminator_2 }    INPUT  FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_ListExploder_<REJECTED>"    TEST { "$(_WB_BYPASS_TERMINATION)" == Yes }    OUTPUT { PASSED FEATURE_TYPE __WB_BYPASS_TERMINATOR__       @SupplyAttributes(_wb_termination_feature_type,@FeatureType())       @SupplyAttributes(ENCODED,_wb_termination_message,"ERREUR:<space>Impossible<space>d<apos>exploser<space>la<space>liste<space>result<lf>")       @SupplyAttributes(_wb_termination_xformer,"$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Terminator_2")       @SupplyAttributes(_wb_termination_feature,Yes) }    OUTPUT { FAILED FEATURE_TYPE * @Abort(ENCODED,"ERREUR:<space>Impossible<space>d<apos>exploser<space>la<space>liste<space>result<lf>") }
+# -------------------------------------------------------------------------
+# The default behaviour is to abort on any feature entering the transformer.
+# If Workbench has set the _WB_BYPASS_TERMINATION macro to a value of "Yes",
+# then the features will instead be passed through with a feature type of
+# __WB_BYPASS_TERMINATOR__, which Workbench will send to a visualizer or
+# somesuch.
+DEFAULT_MACRO _WB_BYPASS_TERMINATION No
+FACTORY_DEF {*} TestFactory    FACTORY_NAME { $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Terminator_3 }    INPUT  FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_JSONFlattener_<REJECTED>"    TEST { "$(_WB_BYPASS_TERMINATION)" == Yes }    OUTPUT { PASSED FEATURE_TYPE __WB_BYPASS_TERMINATOR__       @SupplyAttributes(_wb_termination_feature_type,@FeatureType())       @SupplyAttributes(ENCODED,_wb_termination_message,"ERREUR:<space>Impossible<space>d<apos>applatir<space>le<space>JSON<space>pour<space>extraire<space>le<space>contenu")       @SupplyAttributes(_wb_termination_xformer,"$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Terminator_3")       @SupplyAttributes(_wb_termination_feature,Yes) }    OUTPUT { FAILED FEATURE_TYPE * @Abort(ENCODED,"ERREUR:<space>Impossible<space>d<apos>applatir<space>le<space>JSON<space>pour<space>extraire<space>le<space>contenu") }
+# -------------------------------------------------------------------------
+# The default behaviour is to abort on any feature entering the transformer.
+# If Workbench has set the _WB_BYPASS_TERMINATION macro to a value of "Yes",
+# then the features will instead be passed through with a feature type of
+# __WB_BYPASS_TERMINATOR__, which Workbench will send to a visualizer or
+# somesuch.
+DEFAULT_MACRO _WB_BYPASS_TERMINATION No
+FACTORY_DEF {*} TestFactory    FACTORY_NAME { $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Terminator }    INPUT  FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_HTTPCaller_<REJECTED>"    TEST { "$(_WB_BYPASS_TERMINATION)" == Yes }    OUTPUT { PASSED FEATURE_TYPE __WB_BYPASS_TERMINATOR__       @SupplyAttributes(_wb_termination_feature_type,@FeatureType())       @SupplyAttributes(ENCODED,_wb_termination_message,"ERREUR:<space>Impossible<space>d<apos>effectuer<space>la<space>requ<u00ea>te<space><u00e0><space>CKAN<space>pour<space>avoir<space>les<space>organisations")       @SupplyAttributes(_wb_termination_xformer,"$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Terminator")       @SupplyAttributes(_wb_termination_feature,Yes) }    OUTPUT { FAILED FEATURE_TYPE * @Abort(ENCODED,"ERREUR:<space>Impossible<space>d<apos>effectuer<space>la<space>requ<u00ea>te<space><u00e0><space>CKAN<space>pour<space>avoir<space>les<space>organisations") }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_AttributeExposer_2 }    INPUT  FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Tester_PASSED_1_sJnAeJE4PXI="    OUTPUT { FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"          }
+# -------------------------------------------------------------------------
+INCLUDE [if { {ATTRIBUTES} == {ATTRIBUTES} } {                puts "MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO ATTRIBUTES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {POLYGONS}} {                puts "MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {AGGREGATES}} {                puts "MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {POLYGONS}} {                puts "MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {AGGREGATES}} {                puts "MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} } {                puts "MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} } {                puts "MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          else {}; ]
+FACTORY_DEF {*} ReferenceFactory    FACTORY_NAME { $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FeatureMerger }    FLUSH_WHEN_GROUPS_CHANGE { <Unused> }    INPUT REFERENCER FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"    INPUT REFERENCEE FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_AttributeKeeper_2_OUTPUT"    REFERENCE_INFO { $($(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO) }    REFERENCE_TABLE { @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>organization.id<closeparen>,$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FeatureMerger) @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>id<closeparen>,$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FeatureMerger) AUTO }    ATTR_ACCUM_MODE { "HANDLE_CONFLICT" }    ATTR_CONFLICT_RES { "REQUESTOR_IF_CONFLICT" }    IGNORE_NULLS { "No" }    HANDLE_NULL_MISSING_KEYS_LIKE_FME2013 { No }    LIST_ATTRS_TO_INCLUDE { <Unused> }    LIST_ATTRS_TO_INCLUDE_MODE { <Unused> }    MERGE_ATTRIBUTES Yes    MANAGE_FME_TYPE Yes    MODE COMPLETE    PROCESS_DUPLICATE_REFERENCEES { NO }    REFERENCEES_FIRST { No }    REJECT_INVALID_GEOM YES    CLEANING_TOLERANCE { <Unused> }    PRESERVE_FEATURE_ORDER { ACROSS_OUTPUT_PORTS }    COMPARE_WHITESPACE Yes    OUTPUT { COMPLETE FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FeatureMerger_MERGED"         }    OUTPUT { INCOMPLETE FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FeatureMerger_UNMERGED_REQUESTOR"         }
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Input Input Collector"   INPUT FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FeatureMerger_MERGED"   INPUT FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FeatureMerger_UNMERGED_REQUESTOR"   INPUT FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Tester_FAILED"   OUTPUT FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Input"
+MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:2
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Output1759785300 Output Collector"   INPUT FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Output"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME))}]
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN ON_CKAN_CONTACT_FORM_EXTRACTOR,1,,78812afa-38b6-41f5-9591-e2bfee629e68,"Linked by Default",No,NO_PARALLELISM,,No,20200,YES,No,37,No,
+# <p><strong>Description:</strong></p>
+# <p>Custom transformer désigné pour l'extraction des formulaires de contact pour pour l'ontario. Pour l'Ontario, chaque organisation a sa propre page de formulaire pour permettre aux usagers de les contater</p>
+# <p><strong>Dépendance: </strong></p>
+# <p>Ce custom se connecte à l'API CKAN pour extraire org_contact.fr et org_contact.en.</p>
+# <p><strong>Input Ports</strong></p>
+# <p>Input: Métadonnées de la province de l'Ontario avec le champ organization.id défini</p>
+# <p><strong>Output Ports</strong></p>
+# <p>Output: Métadonnée sur laquelle on a ajouté org_contact.fr et org_contact.en</p>
+# <p><strong>Paramètre</strong></p>
+# <p>CKAN_ROOT: Root de la province. </p>
+# <p><strong>Erreurs: </strong></p>
+# <ul>
+# <li>ERREUR: Impossible d'effectuer la requête à CKAN pour avoir les organisations --&gt; Vérifier l'URL</li>
+# <li>ERREUR: Impossible d'applatir le JSON pour extraire le contenu --&gt; Ne devrait pas arriver</li>
+# <li>ERREUR: Impossible d'exploser la liste result --&gt; Vérifier le modèle de données</li>
+# </ul>
+# TRANSFORMER_END
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY=""
+#!   DESCRIPTION="&lt;p&gt;&lt;strong&gt;Description:&lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;Custom transformer désigné pour l&apos;extraction des formulaires de contact pour pour l&apos;ontario. Pour l&apos;Ontario, chaque organisation a sa propre page de formulaire pour permettre aux usagers de les contater&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Dépendance: &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;Ce custom se connecte à l&apos;API CKAN pour extraire org_contact.fr et org_contact.en.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Input Ports&lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;Input: Métadonnées de la province de l&apos;Ontario avec le champ organization.id défini&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Output Ports&lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;Output: Métadonnée sur laquelle on a ajouté org_contact.fr et org_contact.en&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Paramètre&lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;CKAN_ROOT: Root de la province. &lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Erreurs: &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;ERREUR: Impossible d&apos;effectuer la requête à CKAN pour avoir les organisations --&amp;gt; Vérifier l&apos;URL&lt;/li&gt;&#10;&lt;li&gt;ERREUR: Impossible d&apos;applatir le JSON pour extraire le contenu --&amp;gt; Ne devrait pas arriver&lt;/li&gt;&#10;&lt;li&gt;ERREUR: Impossible d&apos;exploser la liste result --&amp;gt; Vérifier le modèle de données&lt;/li&gt;&#10;&lt;/ul&gt;"
+#!   DOC_EXTENTS="6775.42 1694.14"
+#!   DOC_TOP_LEFT="-2021.03 -1794.14"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="20200"
+#!   FME_DOCUMENT_GUID="78812afa-38b6-41f5-9591-e2bfee629e68"
+#!   FME_DOCUMENT_PRIORGUID="df0ccb26-d704-4b24-9b65-81446332bf50,b9fff794-8e31-4645-b98a-baa73824b14e,4c55e603-699d-45f1-919e-23273375276e,4c95a7b7-03de-4e64-811f-eed5a7fc2d78"
+#!   FME_LINKED_TRANSFORMER_VERSION="1"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY=""
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2020.0.0.0 (20200309 - Build 20200 - WIN32)"
+#!   LAST_SAVE_DATE="2023-10-17T15:43:24"
+#!   MARKDOWN_DESCRIPTION="**Description:**&#10; &#10;Custom transformer désigné pour l&apos;extraction des formulaires de contact pour pour l&apos;ontario. Pour l&apos;Ontario, chaque organisation a sa propre page de formulaire pour permettre aux usagers de les contater&#10;&#10;**Dépendance: **&#10;&#10;Ce custom se connecte à l&apos;API CKAN pour extraire org_contact.fr et org_contact.en.&#10;&#10;**Input Ports**&#10;&#10;Input: Métadonnées de la province de l&apos;Ontario avec le champ organization.id défini&#10;&#10;**Output Ports**&#10;&#10;Output: Métadonnée sur laquelle on a ajouté org_contact.fr et org_contact.en&#10;&#10;**Paramètre**&#10;&#10;CKAN_ROOT: Root de la province. &#10;&#10;**Erreurs: **&#10;&#10;- ERREUR: Impossible d&apos;effectuer la requête à CKAN pour avoir les organisations --&gt; Vérifier l&apos;URL&#10;- ERREUR: Impossible d&apos;applatir le JSON pour extraire le contenu --&gt; Ne devrait pas arriver&#10;- ERREUR: Impossible d&apos;exploser la liste result --&gt; Vérifier le modèle de données&#10;"
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="37"
+#!   REPLACED_BY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="ON_CKAN_CONTACT_FORM_EXTRACTOR"
+#!   USAGE=""
+#!   USE_MARKDOWN="YES"
+#!   VIEW_POSITION="-878.134 700.007"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="100"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI TEXT_OR_ATTR CKAN_ROOT CKAN_ROOT:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="false"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL CHOICE_OR_ATTR URL_VALIDATION Yes%No URL_VALIDATION:"
+#!   DEFAULT_VALUE="Yes"
+#!   IS_STAND_ALONE="true"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="39"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;URL VALIDATION Actif&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Test insensitive à la case&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-1163.0112501125009 -1153.7621876218757"
+#!   TOP_LEFT="-1163.0112501125009 -1153.7621876218757"
+#!   BOTTOM_RIGHT="-709.01125011250087 -1154.7621876218757"
+#!   BOUNDING_RECT="-1163.0112501125009 -1153.7621876218757 454 1"
+#!   ORDER="500000000000021"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="35"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="5"
+#!   TYPE="HTTPCaller"
+#!   VERSION="2"
+#!   POSITION="190.62690626906237 -100.00100001000013"
+#!   BOUNDING_RECT="190.62690626906237 -100.00100001000013 454 71"
+#!   ORDER="500000000000002"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="_error" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADDITIONAL_PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ADDITIONAL_URL_PARAMETERS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ADVANCED_REQUEST_PARAMETERS" PARM_VALUE="FME_DISCLOSURE_OPEN"/>
+#!     <XFORM_PARM PARM_NAME="ADVANCED_RESPONSE_PARAMETERS" PARM_VALUE="FME_DISCLOSURE_OPEN"/>
+#!     <XFORM_PARM PARM_NAME="AUTH_METHOD" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="AUTH_NAMED_CONNECTION" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="AUTH_PASSWORD" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="AUTH_USERNAME" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CONNECTION_TIMEOUT_LENGTH" PARM_VALUE="60"/>
+#!     <XFORM_PARM PARM_NAME="CUSTOM_HEADERS" PARM_VALUE="User-Agent;Mozilla&lt;solidus&gt;5.0&lt;space&gt;&lt;openparen&gt;Windows&lt;space&gt;NT&lt;space&gt;10.0&lt;semicolon&gt;&lt;space&gt;Win64&lt;semicolon&gt;&lt;space&gt;x64&lt;closeparen&gt;&lt;space&gt;AppleWebKit&lt;solidus&gt;537.36&lt;space&gt;&lt;openparen&gt;KHTML&lt;comma&gt;&lt;space&gt;like&lt;space&gt;Gecko&lt;closeparen&gt;&lt;space&gt;Chrome&lt;solidus&gt;117.0.0.0&lt;space&gt;Safari&lt;solidus&gt;537.36"/>
+#!     <XFORM_PARM PARM_NAME="CUSTOM_HEADERS_GROUP" PARM_VALUE="FME_DISCLOSURE_OPEN"/>
+#!     <XFORM_PARM PARM_NAME="ERROR_ATTR" PARM_VALUE="_error"/>
+#!     <XFORM_PARM PARM_NAME="FILE_PATH_ATTR" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="FILE_TYPE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="FOLLOW_REDIRECTS" PARM_VALUE="FOLLOW_WITH_GET"/>
+#!     <XFORM_PARM PARM_NAME="HTTPURL_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="HTTP_AUTH_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="HTTP_METHOD" PARM_VALUE="GET"/>
+#!     <XFORM_PARM PARM_NAME="HTTP_RESPONSE_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="MULTIPARTS" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MULTIPART_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_DIRNAME" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_FILENAME" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="REDIRECT_AUTH" PARM_VALUE="ORIGINAL_DOMAIN_ONLY"/>
+#!     <XFORM_PARM PARM_NAME="RESPONSE_FILE_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="RESPONSE_HEADER_LIST_ATTR" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="SAVE_FILE" PARM_VALUE="Attribute"/>
+#!     <XFORM_PARM PARM_NAME="SAVE_MULTI" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="STATUS_CODE_ATTR" PARM_VALUE="_http_status_code"/>
+#!     <XFORM_PARM PARM_NAME="TARGET_ATTR" PARM_VALUE="_response_body"/>
+#!     <XFORM_PARM PARM_NAME="TARGET_ATTR_ENCODING" PARM_VALUE="auto-detect"/>
+#!     <XFORM_PARM PARM_NAME="TARGET_URL" PARM_VALUE="$(CKAN_ROOT)&lt;solidus&gt;api&lt;solidus&gt;3&lt;solidus&gt;action&lt;solidus&gt;organization_list?include_extras=True&lt;amp&gt;all_fields=True"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFER_TIMEOUT_LENGTH" PARM_VALUE="90"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="UPLOAD_BODY" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="UPLOAD_CONTENT_TYPE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="UPLOAD_FILE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="UPLOAD_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="UPLOAD_TYPE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="USE_COOKIES" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="VERIFY_SSL_CERTIFICATES" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="HTTPCaller"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="6"
+#!   TYPE="Sampler"
+#!   VERSION="5"
+#!   POSITION="162.50162501625039 -701.88221882218807"
+#!   BOUNDING_RECT="162.50162501625039 -701.88221882218807 454 71"
+#!   ORDER="500000000000003"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="SAMPLED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <OUTPUT_FEAT NAME="NOT_SAMPLED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="RATE" PARM_VALUE="1"/>
+#!     <XFORM_PARM PARM_NAME="SAMPLE_MODE" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SAMPLE_TYPE_LONG" PARM_VALUE="First N Features"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Sampler"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="9"
+#!   TYPE="AttributeKeeper"
+#!   VERSION="3"
+#!   POSITION="162.50162501625039 -503.13003130031308"
+#!   BOUNDING_RECT="162.50162501625039 -503.13003130031308 454 71"
+#!   ORDER="500000000000004"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="KEEP_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="KEEP_LIST" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeKeeper"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="12"
+#!   TYPE="Terminator"
+#!   VERSION="3"
+#!   POSITION="778.13278132781238 -503.13003130031308"
+#!   BOUNDING_RECT="778.13278132781238 -503.13003130031308 454 71"
+#!   ORDER="500000000000005"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE="ERREUR:&lt;space&gt;Impossible&lt;space&gt;d&lt;apos&gt;effectuer&lt;space&gt;la&lt;space&gt;requ&lt;u00ea&gt;te&lt;space&gt;&lt;u00e0&gt;&lt;space&gt;CKAN&lt;space&gt;pour&lt;space&gt;avoir&lt;space&gt;les&lt;space&gt;organisations"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Terminator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="14"
+#!   TYPE="JSONFlattener"
+#!   VERSION="5"
+#!   POSITION="818.75818758187688 -131.25131251312513"
+#!   BOUNDING_RECT="818.75818758187688 -131.25131251312513 454 71"
+#!   ORDER="500000000000006"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_json_error{}.message" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_json_error{}.line" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_json_error{}.column" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_json_error{}.severity" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ERROR_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ERROR_LIST_ATTR" PARM_VALUE="_json_error"/>
+#!     <XFORM_PARM PARM_NAME="FILEPATH_OR_URL" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="FLATTEN_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="INPUT_SETTINGS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="JSON_DOCUMENT" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;_response_body&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NEW_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PREFIX_STRING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="READ_FROM_FILE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="RECURSIVE" PARM_VALUE="Yes"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="JSONFlattener"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="18"
+#!   TYPE="ListExploder"
+#!   VERSION="6"
+#!   POSITION="2250.0225002250022 -383.13003130031302"
+#!   BOUNDING_RECT="2250.0225002250022 -383.13003130031302 454 71"
+#!   ORDER="500000000000009"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="ELEMENTS"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="org_contact.en" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="org_contact.fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="org_contact.en" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="org_contact.fr" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE" PARM_VALUE="Merge List Attributes"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES" PARM_VALUE="Use List Attribute Values"/>
+#!     <XFORM_PARM PARM_NAME="INCOMING_PREFIX" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="INDEX_ATTR" PARM_VALUE="_element_index"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTR" PARM_VALUE="result{}"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ListExploder"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="20"
+#!   TYPE="AttributeExposer"
+#!   VERSION="1"
+#!   POSITION="2187.5218752187529 -1116.2605626056256"
+#!   BOUNDING_RECT="2187.5218752187529 -1116.2605626056256 454 71"
+#!   ORDER="500000000000012"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="organization.id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="organization.id"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="24"
+#!   TYPE="FeatureMerger"
+#!   VERSION="18"
+#!   POSITION="2857.6476564765644 -940.63340633406324"
+#!   BOUNDING_RECT="2857.6476564765644 -940.63340633406324 483 71"
+#!   ORDER="500000000000013"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="MERGED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="organization.id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="org_contact.en" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="org_contact.fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="UNMERGED_REQUESTOR"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="organization.id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <OUTPUT_FEAT NAME="USED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="org_contact.en" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="org_contact.fr" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="numReferences" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <OUTPUT_FEAT NAME="UNUSED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="3"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="org_contact.en" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="org_contact.fr" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="4"/>
+#!     <XFORM_ATTR ATTR_NAME="organization.id" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="org_contact.en" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="org_contact.fr" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE" PARM_VALUE="Merge Supplier"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES" PARM_VALUE="Use Requestor"/>
+#!     <XFORM_PARM PARM_NAME="CLEANING_TOLERANCE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CONNECT_Z_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GENERATE_LIST_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="GEOM_TYPE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="IGNORE_NULLS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="JOIN_ATTRIBUTES_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="JOIN_KEYS" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;organization.id&lt;closeparen&gt; &lt;at&gt;Value&lt;openparen&gt;id&lt;closeparen&gt; AUTO"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_NAME" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_COUNT_ATTR" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_TYPE" PARM_VALUE="Attributes Only"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PROCESS_DUPS" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="REJECT_NULL_MISSING_KEYS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIERS_FIRST" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIER_PREFIX" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="FeatureMerger"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="16"
+#!   TYPE="AttributeExposer"
+#!   VERSION="1"
+#!   POSITION="1750.0175001750017 -191.25131251312513"
+#!   BOUNDING_RECT="1750.0175001750017 -191.25131251312513 454 71"
+#!   ORDER="500000000000008"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="result{}.id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="result{}.org_contact.en" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="result{}.org_contact.fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="result{}.id,result{}.org_contact.en,result{}.org_contact.fr"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="26"
+#!   TYPE="AttributeKeeper"
+#!   VERSION="3"
+#!   POSITION="2250.0225002250022 -659.38059380593802"
+#!   BOUNDING_RECT="2250.0225002250022 -659.38059380593802 454 71"
+#!   ORDER="500000000000017"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="org_contact.en" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="org_contact.fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="KEEP_ATTRS" PARM_VALUE="id,org_contact.en,org_contact.fr"/>
+#!     <XFORM_PARM PARM_NAME="KEEP_LIST" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeKeeper_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="32"
+#!   TYPE="Terminator"
+#!   VERSION="3"
+#!   POSITION="2886.6476564765644 -475.00475004750047"
+#!   BOUNDING_RECT="2886.6476564765644 -475.00475004750047 454 71"
+#!   ORDER="500000000000018"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE="ERREUR:&lt;space&gt;Impossible&lt;space&gt;d&lt;apos&gt;exploser&lt;space&gt;la&lt;space&gt;liste&lt;space&gt;result&lt;lf&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Terminator_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="31"
+#!   TYPE="Terminator"
+#!   VERSION="3"
+#!   POSITION="1406.2640626406264 -503.13003130031308"
+#!   BOUNDING_RECT="1406.2640626406264 -503.13003130031308 454 71"
+#!   ORDER="500000000000019"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE="ERREUR:&lt;space&gt;Impossible&lt;space&gt;d&lt;apos&gt;applatir&lt;space&gt;le&lt;space&gt;JSON&lt;space&gt;pour&lt;space&gt;extraire&lt;space&gt;le&lt;space&gt;contenu"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Terminator_3"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="35"
+#!   TYPE="Tester"
+#!   VERSION="3"
+#!   POSITION="-1125.0112501125009 -1462.5146251462509"
+#!   BOUNDING_RECT="-1125.0112501125009 -1462.5146251462509 454 71"
+#!   ORDER="500000000000020"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="PASSED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <OUTPUT_FEAT NAME="FAILED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_MSG" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="1"/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="Per Output Port"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="CASE_INSENSITIVE_TEST $(URL_VALIDATION) = yes"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="CASE_INSENSITIVE_TEST"/>
+#!     <XFORM_PARM PARM_NAME="TEST_PREVIEW_GROUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="41"
+#!   TYPE="ATTRIBUTE_UNEXPOSER"
+#!   VERSION="1"
+#!   POSITION="3590.6609066090646 -1603.1410314103143"
+#!   BOUNDING_RECT="3590.6609066090646 -1603.1410314103143 533.00106825772946 71"
+#!   ORDER="500000000000022"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_UNEXPOSER"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="Input"
+#!   POSITION="-2021.0257502575023 -1068.7606876068758"
+#!   BOUNDING_RECT="-2021.0257502575023 -1068.7606876068758 454 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="Output"
+#!   POSITION="4300.3923439234395 -1723.1410314103143"
+#!   BOUNDING_RECT="4300.3923439234395 -1723.1410314103143 454 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="36"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="35"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="15"
+#!   SOURCE_NODE="5"
+#!   TARGET_NODE="14"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="10"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 0 SAMPLED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="11"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="17"
+#!   SOURCE_NODE="14"
+#!   TARGET_NODE="16"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="19"
+#!   SOURCE_NODE="16"
+#!   TARGET_NODE="18"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="27"
+#!   SOURCE_NODE="18"
+#!   TARGET_NODE="26"
+#!   SOURCE_PORT_DESC="fo 0 ELEMENTS"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="25"
+#!   SOURCE_NODE="20"
+#!   TARGET_NODE="24"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 REQUESTOR"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="40"
+#!   SOURCE_NODE="24"
+#!   TARGET_NODE="41"
+#!   SOURCE_PORT_DESC="fo 0 MERGED"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="29"
+#!   SOURCE_NODE="26"
+#!   TARGET_NODE="24"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 1 SUPPLIER"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="38"
+#!   SOURCE_NODE="35"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 PASSED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="37"
+#!   SOURCE_NODE="35"
+#!   TARGET_NODE="20"
+#!   SOURCE_PORT_DESC="fo 0 PASSED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="1"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="43"
+#!   SOURCE_NODE="41"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="13"
+#!   SOURCE_NODE="5"
+#!   TARGET_NODE="12"
+#!   SOURCE_PORT_DESC="fo 1 &lt;lt&gt;REJECTED&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="34"
+#!   SOURCE_NODE="14"
+#!   TARGET_NODE="31"
+#!   SOURCE_PORT_DESC="fo 1 &lt;lt&gt;REJECTED&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="33"
+#!   SOURCE_NODE="18"
+#!   TARGET_NODE="32"
+#!   SOURCE_PORT_DESC="fo 1 &lt;lt&gt;REJECTED&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="44"
+#!   SOURCE_NODE="24"
+#!   TARGET_NODE="41"
+#!   SOURCE_PORT_DESC="fo 1 UNMERGED_REQUESTOR"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="42"
+#!   SOURCE_NODE="35"
+#!   TARGET_NODE="41"
+#!   SOURCE_PORT_DESC="fo 1 FAILED"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+FME_PYTHON_VERSION 37
+DEFAULT_MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_CKAN_ROOT 
+DEFAULT_MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_URL_VALIDATION Yes
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Input1697571804 Input Splitter"   INPUT FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Input"   OUTPUT FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Input"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TestFactory    FACTORY_NAME $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Tester    INPUT  FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Input"    CASE_INSENSITIVE_TEST "@EvaluateExpression(FDIV,STRING_ENCODED,$($(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_URL_VALIDATION$encode),$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Tester)" = yes ENCODED    BOOLEAN_OPERATOR OR    COMPOSITE_TEST_EXPR "1"    FEATURE_TABLE_SHIM_SUPPORT Yes    PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT    OUTPUT PASSED FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Tester_PASSED"    OUTPUT FAILED FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Tester_FAILED"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Tester PASSED Splitter"   INPUT FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Tester_PASSED"   OUTPUT FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Tester_PASSED_0_Y42YYpLJXB8="   OUTPUT FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Tester_PASSED_1_p8WEY0myvJw="
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_AttributeExposer_2    INPUT  FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Tester_PASSED_1_p8WEY0myvJw="    OUTPUT FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"
+# -------------------------------------------------------------------------
+# If we're doing LAST N features, then the multiplier comes in as 0.
+# If we're doing First N, multiplier is -1.
+# For RANDOM, we need to treat LAST N as if it was first N (i.e. have a -1)
+# That is what the ? : does in the rate multiplier.
+INCLUDE [ if { {-1} == {0} && {ORIGINAL} == {ORIGINAL} } {              puts "MACRO REAL_MODE LAST"; 	         puts "MACRO REAL_RATE 1"; 	      } else {              puts "MACRO REAL_MODE ORIGINAL";              puts "MACRO REAL_RATE [expr 1 * ( -1 ? -1 : -1 ) ]"; 	      } ]
+FACTORY_DEF {*} SamplingFactory    FACTORY_NAME $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Sampler    COMMAND_PARM_EVALUATION SINGLE_PASS    SAMPLE_RATE $(REAL_RATE)    SAMPLE_ORDER $(REAL_MODE)    FLUSH_WHEN_GROUPS_CHANGE No    INPUT  FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Tester_PASSED_0_Y42YYpLJXB8="    OUTPUT SAMPLED FEATURE_TYPE ___SAMPLED___
+# This TeeFactory is needed because Sampler will still output features if it has no OUTPUT clauses specified.
+# This way we behave nicely even if there are no output connections on the transformer. See PR#28886.
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Sampler_Sampled    INPUT FEATURE_TYPE ___SAMPLED___    OUTPUT FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Sampler_SAMPLED"
+# -------------------------------------------------------------------------
+INCLUDE [    set macroLine "MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_AttributeKeeper_7fb81a4c_9d1a_4057_ad00_f39c07c46a9d0_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_AttributeKeeper    INPUT  FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Sampler_SAMPLED"    OUTPUT { FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"        @KeepAttributes(fme_encoded,,fme_pcre_match,"^fme_$($(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_AttributeKeeper_7fb81a4c_9d1a_4057_ad00_f39c07c46a9d0_LIST_EXP)")         }
+# -------------------------------------------------------------------------
+FACTORY_DEF * HTTPFactory    FACTORY_NAME $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_HTTPCaller       INPUT  FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"    TARGET_URL "@EvaluateExpression(FDIV,STRING_ENCODED,$($(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_CKAN_ROOT$encode)<solidus>api<solidus>3<solidus>action<solidus>organization_list?include_extras=True<amp>all_fields=True,$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_HTTPCaller)"    HTTP_METHOD GET    SAVE_FILE NO    OUTPUT_FILENAME "<Unused>"    OUTPUT_DIRECTORY "<Unused>"    FILE_EXTENSION "<Unused>"    TARGET_ATTR "_response_body"    FILE_PATH_ATTR "<Unused>"    UPLOAD_FILE "<Unused>"    UPLOAD_BODY "<Unused>"    MULTIPART_UPLOAD <Unused>    UPLOAD_CONTENT_TYPE "<Unused>"    COMBINED_MULTIPART_TABLE    REQUEST_HEADER_TABLE User-Agent;Mozilla<solidus>5.0<space><openparen>Windows<space>NT<space>10.0<semicolon><space>Win64<semicolon><space>x64<closeparen><space>AppleWebKit<solidus>537.36<space><openparen>KHTML<comma><space>like<space>Gecko<closeparen><space>Chrome<solidus>117.0.0.0<space>Safari<solidus>537.36    ADDITIONAL_URL_PARAMETERS    AUTH_USERNAME "<Unused>"    AUTH_PASSWORD "<Unused>"    AUTH_METHOD "<Unused>"    TARGET_ATTRIBUTE_ENCODING auto-detect    RESPONSE_HEADER_LIST_ATTR ""    STATUS_CODE_ATTR "_http_status_code"    ERROR_ATTR "_error"    CONNECTION_TIMEOUT_LENGTH 60    TRANSFER_TIMEOUT_LENGTH 90    FOLLOW_REDIRECTS FOLLOW_WITH_GET    REDIRECT_AUTH ORIGINAL_DOMAIN_ONLY    VERIFY_SSL_CERTIFICATES No    NAMED_CONNECTION "<Unused>"    USE_COOKIES No    OUTPUT OUTPUT FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_HTTPCaller_Output"    OUTPUT REJECTED FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_HTTPCaller_<REJECTED>"
+# -------------------------------------------------------------------------
+# The default behaviour is to abort on any feature entering the transformer.
+# If Workbench has set the _WB_BYPASS_TERMINATION macro to a value of "Yes",
+# then the features will instead be passed through with a feature type of
+# __WB_BYPASS_TERMINATOR__, which Workbench will send to a visualizer or
+# somesuch.
+DEFAULT_MACRO _WB_BYPASS_TERMINATION No
+FACTORY_DEF * TestFactory    FACTORY_NAME $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Terminator    INPUT  FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_HTTPCaller_<REJECTED>"    TEST "$(_WB_BYPASS_TERMINATION)" == Yes    OUTPUT PASSED FEATURE_TYPE __WB_BYPASS_TERMINATOR__       @SupplyAttributes(_wb_termination_feature_type,@FeatureType())       @SupplyAttributes(ENCODED,_wb_termination_message,"ERREUR:<space>Impossible<space>d<apos>effectuer<space>la<space>requ<u00ea>te<space><u00e0><space>CKAN<space>pour<space>avoir<space>les<space>organisations")       @SupplyAttributes(_wb_termination_xformer,"$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Terminator")       @SupplyAttributes(_wb_termination_feature,Yes)    OUTPUT FAILED FEATURE_TYPE * @Abort(ENCODED,"ERREUR:<space>Impossible<space>d<apos>effectuer<space>la<space>requ<u00ea>te<space><u00e0><space>CKAN<space>pour<space>avoir<space>les<space>organisations")
+# -------------------------------------------------------------------------
+FACTORY_DEF * JSONQueryFactory    FACTORY_NAME $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_JSONFlattener    INPUT  FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_HTTPCaller_Output"    MODE FLATTEN    JSON_DOCUMENT "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_response_body<closeparen>,$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_JSONFlattener)"    READ_FROM_FILE NO    FILEPATH_OR_URL "<Unused>"    EXPLODE_QUERY "json"    RECURSIVE_FLATTEN YES    ERROR_LIST_ATTR "_json_error"    OUTPUT EXPLODED FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_JSONFlattener_OUTPUT"    OUTPUT REJECTED FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_JSONFlattener_<REJECTED>"
+# -------------------------------------------------------------------------
+# The default behaviour is to abort on any feature entering the transformer.
+# If Workbench has set the _WB_BYPASS_TERMINATION macro to a value of "Yes",
+# then the features will instead be passed through with a feature type of
+# __WB_BYPASS_TERMINATOR__, which Workbench will send to a visualizer or
+# somesuch.
+DEFAULT_MACRO _WB_BYPASS_TERMINATION No
+FACTORY_DEF * TestFactory    FACTORY_NAME $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Terminator_3    INPUT  FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_JSONFlattener_<REJECTED>"    TEST "$(_WB_BYPASS_TERMINATION)" == Yes    OUTPUT PASSED FEATURE_TYPE __WB_BYPASS_TERMINATOR__       @SupplyAttributes(_wb_termination_feature_type,@FeatureType())       @SupplyAttributes(ENCODED,_wb_termination_message,"ERREUR:<space>Impossible<space>d<apos>applatir<space>le<space>JSON<space>pour<space>extraire<space>le<space>contenu")       @SupplyAttributes(_wb_termination_xformer,"$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Terminator_3")       @SupplyAttributes(_wb_termination_feature,Yes)    OUTPUT FAILED FEATURE_TYPE * @Abort(ENCODED,"ERREUR:<space>Impossible<space>d<apos>applatir<space>le<space>JSON<space>pour<space>extraire<space>le<space>contenu")
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_AttributeExposer    INPUT  FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_JSONFlattener_OUTPUT"    OUTPUT FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_AttributeExposer_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF * ElementFactory    FACTORY_NAME $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_ListExploder    INPUT  FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_AttributeExposer_OUTPUT"    LIST_NAME "result{}"    ELEMENT_NUMBER_FIELD "_element_index"    CLONE_GEOMETRY    ATTR_ACCUM_MODE "HANDLE_CONFLICT"    ATTR_CONFLICT_RES "INCOMING_IF_CONFLICT"    INCOMING_PREFIX "<Unused>"    OUTPUT ELEMENT FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_ListExploder_ELEMENTS"         @RemoveAttributes(ElementFactory.baseCloned)    OUTPUT NOLIST FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_ListExploder_<REJECTED>"         @RemoveAttributes(ElementFactory.baseCloned)         fme_rejection_code MISSING_PARAMETER_LIST
+# -------------------------------------------------------------------------
+# The default behaviour is to abort on any feature entering the transformer.
+# If Workbench has set the _WB_BYPASS_TERMINATION macro to a value of "Yes",
+# then the features will instead be passed through with a feature type of
+# __WB_BYPASS_TERMINATOR__, which Workbench will send to a visualizer or
+# somesuch.
+DEFAULT_MACRO _WB_BYPASS_TERMINATION No
+FACTORY_DEF * TestFactory    FACTORY_NAME $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Terminator_2    INPUT  FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_ListExploder_<REJECTED>"    TEST "$(_WB_BYPASS_TERMINATION)" == Yes    OUTPUT PASSED FEATURE_TYPE __WB_BYPASS_TERMINATOR__       @SupplyAttributes(_wb_termination_feature_type,@FeatureType())       @SupplyAttributes(ENCODED,_wb_termination_message,"ERREUR:<space>Impossible<space>d<apos>exploser<space>la<space>liste<space>result<lf>")       @SupplyAttributes(_wb_termination_xformer,"$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Terminator_2")       @SupplyAttributes(_wb_termination_feature,Yes)    OUTPUT FAILED FEATURE_TYPE * @Abort(ENCODED,"ERREUR:<space>Impossible<space>d<apos>exploser<space>la<space>liste<space>result<lf>")
+# -------------------------------------------------------------------------
+INCLUDE [    set macroLine "MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_AttributeKeeper_2_5a95e7ae_bb45_4344_931d_0ebeaa716f160_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_AttributeKeeper_2    INPUT  FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_ListExploder_ELEMENTS"    OUTPUT { FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_AttributeKeeper_2_OUTPUT"        @KeepAttributes(fme_encoded,id,org_contact.en,org_contact.fr,fme_pcre_match,"^fme_$($(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_AttributeKeeper_2_5a95e7ae_bb45_4344_931d_0ebeaa716f160_LIST_EXP)")         }
+# -------------------------------------------------------------------------
+INCLUDE [if { {ATTRIBUTES} == {ATTRIBUTES} } {                puts "MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO ATTRIBUTES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {POLYGONS}} {                puts "MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {AGGREGATES}} {                puts "MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {POLYGONS}} {                puts "MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {AGGREGATES}} {                puts "MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} } {                puts "MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} } {                puts "MACRO $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          else {}; ]
+FACTORY_DEF {*} ReferenceFactory    FACTORY_NAME $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FeatureMerger    FLUSH_WHEN_GROUPS_CHANGE No    INPUT REFERENCER FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"    INPUT REFERENCEE FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_AttributeKeeper_2_OUTPUT"    REFERENCE_INFO $($(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO)    REFERENCE_TABLE @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>organization.id<closeparen>,$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FeatureMerger) @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>id<closeparen>,$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FeatureMerger) AUTO    ATTR_ACCUM_MODE "HANDLE_CONFLICT"    ATTR_CONFLICT_RES "REQUESTOR_IF_CONFLICT"    IGNORE_NULLS "No"    HANDLE_NULL_MISSING_KEYS_LIKE_FME2013 No    LIST_ATTRS_TO_INCLUDE { <Unused> }    LIST_ATTRS_TO_INCLUDE_MODE <Unused>    MERGE_ATTRIBUTES Yes    MANAGE_FME_TYPE Yes    MODE COMPLETE    PROCESS_DUPLICATE_REFERENCEES NO    REFERENCEES_FIRST No    REJECT_INVALID_GEOM YES    CLEANING_TOLERANCE <Unused>    OUTPUT COMPLETE FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FeatureMerger_MERGED"    OUTPUT INCOMPLETE FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FeatureMerger_UNMERGED_REQUESTOR"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Input Input Collector"   INPUT FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FeatureMerger_MERGED"   INPUT FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_FeatureMerger_UNMERGED_REQUESTOR"   INPUT FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Tester_FAILED"   OUTPUT FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Input"
+MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Output1697571804 Output Collector"   INPUT FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME)_Output"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(ON_CKAN_CONTACT_FORM_EXTRACTOR_WORKSPACE_NAME))}]

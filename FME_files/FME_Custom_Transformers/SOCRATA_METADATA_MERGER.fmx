@@ -1,0 +1,2428 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN SOCRATA_METADATA_MERGER,2,,6cac90df-d242-4f9c-9746-3b74382f0eb8,"Linked by Default",No,NO_PARALLELISM,,No,25606,YES,No,37,No,,neither
+# 
+# TRANSFORMER_END
+#!   A0_PREVIEW_IMAGE="data:image/png;base64,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"
+#!   ARCGIS_COMPATIBILITY="ARCGIS_AUTO"
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY=""
+#!   DATA_PROCESSING_TYPE="neither"
+#!   DESCRIPTION=""
+#!   DOC_EXTENTS="9262.91 2290.82"
+#!   DOC_TOP_LEFT="-6285.86 -2197.07"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="25606"
+#!   FME_DOCUMENT_GUID="6cac90df-d242-4f9c-9746-3b74382f0eb8"
+#!   FME_DOCUMENT_PRIORGUID=""
+#!   FME_LINKED_TRANSFORMER_VERSION="2"
+#!   FME_NAMES_ENCODING="windows-1252"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY=""
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2025.1.0.0 (20250704 - Build 25606 - WIN64)"
+#!   LAST_SAVE_DATE="2025-10-06T16:22:53"
+#!   MARKDOWN_DESCRIPTION=""
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="37"
+#!   REPLACED_BY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="SOCRATA_METADATA_MERGER"
+#!   USAGE=""
+#!   USE_MARKDOWN="NO"
+#!   VIEW_POSITION="-65.7901 49.3426"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="95"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI TEXT_OR_ATTR DOMAIN DOMAIN:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <USER_PARAMETERS
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbeyJuYW1lIjoiRE9NQUlOIiwicHJvbXB0IjoiRE9NQUlOOiIsInZhbHVlVHlwZSI6InN0cmluZyIsImRlZmF1bHRWYWx1ZSI6IiIsInN1cHBvcnRlZFZhbHVlVHlwZXMiOlsiZXhwcmVzc2lvbiIsImdsb2JhbFBhcmFtZXRlciJdLCJkZXByZWNhdGVkRmxhZ3MiOlsibm9uZSJdLCJ0eXBlIjoidGV4dCIsImVkaXRvciI6InBsYWludGV4dCJ9XX0="
+#! >
+#! <PARAMETER_INFO>
+#!     <INFO NAME="DOMAIN" 
+#!   DEFAULT_VALUE=""
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI TEXT_OR_ATTR DOMAIN DOMAIN:"
+#! />
+#! </PARAMETER_INFO>
+#! </USER_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="45"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Removing from original record those considaret as an Advanced View of a dataset&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="245.02184055853112 -1219.6659028239774"
+#!   TOP_LEFT="245.02184055853112 -1219.6659028239774"
+#!   BOTTOM_RIGHT="727.98515456667121 -1220.6659028239774"
+#!   BOUNDING_RECT="245.02184055853112 -1219.6659028239774 482.96331400814006 1"
+#!   ORDER="500000000001902"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{5d6ccb5f-e9e5-4443-9bee-680b43a4d280}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="11"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="46"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Transfering additional view to original resource&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="1267.0429271174132 -1354.2445829220194"
+#!   TOP_LEFT="1267.0429271174132 -1354.2445829220194"
+#!   BOTTOM_RIGHT="1750.0062411255533 -1355.2445829220194"
+#!   BOUNDING_RECT="1267.0429271174132 -1354.2445829220194 482.96331400814006 1"
+#!   ORDER="500000000001906"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{b0259055-2851-4d2e-849b-3b1132f8aa8a}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="13"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="47"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Exposing ID and resource.type&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-5625.1476453153809 -1338.5339490847632"
+#!   TOP_LEFT="-5625.1476453153809 -1338.5339490847632"
+#!   BOTTOM_RIGHT="-5171.1885275992036 -1339.5339490847632"
+#!   BOUNDING_RECT="-5625.1476453153809 -1338.5339490847632 453.95911771617716 1"
+#!   ORDER="500000000001910"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{1d5ccb28-675d-4d77-a103-4a8b87947cd1}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="15"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="48"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Exploding attributes to avoid list parser&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;1 feature per attribute&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-3238.1666352712696 -548.62635199326269"
+#!   TOP_LEFT="-3238.1666352712696 -548.62635199326269"
+#!   BOTTOM_RIGHT="-2784.2075175550926 -549.62635199326269"
+#!   BOUNDING_RECT="-3238.1666352712696 -548.62635199326269 453.95911771617716 1"
+#!   ORDER="500000000001911"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{c5834d1d-6170-468b-9cc2-16770a4c3287}"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,1"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="5"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="49"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Cleanup&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-2596.0663959684375 -679.87766450638765"
+#!   TOP_LEFT="-2596.0663959684375 -679.87766450638765"
+#!   BOTTOM_RIGHT="-2142.1072782522606 -680.87766450638765"
+#!   BOUNDING_RECT="-2596.0663959684375 -679.87766450638765 453.95911771617716 1"
+#!   ORDER="500000000001921"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{b24106e6-d8c9-47f9-a425-5c7fb215228d}"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,1"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="6"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="50"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;RegEx to remove list&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;{} in attribute name&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-2029.6544818492964 -679.87766450638765"
+#!   TOP_LEFT="-2029.6544818492964 -679.87766450638765"
+#!   BOTTOM_RIGHT="-1575.6953641331193 -680.87766450638765"
+#!   BOUNDING_RECT="-2029.6544818492964 -679.87766450638765 453.95911771617716 1"
+#!   ORDER="500000000001922"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{231f84f8-f294-43ad-8b99-084d9b5bc76a}"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,1"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="7"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="51"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Only feature regarding&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;series.dataSource.datasetUid&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-1412.2216041871861 -504.87591448888736"
+#!   TOP_LEFT="-1412.2216041871861 -504.87591448888736"
+#!   BOTTOM_RIGHT="-958.26248647100897 -505.87591448888736"
+#!   BOUNDING_RECT="-1412.2216041871861 -504.87591448888736 453.95911771617716 1"
+#!   ORDER="500000000001923"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{6b29473f-65de-4b98-8685-5596dbbace97}"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,1"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="8"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="52"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;1 feature by ID&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-837.95305460110103 -553.7164692694904"
+#!   TOP_LEFT="-837.95305460110103 -553.7164692694904"
+#!   BOTTOM_RIGHT="-383.99393688492387 -554.7164692694904"
+#!   BOUNDING_RECT="-837.95305460110103 -553.7164692694904 453.95911771617716 1"
+#!   ORDER="500000000001924"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{bf6e1d77-4974-4e02-b2cc-8b00651dcc6b}"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,1"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="12"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="53"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Removing duplicates&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;based on &lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;ID, restype,series source&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-847.28726606821579 -24.6197242929602"
+#!   TOP_LEFT="-847.28726606821579 -24.6197242929602"
+#!   BOTTOM_RIGHT="-393.32814835203862 -25.6197242929602"
+#!   BOUNDING_RECT="-847.28726606821579 -24.6197242929602 453.95911771617716 1"
+#!   ORDER="500000000001926"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{5e075855-3f3e-4c8b-b60a-55871876a30e}"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,1"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="9"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="54"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Creating attributes to be part of resource{} list&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="245.02184055853112 -80.453015959210092"
+#!   TOP_LEFT="245.02184055853112 -80.453015959210092"
+#!   BOTTOM_RIGHT="698.98095827470831 -81.453015959210092"
+#!   BOUNDING_RECT="245.02184055853112 -80.453015959210092 453.95911771617716 1"
+#!   ORDER="500000000001927"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{fb049547-590a-4f1b-aaa8-de4f7e374c07}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="10"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="55"
+#!   NAME="Searching for source dataset in JSON attributes"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="-3446.9094690946908 93.750937509375092"
+#!   ORDER="500000000001920"
+#!   PALETTE_COLOR="Color4"
+#!   BOTTOM_RIGHT="-348.31077477441431 -1147.7791119013405"
+#!   BOUNDING_RECT="-3446.9094690946908 93.750937509375092 3098.5986943202765 1241.5300494107155"
+#!   STICKY="true"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,1"
+#!   CONTENTS="5 50 19 52 49 22 9 8 37 48 35 24 26 23 7 51 6 18 36 53 "
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="5"
+#!   TYPE="AttributeExploder"
+#!   VERSION="3"
+#!   POSITION="-3238.2075175550922 -844.7750968140441"
+#!   BOUNDING_RECT="-3238.2075175550922 -844.7750968140441 454 71"
+#!   ORDER="500000000001890"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="modifyingViewUid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_attr_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_seriesID" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_NAME_LABEL" PARM_VALUE="_attr_name"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_VALUE_LABEL" PARM_VALUE="_seriesID"/>
+#!     <XFORM_PARM PARM_NAME="CASE" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="EXPLODING_TYPE_LOOKUP" PARM_VALUE="EXPLODE_AS_FEATURES"/>
+#!     <XFORM_PARM PARM_NAME="IGNORE_REGEXP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="KEEP_ATTRIBUTES" PARM_VALUE="Yes"/>
+#!     <XFORM_PARM PARM_NAME="KEEP_GEOMETRY" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="LIST_NAME" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="OAN_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExploder"/>
+#!     <XFORM_PARM PARM_NAME="EXPLODING_TYPE" PARM_IS_LOOKUP="true" PARM_VALUE="Features"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="6"
+#!   TYPE="AttributeKeeper"
+#!   VERSION="3"
+#!   POSITION="-2558.0663959684375 -813.62835201326277"
+#!   BOUNDING_RECT="-2558.0663959684375 -813.62835201326277 454 71"
+#!   ORDER="500000000001891"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_attr_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_seriesID" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="CREATE_BULK_MODE_FEATURES" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="KEEP_ATTRS" PARM_VALUE="_seriesID,id,resource.type,_attr_name"/>
+#!     <XFORM_PARM PARM_NAME="KEEP_LIST" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_ON_ATTRIBUTE_CHANGE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeKeeper_4"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="7"
+#!   TYPE="StringReplacer"
+#!   VERSION="5"
+#!   POSITION="-1991.6544818492964 -813.62835201326277"
+#!   BOUNDING_RECT="-1991.6544818492964 -813.62835201326277 454 71"
+#!   ORDER="500000000001892"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_attr_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_seriesID" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="CASE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="FIND_TEXT" PARM_VALUE="&lt;opencurly&gt;&lt;openbracket&gt;0-9&lt;closebracket&gt;+&lt;closecurly&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NO_MATCH" PARM_VALUE="_FME_NO_OP_"/>
+#!     <XFORM_PARM PARM_NAME="NO_MATCH_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REGEXP" PARM_VALUE="YES"/>
+#!     <XFORM_PARM PARM_NAME="REPLACE_TEXT" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="SRC_ATTRS" PARM_VALUE="_attr_name"/>
+#!     <XFORM_PARM PARM_NAME="TEST_STRING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="StringReplacer"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="8"
+#!   TYPE="Tester"
+#!   VERSION="4"
+#!   POSITION="-1412.2216041871861 -844.7750968140441"
+#!   BOUNDING_RECT="-1412.2216041871861 -844.7750968140441 454 71"
+#!   ORDER="500000000001896"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="PASSED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_attr_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_seriesID" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="FAILED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.type" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_attr_name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_seriesID" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_MSG" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="ACROSS_OUTPUT_PORTS"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST &lt;at&gt;Value&lt;openparen&gt;_attr_name&lt;closeparen&gt; = displayFormat.visualizationCanvasMetadata.vifs.series.dataSource.datasetUid"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="TEST"/>
+#!     <XFORM_PARM PARM_NAME="TEST_PREVIEW_GROUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester_7"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="9"
+#!   TYPE="DuplicateFilter"
+#!   VERSION="6"
+#!   POSITION="-847.32814835203862 -319.56164752920517"
+#!   BOUNDING_RECT="-847.32814835203862 -319.56164752920517 454 71"
+#!   ORDER="500000000001898"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="UNIQUE"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_attr_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_seriesID" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="DUPLICATE"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.type" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_attr_name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_seriesID" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="INPUT_ORDERED_CHOICE_LOOKUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="KEYATTR" PARM_VALUE="_seriesID id resource.type"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="PER_OUTPUT_PORT"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="DuplicateFilter"/>
+#!     <XFORM_PARM PARM_NAME="INPUT_ORDERED_CHOICE" PARM_IS_LOOKUP="true" PARM_VALUE="No"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="10"
+#!   TYPE="AttributeCreator"
+#!   VERSION="10"
+#!   POSITION="245.02184055853112 -379.56164752920512"
+#!   BOUNDING_RECT="245.02184055853112 -379.56164752920512 454 71"
+#!   ORDER="500000000001900"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="format" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource.type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_attr_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_seriesID" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; url SET_TO $(DOMAIN)&lt;solidus&gt;datasets&lt;solidus&gt;&lt;at&gt;Value&lt;openparen&gt;id&lt;closeparen&gt; varchar&lt;openparen&gt;200&lt;closeparen&gt;  format SET_TO HTML varchar&lt;openparen&gt;200&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE" PARM_VALUE="NO_OP"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_MODIFIED_ATTRIBUTE_TYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_6"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_IS_LOOKUP="true" PARM_VALUE="No Substitution"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="11"
+#!   TYPE="FeatureMerger"
+#!   VERSION="21"
+#!   POSITION="245.02184055853112 -1459.4072335706176"
+#!   BOUNDING_RECT="245.02184055853112 -1459.4072335706176 483 71"
+#!   ORDER="500000000001901"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="MERGED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="modifyingViewUid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_attr_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_seriesID" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="UNMERGED_REQUESTOR"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.type" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="modifyingViewUid" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <OUTPUT_FEAT NAME="USED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.type" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_attr_name" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_seriesID" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="numReferences" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <OUTPUT_FEAT NAME="UNUSED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="3"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.type" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="_attr_name" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="_seriesID" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="4"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.type" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="modifyingViewUid" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="_attr_name" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="_seriesID" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE" PARM_VALUE="Merge Supplier"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES_LOOKUP" PARM_VALUE="REQUESTOR_IF_CONFLICT"/>
+#!     <XFORM_PARM PARM_NAME="CLEANING_TOLERANCE_LOOKUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CONNECT_Z_MODE_LOOKUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GENERATE_LIST_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="GEOM_TYPE_VAL" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_PROCESSING_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="IGNORE_NULLS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="JOIN_ATTRIBUTES_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="JOIN_KEYS" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;id&lt;closeparen&gt; &lt;at&gt;Value&lt;openparen&gt;id&lt;closeparen&gt; AUTO"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE_MODE_LU" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_NAME" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_COUNT_ATTR" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_TYPE_VAL" PARM_VALUE="ATTRIBUTES"/>
+#!     <XFORM_PARM PARM_NAME="MODE_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="ACROSS_OUTPUT_PORTS"/>
+#!     <XFORM_PARM PARM_NAME="PROCESS_DUPS" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="REJECT_NULL_MISSING_KEYS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIERS_FIRST" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIER_PREFIX" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="FeatureMerger"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES" PARM_IS_LOOKUP="true" PARM_VALUE="Use Requestor"/>
+#!     <XFORM_PARM PARM_NAME="CLEANING_TOLERANCE" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CONNECT_Z_MODE" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GEOM_TYPE" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE_MODE" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_TYPE" PARM_IS_LOOKUP="true" PARM_VALUE="Attributes Only"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="12"
+#!   TYPE="DuplicateFilter"
+#!   VERSION="6"
+#!   POSITION="-799.95305460110103 -687.46715677636541"
+#!   BOUNDING_RECT="-799.95305460110103 -687.46715677636541 454 71"
+#!   ORDER="500000000001904"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="UNIQUE"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_attr_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_seriesID" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="DUPLICATE"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.type" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_attr_name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_seriesID" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="INPUT_ORDERED_CHOICE_LOOKUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="KEYATTR" PARM_VALUE="id"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="PER_OUTPUT_PORT"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="DuplicateFilter_2"/>
+#!     <XFORM_PARM PARM_NAME="INPUT_ORDERED_CHOICE" PARM_IS_LOOKUP="true" PARM_VALUE="No"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="13"
+#!   TYPE="FeatureMerger"
+#!   VERSION="21"
+#!   POSITION="1267.0429271174132 -1548.7696876968771"
+#!   BOUNDING_RECT="1267.0429271174132 -1548.7696876968771 483 71"
+#!   ORDER="500000000001905"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="MERGED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="modifyingViewUid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="format" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_seriesID" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="advancedViewResources{}.url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="advancedViewResources{}.format" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="UNMERGED_REQUESTOR"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.type" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="modifyingViewUid" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <OUTPUT_FEAT NAME="USED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="format" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_seriesID" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="numReferences" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <OUTPUT_FEAT NAME="UNUSED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="3"/>
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="format" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="_seriesID" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="4"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.type" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="modifyingViewUid" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="format" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="_seriesID" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE" PARM_VALUE="Merge Supplier"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES_LOOKUP" PARM_VALUE="REQUESTOR_IF_CONFLICT"/>
+#!     <XFORM_PARM PARM_NAME="CLEANING_TOLERANCE_LOOKUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CONNECT_Z_MODE_LOOKUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GENERATE_LIST_GROUP" PARM_VALUE="YES"/>
+#!     <XFORM_PARM PARM_NAME="GEOM_TYPE_VAL" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_PROCESSING_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="IGNORE_NULLS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="JOIN_ATTRIBUTES_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="JOIN_KEYS" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;id&lt;closeparen&gt; &lt;at&gt;Value&lt;openparen&gt;_seriesID&lt;closeparen&gt; AUTO"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE" PARM_VALUE="format url"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE_MODE_LU" PARM_VALUE="SELECTED"/>
+#!     <XFORM_PARM PARM_NAME="LIST_NAME" PARM_VALUE="advancedViewResources"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_COUNT_ATTR" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_TYPE_VAL" PARM_VALUE="ATTRIBUTES"/>
+#!     <XFORM_PARM PARM_NAME="MODE_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="ACROSS_OUTPUT_PORTS"/>
+#!     <XFORM_PARM PARM_NAME="PROCESS_DUPS" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="REJECT_NULL_MISSING_KEYS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIERS_FIRST" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIER_PREFIX" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="FeatureMerger_2"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES" PARM_IS_LOOKUP="true" PARM_VALUE="Use Requestor"/>
+#!     <XFORM_PARM PARM_NAME="CLEANING_TOLERANCE" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CONNECT_Z_MODE" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GEOM_TYPE" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE_MODE" PARM_IS_LOOKUP="true" PARM_VALUE="Selected Attributes"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_TYPE" PARM_IS_LOOKUP="true" PARM_VALUE="Attributes Only"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="14"
+#!   TYPE="AttributeKeeper"
+#!   VERSION="3"
+#!   POSITION="840.07019456636408 -773.78320941057575"
+#!   BOUNDING_RECT="840.07019456636408 -773.78320941057575 454 71"
+#!   ORDER="500000000001907"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="format" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_seriesID" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="CREATE_BULK_MODE_FEATURES" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="KEEP_ATTRS" PARM_VALUE="name,url,protocol,format,resourceType_fr,_seriesID,resourceType_en"/>
+#!     <XFORM_PARM PARM_NAME="KEEP_LIST" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_ON_ATTRIBUTE_CHANGE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeKeeper_5"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="15"
+#!   TYPE="AttributeExposer"
+#!   VERSION="2"
+#!   POSITION="-5587.1476453153809 -1472.2846365916384"
+#!   BOUNDING_RECT="-5587.1476453153809 -1472.2846365916384 454 71"
+#!   ORDER="500000000001883"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="modifyingViewUid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="resource.type,,id,,modifyingViewUid,"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="16"
+#!   TYPE="Terminator"
+#!   VERSION="3"
+#!   POSITION="686.79414864324076 -2126.0654019066874"
+#!   BOUNDING_RECT="686.79414864324076 -2126.0654019066874 454 71"
+#!   ORDER="500000000001925"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE="Translation&lt;space&gt;Terminated"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Terminator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="17"
+#!   TYPE="Terminator"
+#!   VERSION="3"
+#!   POSITION="2443.0617113188669 -2087.1919245508252"
+#!   BOUNDING_RECT="2443.0617113188669 -2087.1919245508252 454 71"
+#!   ORDER="500000000001933"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE="Translation&lt;space&gt;Terminated"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Terminator_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="18"
+#!   TYPE="Tester"
+#!   VERSION="4"
+#!   POSITION="-3306.2830628306288 -232.37253945513714"
+#!   BOUNDING_RECT="-3306.2830628306288 -232.37253945513714 454 71"
+#!   ORDER="500000000001935"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="PASSED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="modifyingViewUid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="FAILED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.type" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="modifyingViewUid" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_MSG" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="ACROSS_OUTPUT_PORTS"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST &lt;at&gt;Value&lt;openparen&gt;modifyingViewUid&lt;closeparen&gt; != &quot;&quot;"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="TEST"/>
+#!     <XFORM_PARM PARM_NAME="TEST_PREVIEW_GROUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="19"
+#!   TYPE="AttributeRenamer"
+#!   VERSION="5"
+#!   POSITION="-2558.0663959684375 -292.37253945513714"
+#!   BOUNDING_RECT="-2558.0663959684375 -292.37253945513714 454 71"
+#!   ORDER="500000000001936"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25606"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_seriesID" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource.type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="modifyingViewUid _seriesID RENAME_SET_DEFAULT "/>
+#!     <XFORM_PARM PARM_NAME="KEEP_RENAMED_ONLY" PARM_VALUE="no"/>
+#!     <XFORM_PARM PARM_NAME="MISSING_INPUT_ATTRS" PARM_VALUE="PRESERVE"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRenamer"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="Input"
+#!   POSITION="-6285.8581292888002 -1472.2846365916384"
+#!   BOUNDING_RECT="-6285.8581292888002 -1472.2846365916384 454 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="Output"
+#!   POSITION="2523.0515463049378 -1381.9952704288944"
+#!   BOUNDING_RECT="2523.0515463049378 -1381.9952704288944 454 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="4"
+#!   NAME="UnmergedAdvancedView"
+#!   POSITION="2443.0617113188669 -1795.7441162376895"
+#!   BOUNDING_RECT="2443.0617113188669 -1795.7441162376895 454 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="21"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="15"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="22"
+#!   SOURCE_NODE="5"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="23"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="24"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="8"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="25"
+#!   SOURCE_NODE="8"
+#!   TARGET_NODE="12"
+#!   SOURCE_PORT_DESC="fo 0 PASSED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="26"
+#!   SOURCE_NODE="8"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 0 PASSED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="1"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="27"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="10"
+#!   SOURCE_PORT_DESC="fo 0 UNIQUE"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="28"
+#!   SOURCE_NODE="10"
+#!   TARGET_NODE="14"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="29"
+#!   SOURCE_NODE="12"
+#!   TARGET_NODE="11"
+#!   SOURCE_PORT_DESC="fo 0 UNIQUE"
+#!   TARGET_PORT_DESC="fi 1 SUPPLIER"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="30"
+#!   SOURCE_NODE="13"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 MERGED"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="31"
+#!   SOURCE_NODE="14"
+#!   TARGET_NODE="13"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 1 SUPPLIER"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="33"
+#!   SOURCE_NODE="15"
+#!   TARGET_NODE="18"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="34"
+#!   SOURCE_NODE="15"
+#!   TARGET_NODE="11"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 REQUESTOR"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="1"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="35"
+#!   SOURCE_NODE="15"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="2"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="36"
+#!   SOURCE_NODE="18"
+#!   TARGET_NODE="19"
+#!   SOURCE_PORT_DESC="fo 0 PASSED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="37"
+#!   SOURCE_NODE="19"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="38"
+#!   SOURCE_NODE="19"
+#!   TARGET_NODE="12"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="1"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="39"
+#!   SOURCE_NODE="11"
+#!   TARGET_NODE="13"
+#!   SOURCE_PORT_DESC="fo 1 UNMERGED_REQUESTOR"
+#!   TARGET_PORT_DESC="fi 0 REQUESTOR"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="40"
+#!   SOURCE_NODE="13"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 1 UNMERGED_REQUESTOR"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="41"
+#!   SOURCE_NODE="11"
+#!   TARGET_NODE="16"
+#!   SOURCE_PORT_DESC="fo 3 UNUSED_SUPPLIER"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="42"
+#!   SOURCE_NODE="13"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="fo 3 UNUSED_SUPPLIER"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="43"
+#!   SOURCE_NODE="11"
+#!   TARGET_NODE="16"
+#!   SOURCE_PORT_DESC="fo 4 &lt;lt&gt;REJECTED&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="44"
+#!   SOURCE_NODE="13"
+#!   TARGET_NODE="17"
+#!   SOURCE_PORT_DESC="fo 4 &lt;lt&gt;REJECTED&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+# ============================================================================
+DEFAULT_MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_DOMAIN 
+
+DEFAULT_MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FME_DATA_REPOSITORY 
+
+DEFAULT_MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FME_ENGINE 
+
+DEFAULT_MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FME_JOB_ID 
+
+DEFAULT_MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FME_SECURITY_ROLES 
+
+DEFAULT_MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FME_SECURITY_USER 
+
+DEFAULT_MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FME_SERVER_DEST_DIR 
+
+DEFAULT_MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FME_SERVER_HOST 
+
+DEFAULT_MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FME_SERVER_PORT 
+
+DEFAULT_MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FME_SERVER_REQUEST_HEADERS 
+
+DEFAULT_MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FME_SERVER_REQUEST_METHOD 
+
+DEFAULT_MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FME_SERVER_REQUEST_PARAMETERS 
+
+DEFAULT_MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FME_SERVER_REQUEST_URI 
+
+DEFAULT_MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER 
+
+DEFAULT_MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER_ID 
+
+DEFAULT_MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FME_SERVER_WEB_URL 
+
+DEFAULT_MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_BACKUP 
+
+DEFAULT_MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DASHBOARD 
+
+DEFAULT_MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DATA 
+
+DEFAULT_MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_ENGINE 
+
+DEFAULT_MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_LOG 
+
+DEFAULT_MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_SYSTEM 
+
+DEFAULT_MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FME_SHAREDRESOURCE_TEMP 
+
+DEFAULT_MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FME_TOPIC 
+
+DEFAULT_MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FME_TOPIC_MESSAGE 
+
+# ============================================================================
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO SOCRATA_METADATA_MERGER_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Input1759782173 Input Splitter"   INPUT FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Input"   OUTPUT FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Input"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeExposer_2 }    INPUT  FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Input"    OUTPUT { FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"          }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeExposer_2 OUTPUT Splitter"   INPUT FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"   OUTPUT FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT_0_fG6xU6DXJPg="   OUTPUT FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT_1_0ujZVMTRjPk="   OUTPUT FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT_2_A7LJBEJSdCc="
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TestFactory    FACTORY_NAME { $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Tester }    INPUT  FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT_0_fG6xU6DXJPg="    TEST { "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>modifyingViewUid<closeparen>,$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Tester)" != "" ENCODED }    BOOLEAN_OPERATOR { OR }    COMPOSITE_TEST_EXPR { "<Unused>" }    PRESERVE_FEATURE_ORDER { ACROSS_OUTPUT_PORTS }    OUTPUT { PASSED FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Tester_PASSED"         }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY_NAME { $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeRenamer }    INPUT  FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Tester_PASSED" 	ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    MISSING_INPUT_ATTR_HANDLING { RENAME_SET_DEFAULT PRESERVE }    KEEP_OUTPUT_ATTRS_ONLY { no } 	ATTR_ACTION { "modifyingViewUid" "_seriesID" "RENAME_SET_DEFAULT" "" }    OUTPUT { OUTPUT FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeRenamer_OUTPUT"        }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeRenamer OUTPUT Splitter"   INPUT FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeRenamer_OUTPUT"   OUTPUT FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeRenamer_OUTPUT_0_Bw1MYF1nogE="   OUTPUT FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeRenamer_OUTPUT_1_aiEHpoFCoRo="
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttributeFactory    FACTORY_NAME { $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeExploder }    INPUT  FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT_2_A7LJBEJSdCc="    ATTR_NAME_LABEL { "_attr_name" }    ATTR_VALUE_LABEL { "_seriesID" }    KEEP_GEOMETRY { No }    KEEP_ATTRIBUTES { Yes }    IGNORE_ATTRIBUTES_CONTAINING_REGEX {  }    IGNORE_ATTRIBUTES_CASE_SENSITIVE { No }    EXPLODING_TYPE { EXPLODE_AS_FEATURES }    LIST_NAME { "<Unused>" }    COMMAND_PARM_EVALUATION SINGLE_PASS    OUTPUT { EXPLODED FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeExploder_OUTPUT"        }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttributeKeeperFactory    FACTORY_NAME { $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeKeeper_4 }    INPUT  FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeExploder_OUTPUT"    KEEP_ATTRS { _seriesID,id,resource.type,_attr_name }    KEEP_LISTS {  }    KEEP_FME_ATTRIBUTES Yes    BUILD_FEATURE_TABLES { NO }    OUTPUT_ON_ATTRIBUTE_CHANGE { <Unused> }    OUTPUT { OUTPUT FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeKeeper_4_OUTPUT"        }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} StringReplacerFactory    FACTORY_NAME { $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_StringReplacer }    INPUT  FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeKeeper_4_OUTPUT"    USE_REGEX { YES }    CASE_SENSITIVE { NO }    SOURCE_ATTRIBUTES { _attr_name }    FIND_TEXT { "<opencurly><openbracket>0-9<closebracket>+<closecurly>" }    REPLACE_TEXT { "" }    REPLACE_NO_MATCH { "_FME_NO_OP_" }    OUTPUT { OUTPUT FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_StringReplacer_OUTPUT"          }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TestFactory    FACTORY_NAME { $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Tester_7 }    INPUT  FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_StringReplacer_OUTPUT"    TEST { "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_attr_name<closeparen>,$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Tester_7)" = displayFormat.visualizationCanvasMetadata.vifs.series.dataSource.datasetUid ENCODED }    BOOLEAN_OPERATOR { OR }    COMPOSITE_TEST_EXPR { "<Unused>" }    PRESERVE_FEATURE_ORDER { ACROSS_OUTPUT_PORTS }    OUTPUT { PASSED FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Tester_7_PASSED"         }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Tester_7 PASSED Splitter"   INPUT FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Tester_7_PASSED"   OUTPUT FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Tester_7_PASSED_0_xR87HKi/3xM="   OUTPUT FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Tester_7_PASSED_1_7gGCb6VrrzM="
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} DuplicateRemoverFactory    FACTORY_NAME { $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_DuplicateFilter_2 }    COMMAND_PARM_EVALUATION SINGLE_PASS    SUPPORTS_FEATURE_TABLES    INPUT  FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Tester_7_PASSED_0_xR87HKi/3xM="    INPUT  FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeRenamer_OUTPUT_1_aiEHpoFCoRo="    KEY_ATTRIBUTES { id }    INPUT_IS_ORDERED { NO }    PRESERVE_FEATURE_ORDER { PER_OUTPUT_PORT }    OUTPUT { UNIQUE FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_DuplicateFilter_2_UNIQUE"         }
+# -------------------------------------------------------------------------
+INCLUDE [if { {ATTRIBUTES} == {ATTRIBUTES} } {                puts "MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO ATTRIBUTES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {POLYGONS}} {                puts "MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {AGGREGATES}} {                puts "MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {POLYGONS}} {                puts "MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {AGGREGATES}} {                puts "MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} } {                puts "MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} } {                puts "MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          else {}; ]
+FACTORY_DEF {*} ReferenceFactory    FACTORY_NAME { $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger }    FLUSH_WHEN_GROUPS_CHANGE { <Unused> }    INPUT REFERENCER FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT_1_0ujZVMTRjPk="    INPUT REFERENCEE FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_DuplicateFilter_2_UNIQUE"    REFERENCE_INFO { $($(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO) }    REFERENCE_TABLE { @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>id<closeparen>,$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger) @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>id<closeparen>,$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger) AUTO }    ATTR_ACCUM_MODE { "HANDLE_CONFLICT" }    ATTR_CONFLICT_RES { "REQUESTOR_IF_CONFLICT" }    IGNORE_NULLS { "No" }    HANDLE_NULL_MISSING_KEYS_LIKE_FME2013 { No }    LIST_ATTRS_TO_INCLUDE { <Unused> }    LIST_ATTRS_TO_INCLUDE_MODE { <Unused> }    MERGE_ATTRIBUTES Yes    MANAGE_FME_TYPE Yes    MODE COMPLETE    PROCESS_DUPLICATE_REFERENCEES { NO }    REFERENCEES_FIRST { No }    REJECT_INVALID_GEOM YES    CLEANING_TOLERANCE { <Unused> }    PRESERVE_FEATURE_ORDER { ACROSS_OUTPUT_PORTS }    COMPARE_WHITESPACE Yes    OUTPUT { INCOMPLETE FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_UNMERGED_REQUESTOR"         }    OUTPUT { UNREFERENCED FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_UNUSED_SUPPLIER"         }    OUTPUT { REJECTED FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_<REJECTED>"         }
+# -------------------------------------------------------------------------
+# The default behaviour is to abort on any feature entering the transformer.
+# If Workbench has set the _WB_BYPASS_TERMINATION macro to a value of "Yes",
+# then the features will instead be passed through with a feature type of
+# __WB_BYPASS_TERMINATOR__, which Workbench will send to a visualizer or
+# somesuch.
+DEFAULT_MACRO _WB_BYPASS_TERMINATION No
+FACTORY_DEF {*} TestFactory    FACTORY_NAME { $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Terminator }    INPUT  FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_UNUSED_SUPPLIER"    INPUT  FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_<REJECTED>"    TEST { "$(_WB_BYPASS_TERMINATION)" == Yes }    OUTPUT { PASSED FEATURE_TYPE __WB_BYPASS_TERMINATOR__       @SupplyAttributes(_wb_termination_feature_type,@FeatureType())       @SupplyAttributes(ENCODED,_wb_termination_message,"Translation<space>Terminated")       @SupplyAttributes(_wb_termination_xformer,"$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Terminator")       @SupplyAttributes(_wb_termination_feature,Yes) }    OUTPUT { FAILED FEATURE_TYPE * @Abort(ENCODED,"Translation<space>Terminated") }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} DuplicateRemoverFactory    FACTORY_NAME { $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_DuplicateFilter }    COMMAND_PARM_EVALUATION SINGLE_PASS    SUPPORTS_FEATURE_TABLES    INPUT  FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Tester_7_PASSED_1_7gGCb6VrrzM="    INPUT  FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeRenamer_OUTPUT_0_Bw1MYF1nogE="    KEY_ATTRIBUTES { _seriesID id resource.type }    INPUT_IS_ORDERED { NO }    PRESERVE_FEATURE_ORDER { PER_OUTPUT_PORT }    OUTPUT { UNIQUE FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_DuplicateFilter_UNIQUE"         }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME { $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeCreator_6 }    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_DuplicateFilter_UNIQUE"    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    NUM_OF_COLUMNS 5    ATTR_ACTION { "" "url" "SET_TO" "$($(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_DOMAIN$encode)<solidus>datasets<solidus><at>Value<openparen>id<closeparen>" "varchar<openparen>200<closeparen>" }      ATTR_ACTION { "" "format" "SET_TO" "HTML" "varchar<openparen>200<closeparen>" }    OUTPUT { OUTPUT FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeCreator_6_OUTPUT"        }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttributeKeeperFactory    FACTORY_NAME { $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeKeeper_5 }    INPUT  FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeCreator_6_OUTPUT"    KEEP_ATTRS { name,url,protocol,format,resourceType_fr,_seriesID,resourceType_en }    KEEP_LISTS {  }    KEEP_FME_ATTRIBUTES Yes    BUILD_FEATURE_TABLES { NO }    OUTPUT_ON_ATTRIBUTE_CHANGE { <Unused> }    OUTPUT { OUTPUT FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeKeeper_5_OUTPUT"        }
+# -------------------------------------------------------------------------
+INCLUDE [if { {ATTRIBUTES} == {ATTRIBUTES} } {                puts "MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO ATTRIBUTES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {POLYGONS}} {                puts "MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {AGGREGATES}} {                puts "MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {POLYGONS}} {                puts "MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_AND_ATTR_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {AGGREGATES}} {                puts "MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_AND_ATTR_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} } {                puts "MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} } {                puts "MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          else {}; ]
+FACTORY_DEF {*} ReferenceFactory    FACTORY_NAME { $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_2 }    FLUSH_WHEN_GROUPS_CHANGE { <Unused> }    INPUT REFERENCER FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_UNMERGED_REQUESTOR"    INPUT REFERENCEE FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeKeeper_5_OUTPUT"    REFERENCE_INFO { $($(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO) }    REFERENCE_TABLE { @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>id<closeparen>,$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_2) @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_seriesID<closeparen>,$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_2) AUTO }    ATTR_ACCUM_MODE { "HANDLE_CONFLICT" }    ATTR_CONFLICT_RES { "REQUESTOR_IF_CONFLICT" }    IGNORE_NULLS { "No" }    HANDLE_NULL_MISSING_KEYS_LIKE_FME2013 { No }    LIST_NAME { "advancedViewResources" }    LIST_ATTRS_TO_INCLUDE { format url }    LIST_ATTRS_TO_INCLUDE_MODE { SELECTED }    MERGE_ATTRIBUTES Yes    MANAGE_FME_TYPE Yes    MODE COMPLETE    PROCESS_DUPLICATE_REFERENCEES { NO }    REFERENCEES_FIRST { No }    REJECT_INVALID_GEOM YES    CLEANING_TOLERANCE { <Unused> }    PRESERVE_FEATURE_ORDER { ACROSS_OUTPUT_PORTS }    COMPARE_WHITESPACE Yes    OUTPUT { COMPLETE FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_2_MERGED"         }    OUTPUT { INCOMPLETE FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_2_UNMERGED_REQUESTOR"         }    OUTPUT { UNREFERENCED FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_2_UNUSED_SUPPLIER"         }    OUTPUT { REJECTED FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_2_<REJECTED>"         }
+# -------------------------------------------------------------------------
+# The default behaviour is to abort on any feature entering the transformer.
+# If Workbench has set the _WB_BYPASS_TERMINATION macro to a value of "Yes",
+# then the features will instead be passed through with a feature type of
+# __WB_BYPASS_TERMINATOR__, which Workbench will send to a visualizer or
+# somesuch.
+DEFAULT_MACRO _WB_BYPASS_TERMINATION No
+FACTORY_DEF {*} TestFactory    FACTORY_NAME { $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Terminator_2 }    INPUT  FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_2_<REJECTED>"    TEST { "$(_WB_BYPASS_TERMINATION)" == Yes }    OUTPUT { PASSED FEATURE_TYPE __WB_BYPASS_TERMINATOR__       @SupplyAttributes(_wb_termination_feature_type,@FeatureType())       @SupplyAttributes(ENCODED,_wb_termination_message,"Translation<space>Terminated")       @SupplyAttributes(_wb_termination_xformer,"$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Terminator_2")       @SupplyAttributes(_wb_termination_feature,Yes) }    OUTPUT { FAILED FEATURE_TYPE * @Abort(ENCODED,"Translation<space>Terminated") }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Output1759782173 Output Collector"   INPUT FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_2_MERGED"   INPUT FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_2_UNMERGED_REQUESTOR"   OUTPUT FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Output"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_UnmergedAdvancedView1759782173 Output Collector"   INPUT FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_2_UNUSED_SUPPLIER"   OUTPUT FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_UnmergedAdvancedView"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME))}]
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN SOCRATA_METADATA_MERGER,1,,9c9e01db-dc5d-4f82-8947-5d2bcffd7a6f,"Linked by Default",No,NO_PARALLELISM,,No,20200,YES,No,37,No,
+# 
+# TRANSFORMER_END
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY=""
+#!   DESCRIPTION=""
+#!   DOC_EXTENTS="9262.91 2290.82"
+#!   DOC_TOP_LEFT="-6285.86 -2197.07"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="20200"
+#!   FME_DOCUMENT_GUID="9c9e01db-dc5d-4f82-8947-5d2bcffd7a6f"
+#!   FME_DOCUMENT_PRIORGUID="a33cbebf-e45b-485d-9e23-0023e725b769,8640ff2b-0008-4eb1-b1a1-7a611c8ee057,c0b13ca9-b40d-4fb3-93b8-648a47e34b4a,f8956103-e1c1-4089-ac6e-e90ddf0dc565,adb1cd5a-1232-4204-8447-95e732b5e5d4,e1a14fc1-3a7c-4565-98e3-8d29603b0057,b829b1cd-2849-4789-bafb-28f42f3434ba,af75169e-9ff9-4d75-8d15-036d747541cb"
+#!   FME_LINKED_TRANSFORMER_VERSION="1"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY=""
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2020.0.0.0 (20200309 - Build 20200 - WIN32)"
+#!   LAST_SAVE_DATE="2022-03-11T11:36:00"
+#!   MARKDOWN_DESCRIPTION=""
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="37"
+#!   REPLACED_BY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="SOCRATA_METADATA_MERGER"
+#!   USAGE=""
+#!   USE_MARKDOWN="NO"
+#!   VIEW_POSITION="-1144.75 365.135"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="95"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI TEXT_OR_ATTR DOMAIN DOMAIN:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="45"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Removing from original record those considaret as an Advanced View of a dataset&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="245.02184055853112 -1219.6659028239774"
+#!   TOP_LEFT="245.02184055853112 -1219.6659028239774"
+#!   BOTTOM_RIGHT="728.02184055853115 -1220.6659028239774"
+#!   BOUNDING_RECT="245.02184055853112 -1219.6659028239774 483 1"
+#!   ORDER="500000000001902"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="11"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="46"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Transfering additional view to original resource&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="1267.0429271174132 -1354.2445829220194"
+#!   TOP_LEFT="1267.0429271174132 -1354.2445829220194"
+#!   BOTTOM_RIGHT="1750.0429271174132 -1355.2445829220194"
+#!   BOUNDING_RECT="1267.0429271174132 -1354.2445829220194 483 1"
+#!   ORDER="500000000001906"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="13"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="47"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Exposing ID and resource.type&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-5625.1476453153809 -1338.5339490847632"
+#!   TOP_LEFT="-5625.1476453153809 -1338.5339490847632"
+#!   BOTTOM_RIGHT="-5171.1476453153809 -1339.5339490847632"
+#!   BOUNDING_RECT="-5625.1476453153809 -1338.5339490847632 454 1"
+#!   ORDER="500000000001910"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="15"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="48"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Exploding attributes to avoid list parser&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;1 feature per attribute&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-3238.1666352712696 -548.62635199326269"
+#!   TOP_LEFT="-3238.1666352712696 -548.62635199326269"
+#!   BOTTOM_RIGHT="-2784.1666352712696 -549.62635199326269"
+#!   BOUNDING_RECT="-3238.1666352712696 -548.62635199326269 454 1"
+#!   ORDER="500000000001911"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="5"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="49"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Cleanup&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-2596.0663959684375 -679.87766450638765"
+#!   TOP_LEFT="-2596.0663959684375 -679.87766450638765"
+#!   BOTTOM_RIGHT="-2142.0663959684375 -680.87766450638765"
+#!   BOUNDING_RECT="-2596.0663959684375 -679.87766450638765 454 1"
+#!   ORDER="500000000001921"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="6"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="50"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;RegEx to remove list&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;{} in attribute name&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-2029.6544818492964 -679.87766450638765"
+#!   TOP_LEFT="-2029.6544818492964 -679.87766450638765"
+#!   BOTTOM_RIGHT="-1575.6544818492964 -680.87766450638765"
+#!   BOUNDING_RECT="-2029.6544818492964 -679.87766450638765 454 1"
+#!   ORDER="500000000001922"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="7"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="51"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Only feature regarding&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;series.dataSource.datasetUid&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-1412.2216041871861 -504.87591448888736"
+#!   TOP_LEFT="-1412.2216041871861 -504.87591448888736"
+#!   BOTTOM_RIGHT="-958.22160418718613 -505.87591448888736"
+#!   BOUNDING_RECT="-1412.2216041871861 -504.87591448888736 454 1"
+#!   ORDER="500000000001923"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="8"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="52"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;1 feature by ID&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-837.95305460110103 -553.7164692694904"
+#!   TOP_LEFT="-837.95305460110103 -553.7164692694904"
+#!   BOTTOM_RIGHT="-383.95305460110103 -554.7164692694904"
+#!   BOUNDING_RECT="-837.95305460110103 -553.7164692694904 454 1"
+#!   ORDER="500000000001924"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="12"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="53"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Removing duplicates&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;based on &lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;ID, restype,series source&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-847.28726606821579 -24.6197242929602"
+#!   TOP_LEFT="-847.28726606821579 -24.6197242929602"
+#!   BOTTOM_RIGHT="-393.28726606821579 -25.6197242929602"
+#!   BOUNDING_RECT="-847.28726606821579 -24.6197242929602 454 1"
+#!   ORDER="500000000001926"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="9"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="54"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Creating attributes to be part of resource{} list&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="245.02184055853112 -80.453015959210092"
+#!   TOP_LEFT="245.02184055853112 -80.453015959210092"
+#!   BOTTOM_RIGHT="699.02184055853115 -81.453015959210092"
+#!   BOUNDING_RECT="245.02184055853112 -80.453015959210092 454 1"
+#!   ORDER="500000000001927"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="10"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="55"
+#!   NAME="Searching for source dataset in JSON attributes"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="-3446.9094690946908 93.750937509375092"
+#!   ORDER="500000000001920"
+#!   PALETTE_COLOR="Color4"
+#!   BOTTOM_RIGHT="-348.31077477441431 -1147.7791119013405"
+#!   BOUNDING_RECT="-3446.9094690946908 93.750937509375092 3098.5986943202765 1241.5300494107155"
+#!   STICKY="true"
+#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,1"
+#!   CONTENTS="36 19 24 5 51 7 35 53 26 23 9 50 37 48 52 49 6 8 22 18 "
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="5"
+#!   TYPE="AttributeExploder"
+#!   VERSION="2"
+#!   POSITION="-3238.2075175550922 -844.7750968140441"
+#!   BOUNDING_RECT="-3238.2075175550922 -844.7750968140441 454 71"
+#!   ORDER="500000000001890"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="modifyingViewUid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_attr_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_seriesID" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_NAME_LABEL" PARM_VALUE="_attr_name"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_VALUE_LABEL" PARM_VALUE="_seriesID"/>
+#!     <XFORM_PARM PARM_NAME="EXPLODING_TYPE" PARM_VALUE="Features"/>
+#!     <XFORM_PARM PARM_NAME="KEEP_ATTRIBUTES" PARM_VALUE="Yes"/>
+#!     <XFORM_PARM PARM_NAME="KEEP_GEOMETRY" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="LIST_NAME" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExploder"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="6"
+#!   TYPE="AttributeKeeper"
+#!   VERSION="3"
+#!   POSITION="-2558.0663959684375 -813.62835201326277"
+#!   BOUNDING_RECT="-2558.0663959684375 -813.62835201326277 454 71"
+#!   ORDER="500000000001891"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_attr_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_seriesID" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="KEEP_ATTRS" PARM_VALUE="_seriesID,id,resource.type,_attr_name"/>
+#!     <XFORM_PARM PARM_NAME="KEEP_LIST" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeKeeper_4"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="7"
+#!   TYPE="StringReplacer"
+#!   VERSION="5"
+#!   POSITION="-1991.6544818492964 -813.62835201326277"
+#!   BOUNDING_RECT="-1991.6544818492964 -813.62835201326277 454 71"
+#!   ORDER="500000000001892"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_attr_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_seriesID" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="CASE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="FIND_TEXT" PARM_VALUE="&lt;opencurly&gt;&lt;openbracket&gt;0-9&lt;closebracket&gt;+&lt;closecurly&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NO_MATCH" PARM_VALUE="_FME_NO_OP_"/>
+#!     <XFORM_PARM PARM_NAME="NO_MATCH_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REGEXP" PARM_VALUE="YES"/>
+#!     <XFORM_PARM PARM_NAME="REPLACE_TEXT" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="SRC_ATTRS" PARM_VALUE="_attr_name"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="StringReplacer"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="8"
+#!   TYPE="Tester"
+#!   VERSION="2"
+#!   POSITION="-1412.2216041871861 -844.7750968140441"
+#!   BOUNDING_RECT="-1412.2216041871861 -844.7750968140441 454 71"
+#!   ORDER="500000000001896"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="PASSED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_attr_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_seriesID" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="FAILED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.type" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_attr_name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_seriesID" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_MSG" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="1"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST &lt;at&gt;Value&lt;openparen&gt;_attr_name&lt;closeparen&gt; = displayFormat.visualizationCanvasMetadata.vifs.series.dataSource.datasetUid"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="TEST"/>
+#!     <XFORM_PARM PARM_NAME="TEST_PREVIEW_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester_7"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="9"
+#!   TYPE="DuplicateFilter"
+#!   VERSION="5"
+#!   POSITION="-847.32814835203862 -319.56164752920517"
+#!   BOUNDING_RECT="-847.32814835203862 -319.56164752920517 454 71"
+#!   ORDER="500000000001898"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="UNIQUE"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_attr_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_seriesID" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="DUPLICATE"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.type" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_attr_name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_seriesID" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="INPUT_ORDERED_CHOICE" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="KEYATTR" PARM_VALUE="_seriesID id resource.type"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="Per Output Port"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="DuplicateFilter"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="10"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="245.02184055853112 -379.56164752920512"
+#!   BOUNDING_RECT="245.02184055853112 -379.56164752920512 454 71"
+#!   ORDER="500000000001900"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="format" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource.type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_attr_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_seriesID" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; url SET_TO $(DOMAIN)&lt;solidus&gt;datasets&lt;solidus&gt;&lt;at&gt;Value&lt;openparen&gt;id&lt;closeparen&gt;  format SET_TO HTML"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_6"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="11"
+#!   TYPE="FeatureMerger"
+#!   VERSION="18"
+#!   POSITION="245.02184055853112 -1459.4072335706176"
+#!   BOUNDING_RECT="245.02184055853112 -1459.4072335706176 483 71"
+#!   ORDER="500000000001901"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="MERGED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="modifyingViewUid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_attr_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_seriesID" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="UNMERGED_REQUESTOR"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.type" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="modifyingViewUid" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <OUTPUT_FEAT NAME="USED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.type" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_attr_name" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_seriesID" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="numReferences" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <OUTPUT_FEAT NAME="UNUSED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="3"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.type" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="_attr_name" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="_seriesID" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="4"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.type" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="modifyingViewUid" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="_attr_name" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="_seriesID" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE" PARM_VALUE="Merge Supplier"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES" PARM_VALUE="Use Requestor"/>
+#!     <XFORM_PARM PARM_NAME="CLEANING_TOLERANCE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CONNECT_Z_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GENERATE_LIST_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="GEOM_TYPE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="IGNORE_NULLS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="JOIN_ATTRIBUTES_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="JOIN_KEYS" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;id&lt;closeparen&gt; &lt;at&gt;Value&lt;openparen&gt;id&lt;closeparen&gt; AUTO"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_NAME" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_COUNT_ATTR" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_TYPE" PARM_VALUE="Attributes Only"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PROCESS_DUPS" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="REJECT_NULL_MISSING_KEYS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIERS_FIRST" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIER_PREFIX" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="FeatureMerger"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="12"
+#!   TYPE="DuplicateFilter"
+#!   VERSION="5"
+#!   POSITION="-799.95305460110103 -687.46715677636541"
+#!   BOUNDING_RECT="-799.95305460110103 -687.46715677636541 454 71"
+#!   ORDER="500000000001904"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="UNIQUE"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_attr_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_seriesID" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="DUPLICATE"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.type" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_attr_name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_seriesID" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="INPUT_ORDERED_CHOICE" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="KEYATTR" PARM_VALUE="id"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="Per Output Port"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="DuplicateFilter_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="13"
+#!   TYPE="FeatureMerger"
+#!   VERSION="18"
+#!   POSITION="1267.0429271174132 -1548.7696876968771"
+#!   BOUNDING_RECT="1267.0429271174132 -1548.7696876968771 483 71"
+#!   ORDER="500000000001905"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="MERGED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="modifyingViewUid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="format" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_seriesID" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="advancedViewResources{}.url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="advancedViewResources{}.format" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="UNMERGED_REQUESTOR"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.type" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="modifyingViewUid" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <OUTPUT_FEAT NAME="USED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="format" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_seriesID" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="numReferences" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <OUTPUT_FEAT NAME="UNUSED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="3"/>
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="format" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="_seriesID" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="4"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.type" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="modifyingViewUid" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="format" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="_seriesID" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE" PARM_VALUE="Merge Supplier"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES" PARM_VALUE="Use Requestor"/>
+#!     <XFORM_PARM PARM_NAME="CLEANING_TOLERANCE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CONNECT_Z_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GENERATE_LIST_GROUP" PARM_VALUE="YES"/>
+#!     <XFORM_PARM PARM_NAME="GEOM_TYPE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="IGNORE_NULLS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="JOIN_ATTRIBUTES_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="JOIN_KEYS" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;id&lt;closeparen&gt; &lt;at&gt;Value&lt;openparen&gt;_seriesID&lt;closeparen&gt; AUTO"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE" PARM_VALUE="format url"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE_MODE" PARM_VALUE="Selected Attributes"/>
+#!     <XFORM_PARM PARM_NAME="LIST_NAME" PARM_VALUE="advancedViewResources"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_COUNT_ATTR" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_TYPE" PARM_VALUE="Attributes Only"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PROCESS_DUPS" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="REJECT_NULL_MISSING_KEYS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIERS_FIRST" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIER_PREFIX" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="FeatureMerger_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="14"
+#!   TYPE="AttributeKeeper"
+#!   VERSION="3"
+#!   POSITION="840.07019456636408 -773.78320941057575"
+#!   BOUNDING_RECT="840.07019456636408 -773.78320941057575 454 71"
+#!   ORDER="500000000001907"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="format" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_seriesID" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="KEEP_ATTRS" PARM_VALUE="name,url,protocol,format,resourceType_fr,_seriesID,resourceType_en"/>
+#!     <XFORM_PARM PARM_NAME="KEEP_LIST" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeKeeper_5"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="15"
+#!   TYPE="AttributeExposer"
+#!   VERSION="1"
+#!   POSITION="-5587.1476453153809 -1472.2846365916384"
+#!   BOUNDING_RECT="-5587.1476453153809 -1472.2846365916384 454 71"
+#!   ORDER="500000000001883"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="modifyingViewUid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="resource.type,id,modifyingViewUid"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="16"
+#!   TYPE="Terminator"
+#!   VERSION="3"
+#!   POSITION="686.79414864324076 -2126.0654019066874"
+#!   BOUNDING_RECT="686.79414864324076 -2126.0654019066874 454 71"
+#!   ORDER="500000000001925"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE="Translation&lt;space&gt;Terminated"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Terminator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="17"
+#!   TYPE="Terminator"
+#!   VERSION="3"
+#!   POSITION="2443.0617113188669 -2087.1919245508252"
+#!   BOUNDING_RECT="2443.0617113188669 -2087.1919245508252 454 71"
+#!   ORDER="500000000001933"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE="Translation&lt;space&gt;Terminated"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Terminator_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="18"
+#!   TYPE="Tester"
+#!   VERSION="2"
+#!   POSITION="-3306.2830628306288 -232.37253945513714"
+#!   BOUNDING_RECT="-3306.2830628306288 -232.37253945513714 454 71"
+#!   ORDER="500000000001935"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="PASSED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="modifyingViewUid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="FAILED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="resource.type" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="modifyingViewUid" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_MSG" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="1"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST &lt;at&gt;Value&lt;openparen&gt;modifyingViewUid&lt;closeparen&gt; != &quot;&quot;"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="TEST"/>
+#!     <XFORM_PARM PARM_NAME="TEST_PREVIEW_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="19"
+#!   TYPE="AttributeRenamer"
+#!   VERSION="4"
+#!   POSITION="-2558.0663959684375 -292.37253945513714"
+#!   BOUNDING_RECT="-2558.0663959684375 -292.37253945513714 454 71"
+#!   ORDER="500000000001936"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_seriesID" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource.type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="modifyingViewUid _seriesID RENAME_SET_DEFAULT "/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRenamer"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="Input"
+#!   POSITION="-6285.8581292888002 -1472.2846365916384"
+#!   BOUNDING_RECT="-6285.8581292888002 -1472.2846365916384 454 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="Output"
+#!   POSITION="2523.0515463049378 -1381.9952704288944"
+#!   BOUNDING_RECT="2523.0515463049378 -1381.9952704288944 454 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="4"
+#!   NAME="UnmergedAdvancedView"
+#!   POSITION="2443.0617113188669 -1795.7441162376895"
+#!   BOUNDING_RECT="2443.0617113188669 -1795.7441162376895 454 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="21"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="15"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="22"
+#!   SOURCE_NODE="5"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="23"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="24"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="8"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="25"
+#!   SOURCE_NODE="8"
+#!   TARGET_NODE="12"
+#!   SOURCE_PORT_DESC="fo 0 PASSED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="26"
+#!   SOURCE_NODE="8"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 0 PASSED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="1"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="27"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="10"
+#!   SOURCE_PORT_DESC="fo 0 UNIQUE"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="28"
+#!   SOURCE_NODE="10"
+#!   TARGET_NODE="14"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="29"
+#!   SOURCE_NODE="12"
+#!   TARGET_NODE="11"
+#!   SOURCE_PORT_DESC="fo 0 UNIQUE"
+#!   TARGET_PORT_DESC="fi 1 SUPPLIER"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="30"
+#!   SOURCE_NODE="13"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 MERGED"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="31"
+#!   SOURCE_NODE="14"
+#!   TARGET_NODE="13"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 1 SUPPLIER"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="33"
+#!   SOURCE_NODE="15"
+#!   TARGET_NODE="18"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="34"
+#!   SOURCE_NODE="15"
+#!   TARGET_NODE="11"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 REQUESTOR"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="1"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="35"
+#!   SOURCE_NODE="15"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="2"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="36"
+#!   SOURCE_NODE="18"
+#!   TARGET_NODE="19"
+#!   SOURCE_PORT_DESC="fo 0 PASSED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="37"
+#!   SOURCE_NODE="19"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="38"
+#!   SOURCE_NODE="19"
+#!   TARGET_NODE="12"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="1"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="39"
+#!   SOURCE_NODE="11"
+#!   TARGET_NODE="13"
+#!   SOURCE_PORT_DESC="fo 1 UNMERGED_REQUESTOR"
+#!   TARGET_PORT_DESC="fi 0 REQUESTOR"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="40"
+#!   SOURCE_NODE="13"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 1 UNMERGED_REQUESTOR"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="41"
+#!   SOURCE_NODE="11"
+#!   TARGET_NODE="16"
+#!   SOURCE_PORT_DESC="fo 3 UNUSED_SUPPLIER"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="42"
+#!   SOURCE_NODE="13"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="fo 3 UNUSED_SUPPLIER"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="43"
+#!   SOURCE_NODE="11"
+#!   TARGET_NODE="16"
+#!   SOURCE_PORT_DESC="fo 4 &lt;lt&gt;REJECTED&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="44"
+#!   SOURCE_NODE="13"
+#!   TARGET_NODE="17"
+#!   SOURCE_PORT_DESC="fo 4 &lt;lt&gt;REJECTED&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+DEFAULT_MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_DOMAIN 
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO SOCRATA_METADATA_MERGER_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Input1647016560 Input Splitter"   INPUT FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Input"   OUTPUT FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Input"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeExposer_2    INPUT  FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Input"    OUTPUT FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeExposer_2 OUTPUT Splitter"   INPUT FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"   OUTPUT FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT_0_f3joPMtTJWs="   OUTPUT FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT_1_nWg2NI4Xp8g="   OUTPUT FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT_2_hPOS4Oi66Fs="
+# -------------------------------------------------------------------------
+FACTORY_DEF * AttributeFactory    FACTORY_NAME $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeExploder    INPUT  FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT_2_hPOS4Oi66Fs="    ATTR_NAME_LABEL "_attr_name"    ATTR_VALUE_LABEL "_seriesID"    KEEP_GEOMETRY No    KEEP_ATTRIBUTES Yes    EXPLODING_TYPE EXPLODE_AS_FEATURES    LIST_NAME "<Unused>{}"    OUTPUT EXPLODED FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeExploder_OUTPUT"
+# -------------------------------------------------------------------------
+INCLUDE [    set macroLine "MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeKeeper_4_73475722_800a_44ce_8e3f_b6ff4aa3a6de0_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeKeeper_4    INPUT  FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeExploder_OUTPUT"    OUTPUT { FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeKeeper_4_OUTPUT"        @KeepAttributes(fme_encoded,_seriesID,id,resource.type,_attr_name,fme_pcre_match,"^fme_$($(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeKeeper_4_73475722_800a_44ce_8e3f_b6ff4aa3a6de0_LIST_EXP)")         }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} StringReplacerFactory    FACTORY_NAME $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_StringReplacer    INPUT  FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeKeeper_4_OUTPUT"    USE_REGEX YES    CASE_SENSITIVE NO    SOURCE_ATTRIBUTES { _attr_name }    FIND_TEXT { "<opencurly><openbracket>0-9<closebracket>+<closecurly>" }    REPLACE_TEXT { "" }    REPLACE_NO_MATCH { "_FME_NO_OP_" }    OUTPUT OUTPUT FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_StringReplacer_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TestFactory    FACTORY_NAME $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Tester_7    INPUT  FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_StringReplacer_OUTPUT"    TEST "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_attr_name<closeparen>,$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Tester_7)" = displayFormat.visualizationCanvasMetadata.vifs.series.dataSource.datasetUid ENCODED    BOOLEAN_OPERATOR OR    COMPOSITE_TEST_EXPR "1"    OUTPUT PASSED FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Tester_7_PASSED"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Tester_7 PASSED Splitter"   INPUT FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Tester_7_PASSED"   OUTPUT FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Tester_7_PASSED_0_buCAA1oOSaI="   OUTPUT FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Tester_7_PASSED_1_ZqifpbFnYkY="
+# -------------------------------------------------------------------------
+FACTORY_DEF * TestFactory    FACTORY_NAME $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Tester    INPUT  FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT_0_f3joPMtTJWs="    TEST "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>modifyingViewUid<closeparen>,$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Tester)" != "" ENCODED    BOOLEAN_OPERATOR OR    COMPOSITE_TEST_EXPR "1"    OUTPUT PASSED FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Tester_PASSED"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY_NAME $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeRenamer    INPUT  FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Tester_PASSED" 	 ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV 	 ATTR_ACTION { "modifyingViewUid" "_seriesID" "RENAME_SET_DEFAULT" "" }    OUTPUT OUTPUT FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeRenamer_OUTPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeRenamer OUTPUT Splitter"   INPUT FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeRenamer_OUTPUT"   OUTPUT FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeRenamer_OUTPUT_0_/VdacFhedso="   OUTPUT FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeRenamer_OUTPUT_1_RGJ/eol1SFA="
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} DuplicateRemoverFactory    FACTORY_NAME $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_DuplicateFilter_2    COMMAND_PARM_EVALUATION SINGLE_PASS    SUPPORTS_FEATURE_TABLES    INPUT  FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Tester_7_PASSED_0_buCAA1oOSaI="    INPUT  FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeRenamer_OUTPUT_1_RGJ/eol1SFA="    KEY_ATTRIBUTES { id }    INPUT_IS_ORDERED NO    PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT    OUTPUT UNIQUE FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_DuplicateFilter_2_UNIQUE"
+# -------------------------------------------------------------------------
+INCLUDE [if { {ATTRIBUTES} == {ATTRIBUTES} } {                puts "MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO ATTRIBUTES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {POLYGONS}} {                puts "MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {AGGREGATES}} {                puts "MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {POLYGONS}} {                puts "MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {AGGREGATES}} {                puts "MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} } {                puts "MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} } {                puts "MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          else {}; ]
+FACTORY_DEF {*} ReferenceFactory    FACTORY_NAME $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger    FLUSH_WHEN_GROUPS_CHANGE No    INPUT REFERENCER FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT_1_nWg2NI4Xp8g="    INPUT REFERENCEE FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_DuplicateFilter_2_UNIQUE"    REFERENCE_INFO $($(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO)    REFERENCE_TABLE @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>id<closeparen>,$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger) @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>id<closeparen>,$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger) AUTO    ATTR_ACCUM_MODE "HANDLE_CONFLICT"    ATTR_CONFLICT_RES "REQUESTOR_IF_CONFLICT"    IGNORE_NULLS "No"    HANDLE_NULL_MISSING_KEYS_LIKE_FME2013 No    LIST_ATTRS_TO_INCLUDE { <Unused> }    LIST_ATTRS_TO_INCLUDE_MODE <Unused>    MERGE_ATTRIBUTES Yes    MANAGE_FME_TYPE Yes    MODE COMPLETE    PROCESS_DUPLICATE_REFERENCEES NO    REFERENCEES_FIRST No    REJECT_INVALID_GEOM YES    CLEANING_TOLERANCE <Unused>    OUTPUT INCOMPLETE FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_UNMERGED_REQUESTOR"    OUTPUT UNREFERENCED FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_UNUSED_SUPPLIER"    OUTPUT REJECTED FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_<REJECTED>"
+# -------------------------------------------------------------------------
+# The default behaviour is to abort on any feature entering the transformer.
+# If Workbench has set the _WB_BYPASS_TERMINATION macro to a value of "Yes",
+# then the features will instead be passed through with a feature type of
+# __WB_BYPASS_TERMINATOR__, which Workbench will send to a visualizer or
+# somesuch.
+DEFAULT_MACRO _WB_BYPASS_TERMINATION No
+FACTORY_DEF * TestFactory    FACTORY_NAME $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Terminator    INPUT  FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_UNUSED_SUPPLIER"    INPUT  FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_<REJECTED>"    TEST "$(_WB_BYPASS_TERMINATION)" == Yes    OUTPUT PASSED FEATURE_TYPE __WB_BYPASS_TERMINATOR__       @SupplyAttributes(_wb_termination_feature_type,@FeatureType())       @SupplyAttributes(ENCODED,_wb_termination_message,"Translation<space>Terminated")       @SupplyAttributes(_wb_termination_xformer,"$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Terminator")       @SupplyAttributes(_wb_termination_feature,Yes)    OUTPUT FAILED FEATURE_TYPE * @Abort(ENCODED,"Translation<space>Terminated")
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} DuplicateRemoverFactory    FACTORY_NAME $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_DuplicateFilter    COMMAND_PARM_EVALUATION SINGLE_PASS    SUPPORTS_FEATURE_TABLES    INPUT  FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Tester_7_PASSED_1_ZqifpbFnYkY="    INPUT  FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeRenamer_OUTPUT_0_/VdacFhedso="    KEY_ATTRIBUTES { _seriesID id resource.type }    INPUT_IS_ORDERED NO    PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT    OUTPUT UNIQUE FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_DuplicateFilter_UNIQUE"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeCreator_6    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_DuplicateFilter_UNIQUE"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "url" "SET_TO" "$($(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_DOMAIN$encode)<solidus>datasets<solidus><at>Value<openparen>id<closeparen>" }      ATTR_ACTION { "" "format" "SET_TO" "HTML" }    OUTPUT OUTPUT FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeCreator_6_OUTPUT"
+# -------------------------------------------------------------------------
+INCLUDE [    set macroLine "MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeKeeper_5_8826fb97_b64c_48b1_b896_f7ea62db6dd20_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeKeeper_5    INPUT  FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeCreator_6_OUTPUT"    OUTPUT { FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeKeeper_5_OUTPUT"        @KeepAttributes(fme_encoded,name,url,protocol,format,resourceType_fr,_seriesID,resourceType_en,fme_pcre_match,"^fme_$($(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeKeeper_5_8826fb97_b64c_48b1_b896_f7ea62db6dd20_LIST_EXP)")         }
+# -------------------------------------------------------------------------
+INCLUDE [if { {ATTRIBUTES} == {ATTRIBUTES} } {                puts "MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO ATTRIBUTES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {POLYGONS}} {                puts "MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {AGGREGATES}} {                puts "MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {POLYGONS}} {                puts "MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_AND_ATTR_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {AGGREGATES}} {                puts "MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_AND_ATTR_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} } {                puts "MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} } {                puts "MACRO $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          else {}; ]
+FACTORY_DEF {*} ReferenceFactory    FACTORY_NAME $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_2    FLUSH_WHEN_GROUPS_CHANGE No    INPUT REFERENCER FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_UNMERGED_REQUESTOR"    INPUT REFERENCEE FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_AttributeKeeper_5_OUTPUT"    REFERENCE_INFO $($(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO)    REFERENCE_TABLE @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>id<closeparen>,$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_2) @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_seriesID<closeparen>,$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_2) AUTO    ATTR_ACCUM_MODE "HANDLE_CONFLICT"    ATTR_CONFLICT_RES "REQUESTOR_IF_CONFLICT"    IGNORE_NULLS "No"    HANDLE_NULL_MISSING_KEYS_LIKE_FME2013 No    LIST_NAME "advancedViewResources"    LIST_ATTRS_TO_INCLUDE { format url }    LIST_ATTRS_TO_INCLUDE_MODE SELECTED    MERGE_ATTRIBUTES Yes    MANAGE_FME_TYPE Yes    MODE COMPLETE    PROCESS_DUPLICATE_REFERENCEES NO    REFERENCEES_FIRST No    REJECT_INVALID_GEOM YES    CLEANING_TOLERANCE <Unused>    OUTPUT COMPLETE FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_2_MERGED"    OUTPUT INCOMPLETE FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_2_UNMERGED_REQUESTOR"    OUTPUT UNREFERENCED FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_2_UNUSED_SUPPLIER"    OUTPUT REJECTED FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_2_<REJECTED>"
+# -------------------------------------------------------------------------
+# The default behaviour is to abort on any feature entering the transformer.
+# If Workbench has set the _WB_BYPASS_TERMINATION macro to a value of "Yes",
+# then the features will instead be passed through with a feature type of
+# __WB_BYPASS_TERMINATOR__, which Workbench will send to a visualizer or
+# somesuch.
+DEFAULT_MACRO _WB_BYPASS_TERMINATION No
+FACTORY_DEF * TestFactory    FACTORY_NAME $(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Terminator_2    INPUT  FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_2_<REJECTED>"    TEST "$(_WB_BYPASS_TERMINATION)" == Yes    OUTPUT PASSED FEATURE_TYPE __WB_BYPASS_TERMINATOR__       @SupplyAttributes(_wb_termination_feature_type,@FeatureType())       @SupplyAttributes(ENCODED,_wb_termination_message,"Translation<space>Terminated")       @SupplyAttributes(_wb_termination_xformer,"$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Terminator_2")       @SupplyAttributes(_wb_termination_feature,Yes)    OUTPUT FAILED FEATURE_TYPE * @Abort(ENCODED,"Translation<space>Terminated")
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Output1647016560 Output Collector"   INPUT FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_2_MERGED"   INPUT FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_2_UNMERGED_REQUESTOR"   OUTPUT FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_Output"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_UnmergedAdvancedView1647016560 Output Collector"   INPUT FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_FeatureMerger_2_UNUSED_SUPPLIER"   OUTPUT FEATURE_TYPE "$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME)_UnmergedAdvancedView"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(SOCRATA_METADATA_MERGER_WORKSPACE_NAME))}]
