@@ -1,0 +1,812 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MD_Metadata xmlns="http://www.isotc211.org/2005/gmd" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:geonet="http://www.fao.org/geonetwork" xmlns:gfc="http://www.isotc211.org/2005/gfc" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:gmi="http://www.isotc211.org/2005/gmi" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:gmx="http://www.isotc211.org/2005/gmx" xmlns:gsr="http://www.isotc211.org/2005/gsr" xmlns:gss="http://www.isotc211.org/2005/gss" xmlns:gts="http://www.isotc211.org/2005/gts" xmlns:srv="http://www.isotc211.org/2005/srv" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.isotc211.org/2005/gmd http://nap.geogratis.gc.ca/metadata/tools/schemas/metadata/can-cgsb-171.100-2009-a/gmd/gmd.xsd http://www.isotc211.org/2005/srv http://nap.geogratis.gc.ca/metadata/tools/schemas/metadata/can-cgsb-171.100-2009-a/srv/srv.xsd http://www.geconnections.org/nap/napMetadataTools/napXsd/napm http://nap.geogratis.gc.ca/metadata/tools/schemas/metadata/can-cgsb-171.100-2009-a/napm/napm.xsd">
+	<fileIdentifier>
+		<gco:CharacterString>44f7664a-000c-e19f-8539-ba70be52694c</gco:CharacterString>
+	</fileIdentifier>
+	<language>
+		<gco:CharacterString>eng; CAN</gco:CharacterString>
+	</language>
+	<characterSet>
+		<MD_CharacterSetCode codeList="http://nap.geogratis.gc.ca/metadata/register/napMetadataRegister.xml#IC_95" codeListValue="RI_458">utf8; utf8</MD_CharacterSetCode>
+	</characterSet>
+	<hierarchyLevel>
+		<MD_ScopeCode codeList="http://nap.geogratis.gc.ca/metadata/register/napMetadataRegister.xml#IC_108" codeListValue="RI_622">dataset; jeuDonnées</MD_ScopeCode>
+	</hierarchyLevel>
+	<contact>
+		<CI_ResponsibleParty>
+			<individualName xsi:type="gmd:PT_FreeText_PropertyType">
+				<gco:CharacterString></gco:CharacterString>
+			</individualName>
+			<organisationName xsi:type="gmd:PT_FreeText_PropertyType">
+				<gco:CharacterString>Government of Saskatchewan; Government of Saskatchewan; </gco:CharacterString>
+				<PT_FreeText>
+					<textGroup>
+						<LocalisedCharacterString locale="#fra">Gouvernement de la Saskatchewan; Gouvernement de la Saskatchewan; </LocalisedCharacterString>
+					</textGroup>
+				</PT_FreeText>
+			</organisationName>
+			<positionName xsi:type="gmd:PT_FreeText_PropertyType">
+				<gco:CharacterString></gco:CharacterString>
+				<PT_FreeText>
+					<textGroup>
+						<LocalisedCharacterString locale=""></LocalisedCharacterString>
+					</textGroup>
+				</PT_FreeText>
+			</positionName>
+			<contactInfo>
+				<CI_Contact>
+					<phone>
+						<CI_Telephone>
+							<voice xmlns:napm="http://www.geoconnections.org/nap/napMetadataTools/napXsd/napm" xsi:type="gmd:PT_FreeText_PropertyType">
+								<gco:CharacterString></gco:CharacterString>
+								<PT_FreeText>
+									<textGroup>
+										<LocalisedCharacterString locale="#fra"></LocalisedCharacterString>
+									</textGroup>
+								</PT_FreeText>
+							</voice>
+							<facsimile>
+								<gco:CharacterString></gco:CharacterString>
+							</facsimile>
+						</CI_Telephone>
+					</phone>
+					<address>
+						<CI_Address>
+							<deliveryPoint xsi:type="gmd:PT_FreeText_PropertyType">
+								<gco:CharacterString></gco:CharacterString>
+								<PT_FreeText>
+									<textGroup>
+										<LocalisedCharacterString locale="#fra"></LocalisedCharacterString>
+									</textGroup>
+								</PT_FreeText>
+							</deliveryPoint>
+							<city>
+								<gco:CharacterString></gco:CharacterString>
+							</city>
+							<administrativeArea xsi:type="gmd:PT_FreeText_PropertyType">
+								<gco:CharacterString></gco:CharacterString>
+								<PT_FreeText>
+									<textGroup>
+										<LocalisedCharacterString locale="#fra"></LocalisedCharacterString>
+									</textGroup>
+								</PT_FreeText>
+							</administrativeArea>
+							<postalCode>
+								<gco:CharacterString></gco:CharacterString>
+							</postalCode>
+							<country xsi:type="gmd:PT_FreeText_PropertyType">
+								<gco:CharacterString></gco:CharacterString>
+								<PT_FreeText>
+									<textGroup>
+										<LocalisedCharacterString locale="#fra"></LocalisedCharacterString>
+									</textGroup>
+								</PT_FreeText>
+							</country>
+							<electronicMailAddress xsi:type="gmd:PT_FreeText_PropertyType">
+								<gco:CharacterString>egis@gov.sk.ca</gco:CharacterString>
+								<PT_FreeText>
+									<textGroup>
+										<LocalisedCharacterString locale="#fra">egis@gov.sk.ca</LocalisedCharacterString>
+									</textGroup>
+								</PT_FreeText>
+							</electronicMailAddress>
+						</CI_Address>
+					</address>
+					<onlineResource>
+						<CI_OnlineResource>
+							<linkage>
+								<URL></URL>
+							</linkage>
+							<protocol>
+								<gco:CharacterString></gco:CharacterString>
+							</protocol>
+							<description xsi:type="gmd:PT_FreeText_PropertyType">
+								<gco:CharacterString></gco:CharacterString>
+								<PT_FreeText>
+									<textGroup>
+										<LocalisedCharacterString locale=""></LocalisedCharacterString>
+									</textGroup>
+								</PT_FreeText>
+							</description>
+						</CI_OnlineResource>
+					</onlineResource>
+				</CI_Contact>
+			</contactInfo>
+			<role>
+				<CI_RoleCode codeList="http://nap.geogratis.gc.ca/metadata/register/napMetadataRegister.xml#IC_90" codeListValue="RI_414">pointOfContact; contact</CI_RoleCode>
+			</role>
+		</CI_ResponsibleParty>
+	</contact>
+	<dateStamp>
+		<gco:Date>2025-10-27</gco:Date>
+	</dateStamp>
+	<metadataStandardName xsi:type="gmd:PT_FreeText_PropertyType">
+		<gco:CharacterString>North American Profile of ISO 19115:2003 - Geographic information - Metadata</gco:CharacterString>
+		<PT_FreeText>
+			<textGroup>
+				<LocalisedCharacterString locale="#fra">Profil nord-américain de la norme ISO 19115:2003 - Information géographique - Métadonnées</LocalisedCharacterString>
+			</textGroup>
+		</PT_FreeText>
+	</metadataStandardName>
+	<metadataStandardVersion>
+		<gco:CharacterString>HNAP ISO:19115 - 2003</gco:CharacterString>
+	</metadataStandardVersion>
+	<dataSetURI gco:nilReason="missing">
+		<gco:CharacterString></gco:CharacterString>
+	</dataSetURI>
+	<locale>
+		<PT_Locale id="fra">
+			<languageCode>
+				<LanguageCode codeList="http://nap.geogratis.gc.ca/metadata/register/napMetadataRegister.xml#IC_116" codeListValue="fra">French; Français</LanguageCode>
+			</languageCode>
+			<country>
+				<Country codeList="http://nap.geogratis.gc.ca/metadata/register/napMetadataRegister.xml#IC_117" codeListValue="CAN">Canada; Canada</Country>
+			</country>
+			<characterEncoding>
+				<MD_CharacterSetCode codeList="http://nap.geogratis.gc.ca/metadata/register/napMetadataRegister.xml#IC_95" codeListValue="RI_458">utf8; utf8</MD_CharacterSetCode>
+			</characterEncoding>
+		</PT_Locale>
+	</locale>
+	<referenceSystemInfo>
+		<MD_ReferenceSystem>
+			<referenceSystemIdentifier>
+				<RS_Identifier>
+					<code>
+						<gco:CharacterString>unknown</gco:CharacterString>
+					</code>
+					<codeSpace>
+						<gco:CharacterString>unknown</gco:CharacterString>
+					</codeSpace>
+					<version>
+						<gco:CharacterString>unknown</gco:CharacterString>
+					</version>
+				</RS_Identifier>
+			</referenceSystemIdentifier>
+		</MD_ReferenceSystem>
+	</referenceSystemInfo>
+	<identificationInfo>
+		<MD_DataIdentification>
+			<citation>
+				<CI_Citation>
+					<title xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>FRI: Stems per hectare - softwood</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Translation of FRI: Stems per hectare - softwood</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</title>
+					<date>
+						<CI_Date>
+							<date>
+								<gco:Date>2021-03-08</gco:Date>
+							</date>
+							<dateType>
+								<CI_DateTypeCode codeList="http://nap.geogratis.gc.ca/metadata/register/napMetadataRegister.xml#IC_87" codeListValue="RI_367">publication; publication</CI_DateTypeCode>
+							</dateType>
+						</CI_Date>
+					</date>
+					<date>
+						<CI_Date>
+							<date>
+								<gco:Date>2021-03-08</gco:Date>
+							</date>
+							<dateType>
+								<CI_DateTypeCode codeList="http://nap.geogratis.gc.ca/metadata/register/napMetadataRegister.xml#IC_87" codeListValue="RI_366">creation; création</CI_DateTypeCode>
+							</dateType>
+						</CI_Date>
+					</date>
+					<identifier>
+						<MD_Identifier>
+							<code></code>
+						</MD_Identifier>
+					</identifier>
+					<citedResponsibleParty>
+						<CI_ResponsibleParty>
+							<individualName xsi:type="gmd:PT_FreeText_PropertyType">
+								<gco:CharacterString></gco:CharacterString>
+							</individualName>
+							<organisationName xsi:type="gmd:PT_FreeText_PropertyType">
+								<gco:CharacterString>Government of Saskatchewan; Government of Saskatchewan; </gco:CharacterString>
+								<PT_FreeText>
+									<textGroup>
+										<LocalisedCharacterString locale="#fra">Gouvernement de la Saskatchewan; Gouvernement de la Saskatchewan; </LocalisedCharacterString>
+									</textGroup>
+								</PT_FreeText>
+							</organisationName>
+							<positionName xsi:type="gmd:PT_FreeText_PropertyType">
+								<gco:CharacterString></gco:CharacterString>
+								<PT_FreeText>
+									<textGroup>
+										<LocalisedCharacterString locale=""></LocalisedCharacterString>
+									</textGroup>
+								</PT_FreeText>
+							</positionName>
+							<contactInfo>
+								<CI_Contact>
+									<phone>
+										<CI_Telephone>
+											<voice xmlns:napm="http://www.geoconnections.org/nap/napMetadataTools/napXsd/napm" xsi:type="gmd:PT_FreeText_PropertyType">
+												<gco:CharacterString></gco:CharacterString>
+												<PT_FreeText>
+													<textGroup>
+														<LocalisedCharacterString locale="#fra"></LocalisedCharacterString>
+													</textGroup>
+												</PT_FreeText>
+											</voice>
+											<facsimile>
+												<gco:CharacterString></gco:CharacterString>
+											</facsimile>
+										</CI_Telephone>
+									</phone>
+									<address>
+										<CI_Address>
+											<deliveryPoint xsi:type="gmd:PT_FreeText_PropertyType">
+												<gco:CharacterString></gco:CharacterString>
+												<PT_FreeText>
+													<textGroup>
+														<LocalisedCharacterString locale="#fra"></LocalisedCharacterString>
+													</textGroup>
+												</PT_FreeText>
+											</deliveryPoint>
+											<city>
+												<gco:CharacterString></gco:CharacterString>
+											</city>
+											<administrativeArea xsi:type="gmd:PT_FreeText_PropertyType">
+												<gco:CharacterString></gco:CharacterString>
+												<PT_FreeText>
+													<textGroup>
+														<LocalisedCharacterString locale="#fra"></LocalisedCharacterString>
+													</textGroup>
+												</PT_FreeText>
+											</administrativeArea>
+											<postalCode>
+												<gco:CharacterString></gco:CharacterString>
+											</postalCode>
+											<country xsi:type="gmd:PT_FreeText_PropertyType">
+												<gco:CharacterString></gco:CharacterString>
+												<PT_FreeText>
+													<textGroup>
+														<LocalisedCharacterString locale="#fra"></LocalisedCharacterString>
+													</textGroup>
+												</PT_FreeText>
+											</country>
+											<electronicMailAddress xsi:type="gmd:PT_FreeText_PropertyType">
+												<gco:CharacterString>egis@gov.sk.ca</gco:CharacterString>
+												<PT_FreeText>
+													<textGroup>
+														<LocalisedCharacterString locale="#fra">egis@gov.sk.ca</LocalisedCharacterString>
+													</textGroup>
+												</PT_FreeText>
+											</electronicMailAddress>
+										</CI_Address>
+									</address>
+									<onlineResource>
+										<CI_OnlineResource>
+											<linkage>
+												<URL></URL>
+											</linkage>
+											<protocol>
+												<gco:CharacterString></gco:CharacterString>
+											</protocol>
+											<description xsi:type="gmd:PT_FreeText_PropertyType">
+												<gco:CharacterString></gco:CharacterString>
+												<PT_FreeText>
+													<textGroup>
+														<LocalisedCharacterString locale=""></LocalisedCharacterString>
+													</textGroup>
+												</PT_FreeText>
+											</description>
+										</CI_OnlineResource>
+									</onlineResource>
+								</CI_Contact>
+							</contactInfo>
+							<role>
+								<CI_RoleCode codeList="http://nap.geogratis.gc.ca/metadata/register/napMetadataRegister.xml#IC_90" codeListValue="RI_414">pointOfContact; contact</CI_RoleCode>
+							</role>
+						</CI_ResponsibleParty>
+					</citedResponsibleParty>
+				</CI_Citation>
+			</citation>
+			<abstract xsi:type="gmd:PT_FreeText_PropertyType">
+				<gco:CharacterString>Stems per hectare - softwood (SPHSWD) is an expression of the number of merchantable softwood trees on a per-hectare basis. Available here as softwood stems per hectare raster (GeoTIF) with a 20 m pixel resolution.
+
+Download: Here The Saskatchewan Ministry of Environment, Forest Service Branch, has developed a forest resource inventory (FRI) which meets a variety of strategic and operational planning information needs for the boreal plains. Such needs include information on the general land cover, terrain, and growing stock (height, diameter, basal area, timber volume and stem density) within the provincial forest and adjacent forest fringe. This inventory provides spatially explicit information as 10 m or 20 m raster grids and as vectors polygons for relatively homogeneous forest stands or naturally non-forested areas with a 0.5 ha minimum area and a 2.0 ha median area.  Stems per hectare - softwood (SPHSWD) is an expression of the number of merchantable softwood trees on a per-hectare basis. SPHSWD is available here as a color-mapped 16-bit unsigned integer raster grid in GeoTIFF format with a 20 m pixel resolution. An ArcGIS Pro layer file (*.lyrx) is supplied for viewing SPHSWD data in the following 500 stems/ha categories.  Domain: [NULL, 0…100,000]. RANGE LABEL RED GREEN BLUE 0 &lt;= SPHSWD &lt; 250 0 NA NA NA 250 &lt;= SPHSWD &lt; 750 500 63 81 181 750 &lt;= SPHSWD &lt; 1250 1000 67 112 147 1250 &lt;= SPHSWD &lt; 1750 1500 72 144 114 1750 &lt;= SPHSWD &lt; 2250 2000 76 175 80 2250 &lt;= SPHSWD &lt; 2750 2500 136 195 73 2750 &lt;= SPHSWD &lt; 3250 3000 195 215 66 3250 &lt;= SPHSWD &lt; 3750 3500 255 235 59 3750 &lt;= SPHSWD &lt; 4250 4000 255 207 39 4250 &lt;= SPHSWD &lt; 4750 4500 255 180 20 4750 &lt;= SPHSWD &lt; 5250 5000 255 152 0 5250 &lt;= SPHSWD &lt; 5750 5500 251 124 18 5750 &lt;= SPHSWD &lt; 6250 6000 248 95 36 6250 &lt;= SPHSWD &lt; 6750 6500 244 67 54For more information, see the Forest Inventory Standard of the Saskatchewan Environmental Code, Forest Inventory Chapter.
+
+</gco:CharacterString>
+				<PT_FreeText>
+					<textGroup>
+						<LocalisedCharacterString locale="#fra">Translation of Stems per hectare - softwood (SPHSWD) is an expression of the number of merchantable softwood trees on a per-hectare basis. Available here as softwood stems per hectare raster (GeoTIF) with a 20 m pixel resolution.
+
+Download: Here The Saskatchewan Ministry of Environment, Forest Service Branch, has developed a forest resource inventory (FRI) which meets a variety of strategic and operational planning information needs for the boreal plains. Such needs include information on the general land cover, terrain, and growing stock (height, diameter, basal area, timber volume and stem density) within the provincial forest and adjacent forest fringe. This inventory provides spatially explicit information as 10 m or 20 m raster grids and as vectors polygons for relatively homogeneous forest stands or naturally non-forested areas with a 0.5 ha minimum area and a 2.0 ha median area.  Stems per hectare - softwood (SPHSWD) is an expression of the number of merchantable softwood trees on a per-hectare basis. SPHSWD is available here as a color-mapped 16-bit unsigned integer raster grid in GeoTIFF format with a 20 m pixel resolution. An ArcGIS Pro layer file (*.lyrx) is supplied for viewing SPHSWD data in the following 500 stems/ha categories.  Domain: [NULL, 0…100,000]. RANGE LABEL RED GREEN BLUE 0 &lt;= SPHSWD &lt; 250 0 NA NA NA 250 &lt;= SPHSWD &lt; 750 500 63 81 181 750 &lt;= SPHSWD &lt; 1250 1000 67 112 147 1250 &lt;= SPHSWD &lt; 1750 1500 72 144 114 1750 &lt;= SPHSWD &lt; 2250 2000 76 175 80 2250 &lt;= SPHSWD &lt; 2750 2500 136 195 73 2750 &lt;= SPHSWD &lt; 3250 3000 195 215 66 3250 &lt;= SPHSWD &lt; 3750 3500 255 235 59 3750 &lt;= SPHSWD &lt; 4250 4000 255 207 39 4250 &lt;= SPHSWD &lt; 4750 4500 255 180 20 4750 &lt;= SPHSWD &lt; 5250 5000 255 152 0 5250 &lt;= SPHSWD &lt; 5750 5500 251 124 18 5750 &lt;= SPHSWD &lt; 6250 6000 248 95 36 6250 &lt;= SPHSWD &lt; 6750 6500 244 67 54For more information, see the Forest Inventory Standard of the Saskatchewan Environmental Code, Forest Inventory Chapter.
+
+** Cet élément de métadonnées provenant d’une tierce partie a été traduit à l'aide d'un outil de traduction automatisée (Amazon Translate).**</LocalisedCharacterString>
+					</textGroup>
+				</PT_FreeText>
+			</abstract>
+			<status>
+				<MD_ProgressCode codeList="http://nap.geogratis.gc.ca/metadata/register/napMetadataRegister.xml#IC_106" codeListValue="RI_596">onGoing; enContinue</MD_ProgressCode>
+			</status>
+			<resourceMaintenance>
+				<MD_MaintenanceInformation>
+					<maintenanceAndUpdateFrequency>
+						<MD_MaintenanceFrequencyCode codeList="http://nap.geogratis.gc.ca/metadata/register/napMetadataRegister.xml#IC_102" codeListValue="RI_543">unknown; inconnu</MD_MaintenanceFrequencyCode>
+					</maintenanceAndUpdateFrequency>
+				</MD_MaintenanceInformation>
+			</resourceMaintenance>
+			<graphicOverview>
+				<MD_BrowseGraphic>
+					<fileName>
+						<gco:CharacterString>https://raw.githubusercontent.com/federal-geospatial-platform/fgp-metadata-proxy/master/images/resampled/sk/Flag_of_Saskatchewan_400x400.png</gco:CharacterString>
+					</fileName>
+				</MD_BrowseGraphic>
+			</graphicOverview>
+			<descriptiveKeywords>
+				<MD_Keywords>
+					<keyword xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>stems per hectare</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Translation of stems per hectare</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</keyword>
+					<keyword xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>trees per hectare</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Translation of trees per hectare</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</keyword>
+					<keyword xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>density</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Translation of density</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</keyword>
+					<keyword xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>softwood</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Translation of softwood</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</keyword>
+					<keyword xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>swd</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Translation of swd</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</keyword>
+					<keyword xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>sph</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Translation of sph</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</keyword>
+					<keyword xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>tph</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Translation of tph</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</keyword>
+					<keyword xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>sphswd</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Translation of sphswd</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</keyword>
+					<keyword xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>raster</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Translation of raster</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</keyword>
+					<keyword xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>forestry</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Translation of forestry</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</keyword>
+					<keyword xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>forest</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Translation of forest</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</keyword>
+					<keyword xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>forest inventory</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Translation of forest inventory</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</keyword>
+					<keyword xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>forest resource inventory</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Translation of forest resource inventory</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</keyword>
+					<keyword xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>fri</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Translation of fri</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</keyword>
+					<keyword xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>forest service</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Translation of forest service</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</keyword>
+					<keyword xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>ministry of environment</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Translation of ministry of environment</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</keyword>
+					<keyword xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>environment</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Translation of environment</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</keyword>
+					<keyword xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>government of saskatchewan</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Translation of government of saskatchewan</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</keyword>
+					<keyword xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>saskatchewan</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Translation of saskatchewan</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</keyword>
+					<keyword xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>canada</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Translation of canada</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</keyword>
+					<type>
+						<MD_KeywordTypeCode codeList="http://nap.geogratis.gc.ca/metadata/register/napMetadataRegister.xml#IC_101" codeListValue="RI_528">theme; thème</MD_KeywordTypeCode>
+					</type>
+				</MD_Keywords>
+			</descriptiveKeywords>
+			<descriptiveKeywords>
+				<MD_Keywords>
+					<keyword xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>Government information</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Information gouvernementale</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</keyword>
+					<type>
+						<MD_KeywordTypeCode codeList="http://nap.geogratis.gc.ca/metadata/register/napMetadataRegister.xml#IC_101" codeListValue="RI_528">theme; thème</MD_KeywordTypeCode>
+					</type>
+					<thesaurusName>
+						<CI_Citation>
+							<title xsi:type="gmd:PT_FreeText_PropertyType">
+								<gco:CharacterString>Government of Canada Core Subject Thesaurus</gco:CharacterString>
+								<PT_FreeText>
+									<textGroup>
+										<LocalisedCharacterString locale="#fra">Thésaurus des sujets de base du gouvernement du Canada</LocalisedCharacterString>
+									</textGroup>
+								</PT_FreeText>
+							</title>
+							<date>
+								<CI_Date>
+									<date>
+										<gco:Date>2004</gco:Date>
+									</date>
+									<dateType>
+										<CI_DateTypeCode codeList="http://nap.geogratis.gc.ca/metadata/register/napMetadataRegister.xml#IC_87" codeListValue="RI_366">creation; création</CI_DateTypeCode>
+									</dateType>
+								</CI_Date>
+							</date>
+							<date>
+								<CI_Date>
+									<date>
+										<gco:Date>2016-04-21</gco:Date>
+									</date>
+									<dateType>
+										<CI_DateTypeCode codeList="http://nap.geogratis.gc.ca/metadata/register/napMetadataRegister.xml#IC_87" codeListValue="RI_367">publication; publication</CI_DateTypeCode>
+									</dateType>
+								</CI_Date>
+							</date>
+							<citedResponsibleParty>
+								<CI_ResponsibleParty>
+									<organisationName xsi:type="gmd:PT_FreeText_PropertyType">
+										<gco:CharacterString>Government of Canada; Library and Archives Canada</gco:CharacterString>
+										<PT_FreeText>
+											<textGroup>
+												<LocalisedCharacterString locale="#fra">Gouvernement du Canada; Bibliothèque et Archives Canada</LocalisedCharacterString>
+											</textGroup>
+										</PT_FreeText>
+									</organisationName>
+									<role>
+										<CI_RoleCode codeList="http://nap.geogratis.gc.ca/metadata/register/napMetadataRegister.xml#IC_90" codeListValue="RI_409">custodian; conservateur</CI_RoleCode>
+									</role>
+								</CI_ResponsibleParty>
+							</citedResponsibleParty>
+						</CI_Citation>
+					</thesaurusName>
+				</MD_Keywords>
+			</descriptiveKeywords>
+			<resourceConstraints>
+				<MD_LegalConstraints>
+					<useLimitation xsi:type="gmd:PT_FreeText_PropertyType">
+						<gco:CharacterString>Standard Unrestricted Use Data License (Version 2.0) - Saskatchewan (https://gisappl.saskatchewan.ca/Html5Ext/Resources/GOS_Standard_Unrestricted_Use_Data_Licence_v2.0.pdf)</gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra">Licence standard de données à usage non restreint (version 2.0) - Saskatchewan (https://gisappl.saskatchewan.ca/Html5Ext/Resources/GOS_Standard_Unrestricted_Use_Data_Licence_v2.0.pdf)</LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</useLimitation>
+					<accessConstraints>
+						<MD_RestrictionCode codeList="http://nap.geogratis.gc.ca/metadata/register/napMetadataRegister.xml#IC_107" codeListValue="RI_606">license; licence</MD_RestrictionCode>
+					</accessConstraints>
+					<useConstraints>
+						<MD_RestrictionCode codeList="http://nap.geogratis.gc.ca/metadata/register/napMetadataRegister.xml#IC_107" codeListValue="RI_606">license; licence</MD_RestrictionCode>
+					</useConstraints>
+					<otherConstraints xsi:type="gmd:PT_FreeText_PropertyType" gco:nilReason="missing">
+						<gco:CharacterString></gco:CharacterString>
+						<PT_FreeText>
+							<textGroup>
+								<LocalisedCharacterString locale="#fra"></LocalisedCharacterString>
+							</textGroup>
+						</PT_FreeText>
+					</otherConstraints>
+				</MD_LegalConstraints>
+			</resourceConstraints>
+			<spatialRepresentationType>
+				<MD_SpatialRepresentationTypeCode codeList="http://nap.geogratis.gc.ca/metadata/register/napMetadataRegister.xml#IC_109" codeListValue="RI_636">grid; grille</MD_SpatialRepresentationTypeCode>
+			</spatialRepresentationType>
+			<language>
+				<gco:CharacterString>eng; CAN</gco:CharacterString>
+			</language>
+			<language>
+				<gco:CharacterString>fra; CAN</gco:CharacterString>
+			</language>
+			<characterSet>
+				<MD_CharacterSetCode codeList="http://nap.geogratis.gc.ca/metadata/register/napMetadataRegister.xml#IC_95" codeListValue=""></MD_CharacterSetCode>
+			</characterSet>
+			<topicCategory>
+				<MD_TopicCategoryCode>environment</MD_TopicCategoryCode>
+			</topicCategory>
+			<topicCategory>
+				<MD_TopicCategoryCode>biota</MD_TopicCategoryCode>
+			</topicCategory>
+			<environmentDescription gco:nilReason="missing">
+				<gco:CharacterString></gco:CharacterString>
+			</environmentDescription>
+			<extent>
+				<EX_Extent>
+					<temporalElement>
+						<EX_TemporalExtent>
+							<extent gco:nilReason="missing">
+								<gml:TimePeriod gml:id="timeperiod1">
+									<gml:beginPosition>0001-01-01</gml:beginPosition>
+									<gml:endPosition></gml:endPosition>
+								</gml:TimePeriod>
+							</extent>
+						</EX_TemporalExtent>
+					</temporalElement>
+				</EX_Extent>
+			</extent>
+			<extent>
+				<EX_Extent>
+					<geographicElement>
+						<EX_GeographicBoundingBox>
+							<westBoundLongitude>
+								<gco:Decimal>-108.1260</gco:Decimal>
+							</westBoundLongitude>
+							<eastBoundLongitude>
+								<gco:Decimal>-102.9661</gco:Decimal>
+							</eastBoundLongitude>
+							<southBoundLatitude>
+								<gco:Decimal>52.7628</gco:Decimal>
+							</southBoundLatitude>
+							<northBoundLatitude>
+								<gco:Decimal>55.0468</gco:Decimal>
+							</northBoundLatitude>
+						</EX_GeographicBoundingBox>
+					</geographicElement>
+				</EX_Extent>
+			</extent>
+			<supplementalInformation gco:nilReason="missing">
+				<gco:CharacterString></gco:CharacterString>
+			</supplementalInformation>
+		</MD_DataIdentification>
+	</identificationInfo>
+	<distributionInfo>
+		<MD_Distribution>
+			<distributionFormat>
+				<MD_Format>
+					<name>
+						<gco:CharacterString>HTML</gco:CharacterString>
+					</name>
+					<version>
+						<gco:CharacterString>unknown</gco:CharacterString>
+					</version>
+				</MD_Format>
+			</distributionFormat>
+			<distributor>
+				<MD_Distributor>
+					<distributorContact>
+						<CI_ResponsibleParty>
+							<individualName xsi:type="gmd:PT_FreeText_PropertyType">
+								<gco:CharacterString></gco:CharacterString>
+							</individualName>
+							<organisationName xsi:type="gmd:PT_FreeText_PropertyType">
+								<gco:CharacterString>Government of Saskatchewan; Government of Saskatchewan; </gco:CharacterString>
+								<PT_FreeText>
+									<textGroup>
+										<LocalisedCharacterString locale="#fra">Gouvernement de la Saskatchewan; Gouvernement de la Saskatchewan; </LocalisedCharacterString>
+									</textGroup>
+								</PT_FreeText>
+							</organisationName>
+							<positionName xsi:type="gmd:PT_FreeText_PropertyType">
+								<gco:CharacterString></gco:CharacterString>
+								<PT_FreeText>
+									<textGroup>
+										<LocalisedCharacterString locale=""></LocalisedCharacterString>
+									</textGroup>
+								</PT_FreeText>
+							</positionName>
+							<contactInfo>
+								<CI_Contact>
+									<phone>
+										<CI_Telephone>
+											<voice xmlns:napm="http://www.geoconnections.org/nap/napMetadataTools/napXsd/napm" xsi:type="gmd:PT_FreeText_PropertyType">
+												<gco:CharacterString></gco:CharacterString>
+												<PT_FreeText>
+													<textGroup>
+														<LocalisedCharacterString locale="#fra"></LocalisedCharacterString>
+													</textGroup>
+												</PT_FreeText>
+											</voice>
+											<facsimile>
+												<gco:CharacterString></gco:CharacterString>
+											</facsimile>
+										</CI_Telephone>
+									</phone>
+									<address>
+										<CI_Address>
+											<deliveryPoint xsi:type="gmd:PT_FreeText_PropertyType">
+												<gco:CharacterString></gco:CharacterString>
+												<PT_FreeText>
+													<textGroup>
+														<LocalisedCharacterString locale="#fra"></LocalisedCharacterString>
+													</textGroup>
+												</PT_FreeText>
+											</deliveryPoint>
+											<city>
+												<gco:CharacterString></gco:CharacterString>
+											</city>
+											<administrativeArea xsi:type="gmd:PT_FreeText_PropertyType">
+												<gco:CharacterString></gco:CharacterString>
+												<PT_FreeText>
+													<textGroup>
+														<LocalisedCharacterString locale="#fra"></LocalisedCharacterString>
+													</textGroup>
+												</PT_FreeText>
+											</administrativeArea>
+											<postalCode>
+												<gco:CharacterString></gco:CharacterString>
+											</postalCode>
+											<country xsi:type="gmd:PT_FreeText_PropertyType">
+												<gco:CharacterString></gco:CharacterString>
+												<PT_FreeText>
+													<textGroup>
+														<LocalisedCharacterString locale="#fra"></LocalisedCharacterString>
+													</textGroup>
+												</PT_FreeText>
+											</country>
+											<electronicMailAddress xsi:type="gmd:PT_FreeText_PropertyType">
+												<gco:CharacterString>egis@gov.sk.ca</gco:CharacterString>
+												<PT_FreeText>
+													<textGroup>
+														<LocalisedCharacterString locale="#fra">egis@gov.sk.ca</LocalisedCharacterString>
+													</textGroup>
+												</PT_FreeText>
+											</electronicMailAddress>
+										</CI_Address>
+									</address>
+									<onlineResource>
+										<CI_OnlineResource>
+											<linkage>
+												<URL></URL>
+											</linkage>
+											<protocol>
+												<gco:CharacterString></gco:CharacterString>
+											</protocol>
+											<description xsi:type="gmd:PT_FreeText_PropertyType">
+												<gco:CharacterString></gco:CharacterString>
+												<PT_FreeText>
+													<textGroup>
+														<LocalisedCharacterString locale=""></LocalisedCharacterString>
+													</textGroup>
+												</PT_FreeText>
+											</description>
+										</CI_OnlineResource>
+									</onlineResource>
+								</CI_Contact>
+							</contactInfo>
+							<role>
+								<CI_RoleCode codeList="http://nap.geogratis.gc.ca/metadata/register/napMetadataRegister.xml#IC_90" codeListValue="RI_414">pointOfContact; contact</CI_RoleCode>
+							</role>
+						</CI_ResponsibleParty>
+					</distributorContact>
+				</MD_Distributor>
+			</distributor>
+			<transferOptions>
+				<MD_DigitalTransferOptions>
+					<onLine xlink:role="">
+						<CI_OnlineResource>
+							<linkage>
+								<URL>https://geohub.saskatchewan.ca/maps/saskatchewan::fri-stems-per-hectare-softwood</URL>
+							</linkage>
+							<protocol>
+								<gco:CharacterString>HTTPS</gco:CharacterString>
+							</protocol>
+							<name xsi:type="gmd:PT_FreeText_PropertyType">
+								<gco:CharacterString>original metadata (http://geohub.saskatchewan.ca)</gco:CharacterString>
+								<PT_FreeText>
+									<textGroup>
+										<LocalisedCharacterString locale="#fra">Translation of original metadata (http://geohub.saskatchewan.ca)</LocalisedCharacterString>
+									</textGroup>
+								</PT_FreeText>
+							</name>
+							<description xsi:type="gmd:PT_FreeText_PropertyType">
+								<gco:CharacterString>Dataset;HTML;eng</gco:CharacterString>
+								<PT_FreeText>
+									<textGroup>
+										<LocalisedCharacterString locale="#fra">Données;HTML;eng</LocalisedCharacterString>
+									</textGroup>
+								</PT_FreeText>
+							</description>
+						</CI_OnlineResource>
+					</onLine>
+				</MD_DigitalTransferOptions>
+			</transferOptions>
+		</MD_Distribution>
+	</distributionInfo>
+</MD_Metadata>
