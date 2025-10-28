@@ -24,22 +24,6 @@ The initial phase ensured all FME assets and Python code were fully compatible w
 | **FME_Workspaces** | ✅ Complete | All provincial production workspaces (`AB_PROD.fmw`, `BC_PROD.fmw`, etc.) were opened, validated, and saved to the new FME 2025 format. |
 | **Unit Test Suite** | ✅ Upgraded | The existing test framework was modified to run its battery of custom transformer tests against both FME 2020 and FME 2025 executables, providing initial isolated stability confirmation. |
 
----
-
-## 🔬 Phase 2: Technical Troubleshooting and Parity Fixes
-
-The main challenge was eliminating “version noise,” where 2025 generated structurally sound but textually different outputs.  
-Targeted fixes were implemented to achieve a final **“All Passed”** status.
-
-### A. Core Solutions Implemented
-
-| Problem Type | Workspaces Affected | Root Cause & Evidence | FME Solution Implemented |
-|---------------|--------------------|------------------------|---------------------------|
-| **List/Array Order Instability** | SK, MB, BC Prod | Python 3.11+ iteration changed list/dict ordering → output order of nested attributes (`topicCategory{}`, `resources{}`, etc.) became non-deterministic. | Added **ListSorter** immediately after list creation to enforce stable sort order using reliable keys (`.resource_id`, `.topic_value`). |
-| **Attribute Value Reversion** | SK Prod (Transfer Options) | FME 2025 defaulted to new canonical values (HTTPS, verbose roles). | Inserted **AttributeManager** to override 2025 defaults, restoring exact textual content from 2020 baseline. |
-| **System Noise Elimination** | All Workspaces | FME 2025 introduced volatile attributes (`fme_feature_type`, `_creation_instance`, etc.). | Added **AttributeRemover** as final step. Used RegEx `(^fme_.*|^_.*)` to strip internal meta-attributes. |
-
----
 
 ### B. Final Validation Results Summary
 
