@@ -1,4 +1,3 @@
-```markdown
 # 🧭 FME Harvester Metadata Proxy: FME 2020 → 2025 Migration and Validation Report
 
 ---
@@ -116,4 +115,3 @@ The framework is based on a **clean-room** principle ensuring **test integrity**
 ---
 
 **✅ Migration Complete — FME 2025 Environment Certified Production-Ready.**
-```
