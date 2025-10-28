@@ -4,13 +4,26 @@
 
 ## ⭐ Project Status and Executive Summary
 
-This document serves as the **authoritative record** of the FME metadata proxy environment’s successful migration from **FME 2020.2** to **FME 2025.1**.  
-The project scope was successfully executed to the highest standard, confirming **byte-for-byte output fidelity** between the new FME 2025 execution environment and the established 2020 production baseline.
+This document serves as the record of the FME metadata proxy environment’s successful migration from **FME 2020.2** to **FME 2025.1**.  
+The project was successul, confirming fidelity between the new FME 2025 execution environment and the established 2020 production baseline. After upgrading all FME custom transformers and workspaces for PT_Harvester. 
 
 **Core Achievement:**  
-✅ All provincial production workspaces now **PASS** the rigorous cross-version integration tests.
+✅ All provincial production workspaces now **PASS** the rigorous cross-version integration tests both in upgraded 2025 versions and 2020 original versions.
 
-This success required identifying and correcting subtle architectural shifts in the FME 2025 engine (Python module behavior, writer attribute ordering, and metadata defaults).
+**Upgrage Issues (Resolved)**
+
+```TEXT
+METADATA_DELTA_FINDER_GEN
+BulkAttributeRenamer
+
+ON_GEOHUB_RESOURCE_EXTRACTOR
+BulkAttributeRenamer
+
+SocrataApiCaller
+BulkAttributeRenamer
+```
+All BulkAttributeRenamer issues were caused by the parameter that needed to be set to 'All Attributes'. All were confirmed to be set to this in the 2020 workbench.
+
 
 ---
 
@@ -45,6 +58,7 @@ The framework is based on a **clean-room** principle ensuring **test integrity**
 | **Production Code** | `FME_Workspaces` | Definitive source for upgraded `.fmw` files. |
 | **Shared Logic** | `FME_Custom_Transformers` | All upgraded custom transformers (`.fmx` + Python modules). Set as `FME_SHAREDRESOURCE_CUSTOM_TRANSFORMERS`. |
 | **Test Control** | `INTEGRATION_TESTS` | All control scripts, comparison workbenches, and canonical test data. |
+| **Test Source** | `source1.ffs` | FME2020(2025 friendly) that generates ETALON_DATA (3 geo (XML) and 3 non-geo (JSON) metadata files. |
 | **Test Baseline** | `INTEGRATION_TESTS\ETALON_DATA` | Read-only canonical mirror of production data (e.g. `C:\data\pt_harvester`). Serves as the single source of truth for XML/JSON comparisons. |
 
 ---
@@ -52,22 +66,25 @@ The framework is based on a **clean-room** principle ensuring **test integrity**
 ### B. Year-Agnostic Execution Pipeline
 
 1. **Environment Variables:**  
-   Master script `run_all_2020_AND_2025.bat` dynamically references `%FME2020%` and `%FME2025%`.
+   Master script `run_all_2020_AND_2025.bat` dynamically references `%FME2020%` and `%FME2025%`. The environment variables, FME2020 and-or FME2025, must be set to the fme.exe of that year version.
 
 2. **Dynamic Execution:**  
    The variable `%FME_EXECUTABLE%` is set per run and passed to the central runner.
 
 3. **Core Runner (`INTEGRATIONTEST.bat`):**  
-   Executes the production workspace via `%FME_EXECUTABLE%`.
+   Executes the production workspace via `%FME_EXECUTABLE%`. 
 
 4. **Comparison Logic:**  
-   After generating the `RESULTAT` output, comparison workbenches `Comparateur_XML.fmw` and `Comparateur_JSON.fmw` are executed.  
+   After generating the `RESULTAT` output from running the workspace with source1.ffs, comparison workbenches `Comparateur_XML.fmw` and `Comparateur_JSON.fmw` are executed.  
    They:
-   - Load ETALON data  
-   - Apply **ListSorter** and **AttributeRemover**  
-   - Use **ChangeDetector** to identify diffs  
+   - Are built of FME components
+   - Run in 2020 and 2025
+   - They apply list re-ordering and concatenation to achieve year-agnostic comparison.
+     - Load ETALON data  
+     - Apply **ListSorter** and **AttributeRemover**  
+     - Use **ChangeDetector** to identify diffs  
 
-5. **Termination:**  
+6. **Termination:**  
    Any `UPDATED`, `DELETED`, or `INSERTED` feature halts the process (FAIL).  
    Only a full stream of `UNCHANGED` features yields **SUCCESS**.
 
