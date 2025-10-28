@@ -77,7 +77,7 @@ The test suite achieves its **year-agnostic functionality** and **definitive com
 This single script handles the execution logic for any FME version.
 
 1. **Dynamic FME Path**
-   The master scripts pass the target executable (e.g., `%FME2025%`) through the dynamic variable `FME_EXECUTABLE`.
+   The master scripts pass the target executable through the dynamic variable `FME_EXECUTABLE` (e.g.   `set FME_EXECUTABLE=%FME2020%`).
 
 2. **Workspace Execution**
    Calls the target `.fmw` workspace via `%FME_EXECUTABLE% path/to/workspace.fmw`.
